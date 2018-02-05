@@ -122,11 +122,11 @@ class Native::Router::Ospf::Redistribute::Rip::RedistOptions : public ydk::Entit
 }; // Native::Router::Ospf::Redistribute::Rip::RedistOptions
 
 
-class Native::Router::Ospf::Redistribute::Static_ : public ydk::Entity
+class Native::Router::Ospf::Redistribute::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -138,14 +138,14 @@ class Native::Router::Ospf::Redistribute::Static_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class RedistOptions; //type: Native::Router::Ospf::Redistribute::Static_::RedistOptions
+        class RedistOptions; //type: Native::Router::Ospf::Redistribute::Static::RedistOptions
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Static_::RedistOptions> redist_options;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Static::RedistOptions> redist_options;
         
-}; // Native::Router::Ospf::Redistribute::Static_
+}; // Native::Router::Ospf::Redistribute::Static
 
 
-class Native::Router::Ospf::Redistribute::Static_::RedistOptions : public ydk::Entity
+class Native::Router::Ospf::Redistribute::Static::RedistOptions : public ydk::Entity
 {
     public:
         RedistOptions();
@@ -169,7 +169,7 @@ class Native::Router::Ospf::Redistribute::Static_::RedistOptions : public ydk::E
         ydk::YLeaf nssa_only; //type: empty
         class MetricType;
 
-}; // Native::Router::Ospf::Redistribute::Static_::RedistOptions
+}; // Native::Router::Ospf::Redistribute::Static::RedistOptions
 
 
 class Native::Router::Ospf::Redistribute::MaximumPrefix : public ydk::Entity
@@ -272,7 +272,7 @@ class Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf : public ydk::Entity
         class Ospf_; //type: Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Ospf_
         class Ospfv3; //type: Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Ospfv3
         class Rip; //type: Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Rip
-        class Static_; //type: Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Static_
+        class Static; //type: Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Static
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Application> > application;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Bgp> > bgp;
@@ -286,7 +286,7 @@ class Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf : public ydk::Entity
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Ospf_> > ospf;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Ospfv3> > ospfv3;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Rip> > rip;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Static> static_; // presence node
         
 }; // Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf
 
@@ -1158,11 +1158,11 @@ class Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Rip::RedistOptions 
 }; // Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Rip::RedistOptions
 
 
-class Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Static_ : public ydk::Entity
+class Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1174,14 +1174,14 @@ class Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Static_ : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class RedistOptions; //type: Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Static_::RedistOptions
+        class RedistOptions; //type: Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Static::RedistOptions
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Static_::RedistOptions> redist_options;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Static::RedistOptions> redist_options;
         
-}; // Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Static_
+}; // Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Static
 
 
-class Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Static_::RedistOptions : public ydk::Entity
+class Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Static::RedistOptions : public ydk::Entity
 {
     public:
         RedistOptions();
@@ -1205,7 +1205,7 @@ class Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Static_::RedistOpti
         ydk::YLeaf nssa_only; //type: empty
         class MetricType;
 
-}; // Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Static_::RedistOptions
+}; // Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Static::RedistOptions
 
 
 class Native::Router::Ospf::Redistribute::Vrf::Global : public ydk::Entity
@@ -1236,7 +1236,7 @@ class Native::Router::Ospf::Redistribute::Vrf::Global : public ydk::Entity
         class Ospf_; //type: Native::Router::Ospf::Redistribute::Vrf::Global::Ospf_
         class Ospfv3; //type: Native::Router::Ospf::Redistribute::Vrf::Global::Ospfv3
         class Rip; //type: Native::Router::Ospf::Redistribute::Vrf::Global::Rip
-        class Static_; //type: Native::Router::Ospf::Redistribute::Vrf::Global::Static_
+        class Static; //type: Native::Router::Ospf::Redistribute::Vrf::Global::Static
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf::Global::Application> > application;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf::Global::Bgp> > bgp;
@@ -1250,7 +1250,7 @@ class Native::Router::Ospf::Redistribute::Vrf::Global : public ydk::Entity
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf::Global::Ospf_> > ospf;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf::Global::Ospfv3> > ospfv3;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf::Global::Rip> > rip;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf::Global::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf::Global::Static> static_; // presence node
         
 }; // Native::Router::Ospf::Redistribute::Vrf::Global
 
@@ -2122,11 +2122,11 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Rip::RedistOptions : publ
 }; // Native::Router::Ospf::Redistribute::Vrf::Global::Rip::RedistOptions
 
 
-class Native::Router::Ospf::Redistribute::Vrf::Global::Static_ : public ydk::Entity
+class Native::Router::Ospf::Redistribute::Vrf::Global::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2138,14 +2138,14 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Static_ : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class RedistOptions; //type: Native::Router::Ospf::Redistribute::Vrf::Global::Static_::RedistOptions
+        class RedistOptions; //type: Native::Router::Ospf::Redistribute::Vrf::Global::Static::RedistOptions
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf::Global::Static_::RedistOptions> redist_options;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf::Global::Static::RedistOptions> redist_options;
         
-}; // Native::Router::Ospf::Redistribute::Vrf::Global::Static_
+}; // Native::Router::Ospf::Redistribute::Vrf::Global::Static
 
 
-class Native::Router::Ospf::Redistribute::Vrf::Global::Static_::RedistOptions : public ydk::Entity
+class Native::Router::Ospf::Redistribute::Vrf::Global::Static::RedistOptions : public ydk::Entity
 {
     public:
         RedistOptions();
@@ -2169,7 +2169,7 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Static_::RedistOptions : 
         ydk::YLeaf nssa_only; //type: empty
         class MetricType;
 
-}; // Native::Router::Ospf::Redistribute::Vrf::Global::Static_::RedistOptions
+}; // Native::Router::Ospf::Redistribute::Vrf::Global::Static::RedistOptions
 
 
 class Native::Router::Ospf::DistributeList : public ydk::Entity
@@ -2861,8 +2861,8 @@ class Native::Router::Ospf::Limit::Retransmissions : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf non_dc; //type: one of uint32, enumeration
-        ydk::YLeaf dc; //type: one of uint32, enumeration
+        ydk::YLeaf non_dc; //type: one of enumeration, uint32
+        ydk::YLeaf dc; //type: one of enumeration, uint32
 
 }; // Native::Router::Ospf::Limit::Retransmissions
 
@@ -3908,7 +3908,7 @@ class Native::Router::Ospf::Redistribute::Rip::RedistOptions::MetricType : publi
 
 };
 
-class Native::Router::Ospf::Redistribute::Static_::RedistOptions::MetricType : public ydk::Enum
+class Native::Router::Ospf::Redistribute::Static::RedistOptions::MetricType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Y_1;
@@ -4086,7 +4086,7 @@ class Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Rip::RedistOptions:
 
 };
 
-class Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Static_::RedistOptions::MetricType : public ydk::Enum
+class Native::Router::Ospf::Redistribute::Vrf::NonGlobalVrf::Static::RedistOptions::MetricType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Y_1;
@@ -4264,7 +4264,7 @@ class Native::Router::Ospf::Redistribute::Vrf::Global::Rip::RedistOptions::Metri
 
 };
 
-class Native::Router::Ospf::Redistribute::Vrf::Global::Static_::RedistOptions::MetricType : public ydk::Enum
+class Native::Router::Ospf::Redistribute::Vrf::Global::Static::RedistOptions::MetricType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Y_1;

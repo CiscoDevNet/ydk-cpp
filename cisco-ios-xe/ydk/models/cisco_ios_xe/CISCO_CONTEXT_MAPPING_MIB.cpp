@@ -107,6 +107,7 @@ std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ccontextmappingtable != nullptr)
     {
         children["cContextMappingTable"] = ccontextmappingtable;
@@ -227,14 +228,6 @@ std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::get_child_
 {
     if(child_yang_name == "cContextMappingEntry")
     {
-        for(auto const & c : ccontextmappingentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry>();
         c->parent = this;
         ccontextmappingentry.push_back(c);
@@ -247,9 +240,14 @@ std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ccontextmappingentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -345,6 +343,7 @@ std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextma
 std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -480,14 +479,6 @@ std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable
 {
     if(child_yang_name == "cContextMappingBridgeDomainEntry")
     {
-        for(auto const & c : ccontextmappingbridgedomainentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry>();
         c->parent = this;
         ccontextmappingbridgedomainentry.push_back(c);
@@ -500,9 +491,14 @@ std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable
 std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ccontextmappingbridgedomainentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -590,6 +586,7 @@ std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable
 std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -705,14 +702,6 @@ std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetab
 {
     if(child_yang_name == "cContextMappingBridgeInstanceEntry")
     {
-        for(auto const & c : ccontextmappingbridgeinstanceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry>();
         c->parent = this;
         ccontextmappingbridgeinstanceentry.push_back(c);
@@ -725,9 +714,14 @@ std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetab
 std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ccontextmappingbridgeinstanceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -815,6 +809,7 @@ std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetab
 std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -930,14 +925,6 @@ std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable
 {
     if(child_yang_name == "cContextMappingLicenseGroupEntry")
     {
-        for(auto const & c : ccontextmappinglicensegroupentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry>();
         c->parent = this;
         ccontextmappinglicensegroupentry.push_back(c);
@@ -950,9 +937,14 @@ std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable
 std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ccontextmappinglicensegroupentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1040,6 +1032,7 @@ std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable
 std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -82,6 +82,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::ServicePolicy::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGroup::ServicePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(type != nullptr)
     {
         children["type"] = type;
@@ -218,6 +219,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::ServicePolicy::Type
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGroup::ServicePolicy::Type::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(control != nullptr)
     {
         children["control"] = control;
@@ -299,6 +301,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::ServicePolicy::Type
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGroup::ServicePolicy::Type::Control::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -379,6 +382,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::ServicePolicy::Type
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGroup::ServicePolicy::Type::PerformanceMonitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -487,6 +491,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::ServicePolicy::Type
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGroup::ServicePolicy::Type::ServiceChain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -563,6 +568,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::ServicePolicy::Type
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGroup::ServicePolicy::Type::ServiceChain::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -639,6 +645,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::ServicePolicy::Type
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGroup::ServicePolicy::Type::ServiceChain::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -715,6 +722,7 @@ std::shared_ptr<Entity> Native::Interface::VirtualPortGroup::Mab::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::VirtualPortGroup::Mab::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1162,14 +1170,6 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::get_child_by_name(const std
 
     if(child_yang_name == "hold-queue")
     {
-        for(auto const & c : hold_queue)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vasileft::HoldQueue>();
         c->parent = this;
         hold_queue.push_back(c);
@@ -1371,6 +1371,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(switchport_conf != nullptr)
     {
         children["switchport-conf"] = switchport_conf;
@@ -1461,9 +1462,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::get_
         children["domain"] = domain;
     }
 
+    count = 0;
     for (auto const & c : hold_queue)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(mpls != nullptr)
@@ -1747,6 +1752,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::SwitchportConf::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::SwitchportConf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1819,6 +1825,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Switchport::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Switchport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1887,6 +1894,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::StackwiseVirtual::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::StackwiseVirtual::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1973,6 +1981,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Arp::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Arp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2084,6 +2093,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Backup::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Backup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(delay != nullptr)
     {
         children["delay"] = delay;
@@ -2169,6 +2179,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Backup::Delay::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Backup::Delay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2420,6 +2431,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Backup::Interface_::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Backup::Interface_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(atm_subinterface != nullptr)
     {
         children["ATM-subinterface"] = atm_subinterface;
@@ -2796,6 +2808,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Backup::Interface_::ATMSubi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Backup::Interface_::ATMSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2872,6 +2885,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Backup::Interface_::ATMACRs
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Backup::Interface_::ATMACRsubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2948,6 +2962,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Backup::Interface_::LISPSub
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Backup::Interface_::LISPSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3024,6 +3039,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Backup::Interface_::PortCha
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Backup::Interface_::PortChannelSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3104,6 +3120,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Backup::Load::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Backup::Load::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3199,6 +3216,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Cemoudp::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Cemoudp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(reserve != nullptr)
     {
         children["reserve"] = reserve;
@@ -3270,6 +3288,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Cemoudp::Reserve::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Cemoudp::Reserve::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3360,6 +3379,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::CwsTunnel::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::CwsTunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(out != nullptr)
     {
         children["out"] = out;
@@ -3441,6 +3461,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::CwsTunnel::Out::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::CwsTunnel::Out::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3552,6 +3573,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::L2ProtocolTunnel::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::L2ProtocolTunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(drop_threshold != nullptr)
     {
         children["drop-threshold"] = drop_threshold;
@@ -3670,6 +3692,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::L2ProtocolTunnel::DropThres
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::L2ProtocolTunnel::DropThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3788,6 +3811,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::L2ProtocolTunnel::ShutdownT
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::L2ProtocolTunnel::ShutdownThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3952,6 +3976,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Encapsulation::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Encapsulation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dot1q != nullptr)
     {
         children["dot1Q"] = dot1q;
@@ -4047,6 +4072,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Encapsulation::Dot1Q::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Encapsulation::Dot1Q::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4133,6 +4159,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Encapsulation::Isl::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Encapsulation::Isl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4205,6 +4232,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Encapsulation::Ppp::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Encapsulation::Ppp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4265,6 +4293,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Encapsulation::Slip::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Encapsulation::Slip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4329,6 +4358,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Encapsulation::FrameRelay::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Encapsulation::FrameRelay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4405,6 +4435,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::FairQueueConf::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::FairQueueConf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4481,6 +4512,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::FairQueue::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::FairQueue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4561,6 +4593,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Flowcontrol::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Flowcontrol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4643,6 +4676,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Isis::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4715,6 +4749,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::KeepaliveSettings::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::KeepaliveSettings::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(keepalive != nullptr)
     {
         children["keepalive"] = keepalive;
@@ -4790,6 +4825,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::KeepaliveSettings::Keepaliv
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::KeepaliveSettings::Keepalive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4872,6 +4908,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Bfd::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4966,6 +5003,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Bandwidth::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Bandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(receive != nullptr)
     {
         children["receive"] = receive;
@@ -5066,6 +5104,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Bandwidth::Receive::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Bandwidth::Receive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5152,6 +5191,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Bandwidth::Inherit::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Bandwidth::Inherit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5254,6 +5294,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Dampening::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Dampening::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(restart != nullptr)
     {
         children["restart"] = restart;
@@ -5369,6 +5410,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Dampening::Restart::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Dampening::Restart::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5475,6 +5517,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Domain::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Domain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5605,6 +5648,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::HoldQueue::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::HoldQueue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5687,6 +5731,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Mpls::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Mpls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5760,6 +5805,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::IpVrf::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::IpVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ip != nullptr)
     {
         children["ip"] = ip;
@@ -5840,6 +5886,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::IpVrf::Ip::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::IpVrf::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vrf != nullptr)
     {
         children["vrf"] = vrf;
@@ -5911,6 +5958,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::IpVrf::Ip::Vrf::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::IpVrf::Ip::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5987,6 +6035,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Vrf::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6249,14 +6298,6 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::get_child_by_name(const
 
     if(child_yang_name == "helper-address")
     {
-        for(auto const & c : helper_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vasileft::Ip::HelperAddress>();
         c->parent = this;
         helper_address.push_back(c);
@@ -6377,6 +6418,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(access_group != nullptr)
     {
         children["access-group"] = access_group;
@@ -6417,9 +6459,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::
         children["hold-time"] = hold_time;
     }
 
+    count = 0;
     for (auto const & c : helper_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(pim != nullptr)
@@ -6650,6 +6696,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::AccessGroup::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::AccessGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(in != nullptr)
     {
         children["in"] = in;
@@ -6748,6 +6795,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::AccessGroup::In::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::AccessGroup::In::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(common_acl != nullptr)
     {
         children["common-acl"] = common_acl;
@@ -6828,6 +6876,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::AccessGroup::In::Common
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::AccessGroup::In::CommonAcl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6918,6 +6967,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::AccessGroup::In::Acl::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::AccessGroup::In::Acl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7026,6 +7076,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::AccessGroup::Out::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::AccessGroup::Out::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(common_acl != nullptr)
     {
         children["common-acl"] = common_acl;
@@ -7106,6 +7157,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::AccessGroup::Out::Commo
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::AccessGroup::Out::CommonAcl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7196,6 +7248,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::AccessGroup::Out::Acl::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::AccessGroup::Out::Acl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7291,6 +7344,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Arp::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Arp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(inspection != nullptr)
     {
         children["inspection"] = inspection;
@@ -7376,6 +7430,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Arp::Inspection::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Arp::Inspection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(limit != nullptr)
     {
         children["limit"] = limit;
@@ -7461,6 +7516,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Arp::Inspection::Limit:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Arp::Inspection::Limit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7565,6 +7621,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Vrf::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(forwarding != nullptr)
     {
         children["forwarding"] = forwarding;
@@ -7664,6 +7721,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Vrf::Forwarding::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Vrf::Forwarding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7760,6 +7818,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::NoAddress::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::NoAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7859,14 +7918,6 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Address::get_child_by_n
 
     if(child_yang_name == "secondary")
     {
-        for(auto const & c : secondary)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vasileft::Ip::Address::Secondary>();
         c->parent = this;
         secondary.push_back(c);
@@ -7888,14 +7939,19 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Address::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(primary != nullptr)
     {
         children["primary"] = primary;
     }
 
+    count = 0;
     for (auto const & c : secondary)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(dhcp != nullptr)
@@ -7983,6 +8039,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Address::Primary::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Address::Primary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8077,6 +8134,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Address::Secondary::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Address::Secondary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8187,6 +8245,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Address::Dhcp::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Address::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(client_id != nullptr)
     {
         children["client-id"] = client_id;
@@ -8300,6 +8359,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Address::Dhcp::ClientId
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Address::Dhcp::ClientId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8460,6 +8520,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::HelloInterval::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::HelloInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8568,6 +8629,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Authentication::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_chain != nullptr)
     {
         children["key-chain"] = key_chain;
@@ -8648,6 +8710,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Authentication::KeyChai
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Authentication::KeyChain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8738,6 +8801,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Authentication::Mode::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Authentication::Mode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8828,6 +8892,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::HoldTime::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::HoldTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8922,6 +8987,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::HelperAddress::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::HelperAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9014,6 +9080,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Pim::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Pim::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9078,6 +9145,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Policy::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Policy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9163,6 +9231,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Rip::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Rip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authentication != nullptr)
     {
         children["authentication"] = authentication;
@@ -9248,6 +9317,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Rip::Authentication::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Rip::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mode != nullptr)
     {
         children["mode"] = mode;
@@ -9333,6 +9403,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Rip::Authentication::Mo
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Rip::Authentication::Mode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9419,6 +9490,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::RouteCacheConf::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::RouteCacheConf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9507,6 +9579,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::RouteCache::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::RouteCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9621,6 +9694,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Router::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Router::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(isis != nullptr)
     {
         children["isis"] = isis;
@@ -9692,6 +9766,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Router::Isis::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Router::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9768,6 +9843,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Tcp::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Tcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9860,6 +9936,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::VirtualReassembly::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::VirtualReassembly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10011,6 +10088,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Dhcp::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(client != nullptr)
     {
         children["Cisco-IOS-XE-dhcp:client"] = client;
@@ -10092,6 +10170,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Dhcp::Client::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Dhcp::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10182,6 +10261,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Dhcp::Relay::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Dhcp::Relay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(information != nullptr)
     {
         children["information"] = information;
@@ -10305,6 +10385,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Dhcp::Relay::Informatio
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Dhcp::Relay::Information::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(check_reply != nullptr)
     {
         children["check-reply"] = check_reply;
@@ -10406,6 +10487,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Dhcp::Relay::Informatio
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Dhcp::Relay::Information::CheckReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10482,6 +10564,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Dhcp::Relay::Informatio
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Dhcp::Relay::Information::Option::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10558,6 +10641,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Dhcp::Relay::Informatio
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Dhcp::Relay::Information::OptionInsert::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10654,14 +10738,6 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Dhcp::Snooping::get_chi
 
     if(child_yang_name == "vlan")
     {
-        for(auto const & c : vlan)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vasileft::Ip::Dhcp::Snooping::Vlan>();
         c->parent = this;
         vlan.push_back(c);
@@ -10674,14 +10750,19 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Dhcp::Snooping::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Dhcp::Snooping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(limit != nullptr)
     {
         children["limit"] = limit;
     }
 
+    count = 0;
     for (auto const & c : vlan)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10760,6 +10841,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Dhcp::Snooping::Limit::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Dhcp::Snooping::Limit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10850,6 +10932,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Dhcp::Snooping::Vlan::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Dhcp::Snooping::Vlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(information != nullptr)
     {
         children["information"] = information;
@@ -10940,6 +11023,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Dhcp::Snooping::Vlan::I
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Dhcp::Snooping::Vlan::Information::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(option != nullptr)
     {
         children["option"] = option;
@@ -11020,6 +11104,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Dhcp::Snooping::Vlan::I
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Dhcp::Snooping::Vlan::Information::Option::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(format_type != nullptr)
     {
         children["format-type"] = format_type;
@@ -11100,6 +11185,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Dhcp::Snooping::Vlan::I
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Dhcp::Snooping::Vlan::Information::Option::FormatType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(circuit_id != nullptr)
     {
         children["circuit-id"] = circuit_id;
@@ -11171,6 +11257,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Dhcp::Snooping::Vlan::I
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Dhcp::Snooping::Vlan::Information::Option::FormatType::CircuitId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11249,14 +11336,6 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::SummaryAddress::get_chi
 {
     if(child_yang_name == "eigrp")
     {
-        for(auto const & c : eigrp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vasileft::Ip::SummaryAddress::Eigrp>();
         c->parent = this;
         eigrp.push_back(c);
@@ -11269,9 +11348,14 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::SummaryAddress::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::SummaryAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : eigrp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11352,6 +11436,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::SummaryAddress::Eigrp::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::SummaryAddress::Eigrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11479,6 +11564,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Verify::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Verify::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(source != nullptr)
     {
         children["source"] = source;
@@ -11564,6 +11650,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Verify::Source::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Verify::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vlan != nullptr)
     {
         children["vlan"] = vlan;
@@ -11643,6 +11730,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Verify::Source::Vlan::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Verify::Source::Vlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dhcp_snooping != nullptr)
     {
         children["dhcp-snooping"] = dhcp_snooping;
@@ -11714,6 +11802,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Verify::Source::Vlan::D
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Verify::Source::Vlan::DhcpSnooping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11811,6 +11900,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Verify::Unicast::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Verify::Unicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(reverse_path != nullptr)
     {
         children["reverse-path"] = reverse_path;
@@ -11883,6 +11973,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Verify::Unicast::Revers
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Verify::Unicast::ReversePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11955,6 +12046,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Verify::Unicast::Source
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Verify::Unicast::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12071,14 +12163,6 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Wccp::get_child_by_name
 {
     if(child_yang_name == "wccp-list")
     {
-        for(auto const & c : wccp_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vasileft::Ip::Wccp::WccpList>();
         c->parent = this;
         wccp_list.push_back(c);
@@ -12105,14 +12189,6 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Wccp::get_child_by_name
 
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vasileft::Ip::Wccp::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -12125,9 +12201,14 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Wccp::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Wccp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : wccp_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(web_cache != nullptr)
@@ -12140,9 +12221,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::
         children["redirect"] = redirect;
     }
 
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12229,6 +12314,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Wccp::WccpList::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Wccp::WccpList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redirect != nullptr)
     {
         children["redirect"] = redirect;
@@ -12324,6 +12410,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Wccp::WccpList::Redirec
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Wccp::WccpList::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12424,6 +12511,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Wccp::WebCache::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Wccp::WebCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redirect != nullptr)
     {
         children["redirect"] = redirect;
@@ -12509,6 +12597,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Wccp::WebCache::Redirec
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Wccp::WebCache::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12604,6 +12693,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Wccp::Redirect::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Wccp::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(exclude != nullptr)
     {
         children["exclude"] = exclude;
@@ -12675,6 +12765,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Wccp::Redirect::Exclude
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Wccp::Redirect::Exclude::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12762,14 +12853,6 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Wccp::Vrf::get_child_by
 {
     if(child_yang_name == "wccp-list")
     {
-        for(auto const & c : wccp_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vasileft::Ip::Wccp::Vrf::WccpList>();
         c->parent = this;
         wccp_list.push_back(c);
@@ -12791,9 +12874,14 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Wccp::Vrf::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Wccp::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : wccp_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(web_cache != nullptr)
@@ -12895,6 +12983,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Wccp::Vrf::WccpList::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Wccp::Vrf::WccpList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redirect != nullptr)
     {
         children["redirect"] = redirect;
@@ -12990,6 +13079,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Wccp::Vrf::WccpList::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Wccp::Vrf::WccpList::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13090,6 +13180,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Wccp::Vrf::WebCache::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Wccp::Vrf::WebCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redirect != nullptr)
     {
         children["redirect"] = redirect;
@@ -13175,6 +13266,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ip::Wccp::Vrf::WebCache::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ip::Wccp::Vrf::WebCache::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13356,14 +13448,6 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ipv6::get_child_by_name(con
 
     if(child_yang_name == "traffic-filter")
     {
-        for(auto const & c : traffic_filter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vasileft::Ipv6::TrafficFilter>();
         c->parent = this;
         traffic_filter.push_back(c);
@@ -13376,6 +13460,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ipv6::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination_guard != nullptr)
     {
         children["destination-guard"] = destination_guard;
@@ -13406,9 +13491,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ipv6
         children["tcp"] = tcp;
     }
 
+    count = 0;
     for (auto const & c : traffic_filter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13517,6 +13606,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ipv6::DestinationGuard::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ipv6::DestinationGuard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13593,6 +13683,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ipv6::SourceGuard::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ipv6::SourceGuard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13687,14 +13778,6 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ipv6::Dhcp::get_child_by_na
 
     if(child_yang_name == "Cisco-IOS-XE-dhcp:server")
     {
-        for(auto const & c : server)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vasileft::Ipv6::Dhcp::Server>();
         c->parent = this;
         server.push_back(c);
@@ -13716,14 +13799,19 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ipv6::Dhcp::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ipv6::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(client != nullptr)
     {
         children["Cisco-IOS-XE-dhcp:client"] = client;
     }
 
+    count = 0;
     for (auto const & c : server)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(guard != nullptr)
@@ -13806,6 +13894,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ipv6::Dhcp::Client::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ipv6::Dhcp::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(request != nullptr)
     {
         children["request"] = request;
@@ -13877,6 +13966,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ipv6::Dhcp::Client::Request
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ipv6::Dhcp::Client::Request::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13957,6 +14047,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ipv6::Dhcp::Server::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ipv6::Dhcp::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14043,6 +14134,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ipv6::Dhcp::Guard::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ipv6::Dhcp::Guard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14155,14 +14247,6 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ipv6::Address::get_child_by
 
     if(child_yang_name == "prefix-list")
     {
-        for(auto const & c : prefix_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vasileft::Ipv6::Address::PrefixList>();
         c->parent = this;
         prefix_list.push_back(c);
@@ -14171,14 +14255,6 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ipv6::Address::get_child_by
 
     if(child_yang_name == "link-local-address")
     {
-        for(auto const & c : link_local_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vasileft::Ipv6::Address::LinkLocalAddress>();
         c->parent = this;
         link_local_address.push_back(c);
@@ -14191,6 +14267,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ipv6::Address::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ipv6::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dhcp != nullptr)
     {
         children["dhcp"] = dhcp;
@@ -14201,14 +14278,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ipv6
         children["autoconfig"] = autoconfig;
     }
 
+    count = 0;
     for (auto const & c : prefix_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : link_local_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14277,6 +14362,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ipv6::Address::Dhcp::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ipv6::Address::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14353,6 +14439,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ipv6::Address::Autoconfig::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ipv6::Address::Autoconfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14437,6 +14524,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ipv6::Address::PrefixList::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ipv6::Address::PrefixList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14537,6 +14625,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ipv6::Address::LinkLocalAdd
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ipv6::Address::LinkLocalAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14663,6 +14752,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ipv6::Nd::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ipv6::Nd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(raguard != nullptr)
     {
         children["Cisco-IOS-XE-nd:raguard"] = raguard;
@@ -14754,6 +14844,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ipv6::Nd::Raguard::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ipv6::Nd::Raguard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14834,6 +14925,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ipv6::Nd::Autoconfig::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ipv6::Nd::Autoconfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14928,6 +15020,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ipv6::Nd::Ra::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ipv6::Nd::Ra::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(suppress != nullptr)
     {
         children["suppress"] = suppress;
@@ -14999,6 +15092,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ipv6::Nd::Ra::Suppress::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ipv6::Nd::Ra::Suppress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15075,6 +15169,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ipv6::Tcp::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ipv6::Tcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15155,6 +15250,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Ipv6::TrafficFilter::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Ipv6::TrafficFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15250,6 +15346,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Logging::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Logging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(event != nullptr)
     {
         children["event"] = event;
@@ -15366,6 +15463,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Logging::Event::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Logging::Event::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(spanning_tree != nullptr)
     {
         children["spanning-tree"] = spanning_tree;
@@ -15502,6 +15600,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Logging::Event::SpanningTre
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Logging::Event::SpanningTree::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15578,6 +15677,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Logging::Event::SubifLinkSt
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Logging::Event::SubifLinkStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15654,6 +15754,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Mdix::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Mdix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15734,6 +15835,7 @@ std::shared_ptr<Entity> Native::Interface::Vasileft::Mop::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasileft::Mop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

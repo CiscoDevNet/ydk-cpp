@@ -5,10 +5,10 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_pmengine_oper_0.hpp"
-#include "Cisco_IOS_XR_pmengine_oper_3.hpp"
 #include "Cisco_IOS_XR_pmengine_oper_1.hpp"
-#include "Cisco_IOS_XR_pmengine_oper_5.hpp"
 #include "Cisco_IOS_XR_pmengine_oper_4.hpp"
+#include "Cisco_IOS_XR_pmengine_oper_5.hpp"
+#include "Cisco_IOS_XR_pmengine_oper_3.hpp"
 #include "Cisco_IOS_XR_pmengine_oper_2.hpp"
 
 using namespace ydk;
@@ -203,6 +203,7 @@ std::shared_ptr<Entity> PerformanceManagement::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(macsec != nullptr)
     {
         children["macsec"] = macsec;
@@ -365,6 +366,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(macsec_ports != nullptr)
     {
         children["macsec-ports"] = macsec_ports;
@@ -445,14 +447,6 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::get_child_by
 {
     if(child_yang_name == "macsec-port")
     {
-        for(auto const & c : macsec_port)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort>();
         c->parent = this;
         macsec_port.push_back(c);
@@ -465,9 +459,14 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : macsec_port)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -557,6 +556,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(macsec_current != nullptr)
     {
         children["macsec-current"] = macsec_current;
@@ -673,6 +673,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(macsec_minute15 != nullptr)
     {
         children["macsec-minute15"] = macsec_minute15;
@@ -802,6 +803,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(macsec_minute15secyifs != nullptr)
     {
         children["macsec-minute15secyifs"] = macsec_minute15secyifs;
@@ -890,14 +892,6 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 {
     if(child_yang_name == "macsec-minute15secyif")
     {
-        for(auto const & c : macsec_minute15secyif)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif>();
         c->parent = this;
         macsec_minute15secyif.push_back(c);
@@ -910,9 +904,14 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : macsec_minute15secyif)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1174,6 +1173,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(in_pkts_untagged != nullptr)
     {
         children["in-pkts-untagged"] = in_pkts_untagged;
@@ -1412,6 +1412,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUntagged::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1530,6 +1531,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoTag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1648,6 +1650,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsBadTag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1766,6 +1769,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUnknownSci::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1884,6 +1888,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoSci::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2002,6 +2007,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsOverrun::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2120,6 +2126,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsValidated::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2238,6 +2245,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsDecrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2356,6 +2364,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsUntagged::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2474,6 +2483,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsTooLong::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2592,6 +2602,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsProtected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2710,6 +2721,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsEncrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2818,14 +2830,6 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 {
     if(child_yang_name == "macsec-minute15secyrx")
     {
-        for(auto const & c : macsec_minute15secyrx)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx>();
         c->parent = this;
         macsec_minute15secyrx.push_back(c);
@@ -2838,9 +2842,14 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : macsec_minute15secyrx)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3089,6 +3098,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(in_pkts_unchecked != nullptr)
     {
         children["in-pkts-unchecked"] = in_pkts_unchecked;
@@ -3322,6 +3332,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnchecked::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3440,6 +3451,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsDelayed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3558,6 +3570,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsLate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3676,6 +3689,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsOk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3794,6 +3808,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsInvalid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3912,6 +3927,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotValid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4030,6 +4046,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotUsingSa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4148,6 +4165,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnusedSa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4266,6 +4284,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUntaggedHit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4384,6 +4403,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsValidated::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4502,6 +4522,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsDecrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4610,14 +4631,6 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 {
     if(child_yang_name == "macsec-minute15secytx")
     {
-        for(auto const & c : macsec_minute15secytx)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx>();
         c->parent = this;
         macsec_minute15secytx.push_back(c);
@@ -4630,9 +4643,14 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : macsec_minute15secytx)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4803,6 +4821,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(out_pkts_protected != nullptr)
     {
         children["out-pkts-protected"] = out_pkts_protected;
@@ -5006,6 +5025,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsProtected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5124,6 +5144,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsEncrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5242,6 +5263,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsProtected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5360,6 +5382,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsEncrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5478,6 +5501,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsTooLong::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5586,14 +5610,6 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 {
     if(child_yang_name == "macsec-minute15-ether")
     {
-        for(auto const & c : macsec_minute15_ether)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether>();
         c->parent = this;
         macsec_minute15_ether.push_back(c);
@@ -5606,9 +5622,14 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : macsec_minute15_ether)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6685,6 +6706,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rx_pkt != nullptr)
     {
         children["rx-pkt"] = rx_pkt;
@@ -7228,6 +7250,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::RxPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7346,6 +7369,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::StatPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7464,6 +7488,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OctetStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7582,6 +7607,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OversizePktStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7700,6 +7726,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::FcsErrorsStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7818,6 +7845,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::LongFramesStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7936,6 +7964,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::JabberStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8054,6 +8083,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether64Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8172,6 +8202,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether65127Octet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8290,6 +8321,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether128255Octet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8408,6 +8440,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether256511Octet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8526,6 +8559,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether5121023Octet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8644,6 +8678,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Ether10241518Octet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8762,6 +8797,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InUcastPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8880,6 +8916,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMcastPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8998,6 +9035,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InBcastPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9116,6 +9154,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutUcastPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9234,6 +9273,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutBcastPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9352,6 +9392,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutMcastPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9470,6 +9511,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9588,6 +9630,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::IfInErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9706,6 +9749,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::IfInOctets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9824,6 +9868,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatMulticastPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9942,6 +9987,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatBroadcastPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10060,6 +10106,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::EtherStatUndersizedPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10178,6 +10225,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutOctets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10296,6 +10344,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPauseFrame::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10414,6 +10463,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodBytes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10532,6 +10582,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021QFrames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10650,6 +10701,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1519MaxOctets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10768,6 +10820,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodPkts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10886,6 +10939,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropOverrun::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11004,6 +11058,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropAbort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11122,6 +11177,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidVlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11240,6 +11296,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidDmac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11358,6 +11415,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropInvalidEncap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11476,6 +11534,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropOther::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11594,6 +11653,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibGiant::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11712,6 +11772,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibJabber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11830,6 +11891,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InMibcrc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11948,6 +12010,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorCollisions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12066,6 +12129,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorSymbol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12184,6 +12248,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodBytes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12302,6 +12367,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021QFrames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12420,6 +12486,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPauseFrames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12538,6 +12605,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts1519MaxOctets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12656,6 +12724,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodPkts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12774,6 +12843,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropUnderrun::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12892,6 +12962,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropAbort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13010,6 +13081,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutDropOther::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13128,6 +13200,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutErrorOther::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13246,6 +13319,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorGiant::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13364,6 +13438,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorRunt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13482,6 +13557,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorJabbers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13600,6 +13676,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorFragments::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13718,6 +13795,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorOther::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13836,6 +13914,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkt64Octet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13954,6 +14033,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts65To127Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14072,6 +14152,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts128To255Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14190,6 +14271,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts256To511Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14308,6 +14390,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts512To1023Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14426,6 +14509,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1024To1518Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14544,6 +14628,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64Octet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14662,6 +14747,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts65127Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14780,6 +14866,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts128255Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14898,6 +14985,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts256511Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15016,6 +15104,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts5121023Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15134,6 +15223,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts10241518Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15252,6 +15342,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::RxUtil::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15370,6 +15461,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxUtil::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15488,6 +15580,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxUndersizedPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15606,6 +15699,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxOversizedPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15724,6 +15818,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxFragments::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15842,6 +15937,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxJabber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15960,6 +16056,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::TxBadFcs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16114,6 +16211,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(macsec_second30secyifs != nullptr)
     {
         children["macsec-second30secyifs"] = macsec_second30secyifs;
@@ -16202,14 +16300,6 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 {
     if(child_yang_name == "macsec-second30secyif")
     {
-        for(auto const & c : macsec_second30secyif)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif>();
         c->parent = this;
         macsec_second30secyif.push_back(c);
@@ -16222,9 +16312,14 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : macsec_second30secyif)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16486,6 +16581,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(in_pkts_untagged != nullptr)
     {
         children["in-pkts-untagged"] = in_pkts_untagged;
@@ -16724,6 +16820,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUntagged::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16842,6 +16939,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoTag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16960,6 +17058,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsBadTag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17078,6 +17177,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUnknownSci::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17196,6 +17296,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoSci::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17314,6 +17415,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsOverrun::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17432,6 +17534,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsValidated::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17550,6 +17653,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsDecrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17668,6 +17772,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsUntagged::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17786,6 +17891,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsTooLong::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17904,6 +18010,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsProtected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18022,6 +18129,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsEncrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18130,14 +18238,6 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 {
     if(child_yang_name == "macsec-second30secyrx")
     {
-        for(auto const & c : macsec_second30secyrx)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx>();
         c->parent = this;
         macsec_second30secyrx.push_back(c);
@@ -18150,9 +18250,14 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : macsec_second30secyrx)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -18401,6 +18506,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(in_pkts_unchecked != nullptr)
     {
         children["in-pkts-unchecked"] = in_pkts_unchecked;
@@ -18634,6 +18740,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnchecked::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18752,6 +18859,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsDelayed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18870,6 +18978,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsLate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18988,6 +19097,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsOk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19106,6 +19216,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsInvalid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19224,6 +19335,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotValid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19342,6 +19454,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotUsingSa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19460,6 +19573,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnusedSa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19578,6 +19692,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUntaggedHit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19696,6 +19811,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsValidated::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19814,6 +19930,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsDecrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19922,14 +20039,6 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 {
     if(child_yang_name == "macsec-second30-ether")
     {
-        for(auto const & c : macsec_second30_ether)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether>();
         c->parent = this;
         macsec_second30_ether.push_back(c);
@@ -19942,9 +20051,14 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : macsec_second30_ether)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -21021,6 +21135,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rx_pkt != nullptr)
     {
         children["rx-pkt"] = rx_pkt;
@@ -21564,6 +21679,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::RxPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -21682,6 +21798,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::StatPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -21800,6 +21917,7 @@ std::shared_ptr<Entity> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OctetStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

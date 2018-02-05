@@ -79,6 +79,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Service::Instan
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Service::Instance::BridgeDomain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(split_horizon != nullptr)
     {
         children["split-horizon"] = split_horizon;
@@ -170,6 +171,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Service::Instan
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Service::Instance::BridgeDomain::SplitHorizon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -260,14 +262,6 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Service::Instan
 
     if(child_yang_name == "access-group")
     {
-        for(auto const & c : access_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::FortyGigabitEthernet::Service::Instance::Mac::AccessGroup>();
         c->parent = this;
         access_group.push_back(c);
@@ -280,14 +274,19 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Service::Instan
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Service::Instance::Mac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(security != nullptr)
     {
         children["security"] = security;
     }
 
+    count = 0;
     for (auto const & c : access_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -370,6 +369,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Service::Instan
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Service::Instance::Mac::Security::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(maximum != nullptr)
     {
         children["maximum"] = maximum;
@@ -451,6 +451,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Service::Instan
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Service::Instance::Mac::Security::Maximum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -535,6 +536,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Service::Instan
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Service::Instance::Mac::AccessGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -643,14 +645,6 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Service::Instan
 {
     if(child_yang_name == "input")
     {
-        for(auto const & c : input)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::FortyGigabitEthernet::Service::Instance::ServicePolicy::Input>();
         c->parent = this;
         input.push_back(c);
@@ -659,14 +653,6 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Service::Instan
 
     if(child_yang_name == "output")
     {
-        for(auto const & c : output)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::FortyGigabitEthernet::Service::Instance::ServicePolicy::Output>();
         c->parent = this;
         output.push_back(c);
@@ -679,14 +665,23 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Service::Instan
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Service::Instance::ServicePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : input)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : output)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -755,6 +750,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Service::Instan
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Service::Instance::ServicePolicy::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -831,6 +827,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Service::Instan
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Service::Instance::ServicePolicy::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -942,6 +939,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Service::Instan
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Service::Instance::Cfm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(encapsulation != nullptr)
     {
         children["encapsulation"] = encapsulation;
@@ -1045,6 +1043,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Service::Instan
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Service::Instance::Cfm::Encapsulation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dot1ad != nullptr)
     {
         children["dot1ad"] = dot1ad;
@@ -1129,6 +1128,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Service::Instan
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Service::Instance::Cfm::Encapsulation::Dot1Ad::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1233,6 +1233,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Service::Instan
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Service::Instance::Cfm::Encapsulation::Dot1Q::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1333,6 +1334,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Service::Instan
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Service::Instance::Cfm::Mep::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1419,6 +1421,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Service::Instan
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Service::Instance::Cfm::Mip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1539,6 +1542,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Service::Instan
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Service::Instance::L2Protocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(discard != nullptr)
     {
         children["discard"] = discard;
@@ -1636,6 +1640,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Service::Instan
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Service::Instance::L2Protocol::Discard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1721,6 +1726,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Service::Instan
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Service::Instance::L2Protocol::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1806,6 +1812,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Service::Instan
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Service::Instance::L2Protocol::Forward::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1891,6 +1898,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Service::Instan
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Service::Instance::L2Protocol::Tunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1969,6 +1977,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Lacp::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Lacp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2076,6 +2085,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Cts::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Cts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(manual != nullptr)
     {
         children["manual"] = manual;
@@ -2187,6 +2197,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Cts::Manual::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Cts::Manual::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(policy != nullptr)
     {
         children["policy"] = policy;
@@ -2222,7 +2233,7 @@ bool Native::Interface::FortyGigabitEthernet::Cts::Manual::has_leaf_or_child_of_
 
 Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Policy()
     :
-    static_(std::make_shared<Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static_>())
+    static_(std::make_shared<Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static>())
 {
     static_->parent = this;
 
@@ -2266,7 +2277,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Cts::Manual::Po
     {
         if(static_ == nullptr)
         {
-            static_ = std::make_shared<Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static_>();
+            static_ = std::make_shared<Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static>();
         }
         return static_;
     }
@@ -2277,6 +2288,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Cts::Manual::Po
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(static_ != nullptr)
     {
         children["static"] = static_;
@@ -2300,7 +2312,7 @@ bool Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::has_leaf_or_c
     return false;
 }
 
-Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static_::Static_()
+Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static::Static()
     :
     sgt{YType::uint16, "sgt"},
     trusted{YType::empty, "trusted"}
@@ -2309,31 +2321,31 @@ Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static_::Static_()
     yang_name = "static"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static_::~Static_()
+Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static::~Static()
 {
 }
 
-bool Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static_::has_data() const
+bool Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static::has_data() const
 {
     return sgt.is_set
 	|| trusted.is_set;
 }
 
-bool Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static_::has_operation() const
+bool Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(sgt.yfilter)
 	|| ydk::is_set(trusted.yfilter);
 }
 
-std::string Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static_::get_segment_path() const
+std::string Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2344,18 +2356,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::FortyGigabitEt
 
 }
 
-std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sgt")
     {
@@ -2371,7 +2384,7 @@ void Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static_::set_
     }
 }
 
-void Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "sgt")
     {
@@ -2383,7 +2396,7 @@ void Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static_::set_
     }
 }
 
-bool Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::FortyGigabitEthernet::Cts::Manual::Policy::Static::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sgt" || name == "trusted")
         return true;
@@ -2440,14 +2453,6 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Cts::Manual::Sa
 {
     if(child_yang_name == "pmk")
     {
-        for(auto const & c : pmk)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::FortyGigabitEthernet::Cts::Manual::Sap::Pmk>();
         c->parent = this;
         pmk.push_back(c);
@@ -2460,9 +2465,14 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Cts::Manual::Sa
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Cts::Manual::Sap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : pmk)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2545,6 +2555,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Cts::Manual::Sa
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Cts::Manual::Sap::Pmk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mode_list != nullptr)
     {
         children["mode-list"] = mode_list;
@@ -2646,6 +2657,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Cts::Manual::Sa
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(gcm_encrypt != nullptr)
     {
         children["gcm-encrypt"] = gcm_encrypt;
@@ -2730,6 +2742,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Cts::Manual::Sa
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(gmac != nullptr)
     {
         children["gmac"] = gmac;
@@ -2801,6 +2814,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Cts::Manual::Sa
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2885,6 +2899,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Cts::Manual::Sa
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::NoEncap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(gmac != nullptr)
     {
         children["gmac"] = gmac;
@@ -2956,6 +2971,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Cts::Manual::Sa
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3032,6 +3048,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Cts::Manual::Pr
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Cts::Manual::Propagate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3108,6 +3125,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Cts::RoleBased:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Cts::RoleBased::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3193,6 +3211,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::FabricDomain::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::FabricDomain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(iwan_fabric != nullptr)
     {
         children["iwan-fabric"] = iwan_fabric;
@@ -3266,14 +3285,6 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::FabricDomain::I
 {
     if(child_yang_name == "word")
     {
-        for(auto const & c : word)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::FortyGigabitEthernet::FabricDomain::IwanFabric::Word>();
         c->parent = this;
         word.push_back(c);
@@ -3286,9 +3297,14 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::FabricDomain::I
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::FabricDomain::IwanFabric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : word)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3361,6 +3377,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::FabricDomain::I
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::FabricDomain::IwanFabric::Word::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3451,6 +3468,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Lldp::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Lldp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3593,14 +3611,6 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::SpanningTree::g
 
     if(child_yang_name == "vlan")
     {
-        for(auto const & c : vlan)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::FortyGigabitEthernet::SpanningTree::Vlan>();
         c->parent = this;
         vlan.push_back(c);
@@ -3631,6 +3641,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::SpanningTree::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::SpanningTree::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bpduguard != nullptr)
     {
         children["bpduguard"] = bpduguard;
@@ -3641,9 +3652,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEt
         children["portfast"] = portfast;
     }
 
+    count = 0;
     for (auto const & c : vlan)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(loopguard != nullptr)
@@ -3776,6 +3791,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::SpanningTree::B
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::SpanningTree::Bpduguard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3870,6 +3886,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::SpanningTree::P
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::SpanningTree::Portfast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3974,6 +3991,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::SpanningTree::V
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::SpanningTree::Vlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4070,6 +4088,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::SpanningTree::L
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::SpanningTree::Loopguard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4152,14 +4171,6 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::SpanningTree::M
 {
     if(child_yang_name == "mst-instance")
     {
-        for(auto const & c : mst_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::FortyGigabitEthernet::SpanningTree::Mst::MstInstance>();
         c->parent = this;
         mst_instance.push_back(c);
@@ -4172,9 +4183,14 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::SpanningTree::M
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::SpanningTree::Mst::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mst_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4261,6 +4277,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::SpanningTree::M
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::SpanningTree::Mst::MstInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4361,6 +4378,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Umbrella::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Umbrella::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4447,6 +4465,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::Utd::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::Utd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4523,6 +4542,7 @@ std::shared_ptr<Entity> Native::Interface::FortyGigabitEthernet::ZoneMember::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FortyGigabitEthernet::ZoneMember::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5014,14 +5034,6 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::get_child_by_name(const 
 
     if(child_yang_name == "hold-queue")
     {
-        for(auto const & c : hold_queue)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::HundredGigE::HoldQueue>();
         c->parent = this;
         hold_queue.push_back(c);
@@ -5304,6 +5316,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(switchport_conf != nullptr)
     {
         children["switchport-conf"] = switchport_conf;
@@ -5394,9 +5407,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::g
         children["domain"] = domain;
     }
 
+    count = 0;
     for (auto const & c : hold_queue)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(mpls != nullptr)
@@ -5745,6 +5762,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::SwitchportConf::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::SwitchportConf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5817,6 +5835,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Switchport::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Switchport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5885,6 +5904,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::StackwiseVirtual::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::StackwiseVirtual::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5971,6 +5991,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Arp::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Arp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6082,6 +6103,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Backup::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Backup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(delay != nullptr)
     {
         children["delay"] = delay;
@@ -6167,6 +6189,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Backup::Delay::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Backup::Delay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6418,6 +6441,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Backup::Interface_::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Backup::Interface_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(atm_subinterface != nullptr)
     {
         children["ATM-subinterface"] = atm_subinterface;
@@ -6794,6 +6818,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Backup::Interface_::ATMS
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Backup::Interface_::ATMSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6870,6 +6895,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Backup::Interface_::ATMA
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Backup::Interface_::ATMACRsubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6946,6 +6972,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Backup::Interface_::LISP
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Backup::Interface_::LISPSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7022,6 +7049,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Backup::Interface_::Port
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Backup::Interface_::PortChannelSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7102,6 +7130,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Backup::Load::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Backup::Load::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7197,6 +7226,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Cemoudp::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Cemoudp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(reserve != nullptr)
     {
         children["reserve"] = reserve;
@@ -7268,6 +7298,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Cemoudp::Reserve::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Cemoudp::Reserve::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7358,6 +7389,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::CwsTunnel::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::CwsTunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(out != nullptr)
     {
         children["out"] = out;
@@ -7439,6 +7471,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::CwsTunnel::Out::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::CwsTunnel::Out::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7550,6 +7583,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::L2ProtocolTunnel::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::L2ProtocolTunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(drop_threshold != nullptr)
     {
         children["drop-threshold"] = drop_threshold;
@@ -7668,6 +7702,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::L2ProtocolTunnel::DropTh
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::L2ProtocolTunnel::DropThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7786,6 +7821,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::L2ProtocolTunnel::Shutdo
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::L2ProtocolTunnel::ShutdownThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7950,6 +7986,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Encapsulation::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Encapsulation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dot1q != nullptr)
     {
         children["dot1Q"] = dot1q;
@@ -8045,6 +8082,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Encapsulation::Dot1Q::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Encapsulation::Dot1Q::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8131,6 +8169,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Encapsulation::Isl::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Encapsulation::Isl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8203,6 +8242,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Encapsulation::Ppp::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Encapsulation::Ppp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8263,6 +8303,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Encapsulation::Slip::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Encapsulation::Slip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8327,6 +8368,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Encapsulation::FrameRela
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Encapsulation::FrameRelay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8403,6 +8445,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::FairQueueConf::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::FairQueueConf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8479,6 +8522,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::FairQueue::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::FairQueue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8559,6 +8603,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Flowcontrol::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Flowcontrol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8641,6 +8686,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Isis::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8713,6 +8759,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::KeepaliveSettings::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::KeepaliveSettings::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(keepalive != nullptr)
     {
         children["keepalive"] = keepalive;
@@ -8788,6 +8835,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::KeepaliveSettings::Keepa
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::KeepaliveSettings::Keepalive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8870,6 +8918,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Bfd::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8964,6 +9013,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Bandwidth::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Bandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(receive != nullptr)
     {
         children["receive"] = receive;
@@ -9064,6 +9114,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Bandwidth::Receive::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Bandwidth::Receive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9150,6 +9201,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Bandwidth::Inherit::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Bandwidth::Inherit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9252,6 +9304,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Dampening::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Dampening::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(restart != nullptr)
     {
         children["restart"] = restart;
@@ -9367,6 +9420,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Dampening::Restart::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Dampening::Restart::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9473,6 +9527,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Domain::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Domain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9603,6 +9658,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::HoldQueue::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::HoldQueue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9685,6 +9741,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Mpls::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Mpls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9758,6 +9815,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::IpVrf::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::IpVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ip != nullptr)
     {
         children["ip"] = ip;
@@ -9838,6 +9896,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::IpVrf::Ip::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::IpVrf::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vrf != nullptr)
     {
         children["vrf"] = vrf;
@@ -9909,6 +9968,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::IpVrf::Ip::Vrf::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::IpVrf::Ip::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9985,6 +10045,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Vrf::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10243,14 +10304,6 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::get_child_by_name(co
 
     if(child_yang_name == "helper-address")
     {
-        for(auto const & c : helper_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::HundredGigE::Ip::HelperAddress>();
         c->parent = this;
         helper_address.push_back(c);
@@ -10362,6 +10415,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(access_group != nullptr)
     {
         children["access-group"] = access_group;
@@ -10402,9 +10456,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::I
         children["hold-time"] = hold_time;
     }
 
+    count = 0;
     for (auto const & c : helper_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(pim != nullptr)
@@ -10630,6 +10688,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::AccessGroup::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::AccessGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(in != nullptr)
     {
         children["in"] = in;
@@ -10728,6 +10787,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::AccessGroup::In::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::AccessGroup::In::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(common_acl != nullptr)
     {
         children["common-acl"] = common_acl;
@@ -10808,6 +10868,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::AccessGroup::In::Com
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::AccessGroup::In::CommonAcl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10898,6 +10959,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::AccessGroup::In::Acl
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::AccessGroup::In::Acl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11006,6 +11068,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::AccessGroup::Out::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::AccessGroup::Out::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(common_acl != nullptr)
     {
         children["common-acl"] = common_acl;
@@ -11086,6 +11149,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::AccessGroup::Out::Co
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::AccessGroup::Out::CommonAcl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11176,6 +11240,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::AccessGroup::Out::Ac
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::AccessGroup::Out::Acl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11271,6 +11336,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Arp::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Arp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(inspection != nullptr)
     {
         children["inspection"] = inspection;
@@ -11356,6 +11422,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Arp::Inspection::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Arp::Inspection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(limit != nullptr)
     {
         children["limit"] = limit;
@@ -11441,6 +11508,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Arp::Inspection::Lim
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Arp::Inspection::Limit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11545,6 +11613,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Vrf::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(forwarding != nullptr)
     {
         children["forwarding"] = forwarding;
@@ -11644,6 +11713,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Vrf::Forwarding::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Vrf::Forwarding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11740,6 +11810,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::NoAddress::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::NoAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11839,14 +11910,6 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Address::get_child_b
 
     if(child_yang_name == "secondary")
     {
-        for(auto const & c : secondary)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::HundredGigE::Ip::Address::Secondary>();
         c->parent = this;
         secondary.push_back(c);
@@ -11868,14 +11931,19 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Address::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(primary != nullptr)
     {
         children["primary"] = primary;
     }
 
+    count = 0;
     for (auto const & c : secondary)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(dhcp != nullptr)
@@ -11963,6 +12031,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Address::Primary::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Address::Primary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12057,6 +12126,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Address::Secondary::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Address::Secondary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12167,6 +12237,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Address::Dhcp::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Address::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(client_id != nullptr)
     {
         children["client-id"] = client_id;
@@ -12280,6 +12351,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Address::Dhcp::Clien
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Address::Dhcp::ClientId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12440,6 +12512,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::HelloInterval::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::HelloInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12548,6 +12621,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Authentication::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_chain != nullptr)
     {
         children["key-chain"] = key_chain;
@@ -12628,6 +12702,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Authentication::KeyC
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Authentication::KeyChain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12718,6 +12793,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Authentication::Mode
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Authentication::Mode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12808,6 +12884,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::HoldTime::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::HoldTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12902,6 +12979,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::HelperAddress::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::HelperAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12994,6 +13072,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Pim::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Pim::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13058,6 +13137,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Policy::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Policy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13143,6 +13223,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Rip::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Rip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authentication != nullptr)
     {
         children["authentication"] = authentication;
@@ -13228,6 +13309,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Rip::Authentication:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Rip::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mode != nullptr)
     {
         children["mode"] = mode;
@@ -13313,6 +13395,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Rip::Authentication:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Rip::Authentication::Mode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13399,6 +13482,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::RouteCacheConf::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::RouteCacheConf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13487,6 +13571,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::RouteCache::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::RouteCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13601,6 +13686,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Router::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Router::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(isis != nullptr)
     {
         children["isis"] = isis;
@@ -13672,6 +13758,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Router::Isis::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Router::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13748,6 +13835,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Tcp::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Tcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13840,6 +13928,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::VirtualReassembly::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::VirtualReassembly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13952,6 +14041,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Dhcp::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14018,14 +14108,6 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::SummaryAddress::get_
 {
     if(child_yang_name == "eigrp")
     {
-        for(auto const & c : eigrp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::HundredGigE::Ip::SummaryAddress::Eigrp>();
         c->parent = this;
         eigrp.push_back(c);
@@ -14038,9 +14120,14 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::SummaryAddress::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::SummaryAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : eigrp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14121,6 +14208,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::SummaryAddress::Eigr
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::SummaryAddress::Eigrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14248,6 +14336,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Verify::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Verify::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(source != nullptr)
     {
         children["source"] = source;
@@ -14333,6 +14422,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Verify::Source::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Verify::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vlan != nullptr)
     {
         children["vlan"] = vlan;
@@ -14412,6 +14502,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Verify::Source::Vlan
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Verify::Source::Vlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dhcp_snooping != nullptr)
     {
         children["dhcp-snooping"] = dhcp_snooping;
@@ -14483,6 +14574,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Verify::Source::Vlan
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Verify::Source::Vlan::DhcpSnooping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14580,6 +14672,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Verify::Unicast::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Verify::Unicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(reverse_path != nullptr)
     {
         children["reverse-path"] = reverse_path;
@@ -14652,6 +14745,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Verify::Unicast::Rev
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Verify::Unicast::ReversePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14724,6 +14818,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ip::Verify::Unicast::Sou
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ip::Verify::Unicast::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14915,14 +15010,6 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ipv6::get_child_by_name(
 
     if(child_yang_name == "traffic-filter")
     {
-        for(auto const & c : traffic_filter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::HundredGigE::Ipv6::TrafficFilter>();
         c->parent = this;
         traffic_filter.push_back(c);
@@ -14935,6 +15022,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ipv6::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination_guard != nullptr)
     {
         children["destination-guard"] = destination_guard;
@@ -14965,9 +15053,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::I
         children["tcp"] = tcp;
     }
 
+    count = 0;
     for (auto const & c : traffic_filter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15076,6 +15168,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ipv6::DestinationGuard::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ipv6::DestinationGuard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15152,6 +15245,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ipv6::SourceGuard::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ipv6::SourceGuard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15224,6 +15318,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ipv6::Dhcp::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ipv6::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15324,14 +15419,6 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ipv6::Address::get_child
 
     if(child_yang_name == "prefix-list")
     {
-        for(auto const & c : prefix_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::HundredGigE::Ipv6::Address::PrefixList>();
         c->parent = this;
         prefix_list.push_back(c);
@@ -15340,14 +15427,6 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ipv6::Address::get_child
 
     if(child_yang_name == "link-local-address")
     {
-        for(auto const & c : link_local_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::HundredGigE::Ipv6::Address::LinkLocalAddress>();
         c->parent = this;
         link_local_address.push_back(c);
@@ -15360,6 +15439,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ipv6::Address::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ipv6::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dhcp != nullptr)
     {
         children["dhcp"] = dhcp;
@@ -15370,14 +15450,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::I
         children["autoconfig"] = autoconfig;
     }
 
+    count = 0;
     for (auto const & c : prefix_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : link_local_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15446,6 +15534,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ipv6::Address::Dhcp::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ipv6::Address::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15522,6 +15611,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ipv6::Address::Autoconfi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ipv6::Address::Autoconfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15606,6 +15696,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ipv6::Address::PrefixLis
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ipv6::Address::PrefixList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15706,6 +15797,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ipv6::Address::LinkLocal
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ipv6::Address::LinkLocalAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15788,6 +15880,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ipv6::Nd::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ipv6::Nd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15852,6 +15945,7 @@ std::shared_ptr<Entity> Native::Interface::HundredGigE::Ipv6::Tcp::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::HundredGigE::Ipv6::Tcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

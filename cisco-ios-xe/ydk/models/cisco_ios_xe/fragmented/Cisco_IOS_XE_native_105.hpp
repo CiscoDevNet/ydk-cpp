@@ -565,7 +565,7 @@ class Native::Router::Bgp : public ydk::Entity
         class TableMap; //type: Native::Router::Bgp::TableMap
         class Snmp; //type: Native::Router::Bgp::Snmp
         class AddressFamily; //type: Native::Router::Bgp::AddressFamily
-        class Template_; //type: Native::Router::Bgp::Template_
+        class Template; //type: Native::Router::Bgp::Template
         class Timers; //type: Native::Router::Bgp::Timers
         class Scope; //type: Native::Router::Bgp::Scope
 
@@ -581,7 +581,7 @@ class Native::Router::Bgp : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::TableMap> table_map; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Snmp> snmp; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::AddressFamily> address_family;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Template_> template_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Template> template_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Timers> timers;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Scope> scope;
         
@@ -700,7 +700,7 @@ class Native::Router::Bgp::Bgp_ : public ydk::Entity
         class Confederation; //type: Native::Router::Bgp::Bgp_::Confederation
         class ConsistencyChecker; //type: Native::Router::Bgp::Bgp_::ConsistencyChecker
         class Dampening; //type: Native::Router::Bgp::Bgp_::Dampening
-        class Default_; //type: Native::Router::Bgp::Bgp_::Default_
+        class Default; //type: Native::Router::Bgp::Bgp_::Default
         class GracefulRestart; //type: Native::Router::Bgp::Bgp_::GracefulRestart
         class HaMode; //type: Native::Router::Bgp::Bgp_::HaMode
         class InjectMap; //type: Native::Router::Bgp::Bgp_::InjectMap
@@ -721,7 +721,7 @@ class Native::Router::Bgp::Bgp_ : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Bgp_::Confederation> confederation;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Bgp_::ConsistencyChecker> consistency_checker;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Bgp_::Dampening> dampening; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Bgp_::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Bgp_::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Bgp_::GracefulRestart> graceful_restart; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Bgp_::HaMode> ha_mode;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Bgp_::InjectMap> > inject_map;
@@ -1403,11 +1403,11 @@ class Native::Router::Bgp::Bgp_::Dampening::Dampen : public ydk::Entity
 }; // Native::Router::Bgp::Bgp_::Dampening::Dampen
 
 
-class Native::Router::Bgp::Bgp_::Default_ : public ydk::Entity
+class Native::Router::Bgp::Bgp_::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1425,7 +1425,7 @@ class Native::Router::Bgp::Bgp_::Default_ : public ydk::Entity
         ydk::YLeaf route_target; //type: RouteTarget
         class RouteTarget;
 
-}; // Native::Router::Bgp::Bgp_::Default_
+}; // Native::Router::Bgp::Bgp_::Default
 
 
 class Native::Router::Bgp::Bgp_::GracefulRestart : public ydk::Entity
@@ -1896,7 +1896,7 @@ class Native::Router::Bgp::Distance::AdmDistance : public ydk::Entity
         ydk::YLeaf distance; //type: uint16
         ydk::YLeaf srcip; //type: string
         ydk::YLeaf wildbits; //type: string
-        ydk::YLeaf acl; //type: one of string, uint16
+        ydk::YLeaf acl; //type: one of uint16, string
 
 }; // Native::Router::Bgp::Distance::AdmDistance
 
@@ -1917,7 +1917,7 @@ class Native::Router::Bgp::DistributeList : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of string, uint16
+        ydk::YLeaf id; //type: one of uint16, string
         class In; //type: Native::Router::Bgp::DistributeList::In
         class Out; //type: Native::Router::Bgp::DistributeList::Out
 
@@ -2914,7 +2914,7 @@ class Native::Router::Bgp::Neighbor::DistributeList : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf inout; //type: Inout
-        ydk::YLeaf accesslist; //type: one of string, uint16
+        ydk::YLeaf accesslist; //type: one of uint16, string
         class Inout;
 
 }; // Native::Router::Bgp::Neighbor::DistributeList
@@ -3649,7 +3649,7 @@ class Native::Router::Bgp::Bgp_::Bestpath::AsPath : public ydk::Enum
 
 };
 
-class Native::Router::Bgp::Bgp_::Default_::RouteTarget : public ydk::Enum
+class Native::Router::Bgp::Bgp_::Default::RouteTarget : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf filter;

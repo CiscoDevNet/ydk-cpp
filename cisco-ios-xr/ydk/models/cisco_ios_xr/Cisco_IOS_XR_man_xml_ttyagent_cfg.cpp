@@ -68,6 +68,7 @@ std::shared_ptr<Entity> XrXml::get_child_by_name(const std::string & child_yang_
 std::map<std::string, std::shared_ptr<Entity>> XrXml::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(agent != nullptr)
     {
         children["agent"] = agent;
@@ -118,7 +119,7 @@ bool XrXml::has_leaf_or_child_of_name(const std::string & name) const
 
 XrXml::Agent::Agent()
     :
-    default_(std::make_shared<XrXml::Agent::Default_>())
+    default_(std::make_shared<XrXml::Agent::Default>())
 	,tty(std::make_shared<XrXml::Agent::Tty>())
 	,ssl(std::make_shared<XrXml::Agent::Ssl>())
 {
@@ -177,7 +178,7 @@ std::shared_ptr<Entity> XrXml::Agent::get_child_by_name(const std::string & chil
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<XrXml::Agent::Default_>();
+            default_ = std::make_shared<XrXml::Agent::Default>();
         }
         return default_;
     }
@@ -206,6 +207,7 @@ std::shared_ptr<Entity> XrXml::Agent::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_ != nullptr)
     {
         children["default"] = default_;
@@ -239,7 +241,7 @@ bool XrXml::Agent::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-XrXml::Agent::Default_::Default_()
+XrXml::Agent::Default::Default()
     :
     ipv6_enable{YType::boolean, "ipv6-enable"},
     ipv4_disable{YType::boolean, "ipv4-disable"},
@@ -247,9 +249,9 @@ XrXml::Agent::Default_::Default_()
     enable{YType::empty, "enable"},
     streaming_size{YType::uint32, "streaming-size"}
     	,
-    session(std::make_shared<XrXml::Agent::Default_::Session>())
-	,throttle(std::make_shared<XrXml::Agent::Default_::Throttle>())
-	,vrfs(std::make_shared<XrXml::Agent::Default_::Vrfs>())
+    session(std::make_shared<XrXml::Agent::Default::Session>())
+	,throttle(std::make_shared<XrXml::Agent::Default::Throttle>())
+	,vrfs(std::make_shared<XrXml::Agent::Default::Vrfs>())
 {
     session->parent = this;
     throttle->parent = this;
@@ -258,11 +260,11 @@ XrXml::Agent::Default_::Default_()
     yang_name = "default"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-XrXml::Agent::Default_::~Default_()
+XrXml::Agent::Default::~Default()
 {
 }
 
-bool XrXml::Agent::Default_::has_data() const
+bool XrXml::Agent::Default::has_data() const
 {
     return ipv6_enable.is_set
 	|| ipv4_disable.is_set
@@ -274,7 +276,7 @@ bool XrXml::Agent::Default_::has_data() const
 	|| (vrfs !=  nullptr && vrfs->has_data());
 }
 
-bool XrXml::Agent::Default_::has_operation() const
+bool XrXml::Agent::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipv6_enable.yfilter)
@@ -287,21 +289,21 @@ bool XrXml::Agent::Default_::has_operation() const
 	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
-std::string XrXml::Agent::Default_::get_absolute_path() const
+std::string XrXml::Agent::Default::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string XrXml::Agent::Default_::get_segment_path() const
+std::string XrXml::Agent::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -315,13 +317,13 @@ std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default_::get_name_
 
 }
 
-std::shared_ptr<Entity> XrXml::Agent::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> XrXml::Agent::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session")
     {
         if(session == nullptr)
         {
-            session = std::make_shared<XrXml::Agent::Default_::Session>();
+            session = std::make_shared<XrXml::Agent::Default::Session>();
         }
         return session;
     }
@@ -330,7 +332,7 @@ std::shared_ptr<Entity> XrXml::Agent::Default_::get_child_by_name(const std::str
     {
         if(throttle == nullptr)
         {
-            throttle = std::make_shared<XrXml::Agent::Default_::Throttle>();
+            throttle = std::make_shared<XrXml::Agent::Default::Throttle>();
         }
         return throttle;
     }
@@ -339,7 +341,7 @@ std::shared_ptr<Entity> XrXml::Agent::Default_::get_child_by_name(const std::str
     {
         if(vrfs == nullptr)
         {
-            vrfs = std::make_shared<XrXml::Agent::Default_::Vrfs>();
+            vrfs = std::make_shared<XrXml::Agent::Default::Vrfs>();
         }
         return vrfs;
     }
@@ -347,9 +349,10 @@ std::shared_ptr<Entity> XrXml::Agent::Default_::get_child_by_name(const std::str
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(session != nullptr)
     {
         children["session"] = session;
@@ -368,7 +371,7 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default_::get_child
     return children;
 }
 
-void XrXml::Agent::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void XrXml::Agent::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv6-enable")
     {
@@ -402,7 +405,7 @@ void XrXml::Agent::Default_::set_value(const std::string & value_path, const std
     }
 }
 
-void XrXml::Agent::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void XrXml::Agent::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipv6-enable")
     {
@@ -426,14 +429,14 @@ void XrXml::Agent::Default_::set_filter(const std::string & value_path, YFilter 
     }
 }
 
-bool XrXml::Agent::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool XrXml::Agent::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session" || name == "throttle" || name == "vrfs" || name == "ipv6-enable" || name == "ipv4-disable" || name == "iteration-size" || name == "enable" || name == "streaming-size")
         return true;
     return false;
 }
 
-XrXml::Agent::Default_::Session::Session()
+XrXml::Agent::Default::Session::Session()
     :
     timeout{YType::uint32, "timeout"}
 {
@@ -441,36 +444,36 @@ XrXml::Agent::Default_::Session::Session()
     yang_name = "session"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-XrXml::Agent::Default_::Session::~Session()
+XrXml::Agent::Default::Session::~Session()
 {
 }
 
-bool XrXml::Agent::Default_::Session::has_data() const
+bool XrXml::Agent::Default::Session::has_data() const
 {
     return timeout.is_set;
 }
 
-bool XrXml::Agent::Default_::Session::has_operation() const
+bool XrXml::Agent::Default::Session::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(timeout.yfilter);
 }
 
-std::string XrXml::Agent::Default_::Session::get_absolute_path() const
+std::string XrXml::Agent::Default::Session::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string XrXml::Agent::Default_::Session::get_segment_path() const
+std::string XrXml::Agent::Default::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "session";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default_::Session::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default::Session::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -480,18 +483,19 @@ std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default_::Session::
 
 }
 
-std::shared_ptr<Entity> XrXml::Agent::Default_::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> XrXml::Agent::Default::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default_::Session::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void XrXml::Agent::Default_::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void XrXml::Agent::Default::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "timeout")
     {
@@ -501,7 +505,7 @@ void XrXml::Agent::Default_::Session::set_value(const std::string & value_path, 
     }
 }
 
-void XrXml::Agent::Default_::Session::set_filter(const std::string & value_path, YFilter yfilter)
+void XrXml::Agent::Default::Session::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "timeout")
     {
@@ -509,14 +513,14 @@ void XrXml::Agent::Default_::Session::set_filter(const std::string & value_path,
     }
 }
 
-bool XrXml::Agent::Default_::Session::has_leaf_or_child_of_name(const std::string & name) const
+bool XrXml::Agent::Default::Session::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "timeout")
         return true;
     return false;
 }
 
-XrXml::Agent::Default_::Throttle::Throttle()
+XrXml::Agent::Default::Throttle::Throttle()
     :
     process_rate{YType::uint32, "process-rate"},
     memory{YType::uint32, "memory"}
@@ -525,38 +529,38 @@ XrXml::Agent::Default_::Throttle::Throttle()
     yang_name = "throttle"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-XrXml::Agent::Default_::Throttle::~Throttle()
+XrXml::Agent::Default::Throttle::~Throttle()
 {
 }
 
-bool XrXml::Agent::Default_::Throttle::has_data() const
+bool XrXml::Agent::Default::Throttle::has_data() const
 {
     return process_rate.is_set
 	|| memory.is_set;
 }
 
-bool XrXml::Agent::Default_::Throttle::has_operation() const
+bool XrXml::Agent::Default::Throttle::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(process_rate.yfilter)
 	|| ydk::is_set(memory.yfilter);
 }
 
-std::string XrXml::Agent::Default_::Throttle::get_absolute_path() const
+std::string XrXml::Agent::Default::Throttle::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string XrXml::Agent::Default_::Throttle::get_segment_path() const
+std::string XrXml::Agent::Default::Throttle::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "throttle";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default_::Throttle::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default::Throttle::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -567,18 +571,19 @@ std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default_::Throttle:
 
 }
 
-std::shared_ptr<Entity> XrXml::Agent::Default_::Throttle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> XrXml::Agent::Default::Throttle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default_::Throttle::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default::Throttle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void XrXml::Agent::Default_::Throttle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void XrXml::Agent::Default::Throttle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "process-rate")
     {
@@ -594,7 +599,7 @@ void XrXml::Agent::Default_::Throttle::set_value(const std::string & value_path,
     }
 }
 
-void XrXml::Agent::Default_::Throttle::set_filter(const std::string & value_path, YFilter yfilter)
+void XrXml::Agent::Default::Throttle::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "process-rate")
     {
@@ -606,24 +611,24 @@ void XrXml::Agent::Default_::Throttle::set_filter(const std::string & value_path
     }
 }
 
-bool XrXml::Agent::Default_::Throttle::has_leaf_or_child_of_name(const std::string & name) const
+bool XrXml::Agent::Default::Throttle::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "process-rate" || name == "memory")
         return true;
     return false;
 }
 
-XrXml::Agent::Default_::Vrfs::Vrfs()
+XrXml::Agent::Default::Vrfs::Vrfs()
 {
 
     yang_name = "vrfs"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-XrXml::Agent::Default_::Vrfs::~Vrfs()
+XrXml::Agent::Default::Vrfs::~Vrfs()
 {
 }
 
-bool XrXml::Agent::Default_::Vrfs::has_data() const
+bool XrXml::Agent::Default::Vrfs::has_data() const
 {
     for (std::size_t index=0; index<vrf.size(); index++)
     {
@@ -633,7 +638,7 @@ bool XrXml::Agent::Default_::Vrfs::has_data() const
     return false;
 }
 
-bool XrXml::Agent::Default_::Vrfs::has_operation() const
+bool XrXml::Agent::Default::Vrfs::has_operation() const
 {
     for (std::size_t index=0; index<vrf.size(); index++)
     {
@@ -643,21 +648,21 @@ bool XrXml::Agent::Default_::Vrfs::has_operation() const
     return is_set(yfilter);
 }
 
-std::string XrXml::Agent::Default_::Vrfs::get_absolute_path() const
+std::string XrXml::Agent::Default::Vrfs::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string XrXml::Agent::Default_::Vrfs::get_segment_path() const
+std::string XrXml::Agent::Default::Vrfs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrfs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default_::Vrfs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default::Vrfs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -666,19 +671,11 @@ std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default_::Vrfs::get
 
 }
 
-std::shared_ptr<Entity> XrXml::Agent::Default_::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> XrXml::Agent::Default::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<XrXml::Agent::Default_::Vrfs::Vrf>();
+        auto c = std::make_shared<XrXml::Agent::Default::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
         return c;
@@ -687,33 +684,38 @@ std::shared_ptr<Entity> XrXml::Agent::Default_::Vrfs::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default_::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void XrXml::Agent::Default_::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void XrXml::Agent::Default::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void XrXml::Agent::Default_::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+void XrXml::Agent::Default::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool XrXml::Agent::Default_::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+bool XrXml::Agent::Default::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vrf")
         return true;
     return false;
 }
 
-XrXml::Agent::Default_::Vrfs::Vrf::Vrf()
+XrXml::Agent::Default::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"},
     ipv6_access_list{YType::str, "ipv6-access-list"},
@@ -725,11 +727,11 @@ XrXml::Agent::Default_::Vrfs::Vrf::Vrf()
     yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-XrXml::Agent::Default_::Vrfs::Vrf::~Vrf()
+XrXml::Agent::Default::Vrfs::Vrf::~Vrf()
 {
 }
 
-bool XrXml::Agent::Default_::Vrfs::Vrf::has_data() const
+bool XrXml::Agent::Default::Vrfs::Vrf::has_data() const
 {
     return vrf_name.is_set
 	|| ipv6_access_list.is_set
@@ -738,7 +740,7 @@ bool XrXml::Agent::Default_::Vrfs::Vrf::has_data() const
 	|| shutdown.is_set;
 }
 
-bool XrXml::Agent::Default_::Vrfs::Vrf::has_operation() const
+bool XrXml::Agent::Default::Vrfs::Vrf::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vrf_name.yfilter)
@@ -748,21 +750,21 @@ bool XrXml::Agent::Default_::Vrfs::Vrf::has_operation() const
 	|| ydk::is_set(shutdown.yfilter);
 }
 
-std::string XrXml::Agent::Default_::Vrfs::Vrf::get_absolute_path() const
+std::string XrXml::Agent::Default::Vrfs::Vrf::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-man-xml-ttyagent-cfg:xr-xml/agent/default/vrfs/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string XrXml::Agent::Default_::Vrfs::Vrf::get_segment_path() const
+std::string XrXml::Agent::Default::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default_::Vrfs::Vrf::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default::Vrfs::Vrf::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -776,18 +778,19 @@ std::vector<std::pair<std::string, LeafData> > XrXml::Agent::Default_::Vrfs::Vrf
 
 }
 
-std::shared_ptr<Entity> XrXml::Agent::Default_::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> XrXml::Agent::Default::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default_::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void XrXml::Agent::Default_::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void XrXml::Agent::Default::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
@@ -821,7 +824,7 @@ void XrXml::Agent::Default_::Vrfs::Vrf::set_value(const std::string & value_path
     }
 }
 
-void XrXml::Agent::Default_::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+void XrXml::Agent::Default::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vrf-name")
     {
@@ -845,7 +848,7 @@ void XrXml::Agent::Default_::Vrfs::Vrf::set_filter(const std::string & value_pat
     }
 }
 
-bool XrXml::Agent::Default_::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+bool XrXml::Agent::Default::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vrf-name" || name == "ipv6-access-list" || name == "ipv4-access-list" || name == "access-list" || name == "shutdown")
         return true;
@@ -942,6 +945,7 @@ std::shared_ptr<Entity> XrXml::Agent::Tty::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(session != nullptr)
     {
         children["session"] = session;
@@ -1055,6 +1059,7 @@ std::shared_ptr<Entity> XrXml::Agent::Tty::Session::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1142,6 +1147,7 @@ std::shared_ptr<Entity> XrXml::Agent::Tty::Throttle::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::Throttle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1283,6 +1289,7 @@ std::shared_ptr<Entity> XrXml::Agent::Ssl::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(session != nullptr)
     {
         children["session"] = session;
@@ -1401,6 +1408,7 @@ std::shared_ptr<Entity> XrXml::Agent::Ssl::Session::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1488,6 +1496,7 @@ std::shared_ptr<Entity> XrXml::Agent::Ssl::Throttle::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::Throttle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1583,14 +1592,6 @@ std::shared_ptr<Entity> XrXml::Agent::Ssl::Vrfs::get_child_by_name(const std::st
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<XrXml::Agent::Ssl::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -1603,9 +1604,14 @@ std::shared_ptr<Entity> XrXml::Agent::Ssl::Vrfs::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1697,6 +1703,7 @@ std::shared_ptr<Entity> XrXml::Agent::Ssl::Vrfs::Vrf::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1822,6 +1829,7 @@ std::shared_ptr<Entity> Netconf::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> Netconf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(agent != nullptr)
     {
         children["agent"] = agent;
@@ -1934,6 +1942,7 @@ std::shared_ptr<Entity> Netconf::Agent::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tty != nullptr)
     {
         children["tty"] = tty;
@@ -2039,6 +2048,7 @@ std::shared_ptr<Entity> Netconf::Agent::Tty::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::Tty::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(throttle != nullptr)
     {
         children["throttle"] = throttle;
@@ -2140,6 +2150,7 @@ std::shared_ptr<Entity> Netconf::Agent::Tty::Throttle::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::Tty::Throttle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2243,6 +2254,7 @@ std::shared_ptr<Entity> Netconf::Agent::Tty::Session::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::Tty::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

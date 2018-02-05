@@ -263,6 +263,7 @@ std::shared_ptr<Entity> RFC1213MIB::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(system != nullptr)
     {
         children["system"] = system;
@@ -465,6 +466,7 @@ std::shared_ptr<Entity> RFC1213MIB::System::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::System::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -608,6 +610,7 @@ std::shared_ptr<Entity> RFC1213MIB::Interfaces::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -767,6 +770,7 @@ std::shared_ptr<Entity> RFC1213MIB::Ip::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1140,6 +1144,7 @@ std::shared_ptr<Entity> RFC1213MIB::Icmp::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Icmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1525,6 +1530,7 @@ std::shared_ptr<Entity> RFC1213MIB::Tcp::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Tcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1750,6 +1756,7 @@ std::shared_ptr<Entity> RFC1213MIB::Udp::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Udp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1879,6 +1886,7 @@ std::shared_ptr<Entity> RFC1213MIB::Egp::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Egp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2110,6 +2118,7 @@ std::shared_ptr<Entity> RFC1213MIB::Snmp::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Snmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2465,14 +2474,6 @@ std::shared_ptr<Entity> RFC1213MIB::Iftable::get_child_by_name(const std::string
 {
     if(child_yang_name == "ifEntry")
     {
-        for(auto const & c : ifentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RFC1213MIB::Iftable::Ifentry>();
         c->parent = this;
         ifentry.push_back(c);
@@ -2485,9 +2486,14 @@ std::shared_ptr<Entity> RFC1213MIB::Iftable::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Iftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ifentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2647,6 +2653,7 @@ std::shared_ptr<Entity> RFC1213MIB::Iftable::Ifentry::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Iftable::Ifentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2942,14 +2949,6 @@ std::shared_ptr<Entity> RFC1213MIB::Attable::get_child_by_name(const std::string
 {
     if(child_yang_name == "atEntry")
     {
-        for(auto const & c : atentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RFC1213MIB::Attable::Atentry>();
         c->parent = this;
         atentry.push_back(c);
@@ -2962,9 +2961,14 @@ std::shared_ptr<Entity> RFC1213MIB::Attable::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Attable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : atentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3052,6 +3056,7 @@ std::shared_ptr<Entity> RFC1213MIB::Attable::Atentry::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Attable::Atentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3167,14 +3172,6 @@ std::shared_ptr<Entity> RFC1213MIB::Ipaddrtable::get_child_by_name(const std::st
 {
     if(child_yang_name == "ipAddrEntry")
     {
-        for(auto const & c : ipaddrentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RFC1213MIB::Ipaddrtable::Ipaddrentry>();
         c->parent = this;
         ipaddrentry.push_back(c);
@@ -3187,9 +3184,14 @@ std::shared_ptr<Entity> RFC1213MIB::Ipaddrtable::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Ipaddrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipaddrentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3281,6 +3283,7 @@ std::shared_ptr<Entity> RFC1213MIB::Ipaddrtable::Ipaddrentry::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Ipaddrtable::Ipaddrentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3406,14 +3409,6 @@ std::shared_ptr<Entity> RFC1213MIB::Iproutetable::get_child_by_name(const std::s
 {
     if(child_yang_name == "ipRouteEntry")
     {
-        for(auto const & c : iprouteentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RFC1213MIB::Iproutetable::Iprouteentry>();
         c->parent = this;
         iprouteentry.push_back(c);
@@ -3426,9 +3421,14 @@ std::shared_ptr<Entity> RFC1213MIB::Iproutetable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Iproutetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : iprouteentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3552,6 +3552,7 @@ std::shared_ptr<Entity> RFC1213MIB::Iproutetable::Iprouteentry::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Iproutetable::Iprouteentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3757,14 +3758,6 @@ std::shared_ptr<Entity> RFC1213MIB::Ipnettomediatable::get_child_by_name(const s
 {
     if(child_yang_name == "ipNetToMediaEntry")
     {
-        for(auto const & c : ipnettomediaentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RFC1213MIB::Ipnettomediatable::Ipnettomediaentry>();
         c->parent = this;
         ipnettomediaentry.push_back(c);
@@ -3777,9 +3770,14 @@ std::shared_ptr<Entity> RFC1213MIB::Ipnettomediatable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Ipnettomediatable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipnettomediaentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3867,6 +3865,7 @@ std::shared_ptr<Entity> RFC1213MIB::Ipnettomediatable::Ipnettomediaentry::get_ch
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Ipnettomediatable::Ipnettomediaentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3982,14 +3981,6 @@ std::shared_ptr<Entity> RFC1213MIB::Tcpconntable::get_child_by_name(const std::s
 {
     if(child_yang_name == "tcpConnEntry")
     {
-        for(auto const & c : tcpconnentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RFC1213MIB::Tcpconntable::Tcpconnentry>();
         c->parent = this;
         tcpconnentry.push_back(c);
@@ -4002,9 +3993,14 @@ std::shared_ptr<Entity> RFC1213MIB::Tcpconntable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Tcpconntable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tcpconnentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4096,6 +4092,7 @@ std::shared_ptr<Entity> RFC1213MIB::Tcpconntable::Tcpconnentry::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Tcpconntable::Tcpconnentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4221,14 +4218,6 @@ std::shared_ptr<Entity> RFC1213MIB::Udptable::get_child_by_name(const std::strin
 {
     if(child_yang_name == "udpEntry")
     {
-        for(auto const & c : udpentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RFC1213MIB::Udptable::Udpentry>();
         c->parent = this;
         udpentry.push_back(c);
@@ -4241,9 +4230,14 @@ std::shared_ptr<Entity> RFC1213MIB::Udptable::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Udptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : udpentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4323,6 +4317,7 @@ std::shared_ptr<Entity> RFC1213MIB::Udptable::Udpentry::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Udptable::Udpentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4418,14 +4413,6 @@ std::shared_ptr<Entity> RFC1213MIB::Egpneightable::get_child_by_name(const std::
 {
     if(child_yang_name == "egpNeighEntry")
     {
-        for(auto const & c : egpneighentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RFC1213MIB::Egpneightable::Egpneighentry>();
         c->parent = this;
         egpneighentry.push_back(c);
@@ -4438,9 +4425,14 @@ std::shared_ptr<Entity> RFC1213MIB::Egpneightable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Egpneightable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : egpneighentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4572,6 +4564,7 @@ std::shared_ptr<Entity> RFC1213MIB::Egpneightable::Egpneighentry::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> RFC1213MIB::Egpneightable::Egpneighentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

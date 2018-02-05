@@ -68,6 +68,7 @@ std::shared_ptr<Entity> MacsecCtrlrOper::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> MacsecCtrlrOper::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(macsec_ctrlr_ports != nullptr)
     {
         children["macsec-ctrlr-ports"] = macsec_ctrlr_ports;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> MacsecCtrlrOper::MacsecCtrlrPorts::get_child_by_name(con
 {
     if(child_yang_name == "macsec-ctrlr-port")
     {
-        for(auto const & c : macsec_ctrlr_port)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort>();
         c->parent = this;
         macsec_ctrlr_port.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> MacsecCtrlrOper::MacsecCtrlrPorts::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> MacsecCtrlrOper::MacsecCtrlrPorts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : macsec_ctrlr_port)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -285,6 +283,7 @@ std::shared_ptr<Entity> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::get_
 std::map<std::string, std::shared_ptr<Entity>> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(macsec_ctrlr_info != nullptr)
     {
         children["macsec-ctrlr-info"] = macsec_ctrlr_info;
@@ -405,6 +404,7 @@ std::shared_ptr<Entity> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::Macs
 std::map<std::string, std::shared_ptr<Entity>> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(encrypt_sc_status != nullptr)
     {
         children["encrypt-sc-status"] = encrypt_sc_status;
@@ -547,14 +547,6 @@ std::shared_ptr<Entity> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::Macs
 {
     if(child_yang_name == "active-association")
     {
-        for(auto const & c : active_association)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation>();
         c->parent = this;
         active_association.push_back(c);
@@ -567,9 +559,14 @@ std::shared_ptr<Entity> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::Macs
 std::map<std::string, std::shared_ptr<Entity>> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : active_association)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -702,6 +699,7 @@ std::shared_ptr<Entity> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::Macs
 std::map<std::string, std::shared_ptr<Entity>> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::EncryptScStatus::ActiveAssociation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -814,14 +812,6 @@ std::shared_ptr<Entity> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::Macs
 {
     if(child_yang_name == "active-association")
     {
-        for(auto const & c : active_association)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus::ActiveAssociation>();
         c->parent = this;
         active_association.push_back(c);
@@ -834,9 +824,14 @@ std::shared_ptr<Entity> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::Macs
 std::map<std::string, std::shared_ptr<Entity>> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : active_association)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -969,6 +964,7 @@ std::shared_ptr<Entity> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::Macs
 std::map<std::string, std::shared_ptr<Entity>> MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo::DecryptScStatus::ActiveAssociation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

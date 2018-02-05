@@ -67,6 +67,7 @@ std::shared_ptr<Entity> Arp::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Arp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -192,6 +193,7 @@ std::shared_ptr<Entity> IedgeCfg::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> IedgeCfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -305,14 +307,6 @@ std::shared_ptr<Entity> Arpgmp::get_child_by_name(const std::string & child_yang
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Arpgmp::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -325,9 +319,14 @@ std::shared_ptr<Entity> Arpgmp::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> Arpgmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -442,6 +441,7 @@ std::shared_ptr<Entity> Arpgmp::Vrf::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Arpgmp::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(entries != nullptr)
     {
         children["entries"] = entries;
@@ -525,14 +525,6 @@ std::shared_ptr<Entity> Arpgmp::Vrf::Entries::get_child_by_name(const std::strin
 {
     if(child_yang_name == "entry")
     {
-        for(auto const & c : entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Arpgmp::Vrf::Entries::Entry>();
         c->parent = this;
         entry.push_back(c);
@@ -545,9 +537,14 @@ std::shared_ptr<Entity> Arpgmp::Vrf::Entries::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Arpgmp::Vrf::Entries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -632,6 +629,7 @@ std::shared_ptr<Entity> Arpgmp::Vrf::Entries::Entry::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Arpgmp::Vrf::Entries::Entry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -756,6 +754,7 @@ std::shared_ptr<Entity> ArpRedundancy::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> ArpRedundancy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redundancy != nullptr)
     {
         children["redundancy"] = redundancy;
@@ -873,6 +872,7 @@ std::shared_ptr<Entity> ArpRedundancy::Redundancy::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> ArpRedundancy::Redundancy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(groups != nullptr)
     {
         children["groups"] = groups;
@@ -963,14 +963,6 @@ std::shared_ptr<Entity> ArpRedundancy::Redundancy::Groups::get_child_by_name(con
 {
     if(child_yang_name == "group")
     {
-        for(auto const & c : group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ArpRedundancy::Redundancy::Groups::Group>();
         c->parent = this;
         group.push_back(c);
@@ -983,9 +975,14 @@ std::shared_ptr<Entity> ArpRedundancy::Redundancy::Groups::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> ArpRedundancy::Redundancy::Groups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1091,6 +1088,7 @@ std::shared_ptr<Entity> ArpRedundancy::Redundancy::Groups::Group::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> ArpRedundancy::Redundancy::Groups::Group::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(peers != nullptr)
     {
         children["peers"] = peers;
@@ -1189,14 +1187,6 @@ std::shared_ptr<Entity> ArpRedundancy::Redundancy::Groups::Group::Peers::get_chi
 {
     if(child_yang_name == "peer")
     {
-        for(auto const & c : peer)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ArpRedundancy::Redundancy::Groups::Group::Peers::Peer>();
         c->parent = this;
         peer.push_back(c);
@@ -1209,9 +1199,14 @@ std::shared_ptr<Entity> ArpRedundancy::Redundancy::Groups::Group::Peers::get_chi
 std::map<std::string, std::shared_ptr<Entity>> ArpRedundancy::Redundancy::Groups::Group::Peers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : peer)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1280,6 +1275,7 @@ std::shared_ptr<Entity> ArpRedundancy::Redundancy::Groups::Group::Peers::Peer::g
 std::map<std::string, std::shared_ptr<Entity>> ArpRedundancy::Redundancy::Groups::Group::Peers::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1370,6 +1366,7 @@ std::shared_ptr<Entity> ArpRedundancy::Redundancy::Groups::Group::InterfaceList:
 std::map<std::string, std::shared_ptr<Entity>> ArpRedundancy::Redundancy::Groups::Group::InterfaceList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interfaces != nullptr)
     {
         children["interfaces"] = interfaces;
@@ -1453,14 +1450,6 @@ std::shared_ptr<Entity> ArpRedundancy::Redundancy::Groups::Group::InterfaceList:
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -1473,9 +1462,14 @@ std::shared_ptr<Entity> ArpRedundancy::Redundancy::Groups::Group::InterfaceList:
 std::map<std::string, std::shared_ptr<Entity>> ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1548,6 +1542,7 @@ std::shared_ptr<Entity> ArpRedundancy::Redundancy::Groups::Group::InterfaceList:
 std::map<std::string, std::shared_ptr<Entity>> ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

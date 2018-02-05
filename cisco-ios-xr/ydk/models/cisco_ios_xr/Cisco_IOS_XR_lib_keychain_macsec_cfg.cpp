@@ -61,14 +61,6 @@ std::shared_ptr<Entity> MacSecKeychains::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "mac-sec-keychain")
     {
-        for(auto const & c : mac_sec_keychain)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MacSecKeychains::MacSecKeychain>();
         c->parent = this;
         mac_sec_keychain.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> MacSecKeychains::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> MacSecKeychains::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mac_sec_keychain)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -198,6 +195,7 @@ std::shared_ptr<Entity> MacSecKeychains::MacSecKeychain::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> MacSecKeychains::MacSecKeychain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(keies != nullptr)
     {
         children["keies"] = keies;
@@ -281,14 +279,6 @@ std::shared_ptr<Entity> MacSecKeychains::MacSecKeychain::Keies::get_child_by_nam
 {
     if(child_yang_name == "key")
     {
-        for(auto const & c : key)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MacSecKeychains::MacSecKeychain::Keies::Key>();
         c->parent = this;
         key.push_back(c);
@@ -301,9 +291,14 @@ std::shared_ptr<Entity> MacSecKeychains::MacSecKeychain::Keies::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> MacSecKeychains::MacSecKeychain::Keies::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : key)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -398,6 +393,7 @@ std::shared_ptr<Entity> MacSecKeychains::MacSecKeychain::Keies::Key::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> MacSecKeychains::MacSecKeychain::Keies::Key::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lifetime != nullptr)
     {
         children["lifetime"] = lifetime;
@@ -536,6 +532,7 @@ std::shared_ptr<Entity> MacSecKeychains::MacSecKeychain::Keies::Key::Lifetime::g
 std::map<std::string, std::shared_ptr<Entity>> MacSecKeychains::MacSecKeychain::Keies::Key::Lifetime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -750,6 +747,7 @@ std::shared_ptr<Entity> MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::
 std::map<std::string, std::shared_ptr<Entity>> MacSecKeychains::MacSecKeychain::Keies::Key::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

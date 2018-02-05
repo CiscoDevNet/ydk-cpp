@@ -61,14 +61,6 @@ std::shared_ptr<Entity> SystemMonitoring::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "cpu-utilization")
     {
-        for(auto const & c : cpu_utilization)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SystemMonitoring::CpuUtilization>();
         c->parent = this;
         cpu_utilization.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> SystemMonitoring::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> SystemMonitoring::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpu_utilization)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -202,14 +199,6 @@ std::shared_ptr<Entity> SystemMonitoring::CpuUtilization::get_child_by_name(cons
 {
     if(child_yang_name == "process-cpu")
     {
-        for(auto const & c : process_cpu)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SystemMonitoring::CpuUtilization::ProcessCpu>();
         c->parent = this;
         process_cpu.push_back(c);
@@ -222,9 +211,14 @@ std::shared_ptr<Entity> SystemMonitoring::CpuUtilization::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> SystemMonitoring::CpuUtilization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : process_cpu)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -349,6 +343,7 @@ std::shared_ptr<Entity> SystemMonitoring::CpuUtilization::ProcessCpu::get_child_
 std::map<std::string, std::shared_ptr<Entity>> SystemMonitoring::CpuUtilization::ProcessCpu::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

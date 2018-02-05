@@ -69,6 +69,7 @@ std::shared_ptr<Entity> PlatformQos::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -174,14 +175,6 @@ std::shared_ptr<Entity> PlatformQos::Nodes::get_child_by_name(const std::string 
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQos::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -194,9 +187,14 @@ std::shared_ptr<Entity> PlatformQos::Nodes::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -312,6 +310,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bundle_interfaces != nullptr)
     {
         children["bundle-interfaces"] = bundle_interfaces;
@@ -405,14 +404,6 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::get_child_by
 {
     if(child_yang_name == "bundle-interface")
     {
-        for(auto const & c : bundle_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface>();
         c->parent = this;
         bundle_interface.push_back(c);
@@ -425,9 +416,14 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bundle_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -510,6 +506,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(member_interfaces != nullptr)
     {
         children["member-interfaces"] = member_interfaces;
@@ -593,14 +590,6 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 {
     if(child_yang_name == "member-interface")
     {
-        for(auto const & c : member_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface>();
         c->parent = this;
         member_interface.push_back(c);
@@ -613,9 +602,14 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : member_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -711,6 +705,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bundle_input != nullptr)
     {
         children["bundle-input"] = bundle_input;
@@ -832,6 +827,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(header != nullptr)
     {
         children["header"] = header;
@@ -925,6 +921,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Header::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1066,6 +1063,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::InterfaceParameters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_config_rate != nullptr)
     {
         children["interface-config-rate"] = interface_config_rate;
@@ -1151,6 +1149,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::InterfaceParameters::InterfaceConfigRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1241,6 +1240,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::InterfaceParameters::InterfaceProgramRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1331,6 +1331,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::InterfaceParameters::PortShaperRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1419,14 +1420,6 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 {
     if(child_yang_name == "qos-show-pclass-st")
     {
-        for(auto const & c : qos_show_pclass_st)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt>();
         c->parent = this;
         qos_show_pclass_st.push_back(c);
@@ -1439,9 +1432,14 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qos_show_pclass_st)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1580,6 +1578,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(queue != nullptr)
     {
         children["queue"] = queue;
@@ -1695,6 +1694,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1803,6 +1803,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pir != nullptr)
     {
         children["pir"] = pir;
@@ -1883,6 +1884,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1973,6 +1975,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2086,6 +2089,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(committed_weight != nullptr)
     {
         children["committed-weight"] = committed_weight;
@@ -2176,6 +2180,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2289,6 +2294,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bandwidth != nullptr)
     {
         children["bandwidth"] = bandwidth;
@@ -2379,6 +2385,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2469,6 +2476,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2586,6 +2594,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cir != nullptr)
     {
         children["cir"] = cir;
@@ -2686,6 +2695,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2776,6 +2786,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2897,6 +2908,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mark_only != nullptr)
     {
         children["mark-only"] = mark_only;
@@ -2984,14 +2996,6 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 {
     if(child_yang_name == "mark-detail")
     {
-        for(auto const & c : mark_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail>();
         c->parent = this;
         mark_detail.push_back(c);
@@ -3004,9 +3008,14 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mark_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3089,6 +3098,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3181,14 +3191,6 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 {
     if(child_yang_name == "mark-detail")
     {
-        for(auto const & c : mark_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail>();
         c->parent = this;
         mark_detail.push_back(c);
@@ -3201,9 +3203,14 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mark_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3286,6 +3293,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3378,14 +3386,6 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 {
     if(child_yang_name == "mark-detail")
     {
-        for(auto const & c : mark_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail>();
         c->parent = this;
         mark_detail.push_back(c);
@@ -3398,9 +3398,14 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mark_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3483,6 +3488,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3604,6 +3610,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(header != nullptr)
     {
         children["header"] = header;
@@ -3697,6 +3704,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Header::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3838,6 +3846,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::InterfaceParameters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_config_rate != nullptr)
     {
         children["interface-config-rate"] = interface_config_rate;
@@ -3923,6 +3932,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::InterfaceParameters::InterfaceConfigRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4013,6 +4023,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::InterfaceParameters::InterfaceProgramRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4103,6 +4114,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::InterfaceParameters::PortShaperRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4191,14 +4203,6 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 {
     if(child_yang_name == "qos-show-pclass-st")
     {
-        for(auto const & c : qos_show_pclass_st)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt>();
         c->parent = this;
         qos_show_pclass_st.push_back(c);
@@ -4211,9 +4215,14 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qos_show_pclass_st)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4352,6 +4361,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(queue != nullptr)
     {
         children["queue"] = queue;
@@ -4467,6 +4477,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4575,6 +4586,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pir != nullptr)
     {
         children["pir"] = pir;
@@ -4655,6 +4667,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4745,6 +4758,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4858,6 +4872,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(committed_weight != nullptr)
     {
         children["committed-weight"] = committed_weight;
@@ -4948,6 +4963,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5061,6 +5077,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bandwidth != nullptr)
     {
         children["bandwidth"] = bandwidth;
@@ -5151,6 +5168,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5241,6 +5259,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5358,6 +5377,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cir != nullptr)
     {
         children["cir"] = cir;
@@ -5458,6 +5478,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5548,6 +5569,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5669,6 +5691,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mark_only != nullptr)
     {
         children["mark-only"] = mark_only;
@@ -5756,14 +5779,6 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 {
     if(child_yang_name == "mark-detail")
     {
-        for(auto const & c : mark_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail>();
         c->parent = this;
         mark_detail.push_back(c);
@@ -5776,9 +5791,14 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mark_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5861,6 +5881,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5953,14 +5974,6 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 {
     if(child_yang_name == "mark-detail")
     {
-        for(auto const & c : mark_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail>();
         c->parent = this;
         mark_detail.push_back(c);
@@ -5973,9 +5986,14 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mark_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6058,6 +6076,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6150,14 +6169,6 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 {
     if(child_yang_name == "mark-detail")
     {
-        for(auto const & c : mark_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail>();
         c->parent = this;
         mark_detail.push_back(c);
@@ -6170,9 +6181,14 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mark_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6255,6 +6271,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6373,6 +6390,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Capability::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Capability::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6531,14 +6549,6 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::get_child_by_name(
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -6551,9 +6561,14 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6649,6 +6664,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::get_chi
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(output != nullptr)
     {
         children["output"] = output;
@@ -6770,6 +6786,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(header != nullptr)
     {
         children["header"] = header;
@@ -6863,6 +6880,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::Header::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7004,6 +7022,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_config_rate != nullptr)
     {
         children["interface-config-rate"] = interface_config_rate;
@@ -7089,6 +7108,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceConfigRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7179,6 +7199,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::InterfaceProgramRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7269,6 +7290,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::InterfaceParameters::PortShaperRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7357,14 +7379,6 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 {
     if(child_yang_name == "qos-show-pclass-st")
     {
-        for(auto const & c : qos_show_pclass_st)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt>();
         c->parent = this;
         qos_show_pclass_st.push_back(c);
@@ -7377,9 +7391,14 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qos_show_pclass_st)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7518,6 +7537,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(queue != nullptr)
     {
         children["queue"] = queue;
@@ -7633,6 +7653,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7741,6 +7762,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pir != nullptr)
     {
         children["pir"] = pir;
@@ -7821,6 +7843,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7911,6 +7934,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8024,6 +8048,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(committed_weight != nullptr)
     {
         children["committed-weight"] = committed_weight;
@@ -8114,6 +8139,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8227,6 +8253,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bandwidth != nullptr)
     {
         children["bandwidth"] = bandwidth;
@@ -8317,6 +8344,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8407,6 +8435,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8524,6 +8553,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cir != nullptr)
     {
         children["cir"] = cir;
@@ -8624,6 +8654,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8714,6 +8745,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8835,6 +8867,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mark_only != nullptr)
     {
         children["mark-only"] = mark_only;
@@ -8922,14 +8955,6 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 {
     if(child_yang_name == "mark-detail")
     {
-        for(auto const & c : mark_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail>();
         c->parent = this;
         mark_detail.push_back(c);
@@ -8942,9 +8967,14 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mark_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9027,6 +9057,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9119,14 +9150,6 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 {
     if(child_yang_name == "mark-detail")
     {
-        for(auto const & c : mark_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail>();
         c->parent = this;
         mark_detail.push_back(c);
@@ -9139,9 +9162,14 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mark_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9224,6 +9252,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9316,14 +9345,6 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 {
     if(child_yang_name == "mark-detail")
     {
-        for(auto const & c : mark_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail>();
         c->parent = this;
         mark_detail.push_back(c);
@@ -9336,9 +9357,14 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mark_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9421,6 +9447,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9542,6 +9569,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(header != nullptr)
     {
         children["header"] = header;
@@ -9635,6 +9663,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::Header::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9776,6 +9805,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_config_rate != nullptr)
     {
         children["interface-config-rate"] = interface_config_rate;
@@ -9861,6 +9891,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters::InterfaceConfigRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9951,6 +9982,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters::InterfaceProgramRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10041,6 +10073,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::InterfaceParameters::PortShaperRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10129,14 +10162,6 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 {
     if(child_yang_name == "qos-show-pclass-st")
     {
-        for(auto const & c : qos_show_pclass_st)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt>();
         c->parent = this;
         qos_show_pclass_st.push_back(c);
@@ -10149,9 +10174,14 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qos_show_pclass_st)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10290,6 +10320,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(queue != nullptr)
     {
         children["queue"] = queue;
@@ -10405,6 +10436,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Queue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10513,6 +10545,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pir != nullptr)
     {
         children["pir"] = pir;
@@ -10593,6 +10626,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pir::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10683,6 +10717,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Shape::Pbs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10796,6 +10831,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(committed_weight != nullptr)
     {
         children["committed-weight"] = committed_weight;
@@ -10886,6 +10922,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::CommittedWeight::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10999,6 +11036,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bandwidth != nullptr)
     {
         children["bandwidth"] = bandwidth;
@@ -11089,6 +11127,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::Bandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11179,6 +11218,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Wfq::ProgrammedWfq::SumOfBandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11296,6 +11336,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cir != nullptr)
     {
         children["cir"] = cir;
@@ -11396,6 +11437,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cir::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11486,6 +11528,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Police::Cbs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11607,6 +11650,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mark_only != nullptr)
     {
         children["mark-only"] = mark_only;
@@ -11694,14 +11738,6 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 {
     if(child_yang_name == "mark-detail")
     {
-        for(auto const & c : mark_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail>();
         c->parent = this;
         mark_detail.push_back(c);
@@ -11714,9 +11750,14 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mark_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11799,6 +11840,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11891,14 +11933,6 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 {
     if(child_yang_name == "mark-detail")
     {
-        for(auto const & c : mark_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail>();
         c->parent = this;
         mark_detail.push_back(c);
@@ -11911,9 +11945,14 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mark_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11996,6 +12035,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12088,14 +12128,6 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 {
     if(child_yang_name == "mark-detail")
     {
-        for(auto const & c : mark_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail>();
         c->parent = this;
         mark_detail.push_back(c);
@@ -12108,9 +12140,14 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mark_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12193,6 +12230,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Input::
 std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12288,6 +12326,7 @@ std::shared_ptr<Entity> PlatformQosEa::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -12393,14 +12432,6 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::get_child_by_name(const std::strin
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQosEa::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -12413,9 +12444,14 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12518,6 +12554,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bundle_interfaces != nullptr)
     {
         children["bundle-interfaces"] = bundle_interfaces;
@@ -12606,14 +12643,6 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::get_child_
 {
     if(child_yang_name == "bundle-interface")
     {
-        for(auto const & c : bundle_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface>();
         c->parent = this;
         bundle_interface.push_back(c);
@@ -12626,9 +12655,14 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::get_child_
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bundle_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12711,6 +12745,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(member_interfaces != nullptr)
     {
         children["member-interfaces"] = member_interfaces;
@@ -12794,14 +12829,6 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 {
     if(child_yang_name == "member-interface")
     {
-        for(auto const & c : member_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface>();
         c->parent = this;
         member_interface.push_back(c);
@@ -12814,9 +12841,14 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : member_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12912,6 +12944,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bundle_output != nullptr)
     {
         children["bundle-output"] = bundle_output;
@@ -13007,6 +13040,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(details != nullptr)
     {
         children["details"] = details;
@@ -13113,6 +13147,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(header != nullptr)
     {
         children["header"] = header;
@@ -13206,6 +13241,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::Header::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13356,6 +13392,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::InterfaceParameters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13544,14 +13581,6 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 {
     if(child_yang_name == "qos-show-ea-pclass-st")
     {
-        for(auto const & c : qos_show_ea_pclass_st)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt>();
         c->parent = this;
         qos_show_ea_pclass_st.push_back(c);
@@ -13564,9 +13593,14 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qos_show_ea_pclass_st)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13682,6 +13716,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -13858,6 +13893,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(police != nullptr)
     {
         children["police"] = police;
@@ -13980,6 +14016,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cir != nullptr)
     {
         children["cir"] = cir;
@@ -14080,6 +14117,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14170,6 +14208,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14278,6 +14317,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pir != nullptr)
     {
         children["pir"] = pir;
@@ -14358,6 +14398,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14448,6 +14489,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14561,6 +14603,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bandwidth != nullptr)
     {
         children["bandwidth"] = bandwidth;
@@ -14651,6 +14694,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14741,6 +14785,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14854,6 +14899,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(queue != nullptr)
     {
         children["queue"] = queue;
@@ -14952,6 +14998,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15070,6 +15117,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15185,6 +15233,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(details != nullptr)
     {
         children["details"] = details;
@@ -15291,6 +15340,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(header != nullptr)
     {
         children["header"] = header;
@@ -15384,6 +15434,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::Header::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15534,6 +15585,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::InterfaceParameters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15722,14 +15774,6 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 {
     if(child_yang_name == "qos-show-ea-pclass-st")
     {
-        for(auto const & c : qos_show_ea_pclass_st)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt>();
         c->parent = this;
         qos_show_ea_pclass_st.push_back(c);
@@ -15742,9 +15786,14 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qos_show_ea_pclass_st)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15860,6 +15909,7 @@ std::shared_ptr<Entity> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInte
 std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;

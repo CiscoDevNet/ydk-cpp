@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Radius::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> Radius::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> Radius::Nodes::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Radius::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> Radius::Nodes::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -350,6 +348,7 @@ std::shared_ptr<Entity> Radius::Nodes::Node::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(client != nullptr)
     {
         children["client"] = client;
@@ -464,6 +463,7 @@ std::shared_ptr<Entity> Radius::Nodes::Node::Client::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -569,6 +569,7 @@ std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hosts != nullptr)
     {
         children["hosts"] = hosts;
@@ -642,14 +643,6 @@ std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::get_child_by_n
 {
     if(child_yang_name == "host")
     {
-        for(auto const & c : host)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts::Host>();
         c->parent = this;
         host.push_back(c);
@@ -662,9 +655,14 @@ std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::Hosts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : host)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -768,6 +766,7 @@ std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(time != nullptr)
     {
         children["time"] = time;
@@ -878,6 +877,7 @@ std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::ge
 std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -968,6 +968,7 @@ std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::g
 std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1056,14 +1057,6 @@ std::shared_ptr<Entity> Radius::Nodes::Node::Authentication::get_child_by_name(c
 {
     if(child_yang_name == "authentication-group")
     {
-        for(auto const & c : authentication_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Radius::Nodes::Node::Authentication::AuthenticationGroup>();
         c->parent = this;
         authentication_group.push_back(c);
@@ -1076,9 +1069,14 @@ std::shared_ptr<Entity> Radius::Nodes::Node::Authentication::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : authentication_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1173,6 +1171,7 @@ std::shared_ptr<Entity> Radius::Nodes::Node::Authentication::AuthenticationGroup
 std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Authentication::AuthenticationGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authentication != nullptr)
     {
         children["authentication"] = authentication;
@@ -1352,6 +1351,7 @@ std::shared_ptr<Entity> Radius::Nodes::Node::Authentication::AuthenticationGroup
 std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1600,14 +1600,6 @@ std::shared_ptr<Entity> Radius::Nodes::Node::Accounting::get_child_by_name(const
 {
     if(child_yang_name == "accounting-group")
     {
-        for(auto const & c : accounting_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Radius::Nodes::Node::Accounting::AccountingGroup>();
         c->parent = this;
         accounting_group.push_back(c);
@@ -1620,9 +1612,14 @@ std::shared_ptr<Entity> Radius::Nodes::Node::Accounting::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Accounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : accounting_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1717,6 +1714,7 @@ std::shared_ptr<Entity> Radius::Nodes::Node::Accounting::AccountingGroup::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Accounting::AccountingGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(accounting != nullptr)
     {
         children["accounting"] = accounting;
@@ -1888,6 +1886,7 @@ std::shared_ptr<Entity> Radius::Nodes::Node::Accounting::AccountingGroup::Accoun
 std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2116,14 +2115,6 @@ std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::get_child_by_name(con
 {
     if(child_yang_name == "server-group")
     {
-        for(auto const & c : server_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Radius::Nodes::Node::ServerGroups::ServerGroup>();
         c->parent = this;
         server_group.push_back(c);
@@ -2136,9 +2127,14 @@ std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::ServerGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : server_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2229,14 +2225,6 @@ std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::ServerGroup::get_chil
 {
     if(child_yang_name == "server-group")
     {
-        for(auto const & c : server_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_>();
         c->parent = this;
         server_group.push_back(c);
@@ -2249,9 +2237,14 @@ std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::ServerGroup::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::ServerGroups::ServerGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : server_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2430,6 +2423,7 @@ std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGr
 std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(accounting != nullptr)
     {
         children["accounting"] = accounting;
@@ -2631,6 +2625,7 @@ std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGr
 std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2925,6 +2920,7 @@ std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGr
 std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3199,6 +3195,7 @@ std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGr
 std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3349,6 +3346,7 @@ std::shared_ptr<Entity> Radius::Nodes::Node::DynamicAuthorization::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DynamicAuthorization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

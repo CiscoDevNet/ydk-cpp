@@ -69,7 +69,7 @@ static void create_if_does_not_exist(const std::string & path)
         if(mkdir(path.c_str(), 0700) != 0)
         {
             YLOG_ERROR("Could not create repository: {}", path);
-            throw(YCPPIllegalStateError{"Could not create repository: "+path});
+            throw(YIllegalStateError{"Could not create repository: "+path});
         }
     }
 }
@@ -94,7 +94,7 @@ void libyang_log_callback(LY_LOG_LEVEL level, const char *msg, const char *path)
                     || error_message.str().find("does not satisfy the constraint")!= std::string::npos)
             {
                 YLOG_ERROR("Data is invalid according to the yang model. Error details: {}", error_message.str());
-                throw(YCPPModelError{});
+                throw(YModelError{});
             }
             YLOG_ERROR("Data is invalid according to the yang model. Error details: {}", error_message.str());
             break;
@@ -124,7 +124,7 @@ ydk::path::RepositoryPtr::RepositoryPtr(const std::string& search_dir, path::Mod
     if (!file_exists(path))
     {
         YLOG_ERROR("Path {} is not a valid directory.", search_dir);
-        throw(YCPPInvalidArgumentError{"path "+search_dir+" is not a valid directory"});
+        throw(YInvalidArgumentError{"path "+search_dir+" is not a valid directory"});
     }
 
     ly_set_log_clb(libyang_log_callback, 1);
@@ -167,7 +167,7 @@ namespace ydk {
             enlarged_data = static_cast<char*>(std::malloc((len + 2) * sizeof *enlarged_data));
             if (!enlarged_data) {
                 YLOG_ERROR("Could not download model: {}", model_name);
-                throw(std::bad_alloc{});
+                throw(YIllegalStateError{"Could not download model: " + model_name});
             }
             memcpy(enlarged_data, data, len);
             enlarged_data[len] = enlarged_data[len + 1] = '\0';
@@ -222,7 +222,7 @@ namespace ydk {
                         return get_enlarged_data(model_data, yang_file_path);
                     } else {
                         YLOG_ERROR("Cannot open file {}", yang_file_path);
-                        throw(YCPPIllegalStateError("Cannot open file"));
+                        throw(YIllegalStateError("Cannot open file " + yang_file_path));
                     }
 
                 }
@@ -244,13 +244,13 @@ namespace ydk {
                         return get_enlarged_data(model_data, yang_file_path);
                     } else {
                         YLOG_DEBUG("Cannot find model with module_name: {} module_rev: {}", module_name, (module_rev !=nullptr ? module_rev : ""));
-//                        throw(YCPPIllegalStateError{"Cannot find model"});
+//                        throw(YIllegalStateError{"Cannot find model"});
                         return {};
                     }
                 }
             }
             YLOG_DEBUG("Cannot find model with module_name: {}", module_name);
-//            throw(YCPPIllegalStateError{"Cannot find model"});
+//            throw(YIllegalStateError{"Cannot find model"});
             return {};
         }
     }
@@ -283,7 +283,7 @@ ly_ctx* ydk::path::RepositoryPtr::create_ly_context()
 
     if(!ctx) {
         YLOG_ERROR("Could not create repository in: {}", path);
-        throw(std::bad_alloc{});
+        throw(YIllegalStateError{"Could not create repository in: " + path});
     }
 
     //set module callback (only if there is a model provider)

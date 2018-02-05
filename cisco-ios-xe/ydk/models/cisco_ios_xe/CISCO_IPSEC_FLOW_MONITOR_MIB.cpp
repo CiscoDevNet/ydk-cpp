@@ -302,6 +302,7 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cipseclevels != nullptr)
     {
         children["cipSecLevels"] = cipseclevels;
@@ -495,6 +496,7 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipseclevels::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cipseclevels::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -678,6 +680,7 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cikeglobalstats::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cikeglobalstats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1127,6 +1130,7 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsecglobalstats::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cipsecglobalstats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1504,6 +1508,7 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsechistglobalcntl::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cipsechistglobalcntl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1597,6 +1602,7 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsecfailglobalcntl::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cipsecfailglobalcntl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1728,6 +1734,7 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsectrapcntl::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cipsectrapcntl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1933,14 +1940,6 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cikepeertable::get_child_by_na
 {
     if(child_yang_name == "cikePeerEntry")
     {
-        for(auto const & c : cikepeerentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSECFLOWMONITORMIB::Cikepeertable::Cikepeerentry>();
         c->parent = this;
         cikepeerentry.push_back(c);
@@ -1953,9 +1952,14 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cikepeertable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cikepeertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cikepeerentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2063,6 +2067,7 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cikepeertable::Cikepeerentry::
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cikepeertable::Cikepeerentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2228,14 +2233,6 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Ciketunneltable::get_child_by_
 {
     if(child_yang_name == "cikeTunnelEntry")
     {
-        for(auto const & c : ciketunnelentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSECFLOWMONITORMIB::Ciketunneltable::Ciketunnelentry>();
         c->parent = this;
         ciketunnelentry.push_back(c);
@@ -2248,9 +2245,14 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Ciketunneltable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Ciketunneltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ciketunnelentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2462,6 +2464,7 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Ciketunneltable::Ciketunnelent
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Ciketunneltable::Ciketunnelentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2887,14 +2890,6 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cikepeercorrtable::get_child_b
 {
     if(child_yang_name == "cikePeerCorrEntry")
     {
-        for(auto const & c : cikepeercorrentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSECFLOWMONITORMIB::Cikepeercorrtable::Cikepeercorrentry>();
         c->parent = this;
         cikepeercorrentry.push_back(c);
@@ -2907,9 +2902,14 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cikepeercorrtable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cikepeercorrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cikepeercorrentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3009,6 +3009,7 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cikepeercorrtable::Cikepeercor
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cikepeercorrtable::Cikepeercorrentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3154,14 +3155,6 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cikephase1Gwstatstable::get_ch
 {
     if(child_yang_name == "cikePhase1GWStatsEntry")
     {
-        for(auto const & c : cikephase1gwstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSECFLOWMONITORMIB::Cikephase1Gwstatstable::Cikephase1Gwstatsentry>();
         c->parent = this;
         cikephase1gwstatsentry.push_back(c);
@@ -3174,9 +3167,14 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cikephase1Gwstatstable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cikephase1Gwstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cikephase1gwstatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3356,6 +3354,7 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cikephase1Gwstatstable::Cikeph
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cikephase1Gwstatstable::Cikephase1Gwstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3701,14 +3700,6 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsectunneltable::get_child_b
 {
     if(child_yang_name == "cipSecTunnelEntry")
     {
-        for(auto const & c : cipsectunnelentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSECFLOWMONITORMIB::Cipsectunneltable::Cipsectunnelentry>();
         c->parent = this;
         cipsectunnelentry.push_back(c);
@@ -3721,9 +3712,14 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsectunneltable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cipsectunneltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipsectunnelentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3999,6 +3995,7 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsectunneltable::Cipsectunne
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cipsectunneltable::Cipsectunnelentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4584,14 +4581,6 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsecendpttable::get_child_by
 {
     if(child_yang_name == "cipSecEndPtEntry")
     {
-        for(auto const & c : cipsecendptentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSECFLOWMONITORMIB::Cipsecendpttable::Cipsecendptentry>();
         c->parent = this;
         cipsecendptentry.push_back(c);
@@ -4604,9 +4593,14 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsecendpttable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cipsecendpttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipsecendptentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4734,6 +4728,7 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsecendpttable::Cipsecendpte
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cipsecendpttable::Cipsecendptentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4949,14 +4944,6 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsecspitable::get_child_by_n
 {
     if(child_yang_name == "cipSecSpiEntry")
     {
-        for(auto const & c : cipsecspientry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSECFLOWMONITORMIB::Cipsecspitable::Cipsecspientry>();
         c->parent = this;
         cipsecspientry.push_back(c);
@@ -4969,9 +4956,14 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsecspitable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cipsecspitable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipsecspientry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5067,6 +5059,7 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsecspitable::Cipsecspientry
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cipsecspitable::Cipsecspientry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5202,14 +5195,6 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsecphase2Gwstatstable::get_
 {
     if(child_yang_name == "cipSecPhase2GWStatsEntry")
     {
-        for(auto const & c : cipsecphase2gwstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSECFLOWMONITORMIB::Cipsecphase2Gwstatstable::Cipsecphase2Gwstatsentry>();
         c->parent = this;
         cipsecphase2gwstatsentry.push_back(c);
@@ -5222,9 +5207,14 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsecphase2Gwstatstable::get_
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cipsecphase2Gwstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipsecphase2gwstatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5404,6 +5394,7 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsecphase2Gwstatstable::Cips
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cipsecphase2Gwstatstable::Cipsecphase2Gwstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5749,14 +5740,6 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Ciketunnelhisttable::get_child
 {
     if(child_yang_name == "cikeTunnelHistEntry")
     {
-        for(auto const & c : ciketunnelhistentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSECFLOWMONITORMIB::Ciketunnelhisttable::Ciketunnelhistentry>();
         c->parent = this;
         ciketunnelhistentry.push_back(c);
@@ -5769,9 +5752,14 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Ciketunnelhisttable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Ciketunnelhisttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ciketunnelhistentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5995,6 +5983,7 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Ciketunnelhisttable::Ciketunne
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Ciketunnelhisttable::Ciketunnelhistentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6450,14 +6439,6 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsectunnelhisttable::get_chi
 {
     if(child_yang_name == "cipSecTunnelHistEntry")
     {
-        for(auto const & c : cipsectunnelhistentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSECFLOWMONITORMIB::Cipsectunnelhisttable::Cipsectunnelhistentry>();
         c->parent = this;
         cipsectunnelhistentry.push_back(c);
@@ -6470,9 +6451,14 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsectunnelhisttable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cipsectunnelhisttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipsectunnelhistentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6740,6 +6726,7 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsectunnelhisttable::Cipsect
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cipsectunnelhisttable::Cipsectunnelhistentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7305,14 +7292,6 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsecendpthisttable::get_chil
 {
     if(child_yang_name == "cipSecEndPtHistEntry")
     {
-        for(auto const & c : cipsecendpthistentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSECFLOWMONITORMIB::Cipsecendpthisttable::Cipsecendpthistentry>();
         c->parent = this;
         cipsecendpthistentry.push_back(c);
@@ -7325,9 +7304,14 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsecendpthisttable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cipsecendpthisttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipsecendpthistentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7459,6 +7443,7 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsecendpthisttable::Cipsecen
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cipsecendpthisttable::Cipsecendpthistentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7684,14 +7669,6 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cikefailtable::get_child_by_na
 {
     if(child_yang_name == "cikeFailEntry")
     {
-        for(auto const & c : cikefailentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSECFLOWMONITORMIB::Cikefailtable::Cikefailentry>();
         c->parent = this;
         cikefailentry.push_back(c);
@@ -7704,9 +7681,14 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cikefailtable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cikefailtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cikefailentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7814,6 +7796,7 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cikefailtable::Cikefailentry::
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cikefailtable::Cikefailentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7979,14 +7962,6 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsecfailtable::get_child_by_
 {
     if(child_yang_name == "cipSecFailEntry")
     {
-        for(auto const & c : cipsecfailentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSECFLOWMONITORMIB::Cipsecfailtable::Cipsecfailentry>();
         c->parent = this;
         cipsecfailentry.push_back(c);
@@ -7999,9 +7974,14 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsecfailtable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cipsecfailtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipsecfailentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8101,6 +8081,7 @@ std::shared_ptr<Entity> CISCOIPSECFLOWMONITORMIB::Cipsecfailtable::Cipsecfailent
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSECFLOWMONITORMIB::Cipsecfailtable::Cipsecfailentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

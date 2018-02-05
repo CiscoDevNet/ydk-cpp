@@ -159,6 +159,7 @@ std::shared_ptr<Entity> Parser::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> Parser::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(indentation != nullptr)
     {
         children["indentation"] = indentation;
@@ -297,6 +298,7 @@ std::shared_ptr<Entity> Parser::Indentation::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Parser::Indentation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -415,6 +417,7 @@ std::shared_ptr<Entity> Parser::Alias::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(execs != nullptr)
     {
         children["execs"] = execs;
@@ -505,14 +508,6 @@ std::shared_ptr<Entity> Parser::Alias::Execs::get_child_by_name(const std::strin
 {
     if(child_yang_name == "exec")
     {
-        for(auto const & c : exec)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Parser::Alias::Execs::Exec>();
         c->parent = this;
         exec.push_back(c);
@@ -525,9 +520,14 @@ std::shared_ptr<Entity> Parser::Alias::Execs::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Execs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : exec)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -607,6 +607,7 @@ std::shared_ptr<Entity> Parser::Alias::Execs::Exec::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Execs::Exec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -702,14 +703,6 @@ std::shared_ptr<Entity> Parser::Alias::Configurations::get_child_by_name(const s
 {
     if(child_yang_name == "configuration")
     {
-        for(auto const & c : configuration)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Parser::Alias::Configurations::Configuration>();
         c->parent = this;
         configuration.push_back(c);
@@ -722,9 +715,14 @@ std::shared_ptr<Entity> Parser::Alias::Configurations::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Configurations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : configuration)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -804,6 +802,7 @@ std::shared_ptr<Entity> Parser::Alias::Configurations::Configuration::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Configurations::Configuration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -899,14 +898,6 @@ std::shared_ptr<Entity> Parser::Alias::Alls::get_child_by_name(const std::string
 {
     if(child_yang_name == "all")
     {
-        for(auto const & c : all)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Parser::Alias::Alls::All>();
         c->parent = this;
         all.push_back(c);
@@ -919,9 +910,14 @@ std::shared_ptr<Entity> Parser::Alias::Alls::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Alls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : all)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1001,6 +997,7 @@ std::shared_ptr<Entity> Parser::Alias::Alls::All::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Alls::All::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1094,6 +1091,7 @@ std::shared_ptr<Entity> Parser::History::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Parser::History::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1177,6 +1175,7 @@ std::shared_ptr<Entity> Parser::Interactive::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Parser::Interactive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1260,6 +1259,7 @@ std::shared_ptr<Entity> Parser::InterfaceDisplay::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Parser::InterfaceDisplay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1343,6 +1343,7 @@ std::shared_ptr<Entity> Parser::NetmaskFormat::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Parser::NetmaskFormat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1435,6 +1436,7 @@ std::shared_ptr<Entity> Parser::Configuration::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Parser::Configuration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(disable != nullptr)
     {
         children["disable"] = disable;
@@ -1513,6 +1515,7 @@ std::shared_ptr<Entity> Parser::Configuration::Disable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Parser::Configuration::Disable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1596,6 +1599,7 @@ std::shared_ptr<Entity> Parser::SubmodeExit::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Parser::SubmodeExit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

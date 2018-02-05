@@ -68,6 +68,7 @@ std::shared_ptr<Entity> MpaInternal::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> MpaInternal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> MpaInternal::Nodes::get_child_by_name(const std::string 
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MpaInternal::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> MpaInternal::Nodes::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> MpaInternal::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -277,14 +275,6 @@ std::shared_ptr<Entity> MpaInternal::Nodes::Node::get_child_by_name(const std::s
 {
     if(child_yang_name == "bay")
     {
-        for(auto const & c : bay)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MpaInternal::Nodes::Node::Bay>();
         c->parent = this;
         bay.push_back(c);
@@ -297,9 +287,14 @@ std::shared_ptr<Entity> MpaInternal::Nodes::Node::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> MpaInternal::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bay)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -392,6 +387,7 @@ std::shared_ptr<Entity> MpaInternal::Nodes::Node::Bay::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> MpaInternal::Nodes::Node::Bay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ifsubsies != nullptr)
     {
         children["ifsubsies"] = ifsubsies;
@@ -475,14 +471,6 @@ std::shared_ptr<Entity> MpaInternal::Nodes::Node::Bay::Ifsubsies::get_child_by_n
 {
     if(child_yang_name == "ifsubsy")
     {
-        for(auto const & c : ifsubsy)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy>();
         c->parent = this;
         ifsubsy.push_back(c);
@@ -495,9 +483,14 @@ std::shared_ptr<Entity> MpaInternal::Nodes::Node::Bay::Ifsubsies::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> MpaInternal::Nodes::Node::Bay::Ifsubsies::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ifsubsy)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -580,6 +573,7 @@ std::shared_ptr<Entity> MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::get_c
 std::map<std::string, std::shared_ptr<Entity>> MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mpa_internal_info != nullptr)
     {
         children["mpa-internal-info"] = mpa_internal_info;
@@ -697,6 +691,7 @@ std::shared_ptr<Entity> MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaIn
 std::map<std::string, std::shared_ptr<Entity>> MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -872,6 +867,7 @@ std::shared_ptr<Entity> Mpa::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Mpa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -977,14 +973,6 @@ std::shared_ptr<Entity> Mpa::Nodes::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mpa::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -997,9 +985,14 @@ std::shared_ptr<Entity> Mpa::Nodes::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Mpa::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1081,14 +1074,6 @@ std::shared_ptr<Entity> Mpa::Nodes::Node::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "bay")
     {
-        for(auto const & c : bay)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mpa::Nodes::Node::Bay>();
         c->parent = this;
         bay.push_back(c);
@@ -1101,9 +1086,14 @@ std::shared_ptr<Entity> Mpa::Nodes::Node::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Mpa::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bay)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1196,6 +1186,7 @@ std::shared_ptr<Entity> Mpa::Nodes::Node::Bay::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Mpa::Nodes::Node::Bay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mpa_detail_table != nullptr)
     {
         children["mpa-detail-table"] = mpa_detail_table;
@@ -1286,6 +1277,7 @@ std::shared_ptr<Entity> Mpa::Nodes::Node::Bay::MpaDetailTable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Mpa::Nodes::Node::Bay::MpaDetailTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mpa_detail != nullptr)
     {
         children["mpa-detail"] = mpa_detail;
@@ -1405,6 +1397,7 @@ std::shared_ptr<Entity> Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

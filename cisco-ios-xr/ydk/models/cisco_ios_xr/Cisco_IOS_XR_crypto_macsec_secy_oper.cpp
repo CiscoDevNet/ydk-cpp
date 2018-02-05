@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Macsec::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> Macsec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(secy != nullptr)
     {
         children["secy"] = secy;
@@ -180,6 +181,7 @@ std::shared_ptr<Entity> Macsec::Secy::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interfaces != nullptr)
     {
         children["interfaces"] = interfaces;
@@ -260,14 +262,6 @@ std::shared_ptr<Entity> Macsec::Secy::Interfaces::get_child_by_name(const std::s
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Macsec::Secy::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -280,9 +274,14 @@ std::shared_ptr<Entity> Macsec::Secy::Interfaces::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -372,6 +371,7 @@ std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(stats != nullptr)
     {
         children["stats"] = stats;
@@ -481,14 +481,6 @@ std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::get_child_by
 
     if(child_yang_name == "rx-sc-stats")
     {
-        for(auto const & c : rx_sc_stats)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Macsec::Secy::Interfaces::Interface::Stats::RxScStats>();
         c->parent = this;
         rx_sc_stats.push_back(c);
@@ -501,6 +493,7 @@ std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::Stats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(intf_stats != nullptr)
     {
         children["intf-stats"] = intf_stats;
@@ -511,9 +504,13 @@ std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interfa
         children["tx-sc-stats"] = tx_sc_stats;
     }
 
+    count = 0;
     for (auto const & c : rx_sc_stats)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -626,6 +623,7 @@ std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::IntfStats::g
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::Stats::IntfStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -838,14 +836,6 @@ std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::g
 {
     if(child_yang_name == "txsa-stat")
     {
-        for(auto const & c : txsa_stat)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat>();
         c->parent = this;
         txsa_stat.push_back(c);
@@ -858,9 +848,14 @@ std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::g
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : txsa_stat)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -997,6 +992,7 @@ std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::T
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1143,14 +1139,6 @@ std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::RxScStats::g
 {
     if(child_yang_name == "rxsa-stat")
     {
-        for(auto const & c : rxsa_stat)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat>();
         c->parent = this;
         rxsa_stat.push_back(c);
@@ -1163,9 +1151,14 @@ std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::RxScStats::g
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::Stats::RxScStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rxsa_stat)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1374,6 +1367,7 @@ std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::RxScStats::R
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

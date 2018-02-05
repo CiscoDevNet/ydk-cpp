@@ -107,6 +107,7 @@ std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> CISCOEMBEDDEDEVENTMGRMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ceemhistory != nullptr)
     {
         children["ceemHistory"] = ceemhistory;
@@ -229,6 +230,7 @@ std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -324,14 +326,6 @@ std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::get_child_b
 {
     if(child_yang_name == "ceemEventMapEntry")
     {
-        for(auto const & c : ceemeventmapentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::Ceemeventmapentry>();
         c->parent = this;
         ceemeventmapentry.push_back(c);
@@ -344,9 +338,14 @@ std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ceemeventmapentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -430,6 +429,7 @@ std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::Ceemeventma
 std::map<std::string, std::shared_ptr<Entity>> CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::Ceemeventmapentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -535,14 +535,6 @@ std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::get_chi
 {
     if(child_yang_name == "ceemHistoryEventEntry")
     {
-        for(auto const & c : ceemhistoryevententry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::Ceemhistoryevententry>();
         c->parent = this;
         ceemhistoryevententry.push_back(c);
@@ -555,9 +547,14 @@ std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ceemhistoryevententry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -693,6 +690,7 @@ std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::Ceemhis
 std::map<std::string, std::shared_ptr<Entity>> CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::Ceemhistoryevententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -928,14 +926,6 @@ std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::get
 {
     if(child_yang_name == "ceemRegisteredPolicyEntry")
     {
-        for(auto const & c : ceemregisteredpolicyentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry>();
         c->parent = this;
         ceemregisteredpolicyentry.push_back(c);
@@ -948,9 +938,14 @@ std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::get
 std::map<std::string, std::shared_ptr<Entity>> CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ceemregisteredpolicyentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1090,6 +1085,7 @@ std::shared_ptr<Entity> CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Cee
 std::map<std::string, std::shared_ptr<Entity>> CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

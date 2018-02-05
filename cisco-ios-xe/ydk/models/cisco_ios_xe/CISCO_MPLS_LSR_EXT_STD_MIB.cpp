@@ -68,6 +68,7 @@ std::shared_ptr<Entity> CISCOMPLSLSREXTSTDMIB::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> CISCOMPLSLSREXTSTDMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cmplsxcexttable != nullptr)
     {
         children["cmplsXCExtTable"] = cmplsxcexttable;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::get_child_by_nam
 {
     if(child_yang_name == "cmplsXCExtEntry")
     {
-        for(auto const & c : cmplsxcextentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry>();
         c->parent = this;
         cmplsxcextentry.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cmplsxcextentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -287,6 +285,7 @@ std::shared_ptr<Entity> CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry:
 std::map<std::string, std::shared_ptr<Entity>> CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

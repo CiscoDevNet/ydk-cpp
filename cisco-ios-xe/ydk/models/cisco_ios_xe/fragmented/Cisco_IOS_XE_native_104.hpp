@@ -134,18 +134,18 @@ class Native::Mpls::Ldp::Enable2::Password::Option::SeqNum : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf seq_num; //type: uint16
-        class For_; //type: Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_
+        class For; //type: Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_> for_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For> for_;
         
 }; // Native::Mpls::Ldp::Enable2::Password::Option::SeqNum
 
 
-class Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_ : public ydk::Entity
+class Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For : public ydk::Entity
 {
     public:
-        For_();
-        ~For_();
+        For();
+        ~For();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -157,14 +157,14 @@ class Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_ : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class LINE; //type: Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE
+        class LINE; //type: Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE> > line;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE> > line;
         
-}; // Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_
+}; // Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For
 
 
-class Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE : public ydk::Entity
+class Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE : public ydk::Entity
 {
     public:
         LINE();
@@ -183,14 +183,14 @@ class Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE : public 
         ydk::YLeaf acl_name; //type: string
         ydk::YLeaf encryption_type; //type: uint8
         ydk::YLeaf line; //type: string
-        class KeyChain; //type: Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::KeyChain
+        class KeyChain; //type: Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::KeyChain
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::KeyChain> key_chain; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::KeyChain> key_chain; // presence node
         
-}; // Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE
+}; // Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE
 
 
-class Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::KeyChain : public ydk::Entity
+class Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::KeyChain : public ydk::Entity
 {
     public:
         KeyChain();
@@ -208,7 +208,7 @@ class Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::KeyChain
 
         ydk::YLeaf line; //type: string
 
-}; // Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For_::LINE::KeyChain
+}; // Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE::KeyChain
 
 
 class Native::Mpls::Ldp::Enable2::Password::Required : public ydk::Entity
@@ -805,18 +805,18 @@ class Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf seq_num; //type: uint16
-        class For_; //type: Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_
+        class For; //type: Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_> for_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For> for_;
         
 }; // Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum
 
 
-class Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_ : public ydk::Entity
+class Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For : public ydk::Entity
 {
     public:
-        For_();
-        ~For_();
+        For();
+        ~For();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -828,14 +828,14 @@ class Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_ : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class LINE; //type: Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE
+        class LINE; //type: Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE> > line;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE> > line;
         
-}; // Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_
+}; // Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For
 
 
-class Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE : public ydk::Entity
+class Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE : public ydk::Entity
 {
     public:
         LINE();
@@ -854,14 +854,14 @@ class Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LIN
         ydk::YLeaf acl_name; //type: string
         ydk::YLeaf encryption_type; //type: uint8
         ydk::YLeaf line; //type: string
-        class KeyChain; //type: Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::KeyChain
+        class KeyChain; //type: Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::KeyChain
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::KeyChain> key_chain; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::KeyChain> key_chain; // presence node
         
-}; // Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE
+}; // Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE
 
 
-class Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::KeyChain : public ydk::Entity
+class Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::KeyChain : public ydk::Entity
 {
     public:
         KeyChain();
@@ -879,7 +879,7 @@ class Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LIN
 
         ydk::YLeaf line; //type: string
 
-}; // Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For_::LINE::KeyChain
+}; // Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE::KeyChain
 
 
 class Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Required : public ydk::Entity
@@ -966,11 +966,11 @@ class Native::Mpls::Ldp::Session::Protection : public ydk::Entity
         std::string get_absolute_path() const override;
 
         class Duration; //type: Native::Mpls::Ldp::Session::Protection::Duration
-        class For_; //type: Native::Mpls::Ldp::Session::Protection::For_
+        class For; //type: Native::Mpls::Ldp::Session::Protection::For
         class Vrf; //type: Native::Mpls::Ldp::Session::Protection::Vrf
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Session::Protection::Duration> duration;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Session::Protection::For_> for_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Session::Protection::For> for_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Session::Protection::Vrf> vrf;
         
 }; // Native::Mpls::Ldp::Session::Protection
@@ -999,11 +999,11 @@ class Native::Mpls::Ldp::Session::Protection::Duration : public ydk::Entity
 }; // Native::Mpls::Ldp::Session::Protection::Duration
 
 
-class Native::Mpls::Ldp::Session::Protection::For_ : public ydk::Entity
+class Native::Mpls::Ldp::Session::Protection::For : public ydk::Entity
 {
     public:
-        For_();
-        ~For_();
+        For();
+        ~For();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1017,14 +1017,14 @@ class Native::Mpls::Ldp::Session::Protection::For_ : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf acl_name; //type: string
-        class Duration; //type: Native::Mpls::Ldp::Session::Protection::For_::Duration
+        class Duration; //type: Native::Mpls::Ldp::Session::Protection::For::Duration
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Session::Protection::For_::Duration> duration;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Session::Protection::For::Duration> duration;
         
-}; // Native::Mpls::Ldp::Session::Protection::For_
+}; // Native::Mpls::Ldp::Session::Protection::For
 
 
-class Native::Mpls::Ldp::Session::Protection::For_::Duration : public ydk::Entity
+class Native::Mpls::Ldp::Session::Protection::For::Duration : public ydk::Entity
 {
     public:
         Duration();
@@ -1044,7 +1044,7 @@ class Native::Mpls::Ldp::Session::Protection::For_::Duration : public ydk::Entit
         ydk::YLeaf holdup_time; //type: uint32
         ydk::YLeaf infinite; //type: empty
 
-}; // Native::Mpls::Ldp::Session::Protection::For_::Duration
+}; // Native::Mpls::Ldp::Session::Protection::For::Duration
 
 
 class Native::Mpls::Ldp::Session::Protection::Vrf : public ydk::Entity
@@ -1089,20 +1089,20 @@ class Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_ : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf vrf_name; //type: string
-        class For_; //type: Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_
+        class For; //type: Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For
         class Duration; //type: Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::Duration
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_> for_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For> for_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::Duration> duration;
         
 }; // Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_
 
 
-class Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_ : public ydk::Entity
+class Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For : public ydk::Entity
 {
     public:
-        For_();
-        ~For_();
+        For();
+        ~For();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1115,14 +1115,14 @@ class Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_ : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf acl_name; //type: string
-        class Duration; //type: Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::Duration
+        class Duration; //type: Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::Duration
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::Duration> duration;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::Duration> duration;
         
-}; // Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_
+}; // Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For
 
 
-class Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::Duration : public ydk::Entity
+class Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::Duration : public ydk::Entity
 {
     public:
         Duration();
@@ -1141,7 +1141,7 @@ class Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::Duration : public
         ydk::YLeaf holdup_time; //type: uint32
         ydk::YLeaf infinite; //type: empty
 
-}; // Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For_::Duration
+}; // Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::For::Duration
 
 
 class Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_::Duration : public ydk::Entity
@@ -1190,11 +1190,11 @@ class Native::Mpls::PrefixMap : public ydk::Entity
 }; // Native::Mpls::PrefixMap
 
 
-class Native::Mpls::Static_ : public ydk::Entity
+class Native::Mpls::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1207,14 +1207,14 @@ class Native::Mpls::Static_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Binding; //type: Native::Mpls::Static_::Binding
+        class Binding; //type: Native::Mpls::Static::Binding
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Static_::Binding> binding;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Static::Binding> binding;
         
-}; // Native::Mpls::Static_
+}; // Native::Mpls::Static
 
 
-class Native::Mpls::Static_::Binding : public ydk::Entity
+class Native::Mpls::Static::Binding : public ydk::Entity
 {
     public:
         Binding();
@@ -1231,14 +1231,14 @@ class Native::Mpls::Static_::Binding : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipv4; //type: Native::Mpls::Static_::Binding::Ipv4
+        class Ipv4; //type: Native::Mpls::Static::Binding::Ipv4
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Static_::Binding::Ipv4> ipv4;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Static::Binding::Ipv4> ipv4;
         
-}; // Native::Mpls::Static_::Binding
+}; // Native::Mpls::Static::Binding
 
 
-class Native::Mpls::Static_::Binding::Ipv4 : public ydk::Entity
+class Native::Mpls::Static::Binding::Ipv4 : public ydk::Entity
 {
     public:
         Ipv4();
@@ -1255,16 +1255,16 @@ class Native::Mpls::Static_::Binding::Ipv4 : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Global; //type: Native::Mpls::Static_::Binding::Ipv4::Global
-        class Vrf; //type: Native::Mpls::Static_::Binding::Ipv4::Vrf
+        class Global; //type: Native::Mpls::Static::Binding::Ipv4::Global
+        class Vrf; //type: Native::Mpls::Static::Binding::Ipv4::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Static_::Binding::Ipv4::Global> > global;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Static_::Binding::Ipv4::Vrf> > vrf;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Static::Binding::Ipv4::Global> > global;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Static::Binding::Ipv4::Vrf> > vrf;
         
-}; // Native::Mpls::Static_::Binding::Ipv4
+}; // Native::Mpls::Static::Binding::Ipv4
 
 
-class Native::Mpls::Static_::Binding::Ipv4::Global : public ydk::Entity
+class Native::Mpls::Static::Binding::Ipv4::Global : public ydk::Entity
 {
     public:
         Global();
@@ -1284,16 +1284,16 @@ class Native::Mpls::Static_::Binding::Ipv4::Global : public ydk::Entity
         ydk::YLeaf address; //type: string
         ydk::YLeaf mask; //type: string
         ydk::YLeaf label; //type: uint32
-        class Input; //type: Native::Mpls::Static_::Binding::Ipv4::Global::Input
-        class Output; //type: Native::Mpls::Static_::Binding::Ipv4::Global::Output
+        class Input; //type: Native::Mpls::Static::Binding::Ipv4::Global::Input
+        class Output; //type: Native::Mpls::Static::Binding::Ipv4::Global::Output
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Static_::Binding::Ipv4::Global::Input> input;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Static_::Binding::Ipv4::Global::Output> output;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Static::Binding::Ipv4::Global::Input> input;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Static::Binding::Ipv4::Global::Output> output;
         
-}; // Native::Mpls::Static_::Binding::Ipv4::Global
+}; // Native::Mpls::Static::Binding::Ipv4::Global
 
 
-class Native::Mpls::Static_::Binding::Ipv4::Global::Input : public ydk::Entity
+class Native::Mpls::Static::Binding::Ipv4::Global::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1311,10 +1311,10 @@ class Native::Mpls::Static_::Binding::Ipv4::Global::Input : public ydk::Entity
 
         ydk::YLeaf label; //type: uint32
 
-}; // Native::Mpls::Static_::Binding::Ipv4::Global::Input
+}; // Native::Mpls::Static::Binding::Ipv4::Global::Input
 
 
-class Native::Mpls::Static_::Binding::Ipv4::Global::Output : public ydk::Entity
+class Native::Mpls::Static::Binding::Ipv4::Global::Output : public ydk::Entity
 {
     public:
         Output();
@@ -1331,13 +1331,13 @@ class Native::Mpls::Static_::Binding::Ipv4::Global::Output : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf dst_next_hop; //type: string
-        ydk::YLeaf label; //type: one of uint32, enumeration
+        ydk::YLeaf label; //type: one of enumeration, uint32
         class Label;
 
-}; // Native::Mpls::Static_::Binding::Ipv4::Global::Output
+}; // Native::Mpls::Static::Binding::Ipv4::Global::Output
 
 
-class Native::Mpls::Static_::Binding::Ipv4::Vrf : public ydk::Entity
+class Native::Mpls::Static::Binding::Ipv4::Vrf : public ydk::Entity
 {
     public:
         Vrf();
@@ -1358,16 +1358,16 @@ class Native::Mpls::Static_::Binding::Ipv4::Vrf : public ydk::Entity
         ydk::YLeaf address; //type: string
         ydk::YLeaf mask; //type: string
         ydk::YLeaf label; //type: uint32
-        class Input; //type: Native::Mpls::Static_::Binding::Ipv4::Vrf::Input
-        class Output; //type: Native::Mpls::Static_::Binding::Ipv4::Vrf::Output
+        class Input; //type: Native::Mpls::Static::Binding::Ipv4::Vrf::Input
+        class Output; //type: Native::Mpls::Static::Binding::Ipv4::Vrf::Output
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Static_::Binding::Ipv4::Vrf::Input> input;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Static_::Binding::Ipv4::Vrf::Output> output;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Static::Binding::Ipv4::Vrf::Input> input;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Static::Binding::Ipv4::Vrf::Output> output;
         
-}; // Native::Mpls::Static_::Binding::Ipv4::Vrf
+}; // Native::Mpls::Static::Binding::Ipv4::Vrf
 
 
-class Native::Mpls::Static_::Binding::Ipv4::Vrf::Input : public ydk::Entity
+class Native::Mpls::Static::Binding::Ipv4::Vrf::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1385,10 +1385,10 @@ class Native::Mpls::Static_::Binding::Ipv4::Vrf::Input : public ydk::Entity
 
         ydk::YLeaf label; //type: uint32
 
-}; // Native::Mpls::Static_::Binding::Ipv4::Vrf::Input
+}; // Native::Mpls::Static::Binding::Ipv4::Vrf::Input
 
 
-class Native::Mpls::Static_::Binding::Ipv4::Vrf::Output : public ydk::Entity
+class Native::Mpls::Static::Binding::Ipv4::Vrf::Output : public ydk::Entity
 {
     public:
         Output();
@@ -1405,10 +1405,10 @@ class Native::Mpls::Static_::Binding::Ipv4::Vrf::Output : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf dst_next_hop; //type: string
-        ydk::YLeaf label; //type: one of uint32, enumeration
+        ydk::YLeaf label; //type: one of enumeration, uint32
         class Label;
 
-}; // Native::Mpls::Static_::Binding::Ipv4::Vrf::Output
+}; // Native::Mpls::Static::Binding::Ipv4::Vrf::Output
 
 
 class Native::Mpls::TrafficEng : public ydk::Entity
@@ -3544,18 +3544,18 @@ class Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_ : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf po_num; //type: uint16
-        class Explicit_; //type: Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_
+        class Explicit; //type: Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_> explicit_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit> explicit_;
         
 }; // Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_
 
 
-class Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_ : public ydk::Entity
+class Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit : public ydk::Entity
 {
     public:
-        Explicit_();
-        ~Explicit_();
+        Explicit();
+        ~Explicit();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3567,16 +3567,16 @@ class Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Expli
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Identifier_; //type: Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Identifier_
-        class Name; //type: Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Name
+        class Identifier_; //type: Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Identifier_
+        class Name; //type: Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Name
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Identifier_> identifier;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Name> name;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Identifier_> identifier;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Name> name;
         
-}; // Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_
+}; // Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit
 
 
-class Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Identifier_ : public ydk::Entity
+class Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Identifier_ : public ydk::Entity
 {
     public:
         Identifier_();
@@ -3595,10 +3595,10 @@ class Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Expli
         ydk::YLeaf pnum; //type: uint16
         ydk::YLeaf verbatim; //type: empty
 
-}; // Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Identifier_
+}; // Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Identifier_
 
 
-class Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Name : public ydk::Entity
+class Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Name : public ydk::Entity
 {
     public:
         Name();
@@ -3617,7 +3617,7 @@ class Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Expli
         ydk::YLeaf pname; //type: string
         ydk::YLeaf verbatim; //type: empty
 
-}; // Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit_::Name
+}; // Native::Mpls::TrafficEng::PathOption::List::Identifier::PathOption_::Explicit::Name
 
 
 class Native::Mpls::TrafficEng::PathOption::List::Name : public ydk::Entity
@@ -3662,18 +3662,18 @@ class Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_ : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf po_num; //type: uint16
-        class Explicit_; //type: Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_
+        class Explicit; //type: Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_> explicit_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit> explicit_;
         
 }; // Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_
 
 
-class Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_ : public ydk::Entity
+class Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit : public ydk::Entity
 {
     public:
-        Explicit_();
-        ~Explicit_();
+        Explicit();
+        ~Explicit();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3685,16 +3685,16 @@ class Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_ :
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Identifier; //type: Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Identifier
-        class Name_; //type: Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Name_
+        class Identifier; //type: Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Identifier
+        class Name_; //type: Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Name_
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Identifier> identifier;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Name_> name;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Identifier> identifier;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Name_> name;
         
-}; // Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_
+}; // Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit
 
 
-class Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Identifier : public ydk::Entity
+class Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Identifier : public ydk::Entity
 {
     public:
         Identifier();
@@ -3713,10 +3713,10 @@ class Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::
         ydk::YLeaf pnum; //type: uint16
         ydk::YLeaf verbatim; //type: empty
 
-}; // Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Identifier
+}; // Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Identifier
 
 
-class Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Name_ : public ydk::Entity
+class Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Name_ : public ydk::Entity
 {
     public:
         Name_();
@@ -3735,7 +3735,7 @@ class Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::
         ydk::YLeaf pname; //type: string
         ydk::YLeaf verbatim; //type: empty
 
-}; // Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit_::Name_
+}; // Native::Mpls::TrafficEng::PathOption::List::Name::PathOption_::Explicit::Name_
 
 
 class Native::Mpls::TrafficEng::PathSelection : public ydk::Entity
@@ -3789,7 +3789,7 @@ class Native::Mpls::TrafficEng::PathSelection::Invalidation : public ydk::Entity
 
 }; // Native::Mpls::TrafficEng::PathSelection::Invalidation
 
-class Native::Mpls::Static_::Binding::Ipv4::Global::Output::Label : public ydk::Enum
+class Native::Mpls::Static::Binding::Ipv4::Global::Output::Label : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf explicit_null;
@@ -3797,7 +3797,7 @@ class Native::Mpls::Static_::Binding::Ipv4::Global::Output::Label : public ydk::
 
 };
 
-class Native::Mpls::Static_::Binding::Ipv4::Vrf::Output::Label : public ydk::Enum
+class Native::Mpls::Static::Binding::Ipv4::Vrf::Output::Label : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf explicit_null;

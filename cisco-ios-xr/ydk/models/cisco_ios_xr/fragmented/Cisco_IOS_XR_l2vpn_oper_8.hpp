@@ -72,12 +72,12 @@ class L2Vpnv2::Standby::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue : publ
         std::string get_absolute_path() const override;
 
         ydk::YLeaf rd; //type: L2vpnAdRd
-        class Auto_; //type: L2Vpnv2::Standby::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::Auto_
+        class Auto; //type: L2Vpnv2::Standby::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::Auto
         class TwoByteAs; //type: L2Vpnv2::Standby::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::TwoByteAs
         class FourByteAs; //type: L2Vpnv2::Standby::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::FourByteAs
         class V4Addr; //type: L2Vpnv2::Standby::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::V4Addr
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::Auto_> auto_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::Auto> auto_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::TwoByteAs> two_byte_as;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::FourByteAs> four_byte_as;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::V4Addr> v4_addr;
@@ -85,11 +85,11 @@ class L2Vpnv2::Standby::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue : publ
 }; // L2Vpnv2::Standby::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue
 
 
-class L2Vpnv2::Standby::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::Auto_ : public ydk::Entity
+class L2Vpnv2::Standby::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::Auto : public ydk::Entity
 {
     public:
-        Auto_();
-        ~Auto_();
+        Auto();
+        ~Auto();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -105,7 +105,7 @@ class L2Vpnv2::Standby::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::Auto_
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf auto_index; //type: uint16
 
-}; // L2Vpnv2::Standby::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::Auto_
+}; // L2Vpnv2::Standby::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::Auto
 
 
 class L2Vpnv2::Standby::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::TwoByteAs : public ydk::Entity
@@ -440,18 +440,18 @@ class L2Vpnv2::Standby::Indexes : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Index_; //type: L2Vpnv2::Standby::Indexes::Index_
+        class Index; //type: L2Vpnv2::Standby::Indexes::Index
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::Indexes::Index_> > index_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::Indexes::Index> > index_;
         
 }; // L2Vpnv2::Standby::Indexes
 
 
-class L2Vpnv2::Standby::Indexes::Index_ : public ydk::Entity
+class L2Vpnv2::Standby::Indexes::Index : public ydk::Entity
 {
     public:
-        Index_();
-        ~Index_();
+        Index();
+        ~Index();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -473,7 +473,7 @@ class L2Vpnv2::Standby::Indexes::Index_ : public ydk::Entity
         ydk::YLeaf max_num_id_mgr; //type: uint32
         ydk::YLeaf num_id_mgr_in_use; //type: uint32
 
-}; // L2Vpnv2::Standby::Indexes::Index_
+}; // L2Vpnv2::Standby::Indexes::Index
 
 
 class L2Vpnv2::Standby::XconnectSummary : public ydk::Entity
@@ -1550,22 +1550,22 @@ class L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridg
         std::string get_absolute_path() const override;
 
         ydk::YLeaf vpls_id_type; //type: L2vpnAdVplsId
-        class Auto_; //type: L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto_
+        class Auto; //type: L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto
         class TwoByteAs; //type: L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs
         class V4Addr; //type: L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::V4Addr
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto_> auto_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto> auto_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs> two_byte_as;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::V4Addr> v4_addr;
         
 }; // L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi
 
 
-class L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto_ : public ydk::Entity
+class L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto : public ydk::Entity
 {
     public:
-        Auto_();
-        ~Auto_();
+        Auto();
+        ~Auto();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1581,7 +1581,7 @@ class L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridg
         ydk::YLeaf asn; //type: uint16
         ydk::YLeaf vpn_id; //type: uint32
 
-}; // L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto_
+}; // L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto
 
 
 class L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs : public ydk::Entity
@@ -1648,22 +1648,22 @@ class L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridg
         std::string get_absolute_path() const override;
 
         ydk::YLeaf vpls_id_type; //type: L2vpnAdVplsId
-        class Auto_; //type: L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto_
+        class Auto; //type: L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto
         class TwoByteAs; //type: L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs
         class V4Addr; //type: L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::V4Addr
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto_> auto_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto> auto_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs> two_byte_as;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::V4Addr> v4_addr;
         
 }; // L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi
 
 
-class L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto_ : public ydk::Entity
+class L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto : public ydk::Entity
 {
     public:
-        Auto_();
-        ~Auto_();
+        Auto();
+        ~Auto();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1679,7 +1679,7 @@ class L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridg
         ydk::YLeaf asn; //type: uint16
         ydk::YLeaf vpn_id; //type: uint32
 
-}; // L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto_
+}; // L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto
 
 
 class L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs : public ydk::Entity
@@ -4000,22 +4000,22 @@ class L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgeP
         std::string get_absolute_path() const override;
 
         ydk::YLeaf vpls_id_type; //type: L2vpnAdVplsId
-        class Auto_; //type: L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto_
+        class Auto; //type: L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto
         class TwoByteAs; //type: L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs
         class V4Addr; //type: L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::V4Addr
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto_> auto_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto> auto_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs> two_byte_as;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::V4Addr> v4_addr;
         
 }; // L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi
 
 
-class L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto_ : public ydk::Entity
+class L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto : public ydk::Entity
 {
     public:
-        Auto_();
-        ~Auto_();
+        Auto();
+        ~Auto();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -4031,7 +4031,7 @@ class L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgeP
         ydk::YLeaf asn; //type: uint16
         ydk::YLeaf vpn_id; //type: uint32
 
-}; // L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto_
+}; // L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto
 
 
 class L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs : public ydk::Entity
@@ -4098,22 +4098,22 @@ class L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgeP
         std::string get_absolute_path() const override;
 
         ydk::YLeaf vpls_id_type; //type: L2vpnAdVplsId
-        class Auto_; //type: L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto_
+        class Auto; //type: L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto
         class TwoByteAs; //type: L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs
         class V4Addr; //type: L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::V4Addr
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto_> auto_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto> auto_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs> two_byte_as;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::V4Addr> v4_addr;
         
 }; // L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi
 
 
-class L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto_ : public ydk::Entity
+class L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto : public ydk::Entity
 {
     public:
-        Auto_();
-        ~Auto_();
+        Auto();
+        ~Auto();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -4129,7 +4129,7 @@ class L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgeP
         ydk::YLeaf asn; //type: uint16
         ydk::YLeaf vpn_id; //type: uint32
 
-}; // L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto_
+}; // L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto
 
 
 class L2Vpnv2::Standby::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs : public ydk::Entity

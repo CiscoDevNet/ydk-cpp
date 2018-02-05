@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Logging::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> Logging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(history != nullptr)
     {
         children["history"] = history;
@@ -175,6 +176,7 @@ std::shared_ptr<Entity> Logging::History::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Logging::History::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -309,6 +311,7 @@ std::shared_ptr<Entity> Syslog::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> Syslog::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(logging_files != nullptr)
     {
         children["logging-files"] = logging_files;
@@ -429,14 +432,6 @@ std::shared_ptr<Entity> Syslog::LoggingFiles::get_child_by_name(const std::strin
 {
     if(child_yang_name == "file-log-detail")
     {
-        for(auto const & c : file_log_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Syslog::LoggingFiles::FileLogDetail>();
         c->parent = this;
         file_log_detail.push_back(c);
@@ -449,9 +444,14 @@ std::shared_ptr<Entity> Syslog::LoggingFiles::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingFiles::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : file_log_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -531,6 +531,7 @@ std::shared_ptr<Entity> Syslog::LoggingFiles::FileLogDetail::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingFiles::FileLogDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -626,14 +627,6 @@ std::shared_ptr<Entity> Syslog::AnRemoteServers::get_child_by_name(const std::st
 {
     if(child_yang_name == "an-remote-log-server")
     {
-        for(auto const & c : an_remote_log_server)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Syslog::AnRemoteServers::AnRemoteLogServer>();
         c->parent = this;
         an_remote_log_server.push_back(c);
@@ -646,9 +639,14 @@ std::shared_ptr<Entity> Syslog::AnRemoteServers::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Syslog::AnRemoteServers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : an_remote_log_server)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -736,6 +734,7 @@ std::shared_ptr<Entity> Syslog::AnRemoteServers::AnRemoteLogServer::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Syslog::AnRemoteServers::AnRemoteLogServer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -851,14 +850,6 @@ std::shared_ptr<Entity> Syslog::Messages::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "message")
     {
-        for(auto const & c : message)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Syslog::Messages::Message>();
         c->parent = this;
         message.push_back(c);
@@ -871,9 +862,14 @@ std::shared_ptr<Entity> Syslog::Messages::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Syslog::Messages::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : message)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -993,6 +989,7 @@ std::shared_ptr<Entity> Syslog::Messages::Message::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Syslog::Messages::Message::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1273,14 +1270,6 @@ std::shared_ptr<Entity> Syslog::LoggingStatistics::get_child_by_name(const std::
 
     if(child_yang_name == "remote-logging-stat")
     {
-        for(auto const & c : remote_logging_stat)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Syslog::LoggingStatistics::RemoteLoggingStat>();
         c->parent = this;
         remote_logging_stat.push_back(c);
@@ -1289,14 +1278,6 @@ std::shared_ptr<Entity> Syslog::LoggingStatistics::get_child_by_name(const std::
 
     if(child_yang_name == "tls-remote-logging-stat")
     {
-        for(auto const & c : tls_remote_logging_stat)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Syslog::LoggingStatistics::TlsRemoteLoggingStat>();
         c->parent = this;
         tls_remote_logging_stat.push_back(c);
@@ -1305,14 +1286,6 @@ std::shared_ptr<Entity> Syslog::LoggingStatistics::get_child_by_name(const std::
 
     if(child_yang_name == "file-logging-stat")
     {
-        for(auto const & c : file_logging_stat)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Syslog::LoggingStatistics::FileLoggingStat>();
         c->parent = this;
         file_logging_stat.push_back(c);
@@ -1325,6 +1298,7 @@ std::shared_ptr<Entity> Syslog::LoggingStatistics::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(logging_stats != nullptr)
     {
         children["logging-stats"] = logging_stats;
@@ -1350,19 +1324,31 @@ std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::get_ch
         children["buffer-logging-stats"] = buffer_logging_stats;
     }
 
+    count = 0;
     for (auto const & c : remote_logging_stat)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : tls_remote_logging_stat)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : file_logging_stat)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1450,6 +1436,7 @@ std::shared_ptr<Entity> Syslog::LoggingStatistics::LoggingStats::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::LoggingStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1575,6 +1562,7 @@ std::shared_ptr<Entity> Syslog::LoggingStatistics::ConsoleLoggingStats::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::ConsoleLoggingStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1700,6 +1688,7 @@ std::shared_ptr<Entity> Syslog::LoggingStatistics::MonitorLoggingStats::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::MonitorLoggingStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1825,6 +1814,7 @@ std::shared_ptr<Entity> Syslog::LoggingStatistics::TrapLoggingStats::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::TrapLoggingStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1950,6 +1940,7 @@ std::shared_ptr<Entity> Syslog::LoggingStatistics::BufferLoggingStats::get_child
 std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::BufferLoggingStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2067,6 +2058,7 @@ std::shared_ptr<Entity> Syslog::LoggingStatistics::RemoteLoggingStat::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::RemoteLoggingStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2164,6 +2156,7 @@ std::shared_ptr<Entity> Syslog::LoggingStatistics::TlsRemoteLoggingStat::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::TlsRemoteLoggingStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2261,6 +2254,7 @@ std::shared_ptr<Entity> Syslog::LoggingStatistics::FileLoggingStat::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Syslog::LoggingStatistics::FileLoggingStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

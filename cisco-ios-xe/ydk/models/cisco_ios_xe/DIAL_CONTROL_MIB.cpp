@@ -120,6 +120,7 @@ std::shared_ptr<Entity> DIALCONTROLMIB::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dialctlconfiguration != nullptr)
     {
         children["dialCtlConfiguration"] = dialctlconfiguration;
@@ -247,6 +248,7 @@ std::shared_ptr<Entity> DIALCONTROLMIB::Dialctlconfiguration::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::Dialctlconfiguration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -344,6 +346,7 @@ std::shared_ptr<Entity> DIALCONTROLMIB::Callhistory::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::Callhistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -439,14 +442,6 @@ std::shared_ptr<Entity> DIALCONTROLMIB::Dialctlpeercfgtable::get_child_by_name(c
 {
     if(child_yang_name == "dialCtlPeerCfgEntry")
     {
-        for(auto const & c : dialctlpeercfgentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry>();
         c->parent = this;
         dialctlpeercfgentry.push_back(c);
@@ -459,9 +454,14 @@ std::shared_ptr<Entity> DIALCONTROLMIB::Dialctlpeercfgtable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::Dialctlpeercfgtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dialctlpeercfgentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -649,6 +649,7 @@ std::shared_ptr<Entity> DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry
 std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::Dialctlpeercfgtable::Dialctlpeercfgentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1014,14 +1015,6 @@ std::shared_ptr<Entity> DIALCONTROLMIB::Callactivetable::get_child_by_name(const
 {
     if(child_yang_name == "callActiveEntry")
     {
-        for(auto const & c : callactiveentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DIALCONTROLMIB::Callactivetable::Callactiveentry>();
         c->parent = this;
         callactiveentry.push_back(c);
@@ -1034,9 +1027,14 @@ std::shared_ptr<Entity> DIALCONTROLMIB::Callactivetable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::Callactivetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : callactiveentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1172,6 +1170,7 @@ std::shared_ptr<Entity> DIALCONTROLMIB::Callactivetable::Callactiveentry::get_ch
 std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::Callactivetable::Callactiveentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1407,14 +1406,6 @@ std::shared_ptr<Entity> DIALCONTROLMIB::Callhistorytable::get_child_by_name(cons
 {
     if(child_yang_name == "callHistoryEntry")
     {
-        for(auto const & c : callhistoryentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DIALCONTROLMIB::Callhistorytable::Callhistoryentry>();
         c->parent = this;
         callhistoryentry.push_back(c);
@@ -1427,9 +1418,14 @@ std::shared_ptr<Entity> DIALCONTROLMIB::Callhistorytable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::Callhistorytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : callhistoryentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1573,6 +1569,7 @@ std::shared_ptr<Entity> DIALCONTROLMIB::Callhistorytable::Callhistoryentry::get_
 std::map<std::string, std::shared_ptr<Entity>> DIALCONTROLMIB::Callhistorytable::Callhistoryentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -419,7 +419,7 @@ class Native::Interface::TenGigabitEthernet::Ip : public ydk::Entity
 
         ydk::YLeaf admission; //type: string
         ydk::YLeaf unnumbered; //type: string
-        ydk::YLeaf directed_broadcast; //type: one of string, uint16
+        ydk::YLeaf directed_broadcast; //type: one of uint16, string
         ydk::YLeaf local_proxy_arp; //type: empty
         ydk::YLeaf proxy_arp; //type: boolean
         ydk::YLeaf redirects; //type: boolean
@@ -553,7 +553,7 @@ class Native::Interface::TenGigabitEthernet::Ip::AccessGroup::In::CommonAcl : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf common; //type: one of string, uint16
+        ydk::YLeaf common; //type: one of uint16, string
         ydk::YLeaf in; //type: empty
 
 }; // Native::Interface::TenGigabitEthernet::Ip::AccessGroup::In::CommonAcl
@@ -575,7 +575,7 @@ class Native::Interface::TenGigabitEthernet::Ip::AccessGroup::In::Acl : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf acl_name; //type: one of string, uint16
+        ydk::YLeaf acl_name; //type: one of uint16, string
         ydk::YLeaf in; //type: empty
 
 }; // Native::Interface::TenGigabitEthernet::Ip::AccessGroup::In::Acl
@@ -622,7 +622,7 @@ class Native::Interface::TenGigabitEthernet::Ip::AccessGroup::Out::CommonAcl : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf common; //type: one of string, uint16
+        ydk::YLeaf common; //type: one of uint16, string
         ydk::YLeaf out; //type: empty
 
 }; // Native::Interface::TenGigabitEthernet::Ip::AccessGroup::Out::CommonAcl
@@ -644,7 +644,7 @@ class Native::Interface::TenGigabitEthernet::Ip::AccessGroup::Out::Acl : public 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf acl_name; //type: one of string, uint16
+        ydk::YLeaf acl_name; //type: one of uint16, string
         ydk::YLeaf out; //type: empty
 
 }; // Native::Interface::TenGigabitEthernet::Ip::AccessGroup::Out::Acl
@@ -2750,20 +2750,20 @@ class Native::Interface::TenGigabitEthernet::Ip::Rsvp::Bandwidth : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf percent; //type: uint16
-        class Value_; //type: Native::Interface::TenGigabitEthernet::Ip::Rsvp::Bandwidth::Value_
+        class Value; //type: Native::Interface::TenGigabitEthernet::Ip::Rsvp::Bandwidth::Value
         class Mam; //type: Native::Interface::TenGigabitEthernet::Ip::Rsvp::Bandwidth::Mam
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Rsvp::Bandwidth::Value_> value_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Rsvp::Bandwidth::Value> value_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Rsvp::Bandwidth::Mam> mam;
         
 }; // Native::Interface::TenGigabitEthernet::Ip::Rsvp::Bandwidth
 
 
-class Native::Interface::TenGigabitEthernet::Ip::Rsvp::Bandwidth::Value_ : public ydk::Entity
+class Native::Interface::TenGigabitEthernet::Ip::Rsvp::Bandwidth::Value : public ydk::Entity
 {
     public:
-        Value_();
-        ~Value_();
+        Value();
+        ~Value();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2778,7 +2778,7 @@ class Native::Interface::TenGigabitEthernet::Ip::Rsvp::Bandwidth::Value_ : publi
         ydk::YLeaf value_; //type: uint32
         ydk::YLeaf sub_pool; //type: uint32
 
-}; // Native::Interface::TenGigabitEthernet::Ip::Rsvp::Bandwidth::Value_
+}; // Native::Interface::TenGigabitEthernet::Ip::Rsvp::Bandwidth::Value
 
 
 class Native::Interface::TenGigabitEthernet::Ip::Rsvp::Bandwidth::Mam : public ydk::Entity

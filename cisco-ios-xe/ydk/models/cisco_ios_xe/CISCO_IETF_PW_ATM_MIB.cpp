@@ -68,6 +68,7 @@ std::shared_ptr<Entity> CISCOIETFPWATMMIB::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWATMMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cpwvcatmtable != nullptr)
     {
         children["cpwVcAtmTable"] = cpwvcatmtable;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> CISCOIETFPWATMMIB::Cpwvcatmtable::get_child_by_name(cons
 {
     if(child_yang_name == "cpwVcAtmEntry")
     {
-        for(auto const & c : cpwvcatmentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmentry>();
         c->parent = this;
         cpwvcatmentry.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> CISCOIETFPWATMMIB::Cpwvcatmtable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWATMMIB::Cpwvcatmtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpwvcatmentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -363,6 +361,7 @@ std::shared_ptr<Entity> CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmentry::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWATMMIB::Cpwvcatmtable::Cpwvcatmentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

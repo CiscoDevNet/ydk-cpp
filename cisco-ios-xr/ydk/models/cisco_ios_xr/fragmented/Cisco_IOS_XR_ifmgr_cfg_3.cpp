@@ -64,6 +64,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcReports::HoVcHour24HoVcReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -152,14 +153,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "ho-vc-hour24ho-vc-threshold")
     {
-        for(auto const & c : ho_vc_hour24ho_vc_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::HoVcHour24HoVcThreshold>();
         c->parent = this;
         ho_vc_hour24ho_vc_threshold.push_back(c);
@@ -172,9 +165,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ho_vc_hour24ho_vc_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -247,6 +245,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24HoVc::HoVcHour24HoVcThresholds::HoVcHour24HoVcThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -407,6 +406,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(second30fec != nullptr)
     {
         children["second30fec"] = second30fec;
@@ -525,6 +525,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(second30fec_thresholds != nullptr)
     {
         children["second30fec-thresholds"] = second30fec_thresholds;
@@ -603,14 +604,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "second30fec-threshold")
     {
-        for(auto const & c : second30fec_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecThresholds::Second30FecThreshold>();
         c->parent = this;
         second30fec_threshold.push_back(c);
@@ -623,9 +616,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : second30fec_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -698,6 +696,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecThresholds::Second30FecThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -786,14 +785,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "second30fec-report")
     {
-        for(auto const & c : second30fec_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecReports::Second30FecReport>();
         c->parent = this;
         second30fec_report.push_back(c);
@@ -806,9 +797,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : second30fec_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -881,6 +877,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Fec::Second30FecReports::Second30FecReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -989,6 +986,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(second30_optics_reports != nullptr)
     {
         children["second30-optics-reports"] = second30_optics_reports;
@@ -1067,14 +1065,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "second30-optics-report")
     {
-        for(auto const & c : second30_optics_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsReports::Second30OpticsReport>();
         c->parent = this;
         second30_optics_report.push_back(c);
@@ -1087,9 +1077,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : second30_optics_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1158,6 +1153,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsReports::Second30OpticsReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1236,14 +1232,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "second30-optics-threshold")
     {
-        for(auto const & c : second30_optics_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsThresholds::Second30OpticsThreshold>();
         c->parent = this;
         second30_optics_threshold.push_back(c);
@@ -1256,9 +1244,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : second30_optics_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1335,6 +1328,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsThresholds::Second30OpticsThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1453,6 +1447,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Secyif::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(second30secyif_thresholds != nullptr)
     {
         children["second30secyif-thresholds"] = second30secyif_thresholds;
@@ -1531,14 +1526,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "second30secyif-threshold")
     {
-        for(auto const & c : second30secyif_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Secyif::Second30SecyifThresholds::Second30SecyifThreshold>();
         c->parent = this;
         second30secyif_threshold.push_back(c);
@@ -1551,9 +1538,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Secyif::Second30SecyifThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : second30secyif_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1626,6 +1618,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Secyif::Second30SecyifThresholds::Second30SecyifThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1714,14 +1707,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "second30secyif-report")
     {
-        for(auto const & c : second30secyif_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Secyif::Second30SecyifReports::Second30SecyifReport>();
         c->parent = this;
         second30secyif_report.push_back(c);
@@ -1734,9 +1719,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Secyif::Second30SecyifReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : second30secyif_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1809,6 +1799,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Secyif::Second30SecyifReports::Second30SecyifReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1917,6 +1908,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Secyrx::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(second30secyrx_thresholds != nullptr)
     {
         children["second30secyrx-thresholds"] = second30secyrx_thresholds;
@@ -1995,14 +1987,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "second30secyrx-threshold")
     {
-        for(auto const & c : second30secyrx_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Secyrx::Second30SecyrxThresholds::Second30SecyrxThreshold>();
         c->parent = this;
         second30secyrx_threshold.push_back(c);
@@ -2015,9 +1999,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Secyrx::Second30SecyrxThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : second30secyrx_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2090,6 +2079,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Secyrx::Second30SecyrxThresholds::Second30SecyrxThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2178,14 +2168,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "second30secyrx-report")
     {
-        for(auto const & c : second30secyrx_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Secyrx::Second30SecyrxReports::Second30SecyrxReport>();
         c->parent = this;
         second30secyrx_report.push_back(c);
@@ -2198,9 +2180,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Secyrx::Second30SecyrxReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : second30secyrx_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2273,6 +2260,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Secyrx::Second30SecyrxReports::Second30SecyrxReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2381,6 +2369,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(second30_otn_threshes != nullptr)
     {
         children["second30-otn-threshes"] = second30_otn_threshes;
@@ -2459,14 +2448,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "second30-otn-thresh")
     {
-        for(auto const & c : second30_otn_thresh)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnThreshes::Second30OtnThresh>();
         c->parent = this;
         second30_otn_thresh.push_back(c);
@@ -2479,9 +2460,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnThreshes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : second30_otn_thresh)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2554,6 +2540,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnThreshes::Second30OtnThresh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2642,14 +2629,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "second30otn-report")
     {
-        for(auto const & c : second30otn_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnReports::Second30OtnReport>();
         c->parent = this;
         second30otn_report.push_back(c);
@@ -2662,9 +2641,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : second30otn_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2737,6 +2721,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Otn::Second30OtnReports::Second30OtnReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2845,6 +2830,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Secytx::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(second30secytx_thresholds != nullptr)
     {
         children["second30secytx-thresholds"] = second30secytx_thresholds;
@@ -2923,14 +2909,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "second30secytx-threshold")
     {
-        for(auto const & c : second30secytx_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Secytx::Second30SecytxThresholds::Second30SecytxThreshold>();
         c->parent = this;
         second30secytx_threshold.push_back(c);
@@ -2943,9 +2921,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Secytx::Second30SecytxThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : second30secytx_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3018,6 +3001,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Secytx::Second30SecytxThresholds::Second30SecytxThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3106,14 +3090,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "second30secytx-report")
     {
-        for(auto const & c : second30secytx_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Secytx::Second30SecytxReports::Second30SecytxReport>();
         c->parent = this;
         second30secytx_report.push_back(c);
@@ -3126,9 +3102,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Secytx::Second30SecytxReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : second30secytx_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3201,6 +3182,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Secytx::Second30SecytxReports::Second30SecytxReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3289,14 +3271,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "hour24otn-tcm")
     {
-        for(auto const & c : hour24otn_tcm)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm>();
         c->parent = this;
         hour24otn_tcm.push_back(c);
@@ -3309,9 +3283,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hour24otn_tcm)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3407,6 +3386,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hour24otn_tcm_thresholds != nullptr)
     {
         children["hour24otn-tcm-thresholds"] = hour24otn_tcm_thresholds;
@@ -3495,14 +3475,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "hour24otn-tcm-threshold")
     {
-        for(auto const & c : hour24otn_tcm_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmThresholds::Hour24OtnTcmThreshold>();
         c->parent = this;
         hour24otn_tcm_threshold.push_back(c);
@@ -3515,9 +3487,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hour24otn_tcm_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3590,6 +3567,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmThresholds::Hour24OtnTcmThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3678,14 +3656,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "hour24otn-tcm-report")
     {
-        for(auto const & c : hour24otn_tcm_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmReports::Hour24OtnTcmReport>();
         c->parent = this;
         hour24otn_tcm_report.push_back(c);
@@ -3698,9 +3668,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hour24otn_tcm_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3773,6 +3748,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24OtnTcms::Hour24OtnTcm::Hour24OtnTcmReports::Hour24OtnTcmReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3868,6 +3844,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sts_minute15_path != nullptr)
     {
         children["sts-minute15-path"] = sts_minute15_path;
@@ -3961,6 +3938,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sts_minute15_path_reports != nullptr)
     {
         children["sts-minute15-path-reports"] = sts_minute15_path_reports;
@@ -4039,14 +4017,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "sts-minute15-path-report")
     {
-        for(auto const & c : sts_minute15_path_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::StsMinute15PathReport>();
         c->parent = this;
         sts_minute15_path_report.push_back(c);
@@ -4059,9 +4029,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sts_minute15_path_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4134,6 +4109,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::StsMinute15PathReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4222,14 +4198,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "sts-minute15-path-threshold")
     {
-        for(auto const & c : sts_minute15_path_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::StsMinute15PathThreshold>();
         c->parent = this;
         sts_minute15_path_threshold.push_back(c);
@@ -4242,9 +4210,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sts_minute15_path_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4317,6 +4290,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::StsMinute15PathThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4477,6 +4451,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hour24otn != nullptr)
     {
         children["hour24otn"] = hour24otn;
@@ -4595,6 +4570,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hour24otn_thresholds != nullptr)
     {
         children["hour24otn-thresholds"] = hour24otn_thresholds;
@@ -4673,14 +4649,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "hour24otn-threshold")
     {
-        for(auto const & c : hour24otn_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnThresholds::Hour24OtnThreshold>();
         c->parent = this;
         hour24otn_threshold.push_back(c);
@@ -4693,9 +4661,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hour24otn_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4768,6 +4741,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnThresholds::Hour24OtnThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4856,14 +4830,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "hour24otn-report")
     {
-        for(auto const & c : hour24otn_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnReports::Hour24OtnReport>();
         c->parent = this;
         hour24otn_report.push_back(c);
@@ -4876,9 +4842,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hour24otn_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4951,6 +4922,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Otn::Hour24OtnReports::Hour24OtnReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5059,6 +5031,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hour24_optics_thresholds != nullptr)
     {
         children["hour24-optics-thresholds"] = hour24_optics_thresholds;
@@ -5137,14 +5110,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "hour24-optics-threshold")
     {
-        for(auto const & c : hour24_optics_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::Hour24OpticsThreshold>();
         c->parent = this;
         hour24_optics_threshold.push_back(c);
@@ -5157,9 +5122,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hour24_optics_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5236,6 +5206,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::Hour24OpticsThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5334,14 +5305,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "hour24-optics-report")
     {
-        for(auto const & c : hour24_optics_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::Hour24OpticsReport>();
         c->parent = this;
         hour24_optics_report.push_back(c);
@@ -5354,9 +5317,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hour24_optics_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5425,6 +5393,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::Hour24OpticsReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5523,6 +5492,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hour24fec_thresholds != nullptr)
     {
         children["hour24fec-thresholds"] = hour24fec_thresholds;
@@ -5601,14 +5571,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "hour24fec-threshold")
     {
-        for(auto const & c : hour24fec_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecThresholds::Hour24FecThreshold>();
         c->parent = this;
         hour24fec_threshold.push_back(c);
@@ -5621,9 +5583,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hour24fec_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5696,6 +5663,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecThresholds::Hour24FecThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5784,14 +5752,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "hour24fec-report")
     {
-        for(auto const & c : hour24fec_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecReports::Hour24FecReport>();
         c->parent = this;
         hour24fec_report.push_back(c);
@@ -5804,9 +5764,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hour24fec_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5879,6 +5844,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Fec::Hour24FecReports::Hour24FecReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5987,6 +5953,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Secyif::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hour24secyif_reports != nullptr)
     {
         children["hour24secyif-reports"] = hour24secyif_reports;
@@ -6065,14 +6032,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "hour24secyif-report")
     {
-        for(auto const & c : hour24secyif_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Secyif::Hour24SecyifReports::Hour24SecyifReport>();
         c->parent = this;
         hour24secyif_report.push_back(c);
@@ -6085,9 +6044,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Secyif::Hour24SecyifReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hour24secyif_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6160,6 +6124,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Secyif::Hour24SecyifReports::Hour24SecyifReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6248,14 +6213,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "hour24secyif-threshold")
     {
-        for(auto const & c : hour24secyif_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Secyif::Hour24SecyifThresholds::Hour24SecyifThreshold>();
         c->parent = this;
         hour24secyif_threshold.push_back(c);
@@ -6268,9 +6225,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Secyif::Hour24SecyifThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hour24secyif_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6343,6 +6305,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Secyif::Hour24SecyifThresholds::Hour24SecyifThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6451,6 +6414,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Secyrx::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hour24secyrx_reports != nullptr)
     {
         children["hour24secyrx-reports"] = hour24secyrx_reports;
@@ -6529,14 +6493,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "hour24secyrx-report")
     {
-        for(auto const & c : hour24secyrx_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Secyrx::Hour24SecyrxReports::Hour24SecyrxReport>();
         c->parent = this;
         hour24secyrx_report.push_back(c);
@@ -6549,9 +6505,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Secyrx::Hour24SecyrxReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hour24secyrx_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6624,6 +6585,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Secyrx::Hour24SecyrxReports::Hour24SecyrxReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6712,14 +6674,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "hour24secyrx-threshold")
     {
-        for(auto const & c : hour24secyrx_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Secyrx::Hour24SecyrxThresholds::Hour24SecyrxThreshold>();
         c->parent = this;
         hour24secyrx_threshold.push_back(c);
@@ -6732,9 +6686,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Secyrx::Hour24SecyrxThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hour24secyrx_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6807,6 +6766,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Secyrx::Hour24SecyrxThresholds::Hour24SecyrxThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6915,6 +6875,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Secytx::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hour24secytx_thresholds != nullptr)
     {
         children["hour24secytx-thresholds"] = hour24secytx_thresholds;
@@ -6993,14 +6954,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "hour24secytx-threshold")
     {
-        for(auto const & c : hour24secytx_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Secytx::Hour24SecytxThresholds::Hour24SecytxThreshold>();
         c->parent = this;
         hour24secytx_threshold.push_back(c);
@@ -7013,9 +6966,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Secytx::Hour24SecytxThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hour24secytx_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7088,6 +7046,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Secytx::Hour24SecytxThresholds::Hour24SecytxThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7176,14 +7135,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "hour24secytx-report")
     {
-        for(auto const & c : hour24secytx_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Secytx::Hour24SecytxReports::Hour24SecytxReport>();
         c->parent = this;
         hour24secytx_report.push_back(c);
@@ -7196,9 +7147,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Secytx::Hour24SecytxReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hour24secytx_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7271,6 +7227,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Secytx::Hour24SecytxReports::Hour24SecytxReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7366,6 +7323,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ho_vc_minute15ho_vc != nullptr)
     {
         children["ho-vc-minute15ho-vc"] = ho_vc_minute15ho_vc;
@@ -7459,6 +7417,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ho_vc_minute15ho_vc_reports != nullptr)
     {
         children["ho-vc-minute15ho-vc-reports"] = ho_vc_minute15ho_vc_reports;
@@ -7537,14 +7496,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "ho-vc-minute15ho-vc-report")
     {
-        for(auto const & c : ho_vc_minute15ho_vc_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcReports::HoVcMinute15HoVcReport>();
         c->parent = this;
         ho_vc_minute15ho_vc_report.push_back(c);
@@ -7557,9 +7508,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ho_vc_minute15ho_vc_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7632,6 +7588,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcReports::HoVcMinute15HoVcReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7720,14 +7677,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "ho-vc-minute15ho-vc-threshold")
     {
-        for(auto const & c : ho_vc_minute15ho_vc_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcThresholds::HoVcMinute15HoVcThreshold>();
         c->parent = this;
         ho_vc_minute15ho_vc_threshold.push_back(c);
@@ -7740,9 +7689,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ho_vc_minute15ho_vc_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7815,6 +7769,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15HoVc::HoVcMinute15HoVcThresholds::HoVcMinute15HoVcThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7910,6 +7865,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sts_hour24_path != nullptr)
     {
         children["sts-hour24-path"] = sts_hour24_path;
@@ -8003,6 +7959,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sts_hour24_path_thresholds != nullptr)
     {
         children["sts-hour24-path-thresholds"] = sts_hour24_path_thresholds;
@@ -8081,14 +8038,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "sts-hour24-path-threshold")
     {
-        for(auto const & c : sts_hour24_path_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path::StsHour24PathThresholds::StsHour24PathThreshold>();
         c->parent = this;
         sts_hour24_path_threshold.push_back(c);
@@ -8101,9 +8050,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path::StsHour24PathThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sts_hour24_path_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8176,6 +8130,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path::StsHour24PathThresholds::StsHour24PathThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8264,14 +8219,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "sts-hour24-path-report")
     {
-        for(auto const & c : sts_hour24_path_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path::StsHour24PathReports::StsHour24PathReport>();
         c->parent = this;
         sts_hour24_path_report.push_back(c);
@@ -8284,9 +8231,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path::StsHour24PathReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sts_hour24_path_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8359,6 +8311,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path::StsHour24PathReports::StsHour24PathReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8454,6 +8407,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(stm_minute15_stm != nullptr)
     {
         children["stm-minute15-stm"] = stm_minute15_stm;
@@ -8547,6 +8501,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(stm_minute15_stm_reports != nullptr)
     {
         children["stm-minute15-stm-reports"] = stm_minute15_stm_reports;
@@ -8625,14 +8580,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "stm-minute15-stm-report")
     {
-        for(auto const & c : stm_minute15_stm_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm::StmMinute15StmReports::StmMinute15StmReport>();
         c->parent = this;
         stm_minute15_stm_report.push_back(c);
@@ -8645,9 +8592,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm::StmMinute15StmReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stm_minute15_stm_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8720,6 +8672,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm::StmMinute15StmReports::StmMinute15StmReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8808,14 +8761,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "stm-minute15-stm-threshold")
     {
-        for(auto const & c : stm_minute15_stm_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm::StmMinute15StmThresholds::StmMinute15StmThreshold>();
         c->parent = this;
         stm_minute15_stm_threshold.push_back(c);
@@ -8828,9 +8773,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm::StmMinute15StmThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stm_minute15_stm_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8903,6 +8853,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm::StmMinute15StmThresholds::StmMinute15StmThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9011,6 +8962,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sonet_hour24_path != nullptr)
     {
         children["sonet-hour24-path"] = sonet_hour24_path;
@@ -9109,6 +9061,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sonet_hour24_path_thresholds != nullptr)
     {
         children["sonet-hour24-path-thresholds"] = sonet_hour24_path_thresholds;
@@ -9187,14 +9140,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "sonet-hour24-path-threshold")
     {
-        for(auto const & c : sonet_hour24_path_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path::SonetHour24PathThresholds::SonetHour24PathThreshold>();
         c->parent = this;
         sonet_hour24_path_threshold.push_back(c);
@@ -9207,9 +9152,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path::SonetHour24PathThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sonet_hour24_path_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9282,6 +9232,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path::SonetHour24PathThresholds::SonetHour24PathThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9370,14 +9321,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "sonet-hour24-path-report")
     {
-        for(auto const & c : sonet_hour24_path_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path::SonetHour24PathReports::SonetHour24PathReport>();
         c->parent = this;
         sonet_hour24_path_report.push_back(c);
@@ -9390,9 +9333,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path::SonetHour24PathReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sonet_hour24_path_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9461,6 +9409,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path::SonetHour24PathReports::SonetHour24PathReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9559,6 +9508,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sonet_hour24_ocn_thresholds != nullptr)
     {
         children["sonet-hour24-ocn-thresholds"] = sonet_hour24_ocn_thresholds;
@@ -9637,14 +9587,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "sonet-hour24-ocn-threshold")
     {
-        for(auto const & c : sonet_hour24_ocn_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn::SonetHour24OcnThresholds::SonetHour24OcnThreshold>();
         c->parent = this;
         sonet_hour24_ocn_threshold.push_back(c);
@@ -9657,9 +9599,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn::SonetHour24OcnThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sonet_hour24_ocn_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9732,6 +9679,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn::SonetHour24OcnThresholds::SonetHour24OcnThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9820,14 +9768,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "sonet-hour24-ocn-report")
     {
-        for(auto const & c : sonet_hour24_ocn_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn::SonetHour24OcnReports::SonetHour24OcnReport>();
         c->parent = this;
         sonet_hour24_ocn_report.push_back(c);
@@ -9840,9 +9780,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn::SonetHour24OcnReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sonet_hour24_ocn_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9911,6 +9856,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn::SonetHour24OcnReports::SonetHour24OcnReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9996,6 +9942,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(minute15otn_path != nullptr)
     {
         children["minute15otn-path"] = minute15otn_path;
@@ -10089,6 +10036,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15OtnPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(minute15otn_path_reports != nullptr)
     {
         children["minute15otn-path-reports"] = minute15otn_path_reports;
@@ -10167,14 +10115,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "minute15otn-path-report")
     {
-        for(auto const & c : minute15otn_path_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15OtnPath::Minute15OtnPathReports::Minute15OtnPathReport>();
         c->parent = this;
         minute15otn_path_report.push_back(c);
@@ -10187,9 +10127,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15OtnPath::Minute15OtnPathReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : minute15otn_path_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10262,6 +10207,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15OtnPath::Minute15OtnPathReports::Minute15OtnPathReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10350,14 +10296,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "min15-otn-path-thresh")
     {
-        for(auto const & c : min15_otn_path_thresh)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15OtnPath::Min15OtnPathThreshes::Min15OtnPathThresh>();
         c->parent = this;
         min15_otn_path_thresh.push_back(c);
@@ -10370,9 +10308,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15OtnPath::Min15OtnPathThreshes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : min15_otn_path_thresh)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10445,6 +10388,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15OtnPath::Min15OtnPathThreshes::Min15OtnPathThresh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10540,6 +10484,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(oc_minute15_ocn != nullptr)
     {
         children["oc-minute15-ocn"] = oc_minute15_ocn;
@@ -10633,6 +10578,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(oc_minute15_ocn_reports != nullptr)
     {
         children["oc-minute15-ocn-reports"] = oc_minute15_ocn_reports;
@@ -10711,14 +10657,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "oc-minute15-ocn-report")
     {
-        for(auto const & c : oc_minute15_ocn_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::OcMinute15OcnReport>();
         c->parent = this;
         oc_minute15_ocn_report.push_back(c);
@@ -10731,9 +10669,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : oc_minute15_ocn_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10806,6 +10749,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::OcMinute15OcnReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10894,14 +10838,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "oc-minute15-ocn-threshold")
     {
-        for(auto const & c : oc_minute15_ocn_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::OcMinute15OcnThreshold>();
         c->parent = this;
         oc_minute15_ocn_threshold.push_back(c);
@@ -10914,9 +10850,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : oc_minute15_ocn_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10989,6 +10930,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::OcMinute15OcnThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11084,6 +11026,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(second30_ether != nullptr)
     {
         children["second30-ether"] = second30_ether;
@@ -11177,6 +11120,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(second30_ether_thresholds != nullptr)
     {
         children["second30-ether-thresholds"] = second30_ether_thresholds;
@@ -11255,14 +11199,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "second30-ether-threshold")
     {
-        for(auto const & c : second30_ether_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::Second30EtherThreshold>();
         c->parent = this;
         second30_ether_threshold.push_back(c);
@@ -11275,9 +11211,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : second30_ether_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11350,6 +11291,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::Second30EtherThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11438,14 +11380,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "second30-ether-report")
     {
-        for(auto const & c : second30_ether_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::Second30EtherReport>();
         c->parent = this;
         second30_ether_report.push_back(c);
@@ -11458,9 +11392,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : second30_ether_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11529,6 +11468,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::Second30EtherReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11614,6 +11554,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hour24otn_path != nullptr)
     {
         children["hour24otn-path"] = hour24otn_path;
@@ -11707,6 +11648,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24OtnPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hour24otn_path_reports != nullptr)
     {
         children["hour24otn-path-reports"] = hour24otn_path_reports;
@@ -11785,14 +11727,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "hour24otn-path-report")
     {
-        for(auto const & c : hour24otn_path_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24OtnPath::Hour24OtnPathReports::Hour24OtnPathReport>();
         c->parent = this;
         hour24otn_path_report.push_back(c);
@@ -11805,9 +11739,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24OtnPath::Hour24OtnPathReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hour24otn_path_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11880,6 +11819,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24OtnPath::Hour24OtnPathReports::Hour24OtnPathReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11968,14 +11908,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "hour24otn-path-threshold")
     {
-        for(auto const & c : hour24otn_path_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24OtnPath::Hour24OtnPathThresholds::Hour24OtnPathThreshold>();
         c->parent = this;
         hour24otn_path_threshold.push_back(c);
@@ -11988,9 +11920,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24OtnPath::Hour24OtnPathThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hour24otn_path_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12063,6 +12000,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24OtnPath::Hour24OtnPathThresholds::Hour24OtnPathThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12223,6 +12161,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(minute15_optics != nullptr)
     {
         children["minute15-optics"] = minute15_optics;
@@ -12341,6 +12280,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(minute15_optics_thresholds != nullptr)
     {
         children["minute15-optics-thresholds"] = minute15_optics_thresholds;
@@ -12419,14 +12359,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "minute15-optics-threshold")
     {
-        for(auto const & c : minute15_optics_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::Minute15OpticsThreshold>();
         c->parent = this;
         minute15_optics_threshold.push_back(c);
@@ -12439,9 +12371,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : minute15_optics_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12518,6 +12455,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::Minute15OpticsThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12616,14 +12554,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "minute15-optics-report")
     {
-        for(auto const & c : minute15_optics_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::Minute15OpticsReport>();
         c->parent = this;
         minute15_optics_report.push_back(c);
@@ -12636,9 +12566,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : minute15_optics_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12707,6 +12642,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::Minute15OpticsReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12805,6 +12741,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Secyif::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(minute15secyif_reports != nullptr)
     {
         children["minute15secyif-reports"] = minute15secyif_reports;
@@ -12883,14 +12820,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "minute15secyif-report")
     {
-        for(auto const & c : minute15secyif_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Secyif::Minute15SecyifReports::Minute15SecyifReport>();
         c->parent = this;
         minute15secyif_report.push_back(c);
@@ -12903,9 +12832,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Secyif::Minute15SecyifReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : minute15secyif_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12978,6 +12912,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Secyif::Minute15SecyifReports::Minute15SecyifReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13066,14 +13001,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "minute15secyif-threshold")
     {
-        for(auto const & c : minute15secyif_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Secyif::Minute15SecyifThresholds::Minute15SecyifThreshold>();
         c->parent = this;
         minute15secyif_threshold.push_back(c);
@@ -13086,9 +13013,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Secyif::Minute15SecyifThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : minute15secyif_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13161,6 +13093,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Secyif::Minute15SecyifThresholds::Minute15SecyifThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13269,6 +13202,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Secyrx::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(minute15secyrx_reports != nullptr)
     {
         children["minute15secyrx-reports"] = minute15secyrx_reports;
@@ -13347,14 +13281,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "minute15secyrx-report")
     {
-        for(auto const & c : minute15secyrx_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Secyrx::Minute15SecyrxReports::Minute15SecyrxReport>();
         c->parent = this;
         minute15secyrx_report.push_back(c);
@@ -13367,9 +13293,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Secyrx::Minute15SecyrxReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : minute15secyrx_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13442,6 +13373,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Secyrx::Minute15SecyrxReports::Minute15SecyrxReport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13530,14 +13462,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "minute15secyrx-threshold")
     {
-        for(auto const & c : minute15secyrx_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Secyrx::Minute15SecyrxThresholds::Minute15SecyrxThreshold>();
         c->parent = this;
         minute15secyrx_threshold.push_back(c);
@@ -13550,9 +13474,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Secyrx::Minute15SecyrxThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : minute15secyrx_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13625,6 +13554,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Secyrx::Minute15SecyrxThresholds::Minute15SecyrxThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13733,6 +13663,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Fec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(minute15fec_thresholds != nullptr)
     {
         children["minute15fec-thresholds"] = minute15fec_thresholds;
@@ -13811,14 +13742,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "minute15fec-threshold")
     {
-        for(auto const & c : minute15fec_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Fec::Minute15FecThresholds::Minute15FecThreshold>();
         c->parent = this;
         minute15fec_threshold.push_back(c);
@@ -13831,9 +13754,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Fec::Minute15FecThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : minute15fec_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13906,6 +13834,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Fec::Minute15FecThresholds::Minute15FecThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13994,14 +13923,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 {
     if(child_yang_name == "minute15fec-report")
     {
-        for(auto const & c : minute15fec_report)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Fec::Minute15FecReports::Minute15FecReport>();
         c->parent = this;
         minute15fec_report.push_back(c);
@@ -14014,9 +13935,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Perform
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Fec::Minute15FecReports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : minute15fec_report)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;

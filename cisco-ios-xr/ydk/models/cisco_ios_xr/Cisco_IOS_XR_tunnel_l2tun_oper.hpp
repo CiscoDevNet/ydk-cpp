@@ -1047,18 +1047,18 @@ class L2Tp::Classes : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Class_; //type: L2Tp::Classes::Class_
+        class Class; //type: L2Tp::Classes::Class
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Classes::Class_> > class_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tp::Classes::Class> > class_;
         
 }; // L2Tp::Classes
 
 
-class L2Tp::Classes::Class_ : public ydk::Entity
+class L2Tp::Classes::Class : public ydk::Entity
 {
     public:
-        Class_();
-        ~Class_();
+        Class();
+        ~Class();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1097,7 +1097,7 @@ class L2Tp::Classes::Class_ : public ydk::Entity
         ydk::YLeaf is_congestion_control_enabled; //type: boolean
         ydk::YLeaf is_peer_address_checked; //type: boolean
 
-}; // L2Tp::Classes::Class_
+}; // L2Tp::Classes::Class
 
 
 class L2Tp::Tunnels : public ydk::Entity
@@ -2603,18 +2603,18 @@ class L2Tpv2::Classes : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Class_; //type: L2Tpv2::Classes::Class_
+        class Class; //type: L2Tpv2::Classes::Class
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Classes::Class_> > class_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tunnel_l2tun_oper::L2Tpv2::Classes::Class> > class_;
         
 }; // L2Tpv2::Classes
 
 
-class L2Tpv2::Classes::Class_ : public ydk::Entity
+class L2Tpv2::Classes::Class : public ydk::Entity
 {
     public:
-        Class_();
-        ~Class_();
+        Class();
+        ~Class();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2653,7 +2653,7 @@ class L2Tpv2::Classes::Class_ : public ydk::Entity
         ydk::YLeaf is_congestion_control_enabled; //type: boolean
         ydk::YLeaf is_peer_address_checked; //type: boolean
 
-}; // L2Tpv2::Classes::Class_
+}; // L2Tpv2::Classes::Class
 
 
 class L2Tpv2::Tunnels : public ydk::Entity

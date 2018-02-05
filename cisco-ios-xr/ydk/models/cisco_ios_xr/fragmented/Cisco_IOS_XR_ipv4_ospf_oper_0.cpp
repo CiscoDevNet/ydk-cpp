@@ -5,9 +5,9 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv4_ospf_oper_0.hpp"
+#include "Cisco_IOS_XR_ipv4_ospf_oper_1.hpp"
 #include "Cisco_IOS_XR_ipv4_ospf_oper_3.hpp"
 #include "Cisco_IOS_XR_ipv4_ospf_oper_2.hpp"
-#include "Cisco_IOS_XR_ipv4_ospf_oper_1.hpp"
 
 using namespace ydk;
 
@@ -71,6 +71,7 @@ std::shared_ptr<Entity> Ospf::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(processes != nullptr)
     {
         children["processes"] = processes;
@@ -176,14 +177,6 @@ std::shared_ptr<Entity> Ospf::Processes::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "process")
     {
-        for(auto const & c : process)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process>();
         c->parent = this;
         process.push_back(c);
@@ -196,9 +189,14 @@ std::shared_ptr<Entity> Ospf::Processes::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : process)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -314,6 +312,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vrfs != nullptr)
     {
         children["vrfs"] = vrfs;
@@ -407,14 +406,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::get_child_by_name(const 
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -427,9 +418,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -694,6 +690,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_vrf_information != nullptr)
     {
         children["interface-vrf-information"] = interface_vrf_information;
@@ -854,6 +851,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInforma
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sham_links != nullptr)
     {
         children["sham-links"] = sham_links;
@@ -927,14 +925,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInforma
 {
     if(child_yang_name == "sham-link")
     {
-        for(auto const & c : sham_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink>();
         c->parent = this;
         sham_link.push_back(c);
@@ -947,9 +937,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInforma
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sham_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1146,14 +1141,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInforma
 
     if(child_yang_name == "sham-link-md-key")
     {
-        for(auto const & c : sham_link_md_key)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::ShamLinkMdKey>();
         c->parent = this;
         sham_link_md_key.push_back(c);
@@ -1166,14 +1153,19 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInforma
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sham_link_neighbor != nullptr)
     {
         children["sham-link-neighbor"] = sham_link_neighbor;
     }
 
+    count = 0;
     for (auto const & c : sham_link_md_key)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1540,6 +1532,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInforma
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::ShamLinkNeighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sham_link_retransmissoin != nullptr)
     {
         children["sham-link-retransmissoin"] = sham_link_retransmissoin;
@@ -1703,6 +1696,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInforma
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::ShamLinkNeighbor::ShamLinkRetransmissoin::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1959,6 +1953,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInforma
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::ShamLinkMdKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2037,14 +2032,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::get
 {
     if(child_yang_name == "flood")
     {
-        for(auto const & c : flood)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood>();
         c->parent = this;
         flood.push_back(c);
@@ -2057,9 +2044,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::get
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : flood)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2156,14 +2148,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flo
 {
     if(child_yang_name == "area-flood")
     {
-        for(auto const & c : area_flood)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AreaFlood>();
         c->parent = this;
         area_flood.push_back(c);
@@ -2172,14 +2156,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flo
 
     if(child_yang_name == "as-flood")
     {
-        for(auto const & c : as_flood)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AsFlood>();
         c->parent = this;
         as_flood.push_back(c);
@@ -2192,14 +2168,23 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flo
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : area_flood)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : as_flood)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2328,6 +2313,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flo
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AreaFlood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2474,6 +2460,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flo
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AsFlood::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2622,6 +2609,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mpls_te_links != nullptr)
     {
         children["mpls-te-links"] = mpls_te_links;
@@ -2700,14 +2688,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 {
     if(child_yang_name == "mpls-te-link")
     {
-        for(auto const & c : mpls_te_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink>();
         c->parent = this;
         mpls_te_link.push_back(c);
@@ -2720,9 +2700,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mpls_te_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2839,14 +2824,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 {
     if(child_yang_name == "mpls-te-link")
     {
-        for(auto const & c : mpls_te_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_>();
         c->parent = this;
         mpls_te_link.push_back(c);
@@ -2855,14 +2832,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 
     if(child_yang_name == "mpls-te-fragment")
     {
-        for(auto const & c : mpls_te_fragment)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment>();
         c->parent = this;
         mpls_te_fragment.push_back(c);
@@ -2875,14 +2844,23 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mpls_te_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : mpls_te_fragment)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3185,14 +3163,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 
     if(child_yang_name == "mplste-link-opt-tlv")
     {
-        for(auto const & c : mplste_link_opt_tlv)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv>();
         c->parent = this;
         mplste_link_opt_tlv.push_back(c);
@@ -3205,6 +3175,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(global_unreserve_bw_per_priority != nullptr)
     {
         children["global-unreserve-bw-per-priority"] = global_unreserve_bw_per_priority;
@@ -3230,9 +3201,13 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
         children["extended-admin-group-list"] = extended_admin_group_list;
     }
 
+    count = 0;
     for (auto const & c : mplste_link_opt_tlv)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3493,14 +3468,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 {
     if(child_yang_name == "bw-per-priority")
     {
-        for(auto const & c : bw_per_priority)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority::BwPerPriority>();
         c->parent = this;
         bw_per_priority.push_back(c);
@@ -3513,9 +3480,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bw_per_priority)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3584,6 +3556,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority::BwPerPriority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3662,14 +3635,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 {
     if(child_yang_name == "bw-per-priority")
     {
-        for(auto const & c : bw_per_priority)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority>();
         c->parent = this;
         bw_per_priority.push_back(c);
@@ -3682,9 +3647,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bw_per_priority)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3753,6 +3723,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3833,6 +3804,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3937,14 +3909,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 {
     if(child_yang_name == "maximum-lsp-bw-per-priority")
     {
-        for(auto const & c : maximum_lsp_bw_per_priority)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority>();
         c->parent = this;
         maximum_lsp_bw_per_priority.push_back(c);
@@ -3957,9 +3921,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : maximum_lsp_bw_per_priority)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4068,6 +4037,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4150,14 +4120,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 {
     if(child_yang_name == "ext-admin-data")
     {
-        for(auto const & c : ext_admin_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList::ExtAdminData>();
         c->parent = this;
         ext_admin_data.push_back(c);
@@ -4170,9 +4132,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ext_admin_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4251,6 +4218,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList::ExtAdminData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4337,14 +4305,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 {
     if(child_yang_name == "mplste-link-opt-tlv-value")
     {
-        for(auto const & c : mplste_link_opt_tlv_value)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue>();
         c->parent = this;
         mplste_link_opt_tlv_value.push_back(c);
@@ -4357,9 +4317,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplste_link_opt_tlv_value)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4501,6 +4466,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bctlv_value != nullptr)
     {
         children["bctlv-value"] = bctlv_value;
@@ -4607,14 +4573,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 {
     if(child_yang_name == "mplste-link-bc-bandwidth")
     {
-        for(auto const & c : mplste_link_bc_bandwidth)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth>();
         c->parent = this;
         mplste_link_bc_bandwidth.push_back(c);
@@ -4627,9 +4585,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplste_link_bc_bandwidth)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4718,6 +4681,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4804,14 +4768,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 {
     if(child_yang_name == "mplste-link-srlg-data")
     {
-        for(auto const & c : mplste_link_srlg_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData>();
         c->parent = this;
         mplste_link_srlg_data.push_back(c);
@@ -4824,9 +4780,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplste_link_srlg_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4915,6 +4876,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5023,14 +4985,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 
     if(child_yang_name == "max-lspbw")
     {
-        for(auto const & c : max_lspbw)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw>();
         c->parent = this;
         max_lspbw.push_back(c);
@@ -5043,14 +4997,19 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ixcd_switching_cap_type != nullptr)
     {
         children["ixcd-switching-cap-type"] = ixcd_switching_cap_type;
     }
 
+    count = 0;
     for (auto const & c : max_lspbw)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5186,6 +5145,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ixcdpsc_info != nullptr)
     {
         children["ixcdpsc-info"] = ixcdpsc_info;
@@ -5276,6 +5236,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5364,14 +5325,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 {
     if(child_yang_name == "arr-bw-sub-tlv")
     {
-        for(auto const & c : arr_bw_sub_tlv)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv>();
         c->parent = this;
         arr_bw_sub_tlv.push_back(c);
@@ -5384,9 +5337,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : arr_bw_sub_tlv)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5473,6 +5431,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bw_sub_tlv_value != nullptr)
     {
         children["bw-sub-tlv-value"] = bw_sub_tlv_value;
@@ -5591,6 +5550,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fixed_bw_sub_tlv_value != nullptr)
     {
         children["fixed-bw-sub-tlv-value"] = fixed_bw_sub_tlv_value;
@@ -5692,14 +5652,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 
     if(child_yang_name == "unres-oduj-prio")
     {
-        for(auto const & c : unres_oduj_prio)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio>();
         c->parent = this;
         unres_oduj_prio.push_back(c);
@@ -5712,14 +5664,19 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fixed_sub_tlv_value != nullptr)
     {
         children["fixed-sub-tlv-value"] = fixed_sub_tlv_value;
     }
 
+    count = 0;
     for (auto const & c : unres_oduj_prio)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5844,6 +5801,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6060,6 +6018,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6161,14 +6120,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 
     if(child_yang_name == "unres-lspbw")
     {
-        for(auto const & c : unres_lspbw)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw>();
         c->parent = this;
         unres_lspbw.push_back(c);
@@ -6177,14 +6128,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 
     if(child_yang_name == "max-lspbw")
     {
-        for(auto const & c : max_lspbw)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw>();
         c->parent = this;
         max_lspbw.push_back(c);
@@ -6197,19 +6140,28 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(flex_sub_tlv_value_common != nullptr)
     {
         children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
     }
 
+    count = 0;
     for (auto const & c : unres_lspbw)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : max_lspbw)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6334,6 +6286,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6550,6 +6503,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6626,6 +6580,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6702,6 +6657,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6778,6 +6734,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6872,14 +6829,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 {
     if(child_yang_name == "mpls-te-link")
     {
-        for(auto const & c : mpls_te_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_>();
         c->parent = this;
         mpls_te_link.push_back(c);
@@ -6892,9 +6841,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mpls_te_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7147,14 +7101,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 
     if(child_yang_name == "mplste-link-opt-tlv")
     {
-        for(auto const & c : mplste_link_opt_tlv)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv>();
         c->parent = this;
         mplste_link_opt_tlv.push_back(c);
@@ -7167,6 +7113,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(global_unreserve_bw_per_priority != nullptr)
     {
         children["global-unreserve-bw-per-priority"] = global_unreserve_bw_per_priority;
@@ -7192,9 +7139,13 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
         children["extended-admin-group-list"] = extended_admin_group_list;
     }
 
+    count = 0;
     for (auto const & c : mplste_link_opt_tlv)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7455,14 +7406,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 {
     if(child_yang_name == "bw-per-priority")
     {
-        for(auto const & c : bw_per_priority)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::GlobalUnreserveBwPerPriority::BwPerPriority>();
         c->parent = this;
         bw_per_priority.push_back(c);
@@ -7475,9 +7418,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::GlobalUnreserveBwPerPriority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bw_per_priority)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7546,6 +7494,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::GlobalUnreserveBwPerPriority::BwPerPriority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7624,14 +7573,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 {
     if(child_yang_name == "bw-per-priority")
     {
-        for(auto const & c : bw_per_priority)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority>();
         c->parent = this;
         bw_per_priority.push_back(c);
@@ -7644,9 +7585,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bw_per_priority)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7715,6 +7661,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7795,6 +7742,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkProtocolPriorityCapability::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7899,14 +7847,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 {
     if(child_yang_name == "maximum-lsp-bw-per-priority")
     {
-        for(auto const & c : maximum_lsp_bw_per_priority)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority>();
         c->parent = this;
         maximum_lsp_bw_per_priority.push_back(c);
@@ -7919,9 +7859,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkSwCapability::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : maximum_lsp_bw_per_priority)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8030,6 +7975,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8112,14 +8058,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 {
     if(child_yang_name == "ext-admin-data")
     {
-        for(auto const & c : ext_admin_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::ExtendedAdminGroupList::ExtAdminData>();
         c->parent = this;
         ext_admin_data.push_back(c);
@@ -8132,9 +8070,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::ExtendedAdminGroupList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ext_admin_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8213,6 +8156,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::ExtendedAdminGroupList::ExtAdminData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8299,14 +8243,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 {
     if(child_yang_name == "mplste-link-opt-tlv-value")
     {
-        for(auto const & c : mplste_link_opt_tlv_value)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue>();
         c->parent = this;
         mplste_link_opt_tlv_value.push_back(c);
@@ -8319,9 +8255,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplste_link_opt_tlv_value)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8463,6 +8404,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bctlv_value != nullptr)
     {
         children["bctlv-value"] = bctlv_value;
@@ -8569,14 +8511,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 {
     if(child_yang_name == "mplste-link-bc-bandwidth")
     {
-        for(auto const & c : mplste_link_bc_bandwidth)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth>();
         c->parent = this;
         mplste_link_bc_bandwidth.push_back(c);
@@ -8589,9 +8523,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplste_link_bc_bandwidth)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8680,6 +8619,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8766,14 +8706,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 {
     if(child_yang_name == "mplste-link-srlg-data")
     {
-        for(auto const & c : mplste_link_srlg_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData>();
         c->parent = this;
         mplste_link_srlg_data.push_back(c);
@@ -8786,9 +8718,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplste_link_srlg_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8877,6 +8814,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8985,14 +8923,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 
     if(child_yang_name == "max-lspbw")
     {
-        for(auto const & c : max_lspbw)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw>();
         c->parent = this;
         max_lspbw.push_back(c);
@@ -9005,14 +8935,19 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ixcd_switching_cap_type != nullptr)
     {
         children["ixcd-switching-cap-type"] = ixcd_switching_cap_type;
     }
 
+    count = 0;
     for (auto const & c : max_lspbw)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9148,6 +9083,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ixcdpsc_info != nullptr)
     {
         children["ixcdpsc-info"] = ixcdpsc_info;
@@ -9238,6 +9174,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9326,14 +9263,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 {
     if(child_yang_name == "arr-bw-sub-tlv")
     {
-        for(auto const & c : arr_bw_sub_tlv)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv>();
         c->parent = this;
         arr_bw_sub_tlv.push_back(c);
@@ -9346,9 +9275,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : arr_bw_sub_tlv)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9435,6 +9369,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bw_sub_tlv_value != nullptr)
     {
         children["bw-sub-tlv-value"] = bw_sub_tlv_value;
@@ -9553,6 +9488,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fixed_bw_sub_tlv_value != nullptr)
     {
         children["fixed-bw-sub-tlv-value"] = fixed_bw_sub_tlv_value;
@@ -9654,14 +9590,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 
     if(child_yang_name == "unres-oduj-prio")
     {
-        for(auto const & c : unres_oduj_prio)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio>();
         c->parent = this;
         unres_oduj_prio.push_back(c);
@@ -9674,14 +9602,19 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fixed_sub_tlv_value != nullptr)
     {
         children["fixed-sub-tlv-value"] = fixed_sub_tlv_value;
     }
 
+    count = 0;
     for (auto const & c : unres_oduj_prio)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9806,6 +9739,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10022,6 +9956,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10123,14 +10058,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 
     if(child_yang_name == "unres-lspbw")
     {
-        for(auto const & c : unres_lspbw)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw>();
         c->parent = this;
         unres_lspbw.push_back(c);
@@ -10139,14 +10066,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 
     if(child_yang_name == "max-lspbw")
     {
-        for(auto const & c : max_lspbw)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw>();
         c->parent = this;
         max_lspbw.push_back(c);
@@ -10159,19 +10078,28 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(flex_sub_tlv_value_common != nullptr)
     {
         children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
     }
 
+    count = 0;
     for (auto const & c : unres_lspbw)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : max_lspbw)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10296,6 +10224,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10512,6 +10441,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10588,6 +10518,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10664,6 +10595,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10740,6 +10672,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10818,14 +10751,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 {
     if(child_yang_name == "mpls-te-fragment")
     {
-        for(auto const & c : mpls_te_fragment)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment>();
         c->parent = this;
         mpls_te_fragment.push_back(c);
@@ -10838,9 +10763,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mpls_te_fragment)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10957,14 +10887,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 {
     if(child_yang_name == "mpls-te-link")
     {
-        for(auto const & c : mpls_te_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink>();
         c->parent = this;
         mpls_te_link.push_back(c);
@@ -10973,14 +10895,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 
     if(child_yang_name == "mpls-te-fragment")
     {
-        for(auto const & c : mpls_te_fragment)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_>();
         c->parent = this;
         mpls_te_fragment.push_back(c);
@@ -10993,14 +10907,23 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mpls_te_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : mpls_te_fragment)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11303,14 +11226,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 
     if(child_yang_name == "mplste-link-opt-tlv")
     {
-        for(auto const & c : mplste_link_opt_tlv)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv>();
         c->parent = this;
         mplste_link_opt_tlv.push_back(c);
@@ -11323,6 +11238,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(global_unreserve_bw_per_priority != nullptr)
     {
         children["global-unreserve-bw-per-priority"] = global_unreserve_bw_per_priority;
@@ -11348,9 +11264,13 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
         children["extended-admin-group-list"] = extended_admin_group_list;
     }
 
+    count = 0;
     for (auto const & c : mplste_link_opt_tlv)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11611,14 +11531,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 {
     if(child_yang_name == "bw-per-priority")
     {
-        for(auto const & c : bw_per_priority)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::GlobalUnreserveBwPerPriority::BwPerPriority>();
         c->parent = this;
         bw_per_priority.push_back(c);
@@ -11631,9 +11543,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::GlobalUnreserveBwPerPriority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bw_per_priority)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11702,6 +11619,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::GlobalUnreserveBwPerPriority::BwPerPriority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11780,14 +11698,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 {
     if(child_yang_name == "bw-per-priority")
     {
-        for(auto const & c : bw_per_priority)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority::BwPerPriority>();
         c->parent = this;
         bw_per_priority.push_back(c);
@@ -11800,9 +11710,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bw_per_priority)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11871,6 +11786,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority::BwPerPriority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11951,6 +11867,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkProtocolPriorityCapability::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12055,14 +11972,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 {
     if(child_yang_name == "maximum-lsp-bw-per-priority")
     {
-        for(auto const & c : maximum_lsp_bw_per_priority)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkSwCapability::MaximumLspBwPerPriority>();
         c->parent = this;
         maximum_lsp_bw_per_priority.push_back(c);
@@ -12075,9 +11984,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkSwCapability::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : maximum_lsp_bw_per_priority)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12186,6 +12100,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkSwCapability::MaximumLspBwPerPriority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12268,14 +12183,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 {
     if(child_yang_name == "ext-admin-data")
     {
-        for(auto const & c : ext_admin_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::ExtendedAdminGroupList::ExtAdminData>();
         c->parent = this;
         ext_admin_data.push_back(c);
@@ -12288,9 +12195,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::ExtendedAdminGroupList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ext_admin_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12369,6 +12281,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::ExtendedAdminGroupList::ExtAdminData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12455,14 +12368,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 {
     if(child_yang_name == "mplste-link-opt-tlv-value")
     {
-        for(auto const & c : mplste_link_opt_tlv_value)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue>();
         c->parent = this;
         mplste_link_opt_tlv_value.push_back(c);
@@ -12475,9 +12380,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplste_link_opt_tlv_value)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12619,6 +12529,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bctlv_value != nullptr)
     {
         children["bctlv-value"] = bctlv_value;
@@ -12725,14 +12636,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 {
     if(child_yang_name == "mplste-link-bc-bandwidth")
     {
-        for(auto const & c : mplste_link_bc_bandwidth)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth>();
         c->parent = this;
         mplste_link_bc_bandwidth.push_back(c);
@@ -12745,9 +12648,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplste_link_bc_bandwidth)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12836,6 +12744,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12922,14 +12831,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 {
     if(child_yang_name == "mplste-link-srlg-data")
     {
-        for(auto const & c : mplste_link_srlg_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData>();
         c->parent = this;
         mplste_link_srlg_data.push_back(c);
@@ -12942,9 +12843,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplste_link_srlg_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13033,6 +12939,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13141,14 +13048,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 
     if(child_yang_name == "max-lspbw")
     {
-        for(auto const & c : max_lspbw)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw>();
         c->parent = this;
         max_lspbw.push_back(c);
@@ -13161,14 +13060,19 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ixcd_switching_cap_type != nullptr)
     {
         children["ixcd-switching-cap-type"] = ixcd_switching_cap_type;
     }
 
+    count = 0;
     for (auto const & c : max_lspbw)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13304,6 +13208,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ixcdpsc_info != nullptr)
     {
         children["ixcdpsc-info"] = ixcdpsc_info;
@@ -13394,6 +13299,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13482,14 +13388,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 {
     if(child_yang_name == "arr-bw-sub-tlv")
     {
-        for(auto const & c : arr_bw_sub_tlv)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv>();
         c->parent = this;
         arr_bw_sub_tlv.push_back(c);
@@ -13502,9 +13400,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : arr_bw_sub_tlv)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13591,6 +13494,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bw_sub_tlv_value != nullptr)
     {
         children["bw-sub-tlv-value"] = bw_sub_tlv_value;
@@ -13709,6 +13613,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fixed_bw_sub_tlv_value != nullptr)
     {
         children["fixed-bw-sub-tlv-value"] = fixed_bw_sub_tlv_value;
@@ -13810,14 +13715,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 
     if(child_yang_name == "unres-oduj-prio")
     {
-        for(auto const & c : unres_oduj_prio)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio>();
         c->parent = this;
         unres_oduj_prio.push_back(c);
@@ -13830,14 +13727,19 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fixed_sub_tlv_value != nullptr)
     {
         children["fixed-sub-tlv-value"] = fixed_sub_tlv_value;
     }
 
+    count = 0;
     for (auto const & c : unres_oduj_prio)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13962,6 +13864,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14178,6 +14081,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14279,14 +14183,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 
     if(child_yang_name == "unres-lspbw")
     {
-        for(auto const & c : unres_lspbw)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw>();
         c->parent = this;
         unres_lspbw.push_back(c);
@@ -14295,14 +14191,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 
     if(child_yang_name == "max-lspbw")
     {
-        for(auto const & c : max_lspbw)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw>();
         c->parent = this;
         max_lspbw.push_back(c);
@@ -14315,19 +14203,28 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(flex_sub_tlv_value_common != nullptr)
     {
         children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
     }
 
+    count = 0;
     for (auto const & c : unres_lspbw)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : max_lspbw)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14452,6 +14349,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14668,6 +14566,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14744,6 +14643,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14820,6 +14720,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14896,6 +14797,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14990,14 +14892,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 {
     if(child_yang_name == "mpls-te-link")
     {
-        for(auto const & c : mpls_te_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink>();
         c->parent = this;
         mpls_te_link.push_back(c);
@@ -15010,9 +14904,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mpls_te_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15265,14 +15164,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 
     if(child_yang_name == "mplste-link-opt-tlv")
     {
-        for(auto const & c : mplste_link_opt_tlv)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv>();
         c->parent = this;
         mplste_link_opt_tlv.push_back(c);
@@ -15285,6 +15176,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(global_unreserve_bw_per_priority != nullptr)
     {
         children["global-unreserve-bw-per-priority"] = global_unreserve_bw_per_priority;
@@ -15310,9 +15202,13 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
         children["extended-admin-group-list"] = extended_admin_group_list;
     }
 
+    count = 0;
     for (auto const & c : mplste_link_opt_tlv)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15573,14 +15469,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 {
     if(child_yang_name == "bw-per-priority")
     {
-        for(auto const & c : bw_per_priority)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::GlobalUnreserveBwPerPriority::BwPerPriority>();
         c->parent = this;
         bw_per_priority.push_back(c);
@@ -15593,9 +15481,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::GlobalUnreserveBwPerPriority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bw_per_priority)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15664,6 +15557,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::GlobalUnreserveBwPerPriority::BwPerPriority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15742,14 +15636,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 {
     if(child_yang_name == "bw-per-priority")
     {
-        for(auto const & c : bw_per_priority)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority::BwPerPriority>();
         c->parent = this;
         bw_per_priority.push_back(c);
@@ -15762,9 +15648,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bw_per_priority)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15833,6 +15724,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority::BwPerPriority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15913,6 +15805,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkProtocolPriorityCapability::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16017,14 +15910,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 {
     if(child_yang_name == "maximum-lsp-bw-per-priority")
     {
-        for(auto const & c : maximum_lsp_bw_per_priority)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkSwCapability::MaximumLspBwPerPriority>();
         c->parent = this;
         maximum_lsp_bw_per_priority.push_back(c);
@@ -16037,9 +15922,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkSwCapability::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : maximum_lsp_bw_per_priority)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16148,6 +16038,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkSwCapability::MaximumLspBwPerPriority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16230,14 +16121,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 {
     if(child_yang_name == "ext-admin-data")
     {
-        for(auto const & c : ext_admin_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::ExtendedAdminGroupList::ExtAdminData>();
         c->parent = this;
         ext_admin_data.push_back(c);
@@ -16250,9 +16133,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::ExtendedAdminGroupList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ext_admin_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16331,6 +16219,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::ExtendedAdminGroupList::ExtAdminData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16417,14 +16306,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 {
     if(child_yang_name == "mplste-link-opt-tlv-value")
     {
-        for(auto const & c : mplste_link_opt_tlv_value)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue>();
         c->parent = this;
         mplste_link_opt_tlv_value.push_back(c);
@@ -16437,9 +16318,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplste_link_opt_tlv_value)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16581,6 +16467,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bctlv_value != nullptr)
     {
         children["bctlv-value"] = bctlv_value;
@@ -16687,14 +16574,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 {
     if(child_yang_name == "mplste-link-bc-bandwidth")
     {
-        for(auto const & c : mplste_link_bc_bandwidth)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth>();
         c->parent = this;
         mplste_link_bc_bandwidth.push_back(c);
@@ -16707,9 +16586,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplste_link_bc_bandwidth)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16798,6 +16682,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16884,14 +16769,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 {
     if(child_yang_name == "mplste-link-srlg-data")
     {
-        for(auto const & c : mplste_link_srlg_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData>();
         c->parent = this;
         mplste_link_srlg_data.push_back(c);
@@ -16904,9 +16781,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplste_link_srlg_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16995,6 +16877,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17103,14 +16986,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 
     if(child_yang_name == "max-lspbw")
     {
-        for(auto const & c : max_lspbw)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw>();
         c->parent = this;
         max_lspbw.push_back(c);
@@ -17123,14 +16998,19 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ixcd_switching_cap_type != nullptr)
     {
         children["ixcd-switching-cap-type"] = ixcd_switching_cap_type;
     }
 
+    count = 0;
     for (auto const & c : max_lspbw)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17266,6 +17146,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ixcdpsc_info != nullptr)
     {
         children["ixcdpsc-info"] = ixcdpsc_info;
@@ -17356,6 +17237,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17444,14 +17326,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 {
     if(child_yang_name == "arr-bw-sub-tlv")
     {
-        for(auto const & c : arr_bw_sub_tlv)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv>();
         c->parent = this;
         arr_bw_sub_tlv.push_back(c);
@@ -17464,9 +17338,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : arr_bw_sub_tlv)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17553,6 +17432,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bw_sub_tlv_value != nullptr)
     {
         children["bw-sub-tlv-value"] = bw_sub_tlv_value;
@@ -17671,6 +17551,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fixed_bw_sub_tlv_value != nullptr)
     {
         children["fixed-bw-sub-tlv-value"] = fixed_bw_sub_tlv_value;
@@ -17772,14 +17653,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 
     if(child_yang_name == "unres-oduj-prio")
     {
-        for(auto const & c : unres_oduj_prio)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio>();
         c->parent = this;
         unres_oduj_prio.push_back(c);
@@ -17792,14 +17665,19 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fixed_sub_tlv_value != nullptr)
     {
         children["fixed-sub-tlv-value"] = fixed_sub_tlv_value;
     }
 
+    count = 0;
     for (auto const & c : unres_oduj_prio)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17924,6 +17802,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18140,6 +18019,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18241,14 +18121,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 
     if(child_yang_name == "unres-lspbw")
     {
-        for(auto const & c : unres_lspbw)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw>();
         c->parent = this;
         unres_lspbw.push_back(c);
@@ -18257,14 +18129,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 
     if(child_yang_name == "max-lspbw")
     {
-        for(auto const & c : max_lspbw)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw>();
         c->parent = this;
         max_lspbw.push_back(c);
@@ -18277,19 +18141,28 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(flex_sub_tlv_value_common != nullptr)
     {
         children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
     }
 
+    count = 0;
     for (auto const & c : unres_lspbw)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : max_lspbw)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -18414,6 +18287,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18630,6 +18504,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18706,6 +18581,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18782,6 +18658,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18858,6 +18735,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19073,6 +18951,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(spf_stats != nullptr)
     {
         children["spf-stats"] = spf_stats;
@@ -19239,14 +19118,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 
     if(child_yang_name == "os-runtime")
     {
-        for(auto const & c : os_runtime)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsRuntime>();
         c->parent = this;
         os_runtime.push_back(c);
@@ -19255,14 +19126,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 
     if(child_yang_name == "os-sum-runtime")
     {
-        for(auto const & c : os_sum_runtime)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsSumRuntime>();
         c->parent = this;
         os_sum_runtime.push_back(c);
@@ -19271,14 +19134,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 
     if(child_yang_name == "os-ex-runtime")
     {
-        for(auto const & c : os_ex_runtime)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsExRuntime>();
         c->parent = this;
         os_ex_runtime.push_back(c);
@@ -19287,14 +19142,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 
     if(child_yang_name == "runtime")
     {
-        for(auto const & c : runtime)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime>();
         c->parent = this;
         runtime.push_back(c);
@@ -19307,29 +19154,46 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(spf_header != nullptr)
     {
         children["spf-header"] = spf_header;
     }
 
+    count = 0;
     for (auto const & c : os_runtime)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : os_sum_runtime)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : os_ex_runtime)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : runtime)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -19408,14 +19272,6 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 {
     if(child_yang_name == "area-summ")
     {
-        for(auto const & c : area_summ)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::AreaSumm>();
         c->parent = this;
         area_summ.push_back(c);
@@ -19428,9 +19284,14 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : area_summ)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -19523,6 +19384,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStat
 std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::AreaSumm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

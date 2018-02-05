@@ -107,6 +107,7 @@ std::shared_ptr<Entity> NetFlow::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(flow_exporter_maps != nullptr)
     {
         children["flow-exporter-maps"] = flow_exporter_maps;
@@ -227,14 +228,6 @@ std::shared_ptr<Entity> NetFlow::FlowExporterMaps::get_child_by_name(const std::
 {
     if(child_yang_name == "flow-exporter-map")
     {
-        for(auto const & c : flow_exporter_map)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap>();
         c->parent = this;
         flow_exporter_map.push_back(c);
@@ -247,9 +240,14 @@ std::shared_ptr<Entity> NetFlow::FlowExporterMaps::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowExporterMaps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : flow_exporter_map)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -377,6 +375,7 @@ std::shared_ptr<Entity> NetFlow::FlowExporterMaps::FlowExporterMap::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowExporterMaps::FlowExporterMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(udp != nullptr)
     {
         children["udp"] = udp;
@@ -498,6 +497,7 @@ std::shared_ptr<Entity> NetFlow::FlowExporterMaps::FlowExporterMap::Udp::get_chi
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowExporterMaps::FlowExporterMap::Udp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -576,14 +576,6 @@ std::shared_ptr<Entity> NetFlow::FlowExporterMaps::FlowExporterMap::Versions::ge
 {
     if(child_yang_name == "version")
     {
-        for(auto const & c : version)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version>();
         c->parent = this;
         version.push_back(c);
@@ -596,9 +588,14 @@ std::shared_ptr<Entity> NetFlow::FlowExporterMaps::FlowExporterMap::Versions::ge
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowExporterMaps::FlowExporterMap::Versions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : version)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -693,6 +690,7 @@ std::shared_ptr<Entity> NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Ve
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(options != nullptr)
     {
         children["options"] = options;
@@ -812,6 +810,7 @@ std::shared_ptr<Entity> NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Ve
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowExporterMaps::FlowExporterMap::Versions::Version::Options::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -916,6 +915,7 @@ std::shared_ptr<Entity> NetFlow::FlowExporterMaps::FlowExporterMap::Destination:
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowExporterMaps::FlowExporterMap::Destination::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1021,14 +1021,6 @@ std::shared_ptr<Entity> NetFlow::FlowSamplerMaps::get_child_by_name(const std::s
 {
     if(child_yang_name == "flow-sampler-map")
     {
-        for(auto const & c : flow_sampler_map)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NetFlow::FlowSamplerMaps::FlowSamplerMap>();
         c->parent = this;
         flow_sampler_map.push_back(c);
@@ -1041,9 +1033,14 @@ std::shared_ptr<Entity> NetFlow::FlowSamplerMaps::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowSamplerMaps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : flow_sampler_map)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1133,6 +1130,7 @@ std::shared_ptr<Entity> NetFlow::FlowSamplerMaps::FlowSamplerMap::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowSamplerMaps::FlowSamplerMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sampling_modes != nullptr)
     {
         children["sampling-modes"] = sampling_modes;
@@ -1216,14 +1214,6 @@ std::shared_ptr<Entity> NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes:
 {
     if(child_yang_name == "sampling-mode")
     {
-        for(auto const & c : sampling_mode)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::SamplingMode>();
         c->parent = this;
         sampling_mode.push_back(c);
@@ -1236,9 +1226,14 @@ std::shared_ptr<Entity> NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes:
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sampling_mode)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1315,6 +1310,7 @@ std::shared_ptr<Entity> NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes:
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowSamplerMaps::FlowSamplerMap::SamplingModes::SamplingMode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1420,14 +1416,6 @@ std::shared_ptr<Entity> NetFlow::FlowMonitorMapTable::get_child_by_name(const st
 {
     if(child_yang_name == "flow-monitor-map")
     {
-        for(auto const & c : flow_monitor_map)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NetFlow::FlowMonitorMapTable::FlowMonitorMap>();
         c->parent = this;
         flow_monitor_map.push_back(c);
@@ -1440,9 +1428,14 @@ std::shared_ptr<Entity> NetFlow::FlowMonitorMapTable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : flow_monitor_map)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1581,6 +1574,7 @@ std::shared_ptr<Entity> NetFlow::FlowMonitorMapTable::FlowMonitorMap::get_child_
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapTable::FlowMonitorMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(option != nullptr)
     {
         children["option"] = option;
@@ -1744,6 +1738,7 @@ std::shared_ptr<Entity> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::ge
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Option::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1852,14 +1847,6 @@ std::shared_ptr<Entity> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters:
 {
     if(child_yang_name == "exporter")
     {
-        for(auto const & c : exporter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter>();
         c->parent = this;
         exporter.push_back(c);
@@ -1872,9 +1859,14 @@ std::shared_ptr<Entity> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters:
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : exporter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1943,6 +1935,7 @@ std::shared_ptr<Entity> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters:
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2023,6 +2016,7 @@ std::shared_ptr<Entity> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::ge
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2118,14 +2112,6 @@ std::shared_ptr<Entity> NetFlow::FlowMonitorMapPerformanceTable::get_child_by_na
 {
     if(child_yang_name == "flow-monitor-map")
     {
-        for(auto const & c : flow_monitor_map)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap>();
         c->parent = this;
         flow_monitor_map.push_back(c);
@@ -2138,9 +2124,14 @@ std::shared_ptr<Entity> NetFlow::FlowMonitorMapPerformanceTable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapPerformanceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : flow_monitor_map)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2279,6 +2270,7 @@ std::shared_ptr<Entity> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap:
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(option != nullptr)
     {
         children["option"] = option;
@@ -2442,6 +2434,7 @@ std::shared_ptr<Entity> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap:
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Option::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2550,14 +2543,6 @@ std::shared_ptr<Entity> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap:
 {
     if(child_yang_name == "exporter")
     {
-        for(auto const & c : exporter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter>();
         c->parent = this;
         exporter.push_back(c);
@@ -2570,9 +2555,14 @@ std::shared_ptr<Entity> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap:
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : exporter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2641,6 +2631,7 @@ std::shared_ptr<Entity> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap:
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2721,6 +2712,7 @@ std::shared_ptr<Entity> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap:
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

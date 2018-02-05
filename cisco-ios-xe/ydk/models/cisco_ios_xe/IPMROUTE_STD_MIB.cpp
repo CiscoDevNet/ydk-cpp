@@ -133,6 +133,7 @@ std::shared_ptr<Entity> IPMROUTESTDMIB::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipmroute != nullptr)
     {
         children["ipMRoute"] = ipmroute;
@@ -265,6 +266,7 @@ std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmroute::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmroute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -360,14 +362,6 @@ std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmroutetable::get_child_by_name(const s
 {
     if(child_yang_name == "ipMRouteEntry")
     {
-        for(auto const & c : ipmrouteentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry>();
         c->parent = this;
         ipmrouteentry.push_back(c);
@@ -380,9 +374,14 @@ std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmroutetable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmroutetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipmrouteentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -602,6 +601,7 @@ std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::get_child_
 std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1047,14 +1047,6 @@ std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmroutenexthoptable::get_child_by_name(
 {
     if(child_yang_name == "ipMRouteNextHopEntry")
     {
-        for(auto const & c : ipmroutenexthopentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry>();
         c->parent = this;
         ipmroutenexthopentry.push_back(c);
@@ -1067,9 +1059,14 @@ std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmroutenexthoptable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmroutenexthoptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipmroutenexthopentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1197,6 +1194,7 @@ std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopent
 std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1412,14 +1410,6 @@ std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmrouteinterfacetable::get_child_by_nam
 {
     if(child_yang_name == "ipMRouteInterfaceEntry")
     {
-        for(auto const & c : ipmrouteinterfaceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry>();
         c->parent = this;
         ipmrouteinterfaceentry.push_back(c);
@@ -1432,9 +1422,14 @@ std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmrouteinterfacetable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmrouteinterfacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipmrouteinterfaceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1562,6 +1557,7 @@ std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfac
 std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmrouteinterfacetable::Ipmrouteinterfaceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1777,14 +1773,6 @@ std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmrouteboundarytable::get_child_by_name
 {
     if(child_yang_name == "ipMRouteBoundaryEntry")
     {
-        for(auto const & c : ipmrouteboundaryentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry>();
         c->parent = this;
         ipmrouteboundaryentry.push_back(c);
@@ -1797,9 +1785,14 @@ std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmrouteboundarytable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmrouteboundarytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipmrouteboundaryentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1887,6 +1880,7 @@ std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundarye
 std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmrouteboundarytable::Ipmrouteboundaryentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2002,14 +1996,6 @@ std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmroutescopenametable::get_child_by_nam
 {
     if(child_yang_name == "ipMRouteScopeNameEntry")
     {
-        for(auto const & c : ipmroutescopenameentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry>();
         c->parent = this;
         ipmroutescopenameentry.push_back(c);
@@ -2022,9 +2008,14 @@ std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmroutescopenametable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmroutescopenametable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipmroutescopenameentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2120,6 +2111,7 @@ std::shared_ptr<Entity> IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenam
 std::map<std::string, std::shared_ptr<Entity>> IPMROUTESTDMIB::Ipmroutescopenametable::Ipmroutescopenameentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

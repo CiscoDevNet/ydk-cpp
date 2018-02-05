@@ -65,14 +65,6 @@ std::shared_ptr<Entity> ModulesState::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "module")
     {
-        for(auto const & c : module)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ModulesState::Module>();
         c->parent = this;
         module.push_back(c);
@@ -85,9 +77,14 @@ std::shared_ptr<Entity> ModulesState::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> ModulesState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : module)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -244,14 +241,6 @@ std::shared_ptr<Entity> ModulesState::Module::get_child_by_name(const std::strin
 {
     if(child_yang_name == "deviation")
     {
-        for(auto const & c : deviation)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ModulesState::Module::Deviation>();
         c->parent = this;
         deviation.push_back(c);
@@ -260,14 +249,6 @@ std::shared_ptr<Entity> ModulesState::Module::get_child_by_name(const std::strin
 
     if(child_yang_name == "submodule")
     {
-        for(auto const & c : submodule)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ModulesState::Module::Submodule>();
         c->parent = this;
         submodule.push_back(c);
@@ -280,14 +261,23 @@ std::shared_ptr<Entity> ModulesState::Module::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> ModulesState::Module::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : deviation)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : submodule)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -418,6 +408,7 @@ std::shared_ptr<Entity> ModulesState::Module::Deviation::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> ModulesState::Module::Deviation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -512,6 +503,7 @@ std::shared_ptr<Entity> ModulesState::Module::Submodule::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> ModulesState::Module::Submodule::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

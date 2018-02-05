@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Config::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(global != nullptr)
     {
         children["global"] = global;
@@ -167,6 +168,7 @@ std::shared_ptr<Entity> Config::Global::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> Config::Global::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

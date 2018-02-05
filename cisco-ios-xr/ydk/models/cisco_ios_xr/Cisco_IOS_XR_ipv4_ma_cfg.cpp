@@ -94,6 +94,7 @@ std::shared_ptr<Entity> Ipv4NetworkGlobal::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(unnumbered != nullptr)
     {
         children["unnumbered"] = unnumbered;
@@ -241,6 +242,7 @@ std::shared_ptr<Entity> Ipv4NetworkGlobal::Unnumbered::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::Unnumbered::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mpls != nullptr)
     {
         children["mpls"] = mpls;
@@ -328,6 +330,7 @@ std::shared_ptr<Entity> Ipv4NetworkGlobal::Unnumbered::Mpls::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::Unnumbered::Mpls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(te != nullptr)
     {
         children["te"] = te;
@@ -406,6 +409,7 @@ std::shared_ptr<Entity> Ipv4NetworkGlobal::Unnumbered::Mpls::Te::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::Unnumbered::Mpls::Te::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -493,6 +497,7 @@ std::shared_ptr<Entity> Ipv4NetworkGlobal::Qppb::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Ipv4NetworkGlobal::Qppb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -579,6 +584,7 @@ std::shared_ptr<Entity> SubscriberPta::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> SubscriberPta::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

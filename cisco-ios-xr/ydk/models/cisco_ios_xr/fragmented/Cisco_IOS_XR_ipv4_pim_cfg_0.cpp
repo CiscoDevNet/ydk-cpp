@@ -81,6 +81,7 @@ std::shared_ptr<Entity> Pim::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Pim::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vrfs != nullptr)
     {
         children["vrfs"] = vrfs;
@@ -191,14 +192,6 @@ std::shared_ptr<Entity> Pim::Vrfs::get_child_by_name(const std::string & child_y
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -211,9 +204,14 @@ std::shared_ptr<Entity> Pim::Vrfs::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -316,6 +314,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -648,6 +647,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sparse_mode_rp_addresses != nullptr)
     {
         children["sparse-mode-rp-addresses"] = sparse_mode_rp_addresses;
@@ -931,14 +931,6 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::get_child_b
 {
     if(child_yang_name == "sparse-mode-rp-address")
     {
-        for(auto const & c : sparse_mode_rp_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::SparseModeRpAddress>();
         c->parent = this;
         sparse_mode_rp_address.push_back(c);
@@ -951,9 +943,14 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sparse_mode_rp_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1030,6 +1027,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::SparseModeR
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::SparseModeRpAddresses::SparseModeRpAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1150,6 +1148,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::InheritableDefaults::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::InheritableDefaults::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1286,6 +1285,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Rpf::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Rpf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1430,6 +1430,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Maximum::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Maximum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(group_mappings_auto_rp != nullptr)
     {
         children["group-mappings-auto-rp"] = group_mappings_auto_rp;
@@ -1530,6 +1531,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Maximum::GroupMappingsAutoRp::get_
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Maximum::GroupMappingsAutoRp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1620,6 +1622,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Maximum::BsrGroupMappings::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Maximum::BsrGroupMappings::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1710,6 +1713,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Maximum::RegisterStates::get_child
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Maximum::RegisterStates::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1800,6 +1804,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Maximum::RouteInterfaces::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Maximum::RouteInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1890,6 +1895,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Maximum::BsrCandidateRpCache::get_
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Maximum::BsrCandidateRpCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1980,6 +1986,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Maximum::Routes::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Maximum::Routes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2070,6 +2077,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::SgExpiryTimer::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::SgExpiryTimer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2164,6 +2172,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::RpfVectorEnable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2264,6 +2273,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Ssm::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Ssm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2352,14 +2362,6 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Injects::get_child_by_name(const s
 {
     if(child_yang_name == "inject")
     {
-        for(auto const & c : inject)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::Vrfs::Vrf::Ipv4::Injects::Inject>();
         c->parent = this;
         inject.push_back(c);
@@ -2372,9 +2374,14 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Injects::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Injects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : inject)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2461,6 +2468,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Injects::Inject::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Injects::Inject::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2557,14 +2565,6 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::get_child_by_nam
 {
     if(child_yang_name == "bidir-rp-address")
     {
-        for(auto const & c : bidir_rp_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::BidirRpAddress>();
         c->parent = this;
         bidir_rp_address.push_back(c);
@@ -2577,9 +2577,14 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bidir_rp_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2656,6 +2661,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::BidirRpAddress::
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::BidirRpAddresses::BidirRpAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2773,6 +2779,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Bsr::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Bsr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(candidate_bsr != nullptr)
     {
         children["candidate-bsr"] = candidate_bsr;
@@ -2857,6 +2864,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateBsr::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateBsr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2955,14 +2963,6 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::get_child_by_na
 {
     if(child_yang_name == "candidate-rp")
     {
-        for(auto const & c : candidate_rp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRp>();
         c->parent = this;
         candidate_rp.push_back(c);
@@ -2975,9 +2975,14 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : candidate_rp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3062,6 +3067,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRp::ge
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Bsr::CandidateRps::CandidateRp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3217,6 +3223,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Mofrr::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Mofrr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(clone_joins != nullptr)
     {
         children["clone-joins"] = clone_joins;
@@ -3335,14 +3342,6 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Mofrr::CloneJoins::get_child_by_na
 {
     if(child_yang_name == "clone-join")
     {
-        for(auto const & c : clone_join)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::Vrfs::Vrf::Ipv4::Mofrr::CloneJoins::CloneJoin>();
         c->parent = this;
         clone_join.push_back(c);
@@ -3355,9 +3354,14 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Mofrr::CloneJoins::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Mofrr::CloneJoins::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : clone_join)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3438,6 +3442,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Mofrr::CloneJoins::CloneJoin::get_
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Mofrr::CloneJoins::CloneJoin::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3546,14 +3551,6 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Mofrr::CloneSources::get_child_by_
 {
     if(child_yang_name == "clone-source")
     {
-        for(auto const & c : clone_source)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::Vrfs::Vrf::Ipv4::Mofrr::CloneSources::CloneSource>();
         c->parent = this;
         clone_source.push_back(c);
@@ -3566,9 +3563,14 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Mofrr::CloneSources::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Mofrr::CloneSources::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : clone_source)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3649,6 +3651,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Mofrr::CloneSources::CloneSource::
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Mofrr::CloneSources::CloneSource::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3757,14 +3760,6 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Paths::get_child_by_name(const std
 {
     if(child_yang_name == "path")
     {
-        for(auto const & c : path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::Vrfs::Vrf::Ipv4::Paths::Path>();
         c->parent = this;
         path.push_back(c);
@@ -3777,9 +3772,14 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Paths::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Paths::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3866,6 +3866,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Paths::Path::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Paths::Path::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3964,6 +3965,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::AllowRp::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::AllowRp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4054,6 +4056,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Convergence::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Convergence::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4142,14 +4145,6 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Interfaces::get_child_by_name(cons
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -4162,9 +4157,14 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Interfaces::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4299,6 +4299,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(maximum_routes != nullptr)
     {
         children["maximum-routes"] = maximum_routes;
@@ -4493,6 +4494,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::MaximumRout
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::MaximumRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4597,6 +4599,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::Bfd::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv4::Interfaces::Interface::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4913,6 +4916,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sparse_mode_rp_addresses != nullptr)
     {
         children["sparse-mode-rp-addresses"] = sparse_mode_rp_addresses;
@@ -5186,14 +5190,6 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::get_child_b
 {
     if(child_yang_name == "sparse-mode-rp-address")
     {
-        for(auto const & c : sparse_mode_rp_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress>();
         c->parent = this;
         sparse_mode_rp_address.push_back(c);
@@ -5206,9 +5202,14 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sparse_mode_rp_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5285,6 +5286,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeR
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5405,6 +5407,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::InheritableDefaults::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::InheritableDefaults::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5541,6 +5544,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::Rpf::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Rpf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5685,6 +5689,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::Maximum::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Maximum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(group_mappings_auto_rp != nullptr)
     {
         children["group-mappings-auto-rp"] = group_mappings_auto_rp;
@@ -5785,6 +5790,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::Maximum::GroupMappingsAutoRp::get_
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Maximum::GroupMappingsAutoRp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5875,6 +5881,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::Maximum::BsrGroupMappings::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Maximum::BsrGroupMappings::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5965,6 +5972,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::Maximum::RegisterStates::get_child
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Maximum::RegisterStates::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6055,6 +6063,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::Maximum::RouteInterfaces::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Maximum::RouteInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6145,6 +6154,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::Maximum::BsrCandidateRpCache::get_
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Maximum::BsrCandidateRpCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6235,6 +6245,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::Maximum::Routes::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Maximum::Routes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6325,6 +6336,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::SgExpiryTimer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6419,6 +6431,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::RpfVectorEnable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6519,6 +6532,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::Ssm::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Ssm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6607,14 +6621,6 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::get_child_by_nam
 {
     if(child_yang_name == "bidir-rp-address")
     {
-        for(auto const & c : bidir_rp_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::BidirRpAddress>();
         c->parent = this;
         bidir_rp_address.push_back(c);
@@ -6627,9 +6633,14 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bidir_rp_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6706,6 +6717,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::BidirRpAddress::
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::BidirRpAddresses::BidirRpAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6823,6 +6835,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::Bsr::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Bsr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(candidate_bsr != nullptr)
     {
         children["candidate-bsr"] = candidate_bsr;
@@ -6907,6 +6920,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateBsr::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateBsr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7005,14 +7019,6 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::get_child_by_na
 {
     if(child_yang_name == "candidate-rp")
     {
-        for(auto const & c : candidate_rp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRp>();
         c->parent = this;
         candidate_rp.push_back(c);
@@ -7025,9 +7031,14 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : candidate_rp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7112,6 +7123,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRp::ge
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Bsr::CandidateRps::CandidateRp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7232,6 +7244,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::AllowRp::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::AllowRp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7320,14 +7333,6 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::get_child_by_
 {
     if(child_yang_name == "embedded-rp-address")
     {
-        for(auto const & c : embedded_rp_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress>();
         c->parent = this;
         embedded_rp_address.push_back(c);
@@ -7340,9 +7345,14 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : embedded_rp_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7415,6 +7425,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::EmbeddedRpAdd
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7505,6 +7516,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::Convergence::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Convergence::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7593,14 +7605,6 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::Interfaces::get_child_by_name(cons
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -7613,9 +7617,14 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::Interfaces::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7750,6 +7759,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(maximum_routes != nullptr)
     {
         children["maximum-routes"] = maximum_routes;
@@ -7944,6 +7954,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::MaximumRout
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::MaximumRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8048,6 +8059,7 @@ std::shared_ptr<Entity> Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::Bfd::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Pim::Vrfs::Vrf::Ipv6::Interfaces::Interface::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8173,6 +8185,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv6 != nullptr)
     {
         children["ipv6"] = ipv6;
@@ -8489,6 +8502,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interfaces != nullptr)
     {
         children["interfaces"] = interfaces;
@@ -8774,14 +8788,6 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Interfaces::get_child_by_name
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::DefaultContext::Ipv6::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -8794,9 +8800,14 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Interfaces::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8938,6 +8949,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Interfaces::Interface::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(maximum_routes != nullptr)
     {
         children["maximum-routes"] = maximum_routes;
@@ -9132,6 +9144,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Interfaces::Interface::Maximu
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Interfaces::Interface::MaximumRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9236,6 +9249,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Interfaces::Interface::Bfd::g
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Interfaces::Interface::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9341,14 +9355,6 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::SparseModeRpAddresses::get_ch
 {
     if(child_yang_name == "sparse-mode-rp-address")
     {
-        for(auto const & c : sparse_mode_rp_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::DefaultContext::Ipv6::SparseModeRpAddresses::SparseModeRpAddress>();
         c->parent = this;
         sparse_mode_rp_address.push_back(c);
@@ -9361,9 +9367,14 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::SparseModeRpAddresses::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::SparseModeRpAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sparse_mode_rp_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9447,6 +9458,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::SparseModeRpAddresses::Sparse
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::SparseModeRpAddresses::SparseModeRpAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9574,6 +9586,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::InheritableDefaults::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::InheritableDefaults::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9717,6 +9730,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Rpf::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Rpf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9804,6 +9818,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::SgExpiryTimer::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::SgExpiryTimer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9905,6 +9920,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::RpfVectorEnable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::RpfVectorEnable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10008,6 +10024,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Nsf::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Nsf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10240,6 +10257,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Maximum::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bsr_global_group_mappings != nullptr)
     {
         children["bsr-global-group-mappings"] = bsr_global_group_mappings;
@@ -10397,6 +10415,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Maximum::BsrGlobalGroupMappin
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximum::BsrGlobalGroupMappings::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10494,6 +10513,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Maximum::GlobalRoutes::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximum::GlobalRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10591,6 +10611,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Maximum::GlobalGroupMappingsA
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximum::GlobalGroupMappingsAutoRp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10688,6 +10709,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Maximum::BsrGlobalCandidateRp
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximum::BsrGlobalCandidateRpCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10785,6 +10807,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Maximum::GlobalRegisterStates
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximum::GlobalRegisterStates::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10882,6 +10905,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Maximum::GlobalRouteInterface
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximum::GlobalRouteInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10979,6 +11003,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Maximum::GroupMappingsAutoRp:
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximum::GroupMappingsAutoRp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11076,6 +11101,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Maximum::BsrGroupMappings::ge
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximum::BsrGroupMappings::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11173,6 +11199,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Maximum::RegisterStates::get_
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximum::RegisterStates::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11270,6 +11297,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Maximum::RouteInterfaces::get
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximum::RouteInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11367,6 +11395,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Maximum::BsrCandidateRpCache:
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximum::BsrCandidateRpCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11464,6 +11493,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Maximum::Routes::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Maximum::Routes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11561,6 +11591,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Ssm::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Ssm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11656,14 +11687,6 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::BidirRpAddresses::get_child_b
 {
     if(child_yang_name == "bidir-rp-address")
     {
-        for(auto const & c : bidir_rp_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::DefaultContext::Ipv6::BidirRpAddresses::BidirRpAddress>();
         c->parent = this;
         bidir_rp_address.push_back(c);
@@ -11676,9 +11699,14 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::BidirRpAddresses::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::BidirRpAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bidir_rp_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11762,6 +11790,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::BidirRpAddresses::BidirRpAddr
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::BidirRpAddresses::BidirRpAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11886,6 +11915,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Bsr::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Bsr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(candidate_bsr != nullptr)
     {
         children["candidate-bsr"] = candidate_bsr;
@@ -11977,6 +12007,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Bsr::CandidateBsr::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Bsr::CandidateBsr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12082,14 +12113,6 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Bsr::CandidateRps::get_child_
 {
     if(child_yang_name == "candidate-rp")
     {
-        for(auto const & c : candidate_rp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::DefaultContext::Ipv6::Bsr::CandidateRps::CandidateRp>();
         c->parent = this;
         candidate_rp.push_back(c);
@@ -12102,9 +12125,14 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Bsr::CandidateRps::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Bsr::CandidateRps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : candidate_rp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12196,6 +12224,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Bsr::CandidateRps::CandidateR
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Bsr::CandidateRps::CandidateRp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12323,6 +12352,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::AllowRp::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::AllowRp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12418,14 +12448,6 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::get_chil
 {
     if(child_yang_name == "embedded-rp-address")
     {
-        for(auto const & c : embedded_rp_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress>();
         c->parent = this;
         embedded_rp_address.push_back(c);
@@ -12438,9 +12460,14 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : embedded_rp_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12520,6 +12547,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::Embedded
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::EmbeddedRpAddresses::EmbeddedRpAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12617,6 +12645,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv6::Convergence::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv6::Convergence::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13008,6 +13037,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rpf_redirect != nullptr)
     {
         children["rpf-redirect"] = rpf_redirect;
@@ -13316,6 +13346,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::RpfRedirect::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::RpfRedirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13401,14 +13432,6 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Interfaces::get_child_by_name
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::DefaultContext::Ipv4::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -13421,9 +13444,14 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Interfaces::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13578,6 +13606,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Interfaces::Interface::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redirect_bundle != nullptr)
     {
         children["redirect-bundle"] = redirect_bundle;
@@ -13777,6 +13806,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Interfaces::Interface::Redire
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Interfaces::Interface::RedirectBundle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13881,6 +13911,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Interfaces::Interface::Maximu
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Interfaces::Interface::MaximumRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13985,6 +14016,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Interfaces::Interface::Bfd::g
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Interfaces::Interface::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14090,14 +14122,6 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::AutoRpCandidateRps::get_child
 {
     if(child_yang_name == "auto-rp-candidate-rp")
     {
-        for(auto const & c : auto_rp_candidate_rp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::DefaultContext::Ipv4::AutoRpCandidateRps::AutoRpCandidateRp>();
         c->parent = this;
         auto_rp_candidate_rp.push_back(c);
@@ -14110,9 +14134,14 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::AutoRpCandidateRps::get_child
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::AutoRpCandidateRps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : auto_rp_candidate_rp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14204,6 +14233,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::AutoRpCandidateRps::AutoRpCan
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::AutoRpCandidateRps::AutoRpCandidateRp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14347,6 +14377,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::AutoRpMappingAgent::get_child
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::AutoRpMappingAgent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(parameters != nullptr)
     {
         children["parameters"] = parameters;
@@ -14438,6 +14469,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::AutoRpMappingAgent::Parameter
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::AutoRpMappingAgent::Parameters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14545,6 +14577,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::AutoRpMappingAgent::CacheLimi
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::AutoRpMappingAgent::CacheLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14640,14 +14673,6 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::SparseModeRpAddresses::get_ch
 {
     if(child_yang_name == "sparse-mode-rp-address")
     {
-        for(auto const & c : sparse_mode_rp_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::DefaultContext::Ipv4::SparseModeRpAddresses::SparseModeRpAddress>();
         c->parent = this;
         sparse_mode_rp_address.push_back(c);
@@ -14660,9 +14685,14 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::SparseModeRpAddresses::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::SparseModeRpAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sparse_mode_rp_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14746,6 +14776,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::SparseModeRpAddresses::Sparse
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::SparseModeRpAddresses::SparseModeRpAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14873,6 +14904,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::InheritableDefaults::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::InheritableDefaults::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15016,6 +15048,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Rpf::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Rpf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15103,6 +15136,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::SgExpiryTimer::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::SgExpiryTimer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15204,6 +15238,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::RpfVectorEnable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::RpfVectorEnable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15307,6 +15342,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Nsf::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Nsf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15539,6 +15575,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Maximum::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bsr_global_group_mappings != nullptr)
     {
         children["bsr-global-group-mappings"] = bsr_global_group_mappings;
@@ -15696,6 +15733,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Maximum::BsrGlobalGroupMappin
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximum::BsrGlobalGroupMappings::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15793,6 +15831,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Maximum::GlobalRoutes::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximum::GlobalRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15890,6 +15929,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Maximum::GlobalGroupMappingsA
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximum::GlobalGroupMappingsAutoRp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15987,6 +16027,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Maximum::BsrGlobalCandidateRp
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximum::BsrGlobalCandidateRpCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16084,6 +16125,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Maximum::GlobalRegisterStates
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximum::GlobalRegisterStates::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16181,6 +16223,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Maximum::GlobalRouteInterface
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximum::GlobalRouteInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16278,6 +16321,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Maximum::GroupMappingsAutoRp:
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximum::GroupMappingsAutoRp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16375,6 +16419,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Maximum::BsrGroupMappings::ge
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximum::BsrGroupMappings::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16472,6 +16517,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Maximum::RegisterStates::get_
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximum::RegisterStates::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16569,6 +16615,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Maximum::RouteInterfaces::get
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximum::RouteInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16666,6 +16713,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Maximum::BsrCandidateRpCache:
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximum::BsrCandidateRpCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16763,6 +16811,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Maximum::Routes::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Maximum::Routes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16860,6 +16909,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Ssm::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Ssm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16955,14 +17005,6 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Injects::get_child_by_name(co
 {
     if(child_yang_name == "inject")
     {
-        for(auto const & c : inject)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::DefaultContext::Ipv4::Injects::Inject>();
         c->parent = this;
         inject.push_back(c);
@@ -16975,9 +17017,14 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Injects::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Injects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : inject)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17071,6 +17118,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Injects::Inject::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Injects::Inject::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17174,14 +17222,6 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::BidirRpAddresses::get_child_b
 {
     if(child_yang_name == "bidir-rp-address")
     {
-        for(auto const & c : bidir_rp_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::DefaultContext::Ipv4::BidirRpAddresses::BidirRpAddress>();
         c->parent = this;
         bidir_rp_address.push_back(c);
@@ -17194,9 +17234,14 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::BidirRpAddresses::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::BidirRpAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bidir_rp_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17280,6 +17325,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::BidirRpAddresses::BidirRpAddr
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::BidirRpAddresses::BidirRpAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17404,6 +17450,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Bsr::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Bsr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(candidate_bsr != nullptr)
     {
         children["candidate-bsr"] = candidate_bsr;
@@ -17495,6 +17542,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Bsr::CandidateBsr::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Bsr::CandidateBsr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17600,14 +17648,6 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Bsr::CandidateRps::get_child_
 {
     if(child_yang_name == "candidate-rp")
     {
-        for(auto const & c : candidate_rp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::DefaultContext::Ipv4::Bsr::CandidateRps::CandidateRp>();
         c->parent = this;
         candidate_rp.push_back(c);
@@ -17620,9 +17660,14 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Bsr::CandidateRps::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Bsr::CandidateRps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : candidate_rp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17714,6 +17759,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Bsr::CandidateRps::CandidateR
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Bsr::CandidateRps::CandidateRp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17876,6 +17922,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Mofrr::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Mofrr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(clone_joins != nullptr)
     {
         children["clone-joins"] = clone_joins;
@@ -18001,14 +18048,6 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Mofrr::CloneJoins::get_child_
 {
     if(child_yang_name == "clone-join")
     {
-        for(auto const & c : clone_join)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::DefaultContext::Ipv4::Mofrr::CloneJoins::CloneJoin>();
         c->parent = this;
         clone_join.push_back(c);
@@ -18021,9 +18060,14 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Mofrr::CloneJoins::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Mofrr::CloneJoins::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : clone_join)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -18111,6 +18155,7 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Mofrr::CloneJoins::CloneJoin:
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Mofrr::CloneJoins::CloneJoin::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18226,14 +18271,6 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Mofrr::CloneSources::get_chil
 {
     if(child_yang_name == "clone-source")
     {
-        for(auto const & c : clone_source)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pim::DefaultContext::Ipv4::Mofrr::CloneSources::CloneSource>();
         c->parent = this;
         clone_source.push_back(c);
@@ -18246,9 +18283,14 @@ std::shared_ptr<Entity> Pim::DefaultContext::Ipv4::Mofrr::CloneSources::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Pim::DefaultContext::Ipv4::Mofrr::CloneSources::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : clone_source)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;

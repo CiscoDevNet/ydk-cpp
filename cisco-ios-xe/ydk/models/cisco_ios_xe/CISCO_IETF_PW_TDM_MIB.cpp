@@ -133,6 +133,7 @@ std::shared_ptr<Entity> CISCOIETFPWTDMMIB::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWTDMMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cpwctdmobjects != nullptr)
     {
         children["cpwCTDMObjects"] = cpwctdmobjects;
@@ -261,6 +262,7 @@ std::shared_ptr<Entity> CISCOIETFPWTDMMIB::Cpwctdmobjects::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWTDMMIB::Cpwctdmobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -346,14 +348,6 @@ std::shared_ptr<Entity> CISCOIETFPWTDMMIB::Cpwctdmtable::get_child_by_name(const
 {
     if(child_yang_name == "cpwCTDMEntry")
     {
-        for(auto const & c : cpwctdmentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFPWTDMMIB::Cpwctdmtable::Cpwctdmentry>();
         c->parent = this;
         cpwctdmentry.push_back(c);
@@ -366,9 +360,14 @@ std::shared_ptr<Entity> CISCOIETFPWTDMMIB::Cpwctdmtable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWTDMMIB::Cpwctdmtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpwctdmentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -488,6 +487,7 @@ std::shared_ptr<Entity> CISCOIETFPWTDMMIB::Cpwctdmtable::Cpwctdmentry::get_child
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWTDMMIB::Cpwctdmtable::Cpwctdmentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -677,14 +677,6 @@ std::shared_ptr<Entity> CISCOIETFPWTDMMIB::Cpwctdmcfgtable::get_child_by_name(co
 {
     if(child_yang_name == "cpwCTDMCfgEntry")
     {
-        for(auto const & c : cpwctdmcfgentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFPWTDMMIB::Cpwctdmcfgtable::Cpwctdmcfgentry>();
         c->parent = this;
         cpwctdmcfgentry.push_back(c);
@@ -697,9 +689,14 @@ std::shared_ptr<Entity> CISCOIETFPWTDMMIB::Cpwctdmcfgtable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWTDMMIB::Cpwctdmcfgtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpwctdmcfgentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -847,6 +844,7 @@ std::shared_ptr<Entity> CISCOIETFPWTDMMIB::Cpwctdmcfgtable::Cpwctdmcfgentry::get
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWTDMMIB::Cpwctdmcfgtable::Cpwctdmcfgentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1110,14 +1108,6 @@ std::shared_ptr<Entity> CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable::get_child_by
 {
     if(child_yang_name == "cpwCTDMPerfCurrentEntry")
     {
-        for(auto const & c : cpwctdmperfcurrententry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable::Cpwctdmperfcurrententry>();
         c->parent = this;
         cpwctdmperfcurrententry.push_back(c);
@@ -1130,9 +1120,14 @@ std::shared_ptr<Entity> CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpwctdmperfcurrententry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1244,6 +1239,7 @@ std::shared_ptr<Entity> CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable::Cpwctdmperfc
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable::Cpwctdmperfcurrententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1419,14 +1415,6 @@ std::shared_ptr<Entity> CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable::get_child_b
 {
     if(child_yang_name == "cpwCTDMPerfIntervalEntry")
     {
-        for(auto const & c : cpwctdmperfintervalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable::Cpwctdmperfintervalentry>();
         c->parent = this;
         cpwctdmperfintervalentry.push_back(c);
@@ -1439,9 +1427,14 @@ std::shared_ptr<Entity> CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpwctdmperfintervalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1565,6 +1558,7 @@ std::shared_ptr<Entity> CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable::Cpwctdmperf
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable::Cpwctdmperfintervalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1770,14 +1764,6 @@ std::shared_ptr<Entity> CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable::get_chi
 {
     if(child_yang_name == "cpwCTDMPerf1DayIntervalEntry")
     {
-        for(auto const & c : cpwctdmperf1dayintervalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable::Cpwctdmperf1Dayintervalentry>();
         c->parent = this;
         cpwctdmperf1dayintervalentry.push_back(c);
@@ -1790,9 +1776,14 @@ std::shared_ptr<Entity> CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpwctdmperf1dayintervalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1916,6 +1907,7 @@ std::shared_ptr<Entity> CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable::Cpwctdm
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable::Cpwctdmperf1Dayintervalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

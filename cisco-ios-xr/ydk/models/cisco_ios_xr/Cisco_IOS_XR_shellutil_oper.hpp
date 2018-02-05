@@ -31,20 +31,20 @@ class SystemTime : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Clock_; //type: SystemTime::Clock_
+        class Clock; //type: SystemTime::Clock
         class Uptime; //type: SystemTime::Uptime
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_shellutil_oper::SystemTime::Clock_> clock_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_shellutil_oper::SystemTime::Clock> clock_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_shellutil_oper::SystemTime::Uptime> uptime;
         
 }; // SystemTime
 
 
-class SystemTime::Clock_ : public ydk::Entity
+class SystemTime::Clock : public ydk::Entity
 {
     public:
-        Clock_();
-        ~Clock_();
+        Clock();
+        ~Clock();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -68,7 +68,7 @@ class SystemTime::Clock_ : public ydk::Entity
         ydk::YLeaf time_zone; //type: string
         ydk::YLeaf time_source; //type: TimeSource
 
-}; // SystemTime::Clock_
+}; // SystemTime::Clock
 
 
 class SystemTime::Uptime : public ydk::Entity

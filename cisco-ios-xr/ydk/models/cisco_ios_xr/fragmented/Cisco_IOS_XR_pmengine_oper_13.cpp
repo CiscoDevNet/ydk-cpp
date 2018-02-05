@@ -72,6 +72,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::OutDropUnderrun::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -190,6 +191,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::OutDropAbort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -308,6 +310,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::OutDropOther::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -426,6 +429,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::OutErrorOther::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -544,6 +548,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::InErrorGiant::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -662,6 +667,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::InErrorRunt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -780,6 +786,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::InErrorJabbers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -898,6 +905,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::InErrorFragments::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1016,6 +1024,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::InErrorOther::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1134,6 +1143,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::InPkt64Octet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1252,6 +1262,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::InPkts65To127Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1370,6 +1381,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::InPkts128To255Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1488,6 +1500,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::InPkts256To511Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1606,6 +1619,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::InPkts512To1023Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1724,6 +1738,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::InPkts1024To1518Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1842,6 +1857,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::Outpkt64Octet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1960,6 +1976,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::OutPkts65127Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2078,6 +2095,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::OutPkts128255Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2196,6 +2214,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::OutPkts256511Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2314,6 +2333,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::OutPkts5121023Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2432,6 +2452,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::OutPkts10241518Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2550,6 +2571,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::RxUtil::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2668,6 +2690,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::TxUtil::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2786,6 +2809,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::TxUndersizedPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2904,6 +2928,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::TxOversizedPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3022,6 +3047,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::TxFragments::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3140,6 +3166,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::TxJabber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3258,6 +3285,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30EtherHistories::MacsecSecond30EtherHistory::MacsecSecond30EtherTimeLineInstances::MacsecSecond30EtherTimeLineInstance::TxBadFcs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3366,14 +3394,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 {
     if(child_yang_name == "macsec-second30secytx-history")
     {
-        for(auto const & c : macsec_second30secytx_history)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecytxHistories::MacsecSecond30SecytxHistory>();
         c->parent = this;
         macsec_second30secytx_history.push_back(c);
@@ -3386,9 +3406,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecytxHistories::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : macsec_second30secytx_history)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3471,6 +3496,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecytxHistories::MacsecSecond30SecytxHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(macsec_second30secytx_time_line_instances != nullptr)
     {
         children["macsec-second30secytx-time-line-instances"] = macsec_second30secytx_time_line_instances;
@@ -3554,14 +3580,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 {
     if(child_yang_name == "macsec-second30secytx-time-line-instance")
     {
-        for(auto const & c : macsec_second30secytx_time_line_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecytxHistories::MacsecSecond30SecytxHistory::MacsecSecond30SecytxTimeLineInstances::MacsecSecond30SecytxTimeLineInstance>();
         c->parent = this;
         macsec_second30secytx_time_line_instance.push_back(c);
@@ -3574,9 +3592,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecytxHistories::MacsecSecond30SecytxHistory::MacsecSecond30SecytxTimeLineInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : macsec_second30secytx_time_line_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3747,6 +3770,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecytxHistories::MacsecSecond30SecytxHistory::MacsecSecond30SecytxTimeLineInstances::MacsecSecond30SecytxTimeLineInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(out_pkts_protected != nullptr)
     {
         children["out-pkts-protected"] = out_pkts_protected;
@@ -3950,6 +3974,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecytxHistories::MacsecSecond30SecytxHistory::MacsecSecond30SecytxTimeLineInstances::MacsecSecond30SecytxTimeLineInstance::OutPktsProtected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4068,6 +4093,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecytxHistories::MacsecSecond30SecytxHistory::MacsecSecond30SecytxTimeLineInstances::MacsecSecond30SecytxTimeLineInstance::OutPktsEncrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4186,6 +4212,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecytxHistories::MacsecSecond30SecytxHistory::MacsecSecond30SecytxTimeLineInstances::MacsecSecond30SecytxTimeLineInstance::OutOctetsProtected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4304,6 +4331,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecytxHistories::MacsecSecond30SecytxHistory::MacsecSecond30SecytxTimeLineInstances::MacsecSecond30SecytxTimeLineInstance::OutOctetsEncrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4422,6 +4450,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecytxHistories::MacsecSecond30SecytxHistory::MacsecSecond30SecytxTimeLineInstances::MacsecSecond30SecytxTimeLineInstance::OutPktsTooLong::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4530,14 +4559,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 {
     if(child_yang_name == "macsec-second30secyif-history")
     {
-        for(auto const & c : macsec_second30secyif_history)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecyifHistories::MacsecSecond30SecyifHistory>();
         c->parent = this;
         macsec_second30secyif_history.push_back(c);
@@ -4550,9 +4571,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecyifHistories::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : macsec_second30secyif_history)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4635,6 +4661,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecyifHistories::MacsecSecond30SecyifHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(macsec_second30secyif_time_line_instances != nullptr)
     {
         children["macsec-second30secyif-time-line-instances"] = macsec_second30secyif_time_line_instances;
@@ -4718,14 +4745,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 {
     if(child_yang_name == "macsec-second30secyif-time-line-instance")
     {
-        for(auto const & c : macsec_second30secyif_time_line_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecyifHistories::MacsecSecond30SecyifHistory::MacsecSecond30SecyifTimeLineInstances::MacsecSecond30SecyifTimeLineInstance>();
         c->parent = this;
         macsec_second30secyif_time_line_instance.push_back(c);
@@ -4738,9 +4757,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecyifHistories::MacsecSecond30SecyifHistory::MacsecSecond30SecyifTimeLineInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : macsec_second30secyif_time_line_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5002,6 +5026,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecyifHistories::MacsecSecond30SecyifHistory::MacsecSecond30SecyifTimeLineInstances::MacsecSecond30SecyifTimeLineInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(in_pkts_untagged != nullptr)
     {
         children["in-pkts-untagged"] = in_pkts_untagged;
@@ -5240,6 +5265,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecyifHistories::MacsecSecond30SecyifHistory::MacsecSecond30SecyifTimeLineInstances::MacsecSecond30SecyifTimeLineInstance::InPktsUntagged::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5358,6 +5384,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecyifHistories::MacsecSecond30SecyifHistory::MacsecSecond30SecyifTimeLineInstances::MacsecSecond30SecyifTimeLineInstance::InPktsNoTag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5476,6 +5503,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecyifHistories::MacsecSecond30SecyifHistory::MacsecSecond30SecyifTimeLineInstances::MacsecSecond30SecyifTimeLineInstance::InPktsBadTag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5594,6 +5622,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecyifHistories::MacsecSecond30SecyifHistory::MacsecSecond30SecyifTimeLineInstances::MacsecSecond30SecyifTimeLineInstance::InPktsUnknownSci::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5712,6 +5741,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecyifHistories::MacsecSecond30SecyifHistory::MacsecSecond30SecyifTimeLineInstances::MacsecSecond30SecyifTimeLineInstance::InPktsNoSci::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5830,6 +5860,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecyifHistories::MacsecSecond30SecyifHistory::MacsecSecond30SecyifTimeLineInstances::MacsecSecond30SecyifTimeLineInstance::InPktsOverrun::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5948,6 +5979,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecyifHistories::MacsecSecond30SecyifHistory::MacsecSecond30SecyifTimeLineInstances::MacsecSecond30SecyifTimeLineInstance::InOctetsValidated::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6066,6 +6098,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecyifHistories::MacsecSecond30SecyifHistory::MacsecSecond30SecyifTimeLineInstances::MacsecSecond30SecyifTimeLineInstance::InOctetsDecrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6184,6 +6217,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecyifHistories::MacsecSecond30SecyifHistory::MacsecSecond30SecyifTimeLineInstances::MacsecSecond30SecyifTimeLineInstance::OutPktsUntagged::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6302,6 +6336,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecyifHistories::MacsecSecond30SecyifHistory::MacsecSecond30SecyifTimeLineInstances::MacsecSecond30SecyifTimeLineInstance::OutPktsTooLong::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6420,6 +6455,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecyifHistories::MacsecSecond30SecyifHistory::MacsecSecond30SecyifTimeLineInstances::MacsecSecond30SecyifTimeLineInstance::OutOctetsProtected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6538,6 +6574,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecSecond30History::MacsecSecond30SecyifHistories::MacsecSecond30SecyifHistory::MacsecSecond30SecyifTimeLineInstances::MacsecSecond30SecyifTimeLineInstance::OutOctetsEncrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6660,6 +6697,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(odu_port_histories != nullptr)
     {
         children["odu-port-histories"] = odu_port_histories;
@@ -6740,14 +6778,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 {
     if(child_yang_name == "odu-port-history")
     {
-        for(auto const & c : odu_port_history)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory>();
         c->parent = this;
         odu_port_history.push_back(c);
@@ -6760,9 +6790,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : odu_port_history)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6865,6 +6900,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(odu_hour24_history != nullptr)
     {
         children["odu-hour24-history"] = odu_hour24_history;
@@ -6986,6 +7022,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(odu_hour24gfp_histories != nullptr)
     {
         children["odu-hour24gfp-histories"] = odu_hour24gfp_histories;
@@ -7069,14 +7106,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 {
     if(child_yang_name == "odu-hour24gfp-history")
     {
-        for(auto const & c : odu_hour24gfp_history)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24GfpHistories::OduHour24GfpHistory>();
         c->parent = this;
         odu_hour24gfp_history.push_back(c);
@@ -7089,9 +7118,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24GfpHistories::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : odu_hour24gfp_history)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7174,6 +7208,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24GfpHistories::OduHour24GfpHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(odu_hour24gfp_time_line_instances != nullptr)
     {
         children["odu-hour24gfp-time-line-instances"] = odu_hour24gfp_time_line_instances;
@@ -7257,14 +7292,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 {
     if(child_yang_name == "odu-hour24gfp-time-line-instance")
     {
-        for(auto const & c : odu_hour24gfp_time_line_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24GfpHistories::OduHour24GfpHistory::OduHour24GfpTimeLineInstances::OduHour24GfpTimeLineInstance>();
         c->parent = this;
         odu_hour24gfp_time_line_instance.push_back(c);
@@ -7277,9 +7304,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24GfpHistories::OduHour24GfpHistory::OduHour24GfpTimeLineInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : odu_hour24gfp_time_line_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7446,6 +7478,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24GfpHistories::OduHour24GfpHistory::OduHour24GfpTimeLineInstances::OduHour24GfpTimeLineInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rx_bit_err != nullptr)
     {
         children["rx-bit-err"] = rx_bit_err;
@@ -7635,6 +7668,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24GfpHistories::OduHour24GfpHistory::OduHour24GfpTimeLineInstances::OduHour24GfpTimeLineInstance::RxBitErr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7739,6 +7773,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24GfpHistories::OduHour24GfpHistory::OduHour24GfpTimeLineInstances::OduHour24GfpTimeLineInstance::RxInvTyp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7843,6 +7878,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24GfpHistories::OduHour24GfpHistory::OduHour24GfpTimeLineInstances::OduHour24GfpTimeLineInstance::RxCrc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7947,6 +7983,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24GfpHistories::OduHour24GfpHistory::OduHour24GfpTimeLineInstances::OduHour24GfpTimeLineInstance::RxLfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8051,6 +8088,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24GfpHistories::OduHour24GfpHistory::OduHour24GfpTimeLineInstances::OduHour24GfpTimeLineInstance::RxCsf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8149,14 +8187,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 {
     if(child_yang_name == "odu-hour24prbs-history")
     {
-        for(auto const & c : odu_hour24prbs_history)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24PrbsHistories::OduHour24PrbsHistory>();
         c->parent = this;
         odu_hour24prbs_history.push_back(c);
@@ -8169,9 +8199,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24PrbsHistories::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : odu_hour24prbs_history)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8254,6 +8289,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24PrbsHistories::OduHour24PrbsHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(odu_hour24prbs_time_line_instances != nullptr)
     {
         children["odu-hour24prbs-time-line-instances"] = odu_hour24prbs_time_line_instances;
@@ -8337,14 +8373,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 {
     if(child_yang_name == "odu-hour24prbs-time-line-instance")
     {
-        for(auto const & c : odu_hour24prbs_time_line_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24PrbsHistories::OduHour24PrbsHistory::OduHour24PrbsTimeLineInstances::OduHour24PrbsTimeLineInstance>();
         c->parent = this;
         odu_hour24prbs_time_line_instance.push_back(c);
@@ -8357,9 +8385,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24PrbsHistories::OduHour24PrbsHistory::OduHour24PrbsTimeLineInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : odu_hour24prbs_time_line_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8503,6 +8536,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24PrbsHistories::OduHour24PrbsHistory::OduHour24PrbsTimeLineInstances::OduHour24PrbsTimeLineInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rcv_patt != nullptr)
     {
         children["rcv-patt"] = rcv_patt;
@@ -8713,6 +8747,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24PrbsHistories::OduHour24PrbsHistory::OduHour24PrbsTimeLineInstances::OduHour24PrbsTimeLineInstance::RcvPatt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8803,6 +8838,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24PrbsHistories::OduHour24PrbsHistory::OduHour24PrbsTimeLineInstances::OduHour24PrbsTimeLineInstance::PrbsStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8891,14 +8927,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 {
     if(child_yang_name == "odu-hour24otn-history")
     {
-        for(auto const & c : odu_hour24otn_history)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24OtnHistories::OduHour24OtnHistory>();
         c->parent = this;
         odu_hour24otn_history.push_back(c);
@@ -8911,9 +8939,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24OtnHistories::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : odu_hour24otn_history)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8996,6 +9029,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24OtnHistories::OduHour24OtnHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(odu_hour24otn_time_line_instances != nullptr)
     {
         children["odu-hour24otn-time-line-instances"] = odu_hour24otn_time_line_instances;
@@ -9079,14 +9113,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 {
     if(child_yang_name == "odu-hour24otn-time-line-instance")
     {
-        for(auto const & c : odu_hour24otn_time_line_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24OtnHistories::OduHour24OtnHistory::OduHour24OtnTimeLineInstances::OduHour24OtnTimeLineInstance>();
         c->parent = this;
         odu_hour24otn_time_line_instance.push_back(c);
@@ -9099,9 +9125,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24OtnHistories::OduHour24OtnHistory::OduHour24OtnTimeLineInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : odu_hour24otn_time_line_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9424,6 +9455,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24OtnHistories::OduHour24OtnHistory::OduHour24OtnTimeLineInstances::OduHour24OtnTimeLineInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lbc != nullptr)
     {
         children["lbc"] = lbc;
@@ -9673,6 +9705,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24OtnHistories::OduHour24OtnHistory::OduHour24OtnTimeLineInstances::OduHour24OtnTimeLineInstance::Lbc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9777,6 +9810,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24OtnHistories::OduHour24OtnHistory::OduHour24OtnTimeLineInstances::OduHour24OtnTimeLineInstance::EsNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9881,6 +9915,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24OtnHistories::OduHour24OtnHistory::OduHour24OtnTimeLineInstances::OduHour24OtnTimeLineInstance::EsrNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9985,6 +10020,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24OtnHistories::OduHour24OtnHistory::OduHour24OtnTimeLineInstances::OduHour24OtnTimeLineInstance::SesNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10089,6 +10125,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24OtnHistories::OduHour24OtnHistory::OduHour24OtnTimeLineInstances::OduHour24OtnTimeLineInstance::SesrNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10193,6 +10230,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24OtnHistories::OduHour24OtnHistory::OduHour24OtnTimeLineInstances::OduHour24OtnTimeLineInstance::UasNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10297,6 +10335,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24OtnHistories::OduHour24OtnHistory::OduHour24OtnTimeLineInstances::OduHour24OtnTimeLineInstance::BbeNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10401,6 +10440,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24OtnHistories::OduHour24OtnHistory::OduHour24OtnTimeLineInstances::OduHour24OtnTimeLineInstance::BberNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10505,6 +10545,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24OtnHistories::OduHour24OtnHistory::OduHour24OtnTimeLineInstances::OduHour24OtnTimeLineInstance::FcNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10609,6 +10650,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24OtnHistories::OduHour24OtnHistory::OduHour24OtnTimeLineInstances::OduHour24OtnTimeLineInstance::EsFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10713,6 +10755,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24OtnHistories::OduHour24OtnHistory::OduHour24OtnTimeLineInstances::OduHour24OtnTimeLineInstance::EsrFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10817,6 +10860,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24OtnHistories::OduHour24OtnHistory::OduHour24OtnTimeLineInstances::OduHour24OtnTimeLineInstance::SesFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10921,6 +10965,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24OtnHistories::OduHour24OtnHistory::OduHour24OtnTimeLineInstances::OduHour24OtnTimeLineInstance::SesrFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11025,6 +11070,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24OtnHistories::OduHour24OtnHistory::OduHour24OtnTimeLineInstances::OduHour24OtnTimeLineInstance::UasFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11129,6 +11175,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24OtnHistories::OduHour24OtnHistory::OduHour24OtnTimeLineInstances::OduHour24OtnTimeLineInstance::BbeFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11233,6 +11280,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24OtnHistories::OduHour24OtnHistory::OduHour24OtnTimeLineInstances::OduHour24OtnTimeLineInstance::BberFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11337,6 +11385,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduHour24History::OduHour24OtnHistories::OduHour24OtnHistory::OduHour24OtnTimeLineInstances::OduHour24OtnTimeLineInstance::FcFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11468,6 +11517,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(odu_minute15prbs_histories != nullptr)
     {
         children["odu-minute15prbs-histories"] = odu_minute15prbs_histories;
@@ -11551,14 +11601,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 {
     if(child_yang_name == "odu-minute15prbs-history")
     {
-        for(auto const & c : odu_minute15prbs_history)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15PrbsHistories::OduMinute15PrbsHistory>();
         c->parent = this;
         odu_minute15prbs_history.push_back(c);
@@ -11571,9 +11613,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15PrbsHistories::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : odu_minute15prbs_history)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11656,6 +11703,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15PrbsHistories::OduMinute15PrbsHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(odu_minute15prbs_time_line_instances != nullptr)
     {
         children["odu-minute15prbs-time-line-instances"] = odu_minute15prbs_time_line_instances;
@@ -11739,14 +11787,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 {
     if(child_yang_name == "odu-minute15prbs-time-line-instance")
     {
-        for(auto const & c : odu_minute15prbs_time_line_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15PrbsHistories::OduMinute15PrbsHistory::OduMinute15PrbsTimeLineInstances::OduMinute15PrbsTimeLineInstance>();
         c->parent = this;
         odu_minute15prbs_time_line_instance.push_back(c);
@@ -11759,9 +11799,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15PrbsHistories::OduMinute15PrbsHistory::OduMinute15PrbsTimeLineInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : odu_minute15prbs_time_line_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11905,6 +11950,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15PrbsHistories::OduMinute15PrbsHistory::OduMinute15PrbsTimeLineInstances::OduMinute15PrbsTimeLineInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rcv_patt != nullptr)
     {
         children["rcv-patt"] = rcv_patt;
@@ -12115,6 +12161,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15PrbsHistories::OduMinute15PrbsHistory::OduMinute15PrbsTimeLineInstances::OduMinute15PrbsTimeLineInstance::RcvPatt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12205,6 +12252,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15PrbsHistories::OduMinute15PrbsHistory::OduMinute15PrbsTimeLineInstances::OduMinute15PrbsTimeLineInstance::PrbsStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12293,14 +12341,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 {
     if(child_yang_name == "odu-minute15gfp-history")
     {
-        for(auto const & c : odu_minute15gfp_history)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15GfpHistories::OduMinute15GfpHistory>();
         c->parent = this;
         odu_minute15gfp_history.push_back(c);
@@ -12313,9 +12353,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15GfpHistories::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : odu_minute15gfp_history)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12398,6 +12443,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15GfpHistories::OduMinute15GfpHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(odu_minute15gfp_time_line_instances != nullptr)
     {
         children["odu-minute15gfp-time-line-instances"] = odu_minute15gfp_time_line_instances;
@@ -12481,14 +12527,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 {
     if(child_yang_name == "odu-minute15gfp-time-line-instance")
     {
-        for(auto const & c : odu_minute15gfp_time_line_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15GfpHistories::OduMinute15GfpHistory::OduMinute15GfpTimeLineInstances::OduMinute15GfpTimeLineInstance>();
         c->parent = this;
         odu_minute15gfp_time_line_instance.push_back(c);
@@ -12501,9 +12539,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15GfpHistories::OduMinute15GfpHistory::OduMinute15GfpTimeLineInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : odu_minute15gfp_time_line_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12670,6 +12713,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15GfpHistories::OduMinute15GfpHistory::OduMinute15GfpTimeLineInstances::OduMinute15GfpTimeLineInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rx_bit_err != nullptr)
     {
         children["rx-bit-err"] = rx_bit_err;
@@ -12859,6 +12903,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15GfpHistories::OduMinute15GfpHistory::OduMinute15GfpTimeLineInstances::OduMinute15GfpTimeLineInstance::RxBitErr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12963,6 +13008,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15GfpHistories::OduMinute15GfpHistory::OduMinute15GfpTimeLineInstances::OduMinute15GfpTimeLineInstance::RxInvTyp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13067,6 +13113,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15GfpHistories::OduMinute15GfpHistory::OduMinute15GfpTimeLineInstances::OduMinute15GfpTimeLineInstance::RxCrc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13171,6 +13218,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15GfpHistories::OduMinute15GfpHistory::OduMinute15GfpTimeLineInstances::OduMinute15GfpTimeLineInstance::RxLfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13275,6 +13323,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15GfpHistories::OduMinute15GfpHistory::OduMinute15GfpTimeLineInstances::OduMinute15GfpTimeLineInstance::RxCsf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13373,14 +13422,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 {
     if(child_yang_name == "odu-minute15otn-history")
     {
-        for(auto const & c : odu_minute15otn_history)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory>();
         c->parent = this;
         odu_minute15otn_history.push_back(c);
@@ -13393,9 +13434,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : odu_minute15otn_history)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13478,6 +13524,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(odu_minute15otn_time_line_instances != nullptr)
     {
         children["odu-minute15otn-time-line-instances"] = odu_minute15otn_time_line_instances;
@@ -13561,14 +13608,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 {
     if(child_yang_name == "odu-minute15otn-time-line-instance")
     {
-        for(auto const & c : odu_minute15otn_time_line_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance>();
         c->parent = this;
         odu_minute15otn_time_line_instance.push_back(c);
@@ -13581,9 +13620,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : odu_minute15otn_time_line_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13906,6 +13950,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lbc != nullptr)
     {
         children["lbc"] = lbc;
@@ -14155,6 +14200,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::Lbc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14259,6 +14305,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14363,6 +14410,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14467,6 +14515,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14571,6 +14620,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14675,6 +14725,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14779,6 +14830,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14883,6 +14935,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14987,6 +15040,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15091,6 +15145,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15195,6 +15250,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::EsrFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15299,6 +15355,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15403,6 +15460,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::SesrFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15507,6 +15565,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::UasFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15611,6 +15670,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BbeFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15715,6 +15775,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::BberFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15819,6 +15880,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OduHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OduHistory::OduPortHistories::OduPortHistory::OduMinute15History::OduMinute15OtnHistories::OduMinute15OtnHistory::OduMinute15OtnTimeLineInstances::OduMinute15OtnTimeLineInstance::FcFe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15931,6 +15993,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(otu_port_histories != nullptr)
     {
         children["otu-port-histories"] = otu_port_histories;
@@ -16011,14 +16074,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 {
     if(child_yang_name == "otu-port-history")
     {
-        for(auto const & c : otu_port_history)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory>();
         c->parent = this;
         otu_port_history.push_back(c);
@@ -16031,9 +16086,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : otu_port_history)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16149,6 +16209,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(otu_second30_history != nullptr)
     {
         children["otu-second30-history"] = otu_second30_history;
@@ -16262,6 +16323,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(otu_second30fec_histories != nullptr)
     {
         children["otu-second30fec-histories"] = otu_second30fec_histories;
@@ -16340,14 +16402,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 {
     if(child_yang_name == "otu-second30fec-history")
     {
-        for(auto const & c : otu_second30fec_history)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory>();
         c->parent = this;
         otu_second30fec_history.push_back(c);
@@ -16360,9 +16414,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : otu_second30fec_history)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16445,6 +16504,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(otu_second30fec_time_line_instances != nullptr)
     {
         children["otu-second30fec-time-line-instances"] = otu_second30fec_time_line_instances;
@@ -16528,14 +16588,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 {
     if(child_yang_name == "otu-second30fec-time-line-instance")
     {
-        for(auto const & c : otu_second30fec_time_line_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance>();
         c->parent = this;
         otu_second30fec_time_line_instance.push_back(c);
@@ -16548,9 +16600,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : otu_second30fec_time_line_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16730,6 +16787,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ec_bits != nullptr)
     {
         children["ec-bits"] = ec_bits;
@@ -16928,6 +16986,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::EcBits::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17046,6 +17105,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::UcWords::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17180,6 +17240,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PreFecBer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17354,6 +17415,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::PostFecBer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17528,6 +17590,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Q::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17702,6 +17765,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30FecHistories::OtuSecond30FecHistory::OtuSecond30FecTimeLineInstances::OtuSecond30FecTimeLineInstance::Qmargin::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17850,14 +17914,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 {
     if(child_yang_name == "otu-second30otn-history")
     {
-        for(auto const & c : otu_second30otn_history)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory>();
         c->parent = this;
         otu_second30otn_history.push_back(c);
@@ -17870,9 +17926,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : otu_second30otn_history)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17955,6 +18016,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(otu_second30otn_time_line_instances != nullptr)
     {
         children["otu-second30otn-time-line-instances"] = otu_second30otn_time_line_instances;
@@ -18038,14 +18100,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 {
     if(child_yang_name == "otu-second30otn-time-line-instance")
     {
-        for(auto const & c : otu_second30otn_time_line_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance>();
         c->parent = this;
         otu_second30otn_time_line_instance.push_back(c);
@@ -18058,9 +18112,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : otu_second30otn_time_line_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -18383,6 +18442,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lbc != nullptr)
     {
         children["lbc"] = lbc;
@@ -18632,6 +18692,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::Lbc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18736,6 +18797,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::OtuHisto
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::OtuHistory::OtuPortHistories::OtuPortHistory::OtuSecond30History::OtuSecond30OtnHistories::OtuSecond30OtnHistory::OtuSecond30OtnTimeLineInstances::OtuSecond30OtnTimeLineInstance::EsNe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -75,6 +75,7 @@ std::shared_ptr<Entity> FrequencySynchronization::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> FrequencySynchronization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

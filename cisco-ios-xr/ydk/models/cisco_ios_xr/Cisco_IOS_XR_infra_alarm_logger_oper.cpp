@@ -81,6 +81,7 @@ std::shared_ptr<Entity> AlarmLogger::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> AlarmLogger::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(buffer_status != nullptr)
     {
         children["buffer-status"] = buffer_status;
@@ -205,6 +206,7 @@ std::shared_ptr<Entity> AlarmLogger::BufferStatus::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> AlarmLogger::BufferStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -330,14 +332,6 @@ std::shared_ptr<Entity> AlarmLogger::Alarms::get_child_by_name(const std::string
 {
     if(child_yang_name == "alarm")
     {
-        for(auto const & c : alarm)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AlarmLogger::Alarms::Alarm>();
         c->parent = this;
         alarm.push_back(c);
@@ -350,9 +344,14 @@ std::shared_ptr<Entity> AlarmLogger::Alarms::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> AlarmLogger::Alarms::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : alarm)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -468,6 +467,7 @@ std::shared_ptr<Entity> AlarmLogger::Alarms::Alarm::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> AlarmLogger::Alarms::Alarm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

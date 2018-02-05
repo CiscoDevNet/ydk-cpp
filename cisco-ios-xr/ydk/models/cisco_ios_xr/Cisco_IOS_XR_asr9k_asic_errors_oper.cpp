@@ -68,6 +68,7 @@ std::shared_ptr<Entity> AsicErrorStats::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(racks != nullptr)
     {
         children["racks"] = racks;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> AsicErrorStats::Racks::get_child_by_name(const std::stri
 {
     if(child_yang_name == "rack")
     {
-        for(auto const & c : rack)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrorStats::Racks::Rack>();
         c->parent = this;
         rack.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> AsicErrorStats::Racks::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Racks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rack)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -285,6 +283,7 @@ std::shared_ptr<Entity> AsicErrorStats::Racks::Rack::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Racks::Rack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -368,14 +367,6 @@ std::shared_ptr<Entity> AsicErrorStats::Racks::Rack::Nodes::get_child_by_name(co
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrorStats::Racks::Rack::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -388,9 +379,14 @@ std::shared_ptr<Entity> AsicErrorStats::Racks::Rack::Nodes::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Racks::Rack::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -473,6 +469,7 @@ std::shared_ptr<Entity> AsicErrorStats::Racks::Rack::Nodes::Node::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Racks::Rack::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(counts != nullptr)
     {
         children["counts"] = counts;
@@ -556,14 +553,6 @@ std::shared_ptr<Entity> AsicErrorStats::Racks::Rack::Nodes::Node::Counts::get_ch
 {
     if(child_yang_name == "count")
     {
-        for(auto const & c : count)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count>();
         c->parent = this;
         count.push_back(c);
@@ -576,9 +565,14 @@ std::shared_ptr<Entity> AsicErrorStats::Racks::Rack::Nodes::Node::Counts::get_ch
 std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Racks::Rack::Nodes::Node::Counts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : count)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -653,14 +647,6 @@ std::shared_ptr<Entity> AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count:
 {
     if(child_yang_name == "sum-data")
     {
-        for(auto const & c : sum_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData>();
         c->parent = this;
         sum_data.push_back(c);
@@ -673,9 +659,14 @@ std::shared_ptr<Entity> AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count:
 std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sum_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -796,6 +787,7 @@ std::shared_ptr<Entity> AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count:
 std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

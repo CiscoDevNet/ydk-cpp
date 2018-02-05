@@ -133,6 +133,7 @@ std::shared_ptr<Entity> CISCOCONFIGMANMIB::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ccmhistory != nullptr)
     {
         children["ccmHistory"] = ccmhistory;
@@ -277,6 +278,7 @@ std::shared_ptr<Entity> CISCOCONFIGMANMIB::Ccmhistory::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::Ccmhistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -408,6 +410,7 @@ std::shared_ptr<Entity> CISCOCONFIGMANMIB::Ccmclihistory::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::Ccmclihistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -511,6 +514,7 @@ std::shared_ptr<Entity> CISCOCONFIGMANMIB::Ccmclicfg::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::Ccmclicfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -606,6 +610,7 @@ std::shared_ptr<Entity> CISCOCONFIGMANMIB::Ccmctidobjects::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::Ccmctidobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -721,14 +726,6 @@ std::shared_ptr<Entity> CISCOCONFIGMANMIB::Ccmhistoryeventtable::get_child_by_na
 {
     if(child_yang_name == "ccmHistoryEventEntry")
     {
-        for(auto const & c : ccmhistoryevententry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry>();
         c->parent = this;
         ccmhistoryevententry.push_back(c);
@@ -741,9 +738,14 @@ std::shared_ptr<Entity> CISCOCONFIGMANMIB::Ccmhistoryeventtable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::Ccmhistoryeventtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ccmhistoryevententry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -891,6 +893,7 @@ std::shared_ptr<Entity> CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevent
 std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::Ccmhistoryeventtable::Ccmhistoryevententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1156,14 +1159,6 @@ std::shared_ptr<Entity> CISCOCONFIGMANMIB::Ccmclihistorycommandtable::get_child_
 {
     if(child_yang_name == "ccmCLIHistoryCommandEntry")
     {
-        for(auto const & c : ccmclihistorycommandentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry>();
         c->parent = this;
         ccmclihistorycommandentry.push_back(c);
@@ -1176,9 +1171,14 @@ std::shared_ptr<Entity> CISCOCONFIGMANMIB::Ccmclihistorycommandtable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::Ccmclihistorycommandtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ccmclihistorycommandentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1262,6 +1262,7 @@ std::shared_ptr<Entity> CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihist
 std::map<std::string, std::shared_ptr<Entity>> CISCOCONFIGMANMIB::Ccmclihistorycommandtable::Ccmclihistorycommandentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

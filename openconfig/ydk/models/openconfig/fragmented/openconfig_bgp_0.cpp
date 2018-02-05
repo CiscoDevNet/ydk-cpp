@@ -95,6 +95,7 @@ std::shared_ptr<Entity> Bgp::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(global != nullptr)
     {
         children["global"] = global;
@@ -321,6 +322,7 @@ std::shared_ptr<Entity> Bgp::Global::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -443,6 +445,7 @@ std::shared_ptr<Entity> Bgp::Global::Config::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -548,6 +551,7 @@ std::shared_ptr<Entity> Bgp::Global::State::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -683,6 +687,7 @@ std::shared_ptr<Entity> Bgp::Global::DefaultRouteDistance::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::DefaultRouteDistance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -770,6 +775,7 @@ std::shared_ptr<Entity> Bgp::Global::DefaultRouteDistance::Config::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::DefaultRouteDistance::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -867,6 +873,7 @@ std::shared_ptr<Entity> Bgp::Global::DefaultRouteDistance::State::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::DefaultRouteDistance::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -982,6 +989,7 @@ std::shared_ptr<Entity> Bgp::Global::Confederation::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::Confederation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -1083,6 +1091,7 @@ std::shared_ptr<Entity> Bgp::Global::Confederation::Config::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::Confederation::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1202,6 +1211,7 @@ std::shared_ptr<Entity> Bgp::Global::Confederation::State::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::Confederation::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1325,6 +1335,7 @@ std::shared_ptr<Entity> Bgp::Global::GracefulRestart::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::GracefulRestart::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -1420,6 +1431,7 @@ std::shared_ptr<Entity> Bgp::Global::GracefulRestart::Config::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::GracefulRestart::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1545,6 +1557,7 @@ std::shared_ptr<Entity> Bgp::Global::GracefulRestart::State::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::GracefulRestart::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1706,6 +1719,7 @@ std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -1799,6 +1813,7 @@ std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::Config::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1882,6 +1897,7 @@ std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::State::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1987,6 +2003,7 @@ std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::Ebgp::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Ebgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -2074,6 +2091,7 @@ std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::Ebgp::Config::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Ebgp::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2171,6 +2189,7 @@ std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::Ebgp::State::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Ebgp::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2286,6 +2305,7 @@ std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::Ibgp::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Ibgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -2369,6 +2389,7 @@ std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::Ibgp::Config::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Ibgp::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2452,6 +2473,7 @@ std::shared_ptr<Entity> Bgp::Global::UseMultiplePaths::Ibgp::State::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Ibgp::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2557,6 +2579,7 @@ std::shared_ptr<Entity> Bgp::Global::RouteSelectionOptions::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::RouteSelectionOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -2660,6 +2683,7 @@ std::shared_ptr<Entity> Bgp::Global::RouteSelectionOptions::Config::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::RouteSelectionOptions::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2813,6 +2837,7 @@ std::shared_ptr<Entity> Bgp::Global::RouteSelectionOptions::State::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::RouteSelectionOptions::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2948,14 +2973,6 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::get_child_by_name(const std::stri
 {
     if(child_yang_name == "afi-safi")
     {
-        for(auto const & c : afi_safi)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Bgp::Global::AfiSafis::AfiSafi>();
         c->parent = this;
         afi_safi.push_back(c);
@@ -2968,9 +2985,14 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : afi_safi)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3255,6 +3277,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -3415,6 +3438,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Config::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3513,6 +3537,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::State::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3641,6 +3666,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -3717,6 +3743,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config:
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3793,6 +3820,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State::
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3891,6 +3919,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::g
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -3987,6 +4016,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::C
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4133,6 +4163,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::S
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4307,6 +4338,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -4393,6 +4425,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4469,6 +4502,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State:
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4567,6 +4601,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -4647,6 +4682,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4737,6 +4773,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4845,6 +4882,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -4921,6 +4959,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4997,6 +5036,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5095,6 +5135,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -5203,6 +5244,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::get
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5337,6 +5379,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::get_
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5474,6 +5517,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefix_limit != nullptr)
     {
         children["prefix-limit"] = prefix_limit;
@@ -5577,6 +5621,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -5661,6 +5706,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5765,6 +5811,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5861,6 +5908,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::get
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5937,6 +5985,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::get_
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6048,6 +6097,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefix_limit != nullptr)
     {
         children["prefix-limit"] = prefix_limit;
@@ -6151,6 +6201,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -6235,6 +6286,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6339,6 +6391,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6435,6 +6488,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::get
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6511,6 +6565,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::get_
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6596,6 +6651,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::get_
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefix_limit != nullptr)
     {
         children["prefix-limit"] = prefix_limit;
@@ -6689,6 +6745,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::Pref
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -6773,6 +6830,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::Pref
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6877,6 +6935,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::Pref
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6982,6 +7041,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::get_
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefix_limit != nullptr)
     {
         children["prefix-limit"] = prefix_limit;
@@ -7075,6 +7135,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::Pref
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -7159,6 +7220,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::Pref
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7263,6 +7325,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::Pref
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7368,6 +7431,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefix_limit != nullptr)
     {
         children["prefix-limit"] = prefix_limit;
@@ -7461,6 +7525,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::Prefix
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -7545,6 +7610,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::Prefix
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7649,6 +7715,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::Prefix
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7754,6 +7821,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefix_limit != nullptr)
     {
         children["prefix-limit"] = prefix_limit;
@@ -7847,6 +7915,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::Prefix
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -7931,6 +8000,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::Prefix
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8035,6 +8105,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::Prefix
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8140,6 +8211,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::get_
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefix_limit != nullptr)
     {
         children["prefix-limit"] = prefix_limit;
@@ -8233,6 +8305,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::Pref
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -8317,6 +8390,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::Pref
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8421,6 +8495,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::Pref
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8526,6 +8601,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::get_
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefix_limit != nullptr)
     {
         children["prefix-limit"] = prefix_limit;
@@ -8619,6 +8695,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::Pref
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -8703,6 +8780,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::Pref
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8807,6 +8885,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::Pref
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8912,6 +8991,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefix_limit != nullptr)
     {
         children["prefix-limit"] = prefix_limit;
@@ -9005,6 +9085,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -9089,6 +9170,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9193,6 +9275,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9298,6 +9381,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefix_limit != nullptr)
     {
         children["prefix-limit"] = prefix_limit;
@@ -9391,6 +9475,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -9475,6 +9560,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9579,6 +9665,7 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9704,6 +9791,7 @@ std::shared_ptr<Entity> Bgp::Global::ApplyPolicy::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::ApplyPolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -9819,6 +9907,7 @@ std::shared_ptr<Entity> Bgp::Global::ApplyPolicy::Config::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::ApplyPolicy::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9960,6 +10049,7 @@ std::shared_ptr<Entity> Bgp::Global::ApplyPolicy::State::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::ApplyPolicy::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10071,14 +10161,6 @@ std::shared_ptr<Entity> Bgp::Neighbors::get_child_by_name(const std::string & ch
 {
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Bgp::Neighbors::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -10091,9 +10173,14 @@ std::shared_ptr<Entity> Bgp::Neighbors::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10352,6 +10439,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -10538,6 +10626,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::Config::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10807,6 +10896,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::State::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(messages != nullptr)
     {
         children["messages"] = messages;
@@ -11054,6 +11144,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::State::Messages::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::State::Messages::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sent != nullptr)
     {
         children["sent"] = sent;
@@ -11134,6 +11225,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::State::Messages::Sent::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::State::Messages::Sent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11224,6 +11316,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::State::Messages::Received::get
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::State::Messages::Received::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11314,6 +11407,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::State::Queues::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::State::Queues::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11422,6 +11516,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::Timers::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Timers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -11510,6 +11605,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::Timers::Config::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Timers::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11632,6 +11728,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::Timers::State::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Timers::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11770,6 +11867,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::Transport::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Transport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -11858,6 +11956,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::Transport::Config::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Transport::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11988,6 +12087,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::Transport::State::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Transport::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12146,6 +12246,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::ErrorHandling::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::ErrorHandling::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -12222,6 +12323,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::ErrorHandling::Config::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::ErrorHandling::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12302,6 +12404,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::ErrorHandling::State::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::ErrorHandling::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12410,6 +12513,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::GracefulRestart::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::GracefulRestart::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -12498,6 +12602,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::GracefulRestart::Config::get_c
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::GracefulRestart::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12632,6 +12737,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::GracefulRestart::State::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::GracefulRestart::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12800,6 +12906,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::LoggingOptions::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::LoggingOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -12876,6 +12983,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::LoggingOptions::Config::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::LoggingOptions::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12952,6 +13060,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::LoggingOptions::State::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::LoggingOptions::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13050,6 +13159,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::EbgpMultihop::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::EbgpMultihop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -13130,6 +13240,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::EbgpMultihop::Config::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::EbgpMultihop::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13220,6 +13331,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::EbgpMultihop::State::get_child
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::EbgpMultihop::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13328,6 +13440,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::RouteReflector::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::RouteReflector::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -13408,6 +13521,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::RouteReflector::Config::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::RouteReflector::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13498,6 +13612,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::RouteReflector::State::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::RouteReflector::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13606,6 +13721,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AsPathOptions::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AsPathOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -13686,6 +13802,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AsPathOptions::Config::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AsPathOptions::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13776,6 +13893,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AsPathOptions::State::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AsPathOptions::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13884,6 +14002,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AddPaths::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AddPaths::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -13968,6 +14087,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AddPaths::Config::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AddPaths::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14072,6 +14192,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AddPaths::State::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AddPaths::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14203,6 +14324,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::UseMultiplePaths::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -14284,6 +14406,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::Config::get_
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::UseMultiplePaths::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14360,6 +14483,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::State::get_c
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::UseMultiplePaths::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14458,6 +14582,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -14534,6 +14659,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14610,6 +14736,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State:
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14708,6 +14835,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::ApplyPolicy::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::ApplyPolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -14816,6 +14944,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::ApplyPolicy::Config::get_child
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::ApplyPolicy::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14950,6 +15079,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::ApplyPolicy::State::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::ApplyPolicy::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15054,14 +15184,6 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::get_child_by_name(co
 {
     if(child_yang_name == "afi-safi")
     {
-        for(auto const & c : afi_safi)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi>();
         c->parent = this;
         afi_safi.push_back(c);
@@ -15074,9 +15196,14 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : afi_safi)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15341,6 +15468,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -15496,6 +15624,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::get
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15604,6 +15733,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::get_
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefixes != nullptr)
     {
         children["prefixes"] = prefixes;
@@ -15713,6 +15843,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Pref
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15831,6 +15962,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRes
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -15907,6 +16039,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRes
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15991,6 +16124,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRes
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16109,6 +16243,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -16217,6 +16352,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16351,6 +16487,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16488,6 +16625,7 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefix_limit != nullptr)
     {
         children["prefix-limit"] = prefix_limit;

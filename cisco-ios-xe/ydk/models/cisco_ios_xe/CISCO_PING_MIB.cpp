@@ -68,6 +68,7 @@ std::shared_ptr<Entity> CISCOPINGMIB::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> CISCOPINGMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ciscopingtable != nullptr)
     {
         children["ciscoPingTable"] = ciscopingtable;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> CISCOPINGMIB::Ciscopingtable::get_child_by_name(const st
 {
     if(child_yang_name == "ciscoPingEntry")
     {
-        for(auto const & c : ciscopingentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOPINGMIB::Ciscopingtable::Ciscopingentry>();
         c->parent = this;
         ciscopingentry.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> CISCOPINGMIB::Ciscopingtable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CISCOPINGMIB::Ciscopingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ciscopingentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -335,6 +333,7 @@ std::shared_ptr<Entity> CISCOPINGMIB::Ciscopingtable::Ciscopingentry::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCOPINGMIB::Ciscopingtable::Ciscopingentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -263,6 +263,7 @@ std::shared_ptr<Entity> NvSatellite::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(reload_op_statuses != nullptr)
     {
         children["reload-op-statuses"] = reload_op_statuses;
@@ -443,14 +444,6 @@ std::shared_ptr<Entity> NvSatellite::ReloadOpStatuses::get_child_by_name(const s
 {
     if(child_yang_name == "reload-op-status")
     {
-        for(auto const & c : reload_op_status)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::ReloadOpStatuses::ReloadOpStatus>();
         c->parent = this;
         reload_op_status.push_back(c);
@@ -463,9 +456,14 @@ std::shared_ptr<Entity> NvSatellite::ReloadOpStatuses::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::ReloadOpStatuses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : reload_op_status)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -605,6 +603,7 @@ std::shared_ptr<Entity> NvSatellite::ReloadOpStatuses::ReloadOpStatus::get_child
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::ReloadOpStatuses::ReloadOpStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -742,14 +741,6 @@ std::shared_ptr<Entity> NvSatellite::SdacpRedundancies::get_child_by_name(const 
 {
     if(child_yang_name == "sdacp-redundancy")
     {
-        for(auto const & c : sdacp_redundancy)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::SdacpRedundancies::SdacpRedundancy>();
         c->parent = this;
         sdacp_redundancy.push_back(c);
@@ -762,9 +753,14 @@ std::shared_ptr<Entity> NvSatellite::SdacpRedundancies::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpRedundancies::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sdacp_redundancy)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -896,14 +892,6 @@ std::shared_ptr<Entity> NvSatellite::SdacpRedundancies::SdacpRedundancy::get_chi
 
     if(child_yang_name == "channel")
     {
-        for(auto const & c : channel)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel>();
         c->parent = this;
         channel.push_back(c);
@@ -916,14 +904,19 @@ std::shared_ptr<Entity> NvSatellite::SdacpRedundancies::SdacpRedundancy::get_chi
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpRedundancies::SdacpRedundancy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(protocol_state_timestamp != nullptr)
     {
         children["protocol-state-timestamp"] = protocol_state_timestamp;
     }
 
+    count = 0;
     for (auto const & c : channel)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1096,6 +1089,7 @@ std::shared_ptr<Entity> NvSatellite::SdacpRedundancies::SdacpRedundancy::Protoco
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimestamp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1233,6 +1227,7 @@ std::shared_ptr<Entity> NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(channel_state_timestamp != nullptr)
     {
         children["channel-state-timestamp"] = channel_state_timestamp;
@@ -1383,6 +1378,7 @@ std::shared_ptr<Entity> NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ChannelStateTimestamp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1473,6 +1469,7 @@ std::shared_ptr<Entity> NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStateTimestamp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1568,14 +1565,6 @@ std::shared_ptr<Entity> NvSatellite::InstallShows::get_child_by_name(const std::
 {
     if(child_yang_name == "install-show")
     {
-        for(auto const & c : install_show)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::InstallShows::InstallShow>();
         c->parent = this;
         install_show.push_back(c);
@@ -1588,9 +1577,14 @@ std::shared_ptr<Entity> NvSatellite::InstallShows::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::InstallShows::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : install_show)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1966,14 +1960,6 @@ std::shared_ptr<Entity> NvSatellite::InstallShows::InstallShow::get_child_by_nam
 {
     if(child_yang_name == "satellite")
     {
-        for(auto const & c : satellite)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::InstallShows::InstallShow::Satellite>();
         c->parent = this;
         satellite.push_back(c);
@@ -1986,9 +1972,14 @@ std::shared_ptr<Entity> NvSatellite::InstallShows::InstallShow::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::InstallShows::InstallShow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : satellite)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2313,6 +2304,7 @@ std::shared_ptr<Entity> NvSatellite::InstallShows::InstallShow::Satellite::get_c
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::InstallShows::InstallShow::Satellite::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2458,14 +2450,6 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::get_child_by_name(const 
 {
     if(child_yang_name == "satellite-status")
     {
-        for(auto const & c : satellite_status)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus>();
         c->parent = this;
         satellite_status.push_back(c);
@@ -2478,9 +2462,14 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : satellite_status)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2756,14 +2745,6 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::get_chi
 
     if(child_yang_name == "configured-link")
     {
-        for(auto const & c : configured_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink>();
         c->parent = this;
         configured_link.push_back(c);
@@ -2776,6 +2757,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::get_chi
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::SatelliteStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(candidate_fabric_ports != nullptr)
     {
         children["candidate-fabric-ports"] = candidate_fabric_ports;
@@ -2791,9 +2773,13 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::S
         children["redundancy-out-of-sync-timestamp"] = redundancy_out_of_sync_timestamp;
     }
 
+    count = 0;
     for (auto const & c : configured_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3254,14 +3240,6 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::Candida
 {
     if(child_yang_name == "configured-port")
     {
-        for(auto const & c : configured_port)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::ConfiguredPort>();
         c->parent = this;
         configured_port.push_back(c);
@@ -3270,14 +3248,6 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::Candida
 
     if(child_yang_name == "current-port")
     {
-        for(auto const & c : current_port)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::CurrentPort>();
         c->parent = this;
         current_port.push_back(c);
@@ -3290,14 +3260,23 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::Candida
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : configured_port)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : current_port)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3412,6 +3391,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::Candida
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::ConfiguredPort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3548,6 +3528,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::Candida
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::CurrentPort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3680,14 +3661,6 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::Optical
 {
     if(child_yang_name == "application")
     {
-        for(auto const & c : application)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Application>();
         c->parent = this;
         application.push_back(c);
@@ -3700,9 +3673,14 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::Optical
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : application)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3785,6 +3763,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::Optical
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Application::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3875,6 +3854,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::Redunda
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimestamp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4021,14 +4001,6 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::Configu
 {
     if(child_yang_name == "port-range")
     {
-        for(auto const & c : port_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange>();
         c->parent = this;
         port_range.push_back(c);
@@ -4037,14 +4009,6 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::Configu
 
     if(child_yang_name == "discovered-link")
     {
-        for(auto const & c : discovered_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::DiscoveredLink>();
         c->parent = this;
         discovered_link.push_back(c);
@@ -4057,14 +4021,23 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::Configu
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : port_range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : discovered_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4277,6 +4250,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::Configu
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4425,6 +4399,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::Configu
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::DiscoveredLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4540,14 +4515,6 @@ std::shared_ptr<Entity> NvSatellite::SatellitePriorities::get_child_by_name(cons
 {
     if(child_yang_name == "satellite-priority")
     {
-        for(auto const & c : satellite_priority)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::SatellitePriorities::SatellitePriority>();
         c->parent = this;
         satellite_priority.push_back(c);
@@ -4560,9 +4527,14 @@ std::shared_ptr<Entity> NvSatellite::SatellitePriorities::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatellitePriorities::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : satellite_priority)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4666,6 +4638,7 @@ std::shared_ptr<Entity> NvSatellite::SatellitePriorities::SatellitePriority::get
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatellitePriorities::SatellitePriority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4821,14 +4794,6 @@ std::shared_ptr<Entity> NvSatellite::SatelliteVersions::get_child_by_name(const 
 {
     if(child_yang_name == "satellite-version")
     {
-        for(auto const & c : satellite_version)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::SatelliteVersions::SatelliteVersion>();
         c->parent = this;
         satellite_version.push_back(c);
@@ -4841,9 +4806,14 @@ std::shared_ptr<Entity> NvSatellite::SatelliteVersions::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteVersions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : satellite_version)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4985,6 +4955,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteVersions::SatelliteVersion::get_ch
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteVersions::SatelliteVersion::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(active_version != nullptr)
     {
         children["active-version"] = active_version;
@@ -5132,6 +5103,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteVersions::SatelliteVersion::Active
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteVersions::SatelliteVersion::ActiveVersion::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5244,6 +5216,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteVersions::SatelliteVersion::Transf
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5356,6 +5329,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteVersions::SatelliteVersion::Commit
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5459,14 +5433,6 @@ std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::get_child_by_name(cons
 {
     if(child_yang_name == "satellite-topology")
     {
-        for(auto const & c : satellite_topology)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::SatelliteTopologies::SatelliteTopology>();
         c->parent = this;
         satellite_topology.push_back(c);
@@ -5479,9 +5445,14 @@ std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteTopologies::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : satellite_topology)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5593,14 +5564,6 @@ std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::SatelliteTopology::get
 {
     if(child_yang_name == "discovered-link")
     {
-        for(auto const & c : discovered_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink>();
         c->parent = this;
         discovered_link.push_back(c);
@@ -5609,14 +5572,6 @@ std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::SatelliteTopology::get
 
     if(child_yang_name == "satellite")
     {
-        for(auto const & c : satellite)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite>();
         c->parent = this;
         satellite.push_back(c);
@@ -5629,14 +5584,23 @@ std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::SatelliteTopology::get
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteTopologies::SatelliteTopology::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : discovered_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : satellite)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5773,6 +5737,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::SatelliteTopology::Dis
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5915,14 +5880,6 @@ std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::SatelliteTopology::Sat
 {
     if(child_yang_name == "fabric-link")
     {
-        for(auto const & c : fabric_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink>();
         c->parent = this;
         fabric_link.push_back(c);
@@ -5935,9 +5892,14 @@ std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::SatelliteTopology::Sat
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : fabric_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6142,14 +6104,6 @@ std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::SatelliteTopology::Sat
 {
     if(child_yang_name == "remote-device")
     {
-        for(auto const & c : remote_device)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::RemoteDevice>();
         c->parent = this;
         remote_device.push_back(c);
@@ -6162,9 +6116,14 @@ std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::SatelliteTopology::Sat
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : remote_device)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6317,6 +6276,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::SatelliteTopology::Sat
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::RemoteDevice::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6469,6 +6429,7 @@ std::shared_ptr<Entity> NvSatellite::InstallReferenceInfo::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::InstallReferenceInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(references != nullptr)
     {
         children["references"] = references;
@@ -6549,14 +6510,6 @@ std::shared_ptr<Entity> NvSatellite::InstallReferenceInfo::References::get_child
 {
     if(child_yang_name == "reference")
     {
-        for(auto const & c : reference)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::InstallReferenceInfo::References::Reference>();
         c->parent = this;
         reference.push_back(c);
@@ -6569,9 +6522,14 @@ std::shared_ptr<Entity> NvSatellite::InstallReferenceInfo::References::get_child
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::InstallReferenceInfo::References::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : reference)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6665,6 +6623,7 @@ std::shared_ptr<Entity> NvSatellite::InstallReferenceInfo::References::Reference
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::InstallReferenceInfo::References::Reference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6768,14 +6727,6 @@ std::shared_ptr<Entity> NvSatellite::InstallOpProgresses::get_child_by_name(cons
 {
     if(child_yang_name == "install-op-progress")
     {
-        for(auto const & c : install_op_progress)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::InstallOpProgresses::InstallOpProgress>();
         c->parent = this;
         install_op_progress.push_back(c);
@@ -6788,9 +6739,14 @@ std::shared_ptr<Entity> NvSatellite::InstallOpProgresses::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::InstallOpProgresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : install_op_progress)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6878,6 +6834,7 @@ std::shared_ptr<Entity> NvSatellite::InstallOpProgresses::InstallOpProgress::get
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::InstallOpProgresses::InstallOpProgress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6993,14 +6950,6 @@ std::shared_ptr<Entity> NvSatellite::ReloadStatuses::get_child_by_name(const std
 {
     if(child_yang_name == "reload-status")
     {
-        for(auto const & c : reload_status)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::ReloadStatuses::ReloadStatus>();
         c->parent = this;
         reload_status.push_back(c);
@@ -7013,9 +6962,14 @@ std::shared_ptr<Entity> NvSatellite::ReloadStatuses::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::ReloadStatuses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : reload_status)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7151,6 +7105,7 @@ std::shared_ptr<Entity> NvSatellite::ReloadStatuses::ReloadStatus::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::ReloadStatuses::ReloadStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7285,6 +7240,7 @@ std::shared_ptr<Entity> NvSatellite::Install::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::Install::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(satellite_software_versions != nullptr)
     {
         children["satellite-software-versions"] = satellite_software_versions;
@@ -7365,14 +7321,6 @@ std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::get_chi
 {
     if(child_yang_name == "satellite-software-version")
     {
-        for(auto const & c : satellite_software_version)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion>();
         c->parent = this;
         satellite_software_version.push_back(c);
@@ -7385,9 +7333,14 @@ std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::get_chi
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::Install::SatelliteSoftwareVersions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : satellite_software_version)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7485,6 +7438,7 @@ std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::Satelli
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(install_package_info != nullptr)
     {
         children["install-package-info"] = install_package_info;
@@ -7621,6 +7575,7 @@ std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::Satelli
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(active_packages != nullptr)
     {
         children["active-packages"] = active_packages;
@@ -7704,14 +7659,6 @@ std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::Satelli
 {
     if(child_yang_name == "package")
     {
-        for(auto const & c : package)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::Package>();
         c->parent = this;
         package.push_back(c);
@@ -7724,9 +7671,14 @@ std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::Satelli
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : package)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7803,6 +7755,7 @@ std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::Satelli
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7901,14 +7854,6 @@ std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::Satelli
 {
     if(child_yang_name == "package")
     {
-        for(auto const & c : package)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::Package>();
         c->parent = this;
         package.push_back(c);
@@ -7921,9 +7866,14 @@ std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::Satelli
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : package)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8000,6 +7950,7 @@ std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::Satelli
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8098,14 +8049,6 @@ std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::Satelli
 {
     if(child_yang_name == "package")
     {
-        for(auto const & c : package)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::Package>();
         c->parent = this;
         package.push_back(c);
@@ -8118,9 +8061,14 @@ std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::Satelli
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : package)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8197,6 +8145,7 @@ std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::Satelli
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8302,14 +8251,6 @@ std::shared_ptr<Entity> NvSatellite::InstallOpStatuses::get_child_by_name(const 
 {
     if(child_yang_name == "install-op-status")
     {
-        for(auto const & c : install_op_status)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::InstallOpStatuses::InstallOpStatus>();
         c->parent = this;
         install_op_status.push_back(c);
@@ -8322,9 +8263,14 @@ std::shared_ptr<Entity> NvSatellite::InstallOpStatuses::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::InstallOpStatuses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : install_op_status)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8660,6 +8606,7 @@ std::shared_ptr<Entity> NvSatellite::InstallOpStatuses::InstallOpStatus::get_chi
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::InstallOpStatuses::InstallOpStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8916,6 +8863,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteProperties::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteProperties::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(id_ranges != nullptr)
     {
         children["id-ranges"] = id_ranges;
@@ -8996,14 +8944,6 @@ std::shared_ptr<Entity> NvSatellite::SatelliteProperties::IdRanges::get_child_by
 {
     if(child_yang_name == "id-range")
     {
-        for(auto const & c : id_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::SatelliteProperties::IdRanges::IdRange>();
         c->parent = this;
         id_range.push_back(c);
@@ -9016,9 +8956,14 @@ std::shared_ptr<Entity> NvSatellite::SatelliteProperties::IdRanges::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteProperties::IdRanges::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : id_range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9102,6 +9047,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteProperties::IdRanges::IdRange::get
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteProperties::IdRanges::IdRange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9207,14 +9153,6 @@ std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2S::get_child_by_name(const s
 {
     if(child_yang_name == "sdacp-discovery2")
     {
-        for(auto const & c : sdacp_discovery2)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::SdacpDiscovery2S::SdacpDiscovery2>();
         c->parent = this;
         sdacp_discovery2.push_back(c);
@@ -9227,9 +9165,14 @@ std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2S::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpDiscovery2S::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sdacp_discovery2)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9325,14 +9268,6 @@ std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::get_chil
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -9341,14 +9276,6 @@ std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::get_chil
 
     if(child_yang_name == "satellite")
     {
-        for(auto const & c : satellite)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite>();
         c->parent = this;
         satellite.push_back(c);
@@ -9361,14 +9288,23 @@ std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::get_chil
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : satellite)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9461,6 +9397,7 @@ std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interfac
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9569,14 +9506,6 @@ std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellit
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -9589,9 +9518,14 @@ std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellit
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9742,6 +9676,7 @@ std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellit
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9907,14 +9842,6 @@ std::shared_ptr<Entity> NvSatellite::IcpeDpms::get_child_by_name(const std::stri
 {
     if(child_yang_name == "icpe-dpm")
     {
-        for(auto const & c : icpe_dpm)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::IcpeDpms::IcpeDpm>();
         c->parent = this;
         icpe_dpm.push_back(c);
@@ -9927,9 +9854,14 @@ std::shared_ptr<Entity> NvSatellite::IcpeDpms::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::IcpeDpms::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : icpe_dpm)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10077,14 +10009,6 @@ std::shared_ptr<Entity> NvSatellite::IcpeDpms::IcpeDpm::get_child_by_name(const 
 {
     if(child_yang_name == "satellite")
     {
-        for(auto const & c : satellite)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::IcpeDpms::IcpeDpm::Satellite>();
         c->parent = this;
         satellite.push_back(c);
@@ -10093,14 +10017,6 @@ std::shared_ptr<Entity> NvSatellite::IcpeDpms::IcpeDpm::get_child_by_name(const 
 
     if(child_yang_name == "remote-host")
     {
-        for(auto const & c : remote_host)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::IcpeDpms::IcpeDpm::RemoteHost>();
         c->parent = this;
         remote_host.push_back(c);
@@ -10113,14 +10029,23 @@ std::shared_ptr<Entity> NvSatellite::IcpeDpms::IcpeDpm::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::IcpeDpms::IcpeDpm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : satellite)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : remote_host)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10467,6 +10392,7 @@ std::shared_ptr<Entity> NvSatellite::IcpeDpms::IcpeDpm::Satellite::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::IcpeDpms::IcpeDpm::Satellite::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10891,6 +10817,7 @@ std::shared_ptr<Entity> NvSatellite::IcpeDpms::IcpeDpm::RemoteHost::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::IcpeDpms::IcpeDpm::RemoteHost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11046,14 +10973,6 @@ std::shared_ptr<Entity> NvSatellite::SdacpControls::get_child_by_name(const std:
 {
     if(child_yang_name == "sdacp-control")
     {
-        for(auto const & c : sdacp_control)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::SdacpControls::SdacpControl>();
         c->parent = this;
         sdacp_control.push_back(c);
@@ -11066,9 +10985,14 @@ std::shared_ptr<Entity> NvSatellite::SdacpControls::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpControls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sdacp_control)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11201,14 +11125,6 @@ std::shared_ptr<Entity> NvSatellite::SdacpControls::SdacpControl::get_child_by_n
 
     if(child_yang_name == "channel")
     {
-        for(auto const & c : channel)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::SdacpControls::SdacpControl::Channel>();
         c->parent = this;
         channel.push_back(c);
@@ -11221,6 +11137,7 @@ std::shared_ptr<Entity> NvSatellite::SdacpControls::SdacpControl::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpControls::SdacpControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(protocol_state_timestamp != nullptr)
     {
         children["protocol-state-timestamp"] = protocol_state_timestamp;
@@ -11231,9 +11148,13 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpControls::Sdacp
         children["transport-error-timestamp"] = transport_error_timestamp;
     }
 
+    count = 0;
     for (auto const & c : channel)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11376,6 +11297,7 @@ std::shared_ptr<Entity> NvSatellite::SdacpControls::SdacpControl::ProtocolStateT
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpControls::SdacpControl::ProtocolStateTimestamp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11466,6 +11388,7 @@ std::shared_ptr<Entity> NvSatellite::SdacpControls::SdacpControl::TransportError
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11632,6 +11555,7 @@ std::shared_ptr<Entity> NvSatellite::SdacpControls::SdacpControl::Channel::get_c
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpControls::SdacpControl::Channel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(capabilities != nullptr)
     {
         children["capabilities"] = capabilities;
@@ -11825,14 +11749,6 @@ std::shared_ptr<Entity> NvSatellite::SdacpControls::SdacpControl::Channel::Capab
 {
     if(child_yang_name == "tl-vs")
     {
-        for(auto const & c : tl_vs)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs>();
         c->parent = this;
         tl_vs.push_back(c);
@@ -11845,9 +11761,14 @@ std::shared_ptr<Entity> NvSatellite::SdacpControls::SdacpControl::Channel::Capab
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tl_vs)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11934,6 +11855,7 @@ std::shared_ptr<Entity> NvSatellite::SdacpControls::SdacpControl::Channel::Capab
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12032,6 +11954,7 @@ std::shared_ptr<Entity> NvSatellite::SdacpControls::SdacpControl::Channel::Resyn
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimestamp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12122,6 +12045,7 @@ std::shared_ptr<Entity> NvSatellite::SdacpControls::SdacpControl::Channel::Chann
 std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

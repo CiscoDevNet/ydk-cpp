@@ -120,6 +120,7 @@ std::shared_ptr<Entity> CISCOIPURPFMIB::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cipurpfscalar != nullptr)
     {
         children["cipUrpfScalar"] = cipurpfscalar;
@@ -251,6 +252,7 @@ std::shared_ptr<Entity> CISCOIPURPFMIB::Cipurpfscalar::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::Cipurpfscalar::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -356,14 +358,6 @@ std::shared_ptr<Entity> CISCOIPURPFMIB::Cipurpftable::get_child_by_name(const st
 {
     if(child_yang_name == "cipUrpfEntry")
     {
-        for(auto const & c : cipurpfentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPURPFMIB::Cipurpftable::Cipurpfentry>();
         c->parent = this;
         cipurpfentry.push_back(c);
@@ -376,9 +370,14 @@ std::shared_ptr<Entity> CISCOIPURPFMIB::Cipurpftable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::Cipurpftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipurpfentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -462,6 +461,7 @@ std::shared_ptr<Entity> CISCOIPURPFMIB::Cipurpftable::Cipurpfentry::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::Cipurpftable::Cipurpfentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -567,14 +567,6 @@ std::shared_ptr<Entity> CISCOIPURPFMIB::Cipurpfifmontable::get_child_by_name(con
 {
     if(child_yang_name == "cipUrpfIfMonEntry")
     {
-        for(auto const & c : cipurpfifmonentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry>();
         c->parent = this;
         cipurpfifmonentry.push_back(c);
@@ -587,9 +579,14 @@ std::shared_ptr<Entity> CISCOIPURPFMIB::Cipurpfifmontable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::Cipurpfifmontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipurpfifmonentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -709,6 +706,7 @@ std::shared_ptr<Entity> CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::ge
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::Cipurpfifmontable::Cipurpfifmonentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -904,14 +902,6 @@ std::shared_ptr<Entity> CISCOIPURPFMIB::Cipurpfvrfiftable::get_child_by_name(con
 {
     if(child_yang_name == "cipUrpfVrfIfEntry")
     {
-        for(auto const & c : cipurpfvrfifentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry>();
         c->parent = this;
         cipurpfvrfifentry.push_back(c);
@@ -924,9 +914,14 @@ std::shared_ptr<Entity> CISCOIPURPFMIB::Cipurpfvrfiftable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::Cipurpfvrfiftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipurpfvrfifentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1014,6 +1009,7 @@ std::shared_ptr<Entity> CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry::ge
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::Cipurpfvrfiftable::Cipurpfvrfifentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1129,14 +1125,6 @@ std::shared_ptr<Entity> CISCOIPURPFMIB::Cipurpfvrftable::get_child_by_name(const
 {
     if(child_yang_name == "cipUrpfVrfEntry")
     {
-        for(auto const & c : cipurpfvrfentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry>();
         c->parent = this;
         cipurpfvrfentry.push_back(c);
@@ -1149,9 +1137,14 @@ std::shared_ptr<Entity> CISCOIPURPFMIB::Cipurpfvrftable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::Cipurpfvrftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipurpfvrfentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1227,6 +1220,7 @@ std::shared_ptr<Entity> CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPURPFMIB::Cipurpfvrftable::Cipurpfvrfentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

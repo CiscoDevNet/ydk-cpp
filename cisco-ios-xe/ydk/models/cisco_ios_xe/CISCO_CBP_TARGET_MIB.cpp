@@ -81,6 +81,7 @@ std::shared_ptr<Entity> CISCOCBPTARGETMIB::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> CISCOCBPTARGETMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ccbpttargetattachcfg != nullptr)
     {
         children["ccbptTargetAttachCfg"] = ccbpttargetattachcfg;
@@ -193,6 +194,7 @@ std::shared_ptr<Entity> CISCOCBPTARGETMIB::Ccbpttargetattachcfg::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CISCOCBPTARGETMIB::Ccbpttargetattachcfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -288,14 +290,6 @@ std::shared_ptr<Entity> CISCOCBPTARGETMIB::Ccbpttargettable::get_child_by_name(c
 {
     if(child_yang_name == "ccbptTargetEntry")
     {
-        for(auto const & c : ccbpttargetentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry>();
         c->parent = this;
         ccbpttargetentry.push_back(c);
@@ -308,9 +302,14 @@ std::shared_ptr<Entity> CISCOCBPTARGETMIB::Ccbpttargettable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CISCOCBPTARGETMIB::Ccbpttargettable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ccbpttargetentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -422,6 +421,7 @@ std::shared_ptr<Entity> CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::g
 std::map<std::string, std::shared_ptr<Entity>> CISCOCBPTARGETMIB::Ccbpttargettable::Ccbpttargetentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

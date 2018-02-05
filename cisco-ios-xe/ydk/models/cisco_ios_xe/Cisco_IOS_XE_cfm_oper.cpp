@@ -68,6 +68,7 @@ std::shared_ptr<Entity> CfmStatistics::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> CfmStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cfm_meps != nullptr)
     {
         children["cfm-meps"] = cfm_meps;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> CfmStatistics::CfmMeps::get_child_by_name(const std::str
 {
     if(child_yang_name == "cfm-mep")
     {
-        for(auto const & c : cfm_mep)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CfmStatistics::CfmMeps::CfmMep>();
         c->parent = this;
         cfm_mep.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> CfmStatistics::CfmMeps::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> CfmStatistics::CfmMeps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cfm_mep)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -321,6 +319,7 @@ std::shared_ptr<Entity> CfmStatistics::CfmMeps::CfmMep::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> CfmStatistics::CfmMeps::CfmMep::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_cleared != nullptr)
     {
         children["last-cleared"] = last_cleared;
@@ -496,6 +495,7 @@ std::shared_ptr<Entity> CfmStatistics::CfmMeps::CfmMep::LastCleared::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CfmStatistics::CfmMeps::CfmMep::LastCleared::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

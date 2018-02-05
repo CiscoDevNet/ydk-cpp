@@ -90,7 +90,7 @@ string RestconfClient::execute(const string & yfilter, const string & url, const
     if(res != CURLE_OK)
     {
         YLOG_ERROR("Connection failed: {}", curl_easy_strerror(res));
-        throw(YCPPClientError{curl_easy_strerror(res)});
+        throw(YClientError{curl_easy_strerror(res)});
     }
     get_debug_info(curl);
 
@@ -101,7 +101,7 @@ string RestconfClient::execute(const string & yfilter, const string & url, const
         ostringstream os;
         os <<  "Operation did not succeed. Got response: " << response_code << " : " << response;
         YLOG_ERROR(os.str().c_str());
-        throw(YCPPServiceProviderError{os.str()});
+        throw(YServiceProviderError{os.str()});
     }
     YLOG_DEBUG( "Got response code: {}, data: {}", response_code, response);
     return response;
@@ -132,7 +132,7 @@ void RestconfClient::initialize_curl(const string & username, const string & pas
     curl = curl_easy_init();
     if(!curl)
     {
-        throw(YCPPClientError{"Unable to create curl environment"});
+        throw(YClientError{"Unable to create curl environment"});
     }
 
     //curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L); //optionally uncomment for debug

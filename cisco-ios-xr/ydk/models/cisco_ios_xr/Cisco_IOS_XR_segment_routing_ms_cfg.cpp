@@ -97,6 +97,7 @@ std::shared_ptr<Entity> Sr::get_child_by_name(const std::string & child_yang_nam
 std::map<std::string, std::shared_ptr<Entity>> Sr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(global_block != nullptr)
     {
         children["global-block"] = global_block;
@@ -224,6 +225,7 @@ std::shared_ptr<Entity> Sr::GlobalBlock::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Sr::GlobalBlock::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -321,6 +323,7 @@ std::shared_ptr<Entity> Sr::LocalBlock::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> Sr::LocalBlock::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -416,14 +419,6 @@ std::shared_ptr<Entity> Sr::Mappings::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "mapping")
     {
-        for(auto const & c : mapping)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Sr::Mappings::Mapping>();
         c->parent = this;
         mapping.push_back(c);
@@ -436,9 +431,14 @@ std::shared_ptr<Entity> Sr::Mappings::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Sr::Mappings::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mapping)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -534,6 +534,7 @@ std::shared_ptr<Entity> Sr::Mappings::Mapping::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Sr::Mappings::Mapping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

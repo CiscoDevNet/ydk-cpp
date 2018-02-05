@@ -180,18 +180,18 @@ class ObjectGroup::Port::Objects::Object::Operators : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Operator_; //type: ObjectGroup::Port::Objects::Object::Operators::Operator_
+        class Operator; //type: ObjectGroup::Port::Objects::Object::Operators::Operator
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_objmgr_oper::ObjectGroup::Port::Objects::Object::Operators::Operator_> > operator_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_objmgr_oper::ObjectGroup::Port::Objects::Object::Operators::Operator> > operator_;
         
 }; // ObjectGroup::Port::Objects::Object::Operators
 
 
-class ObjectGroup::Port::Objects::Object::Operators::Operator_ : public ydk::Entity
+class ObjectGroup::Port::Objects::Object::Operators::Operator : public ydk::Entity
 {
     public:
-        Operator_();
-        ~Operator_();
+        Operator();
+        ~Operator();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -208,7 +208,7 @@ class ObjectGroup::Port::Objects::Object::Operators::Operator_ : public ydk::Ent
         ydk::YLeaf operator_type_xr; //type: uint32
         ydk::YLeaf port_xr; //type: uint32
 
-}; // ObjectGroup::Port::Objects::Object::Operators::Operator_
+}; // ObjectGroup::Port::Objects::Object::Operators::Operator
 
 
 class ObjectGroup::Port::Objects::Object::PortRanges : public ydk::Entity

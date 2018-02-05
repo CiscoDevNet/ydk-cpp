@@ -760,11 +760,11 @@ class Native::ControlPlaneHost::ControlPlane::Host::ManagementInterface::Allow :
 }; // Native::ControlPlaneHost::ControlPlane::Host::ManagementInterface::Allow
 
 
-class Native::Clock_ : public ydk::Entity
+class Native::Clock : public ydk::Entity
 {
     public:
-        Clock_();
-        ~Clock_();
+        Clock();
+        ~Clock();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -777,18 +777,18 @@ class Native::Clock_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class CalendarValid; //type: Native::Clock_::CalendarValid
-        class SummerTime; //type: Native::Clock_::SummerTime
-        class Timezone; //type: Native::Clock_::Timezone
+        class CalendarValid; //type: Native::Clock::CalendarValid
+        class SummerTime; //type: Native::Clock::SummerTime
+        class Timezone; //type: Native::Clock::Timezone
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Clock_::CalendarValid> calendar_valid; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Clock_::SummerTime> summer_time;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Clock_::Timezone> timezone;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Clock::CalendarValid> calendar_valid; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Clock::SummerTime> summer_time;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Clock::Timezone> timezone;
         
-}; // Native::Clock_
+}; // Native::Clock
 
 
-class Native::Clock_::CalendarValid : public ydk::Entity
+class Native::Clock::CalendarValid : public ydk::Entity
 {
     public:
         CalendarValid();
@@ -806,10 +806,10 @@ class Native::Clock_::CalendarValid : public ydk::Entity
         std::string get_absolute_path() const override;
 
 
-}; // Native::Clock_::CalendarValid
+}; // Native::Clock::CalendarValid
 
 
-class Native::Clock_::SummerTime : public ydk::Entity
+class Native::Clock::SummerTime : public ydk::Entity
 {
     public:
         SummerTime();
@@ -838,11 +838,11 @@ class Native::Clock_::SummerTime : public ydk::Entity
         ydk::YLeaf date_end_time; //type: string
         ydk::YLeaf offset; //type: uint16
         ydk::YLeaf recurring; //type: empty
-        ydk::YLeaf recurring_start; //type: one of uint8, enumeration
+        ydk::YLeaf recurring_start; //type: one of enumeration, uint8
         ydk::YLeaf recurring_start_day; //type: WeekdayType
         ydk::YLeaf recurring_start_month; //type: MonthType
         ydk::YLeaf recurring_start_time; //type: string
-        ydk::YLeaf recurring_end; //type: one of uint8, enumeration
+        ydk::YLeaf recurring_end; //type: one of enumeration, uint8
         ydk::YLeaf recurring_end_day; //type: WeekdayType
         ydk::YLeaf recurring_end_month; //type: MonthType
         ydk::YLeaf recurring_end_time; //type: string
@@ -850,10 +850,10 @@ class Native::Clock_::SummerTime : public ydk::Entity
         class RecurringStart;
         class RecurringEnd;
 
-}; // Native::Clock_::SummerTime
+}; // Native::Clock::SummerTime
 
 
-class Native::Clock_::Timezone : public ydk::Entity
+class Native::Clock::Timezone : public ydk::Entity
 {
     public:
         Timezone();
@@ -876,7 +876,7 @@ class Native::Clock_::Timezone : public ydk::Entity
         ydk::YLeaf minutes; //type: int8
         class Offset;
 
-}; // Native::Clock_::Timezone
+}; // Native::Clock::Timezone
 
 
 class Native::Logging : public ydk::Entity
@@ -896,7 +896,7 @@ class Native::Logging : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf alarm; //type: one of uint8, enumeration
+        ydk::YLeaf alarm; //type: one of enumeration, uint8
         ydk::YLeaf facility; //type: Facility
         ydk::YLeaf hostip; //type: one of string, union
         ydk::YLeaf snmp_authfail; //type: empty
@@ -1348,7 +1348,7 @@ class Native::Logging::History : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf size; //type: uint16
-        ydk::YLeaf severity_level; //type: one of uint8, enumeration
+        ydk::YLeaf severity_level; //type: one of enumeration, uint8
         class SeverityLevel;
 
 }; // Native::Logging::History
@@ -2284,7 +2284,7 @@ class Native::Logging::Trap : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf trap_default; //type: empty
-        ydk::YLeaf severity; //type: one of uint8, enumeration
+        ydk::YLeaf severity; //type: one of enumeration, uint8
         class Severity;
 
 }; // Native::Logging::Trap
@@ -3056,10 +3056,10 @@ class Native::Aaa::Authentication::Dot1X : public ydk::Entity
         std::string get_absolute_path() const override;
 
         class Dot1XList; //type: Native::Aaa::Authentication::Dot1X::Dot1XList
-        class Default_; //type: Native::Aaa::Authentication::Dot1X::Default_
+        class Default; //type: Native::Aaa::Authentication::Dot1X::Default
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authentication::Dot1X::Dot1XList> > dot1x_list;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authentication::Dot1X::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authentication::Dot1X::Default> default_;
         
 }; // Native::Aaa::Authentication::Dot1X
 
@@ -3088,11 +3088,11 @@ class Native::Aaa::Authentication::Dot1X::Dot1XList : public ydk::Entity
 }; // Native::Aaa::Authentication::Dot1X::Dot1XList
 
 
-class Native::Aaa::Authentication::Dot1X::Default_ : public ydk::Entity
+class Native::Aaa::Authentication::Dot1X::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3108,7 +3108,7 @@ class Native::Aaa::Authentication::Dot1X::Default_ : public ydk::Entity
         ydk::YLeaf group; //type: one of string, enumeration
         class Group;
 
-}; // Native::Aaa::Authentication::Dot1X::Default_
+}; // Native::Aaa::Authentication::Dot1X::Default
 
 
 class Native::Aaa::Authentication::Enable : public ydk::Entity
@@ -3128,18 +3128,18 @@ class Native::Aaa::Authentication::Enable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Default_; //type: Native::Aaa::Authentication::Enable::Default_
+        class Default; //type: Native::Aaa::Authentication::Enable::Default
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authentication::Enable::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authentication::Enable::Default> default_;
         
 }; // Native::Aaa::Authentication::Enable
 
 
-class Native::Aaa::Authentication::Enable::Default_ : public ydk::Entity
+class Native::Aaa::Authentication::Enable::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3158,7 +3158,7 @@ class Native::Aaa::Authentication::Enable::Default_ : public ydk::Entity
         ydk::YLeaf none; //type: empty
         class Group;
 
-}; // Native::Aaa::Authentication::Enable::Default_
+}; // Native::Aaa::Authentication::Enable::Default
 
 
 class Native::Aaa::Authentication::Eou : public ydk::Entity
@@ -3178,18 +3178,18 @@ class Native::Aaa::Authentication::Eou : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Default_; //type: Native::Aaa::Authentication::Eou::Default_
+        class Default; //type: Native::Aaa::Authentication::Eou::Default
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authentication::Eou::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authentication::Eou::Default> default_;
         
 }; // Native::Aaa::Authentication::Eou
 
 
-class Native::Aaa::Authentication::Eou::Default_ : public ydk::Entity
+class Native::Aaa::Authentication::Eou::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3202,14 +3202,14 @@ class Native::Aaa::Authentication::Eou::Default_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Group; //type: Native::Aaa::Authentication::Eou::Default_::Group
+        class Group; //type: Native::Aaa::Authentication::Eou::Default::Group
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authentication::Eou::Default_::Group> group;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authentication::Eou::Default::Group> group;
         
-}; // Native::Aaa::Authentication::Eou::Default_
+}; // Native::Aaa::Authentication::Eou::Default
 
 
-class Native::Aaa::Authentication::Eou::Default_::Group : public ydk::Entity
+class Native::Aaa::Authentication::Eou::Default::Group : public ydk::Entity
 {
     public:
         Group();
@@ -3228,7 +3228,7 @@ class Native::Aaa::Authentication::Eou::Default_::Group : public ydk::Entity
 
         ydk::YLeaf radius; //type: empty
 
-}; // Native::Aaa::Authentication::Eou::Default_::Group
+}; // Native::Aaa::Authentication::Eou::Default::Group
 
 
 class Native::Aaa::Authentication::Login : public ydk::Entity
@@ -3404,18 +3404,18 @@ class Native::Aaa::Authentication::Onep : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Default_; //type: Native::Aaa::Authentication::Onep::Default_
+        class Default; //type: Native::Aaa::Authentication::Onep::Default
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authentication::Onep::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authentication::Onep::Default> default_;
         
 }; // Native::Aaa::Authentication::Onep
 
 
-class Native::Aaa::Authentication::Onep::Default_ : public ydk::Entity
+class Native::Aaa::Authentication::Onep::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3428,14 +3428,14 @@ class Native::Aaa::Authentication::Onep::Default_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Local; //type: Native::Aaa::Authentication::Onep::Default_::Local
+        class Local; //type: Native::Aaa::Authentication::Onep::Default::Local
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authentication::Onep::Default_::Local> local; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authentication::Onep::Default::Local> local; // presence node
         
-}; // Native::Aaa::Authentication::Onep::Default_
+}; // Native::Aaa::Authentication::Onep::Default
 
 
-class Native::Aaa::Authentication::Onep::Default_::Local : public ydk::Entity
+class Native::Aaa::Authentication::Onep::Default::Local : public ydk::Entity
 {
     public:
         Local();
@@ -3453,7 +3453,7 @@ class Native::Aaa::Authentication::Onep::Default_::Local : public ydk::Entity
         std::string get_absolute_path() const override;
 
 
-}; // Native::Aaa::Authentication::Onep::Default_::Local
+}; // Native::Aaa::Authentication::Onep::Default::Local
 
 
 class Native::Aaa::Authentication::Ppp : public ydk::Entity
@@ -3657,18 +3657,18 @@ class Native::Aaa::Authorization::AuthType : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Default_; //type: Native::Aaa::Authorization::AuthType::Default_
+        class Default; //type: Native::Aaa::Authorization::AuthType::Default
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authorization::AuthType::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authorization::AuthType::Default> default_;
         
 }; // Native::Aaa::Authorization::AuthType
 
 
-class Native::Aaa::Authorization::AuthType::Default_ : public ydk::Entity
+class Native::Aaa::Authorization::AuthType::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3684,7 +3684,7 @@ class Native::Aaa::Authorization::AuthType::Default_ : public ydk::Entity
         ydk::YLeaf group; //type: Group
         class Group;
 
-}; // Native::Aaa::Authorization::AuthType::Default_
+}; // Native::Aaa::Authorization::AuthType::Default
 
 
 class Native::Aaa::Authorization::Commands : public ydk::Entity
@@ -3733,18 +3733,18 @@ class Native::Aaa::Authorization::Configuration : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Default_; //type: Native::Aaa::Authorization::Configuration::Default_
+        class Default; //type: Native::Aaa::Authorization::Configuration::Default
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authorization::Configuration::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authorization::Configuration::Default> default_;
         
 }; // Native::Aaa::Authorization::Configuration
 
 
-class Native::Aaa::Authorization::Configuration::Default_ : public ydk::Entity
+class Native::Aaa::Authorization::Configuration::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3757,14 +3757,14 @@ class Native::Aaa::Authorization::Configuration::Default_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Group; //type: Native::Aaa::Authorization::Configuration::Default_::Group
+        class Group; //type: Native::Aaa::Authorization::Configuration::Default::Group
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authorization::Configuration::Default_::Group> group;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authorization::Configuration::Default::Group> group;
         
-}; // Native::Aaa::Authorization::Configuration::Default_
+}; // Native::Aaa::Authorization::Configuration::Default
 
 
-class Native::Aaa::Authorization::Configuration::Default_::Group : public ydk::Entity
+class Native::Aaa::Authorization::Configuration::Default::Group : public ydk::Entity
 {
     public:
         Group();
@@ -3781,14 +3781,14 @@ class Native::Aaa::Authorization::Configuration::Default_::Group : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class GroupName; //type: Native::Aaa::Authorization::Configuration::Default_::Group::GroupName
+        class GroupName; //type: Native::Aaa::Authorization::Configuration::Default::Group::GroupName
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authorization::Configuration::Default_::Group::GroupName> > group_name;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authorization::Configuration::Default::Group::GroupName> > group_name;
         
-}; // Native::Aaa::Authorization::Configuration::Default_::Group
+}; // Native::Aaa::Authorization::Configuration::Default::Group
 
 
-class Native::Aaa::Authorization::Configuration::Default_::Group::GroupName : public ydk::Entity
+class Native::Aaa::Authorization::Configuration::Default::Group::GroupName : public ydk::Entity
 {
     public:
         GroupName();
@@ -3807,7 +3807,7 @@ class Native::Aaa::Authorization::Configuration::Default_::Group::GroupName : pu
 
         ydk::YLeaf group_name; //type: string
 
-}; // Native::Aaa::Authorization::Configuration::Default_::Group::GroupName
+}; // Native::Aaa::Authorization::Configuration::Default::Group::GroupName
 
 class Native::PseudowireClass::LoadBalance::Flow::Ethernet : public ydk::Enum
 {
@@ -3843,7 +3843,7 @@ class Native::PseudowireClass::ProtocolL2Tpv3::Protocol : public ydk::Enum
 
 };
 
-class Native::Clock_::SummerTime::RecurringStart : public ydk::Enum
+class Native::Clock::SummerTime::RecurringStart : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf first;
@@ -3851,7 +3851,7 @@ class Native::Clock_::SummerTime::RecurringStart : public ydk::Enum
 
 };
 
-class Native::Clock_::SummerTime::RecurringEnd : public ydk::Enum
+class Native::Clock::SummerTime::RecurringEnd : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf first;
@@ -3859,7 +3859,7 @@ class Native::Clock_::SummerTime::RecurringEnd : public ydk::Enum
 
 };
 
-class Native::Clock_::Timezone::Offset : public ydk::Enum
+class Native::Clock::Timezone::Offset : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Y__PLUS__;
@@ -3982,7 +3982,7 @@ class Native::Aaa::Authentication::Dot1X::Dot1XList::Group : public ydk::Enum
 
 };
 
-class Native::Aaa::Authentication::Dot1X::Default_::Group : public ydk::Enum
+class Native::Aaa::Authentication::Dot1X::Default::Group : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf radius;
@@ -3990,7 +3990,7 @@ class Native::Aaa::Authentication::Dot1X::Default_::Group : public ydk::Enum
 
 };
 
-class Native::Aaa::Authentication::Enable::Default_::Group : public ydk::Enum
+class Native::Aaa::Authentication::Enable::Default::Group : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf radius;
@@ -4141,7 +4141,7 @@ class Native::Aaa::Authentication::Ppp::A4::Cache : public ydk::Enum
 
 };
 
-class Native::Aaa::Authorization::AuthType::Default_::Group : public ydk::Enum
+class Native::Aaa::Authorization::AuthType::Default::Group : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf radius;

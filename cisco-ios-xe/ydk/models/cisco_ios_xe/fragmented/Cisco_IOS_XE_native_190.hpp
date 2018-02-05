@@ -345,7 +345,7 @@ class Native::Ntp::AccessGroup::Ipv4::Peer : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of string, uint16
+        ydk::YLeaf acl; //type: one of uint16, string
         ydk::YLeaf kod; //type: empty
 
 }; // Native::Ntp::AccessGroup::Ipv4::Peer
@@ -368,7 +368,7 @@ class Native::Ntp::AccessGroup::Ipv4::QueryOnly : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of string, uint16
+        ydk::YLeaf acl; //type: one of uint16, string
         ydk::YLeaf kod; //type: empty
 
 }; // Native::Ntp::AccessGroup::Ipv4::QueryOnly
@@ -391,7 +391,7 @@ class Native::Ntp::AccessGroup::Ipv4::Serve : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of string, uint16
+        ydk::YLeaf acl; //type: one of uint16, string
         ydk::YLeaf kod; //type: empty
 
 }; // Native::Ntp::AccessGroup::Ipv4::Serve
@@ -414,7 +414,7 @@ class Native::Ntp::AccessGroup::Ipv4::ServeOnly : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of string, uint16
+        ydk::YLeaf acl; //type: one of uint16, string
         ydk::YLeaf kod; //type: empty
 
 }; // Native::Ntp::AccessGroup::Ipv4::ServeOnly
@@ -467,7 +467,7 @@ class Native::Ntp::AccessGroup::Ipv6::Peer : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of string, uint16
+        ydk::YLeaf acl; //type: one of uint16, string
         ydk::YLeaf kod; //type: empty
 
 }; // Native::Ntp::AccessGroup::Ipv6::Peer
@@ -490,7 +490,7 @@ class Native::Ntp::AccessGroup::Ipv6::QueryOnly : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of string, uint16
+        ydk::YLeaf acl; //type: one of uint16, string
         ydk::YLeaf kod; //type: empty
 
 }; // Native::Ntp::AccessGroup::Ipv6::QueryOnly
@@ -513,7 +513,7 @@ class Native::Ntp::AccessGroup::Ipv6::Serve : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of string, uint16
+        ydk::YLeaf acl; //type: one of uint16, string
         ydk::YLeaf kod; //type: empty
 
 }; // Native::Ntp::AccessGroup::Ipv6::Serve
@@ -536,7 +536,7 @@ class Native::Ntp::AccessGroup::Ipv6::ServeOnly : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of string, uint16
+        ydk::YLeaf acl; //type: one of uint16, string
         ydk::YLeaf kod; //type: empty
 
 }; // Native::Ntp::AccessGroup::Ipv6::ServeOnly
@@ -559,7 +559,7 @@ class Native::Ntp::AccessGroup::Peer : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of string, uint16
+        ydk::YLeaf acl; //type: one of uint16, string
         ydk::YLeaf kod; //type: empty
 
 }; // Native::Ntp::AccessGroup::Peer
@@ -582,7 +582,7 @@ class Native::Ntp::AccessGroup::QueryOnly : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of string, uint16
+        ydk::YLeaf acl; //type: one of uint16, string
         ydk::YLeaf kod; //type: empty
 
 }; // Native::Ntp::AccessGroup::QueryOnly
@@ -605,7 +605,7 @@ class Native::Ntp::AccessGroup::Serve : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of string, uint16
+        ydk::YLeaf acl; //type: one of uint16, string
         ydk::YLeaf kod; //type: empty
 
 }; // Native::Ntp::AccessGroup::Serve
@@ -628,7 +628,7 @@ class Native::Ntp::AccessGroup::ServeOnly : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of string, uint16
+        ydk::YLeaf acl; //type: one of uint16, string
         ydk::YLeaf kod; //type: empty
 
 }; // Native::Ntp::AccessGroup::ServeOnly
@@ -2102,7 +2102,7 @@ class Native::Event::Manager::Applet::Action : public ydk::Entity
         ydk::YLeaf end; //type: empty
         ydk::YLeaf exit; //type: empty
         class Cli; //type: Native::Event::Manager::Applet::Action::Cli
-        class If_; //type: Native::Event::Manager::Applet::Action::If_
+        class If; //type: Native::Event::Manager::Applet::Action::If
         class Info; //type: Native::Event::Manager::Applet::Action::Info
         class Regexp; //type: Native::Event::Manager::Applet::Action::Regexp
         class SnmpTrap; //type: Native::Event::Manager::Applet::Action::SnmpTrap
@@ -2110,7 +2110,7 @@ class Native::Event::Manager::Applet::Action : public ydk::Entity
         class Syslog; //type: Native::Event::Manager::Applet::Action::Syslog
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Event::Manager::Applet::Action::Cli> cli;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Event::Manager::Applet::Action::If_> if_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Event::Manager::Applet::Action::If> if_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Event::Manager::Applet::Action::Info> info;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Event::Manager::Applet::Action::Regexp> regexp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Event::Manager::Applet::Action::SnmpTrap> snmp_trap; // presence node
@@ -2141,11 +2141,11 @@ class Native::Event::Manager::Applet::Action::Cli : public ydk::Entity
 }; // Native::Event::Manager::Applet::Action::Cli
 
 
-class Native::Event::Manager::Applet::Action::If_ : public ydk::Entity
+class Native::Event::Manager::Applet::Action::If : public ydk::Entity
 {
     public:
-        If_();
-        ~If_();
+        If();
+        ~If();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2162,7 +2162,7 @@ class Native::Event::Manager::Applet::Action::If_ : public ydk::Entity
         ydk::YLeaf string_op_2; //type: string
         ydk::YLeaf goto_; //type: string
 
-}; // Native::Event::Manager::Applet::Action::If_
+}; // Native::Event::Manager::Applet::Action::If
 
 
 class Native::Event::Manager::Applet::Action::Info : public ydk::Entity
@@ -2399,11 +2399,11 @@ class Native::Event::Manager::Applet::Trigger : public ydk::Entity
 }; // Native::Event::Manager::Applet::Trigger
 
 
-class Native::Template_ : public ydk::Entity
+class Native::Template : public ydk::Entity
 {
     public:
-        Template_();
-        ~Template_();
+        Template();
+        ~Template();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2416,14 +2416,14 @@ class Native::Template_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class TemplateDetails; //type: Native::Template_::TemplateDetails
+        class TemplateDetails; //type: Native::Template::TemplateDetails
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails> > template_details;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails> > template_details;
         
-}; // Native::Template_
+}; // Native::Template
 
 
-class Native::Template_::TemplateDetails : public ydk::Entity
+class Native::Template::TemplateDetails : public ydk::Entity
 {
     public:
         TemplateDetails();
@@ -2441,14 +2441,14 @@ class Native::Template_::TemplateDetails : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf template_name; //type: string
-        class Ethernet; //type: Native::Template_::TemplateDetails::Ethernet
+        class Ethernet; //type: Native::Template::TemplateDetails::Ethernet
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet> ethernet;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet> ethernet;
         
-}; // Native::Template_::TemplateDetails
+}; // Native::Template::TemplateDetails
 
 
-class Native::Template_::TemplateDetails::Ethernet : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet : public ydk::Entity
 {
     public:
         Ethernet();
@@ -2464,14 +2464,14 @@ class Native::Template_::TemplateDetails::Ethernet : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Oam; //type: Native::Template_::TemplateDetails::Ethernet::Oam
+        class Oam; //type: Native::Template::TemplateDetails::Ethernet::Oam
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam> oam;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam> oam;
         
-}; // Native::Template_::TemplateDetails::Ethernet
+}; // Native::Template::TemplateDetails::Ethernet
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam : public ydk::Entity
 {
     public:
         Oam();
@@ -2487,16 +2487,16 @@ class Native::Template_::TemplateDetails::Ethernet::Oam : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class LinkMonitor; //type: Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor
-        class RemoteFailure; //type: Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure
+        class LinkMonitor; //type: Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor
+        class RemoteFailure; //type: Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor> link_monitor;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure> remote_failure;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor> link_monitor;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure> remote_failure;
         
-}; // Native::Template_::TemplateDetails::Ethernet::Oam
+}; // Native::Template::TemplateDetails::Ethernet::Oam
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor : public ydk::Entity
 {
     public:
         LinkMonitor();
@@ -2513,26 +2513,26 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf window; //type: uint16
-        class Frame; //type: Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame
-        class FramePeriod; //type: Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod
-        class FrameSeconds; //type: Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds
-        class HighThreshold; //type: Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold
-        class ReceiveCrc; //type: Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc
-        class SymbolPeriod; //type: Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod
-        class TransmitCrc; //type: Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc
+        class Frame; //type: Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame
+        class FramePeriod; //type: Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod
+        class FrameSeconds; //type: Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds
+        class HighThreshold; //type: Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold
+        class ReceiveCrc; //type: Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc
+        class SymbolPeriod; //type: Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod
+        class TransmitCrc; //type: Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame> frame;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod> frame_period;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds> frame_seconds;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold> high_threshold;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc> receive_crc;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod> symbol_period;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc> transmit_crc;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame> frame;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod> frame_period;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds> frame_seconds;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold> high_threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc> receive_crc;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod> symbol_period;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc> transmit_crc;
         
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor
+}; // Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame : public ydk::Entity
 {
     public:
         Frame();
@@ -2548,14 +2548,14 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Threshold; //type: Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold
+        class Threshold; //type: Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold> threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold> threshold;
         
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame
+}; // Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold : public ydk::Entity
 {
     public:
         Threshold();
@@ -2572,14 +2572,14 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Thr
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf low; //type: uint16
-        class High; //type: Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High
+        class High; //type: Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High> high;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High> high;
         
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold
+}; // Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High : public ydk::Entity
 {
     public:
         High();
@@ -2598,10 +2598,10 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Thr
         ydk::YLeaf high_range; //type: uint16
         ydk::YLeaf none; //type: empty
 
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High
+}; // Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod : public ydk::Entity
 {
     public:
         FramePeriod();
@@ -2618,14 +2618,14 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePerio
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf window; //type: uint16
-        class Threshold; //type: Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold
+        class Threshold; //type: Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold> threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold> threshold;
         
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod
+}; // Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold : public ydk::Entity
 {
     public:
         Threshold();
@@ -2642,14 +2642,14 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePerio
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf low; //type: uint16
-        class High; //type: Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High
+        class High; //type: Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High> high;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High> high;
         
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold
+}; // Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High : public ydk::Entity
 {
     public:
         High();
@@ -2668,10 +2668,10 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePerio
         ydk::YLeaf high_range; //type: uint16
         ydk::YLeaf none; //type: empty
 
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High
+}; // Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds : public ydk::Entity
 {
     public:
         FrameSeconds();
@@ -2688,14 +2688,14 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSecon
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf window; //type: uint16
-        class Threshold; //type: Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold
+        class Threshold; //type: Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold> threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold> threshold;
         
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds
+}; // Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold : public ydk::Entity
 {
     public:
         Threshold();
@@ -2712,14 +2712,14 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSecon
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf low; //type: uint16
-        class High; //type: Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High
+        class High; //type: Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High> high;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High> high;
         
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold
+}; // Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High : public ydk::Entity
 {
     public:
         High();
@@ -2738,10 +2738,10 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSecon
         ydk::YLeaf high_range; //type: uint16
         ydk::YLeaf none; //type: empty
 
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High
+}; // Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold : public ydk::Entity
 {
     public:
         HighThreshold();
@@ -2757,14 +2757,14 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThresh
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Action; //type: Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action
+        class Action; //type: Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action> action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action> action;
         
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold
+}; // Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action : public ydk::Entity
 {
     public:
         Action();
@@ -2782,10 +2782,10 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThresh
 
         ydk::YLeaf error_disable_interface; //type: empty
 
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action
+}; // Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc : public ydk::Entity
 {
     public:
         ReceiveCrc();
@@ -2802,14 +2802,14 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf window; //type: uint16
-        class Threshold; //type: Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold
+        class Threshold; //type: Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold> threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold> threshold;
         
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc
+}; // Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold : public ydk::Entity
 {
     public:
         Threshold();
@@ -2826,14 +2826,14 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf low; //type: uint16
-        class High; //type: Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High
+        class High; //type: Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High> high;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High> high;
         
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold
+}; // Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High : public ydk::Entity
 {
     public:
         High();
@@ -2852,10 +2852,10 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc
         ydk::YLeaf high_range; //type: uint16
         ydk::YLeaf none; //type: empty
 
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High
+}; // Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod : public ydk::Entity
 {
     public:
         SymbolPeriod();
@@ -2872,14 +2872,14 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeri
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf window; //type: uint16
-        class Threshold; //type: Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold
+        class Threshold; //type: Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold> threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold> threshold;
         
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod
+}; // Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold : public ydk::Entity
 {
     public:
         Threshold();
@@ -2896,14 +2896,14 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeri
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf low; //type: uint16
-        class High; //type: Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High
+        class High; //type: Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High> high;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High> high;
         
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold
+}; // Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High : public ydk::Entity
 {
     public:
         High();
@@ -2922,10 +2922,10 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeri
         ydk::YLeaf high_range; //type: uint16
         ydk::YLeaf none; //type: empty
 
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High
+}; // Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc : public ydk::Entity
 {
     public:
         TransmitCrc();
@@ -2942,14 +2942,14 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCr
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf window; //type: uint16
-        class Threshold; //type: Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold
+        class Threshold; //type: Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold> threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold> threshold;
         
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc
+}; // Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold : public ydk::Entity
 {
     public:
         Threshold();
@@ -2966,14 +2966,14 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCr
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf low; //type: uint16
-        class High; //type: Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High
+        class High; //type: Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High> high;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High> high;
         
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold
+}; // Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High : public ydk::Entity
 {
     public:
         High();
@@ -2992,10 +2992,10 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCr
         ydk::YLeaf high_range; //type: uint16
         ydk::YLeaf none; //type: empty
 
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High
+}; // Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure : public ydk::Entity
 {
     public:
         RemoteFailure();
@@ -3011,18 +3011,18 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure : public 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class CriticalEvent; //type: Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent
-        class DyingGasp; //type: Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp
-        class LinkFault; //type: Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault
+        class CriticalEvent; //type: Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent
+        class DyingGasp; //type: Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp
+        class LinkFault; //type: Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent> critical_event;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp> dying_gasp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault> link_fault;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent> critical_event;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp> dying_gasp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault> link_fault;
         
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure
+}; // Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent : public ydk::Entity
 {
     public:
         CriticalEvent();
@@ -3038,14 +3038,14 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::Critical
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Action; //type: Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action
+        class Action; //type: Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action> action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action> action;
         
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent
+}; // Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action : public ydk::Entity
 {
     public:
         Action();
@@ -3063,10 +3063,10 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::Critical
 
         ydk::YLeaf error_disable_interface; //type: empty
 
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action
+}; // Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp : public ydk::Entity
 {
     public:
         DyingGasp();
@@ -3082,14 +3082,14 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGas
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Action; //type: Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action
+        class Action; //type: Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action> action; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action> action; // presence node
         
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp
+}; // Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action : public ydk::Entity
 {
     public:
         Action();
@@ -3107,10 +3107,10 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGas
 
         ydk::YLeaf error_disable_interface; //type: empty
 
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action
+}; // Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault : public ydk::Entity
 {
     public:
         LinkFault();
@@ -3126,14 +3126,14 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFaul
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Action; //type: Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action
+        class Action; //type: Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action> action; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action> action; // presence node
         
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault
+}; // Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault
 
 
-class Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action : public ydk::Entity
+class Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action : public ydk::Entity
 {
     public:
         Action();
@@ -3151,7 +3151,7 @@ class Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFaul
 
         ydk::YLeaf error_disable_interface; //type: empty
 
-}; // Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action
+}; // Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action
 
 
 class Native::Process : public ydk::Entity

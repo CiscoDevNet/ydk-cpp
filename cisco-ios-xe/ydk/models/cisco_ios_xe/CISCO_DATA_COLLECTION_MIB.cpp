@@ -146,6 +146,7 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cdcvfile != nullptr)
     {
         children["cdcVFile"] = cdcvfile;
@@ -283,6 +284,7 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcvfile::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcvfile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -378,14 +380,6 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcvfiletable::get_child_by_name
 {
     if(child_yang_name == "cdcVFileEntry")
     {
-        for(auto const & c : cdcvfileentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry>();
         c->parent = this;
         cdcvfileentry.push_back(c);
@@ -398,9 +392,14 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcvfiletable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcvfiletable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdcvfileentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -532,6 +531,7 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::ge
 std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcvfiletable::Cdcvfileentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -757,14 +757,6 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::get_child_by_
 {
     if(child_yang_name == "cdcVFileMgmtEntry")
     {
-        for(auto const & c : cdcvfilemgmtentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry>();
         c->parent = this;
         cdcvfilemgmtentry.push_back(c);
@@ -777,9 +769,14 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdcvfilemgmtentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -887,6 +884,7 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmte
 std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcvfilemgmttable::Cdcvfilemgmtentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1052,14 +1050,6 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcdgtable::get_child_by_name(co
 {
     if(child_yang_name == "cdcDGEntry")
     {
-        for(auto const & c : cdcdgentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry>();
         c->parent = this;
         cdcdgentry.push_back(c);
@@ -1072,9 +1062,14 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcdgtable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcdgtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdcdgentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1190,6 +1185,7 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcdgtable::Cdcdgentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1375,14 +1371,6 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::get_child_
 {
     if(child_yang_name == "cdcDGBaseObjectEntry")
     {
-        for(auto const & c : cdcdgbaseobjectentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry>();
         c->parent = this;
         cdcdgbaseobjectentry.push_back(c);
@@ -1395,9 +1383,14 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdcdgbaseobjectentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1489,6 +1482,7 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseo
 std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1614,14 +1608,6 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcdginstancetable::get_child_by
 {
     if(child_yang_name == "cdcDGInstanceEntry")
     {
-        for(auto const & c : cdcdginstanceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry>();
         c->parent = this;
         cdcdginstanceentry.push_back(c);
@@ -1634,9 +1620,14 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcdginstancetable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcdginstancetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdcdginstanceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1740,6 +1731,7 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanc
 std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcdginstancetable::Cdcdginstanceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1895,14 +1887,6 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcfilexferconftable::get_child_
 {
     if(child_yang_name == "cdcFileXferConfEntry")
     {
-        for(auto const & c : cdcfilexferconfentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconfentry>();
         c->parent = this;
         cdcfilexferconfentry.push_back(c);
@@ -1915,9 +1899,14 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcfilexferconftable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcfilexferconftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdcfilexferconfentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2017,6 +2006,7 @@ std::shared_ptr<Entity> CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexfe
 std::map<std::string, std::shared_ptr<Entity>> CISCODATACOLLECTIONMIB::Cdcfilexferconftable::Cdcfilexferconfentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

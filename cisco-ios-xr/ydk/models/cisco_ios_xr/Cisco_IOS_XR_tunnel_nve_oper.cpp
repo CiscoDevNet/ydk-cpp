@@ -81,6 +81,7 @@ std::shared_ptr<Entity> Nve::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Nve::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vnis != nullptr)
     {
         children["vnis"] = vnis;
@@ -191,14 +192,6 @@ std::shared_ptr<Entity> Nve::Vnis::get_child_by_name(const std::string & child_y
 {
     if(child_yang_name == "vni")
     {
-        for(auto const & c : vni)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Nve::Vnis::Vni>();
         c->parent = this;
         vni.push_back(c);
@@ -211,9 +204,14 @@ std::shared_ptr<Entity> Nve::Vnis::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> Nve::Vnis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vni)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -369,6 +367,7 @@ std::shared_ptr<Entity> Nve::Vnis::Vni::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> Nve::Vnis::Vni::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -654,14 +653,6 @@ std::shared_ptr<Entity> Nve::Interfaces::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Nve::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -674,9 +665,14 @@ std::shared_ptr<Entity> Nve::Interfaces::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Nve::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -812,6 +808,7 @@ std::shared_ptr<Entity> Nve::Interfaces::Interface::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Nve::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

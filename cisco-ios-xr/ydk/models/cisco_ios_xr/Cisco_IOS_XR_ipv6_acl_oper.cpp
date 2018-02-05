@@ -81,6 +81,7 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(access_list_manager != nullptr)
     {
         children["access-list-manager"] = access_list_manager;
@@ -224,6 +225,7 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefixes != nullptr)
     {
         children["prefixes"] = prefixes;
@@ -314,14 +316,6 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Prefixes::get_c
 {
     if(child_yang_name == "prefix")
     {
-        for(auto const & c : prefix)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix>();
         c->parent = this;
         prefix.push_back(c);
@@ -334,9 +328,14 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Prefixes::get_c
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Prefixes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : prefix)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -426,6 +425,7 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefi
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prefix_list_sequences != nullptr)
     {
         children["prefix-list-sequences"] = prefix_list_sequences;
@@ -509,14 +509,6 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefi
 {
     if(child_yang_name == "prefix-list-sequence")
     {
-        for(auto const & c : prefix_list_sequence)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence>();
         c->parent = this;
         prefix_list_sequence.push_back(c);
@@ -529,9 +521,14 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefi
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : prefix_list_sequence)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -644,6 +641,7 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefi
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Prefixes::Prefix::PrefixListSequences::PrefixListSequence::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -839,14 +837,6 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Usages::get_chi
 {
     if(child_yang_name == "usage")
     {
-        for(auto const & c : usage)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6AclAndPrefixList::AccessListManager::Usages::Usage>();
         c->parent = this;
         usage.push_back(c);
@@ -859,9 +849,14 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Usages::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Usages::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : usage)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -949,6 +944,7 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Usages::Usage::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1064,14 +1060,6 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Accesses::get_c
 {
     if(child_yang_name == "access")
     {
-        for(auto const & c : access)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6AclAndPrefixList::AccessListManager::Accesses::Access>();
         c->parent = this;
         access.push_back(c);
@@ -1084,9 +1072,14 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Accesses::get_c
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Accesses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : access)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1176,6 +1169,7 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Accesses::Acces
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(access_list_sequences != nullptr)
     {
         children["access-list-sequences"] = access_list_sequences;
@@ -1259,14 +1253,6 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Accesses::Acces
 {
     if(child_yang_name == "access-list-sequence")
     {
-        for(auto const & c : access_list_sequence)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence>();
         c->parent = this;
         access_list_sequence.push_back(c);
@@ -1279,9 +1265,14 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Accesses::Acces
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : access_list_sequence)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1580,14 +1571,6 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Accesses::Acces
 
     if(child_yang_name == "next-hop-info")
     {
-        for(auto const & c : next_hop_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::NextHopInfo>();
         c->parent = this;
         next_hop_info.push_back(c);
@@ -1596,14 +1579,6 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Accesses::Acces
 
     if(child_yang_name == "udf")
     {
-        for(auto const & c : udf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::Udf>();
         c->parent = this;
         udf.push_back(c);
@@ -1616,19 +1591,28 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Accesses::Acces
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hw_next_hop_info != nullptr)
     {
         children["hw-next-hop-info"] = hw_next_hop_info;
     }
 
+    count = 0;
     for (auto const & c : next_hop_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : udf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2219,6 +2203,7 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Accesses::Acces
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::HwNextHopInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2345,6 +2330,7 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Accesses::Acces
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::NextHopInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2479,6 +2465,7 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::AccessListManager::Accesses::Acces
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::AccessListManager::Accesses::Access::AccessListSequences::AccessListSequence::Udf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2643,6 +2630,7 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::Oor::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Oor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(details != nullptr)
     {
         children["details"] = details;
@@ -2769,6 +2757,7 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::Oor::Details::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Oor::Details::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2931,6 +2920,7 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::Oor::PrefixListSummary::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Oor::PrefixListSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(details != nullptr)
     {
         children["details"] = details;
@@ -3037,6 +3027,7 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::g
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Oor::PrefixListSummary::Details::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3192,14 +3183,6 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::Oor::OorAccesses::get_child_by_nam
 {
     if(child_yang_name == "oor-access")
     {
-        for(auto const & c : oor_access)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6AclAndPrefixList::Oor::OorAccesses::OorAccess>();
         c->parent = this;
         oor_access.push_back(c);
@@ -3212,9 +3195,14 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::Oor::OorAccesses::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Oor::OorAccesses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : oor_access)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3322,6 +3310,7 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::Oor::OorAccesses::OorAccess::get_c
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Oor::OorAccesses::OorAccess::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3487,14 +3476,6 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::Oor::OorPrefixes::get_child_by_nam
 {
     if(child_yang_name == "oor-prefix")
     {
-        for(auto const & c : oor_prefix)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6AclAndPrefixList::Oor::OorPrefixes::OorPrefix>();
         c->parent = this;
         oor_prefix.push_back(c);
@@ -3507,9 +3488,14 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::Oor::OorPrefixes::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Oor::OorPrefixes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : oor_prefix)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3617,6 +3603,7 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::Oor::OorPrefixes::OorPrefix::get_c
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Oor::OorPrefixes::OorPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3789,6 +3776,7 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::Oor::AccessListSummary::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Oor::AccessListSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(details != nullptr)
     {
         children["details"] = details;
@@ -3895,6 +3883,7 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::g
 std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

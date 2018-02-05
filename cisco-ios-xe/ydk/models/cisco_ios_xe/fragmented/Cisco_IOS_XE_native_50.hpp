@@ -16,11 +16,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
-class Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Auto_ : public ydk::Entity
+class Native::Interface::TwentyFiveGigabitEthernet::Power::Inline::Auto : public ydk::Entity
 {
     public:
-        Auto_();
-        ~Auto_();
+        Auto();
+        ~Auto();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -34,10 +34,10 @@ class Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Auto_ : publ
 
         ydk::YLeaf max; //type: int32
 
-}; // Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Auto_
+}; // Native::Interface::TwentyFiveGigabitEthernet::Power::Inline::Auto
 
 
-class Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::FourPair : public ydk::Entity
+class Native::Interface::TwentyFiveGigabitEthernet::Power::Inline::FourPair : public ydk::Entity
 {
     public:
         FourPair();
@@ -55,10 +55,10 @@ class Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::FourPair : p
 
         ydk::YLeaf forced; //type: empty
 
-}; // Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::FourPair
+}; // Native::Interface::TwentyFiveGigabitEthernet::Power::Inline::FourPair
 
 
-class Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Police : public ydk::Entity
+class Native::Interface::TwentyFiveGigabitEthernet::Power::Inline::Police : public ydk::Entity
 {
     public:
         Police();
@@ -74,14 +74,14 @@ class Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Police : pub
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Action; //type: Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Police::Action
+        class Action; //type: Native::Interface::TwentyFiveGigabitEthernet::Power::Inline::Police::Action
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Police::Action> action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigabitEthernet::Power::Inline::Police::Action> action;
         
-}; // Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Police
+}; // Native::Interface::TwentyFiveGigabitEthernet::Power::Inline::Police
 
 
-class Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Police::Action : public ydk::Entity
+class Native::Interface::TwentyFiveGigabitEthernet::Power::Inline::Police::Action : public ydk::Entity
 {
     public:
         Action();
@@ -100,10 +100,10 @@ class Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Police::Acti
         ydk::YLeaf errdisable; //type: empty
         ydk::YLeaf log; //type: empty
 
-}; // Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Police::Action
+}; // Native::Interface::TwentyFiveGigabitEthernet::Power::Inline::Police::Action
 
 
-class Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Port : public ydk::Entity
+class Native::Interface::TwentyFiveGigabitEthernet::Power::Inline::Port : public ydk::Entity
 {
     public:
         Port();
@@ -122,14 +122,14 @@ class Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Port : publi
         ydk::YLeaf poe_ha; //type: empty
         ydk::YLeaf two_event; //type: empty
 
-}; // Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Port
+}; // Native::Interface::TwentyFiveGigabitEthernet::Power::Inline::Port
 
 
-class Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Static_ : public ydk::Entity
+class Native::Interface::TwentyFiveGigabitEthernet::Power::Inline::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -143,7 +143,7 @@ class Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Static_ : pu
 
         ydk::YLeaf max; //type: int32
 
-}; // Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Static_
+}; // Native::Interface::TwentyFiveGigabitEthernet::Power::Inline::Static
 
 
 class Native::Interface::TwentyFiveGigabitEthernet::Authentication : public ydk::Entity
@@ -617,20 +617,20 @@ class Native::Interface::TwentyFiveGigabitEthernet::Authentication::Timer::Inact
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Value_; //type: Native::Interface::TwentyFiveGigabitEthernet::Authentication::Timer::Inactivity::Value_
+        class Value; //type: Native::Interface::TwentyFiveGigabitEthernet::Authentication::Timer::Inactivity::Value
         class Server; //type: Native::Interface::TwentyFiveGigabitEthernet::Authentication::Timer::Inactivity::Server
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigabitEthernet::Authentication::Timer::Inactivity::Value_> value_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigabitEthernet::Authentication::Timer::Inactivity::Value> value_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigabitEthernet::Authentication::Timer::Inactivity::Server> server; // presence node
         
 }; // Native::Interface::TwentyFiveGigabitEthernet::Authentication::Timer::Inactivity
 
 
-class Native::Interface::TwentyFiveGigabitEthernet::Authentication::Timer::Inactivity::Value_ : public ydk::Entity
+class Native::Interface::TwentyFiveGigabitEthernet::Authentication::Timer::Inactivity::Value : public ydk::Entity
 {
     public:
-        Value_();
-        ~Value_();
+        Value();
+        ~Value();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -645,7 +645,7 @@ class Native::Interface::TwentyFiveGigabitEthernet::Authentication::Timer::Inact
         ydk::YLeaf value_; //type: uint16
         ydk::YLeaf dynamic; //type: empty
 
-}; // Native::Interface::TwentyFiveGigabitEthernet::Authentication::Timer::Inactivity::Value_
+}; // Native::Interface::TwentyFiveGigabitEthernet::Authentication::Timer::Inactivity::Value
 
 
 class Native::Interface::TwentyFiveGigabitEthernet::Authentication::Timer::Inactivity::Server : public ydk::Entity
@@ -1207,8 +1207,8 @@ class Native::Interface::FortyGigabitEthernet::Backup::Delay : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 
@@ -1373,8 +1373,8 @@ class Native::Interface::FortyGigabitEthernet::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
+        ydk::YLeaf kickin; //type: one of enumeration, uint32
+        ydk::YLeaf kickout; //type: one of enumeration, uint32
         class Kickin;
         class Kickout;
 
@@ -2126,7 +2126,7 @@ class Native::Interface::FortyGigabitEthernet::Ip : public ydk::Entity
 
         ydk::YLeaf admission; //type: string
         ydk::YLeaf unnumbered; //type: string
-        ydk::YLeaf directed_broadcast; //type: one of string, uint16
+        ydk::YLeaf directed_broadcast; //type: one of uint16, string
         ydk::YLeaf local_proxy_arp; //type: empty
         ydk::YLeaf proxy_arp; //type: boolean
         ydk::YLeaf redirects; //type: boolean
@@ -2243,7 +2243,7 @@ class Native::Interface::FortyGigabitEthernet::Ip::AccessGroup::In::CommonAcl : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf common; //type: one of string, uint16
+        ydk::YLeaf common; //type: one of uint16, string
         ydk::YLeaf in; //type: empty
 
 }; // Native::Interface::FortyGigabitEthernet::Ip::AccessGroup::In::CommonAcl
@@ -2265,7 +2265,7 @@ class Native::Interface::FortyGigabitEthernet::Ip::AccessGroup::In::Acl : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf acl_name; //type: one of string, uint16
+        ydk::YLeaf acl_name; //type: one of uint16, string
         ydk::YLeaf in; //type: empty
 
 }; // Native::Interface::FortyGigabitEthernet::Ip::AccessGroup::In::Acl
@@ -2312,7 +2312,7 @@ class Native::Interface::FortyGigabitEthernet::Ip::AccessGroup::Out::CommonAcl :
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf common; //type: one of string, uint16
+        ydk::YLeaf common; //type: one of uint16, string
         ydk::YLeaf out; //type: empty
 
 }; // Native::Interface::FortyGigabitEthernet::Ip::AccessGroup::Out::CommonAcl
@@ -2334,7 +2334,7 @@ class Native::Interface::FortyGigabitEthernet::Ip::AccessGroup::Out::Acl : publi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf acl_name; //type: one of string, uint16
+        ydk::YLeaf acl_name; //type: one of uint16, string
         ydk::YLeaf out; //type: empty
 
 }; // Native::Interface::FortyGigabitEthernet::Ip::AccessGroup::Out::Acl

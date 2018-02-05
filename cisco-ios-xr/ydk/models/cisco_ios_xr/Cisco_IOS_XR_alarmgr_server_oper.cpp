@@ -81,6 +81,7 @@ std::shared_ptr<Entity> Alarms::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> Alarms::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(detail != nullptr)
     {
         children["detail"] = detail;
@@ -211,6 +212,7 @@ std::shared_ptr<Entity> Alarms::Detail::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(detail_system != nullptr)
     {
         children["detail-system"] = detail_system;
@@ -355,6 +357,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailSystem::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailSystem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(active != nullptr)
     {
         children["active"] = active;
@@ -455,14 +458,6 @@ std::shared_ptr<Entity> Alarms::Detail::DetailSystem::Active::get_child_by_name(
 {
     if(child_yang_name == "alarm-info")
     {
-        for(auto const & c : alarm_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Alarms::Detail::DetailSystem::Active::AlarmInfo>();
         c->parent = this;
         alarm_info.push_back(c);
@@ -475,9 +470,14 @@ std::shared_ptr<Entity> Alarms::Detail::DetailSystem::Active::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailSystem::Active::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : alarm_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -652,6 +652,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailSystem::Active::AlarmInfo::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailSystem::Active::AlarmInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(otn != nullptr)
     {
         children["otn"] = otn;
@@ -929,6 +930,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailSystem::Active::AlarmInfo::Otn::ge
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailSystem::Active::AlarmInfo::Otn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1030,6 +1032,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailSystem::Active::AlarmInfo::Tca::ge
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailSystem::Active::AlarmInfo::Tca::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1135,14 +1138,6 @@ std::shared_ptr<Entity> Alarms::Detail::DetailSystem::History::get_child_by_name
 {
     if(child_yang_name == "alarm-info")
     {
-        for(auto const & c : alarm_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Alarms::Detail::DetailSystem::History::AlarmInfo>();
         c->parent = this;
         alarm_info.push_back(c);
@@ -1155,9 +1150,14 @@ std::shared_ptr<Entity> Alarms::Detail::DetailSystem::History::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailSystem::History::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : alarm_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1332,6 +1332,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailSystem::History::AlarmInfo::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailSystem::History::AlarmInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(otn != nullptr)
     {
         children["otn"] = otn;
@@ -1609,6 +1610,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailSystem::History::AlarmInfo::Otn::g
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailSystem::History::AlarmInfo::Otn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1710,6 +1712,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailSystem::History::AlarmInfo::Tca::g
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailSystem::History::AlarmInfo::Tca::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1815,14 +1818,6 @@ std::shared_ptr<Entity> Alarms::Detail::DetailSystem::Suppressed::get_child_by_n
 {
     if(child_yang_name == "suppressed-info")
     {
-        for(auto const & c : suppressed_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo>();
         c->parent = this;
         suppressed_info.push_back(c);
@@ -1835,9 +1830,14 @@ std::shared_ptr<Entity> Alarms::Detail::DetailSystem::Suppressed::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailSystem::Suppressed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : suppressed_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1995,6 +1995,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(otn != nullptr)
     {
         children["otn"] = otn;
@@ -2257,6 +2258,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::Otn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2406,6 +2408,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailSystem::Stats::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailSystem::Stats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2631,14 +2634,6 @@ std::shared_ptr<Entity> Alarms::Detail::DetailSystem::Clients::get_child_by_name
 {
     if(child_yang_name == "client-info")
     {
-        for(auto const & c : client_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Alarms::Detail::DetailSystem::Clients::ClientInfo>();
         c->parent = this;
         client_info.push_back(c);
@@ -2651,9 +2646,14 @@ std::shared_ptr<Entity> Alarms::Detail::DetailSystem::Clients::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailSystem::Clients::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : client_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2789,6 +2789,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailSystem::Clients::ClientInfo::get_c
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailSystem::Clients::ClientInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3031,6 +3032,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(detail_locations != nullptr)
     {
         children["detail-locations"] = detail_locations;
@@ -3111,14 +3113,6 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::get_child_b
 {
     if(child_yang_name == "detail-location")
     {
-        for(auto const & c : detail_location)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation>();
         c->parent = this;
         detail_location.push_back(c);
@@ -3131,9 +3125,14 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::DetailLocations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : detail_location)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3275,6 +3274,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocat
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::DetailLocations::DetailLocation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(active != nullptr)
     {
         children["active"] = active;
@@ -3378,14 +3378,6 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocat
 {
     if(child_yang_name == "alarm-info")
     {
-        for(auto const & c : alarm_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo>();
         c->parent = this;
         alarm_info.push_back(c);
@@ -3398,9 +3390,14 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocat
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : alarm_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3568,6 +3565,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocat
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(otn != nullptr)
     {
         children["otn"] = otn;
@@ -3838,6 +3836,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocat
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Otn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3932,6 +3931,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocat
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Tca::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4030,14 +4030,6 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocat
 {
     if(child_yang_name == "alarm-info")
     {
-        for(auto const & c : alarm_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo>();
         c->parent = this;
         alarm_info.push_back(c);
@@ -4050,9 +4042,14 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocat
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : alarm_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4220,6 +4217,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocat
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(otn != nullptr)
     {
         children["otn"] = otn;
@@ -4490,6 +4488,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocat
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Otn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4584,6 +4583,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocat
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Tca::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4682,14 +4682,6 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocat
 {
     if(child_yang_name == "suppressed-info")
     {
-        for(auto const & c : suppressed_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo>();
         c->parent = this;
         suppressed_info.push_back(c);
@@ -4702,9 +4694,14 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocat
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : suppressed_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4855,6 +4852,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocat
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(otn != nullptr)
     {
         children["otn"] = otn;
@@ -5110,6 +5108,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocat
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo::Otn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5252,6 +5251,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocat
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Stats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5470,14 +5470,6 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocat
 {
     if(child_yang_name == "client-info")
     {
-        for(auto const & c : client_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::ClientInfo>();
         c->parent = this;
         client_info.push_back(c);
@@ -5490,9 +5482,14 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocat
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : client_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5621,6 +5618,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocat
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::ClientInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5876,6 +5874,7 @@ std::shared_ptr<Entity> Alarms::Brief::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(brief_card != nullptr)
     {
         children["brief-card"] = brief_card;
@@ -5968,6 +5967,7 @@ std::shared_ptr<Entity> Alarms::Brief::BriefCard::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefCard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(brief_locations != nullptr)
     {
         children["brief-locations"] = brief_locations;
@@ -6048,14 +6048,6 @@ std::shared_ptr<Entity> Alarms::Brief::BriefCard::BriefLocations::get_child_by_n
 {
     if(child_yang_name == "brief-location")
     {
-        for(auto const & c : brief_location)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Alarms::Brief::BriefCard::BriefLocations::BriefLocation>();
         c->parent = this;
         brief_location.push_back(c);
@@ -6068,9 +6060,14 @@ std::shared_ptr<Entity> Alarms::Brief::BriefCard::BriefLocations::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefCard::BriefLocations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : brief_location)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6186,6 +6183,7 @@ std::shared_ptr<Entity> Alarms::Brief::BriefCard::BriefLocations::BriefLocation:
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefCard::BriefLocations::BriefLocation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(active != nullptr)
     {
         children["active"] = active;
@@ -6279,14 +6277,6 @@ std::shared_ptr<Entity> Alarms::Brief::BriefCard::BriefLocations::BriefLocation:
 {
     if(child_yang_name == "alarm-info")
     {
-        for(auto const & c : alarm_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::AlarmInfo>();
         c->parent = this;
         alarm_info.push_back(c);
@@ -6299,9 +6289,14 @@ std::shared_ptr<Entity> Alarms::Brief::BriefCard::BriefLocations::BriefLocation:
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : alarm_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6398,6 +6393,7 @@ std::shared_ptr<Entity> Alarms::Brief::BriefCard::BriefLocations::BriefLocation:
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::AlarmInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6546,14 +6542,6 @@ std::shared_ptr<Entity> Alarms::Brief::BriefCard::BriefLocations::BriefLocation:
 {
     if(child_yang_name == "alarm-info")
     {
-        for(auto const & c : alarm_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::AlarmInfo>();
         c->parent = this;
         alarm_info.push_back(c);
@@ -6566,9 +6554,14 @@ std::shared_ptr<Entity> Alarms::Brief::BriefCard::BriefLocations::BriefLocation:
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : alarm_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6665,6 +6658,7 @@ std::shared_ptr<Entity> Alarms::Brief::BriefCard::BriefLocations::BriefLocation:
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::AlarmInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6813,14 +6807,6 @@ std::shared_ptr<Entity> Alarms::Brief::BriefCard::BriefLocations::BriefLocation:
 {
     if(child_yang_name == "suppressed-info")
     {
-        for(auto const & c : suppressed_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::SuppressedInfo>();
         c->parent = this;
         suppressed_info.push_back(c);
@@ -6833,9 +6819,14 @@ std::shared_ptr<Entity> Alarms::Brief::BriefCard::BriefLocations::BriefLocation:
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : suppressed_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6932,6 +6923,7 @@ std::shared_ptr<Entity> Alarms::Brief::BriefCard::BriefLocations::BriefLocation:
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::SuppressedInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7120,6 +7112,7 @@ std::shared_ptr<Entity> Alarms::Brief::BriefSystem::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefSystem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(active != nullptr)
     {
         children["active"] = active;
@@ -7210,14 +7203,6 @@ std::shared_ptr<Entity> Alarms::Brief::BriefSystem::Active::get_child_by_name(co
 {
     if(child_yang_name == "alarm-info")
     {
-        for(auto const & c : alarm_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Alarms::Brief::BriefSystem::Active::AlarmInfo>();
         c->parent = this;
         alarm_info.push_back(c);
@@ -7230,9 +7215,14 @@ std::shared_ptr<Entity> Alarms::Brief::BriefSystem::Active::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefSystem::Active::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : alarm_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7336,6 +7326,7 @@ std::shared_ptr<Entity> Alarms::Brief::BriefSystem::Active::AlarmInfo::get_child
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefSystem::Active::AlarmInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7491,14 +7482,6 @@ std::shared_ptr<Entity> Alarms::Brief::BriefSystem::History::get_child_by_name(c
 {
     if(child_yang_name == "alarm-info")
     {
-        for(auto const & c : alarm_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Alarms::Brief::BriefSystem::History::AlarmInfo>();
         c->parent = this;
         alarm_info.push_back(c);
@@ -7511,9 +7494,14 @@ std::shared_ptr<Entity> Alarms::Brief::BriefSystem::History::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefSystem::History::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : alarm_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7617,6 +7605,7 @@ std::shared_ptr<Entity> Alarms::Brief::BriefSystem::History::AlarmInfo::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefSystem::History::AlarmInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7772,14 +7761,6 @@ std::shared_ptr<Entity> Alarms::Brief::BriefSystem::Suppressed::get_child_by_nam
 {
     if(child_yang_name == "suppressed-info")
     {
-        for(auto const & c : suppressed_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo>();
         c->parent = this;
         suppressed_info.push_back(c);
@@ -7792,9 +7773,14 @@ std::shared_ptr<Entity> Alarms::Brief::BriefSystem::Suppressed::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefSystem::Suppressed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : suppressed_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7898,6 +7884,7 @@ std::shared_ptr<Entity> Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo::
 std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8061,7 +8048,7 @@ const Enum::YLeaf AlarmSeverity::unknown {0, "unknown"};
 const Enum::YLeaf AlarmSeverity::not_reported {1, "not-reported"};
 const Enum::YLeaf AlarmSeverity::not_alarmed {2, "not-alarmed"};
 const Enum::YLeaf AlarmSeverity::minor {3, "minor"};
-const Enum::YLeaf AlarmSeverity::major {4, "major"};
+const Enum::YLeaf AlarmSeverity::major_ {4, "major"};
 const Enum::YLeaf AlarmSeverity::critical {5, "critical"};
 const Enum::YLeaf AlarmSeverity::severity_last {6, "severity-last"};
 

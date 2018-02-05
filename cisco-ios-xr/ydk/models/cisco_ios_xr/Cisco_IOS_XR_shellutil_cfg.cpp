@@ -59,6 +59,7 @@ std::shared_ptr<Entity> HostNames::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> HostNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -223,25 +223,25 @@ class Native::Crypto::Pki : public ydk::Entity
         ydk::YLeaf enroll; //type: string
         class Certificate; //type: Native::Crypto::Pki::Certificate
         class Crl; //type: Native::Crypto::Pki::Crl
-        class Export_; //type: Native::Crypto::Pki::Export_
+        class Export; //type: Native::Crypto::Pki::Export
         class Import; //type: Native::Crypto::Pki::Import
         class Profile; //type: Native::Crypto::Pki::Profile
         class Server; //type: Native::Crypto::Pki::Server
         class Trustpoint; //type: Native::Crypto::Pki::Trustpoint
         class Token; //type: Native::Crypto::Pki::Token
         class Trustpool; //type: Native::Crypto::Pki::Trustpool
-        class Default_; //type: Native::Crypto::Pki::Default_
+        class Default; //type: Native::Crypto::Pki::Default
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Certificate> certificate;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Crl> crl;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Export_> > export_;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Export> > export_;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Import> > import;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile> profile;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Server> server;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Trustpoint> > trustpoint;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Token> token;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Trustpool> trustpool;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Default> default_;
         
 }; // Native::Crypto::Pki
 
@@ -1166,11 +1166,11 @@ class Native::Crypto::Pki::Crl::Download::Url : public ydk::Entity
 }; // Native::Crypto::Pki::Crl::Download::Url
 
 
-class Native::Crypto::Pki::Export_ : public ydk::Entity
+class Native::Crypto::Pki::Export : public ydk::Entity
 {
     public:
-        Export_();
-        ~Export_();
+        Export();
+        ~Export();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1184,16 +1184,16 @@ class Native::Crypto::Pki::Export_ : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
-        class Pem; //type: Native::Crypto::Pki::Export_::Pem
-        class Pkcs12; //type: Native::Crypto::Pki::Export_::Pkcs12
+        class Pem; //type: Native::Crypto::Pki::Export::Pem
+        class Pkcs12; //type: Native::Crypto::Pki::Export::Pkcs12
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Export_::Pem> pem;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Export_::Pkcs12> pkcs12;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Export::Pem> pem;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Export::Pkcs12> pkcs12;
         
-}; // Native::Crypto::Pki::Export_
+}; // Native::Crypto::Pki::Export
 
 
-class Native::Crypto::Pki::Export_::Pem : public ydk::Entity
+class Native::Crypto::Pki::Export::Pem : public ydk::Entity
 {
     public:
         Pem();
@@ -1209,16 +1209,16 @@ class Native::Crypto::Pki::Export_::Pem : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Terminal; //type: Native::Crypto::Pki::Export_::Pem::Terminal
-        class Url; //type: Native::Crypto::Pki::Export_::Pem::Url
+        class Terminal; //type: Native::Crypto::Pki::Export::Pem::Terminal
+        class Url; //type: Native::Crypto::Pki::Export::Pem::Url
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Export_::Pem::Terminal> terminal; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Export_::Pem::Url> url;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Export::Pem::Terminal> terminal; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Export::Pem::Url> url;
         
-}; // Native::Crypto::Pki::Export_::Pem
+}; // Native::Crypto::Pki::Export::Pem
 
 
-class Native::Crypto::Pki::Export_::Pem::Terminal : public ydk::Entity
+class Native::Crypto::Pki::Export::Pem::Terminal : public ydk::Entity
 {
     public:
         Terminal();
@@ -1235,16 +1235,16 @@ class Native::Crypto::Pki::Export_::Pem::Terminal : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf rollover; //type: empty
-        class Pem3des; //type: Native::Crypto::Pki::Export_::Pem::Terminal::Pem3des
-        class Des; //type: Native::Crypto::Pki::Export_::Pem::Terminal::Des
+        class Pem3des; //type: Native::Crypto::Pki::Export::Pem::Terminal::Pem3des
+        class Des; //type: Native::Crypto::Pki::Export::Pem::Terminal::Des
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Export_::Pem::Terminal::Pem3des> pem_3des;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Export_::Pem::Terminal::Des> des;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Export::Pem::Terminal::Pem3des> pem_3des;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Export::Pem::Terminal::Des> des;
         
-}; // Native::Crypto::Pki::Export_::Pem::Terminal
+}; // Native::Crypto::Pki::Export::Pem::Terminal
 
 
-class Native::Crypto::Pki::Export_::Pem::Terminal::Pem3des : public ydk::Entity
+class Native::Crypto::Pki::Export::Pem::Terminal::Pem3des : public ydk::Entity
 {
     public:
         Pem3des();
@@ -1262,10 +1262,10 @@ class Native::Crypto::Pki::Export_::Pem::Terminal::Pem3des : public ydk::Entity
 
         ydk::YLeaf password; //type: string
 
-}; // Native::Crypto::Pki::Export_::Pem::Terminal::Pem3des
+}; // Native::Crypto::Pki::Export::Pem::Terminal::Pem3des
 
 
-class Native::Crypto::Pki::Export_::Pem::Terminal::Des : public ydk::Entity
+class Native::Crypto::Pki::Export::Pem::Terminal::Des : public ydk::Entity
 {
     public:
         Des();
@@ -1283,10 +1283,10 @@ class Native::Crypto::Pki::Export_::Pem::Terminal::Des : public ydk::Entity
 
         ydk::YLeaf password; //type: string
 
-}; // Native::Crypto::Pki::Export_::Pem::Terminal::Des
+}; // Native::Crypto::Pki::Export::Pem::Terminal::Des
 
 
-class Native::Crypto::Pki::Export_::Pem::Url : public ydk::Entity
+class Native::Crypto::Pki::Export::Pem::Url : public ydk::Entity
 {
     public:
         Url();
@@ -1308,10 +1308,10 @@ class Native::Crypto::Pki::Export_::Pem::Url : public ydk::Entity
         class File;
         class Encrypt;
 
-}; // Native::Crypto::Pki::Export_::Pem::Url
+}; // Native::Crypto::Pki::Export::Pem::Url
 
 
-class Native::Crypto::Pki::Export_::Pkcs12 : public ydk::Entity
+class Native::Crypto::Pki::Export::Pkcs12 : public ydk::Entity
 {
     public:
         Pkcs12();
@@ -1331,7 +1331,7 @@ class Native::Crypto::Pki::Export_::Pkcs12 : public ydk::Entity
         ydk::YLeaf password; //type: string
         class File;
 
-}; // Native::Crypto::Pki::Export_::Pkcs12
+}; // Native::Crypto::Pki::Export::Pkcs12
 
 
 class Native::Crypto::Pki::Import : public ydk::Entity
@@ -1505,13 +1505,13 @@ class Native::Crypto::Pki::Profile::Enrollment : public ydk::Entity
         class Enrollment_; //type: Native::Crypto::Pki::Profile::Enrollment::Enrollment_
         class Parameter; //type: Native::Crypto::Pki::Profile::Enrollment::Parameter
         class Reenrollment; //type: Native::Crypto::Pki::Profile::Enrollment::Reenrollment
-        class Default_; //type: Native::Crypto::Pki::Profile::Enrollment::Default_
+        class Default; //type: Native::Crypto::Pki::Profile::Enrollment::Default
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Authentication> authentication;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Enrollment_> enrollment;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Parameter> > parameter;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Reenrollment> reenrollment;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Default> default_;
         
 }; // Native::Crypto::Pki::Profile::Enrollment
 
@@ -1681,11 +1681,11 @@ class Native::Crypto::Pki::Profile::Enrollment::Reenrollment::Url : public ydk::
 }; // Native::Crypto::Pki::Profile::Enrollment::Reenrollment::Url
 
 
-class Native::Crypto::Pki::Profile::Enrollment::Default_ : public ydk::Entity
+class Native::Crypto::Pki::Profile::Enrollment::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1699,20 +1699,20 @@ class Native::Crypto::Pki::Profile::Enrollment::Default_ : public ydk::Entity
 
         ydk::YLeaf method_est; //type: empty
         ydk::YLeaf source_interface; //type: string
-        class Authentication; //type: Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication
-        class Enrollment_; //type: Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_
-        class Parameter; //type: Native::Crypto::Pki::Profile::Enrollment::Default_::Parameter
-        class Reenrollment; //type: Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment
+        class Authentication; //type: Native::Crypto::Pki::Profile::Enrollment::Default::Authentication
+        class Enrollment_; //type: Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_
+        class Parameter; //type: Native::Crypto::Pki::Profile::Enrollment::Default::Parameter
+        class Reenrollment; //type: Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_> enrollment;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Default_::Parameter> > parameter;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment> reenrollment;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Default::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_> enrollment;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Default::Parameter> > parameter;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment> reenrollment;
         
-}; // Native::Crypto::Pki::Profile::Enrollment::Default_
+}; // Native::Crypto::Pki::Profile::Enrollment::Default
 
 
-class Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication : public ydk::Entity
+class Native::Crypto::Pki::Profile::Enrollment::Default::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -1730,14 +1730,14 @@ class Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication : publi
 
         ydk::YLeaf command; //type: string
         ydk::YLeaf terminal; //type: empty
-        class Url; //type: Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::Url
+        class Url; //type: Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::Url
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::Url> url;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::Url> url;
         
-}; // Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication
+}; // Native::Crypto::Pki::Profile::Enrollment::Default::Authentication
 
 
-class Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::Url : public ydk::Entity
+class Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::Url : public ydk::Entity
 {
     public:
         Url();
@@ -1756,10 +1756,10 @@ class Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::Url : 
         ydk::YLeaf name; //type: string
         ydk::YLeaf vrf; //type: string
 
-}; // Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::Url
+}; // Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::Url
 
 
-class Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_ : public ydk::Entity
+class Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_ : public ydk::Entity
 {
     public:
         Enrollment_();
@@ -1778,14 +1778,14 @@ class Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_ : public y
         ydk::YLeaf command; //type: string
         ydk::YLeaf terminal; //type: empty
         ydk::YLeaf credential; //type: string
-        class Url; //type: Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::Url
+        class Url; //type: Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::Url
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::Url> url;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::Url> url;
         
-}; // Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_
+}; // Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_
 
 
-class Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::Url : public ydk::Entity
+class Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::Url : public ydk::Entity
 {
     public:
         Url();
@@ -1804,10 +1804,10 @@ class Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::Url : pub
         ydk::YLeaf name; //type: string
         ydk::YLeaf vrf; //type: string
 
-}; // Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::Url
+}; // Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::Url
 
 
-class Native::Crypto::Pki::Profile::Enrollment::Default_::Parameter : public ydk::Entity
+class Native::Crypto::Pki::Profile::Enrollment::Default::Parameter : public ydk::Entity
 {
     public:
         Parameter();
@@ -1827,10 +1827,10 @@ class Native::Crypto::Pki::Profile::Enrollment::Default_::Parameter : public ydk
         ydk::YLeaf prompt; //type: string
         ydk::YLeaf value_; //type: string
 
-}; // Native::Crypto::Pki::Profile::Enrollment::Default_::Parameter
+}; // Native::Crypto::Pki::Profile::Enrollment::Default::Parameter
 
 
-class Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment : public ydk::Entity
+class Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment : public ydk::Entity
 {
     public:
         Reenrollment();
@@ -1848,14 +1848,14 @@ class Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment : public 
 
         ydk::YLeaf command; //type: string
         ydk::YLeaf terminal; //type: empty
-        class Url; //type: Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::Url
+        class Url; //type: Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::Url
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::Url> url;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::Url> url;
         
-}; // Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment
+}; // Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment
 
 
-class Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::Url : public ydk::Entity
+class Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::Url : public ydk::Entity
 {
     public:
         Url();
@@ -1874,7 +1874,7 @@ class Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::Url : pu
         ydk::YLeaf name; //type: string
         ydk::YLeaf vrf; //type: string
 
-}; // Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::Url
+}; // Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::Url
 
 
 class Native::Crypto::Pki::Server : public ydk::Entity
@@ -2290,11 +2290,11 @@ class Native::Crypto::Pki::Trustpool::Import::Url : public ydk::Entity
 }; // Native::Crypto::Pki::Trustpool::Import::Url
 
 
-class Native::Crypto::Pki::Default_ : public ydk::Entity
+class Native::Crypto::Pki::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2307,14 +2307,14 @@ class Native::Crypto::Pki::Default_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Removal; //type: Native::Crypto::Pki::Default_::Removal
+        class Removal; //type: Native::Crypto::Pki::Default::Removal
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Default_::Removal> removal;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Pki::Default::Removal> removal;
         
-}; // Native::Crypto::Pki::Default_
+}; // Native::Crypto::Pki::Default
 
 
-class Native::Crypto::Pki::Default_::Removal : public ydk::Entity
+class Native::Crypto::Pki::Default::Removal : public ydk::Entity
 {
     public:
         Removal();
@@ -2333,7 +2333,7 @@ class Native::Crypto::Pki::Default_::Removal : public ydk::Entity
 
         ydk::YLeaf timeout; //type: uint16
 
-}; // Native::Crypto::Pki::Default_::Removal
+}; // Native::Crypto::Pki::Default::Removal
 
 
 class Native::Crypto::TlsTunnel : public ydk::Entity
@@ -2927,20 +2927,20 @@ class Native::Cts::CriticalAuthentication : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Default_; //type: Native::Cts::CriticalAuthentication::Default_
+        class Default; //type: Native::Cts::CriticalAuthentication::Default
         class Fallback; //type: Native::Cts::CriticalAuthentication::Fallback
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::CriticalAuthentication::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::CriticalAuthentication::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::CriticalAuthentication::Fallback> fallback;
         
 }; // Native::Cts::CriticalAuthentication
 
 
-class Native::Cts::CriticalAuthentication::Default_ : public ydk::Entity
+class Native::Cts::CriticalAuthentication::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2953,16 +2953,16 @@ class Native::Cts::CriticalAuthentication::Default_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class PeerSgt; //type: Native::Cts::CriticalAuthentication::Default_::PeerSgt
-        class Pmk; //type: Native::Cts::CriticalAuthentication::Default_::Pmk
+        class PeerSgt; //type: Native::Cts::CriticalAuthentication::Default::PeerSgt
+        class Pmk; //type: Native::Cts::CriticalAuthentication::Default::Pmk
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::CriticalAuthentication::Default_::PeerSgt> peer_sgt;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::CriticalAuthentication::Default_::Pmk> pmk;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::CriticalAuthentication::Default::PeerSgt> peer_sgt;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::CriticalAuthentication::Default::Pmk> pmk;
         
-}; // Native::Cts::CriticalAuthentication::Default_
+}; // Native::Cts::CriticalAuthentication::Default
 
 
-class Native::Cts::CriticalAuthentication::Default_::PeerSgt : public ydk::Entity
+class Native::Cts::CriticalAuthentication::Default::PeerSgt : public ydk::Entity
 {
     public:
         PeerSgt();
@@ -2979,14 +2979,14 @@ class Native::Cts::CriticalAuthentication::Default_::PeerSgt : public ydk::Entit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Range; //type: Native::Cts::CriticalAuthentication::Default_::PeerSgt::Range
+        class Range; //type: Native::Cts::CriticalAuthentication::Default::PeerSgt::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::CriticalAuthentication::Default_::PeerSgt::Range> > range;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::CriticalAuthentication::Default::PeerSgt::Range> > range;
         
-}; // Native::Cts::CriticalAuthentication::Default_::PeerSgt
+}; // Native::Cts::CriticalAuthentication::Default::PeerSgt
 
 
-class Native::Cts::CriticalAuthentication::Default_::PeerSgt::Range : public ydk::Entity
+class Native::Cts::CriticalAuthentication::Default::PeerSgt::Range : public ydk::Entity
 {
     public:
         Range();
@@ -3006,10 +3006,10 @@ class Native::Cts::CriticalAuthentication::Default_::PeerSgt::Range : public ydk
         ydk::YLeaf range; //type: uint16
         ydk::YLeaf trusted; //type: empty
 
-}; // Native::Cts::CriticalAuthentication::Default_::PeerSgt::Range
+}; // Native::Cts::CriticalAuthentication::Default::PeerSgt::Range
 
 
-class Native::Cts::CriticalAuthentication::Default_::Pmk : public ydk::Entity
+class Native::Cts::CriticalAuthentication::Default::Pmk : public ydk::Entity
 {
     public:
         Pmk();
@@ -3030,7 +3030,7 @@ class Native::Cts::CriticalAuthentication::Default_::Pmk : public ydk::Entity
         ydk::YLeaf secret; //type: string
         class Type;
 
-}; // Native::Cts::CriticalAuthentication::Default_::Pmk
+}; // Native::Cts::CriticalAuthentication::Default::Pmk
 
 
 class Native::Cts::CriticalAuthentication::Fallback : public ydk::Entity
@@ -3130,20 +3130,20 @@ class Native::Cts::RoleBased::Permissions : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Default_; //type: Native::Cts::RoleBased::Permissions::Default_
+        class Default; //type: Native::Cts::RoleBased::Permissions::Default
         class From; //type: Native::Cts::RoleBased::Permissions::From
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::RoleBased::Permissions::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::RoleBased::Permissions::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::RoleBased::Permissions::From> from;
         
 }; // Native::Cts::RoleBased::Permissions
 
 
-class Native::Cts::RoleBased::Permissions::Default_ : public ydk::Entity
+class Native::Cts::RoleBased::Permissions::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3158,7 +3158,7 @@ class Native::Cts::RoleBased::Permissions::Default_ : public ydk::Entity
 
         ydk::YLeaf name; //type: string
 
-}; // Native::Cts::RoleBased::Permissions::Default_
+}; // Native::Cts::RoleBased::Permissions::Default
 
 
 class Native::Cts::RoleBased::Permissions::From : public ydk::Entity
@@ -3635,20 +3635,20 @@ class Native::Cts::Sxp : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf enable; //type: empty
-        class Default_; //type: Native::Cts::Sxp::Default_
+        class Default; //type: Native::Cts::Sxp::Default
         class Connection; //type: Native::Cts::Sxp::Connection
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::Sxp::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::Sxp::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::Sxp::Connection> connection;
         
 }; // Native::Cts::Sxp
 
 
-class Native::Cts::Sxp::Default_ : public ydk::Entity
+class Native::Cts::Sxp::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3662,14 +3662,14 @@ class Native::Cts::Sxp::Default_ : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf source_ip; //type: string
-        class Password; //type: Native::Cts::Sxp::Default_::Password
+        class Password; //type: Native::Cts::Sxp::Default::Password
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::Sxp::Default_::Password> password;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cts::Sxp::Default::Password> password;
         
-}; // Native::Cts::Sxp::Default_
+}; // Native::Cts::Sxp::Default
 
 
-class Native::Cts::Sxp::Default_::Password : public ydk::Entity
+class Native::Cts::Sxp::Default::Password : public ydk::Entity
 {
     public:
         Password();
@@ -3690,7 +3690,7 @@ class Native::Cts::Sxp::Default_::Password : public ydk::Entity
         ydk::YLeaf secret; //type: string
         class Type;
 
-}; // Native::Cts::Sxp::Default_::Password
+}; // Native::Cts::Sxp::Default::Password
 
 
 class Native::Cts::Sxp::Connection : public ydk::Entity
@@ -3774,7 +3774,7 @@ class Native::Crypto::Pki::Crl::Download::Schedule::Time::Date : public ydk::Enu
 
 };
 
-class Native::Crypto::Pki::Export_::Pem::Url::File : public ydk::Enum
+class Native::Crypto::Pki::Export::Pem::Url::File : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf bootflash__COLON__;
@@ -3793,7 +3793,7 @@ class Native::Crypto::Pki::Export_::Pem::Url::File : public ydk::Enum
 
 };
 
-class Native::Crypto::Pki::Export_::Pem::Url::Encrypt : public ydk::Enum
+class Native::Crypto::Pki::Export::Pem::Url::Encrypt : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Y_3des;
@@ -3801,7 +3801,7 @@ class Native::Crypto::Pki::Export_::Pem::Url::Encrypt : public ydk::Enum
 
 };
 
-class Native::Crypto::Pki::Export_::Pkcs12::File : public ydk::Enum
+class Native::Crypto::Pki::Export::Pkcs12::File : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf bootflash__COLON__;
@@ -3931,7 +3931,7 @@ class Native::Cts::Cache::NvStorage::NvStorage_ : public ydk::Enum
 
 };
 
-class Native::Cts::CriticalAuthentication::Default_::Pmk::Type : public ydk::Enum
+class Native::Cts::CriticalAuthentication::Default::Pmk::Type : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Y_0;
@@ -3953,7 +3953,7 @@ class Native::Cts::RoleBased::SgtMapVlanList::SgtMap::VlanList : public ydk::Enu
 
 };
 
-class Native::Cts::Sxp::Default_::Password::Type : public ydk::Enum
+class Native::Cts::Sxp::Default::Password::Type : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Y_0;

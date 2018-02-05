@@ -81,6 +81,7 @@ std::shared_ptr<Entity> CISCOHSRPMIB::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(chsrpglobalconfig != nullptr)
     {
         children["cHsrpGlobalConfig"] = chsrpglobalconfig;
@@ -189,6 +190,7 @@ std::shared_ptr<Entity> CISCOHSRPMIB::Chsrpglobalconfig::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPMIB::Chsrpglobalconfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -274,14 +276,6 @@ std::shared_ptr<Entity> CISCOHSRPMIB::Chsrpgrptable::get_child_by_name(const std
 {
     if(child_yang_name == "cHsrpGrpEntry")
     {
-        for(auto const & c : chsrpgrpentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry>();
         c->parent = this;
         chsrpgrpentry.push_back(c);
@@ -294,9 +288,14 @@ std::shared_ptr<Entity> CISCOHSRPMIB::Chsrpgrptable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPMIB::Chsrpgrptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : chsrpgrpentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -444,6 +443,7 @@ std::shared_ptr<Entity> CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CISCOHSRPMIB::Chsrpgrptable::Chsrpgrpentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -620,7 +620,7 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Neighbor:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf inout; //type: Inout
-        ydk::YLeaf accesslist; //type: one of string, uint16
+        ydk::YLeaf accesslist; //type: one of uint16, string
         class Inout;
 
 }; // Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Neighbor::DistributeList
@@ -1632,7 +1632,7 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistrib
         class Ospf; //type: Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Ospf
         class Ospfv3; //type: Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Ospfv3
         class Rip; //type: Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Rip
-        class Static_; //type: Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Static_
+        class Static; //type: Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Static
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Application> application; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Bgp_> bgp;
@@ -1647,7 +1647,7 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistrib
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Ospf> > ospf;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Ospfv3> > ospfv3;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Rip> rip; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Static> static_; // presence node
         
 }; // Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute
 
@@ -1805,10 +1805,10 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistrib
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class IsisArea; //type: Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Isis::IsisArea
-        class Default_; //type: Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Isis::Default_
+        class Default; //type: Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Isis::Default
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Isis::IsisArea> > isis_area;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Isis::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Isis::Default> default_;
         
 }; // Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Isis
 
@@ -1840,11 +1840,11 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistrib
 }; // Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Isis::IsisArea
 
 
-class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Isis::Default_ : public ydk::Entity
+class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Isis::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1863,7 +1863,7 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistrib
         ydk::YLeaf route_map; //type: string
         class Routes;
 
-}; // Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Isis::Default_
+}; // Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Isis::Default
 
 
 class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Lisp : public ydk::Entity
@@ -1906,10 +1906,10 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistrib
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class IsoIgrpArea; //type: Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::IsoIgrp::IsoIgrpArea
-        class Default_; //type: Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::IsoIgrp::Default_
+        class Default; //type: Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::IsoIgrp::Default
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::IsoIgrp::IsoIgrpArea> > iso_igrp_area;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::IsoIgrp::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::IsoIgrp::Default> default_;
         
 }; // Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::IsoIgrp
 
@@ -1937,11 +1937,11 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistrib
 }; // Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::IsoIgrp::IsoIgrpArea
 
 
-class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::IsoIgrp::Default_ : public ydk::Entity
+class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::IsoIgrp::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1956,7 +1956,7 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistrib
         ydk::YLeaf route_map; //type: string
         ydk::YLeaf metric; //type: uint32
 
-}; // Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::IsoIgrp::Default_
+}; // Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::IsoIgrp::Default
 
 
 class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Mobile : public ydk::Entity
@@ -2201,11 +2201,11 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistrib
 }; // Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Rip
 
 
-class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Static_ : public ydk::Entity
+class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2219,16 +2219,16 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistrib
 
         ydk::YLeaf metric; //type: uint32
         ydk::YLeaf route_map; //type: string
-        class Clns; //type: Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Static_::Clns
-        class Ip; //type: Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Static_::Ip
+        class Clns; //type: Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Static::Clns
+        class Ip; //type: Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Static::Ip
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Static_::Clns> clns; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Static_::Ip> ip; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Static::Clns> clns; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Static::Ip> ip; // presence node
         
-}; // Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Static_
+}; // Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Static
 
 
-class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Static_::Clns : public ydk::Entity
+class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Static::Clns : public ydk::Entity
 {
     public:
         Clns();
@@ -2247,10 +2247,10 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistrib
         ydk::YLeaf route_map; //type: string
         ydk::YLeaf metric; //type: uint32
 
-}; // Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Static_::Clns
+}; // Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Static::Clns
 
 
-class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Static_::Ip : public ydk::Entity
+class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Static::Ip : public ydk::Entity
 {
     public:
         Ip();
@@ -2269,7 +2269,7 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistrib
         ydk::YLeaf metric; //type: uint32
         ydk::YLeaf route_map; //type: string
 
-}; // Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Static_::Ip
+}; // Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Static::Ip
 
 
 class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::TableMap : public ydk::Entity
@@ -2946,7 +2946,7 @@ class Native::Router::Isis::AddressFamily::Ipv4::Topology::Distance::IpList::Wil
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf w_bits; //type: string
-        ydk::YLeaf access_list; //type: one of uint8, uint16
+        ydk::YLeaf access_list; //type: one of uint16, uint8
 
 }; // Native::Router::Isis::AddressFamily::Ipv4::Topology::Distance::IpList::WildcardBits
 
@@ -3070,7 +3070,7 @@ class Native::Router::Isis::AddressFamily::Ipv4::Topology::Redistribute : public
         class Ospf; //type: Native::Router::Isis::AddressFamily::Ipv4::Topology::Redistribute::Ospf
         class Ospfv3; //type: Native::Router::Isis::AddressFamily::Ipv4::Topology::Redistribute::Ospfv3
         class Rip; //type: Native::Router::Isis::AddressFamily::Ipv4::Topology::Redistribute::Rip
-        class Static_; //type: Native::Router::Isis::AddressFamily::Ipv4::Topology::Redistribute::Static_
+        class Static; //type: Native::Router::Isis::AddressFamily::Ipv4::Topology::Redistribute::Static
         class Vrf; //type: Native::Router::Isis::AddressFamily::Ipv4::Topology::Redistribute::Vrf
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::AddressFamily::Ipv4::Topology::Redistribute::Application> > application;
@@ -3086,7 +3086,7 @@ class Native::Router::Isis::AddressFamily::Ipv4::Topology::Redistribute : public
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::AddressFamily::Ipv4::Topology::Redistribute::Ospf> > ospf;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::AddressFamily::Ipv4::Topology::Redistribute::Ospfv3> > ospfv3;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::AddressFamily::Ipv4::Topology::Redistribute::Rip> rip; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::AddressFamily::Ipv4::Topology::Redistribute::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::AddressFamily::Ipv4::Topology::Redistribute::Static> static_; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis::AddressFamily::Ipv4::Topology::Redistribute::Vrf> vrf;
         
 }; // Native::Router::Isis::AddressFamily::Ipv4::Topology::Redistribute
@@ -3842,7 +3842,7 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistrib
 
 };
 
-class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Isis::Default_::Routes : public ydk::Enum
+class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Rtfilter::Redistribute::Isis::Default::Routes : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf level_1;

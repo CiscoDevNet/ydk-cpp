@@ -56,18 +56,18 @@ class ClockInterface::Clocks : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Clock_; //type: ClockInterface::Clocks::Clock_
+        class Clock; //type: ClockInterface::Clocks::Clock
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs4k_freqsync_cfg::ClockInterface::Clocks::Clock_> > clock_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs4k_freqsync_cfg::ClockInterface::Clocks::Clock> > clock_;
         
 }; // ClockInterface::Clocks
 
 
-class ClockInterface::Clocks::Clock_ : public ydk::Entity
+class ClockInterface::Clocks::Clock : public ydk::Entity
 {
     public:
-        Clock_();
-        ~Clock_();
+        Clock();
+        ~Clock();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -81,14 +81,14 @@ class ClockInterface::Clocks::Clock_ : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf clock_name; //type: string
-        class FrequencySynchronization; //type: ClockInterface::Clocks::Clock_::FrequencySynchronization
+        class FrequencySynchronization; //type: ClockInterface::Clocks::Clock::FrequencySynchronization
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs4k_freqsync_cfg::ClockInterface::Clocks::Clock_::FrequencySynchronization> frequency_synchronization;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs4k_freqsync_cfg::ClockInterface::Clocks::Clock::FrequencySynchronization> frequency_synchronization;
         
-}; // ClockInterface::Clocks::Clock_
+}; // ClockInterface::Clocks::Clock
 
 
-class ClockInterface::Clocks::Clock_::FrequencySynchronization : public ydk::Entity
+class ClockInterface::Clocks::Clock::FrequencySynchronization : public ydk::Entity
 {
     public:
         FrequencySynchronization();
@@ -109,16 +109,16 @@ class ClockInterface::Clocks::Clock_::FrequencySynchronization : public ydk::Ent
         ydk::YLeaf time_of_day_priority; //type: uint32
         ydk::YLeaf priority; //type: uint32
         ydk::YLeaf selection_input; //type: empty
-        class InputQualityLevel; //type: ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel
-        class OutputQualityLevel; //type: ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel
+        class InputQualityLevel; //type: ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel
+        class OutputQualityLevel; //type: ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs4k_freqsync_cfg::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel> input_quality_level;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs4k_freqsync_cfg::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel> output_quality_level;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs4k_freqsync_cfg::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel> input_quality_level;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs4k_freqsync_cfg::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel> output_quality_level;
         
-}; // ClockInterface::Clocks::Clock_::FrequencySynchronization
+}; // ClockInterface::Clocks::Clock::FrequencySynchronization
 
 
-class ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel : public ydk::Entity
+class ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel : public ydk::Entity
 {
     public:
         InputQualityLevel();
@@ -139,10 +139,10 @@ class ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLeve
         ydk::YLeaf min_quality_level_value; //type: FsyncQlValue
         ydk::YLeaf max_quality_level_value; //type: FsyncQlValue
 
-}; // ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel
+}; // ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel
 
 
-class ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel : public ydk::Entity
+class ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel : public ydk::Entity
 {
     public:
         OutputQualityLevel();
@@ -163,7 +163,7 @@ class ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLev
         ydk::YLeaf min_quality_level_value; //type: FsyncQlValue
         ydk::YLeaf max_quality_level_value; //type: FsyncQlValue
 
-}; // ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel
+}; // ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel
 
 class FrequencySynchronization : public ydk::Entity
 {

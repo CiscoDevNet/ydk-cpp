@@ -68,6 +68,7 @@ std::shared_ptr<Entity> SpanMonitorSession::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sessions != nullptr)
     {
         children["sessions"] = sessions;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> SpanMonitorSession::Sessions::get_child_by_name(const st
 {
     if(child_yang_name == "session")
     {
-        for(auto const & c : session)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SpanMonitorSession::Sessions::Session>();
         c->parent = this;
         session.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> SpanMonitorSession::Sessions::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Sessions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : session)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -289,6 +287,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Sessions::Session::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Sessions::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination != nullptr)
     {
         children["destination"] = destination;
@@ -392,6 +391,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Sessions::Session::Destination::get_
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Sessions::Session::Destination::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

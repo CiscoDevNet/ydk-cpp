@@ -107,6 +107,7 @@ std::shared_ptr<Entity> CISCOIETFFRRMIB::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cmplsfrrscalars != nullptr)
     {
         children["cmplsFrrScalars"] = cmplsfrrscalars;
@@ -277,6 +278,7 @@ std::shared_ptr<Entity> CISCOIETFFRRMIB::Cmplsfrrscalars::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::Cmplsfrrscalars::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -492,14 +494,6 @@ std::shared_ptr<Entity> CISCOIETFFRRMIB::Cmplsfrrconsttable::get_child_by_name(c
 {
     if(child_yang_name == "cmplsFrrConstEntry")
     {
-        for(auto const & c : cmplsfrrconstentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry>();
         c->parent = this;
         cmplsfrrconstentry.push_back(c);
@@ -512,9 +506,14 @@ std::shared_ptr<Entity> CISCOIETFFRRMIB::Cmplsfrrconsttable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::Cmplsfrrconsttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cmplsfrrconstentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -638,6 +637,7 @@ std::shared_ptr<Entity> CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry:
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -843,14 +843,6 @@ std::shared_ptr<Entity> CISCOIETFFRRMIB::Cmplsfrrlogtable::get_child_by_name(con
 {
     if(child_yang_name == "cmplsFrrLogEntry")
     {
-        for(auto const & c : cmplsfrrlogentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry>();
         c->parent = this;
         cmplsfrrlogentry.push_back(c);
@@ -863,9 +855,14 @@ std::shared_ptr<Entity> CISCOIETFFRRMIB::Cmplsfrrlogtable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::Cmplsfrrlogtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cmplsfrrlogentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -961,6 +958,7 @@ std::shared_ptr<Entity> CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry::get
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1096,14 +1094,6 @@ std::shared_ptr<Entity> CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::get_child_by_n
 {
     if(child_yang_name == "cmplsFrrFacRouteDBEntry")
     {
-        for(auto const & c : cmplsfrrfacroutedbentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry>();
         c->parent = this;
         cmplsfrrfacroutedbentry.push_back(c);
@@ -1116,9 +1106,14 @@ std::shared_ptr<Entity> CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cmplsfrrfacroutedbentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1226,6 +1221,7 @@ std::shared_ptr<Entity> CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacrou
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

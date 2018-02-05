@@ -2272,7 +2272,7 @@ class L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay : public
         class PlatformInitRtd; //type: L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay::PlatformInitRtd
         class Create; //type: L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay::Create
         class Modify; //type: L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay::Modify
-        class Delete_; //type: L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay::Delete_
+        class Delete; //type: L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay::Delete
         class Bind; //type: L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay::Bind
         class Unbind; //type: L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay::Unbind
         class MacFlush; //type: L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay::MacFlush
@@ -2285,7 +2285,7 @@ class L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay : public
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay::PlatformInitRtd> platform_init_rtd;
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay::Create> > create;
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay::Modify> > modify;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay::Delete_> > delete_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay::Delete> > delete_;
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay::Bind> > bind;
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay::Unbind> > unbind;
         std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay::MacFlush> > mac_flush;
@@ -2469,11 +2469,11 @@ class L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay::Modify 
 }; // L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay::Modify
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay::Delete_ : public ydk::Entity
+class L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay::Delete : public ydk::Entity
 {
     public:
-        Delete_();
-        ~Delete_();
+        Delete();
+        ~Delete();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2491,7 +2491,7 @@ class L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay::Delete_
         ydk::YLeaf maximum_round_trip_delay; //type: uint64
         ydk::YLeaf average_round_trip_delay; //type: uint64
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay::Delete_
+}; // L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay::Delete
 
 
 class L2VpnForwarding::Nodes::Node::L2FibMessageSummary::RoundTripDelay::Bind : public ydk::Entity

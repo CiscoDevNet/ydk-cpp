@@ -59,6 +59,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Privilege::Level::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Privilege::Level::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -139,6 +140,7 @@ std::shared_ptr<Entity> Native::Line::Vty::SessionTimeout::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::SessionTimeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -225,6 +227,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Timeout::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Timeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -301,6 +304,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Telnet::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Telnet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -411,6 +415,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Transport::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Transport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -503,6 +508,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Transport::Input::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Transport::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -588,6 +594,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Transport::Output::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Transport::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -662,6 +669,7 @@ std::shared_ptr<Entity> Native::Line::Vty::Transport::Preferred::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::Transport::Preferred::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -738,6 +746,7 @@ std::shared_ptr<Entity> Native::Line::Vty::UsbInactivityTimeout::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Line::Vty::UsbInactivityTimeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -919,14 +928,6 @@ std::shared_ptr<Entity> Native::Ntp::get_child_by_name(const std::string & child
 
     if(child_yang_name == "Cisco-IOS-XE-ntp:authentication-key")
     {
-        for(auto const & c : authentication_key)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ntp::AuthenticationKey>();
         c->parent = this;
         authentication_key.push_back(c);
@@ -980,14 +981,6 @@ std::shared_ptr<Entity> Native::Ntp::get_child_by_name(const std::string & child
 
     if(child_yang_name == "Cisco-IOS-XE-ntp:trusted-key")
     {
-        for(auto const & c : trusted_key)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ntp::TrustedKey>();
         c->parent = this;
         trusted_key.push_back(c);
@@ -1000,6 +993,7 @@ std::shared_ptr<Entity> Native::Ntp::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(access_group != nullptr)
     {
         children["Cisco-IOS-XE-ntp:access-group"] = access_group;
@@ -1010,9 +1004,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::get_children() const
         children["Cisco-IOS-XE-ntp:allow"] = allow;
     }
 
+    count = 0;
     for (auto const & c : authentication_key)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(master != nullptr)
@@ -1040,9 +1038,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::get_children() const
         children["Cisco-IOS-XE-ntp:source"] = source;
     }
 
+    count = 0;
     for (auto const & c : trusted_key)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1292,6 +1294,7 @@ std::shared_ptr<Entity> Native::Ntp::AccessGroup::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::AccessGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -1443,6 +1446,7 @@ std::shared_ptr<Entity> Native::Ntp::AccessGroup::Ipv4::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::AccessGroup::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(peer != nullptr)
     {
         children["peer"] = peer;
@@ -1540,6 +1544,7 @@ std::shared_ptr<Entity> Native::Ntp::AccessGroup::Ipv4::Peer::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::AccessGroup::Ipv4::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1637,6 +1642,7 @@ std::shared_ptr<Entity> Native::Ntp::AccessGroup::Ipv4::QueryOnly::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::AccessGroup::Ipv4::QueryOnly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1734,6 +1740,7 @@ std::shared_ptr<Entity> Native::Ntp::AccessGroup::Ipv4::Serve::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::AccessGroup::Ipv4::Serve::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1831,6 +1838,7 @@ std::shared_ptr<Entity> Native::Ntp::AccessGroup::Ipv4::ServeOnly::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::AccessGroup::Ipv4::ServeOnly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1972,6 +1980,7 @@ std::shared_ptr<Entity> Native::Ntp::AccessGroup::Ipv6::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::AccessGroup::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(peer != nullptr)
     {
         children["peer"] = peer;
@@ -2069,6 +2078,7 @@ std::shared_ptr<Entity> Native::Ntp::AccessGroup::Ipv6::Peer::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::AccessGroup::Ipv6::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2166,6 +2176,7 @@ std::shared_ptr<Entity> Native::Ntp::AccessGroup::Ipv6::QueryOnly::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::AccessGroup::Ipv6::QueryOnly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2263,6 +2274,7 @@ std::shared_ptr<Entity> Native::Ntp::AccessGroup::Ipv6::Serve::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::AccessGroup::Ipv6::Serve::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2360,6 +2372,7 @@ std::shared_ptr<Entity> Native::Ntp::AccessGroup::Ipv6::ServeOnly::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::AccessGroup::Ipv6::ServeOnly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2457,6 +2470,7 @@ std::shared_ptr<Entity> Native::Ntp::AccessGroup::Peer::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::AccessGroup::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2554,6 +2568,7 @@ std::shared_ptr<Entity> Native::Ntp::AccessGroup::QueryOnly::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::AccessGroup::QueryOnly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2651,6 +2666,7 @@ std::shared_ptr<Entity> Native::Ntp::AccessGroup::Serve::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::AccessGroup::Serve::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2748,6 +2764,7 @@ std::shared_ptr<Entity> Native::Ntp::AccessGroup::ServeOnly::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::AccessGroup::ServeOnly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2850,6 +2867,7 @@ std::shared_ptr<Entity> Native::Ntp::Allow::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Allow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mode != nullptr)
     {
         children["mode"] = mode;
@@ -2941,6 +2959,7 @@ std::shared_ptr<Entity> Native::Ntp::Allow::Mode::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Allow::Mode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(control != nullptr)
     {
         children["control"] = control;
@@ -3029,6 +3048,7 @@ std::shared_ptr<Entity> Native::Ntp::Allow::Mode::Control::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Allow::Mode::Control::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3120,6 +3140,7 @@ std::shared_ptr<Entity> Native::Ntp::AuthenticationKey::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::AuthenticationKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3223,6 +3244,7 @@ std::shared_ptr<Entity> Native::Ntp::Master::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Master::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3306,6 +3328,7 @@ std::shared_ptr<Entity> Native::Ntp::Panic::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Panic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3421,14 +3444,6 @@ std::shared_ptr<Entity> Native::Ntp::Peer::get_child_by_name(const std::string &
 {
     if(child_yang_name == "server-list")
     {
-        for(auto const & c : server_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ntp::Peer::ServerList>();
         c->parent = this;
         server_list.push_back(c);
@@ -3437,14 +3452,6 @@ std::shared_ptr<Entity> Native::Ntp::Peer::get_child_by_name(const std::string &
 
     if(child_yang_name == "ip")
     {
-        for(auto const & c : ip)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ntp::Peer::Ip>();
         c->parent = this;
         ip.push_back(c);
@@ -3453,14 +3460,6 @@ std::shared_ptr<Entity> Native::Ntp::Peer::get_child_by_name(const std::string &
 
     if(child_yang_name == "ipv6")
     {
-        for(auto const & c : ipv6)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ntp::Peer::Ipv6>();
         c->parent = this;
         ipv6.push_back(c);
@@ -3469,14 +3468,6 @@ std::shared_ptr<Entity> Native::Ntp::Peer::get_child_by_name(const std::string &
 
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ntp::Peer::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -3489,24 +3480,41 @@ std::shared_ptr<Entity> Native::Ntp::Peer::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : server_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ip)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ipv6)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3614,6 +3622,7 @@ std::shared_ptr<Entity> Native::Ntp::Peer::ServerList::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Peer::ServerList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3809,6 +3818,7 @@ std::shared_ptr<Entity> Native::Ntp::Peer::Ip::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Peer::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4004,6 +4014,7 @@ std::shared_ptr<Entity> Native::Ntp::Peer::Ipv6::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Peer::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4193,14 +4204,6 @@ std::shared_ptr<Entity> Native::Ntp::Peer::Vrf::get_child_by_name(const std::str
 {
     if(child_yang_name == "server-list")
     {
-        for(auto const & c : server_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ntp::Peer::Vrf::ServerList>();
         c->parent = this;
         server_list.push_back(c);
@@ -4209,14 +4212,6 @@ std::shared_ptr<Entity> Native::Ntp::Peer::Vrf::get_child_by_name(const std::str
 
     if(child_yang_name == "ip")
     {
-        for(auto const & c : ip)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ntp::Peer::Vrf::Ip>();
         c->parent = this;
         ip.push_back(c);
@@ -4225,14 +4220,6 @@ std::shared_ptr<Entity> Native::Ntp::Peer::Vrf::get_child_by_name(const std::str
 
     if(child_yang_name == "ipv6")
     {
-        for(auto const & c : ipv6)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ntp::Peer::Vrf::Ipv6>();
         c->parent = this;
         ipv6.push_back(c);
@@ -4245,19 +4232,32 @@ std::shared_ptr<Entity> Native::Ntp::Peer::Vrf::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Peer::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : server_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ip)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ipv6)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4368,6 +4368,7 @@ std::shared_ptr<Entity> Native::Ntp::Peer::Vrf::ServerList::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Peer::Vrf::ServerList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4556,6 +4557,7 @@ std::shared_ptr<Entity> Native::Ntp::Peer::Vrf::Ip::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Peer::Vrf::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4744,6 +4746,7 @@ std::shared_ptr<Entity> Native::Ntp::Peer::Vrf::Ipv6::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Peer::Vrf::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4939,14 +4942,6 @@ std::shared_ptr<Entity> Native::Ntp::Server::get_child_by_name(const std::string
 {
     if(child_yang_name == "server-list")
     {
-        for(auto const & c : server_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ntp::Server::ServerList>();
         c->parent = this;
         server_list.push_back(c);
@@ -4955,14 +4950,6 @@ std::shared_ptr<Entity> Native::Ntp::Server::get_child_by_name(const std::string
 
     if(child_yang_name == "ip")
     {
-        for(auto const & c : ip)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ntp::Server::Ip>();
         c->parent = this;
         ip.push_back(c);
@@ -4971,14 +4958,6 @@ std::shared_ptr<Entity> Native::Ntp::Server::get_child_by_name(const std::string
 
     if(child_yang_name == "ipv6")
     {
-        for(auto const & c : ipv6)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ntp::Server::Ipv6>();
         c->parent = this;
         ipv6.push_back(c);
@@ -4987,14 +4966,6 @@ std::shared_ptr<Entity> Native::Ntp::Server::get_child_by_name(const std::string
 
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ntp::Server::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -5007,24 +4978,41 @@ std::shared_ptr<Entity> Native::Ntp::Server::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : server_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ip)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ipv6)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5132,6 +5120,7 @@ std::shared_ptr<Entity> Native::Ntp::Server::ServerList::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Server::ServerList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5327,6 +5316,7 @@ std::shared_ptr<Entity> Native::Ntp::Server::Ip::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Server::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5522,6 +5512,7 @@ std::shared_ptr<Entity> Native::Ntp::Server::Ipv6::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Server::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5711,14 +5702,6 @@ std::shared_ptr<Entity> Native::Ntp::Server::Vrf::get_child_by_name(const std::s
 {
     if(child_yang_name == "server-list")
     {
-        for(auto const & c : server_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ntp::Server::Vrf::ServerList>();
         c->parent = this;
         server_list.push_back(c);
@@ -5727,14 +5710,6 @@ std::shared_ptr<Entity> Native::Ntp::Server::Vrf::get_child_by_name(const std::s
 
     if(child_yang_name == "ip")
     {
-        for(auto const & c : ip)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ntp::Server::Vrf::Ip>();
         c->parent = this;
         ip.push_back(c);
@@ -5743,14 +5718,6 @@ std::shared_ptr<Entity> Native::Ntp::Server::Vrf::get_child_by_name(const std::s
 
     if(child_yang_name == "ipv6")
     {
-        for(auto const & c : ipv6)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Ntp::Server::Vrf::Ipv6>();
         c->parent = this;
         ipv6.push_back(c);
@@ -5763,19 +5730,32 @@ std::shared_ptr<Entity> Native::Ntp::Server::Vrf::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Server::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : server_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ip)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ipv6)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5886,6 +5866,7 @@ std::shared_ptr<Entity> Native::Ntp::Server::Vrf::ServerList::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Server::Vrf::ServerList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6074,6 +6055,7 @@ std::shared_ptr<Entity> Native::Ntp::Server::Vrf::Ip::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Server::Vrf::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6262,6 +6244,7 @@ std::shared_ptr<Entity> Native::Ntp::Server::Vrf::Ipv6::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Server::Vrf::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6590,6 +6573,7 @@ std::shared_ptr<Entity> Native::Ntp::Source::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(atm_subinterface != nullptr)
     {
         children["ATM-subinterface"] = atm_subinterface;
@@ -6973,6 +6957,7 @@ std::shared_ptr<Entity> Native::Ntp::Source::ATMSubinterface::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Source::ATMSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7056,6 +7041,7 @@ std::shared_ptr<Entity> Native::Ntp::Source::ATMACRsubinterface::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Source::ATMACRsubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7139,6 +7125,7 @@ std::shared_ptr<Entity> Native::Ntp::Source::LISPSubinterface::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Source::LISPSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7222,6 +7209,7 @@ std::shared_ptr<Entity> Native::Ntp::Source::PortChannelSubinterface::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::Source::PortChannelSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7309,6 +7297,7 @@ std::shared_ptr<Entity> Native::Ntp::TrustedKey::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Native::Ntp::TrustedKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7424,6 +7413,7 @@ std::shared_ptr<Entity> Native::Wsma::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Wsma::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(agent != nullptr)
     {
         children["Cisco-IOS-XE-wsma:agent"] = agent;
@@ -7555,6 +7545,7 @@ std::shared_ptr<Entity> Native::Wsma::Agent::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Native::Wsma::Agent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(exec != nullptr)
     {
         children["exec"] = exec;
@@ -7659,6 +7650,7 @@ std::shared_ptr<Entity> Native::Wsma::Agent::Exec::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Native::Wsma::Agent::Exec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7751,6 +7743,7 @@ std::shared_ptr<Entity> Native::Wsma::Agent::Config::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::Wsma::Agent::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7843,6 +7836,7 @@ std::shared_ptr<Entity> Native::Wsma::Agent::Filesys::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Wsma::Agent::Filesys::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7935,6 +7929,7 @@ std::shared_ptr<Entity> Native::Wsma::Agent::Notify::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::Wsma::Agent::Notify::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8018,14 +8013,6 @@ std::shared_ptr<Entity> Native::Wsma::Profile::get_child_by_name(const std::stri
 {
     if(child_yang_name == "listener")
     {
-        for(auto const & c : listener)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Wsma::Profile::Listener>();
         c->parent = this;
         listener.push_back(c);
@@ -8038,9 +8025,14 @@ std::shared_ptr<Entity> Native::Wsma::Profile::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Native::Wsma::Profile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : listener)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8120,6 +8112,7 @@ std::shared_ptr<Entity> Native::Wsma::Profile::Listener::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Wsma::Profile::Listener::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8222,6 +8215,7 @@ std::shared_ptr<Entity> Native::Event::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(manager != nullptr)
     {
         children["Cisco-IOS-XE-eem:manager"] = manager;
@@ -8320,14 +8314,6 @@ std::shared_ptr<Entity> Native::Event::Manager::get_child_by_name(const std::str
 {
     if(child_yang_name == "environment")
     {
-        for(auto const & c : environment)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Event::Manager::Environment>();
         c->parent = this;
         environment.push_back(c);
@@ -8354,14 +8340,6 @@ std::shared_ptr<Entity> Native::Event::Manager::get_child_by_name(const std::str
 
     if(child_yang_name == "applet")
     {
-        for(auto const & c : applet)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Event::Manager::Applet>();
         c->parent = this;
         applet.push_back(c);
@@ -8374,9 +8352,14 @@ std::shared_ptr<Entity> Native::Event::Manager::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : environment)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(directory != nullptr)
@@ -8389,9 +8372,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::get_child
         children["session"] = session;
     }
 
+    count = 0;
     for (auto const & c : applet)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8471,6 +8458,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Environment::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Environment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8573,6 +8561,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Directory::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Directory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(user != nullptr)
     {
         children["user"] = user;
@@ -8651,6 +8640,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Directory::User::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Directory::User::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8743,6 +8733,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Session::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cli != nullptr)
     {
         children["cli"] = cli;
@@ -8830,6 +8821,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Session::Cli::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Session::Cli::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(username != nullptr)
     {
         children["username"] = username;
@@ -8910,14 +8902,6 @@ std::shared_ptr<Entity> Native::Event::Manager::Session::Cli::Username::get_chil
 {
     if(child_yang_name == "username_in_word")
     {
-        for(auto const & c : username_in_word)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Event::Manager::Session::Cli::Username::UsernameInWord>();
         c->parent = this;
         username_in_word.push_back(c);
@@ -8930,9 +8914,14 @@ std::shared_ptr<Entity> Native::Event::Manager::Session::Cli::Username::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Session::Cli::Username::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : username_in_word)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9012,6 +9001,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Session::Cli::Username::Username
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Session::Cli::Username::UsernameInWord::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9145,14 +9135,6 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::get_child_by_name(const 
 
     if(child_yang_name == "action")
     {
-        for(auto const & c : action)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Event::Manager::Applet::Action>();
         c->parent = this;
         action.push_back(c);
@@ -9174,14 +9156,19 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(event != nullptr)
     {
         children["event"] = event;
     }
 
+    count = 0;
     for (auto const & c : action)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(trigger != nullptr)
@@ -9353,6 +9340,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::Event_::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::Event_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(timer != nullptr)
     {
         children["timer"] = timer;
@@ -9487,6 +9475,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::Event_::Timer::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::Event_::Timer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(absolute != nullptr)
     {
         children["absolute"] = absolute;
@@ -9585,6 +9574,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::Event_::Timer::Absolute:
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::Event_::Timer::Absolute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9703,6 +9693,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::Event_::Timer::Countdown
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::Event_::Timer::Countdown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9821,6 +9812,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::Event_::Timer::Cron::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::Event_::Timer::Cron::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9939,6 +9931,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::Event_::Timer::Watchdog:
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::Event_::Timer::Watchdog::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10061,6 +10054,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::Event_::SnmpNotification
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::Event_::SnmpNotification::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10177,6 +10171,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::Event_::Syslog::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::Event_::Syslog::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10257,6 +10252,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::Event_::Track::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::Event_::Track::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10302,7 +10298,7 @@ Native::Event::Manager::Applet::Action::Action()
     exit{YType::empty, "exit"}
     	,
     cli(std::make_shared<Native::Event::Manager::Applet::Action::Cli>())
-	,if_(std::make_shared<Native::Event::Manager::Applet::Action::If_>())
+	,if_(std::make_shared<Native::Event::Manager::Applet::Action::If>())
 	,info(std::make_shared<Native::Event::Manager::Applet::Action::Info>())
 	,regexp(std::make_shared<Native::Event::Manager::Applet::Action::Regexp>())
 	,snmp_trap(nullptr) // presence node
@@ -10386,7 +10382,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::Action::get_child_by_nam
     {
         if(if_ == nullptr)
         {
-            if_ = std::make_shared<Native::Event::Manager::Applet::Action::If_>();
+            if_ = std::make_shared<Native::Event::Manager::Applet::Action::If>();
         }
         return if_;
     }
@@ -10442,6 +10438,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::Action::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::Action::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cli != nullptr)
     {
         children["cli"] = cli;
@@ -10573,6 +10570,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::Action::Cli::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::Action::Cli::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10601,7 +10599,7 @@ bool Native::Event::Manager::Applet::Action::Cli::has_leaf_or_child_of_name(cons
     return false;
 }
 
-Native::Event::Manager::Applet::Action::If_::If_()
+Native::Event::Manager::Applet::Action::If::If()
     :
     string_op_1{YType::str, "string-op-1"},
     keyword{YType::enumeration, "keyword"},
@@ -10612,11 +10610,11 @@ Native::Event::Manager::Applet::Action::If_::If_()
     yang_name = "if"; yang_parent_name = "action"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Event::Manager::Applet::Action::If_::~If_()
+Native::Event::Manager::Applet::Action::If::~If()
 {
 }
 
-bool Native::Event::Manager::Applet::Action::If_::has_data() const
+bool Native::Event::Manager::Applet::Action::If::has_data() const
 {
     return string_op_1.is_set
 	|| keyword.is_set
@@ -10624,7 +10622,7 @@ bool Native::Event::Manager::Applet::Action::If_::has_data() const
 	|| goto_.is_set;
 }
 
-bool Native::Event::Manager::Applet::Action::If_::has_operation() const
+bool Native::Event::Manager::Applet::Action::If::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(string_op_1.yfilter)
@@ -10633,14 +10631,14 @@ bool Native::Event::Manager::Applet::Action::If_::has_operation() const
 	|| ydk::is_set(goto_.yfilter);
 }
 
-std::string Native::Event::Manager::Applet::Action::If_::get_segment_path() const
+std::string Native::Event::Manager::Applet::Action::If::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "if";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Event::Manager::Applet::Action::If_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Event::Manager::Applet::Action::If::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10653,18 +10651,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Event::Manager::Applet::A
 
 }
 
-std::shared_ptr<Entity> Native::Event::Manager::Applet::Action::If_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Event::Manager::Applet::Action::If::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::Action::If_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::Action::If::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Event::Manager::Applet::Action::If_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Event::Manager::Applet::Action::If::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "string-op-1")
     {
@@ -10692,7 +10691,7 @@ void Native::Event::Manager::Applet::Action::If_::set_value(const std::string & 
     }
 }
 
-void Native::Event::Manager::Applet::Action::If_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Event::Manager::Applet::Action::If::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "string-op-1")
     {
@@ -10712,7 +10711,7 @@ void Native::Event::Manager::Applet::Action::If_::set_filter(const std::string &
     }
 }
 
-bool Native::Event::Manager::Applet::Action::If_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Event::Manager::Applet::Action::If::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "string-op-1" || name == "keyword" || name == "string-op-2" || name == "goto")
         return true;
@@ -10776,6 +10775,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::Action::Info::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::Action::Info::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(type != nullptr)
     {
         children["type"] = type;
@@ -10856,6 +10856,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::Action::Info::Type::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::Action::Info::Type::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(snmp != nullptr)
     {
         children["snmp"] = snmp;
@@ -10949,6 +10950,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::Action::Info::Type::Snmp
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::Action::Info::Type::Snmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(var != nullptr)
     {
         children["var"] = var;
@@ -11037,6 +11039,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::Action::Info::Type::Snmp
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::Action::Info::Type::Snmp::Var::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11159,6 +11162,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::Action::Info::Type::Snmp
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::Action::Info::Type::Snmp::Trap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11295,6 +11299,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::Action::Regexp::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::Action::Regexp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11429,6 +11434,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::Action::SnmpTrap::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::Action::SnmpTrap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11525,6 +11531,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::Action::String::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::Action::String::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11609,6 +11616,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::Action::Syslog::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::Action::Syslog::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11701,6 +11709,7 @@ std::shared_ptr<Entity> Native::Event::Manager::Applet::Trigger::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Event::Manager::Applet::Trigger::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11717,17 +11726,17 @@ bool Native::Event::Manager::Applet::Trigger::has_leaf_or_child_of_name(const st
     return false;
 }
 
-Native::Template_::Template_()
+Native::Template::Template()
 {
 
     yang_name = "template"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Template_::~Template_()
+Native::Template::~Template()
 {
 }
 
-bool Native::Template_::has_data() const
+bool Native::Template::has_data() const
 {
     for (std::size_t index=0; index<template_details.size(); index++)
     {
@@ -11737,7 +11746,7 @@ bool Native::Template_::has_data() const
     return false;
 }
 
-bool Native::Template_::has_operation() const
+bool Native::Template::has_operation() const
 {
     for (std::size_t index=0; index<template_details.size(); index++)
     {
@@ -11747,21 +11756,21 @@ bool Native::Template_::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Native::Template_::get_absolute_path() const
+std::string Native::Template::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Template_::get_segment_path() const
+std::string Native::Template::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "template";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11770,19 +11779,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> Native::Template_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "Cisco-IOS-XE-template:template_details")
     {
-        for(auto const & c : template_details)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Template_::TemplateDetails>();
+        auto c = std::make_shared<Native::Template::TemplateDetails>();
         c->parent = this;
         template_details.push_back(c);
         return c;
@@ -11791,75 +11792,80 @@ std::shared_ptr<Entity> Native::Template_::get_child_by_name(const std::string &
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : template_details)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::Template_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Template_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Template_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "template_details")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::TemplateDetails()
+Native::Template::TemplateDetails::TemplateDetails()
     :
     template_name{YType::str, "template_name"}
     	,
-    ethernet(std::make_shared<Native::Template_::TemplateDetails::Ethernet>())
+    ethernet(std::make_shared<Native::Template::TemplateDetails::Ethernet>())
 {
     ethernet->parent = this;
 
     yang_name = "template_details"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Template_::TemplateDetails::~TemplateDetails()
+Native::Template::TemplateDetails::~TemplateDetails()
 {
 }
 
-bool Native::Template_::TemplateDetails::has_data() const
+bool Native::Template::TemplateDetails::has_data() const
 {
     return template_name.is_set
 	|| (ethernet !=  nullptr && ethernet->has_data());
 }
 
-bool Native::Template_::TemplateDetails::has_operation() const
+bool Native::Template::TemplateDetails::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(template_name.yfilter)
 	|| (ethernet !=  nullptr && ethernet->has_operation());
 }
 
-std::string Native::Template_::TemplateDetails::get_absolute_path() const
+std::string Native::Template::TemplateDetails::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/template/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Template_::TemplateDetails::get_segment_path() const
+std::string Native::Template::TemplateDetails::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-template:template_details" <<"[template_name='" <<template_name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11869,13 +11875,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ethernet")
     {
         if(ethernet == nullptr)
         {
-            ethernet = std::make_shared<Native::Template_::TemplateDetails::Ethernet>();
+            ethernet = std::make_shared<Native::Template::TemplateDetails::Ethernet>();
         }
         return ethernet;
     }
@@ -11883,9 +11889,10 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ethernet != nullptr)
     {
         children["ethernet"] = ethernet;
@@ -11894,7 +11901,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetail
     return children;
 }
 
-void Native::Template_::TemplateDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template_name")
     {
@@ -11904,7 +11911,7 @@ void Native::Template_::TemplateDetails::set_value(const std::string & value_pat
     }
 }
 
-void Native::Template_::TemplateDetails::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "template_name")
     {
@@ -11912,45 +11919,45 @@ void Native::Template_::TemplateDetails::set_filter(const std::string & value_pa
     }
 }
 
-bool Native::Template_::TemplateDetails::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ethernet" || name == "template_name")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Ethernet()
+Native::Template::TemplateDetails::Ethernet::Ethernet()
     :
-    oam(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam>())
+    oam(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam>())
 {
     oam->parent = this;
 
     yang_name = "ethernet"; yang_parent_name = "template_details"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::~Ethernet()
+Native::Template::TemplateDetails::Ethernet::~Ethernet()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::has_data() const
 {
     return (oam !=  nullptr && oam->has_data());
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::has_operation() const
 {
     return is_set(yfilter)
 	|| (oam !=  nullptr && oam->has_operation());
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ethernet";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11959,13 +11966,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "oam")
     {
         if(oam == nullptr)
         {
-            oam = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam>();
+            oam = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam>();
         }
         return oam;
     }
@@ -11973,9 +11980,10 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(oam != nullptr)
     {
         children["oam"] = oam;
@@ -11984,25 +11992,25 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetail
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Template_::TemplateDetails::Ethernet::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "oam")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::Oam()
+Native::Template::TemplateDetails::Ethernet::Oam::Oam()
     :
-    link_monitor(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor>())
-	,remote_failure(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure>())
+    link_monitor(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor>())
+	,remote_failure(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure>())
 {
     link_monitor->parent = this;
     remote_failure->parent = this;
@@ -12010,31 +12018,31 @@ Native::Template_::TemplateDetails::Ethernet::Oam::Oam()
     yang_name = "oam"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::~Oam()
+Native::Template::TemplateDetails::Ethernet::Oam::~Oam()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::has_data() const
 {
     return (link_monitor !=  nullptr && link_monitor->has_data())
 	|| (remote_failure !=  nullptr && remote_failure->has_data());
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::has_operation() const
 {
     return is_set(yfilter)
 	|| (link_monitor !=  nullptr && link_monitor->has_operation())
 	|| (remote_failure !=  nullptr && remote_failure->has_operation());
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "oam";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12043,13 +12051,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "link-monitor")
     {
         if(link_monitor == nullptr)
         {
-            link_monitor = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor>();
+            link_monitor = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor>();
         }
         return link_monitor;
     }
@@ -12058,7 +12066,7 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::get_c
     {
         if(remote_failure == nullptr)
         {
-            remote_failure = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure>();
+            remote_failure = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure>();
         }
         return remote_failure;
     }
@@ -12066,9 +12074,10 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(link_monitor != nullptr)
     {
         children["link-monitor"] = link_monitor;
@@ -12082,32 +12091,32 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetail
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "link-monitor" || name == "remote-failure")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::LinkMonitor()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::LinkMonitor()
     :
     window{YType::uint16, "window"}
     	,
-    frame(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame>())
-	,frame_period(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod>())
-	,frame_seconds(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds>())
-	,high_threshold(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold>())
-	,receive_crc(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc>())
-	,symbol_period(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod>())
-	,transmit_crc(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc>())
+    frame(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame>())
+	,frame_period(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod>())
+	,frame_seconds(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds>())
+	,high_threshold(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold>())
+	,receive_crc(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc>())
+	,symbol_period(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod>())
+	,transmit_crc(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc>())
 {
     frame->parent = this;
     frame_period->parent = this;
@@ -12120,11 +12129,11 @@ Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::LinkMonitor()
     yang_name = "link-monitor"; yang_parent_name = "oam"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::~LinkMonitor()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::~LinkMonitor()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::has_data() const
 {
     return window.is_set
 	|| (frame !=  nullptr && frame->has_data())
@@ -12136,7 +12145,7 @@ bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::has_data() 
 	|| (transmit_crc !=  nullptr && transmit_crc->has_data());
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(window.yfilter)
@@ -12149,14 +12158,14 @@ bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::has_operati
 	|| (transmit_crc !=  nullptr && transmit_crc->has_operation());
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "link-monitor";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12166,13 +12175,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frame")
     {
         if(frame == nullptr)
         {
-            frame = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame>();
+            frame = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame>();
         }
         return frame;
     }
@@ -12181,7 +12190,7 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkM
     {
         if(frame_period == nullptr)
         {
-            frame_period = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod>();
+            frame_period = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod>();
         }
         return frame_period;
     }
@@ -12190,7 +12199,7 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkM
     {
         if(frame_seconds == nullptr)
         {
-            frame_seconds = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds>();
+            frame_seconds = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds>();
         }
         return frame_seconds;
     }
@@ -12199,7 +12208,7 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkM
     {
         if(high_threshold == nullptr)
         {
-            high_threshold = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold>();
+            high_threshold = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold>();
         }
         return high_threshold;
     }
@@ -12208,7 +12217,7 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkM
     {
         if(receive_crc == nullptr)
         {
-            receive_crc = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc>();
+            receive_crc = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc>();
         }
         return receive_crc;
     }
@@ -12217,7 +12226,7 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkM
     {
         if(symbol_period == nullptr)
         {
-            symbol_period = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod>();
+            symbol_period = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod>();
         }
         return symbol_period;
     }
@@ -12226,7 +12235,7 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkM
     {
         if(transmit_crc == nullptr)
         {
-            transmit_crc = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc>();
+            transmit_crc = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc>();
         }
         return transmit_crc;
     }
@@ -12234,9 +12243,10 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkM
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(frame != nullptr)
     {
         children["frame"] = frame;
@@ -12275,7 +12285,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetail
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "window")
     {
@@ -12285,7 +12295,7 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::set_value(c
     }
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "window")
     {
@@ -12293,45 +12303,45 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::set_filter(
     }
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "frame" || name == "frame-period" || name == "frame-seconds" || name == "high-threshold" || name == "receive-crc" || name == "symbol-period" || name == "transmit-crc" || name == "window")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Frame()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Frame()
     :
-    threshold(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold>())
+    threshold(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold>())
 {
     threshold->parent = this;
 
     yang_name = "frame"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::~Frame()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::~Frame()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::has_data() const
 {
     return (threshold !=  nullptr && threshold->has_data());
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::has_operation() const
 {
     return is_set(yfilter)
 	|| (threshold !=  nullptr && threshold->has_operation());
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "frame";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12340,13 +12350,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold")
     {
         if(threshold == nullptr)
         {
-            threshold = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold>();
+            threshold = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold>();
         }
         return threshold;
     }
@@ -12354,9 +12364,10 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkM
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -12365,57 +12376,57 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetail
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "threshold")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::Threshold()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::Threshold()
     :
     low{YType::uint16, "low"}
     	,
-    high(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High>())
+    high(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High>())
 {
     high->parent = this;
 
     yang_name = "threshold"; yang_parent_name = "frame"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::~Threshold()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::~Threshold()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::has_data() const
 {
     return low.is_set
 	|| (high !=  nullptr && high->has_data());
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(low.yfilter)
 	|| (high !=  nullptr && high->has_operation());
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12425,13 +12436,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "high")
     {
         if(high == nullptr)
         {
-            high = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High>();
+            high = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High>();
         }
         return high;
     }
@@ -12439,9 +12450,10 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkM
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(high != nullptr)
     {
         children["high"] = high;
@@ -12450,7 +12462,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetail
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "low")
     {
@@ -12460,7 +12472,7 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Thre
     }
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "low")
     {
@@ -12468,14 +12480,14 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Thre
     }
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "high" || name == "low")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::High()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::High()
     :
     high_range{YType::uint16, "high-range"},
     none{YType::empty, "none"}
@@ -12484,31 +12496,31 @@ Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold
     yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::~High()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::~High()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::has_data() const
 {
     return high_range.is_set
 	|| none.is_set;
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(high_range.yfilter)
 	|| ydk::is_set(none.yfilter);
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "high";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12519,18 +12531,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "high-range")
     {
@@ -12546,7 +12559,7 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Thre
     }
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "high-range")
     {
@@ -12558,49 +12571,49 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Thre
     }
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "high-range" || name == "none")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::FramePeriod()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::FramePeriod()
     :
     window{YType::uint16, "window"}
     	,
-    threshold(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold>())
+    threshold(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold>())
 {
     threshold->parent = this;
 
     yang_name = "frame-period"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::~FramePeriod()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::~FramePeriod()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::has_data() const
 {
     return window.is_set
 	|| (threshold !=  nullptr && threshold->has_data());
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(window.yfilter)
 	|| (threshold !=  nullptr && threshold->has_operation());
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "frame-period";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12610,13 +12623,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold")
     {
         if(threshold == nullptr)
         {
-            threshold = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold>();
+            threshold = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold>();
         }
         return threshold;
     }
@@ -12624,9 +12637,10 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkM
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -12635,7 +12649,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetail
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "window")
     {
@@ -12645,7 +12659,7 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod
     }
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "window")
     {
@@ -12653,49 +12667,49 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod
     }
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "threshold" || name == "window")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::Threshold()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::Threshold()
     :
     low{YType::uint16, "low"}
     	,
-    high(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High>())
+    high(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High>())
 {
     high->parent = this;
 
     yang_name = "threshold"; yang_parent_name = "frame-period"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::~Threshold()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::~Threshold()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::has_data() const
 {
     return low.is_set
 	|| (high !=  nullptr && high->has_data());
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(low.yfilter)
 	|| (high !=  nullptr && high->has_operation());
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12705,13 +12719,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "high")
     {
         if(high == nullptr)
         {
-            high = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High>();
+            high = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High>();
         }
         return high;
     }
@@ -12719,9 +12733,10 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkM
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(high != nullptr)
     {
         children["high"] = high;
@@ -12730,7 +12745,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetail
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "low")
     {
@@ -12740,7 +12755,7 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod
     }
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "low")
     {
@@ -12748,14 +12763,14 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod
     }
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "high" || name == "low")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::High()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::High()
     :
     high_range{YType::uint16, "high-range"},
     none{YType::empty, "none"}
@@ -12764,31 +12779,31 @@ Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Thr
     yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::~High()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::~High()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::has_data() const
 {
     return high_range.is_set
 	|| none.is_set;
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(high_range.yfilter)
 	|| ydk::is_set(none.yfilter);
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "high";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12799,18 +12814,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "high-range")
     {
@@ -12826,7 +12842,7 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod
     }
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "high-range")
     {
@@ -12838,49 +12854,49 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod
     }
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "high-range" || name == "none")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::FrameSeconds()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::FrameSeconds()
     :
     window{YType::uint16, "window"}
     	,
-    threshold(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold>())
+    threshold(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold>())
 {
     threshold->parent = this;
 
     yang_name = "frame-seconds"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::~FrameSeconds()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::~FrameSeconds()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::has_data() const
 {
     return window.is_set
 	|| (threshold !=  nullptr && threshold->has_data());
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(window.yfilter)
 	|| (threshold !=  nullptr && threshold->has_operation());
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "frame-seconds";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12890,13 +12906,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold")
     {
         if(threshold == nullptr)
         {
-            threshold = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold>();
+            threshold = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold>();
         }
         return threshold;
     }
@@ -12904,9 +12920,10 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkM
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -12915,7 +12932,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetail
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "window")
     {
@@ -12925,7 +12942,7 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSecond
     }
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "window")
     {
@@ -12933,49 +12950,49 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSecond
     }
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "threshold" || name == "window")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::Threshold()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::Threshold()
     :
     low{YType::uint16, "low"}
     	,
-    high(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High>())
+    high(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High>())
 {
     high->parent = this;
 
     yang_name = "threshold"; yang_parent_name = "frame-seconds"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::~Threshold()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::~Threshold()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::has_data() const
 {
     return low.is_set
 	|| (high !=  nullptr && high->has_data());
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(low.yfilter)
 	|| (high !=  nullptr && high->has_operation());
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12985,13 +13002,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "high")
     {
         if(high == nullptr)
         {
-            high = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High>();
+            high = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High>();
         }
         return high;
     }
@@ -12999,9 +13016,10 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkM
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(high != nullptr)
     {
         children["high"] = high;
@@ -13010,7 +13028,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetail
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "low")
     {
@@ -13020,7 +13038,7 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSecond
     }
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "low")
     {
@@ -13028,14 +13046,14 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSecond
     }
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "high" || name == "low")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::High()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::High()
     :
     high_range{YType::uint16, "high-range"},
     none{YType::empty, "none"}
@@ -13044,31 +13062,31 @@ Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Th
     yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::~High()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::~High()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::has_data() const
 {
     return high_range.is_set
 	|| none.is_set;
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(high_range.yfilter)
 	|| ydk::is_set(none.yfilter);
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "high";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13079,18 +13097,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "high-range")
     {
@@ -13106,7 +13125,7 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSecond
     }
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "high-range")
     {
@@ -13118,45 +13137,45 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSecond
     }
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "high-range" || name == "none")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::HighThreshold()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::HighThreshold()
     :
-    action(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action>())
+    action(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action>())
 {
     action->parent = this;
 
     yang_name = "high-threshold"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::~HighThreshold()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::~HighThreshold()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::has_data() const
 {
     return (action !=  nullptr && action->has_data());
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::has_operation() const
 {
     return is_set(yfilter)
 	|| (action !=  nullptr && action->has_operation());
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "high-threshold";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13165,13 +13184,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "action")
     {
         if(action == nullptr)
         {
-            action = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action>();
+            action = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action>();
         }
         return action;
     }
@@ -13179,9 +13198,10 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkM
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(action != nullptr)
     {
         children["action"] = action;
@@ -13190,22 +13210,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetail
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "action")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action::Action()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action::Action()
     :
     error_disable_interface{YType::empty, "error-disable-interface"}
 {
@@ -13213,29 +13233,29 @@ Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::A
     yang_name = "action"; yang_parent_name = "high-threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action::~Action()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action::~Action()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action::has_data() const
 {
     return error_disable_interface.is_set;
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(error_disable_interface.yfilter);
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "action";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13245,18 +13265,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "error-disable-interface")
     {
@@ -13266,7 +13287,7 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThresho
     }
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "error-disable-interface")
     {
@@ -13274,49 +13295,49 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThresho
     }
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::HighThreshold::Action::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "error-disable-interface")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::ReceiveCrc()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::ReceiveCrc()
     :
     window{YType::uint16, "window"}
     	,
-    threshold(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold>())
+    threshold(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold>())
 {
     threshold->parent = this;
 
     yang_name = "receive-crc"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::~ReceiveCrc()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::~ReceiveCrc()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::has_data() const
 {
     return window.is_set
 	|| (threshold !=  nullptr && threshold->has_data());
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(window.yfilter)
 	|| (threshold !=  nullptr && threshold->has_operation());
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "receive-crc";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13326,13 +13347,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold")
     {
         if(threshold == nullptr)
         {
-            threshold = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold>();
+            threshold = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold>();
         }
         return threshold;
     }
@@ -13340,9 +13361,10 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkM
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -13351,7 +13373,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetail
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "window")
     {
@@ -13361,7 +13383,7 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc:
     }
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "window")
     {
@@ -13369,49 +13391,49 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc:
     }
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "threshold" || name == "window")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::Threshold()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::Threshold()
     :
     low{YType::uint16, "low"}
     	,
-    high(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High>())
+    high(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High>())
 {
     high->parent = this;
 
     yang_name = "threshold"; yang_parent_name = "receive-crc"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::~Threshold()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::~Threshold()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::has_data() const
 {
     return low.is_set
 	|| (high !=  nullptr && high->has_data());
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(low.yfilter)
 	|| (high !=  nullptr && high->has_operation());
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13421,13 +13443,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "high")
     {
         if(high == nullptr)
         {
-            high = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High>();
+            high = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High>();
         }
         return high;
     }
@@ -13435,9 +13457,10 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkM
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(high != nullptr)
     {
         children["high"] = high;
@@ -13446,7 +13469,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetail
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "low")
     {
@@ -13456,7 +13479,7 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc:
     }
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "low")
     {
@@ -13464,14 +13487,14 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc:
     }
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "high" || name == "low")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::High()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::High()
     :
     high_range{YType::uint16, "high-range"},
     none{YType::empty, "none"}
@@ -13480,31 +13503,31 @@ Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Thre
     yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::~High()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::~High()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::has_data() const
 {
     return high_range.is_set
 	|| none.is_set;
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(high_range.yfilter)
 	|| ydk::is_set(none.yfilter);
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "high";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13515,18 +13538,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "high-range")
     {
@@ -13542,7 +13566,7 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc:
     }
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "high-range")
     {
@@ -13554,49 +13578,49 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc:
     }
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "high-range" || name == "none")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::SymbolPeriod()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::SymbolPeriod()
     :
     window{YType::uint16, "window"}
     	,
-    threshold(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold>())
+    threshold(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold>())
 {
     threshold->parent = this;
 
     yang_name = "symbol-period"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::~SymbolPeriod()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::~SymbolPeriod()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::has_data() const
 {
     return window.is_set
 	|| (threshold !=  nullptr && threshold->has_data());
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(window.yfilter)
 	|| (threshold !=  nullptr && threshold->has_operation());
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "symbol-period";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13606,13 +13630,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold")
     {
         if(threshold == nullptr)
         {
-            threshold = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold>();
+            threshold = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold>();
         }
         return threshold;
     }
@@ -13620,9 +13644,10 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkM
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -13631,7 +13656,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetail
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "window")
     {
@@ -13641,7 +13666,7 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPerio
     }
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "window")
     {
@@ -13649,49 +13674,49 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPerio
     }
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "threshold" || name == "window")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::Threshold()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::Threshold()
     :
     low{YType::uint16, "low"}
     	,
-    high(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High>())
+    high(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High>())
 {
     high->parent = this;
 
     yang_name = "threshold"; yang_parent_name = "symbol-period"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::~Threshold()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::~Threshold()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::has_data() const
 {
     return low.is_set
 	|| (high !=  nullptr && high->has_data());
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(low.yfilter)
 	|| (high !=  nullptr && high->has_operation());
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13701,13 +13726,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "high")
     {
         if(high == nullptr)
         {
-            high = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High>();
+            high = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High>();
         }
         return high;
     }
@@ -13715,9 +13740,10 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkM
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(high != nullptr)
     {
         children["high"] = high;
@@ -13726,7 +13752,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetail
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "low")
     {
@@ -13736,7 +13762,7 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPerio
     }
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "low")
     {
@@ -13744,14 +13770,14 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPerio
     }
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "high" || name == "low")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::High()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::High()
     :
     high_range{YType::uint16, "high-range"},
     none{YType::empty, "none"}
@@ -13760,31 +13786,31 @@ Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Th
     yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::~High()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::~High()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::has_data() const
 {
     return high_range.is_set
 	|| none.is_set;
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(high_range.yfilter)
 	|| ydk::is_set(none.yfilter);
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "high";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13795,18 +13821,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "high-range")
     {
@@ -13822,7 +13849,7 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPerio
     }
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "high-range")
     {
@@ -13834,49 +13861,49 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPerio
     }
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "high-range" || name == "none")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::TransmitCrc()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::TransmitCrc()
     :
     window{YType::uint16, "window"}
     	,
-    threshold(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold>())
+    threshold(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold>())
 {
     threshold->parent = this;
 
     yang_name = "transmit-crc"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::~TransmitCrc()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::~TransmitCrc()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::has_data() const
 {
     return window.is_set
 	|| (threshold !=  nullptr && threshold->has_data());
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(window.yfilter)
 	|| (threshold !=  nullptr && threshold->has_operation());
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "transmit-crc";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13886,13 +13913,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold")
     {
         if(threshold == nullptr)
         {
-            threshold = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold>();
+            threshold = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold>();
         }
         return threshold;
     }
@@ -13900,9 +13927,10 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkM
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -13911,7 +13939,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetail
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "window")
     {
@@ -13921,7 +13949,7 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc
     }
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "window")
     {
@@ -13929,49 +13957,49 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc
     }
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "threshold" || name == "window")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::Threshold()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::Threshold()
     :
     low{YType::uint16, "low"}
     	,
-    high(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High>())
+    high(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High>())
 {
     high->parent = this;
 
     yang_name = "threshold"; yang_parent_name = "transmit-crc"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::~Threshold()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::~Threshold()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::has_data() const
 {
     return low.is_set
 	|| (high !=  nullptr && high->has_data());
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(low.yfilter)
 	|| (high !=  nullptr && high->has_operation());
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13981,13 +14009,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "high")
     {
         if(high == nullptr)
         {
-            high = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High>();
+            high = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High>();
         }
         return high;
     }
@@ -13995,9 +14023,10 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkM
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(high != nullptr)
     {
         children["high"] = high;
@@ -14006,7 +14035,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetail
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "low")
     {
@@ -14016,7 +14045,7 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc
     }
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "low")
     {
@@ -14024,14 +14053,14 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc
     }
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "high" || name == "low")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High::High()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High::High()
     :
     high_range{YType::uint16, "high-range"},
     none{YType::empty, "none"}
@@ -14040,31 +14069,31 @@ Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Thr
     yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High::~High()
+Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High::~High()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High::has_data() const
 {
     return high_range.is_set
 	|| none.is_set;
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(high_range.yfilter)
 	|| ydk::is_set(none.yfilter);
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "high";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14075,18 +14104,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "high-range")
     {
@@ -14102,7 +14132,7 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc
     }
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "high-range")
     {
@@ -14114,18 +14144,18 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc
     }
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::LinkMonitor::TransmitCrc::Threshold::High::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "high-range" || name == "none")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::RemoteFailure()
+Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::RemoteFailure()
     :
-    critical_event(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent>())
-	,dying_gasp(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp>())
-	,link_fault(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault>())
+    critical_event(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent>())
+	,dying_gasp(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp>())
+	,link_fault(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault>())
 {
     critical_event->parent = this;
     dying_gasp->parent = this;
@@ -14134,18 +14164,18 @@ Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::RemoteFailure(
     yang_name = "remote-failure"; yang_parent_name = "oam"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::~RemoteFailure()
+Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::~RemoteFailure()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::has_data() const
 {
     return (critical_event !=  nullptr && critical_event->has_data())
 	|| (dying_gasp !=  nullptr && dying_gasp->has_data())
 	|| (link_fault !=  nullptr && link_fault->has_data());
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::has_operation() const
 {
     return is_set(yfilter)
 	|| (critical_event !=  nullptr && critical_event->has_operation())
@@ -14153,14 +14183,14 @@ bool Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::has_opera
 	|| (link_fault !=  nullptr && link_fault->has_operation());
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-failure";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14169,13 +14199,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "critical-event")
     {
         if(critical_event == nullptr)
         {
-            critical_event = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent>();
+            critical_event = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent>();
         }
         return critical_event;
     }
@@ -14184,7 +14214,7 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::Remot
     {
         if(dying_gasp == nullptr)
         {
-            dying_gasp = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp>();
+            dying_gasp = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp>();
         }
         return dying_gasp;
     }
@@ -14193,7 +14223,7 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::Remot
     {
         if(link_fault == nullptr)
         {
-            link_fault = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault>();
+            link_fault = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault>();
         }
         return link_fault;
     }
@@ -14201,9 +14231,10 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::Remot
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(critical_event != nullptr)
     {
         children["critical-event"] = critical_event;
@@ -14222,53 +14253,53 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetail
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "critical-event" || name == "dying-gasp" || name == "link-fault")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::CriticalEvent()
+Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::CriticalEvent()
     :
-    action(std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action>())
+    action(std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action>())
 {
     action->parent = this;
 
     yang_name = "critical-event"; yang_parent_name = "remote-failure"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::~CriticalEvent()
+Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::~CriticalEvent()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::has_data() const
 {
     return (action !=  nullptr && action->has_data());
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::has_operation() const
 {
     return is_set(yfilter)
 	|| (action !=  nullptr && action->has_operation());
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "critical-event";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14277,13 +14308,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "action")
     {
         if(action == nullptr)
         {
-            action = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action>();
+            action = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action>();
         }
         return action;
     }
@@ -14291,9 +14322,10 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::Remot
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(action != nullptr)
     {
         children["action"] = action;
@@ -14302,22 +14334,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetail
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "action")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::Action()
+Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::Action()
     :
     error_disable_interface{YType::empty, "error-disable-interface"}
 {
@@ -14325,29 +14357,29 @@ Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent:
     yang_name = "action"; yang_parent_name = "critical-event"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::~Action()
+Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::~Action()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::has_data() const
 {
     return error_disable_interface.is_set;
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(error_disable_interface.yfilter);
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "action";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14357,18 +14389,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "error-disable-interface")
     {
@@ -14378,7 +14411,7 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalE
     }
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "error-disable-interface")
     {
@@ -14386,14 +14419,14 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalE
     }
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "error-disable-interface")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::DyingGasp()
+Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::DyingGasp()
     :
     action(nullptr) // presence node
 {
@@ -14401,29 +14434,29 @@ Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Dyi
     yang_name = "dying-gasp"; yang_parent_name = "remote-failure"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::~DyingGasp()
+Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::~DyingGasp()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::has_data() const
 {
     return (action !=  nullptr && action->has_data());
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::has_operation() const
 {
     return is_set(yfilter)
 	|| (action !=  nullptr && action->has_operation());
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dying-gasp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14432,13 +14465,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "action")
     {
         if(action == nullptr)
         {
-            action = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action>();
+            action = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action>();
         }
         return action;
     }
@@ -14446,9 +14479,10 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::Remot
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(action != nullptr)
     {
         children["action"] = action;
@@ -14457,22 +14491,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetail
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "action")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action::Action()
+Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action::Action()
     :
     error_disable_interface{YType::empty, "error-disable-interface"}
 {
@@ -14480,29 +14514,29 @@ Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Act
     yang_name = "action"; yang_parent_name = "dying-gasp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action::~Action()
+Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action::~Action()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action::has_data() const
 {
     return error_disable_interface.is_set;
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(error_disable_interface.yfilter);
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "action";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14512,18 +14546,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "error-disable-interface")
     {
@@ -14533,7 +14568,7 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp
     }
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "error-disable-interface")
     {
@@ -14541,14 +14576,14 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp
     }
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::DyingGasp::Action::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "error-disable-interface")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::LinkFault()
+Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::LinkFault()
     :
     action(nullptr) // presence node
 {
@@ -14556,29 +14591,29 @@ Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Lin
     yang_name = "link-fault"; yang_parent_name = "remote-failure"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::~LinkFault()
+Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::~LinkFault()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::has_data() const
 {
     return (action !=  nullptr && action->has_data());
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::has_operation() const
 {
     return is_set(yfilter)
 	|| (action !=  nullptr && action->has_operation());
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "link-fault";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14587,13 +14622,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "action")
     {
         if(action == nullptr)
         {
-            action = std::make_shared<Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action>();
+            action = std::make_shared<Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action>();
         }
         return action;
     }
@@ -14601,9 +14636,10 @@ std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::Remot
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(action != nullptr)
     {
         children["action"] = action;
@@ -14612,22 +14648,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetail
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "action")
         return true;
     return false;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action::Action()
+Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action::Action()
     :
     error_disable_interface{YType::empty, "error-disable-interface"}
 {
@@ -14635,29 +14671,29 @@ Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Act
     yang_name = "action"; yang_parent_name = "link-fault"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action::~Action()
+Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action::~Action()
 {
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action::has_data() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action::has_data() const
 {
     return error_disable_interface.is_set;
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action::has_operation() const
+bool Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(error_disable_interface.yfilter);
 }
 
-std::string Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action::get_segment_path() const
+std::string Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "action";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14667,18 +14703,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Template_::TemplateDetail
 
 }
 
-std::shared_ptr<Entity> Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "error-disable-interface")
     {
@@ -14688,7 +14725,7 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault
     }
 }
 
-void Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "error-disable-interface")
     {
@@ -14696,7 +14733,7 @@ void Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault
     }
 }
 
-bool Native::Template_::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Template::TemplateDetails::Ethernet::Oam::RemoteFailure::LinkFault::Action::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "error-disable-interface")
         return true;
@@ -14767,6 +14804,7 @@ std::shared_ptr<Entity> Native::Process::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cpu != nullptr)
     {
         children["cpu"] = cpu;
@@ -14854,6 +14892,7 @@ std::shared_ptr<Entity> Native::Process::Cpu::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::Cpu::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -14941,6 +14980,7 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::Cpu::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(type != nullptr)
     {
         children["type"] = type;
@@ -15054,6 +15094,7 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::Cpu::Threshold::Type::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interrupt != nullptr)
     {
         children["interrupt"] = interrupt;
@@ -15151,6 +15192,7 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Interrupt::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::Cpu::Threshold::Type::Interrupt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rising != nullptr)
     {
         children["rising"] = rising;
@@ -15231,14 +15273,6 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Interrupt::Rising
 {
     if(child_yang_name == "cpu-range")
     {
-        for(auto const & c : cpu_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Process::Cpu::Threshold::Type::Interrupt::Rising::CpuRange>();
         c->parent = this;
         cpu_range.push_back(c);
@@ -15251,9 +15285,14 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Interrupt::Rising
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::Cpu::Threshold::Type::Interrupt::Rising::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpu_range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15343,6 +15382,7 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Interrupt::Rising
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::Cpu::Threshold::Type::Interrupt::Rising::CpuRange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interval != nullptr)
     {
         children["interval"] = interval;
@@ -15426,14 +15466,6 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Interrupt::Rising
 {
     if(child_yang_name == "cpu-range")
     {
-        for(auto const & c : cpu_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Process::Cpu::Threshold::Type::Interrupt::Rising::CpuRange::Interval::CpuRange_>();
         c->parent = this;
         cpu_range.push_back(c);
@@ -15446,9 +15478,14 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Interrupt::Rising
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::Cpu::Threshold::Type::Interrupt::Rising::CpuRange::Interval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpu_range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15531,6 +15568,7 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Interrupt::Rising
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::Cpu::Threshold::Type::Interrupt::Rising::CpuRange::Interval::CpuRange_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(falling != nullptr)
     {
         children["falling"] = falling;
@@ -15614,14 +15652,6 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Interrupt::Rising
 {
     if(child_yang_name == "cpu-range")
     {
-        for(auto const & c : cpu_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Process::Cpu::Threshold::Type::Interrupt::Rising::CpuRange::Interval::CpuRange_::Falling::CpuRange_>();
         c->parent = this;
         cpu_range.push_back(c);
@@ -15634,9 +15664,14 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Interrupt::Rising
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::Cpu::Threshold::Type::Interrupt::Rising::CpuRange::Interval::CpuRange_::Falling::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpu_range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15709,6 +15744,7 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Interrupt::Rising
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::Cpu::Threshold::Type::Interrupt::Rising::CpuRange::Interval::CpuRange_::Falling::CpuRange_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15811,6 +15847,7 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Process_::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::Cpu::Threshold::Type::Process_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rising != nullptr)
     {
         children["rising"] = rising;
@@ -15891,14 +15928,6 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Process_::Rising:
 {
     if(child_yang_name == "cpu-range")
     {
-        for(auto const & c : cpu_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Process::Cpu::Threshold::Type::Process_::Rising::CpuRange>();
         c->parent = this;
         cpu_range.push_back(c);
@@ -15911,9 +15940,14 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Process_::Rising:
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::Cpu::Threshold::Type::Process_::Rising::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpu_range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16003,6 +16037,7 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Process_::Rising:
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::Cpu::Threshold::Type::Process_::Rising::CpuRange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interval != nullptr)
     {
         children["interval"] = interval;
@@ -16086,14 +16121,6 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Process_::Rising:
 {
     if(child_yang_name == "cpu-range")
     {
-        for(auto const & c : cpu_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Process::Cpu::Threshold::Type::Process_::Rising::CpuRange::Interval::CpuRange_>();
         c->parent = this;
         cpu_range.push_back(c);
@@ -16106,9 +16133,14 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Process_::Rising:
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::Cpu::Threshold::Type::Process_::Rising::CpuRange::Interval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpu_range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16191,6 +16223,7 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Process_::Rising:
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::Cpu::Threshold::Type::Process_::Rising::CpuRange::Interval::CpuRange_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(falling != nullptr)
     {
         children["falling"] = falling;
@@ -16274,14 +16307,6 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Process_::Rising:
 {
     if(child_yang_name == "cpu-range")
     {
-        for(auto const & c : cpu_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Process::Cpu::Threshold::Type::Process_::Rising::CpuRange::Interval::CpuRange_::Falling::CpuRange_>();
         c->parent = this;
         cpu_range.push_back(c);
@@ -16294,9 +16319,14 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Process_::Rising:
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::Cpu::Threshold::Type::Process_::Rising::CpuRange::Interval::CpuRange_::Falling::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpu_range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16369,6 +16399,7 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Process_::Rising:
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::Cpu::Threshold::Type::Process_::Rising::CpuRange::Interval::CpuRange_::Falling::CpuRange_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16471,6 +16502,7 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Total::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::Cpu::Threshold::Type::Total::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rising != nullptr)
     {
         children["rising"] = rising;
@@ -16551,14 +16583,6 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Total::Rising::ge
 {
     if(child_yang_name == "cpu-range")
     {
-        for(auto const & c : cpu_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Process::Cpu::Threshold::Type::Total::Rising::CpuRange>();
         c->parent = this;
         cpu_range.push_back(c);
@@ -16571,9 +16595,14 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Total::Rising::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::Cpu::Threshold::Type::Total::Rising::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpu_range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16663,6 +16692,7 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Total::Rising::Cp
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::Cpu::Threshold::Type::Total::Rising::CpuRange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interval != nullptr)
     {
         children["interval"] = interval;
@@ -16746,14 +16776,6 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Total::Rising::Cp
 {
     if(child_yang_name == "cpu-range")
     {
-        for(auto const & c : cpu_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Process::Cpu::Threshold::Type::Total::Rising::CpuRange::Interval::CpuRange_>();
         c->parent = this;
         cpu_range.push_back(c);
@@ -16766,9 +16788,14 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Total::Rising::Cp
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::Cpu::Threshold::Type::Total::Rising::CpuRange::Interval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpu_range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16851,6 +16878,7 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Total::Rising::Cp
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::Cpu::Threshold::Type::Total::Rising::CpuRange::Interval::CpuRange_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(falling != nullptr)
     {
         children["falling"] = falling;
@@ -16934,14 +16962,6 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Total::Rising::Cp
 {
     if(child_yang_name == "cpu-range")
     {
-        for(auto const & c : cpu_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Process::Cpu::Threshold::Type::Total::Rising::CpuRange::Interval::CpuRange_::Falling::CpuRange_>();
         c->parent = this;
         cpu_range.push_back(c);
@@ -16954,9 +16974,14 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Total::Rising::Cp
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::Cpu::Threshold::Type::Total::Rising::CpuRange::Interval::CpuRange_::Falling::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpu_range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17029,6 +17054,7 @@ std::shared_ptr<Entity> Native::Process::Cpu::Threshold::Type::Total::Rising::Cp
 std::map<std::string, std::shared_ptr<Entity>> Native::Process::Cpu::Threshold::Type::Total::Rising::CpuRange::Interval::CpuRange_::Falling::CpuRange_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

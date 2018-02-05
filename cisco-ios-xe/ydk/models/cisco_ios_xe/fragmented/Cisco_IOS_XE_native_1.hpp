@@ -834,11 +834,11 @@ class Native::Controller::ControllerTxExList : public ydk::Entity
         ydk::YLeaf atm; //type: empty
         ydk::YLeaf framing; //type: string
         ydk::YLeaf linecode; //type: Linecode
-        class Clock_; //type: Native::Controller::ControllerTxExList::Clock_
+        class Clock; //type: Native::Controller::ControllerTxExList::Clock
         class Cablelength; //type: Native::Controller::ControllerTxExList::Cablelength
         class ChannelGroup; //type: Native::Controller::ControllerTxExList::ChannelGroup
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::ControllerTxExList::Clock_> clock_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::ControllerTxExList::Clock> clock_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::ControllerTxExList::Cablelength> cablelength;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::ControllerTxExList::ChannelGroup> > channel_group;
                 class Name;
@@ -847,11 +847,11 @@ class Native::Controller::ControllerTxExList : public ydk::Entity
 }; // Native::Controller::ControllerTxExList
 
 
-class Native::Controller::ControllerTxExList::Clock_ : public ydk::Entity
+class Native::Controller::ControllerTxExList::Clock : public ydk::Entity
 {
     public:
-        Clock_();
-        ~Clock_();
+        Clock();
+        ~Clock();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -863,14 +863,14 @@ class Native::Controller::ControllerTxExList::Clock_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Source; //type: Native::Controller::ControllerTxExList::Clock_::Source
+        class Source; //type: Native::Controller::ControllerTxExList::Clock::Source
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::ControllerTxExList::Clock_::Source> source;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::ControllerTxExList::Clock::Source> source;
         
-}; // Native::Controller::ControllerTxExList::Clock_
+}; // Native::Controller::ControllerTxExList::Clock
 
 
-class Native::Controller::ControllerTxExList::Clock_::Source : public ydk::Entity
+class Native::Controller::ControllerTxExList::Clock::Source : public ydk::Entity
 {
     public:
         Source();
@@ -888,14 +888,14 @@ class Native::Controller::ControllerTxExList::Clock_::Source : public ydk::Entit
 
         ydk::YLeaf internal; //type: empty
         ydk::YLeaf loop_timed; //type: empty
-        class Line; //type: Native::Controller::ControllerTxExList::Clock_::Source::Line
+        class Line; //type: Native::Controller::ControllerTxExList::Clock::Source::Line
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::ControllerTxExList::Clock_::Source::Line> line; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::ControllerTxExList::Clock::Source::Line> line; // presence node
         
-}; // Native::Controller::ControllerTxExList::Clock_::Source
+}; // Native::Controller::ControllerTxExList::Clock::Source
 
 
-class Native::Controller::ControllerTxExList::Clock_::Source::Line : public ydk::Entity
+class Native::Controller::ControllerTxExList::Clock::Source::Line : public ydk::Entity
 {
     public:
         Line();
@@ -914,7 +914,7 @@ class Native::Controller::ControllerTxExList::Clock_::Source::Line : public ydk:
         ydk::YLeaf line_mode; //type: LineMode
         class LineMode;
 
-}; // Native::Controller::ControllerTxExList::Clock_::Source::Line
+}; // Native::Controller::ControllerTxExList::Clock::Source::Line
 
 
 class Native::Controller::ControllerTxExList::Cablelength : public ydk::Entity
@@ -956,7 +956,7 @@ class Native::Controller::ControllerTxExList::ChannelGroup : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf number; //type: uint8
-        ydk::YLeafList timeslots; //type: list of  one of string, uint16
+        ydk::YLeafList timeslots; //type: list of  one of uint16, string
 
 }; // Native::Controller::ControllerTxExList::ChannelGroup
 
@@ -1099,14 +1099,14 @@ class Native::Controller::SONET : public ydk::Entity
         ydk::YLeaf name; //type: string
         ydk::YLeaf framing; //type: Framing
         ydk::YLeaf shutdown; //type: empty
-        class Clock_; //type: Native::Controller::SONET::Clock_
+        class Clock; //type: Native::Controller::SONET::Clock
         class Aug; //type: Native::Controller::SONET::Aug
         class Au3; //type: Native::Controller::SONET::Au3
         class Au4Atm; //type: Native::Controller::SONET::Au4Atm
         class Au4; //type: Native::Controller::SONET::Au4
         class Aps; //type: Native::Controller::SONET::Aps
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONET::Clock_> clock_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONET::Clock> clock_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONET::Aug> aug;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONET::Au3> > au_3;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONET::Au4Atm> au_4_atm;
@@ -1117,11 +1117,11 @@ class Native::Controller::SONET : public ydk::Entity
 }; // Native::Controller::SONET
 
 
-class Native::Controller::SONET::Clock_ : public ydk::Entity
+class Native::Controller::SONET::Clock : public ydk::Entity
 {
     public:
-        Clock_();
-        ~Clock_();
+        Clock();
+        ~Clock();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1136,7 +1136,7 @@ class Native::Controller::SONET::Clock_ : public ydk::Entity
         ydk::YLeaf source; //type: Source
         class Source;
 
-}; // Native::Controller::SONET::Clock_
+}; // Native::Controller::SONET::Clock
 
 
 class Native::Controller::SONET::Aug : public ydk::Entity
@@ -1712,14 +1712,14 @@ class Native::Controller::SONETACR : public ydk::Entity
         ydk::YLeaf name; //type: string
         ydk::YLeaf framing; //type: Framing
         ydk::YLeaf shutdown; //type: empty
-        class Clock_; //type: Native::Controller::SONETACR::Clock_
+        class Clock; //type: Native::Controller::SONETACR::Clock
         class Aug; //type: Native::Controller::SONETACR::Aug
         class Au3; //type: Native::Controller::SONETACR::Au3
         class Au4Atm; //type: Native::Controller::SONETACR::Au4Atm
         class Au4; //type: Native::Controller::SONETACR::Au4
         class Aps; //type: Native::Controller::SONETACR::Aps
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONETACR::Clock_> clock_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONETACR::Clock> clock_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONETACR::Aug> aug;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONETACR::Au3> > au_3;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONETACR::Au4Atm> au_4_atm;
@@ -1730,11 +1730,11 @@ class Native::Controller::SONETACR : public ydk::Entity
 }; // Native::Controller::SONETACR
 
 
-class Native::Controller::SONETACR::Clock_ : public ydk::Entity
+class Native::Controller::SONETACR::Clock : public ydk::Entity
 {
     public:
-        Clock_();
-        ~Clock_();
+        Clock();
+        ~Clock();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1749,7 +1749,7 @@ class Native::Controller::SONETACR::Clock_ : public ydk::Entity
         ydk::YLeaf source; //type: Source
         class Source;
 
-}; // Native::Controller::SONETACR::Clock_
+}; // Native::Controller::SONETACR::Clock
 
 
 class Native::Controller::SONETACR::Aug : public ydk::Entity
@@ -2423,14 +2423,14 @@ class Native::Vrf::Definition::AddressFamily::Ipv4 : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Export_; //type: Native::Vrf::Definition::AddressFamily::Ipv4::Export_
+        class Export; //type: Native::Vrf::Definition::AddressFamily::Ipv4::Export
         class Maximum; //type: Native::Vrf::Definition::AddressFamily::Ipv4::Maximum
         class Mdt; //type: Native::Vrf::Definition::AddressFamily::Ipv4::Mdt
         class RouteTarget; //type: Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget
         class Bgp; //type: Native::Vrf::Definition::AddressFamily::Ipv4::Bgp
         class Import; //type: Native::Vrf::Definition::AddressFamily::Ipv4::Import
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::AddressFamily::Ipv4::Export_> export_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::AddressFamily::Ipv4::Export> export_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::AddressFamily::Ipv4::Maximum> maximum; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::AddressFamily::Ipv4::Mdt> mdt;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget> route_target;
@@ -2440,11 +2440,11 @@ class Native::Vrf::Definition::AddressFamily::Ipv4 : public ydk::Entity
 }; // Native::Vrf::Definition::AddressFamily::Ipv4
 
 
-class Native::Vrf::Definition::AddressFamily::Ipv4::Export_ : public ydk::Entity
+class Native::Vrf::Definition::AddressFamily::Ipv4::Export : public ydk::Entity
 {
     public:
-        Export_();
-        ~Export_();
+        Export();
+        ~Export();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2458,7 +2458,7 @@ class Native::Vrf::Definition::AddressFamily::Ipv4::Export_ : public ydk::Entity
 
         ydk::YLeaf map; //type: string
 
-}; // Native::Vrf::Definition::AddressFamily::Ipv4::Export_
+}; // Native::Vrf::Definition::AddressFamily::Ipv4::Export
 
 
 class Native::Vrf::Definition::AddressFamily::Ipv4::Maximum : public ydk::Entity
@@ -2504,12 +2504,12 @@ class Native::Vrf::Definition::AddressFamily::Ipv4::Mdt : public ydk::Entity
         ydk::YLeaf log_reuse; //type: empty
         ydk::YLeaf mtu; //type: uint16
         ydk::YLeafList preference; //type: list of  Preference
-        class Default_; //type: Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Default_
+        class Default; //type: Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Default
         class AutoDiscovery; //type: Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::AutoDiscovery
         class Data; //type: Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Data
         class Overlay; //type: Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Overlay
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::AutoDiscovery> auto_discovery;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Data> data;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Overlay> overlay;
@@ -2518,11 +2518,11 @@ class Native::Vrf::Definition::AddressFamily::Ipv4::Mdt : public ydk::Entity
 }; // Native::Vrf::Definition::AddressFamily::Ipv4::Mdt
 
 
-class Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Default_ : public ydk::Entity
+class Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2535,14 +2535,14 @@ class Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Default_ : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf address; //type: string
-        class Mpls; //type: Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Default_::Mpls
+        class Mpls; //type: Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Default::Mpls
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Default_::Mpls> mpls;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Default::Mpls> mpls;
         
-}; // Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Default_
+}; // Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Default
 
 
-class Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Default_::Mpls : public ydk::Entity
+class Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Default::Mpls : public ydk::Entity
 {
     public:
         Mpls();
@@ -2560,7 +2560,7 @@ class Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Default_::Mpls : public
 
         ydk::YLeaf mldp; //type: string
 
-}; // Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Default_::Mpls
+}; // Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Default::Mpls
 
 
 class Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::AutoDiscovery : public ydk::Entity
@@ -2600,7 +2600,7 @@ class Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Data : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf list; //type: one of string, uint16
+        ydk::YLeaf list; //type: one of uint16, string
         ydk::YLeaf threshold; //type: uint32
         class Multicast; //type: Native::Vrf::Definition::AddressFamily::Ipv4::Mdt::Data::Multicast
 
@@ -2668,20 +2668,20 @@ class Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Export_; //type: Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget::Export_
+        class Export; //type: Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget::Export
         class Import; //type: Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget::Import
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget::Export_> > export_;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget::Export> > export_;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget::Import> > import;
         
 }; // Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget
 
 
-class Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget::Export_ : public ydk::Entity
+class Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget::Export : public ydk::Entity
 {
     public:
-        Export_();
-        ~Export_();
+        Export();
+        ~Export();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2695,7 +2695,7 @@ class Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget::Export_ : publi
 
         ydk::YLeaf asn_ip; //type: string
 
-}; // Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget::Export_
+}; // Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget::Export
 
 
 class Native::Vrf::Definition::AddressFamily::Ipv4::RouteTarget::Import : public ydk::Entity
@@ -2850,20 +2850,20 @@ class Native::Vrf::Definition::AddressFamily::Ipv6::RouteTarget : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Export_; //type: Native::Vrf::Definition::AddressFamily::Ipv6::RouteTarget::Export_
+        class Export; //type: Native::Vrf::Definition::AddressFamily::Ipv6::RouteTarget::Export
         class Import; //type: Native::Vrf::Definition::AddressFamily::Ipv6::RouteTarget::Import
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::AddressFamily::Ipv6::RouteTarget::Export_> > export_;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::AddressFamily::Ipv6::RouteTarget::Export> > export_;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::AddressFamily::Ipv6::RouteTarget::Import> > import;
         
 }; // Native::Vrf::Definition::AddressFamily::Ipv6::RouteTarget
 
 
-class Native::Vrf::Definition::AddressFamily::Ipv6::RouteTarget::Export_ : public ydk::Entity
+class Native::Vrf::Definition::AddressFamily::Ipv6::RouteTarget::Export : public ydk::Entity
 {
     public:
-        Export_();
-        ~Export_();
+        Export();
+        ~Export();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2877,7 +2877,7 @@ class Native::Vrf::Definition::AddressFamily::Ipv6::RouteTarget::Export_ : publi
 
         ydk::YLeaf asn_ip; //type: string
 
-}; // Native::Vrf::Definition::AddressFamily::Ipv6::RouteTarget::Export_
+}; // Native::Vrf::Definition::AddressFamily::Ipv6::RouteTarget::Export
 
 
 class Native::Vrf::Definition::AddressFamily::Ipv6::RouteTarget::Import : public ydk::Entity
@@ -3028,20 +3028,20 @@ class Native::Vrf::Definition::RouteTarget : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Export_; //type: Native::Vrf::Definition::RouteTarget::Export_
+        class Export; //type: Native::Vrf::Definition::RouteTarget::Export
         class Import; //type: Native::Vrf::Definition::RouteTarget::Import
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::RouteTarget::Export_> > export_;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::RouteTarget::Export> > export_;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition::RouteTarget::Import> > import;
         
 }; // Native::Vrf::Definition::RouteTarget
 
 
-class Native::Vrf::Definition::RouteTarget::Export_ : public ydk::Entity
+class Native::Vrf::Definition::RouteTarget::Export : public ydk::Entity
 {
     public:
-        Export_();
-        ~Export_();
+        Export();
+        ~Export();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3055,7 +3055,7 @@ class Native::Vrf::Definition::RouteTarget::Export_ : public ydk::Entity
 
         ydk::YLeaf asn_ip; //type: string
 
-}; // Native::Vrf::Definition::RouteTarget::Export_
+}; // Native::Vrf::Definition::RouteTarget::Export
 
 
 class Native::Vrf::Definition::RouteTarget::Import : public ydk::Entity
@@ -3397,11 +3397,11 @@ class Native::Flow::Record : public ydk::Entity
         ydk::YLeaf type; //type: Type
         ydk::YLeaf description; //type: string
         class Collect; //type: Native::Flow::Record::Collect
-        class Default_; //type: Native::Flow::Record::Default_
+        class Default; //type: Native::Flow::Record::Default
         class Match; //type: Native::Flow::Record::Match
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Collect> collect;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Match> match;
                 class Type;
 
@@ -3827,7 +3827,7 @@ class Native::Controller::ControllerTxExList::Linecode : public ydk::Enum
 
 };
 
-class Native::Controller::ControllerTxExList::Clock_::Source::Line::LineMode : public ydk::Enum
+class Native::Controller::ControllerTxExList::Clock::Source::Line::LineMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf primary;
@@ -3843,7 +3843,7 @@ class Native::Controller::SONET::Framing : public ydk::Enum
 
 };
 
-class Native::Controller::SONET::Clock_::Source : public ydk::Enum
+class Native::Controller::SONET::Clock::Source : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf internal;
@@ -3909,7 +3909,7 @@ class Native::Controller::SONETACR::Framing : public ydk::Enum
 
 };
 
-class Native::Controller::SONETACR::Clock_::Source : public ydk::Enum
+class Native::Controller::SONETACR::Clock::Source : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf internal;

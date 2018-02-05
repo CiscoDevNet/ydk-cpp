@@ -107,6 +107,7 @@ std::shared_ptr<Entity> RFC1315MIB::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(frame_relay_globals != nullptr)
     {
         children["frame-relay-globals"] = frame_relay_globals;
@@ -225,6 +226,7 @@ std::shared_ptr<Entity> RFC1315MIB::FrameRelayGlobals::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::FrameRelayGlobals::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -310,14 +312,6 @@ std::shared_ptr<Entity> RFC1315MIB::Frdlcmitable::get_child_by_name(const std::s
 {
     if(child_yang_name == "frDlcmiEntry")
     {
-        for(auto const & c : frdlcmientry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RFC1315MIB::Frdlcmitable::Frdlcmientry>();
         c->parent = this;
         frdlcmientry.push_back(c);
@@ -330,9 +324,14 @@ std::shared_ptr<Entity> RFC1315MIB::Frdlcmitable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::Frdlcmitable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : frdlcmientry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -444,6 +443,7 @@ std::shared_ptr<Entity> RFC1315MIB::Frdlcmitable::Frdlcmientry::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::Frdlcmitable::Frdlcmientry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -619,14 +619,6 @@ std::shared_ptr<Entity> RFC1315MIB::Frcircuittable::get_child_by_name(const std:
 {
     if(child_yang_name == "frCircuitEntry")
     {
-        for(auto const & c : frcircuitentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RFC1315MIB::Frcircuittable::Frcircuitentry>();
         c->parent = this;
         frcircuitentry.push_back(c);
@@ -639,9 +631,14 @@ std::shared_ptr<Entity> RFC1315MIB::Frcircuittable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::Frcircuittable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : frcircuitentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -769,6 +766,7 @@ std::shared_ptr<Entity> RFC1315MIB::Frcircuittable::Frcircuitentry::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::Frcircuittable::Frcircuitentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -984,14 +982,6 @@ std::shared_ptr<Entity> RFC1315MIB::Frerrtable::get_child_by_name(const std::str
 {
     if(child_yang_name == "frErrEntry")
     {
-        for(auto const & c : frerrentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RFC1315MIB::Frerrtable::Frerrentry>();
         c->parent = this;
         frerrentry.push_back(c);
@@ -1004,9 +994,14 @@ std::shared_ptr<Entity> RFC1315MIB::Frerrtable::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::Frerrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : frerrentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1094,6 +1089,7 @@ std::shared_ptr<Entity> RFC1315MIB::Frerrtable::Frerrentry::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> RFC1315MIB::Frerrtable::Frerrentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

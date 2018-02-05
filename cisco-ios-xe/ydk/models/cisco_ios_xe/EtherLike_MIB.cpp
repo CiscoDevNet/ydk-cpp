@@ -160,6 +160,7 @@ std::shared_ptr<Entity> EtherLikeMIB::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dot3statstable != nullptr)
     {
         children["dot3StatsTable"] = dot3statstable;
@@ -285,14 +286,6 @@ std::shared_ptr<Entity> EtherLikeMIB::Dot3Statstable::get_child_by_name(const st
 {
     if(child_yang_name == "dot3StatsEntry")
     {
-        for(auto const & c : dot3statsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EtherLikeMIB::Dot3Statstable::Dot3Statsentry>();
         c->parent = this;
         dot3statsentry.push_back(c);
@@ -305,9 +298,14 @@ std::shared_ptr<Entity> EtherLikeMIB::Dot3Statstable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Statstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot3statsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -451,6 +449,7 @@ std::shared_ptr<Entity> EtherLikeMIB::Dot3Statstable::Dot3Statsentry::get_child_
 std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Statstable::Dot3Statsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -706,14 +705,6 @@ std::shared_ptr<Entity> EtherLikeMIB::Dot3Colltable::get_child_by_name(const std
 {
     if(child_yang_name == "dot3CollEntry")
     {
-        for(auto const & c : dot3collentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EtherLikeMIB::Dot3Colltable::Dot3Collentry>();
         c->parent = this;
         dot3collentry.push_back(c);
@@ -726,9 +717,14 @@ std::shared_ptr<Entity> EtherLikeMIB::Dot3Colltable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Colltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot3collentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -812,6 +808,7 @@ std::shared_ptr<Entity> EtherLikeMIB::Dot3Colltable::Dot3Collentry::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Colltable::Dot3Collentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -917,14 +914,6 @@ std::shared_ptr<Entity> EtherLikeMIB::Dot3Controltable::get_child_by_name(const 
 {
     if(child_yang_name == "dot3ControlEntry")
     {
-        for(auto const & c : dot3controlentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EtherLikeMIB::Dot3Controltable::Dot3Controlentry>();
         c->parent = this;
         dot3controlentry.push_back(c);
@@ -937,9 +926,14 @@ std::shared_ptr<Entity> EtherLikeMIB::Dot3Controltable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Controltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot3controlentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1027,6 +1021,7 @@ std::shared_ptr<Entity> EtherLikeMIB::Dot3Controltable::Dot3Controlentry::get_ch
 std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Controltable::Dot3Controlentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1140,14 +1135,6 @@ std::shared_ptr<Entity> EtherLikeMIB::Dot3Pausetable::get_child_by_name(const st
 {
     if(child_yang_name == "dot3PauseEntry")
     {
-        for(auto const & c : dot3pauseentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry>();
         c->parent = this;
         dot3pauseentry.push_back(c);
@@ -1160,9 +1147,14 @@ std::shared_ptr<Entity> EtherLikeMIB::Dot3Pausetable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Pausetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot3pauseentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1262,6 +1254,7 @@ std::shared_ptr<Entity> EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::get_child_
 std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1407,14 +1400,6 @@ std::shared_ptr<Entity> EtherLikeMIB::Dot3Hcstatstable::get_child_by_name(const 
 {
     if(child_yang_name == "dot3HCStatsEntry")
     {
-        for(auto const & c : dot3hcstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry>();
         c->parent = this;
         dot3hcstatsentry.push_back(c);
@@ -1427,9 +1412,14 @@ std::shared_ptr<Entity> EtherLikeMIB::Dot3Hcstatstable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Hcstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dot3hcstatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1529,6 +1519,7 @@ std::shared_ptr<Entity> EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry::get_ch
 std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

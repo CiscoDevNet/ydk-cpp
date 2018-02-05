@@ -149,6 +149,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vrfs != nullptr)
     {
         children["vrfs"] = vrfs;
@@ -319,14 +320,6 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Vrfs::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv4Dhcpd::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -339,9 +332,14 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Vrfs::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -430,6 +428,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Vrfs::Vrf::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(profile != nullptr)
     {
         children["profile"] = profile;
@@ -515,6 +514,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Vrfs::Vrf::Profile::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Vrfs::Vrf::Profile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -610,14 +610,6 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::get_child_by_name(const std::string
 {
     if(child_yang_name == "profile")
     {
-        for(auto const & c : profile)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile>();
         c->parent = this;
         profile.push_back(c);
@@ -630,9 +622,14 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : profile)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -722,6 +719,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(modes != nullptr)
     {
         children["modes"] = modes;
@@ -805,14 +803,6 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::get_child_by_name(c
 {
     if(child_yang_name == "mode")
     {
-        for(auto const & c : mode)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode>();
         c->parent = this;
         mode.push_back(c);
@@ -825,9 +815,14 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mode)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -966,6 +961,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(snoop != nullptr)
     {
         children["snoop"] = snoop;
@@ -1091,6 +1087,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Snoop::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Snoop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(relay_information_option != nullptr)
     {
         children["relay-information-option"] = relay_information_option;
@@ -1194,6 +1191,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Snoop::RelayI
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Snoop::RelayInformationOption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(remote_id != nullptr)
     {
         children["remote-id"] = remote_id;
@@ -1299,6 +1297,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Snoop::RelayI
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Snoop::RelayInformationOption::RemoteId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1438,6 +1437,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_profile != nullptr)
     {
         children["default-profile"] = default_profile;
@@ -1538,6 +1538,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Default
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::DefaultProfile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1646,6 +1647,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(option_filters != nullptr)
     {
         children["option-filters"] = option_filters;
@@ -1724,14 +1726,6 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::
 {
     if(child_yang_name == "option-filter")
     {
-        for(auto const & c : option_filter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters::OptionFilter>();
         c->parent = this;
         option_filter.push_back(c);
@@ -1744,9 +1738,14 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : option_filter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1827,6 +1826,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters::OptionFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1935,14 +1935,6 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::
 {
     if(child_yang_name == "def-option")
     {
-        for(auto const & c : def_option)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions::DefOption>();
         c->parent = this;
         def_option.push_back(c);
@@ -1955,9 +1947,14 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : def_option)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2030,6 +2027,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions::DefOption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2120,6 +2118,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseRel
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseRelayOpt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2215,6 +2214,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMat
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(options != nullptr)
     {
         children["options"] = options;
@@ -2288,14 +2288,6 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMat
 {
     if(child_yang_name == "option")
     {
-        for(auto const & c : option)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Option>();
         c->parent = this;
         option.push_back(c);
@@ -2308,9 +2300,14 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMat
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : option)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2401,6 +2398,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMat
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Option::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(option_profile != nullptr)
     {
         children["option-profile"] = option_profile;
@@ -2506,6 +2504,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMat
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Option::OptionProfile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2816,6 +2815,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::get_c
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(server_id_check != nullptr)
     {
         children["server-id-check"] = server_id_check;
@@ -3037,6 +3037,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Serve
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::ServerIdCheck::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3117,6 +3118,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Lease
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::LeaseLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3203,6 +3205,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Reque
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::RequestedIpAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3288,6 +3291,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::AaaSe
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::AaaServer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dhcp_option != nullptr)
     {
         children["dhcp-option"] = dhcp_option;
@@ -3359,6 +3363,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::AaaSe
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::AaaServer::DhcpOption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3446,6 +3451,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Defau
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DefaultRouters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3531,6 +3537,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::NetBi
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::NetBiosNameServers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3627,6 +3634,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(option_defaults != nullptr)
     {
         children["option-defaults"] = option_defaults;
@@ -3705,14 +3713,6 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match
 {
     if(child_yang_name == "option-default")
     {
-        for(auto const & c : option_default)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::OptionDefaults::OptionDefault>();
         c->parent = this;
         option_default.push_back(c);
@@ -3725,9 +3725,14 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::OptionDefaults::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : option_default)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3800,6 +3805,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::OptionDefaults::OptionDefault::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3888,14 +3894,6 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match
 {
     if(child_yang_name == "option")
     {
-        for(auto const & c : option)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Options::Option>();
         c->parent = this;
         option.push_back(c);
@@ -3908,9 +3906,14 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Options::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : option)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3991,6 +3994,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Options::Option::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4097,6 +4101,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Broad
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::BroadcastFlag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4182,6 +4187,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Sessi
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(throttle_type != nullptr)
     {
         children["throttle-type"] = throttle_type;
@@ -4262,6 +4268,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Sessi
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Session::ThrottleType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mac_throttle != nullptr)
     {
         children["mac-throttle"] = mac_throttle;
@@ -4341,6 +4348,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Sessi
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Session::ThrottleType::MacThrottle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4439,15 +4447,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Class
 {
     if(child_yang_name == "class")
     {
-        for(auto const & c : class_)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_>();
+        auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class>();
         c->parent = this;
         class_.push_back(c);
         return c;
@@ -4459,9 +4459,14 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Class
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : class_)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4482,7 +4487,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::has_leaf_or_chi
     return false;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Class_()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Class()
     :
     class_name{YType::str, "class-name"},
     subnet_mask{YType::str, "subnet-mask"},
@@ -4493,13 +4498,13 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Class_()
     boot_filename{YType::str, "boot-filename"},
     next_server{YType::str, "next-server"}
     	,
-    default_routers(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DefaultRouters>())
-	,net_bios_name_servers(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetBiosNameServers>())
-	,class_match(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch>())
-	,lease(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Lease>())
-	,netbios_node_type(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetbiosNodeType>())
-	,dns_servers(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DnsServers>())
-	,option_codes(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes>())
+    default_routers(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DefaultRouters>())
+	,net_bios_name_servers(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetBiosNameServers>())
+	,class_match(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch>())
+	,lease(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Lease>())
+	,netbios_node_type(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetbiosNodeType>())
+	,dns_servers(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DnsServers>())
+	,option_codes(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes>())
 {
     default_routers->parent = this;
     net_bios_name_servers->parent = this;
@@ -4512,11 +4517,11 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Class_()
     yang_name = "class"; yang_parent_name = "classes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::~Class_()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::~Class()
 {
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::has_data() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::has_data() const
 {
     return class_name.is_set
 	|| subnet_mask.is_set
@@ -4535,7 +4540,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::has_dat
 	|| (option_codes !=  nullptr && option_codes->has_data());
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::has_operation() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(class_name.yfilter)
@@ -4555,14 +4560,14 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::has_ope
 	|| (option_codes !=  nullptr && option_codes->has_operation());
 }
 
-std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::get_segment_path() const
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "class" <<"[class-name='" <<class_name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4579,13 +4584,13 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Mod
 
 }
 
-std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "default-routers")
     {
         if(default_routers == nullptr)
         {
-            default_routers = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DefaultRouters>();
+            default_routers = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DefaultRouters>();
         }
         return default_routers;
     }
@@ -4594,7 +4599,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Class
     {
         if(net_bios_name_servers == nullptr)
         {
-            net_bios_name_servers = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetBiosNameServers>();
+            net_bios_name_servers = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetBiosNameServers>();
         }
         return net_bios_name_servers;
     }
@@ -4603,7 +4608,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Class
     {
         if(class_match == nullptr)
         {
-            class_match = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch>();
+            class_match = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch>();
         }
         return class_match;
     }
@@ -4612,7 +4617,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Class
     {
         if(lease == nullptr)
         {
-            lease = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Lease>();
+            lease = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Lease>();
         }
         return lease;
     }
@@ -4621,7 +4626,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Class
     {
         if(netbios_node_type == nullptr)
         {
-            netbios_node_type = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetbiosNodeType>();
+            netbios_node_type = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetbiosNodeType>();
         }
         return netbios_node_type;
     }
@@ -4630,7 +4635,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Class
     {
         if(dns_servers == nullptr)
         {
-            dns_servers = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DnsServers>();
+            dns_servers = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DnsServers>();
         }
         return dns_servers;
     }
@@ -4639,7 +4644,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Class
     {
         if(option_codes == nullptr)
         {
-            option_codes = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes>();
+            option_codes = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes>();
         }
         return option_codes;
     }
@@ -4647,9 +4652,10 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Class
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_routers != nullptr)
     {
         children["default-routers"] = default_routers;
@@ -4688,7 +4694,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     return children;
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "class-name")
     {
@@ -4740,7 +4746,7 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::set_val
     }
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "class-name")
     {
@@ -4776,14 +4782,14 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::set_fil
     }
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "default-routers" || name == "net-bios-name-servers" || name == "class-match" || name == "lease" || name == "netbios-node-type" || name == "dns-servers" || name == "option-codes" || name == "class-name" || name == "subnet-mask" || name == "pool" || name == "enable" || name == "infinite-lease" || name == "domain-name" || name == "boot-filename" || name == "next-server")
         return true;
     return false;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DefaultRouters::DefaultRouters()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DefaultRouters::DefaultRouters()
     :
     default_router{YType::str, "default-router"}
 {
@@ -4791,11 +4797,11 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DefaultRoute
     yang_name = "default-routers"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DefaultRouters::~DefaultRouters()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DefaultRouters::~DefaultRouters()
 {
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DefaultRouters::has_data() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DefaultRouters::has_data() const
 {
     for (auto const & leaf : default_router.getYLeafs())
     {
@@ -4805,7 +4811,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Default
     return false;
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DefaultRouters::has_operation() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DefaultRouters::has_operation() const
 {
     for (auto const & leaf : default_router.getYLeafs())
     {
@@ -4816,14 +4822,14 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Default
 	|| ydk::is_set(default_router.yfilter);
 }
 
-std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DefaultRouters::get_segment_path() const
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DefaultRouters::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default-routers";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DefaultRouters::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DefaultRouters::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4834,18 +4840,19 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Mod
 
 }
 
-std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DefaultRouters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DefaultRouters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DefaultRouters::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DefaultRouters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DefaultRouters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DefaultRouters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "default-router")
     {
@@ -4853,7 +4860,7 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Default
     }
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DefaultRouters::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DefaultRouters::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "default-router")
     {
@@ -4861,14 +4868,14 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Default
     }
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DefaultRouters::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DefaultRouters::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "default-router")
         return true;
     return false;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetBiosNameServers::NetBiosNameServers()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetBiosNameServers::NetBiosNameServers()
     :
     net_bios_name_server{YType::str, "net-bios-name-server"}
 {
@@ -4876,11 +4883,11 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetBiosNameS
     yang_name = "net-bios-name-servers"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetBiosNameServers::~NetBiosNameServers()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetBiosNameServers::~NetBiosNameServers()
 {
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetBiosNameServers::has_data() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetBiosNameServers::has_data() const
 {
     for (auto const & leaf : net_bios_name_server.getYLeafs())
     {
@@ -4890,7 +4897,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetBios
     return false;
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetBiosNameServers::has_operation() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetBiosNameServers::has_operation() const
 {
     for (auto const & leaf : net_bios_name_server.getYLeafs())
     {
@@ -4901,14 +4908,14 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetBios
 	|| ydk::is_set(net_bios_name_server.yfilter);
 }
 
-std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetBiosNameServers::get_segment_path() const
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetBiosNameServers::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "net-bios-name-servers";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetBiosNameServers::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetBiosNameServers::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4919,18 +4926,19 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Mod
 
 }
 
-std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetBiosNameServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetBiosNameServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetBiosNameServers::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetBiosNameServers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetBiosNameServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetBiosNameServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "net-bios-name-server")
     {
@@ -4938,7 +4946,7 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetBios
     }
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetBiosNameServers::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetBiosNameServers::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "net-bios-name-server")
     {
@@ -4946,37 +4954,37 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetBios
     }
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetBiosNameServers::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetBiosNameServers::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "net-bios-name-server")
         return true;
     return false;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassMatch()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassMatch()
     :
     l2_interface{YType::str, "l2-interface"},
     vrf{YType::str, "vrf"}
     	,
-    class_options(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions>())
+    class_options(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions>())
 {
     class_options->parent = this;
 
     yang_name = "class-match"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::~ClassMatch()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::~ClassMatch()
 {
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::has_data() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::has_data() const
 {
     return l2_interface.is_set
 	|| vrf.is_set
 	|| (class_options !=  nullptr && class_options->has_data());
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::has_operation() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(l2_interface.yfilter)
@@ -4984,14 +4992,14 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMa
 	|| (class_options !=  nullptr && class_options->has_operation());
 }
 
-std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::get_segment_path() const
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "class-match";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5002,13 +5010,13 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Mod
 
 }
 
-std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "class-options")
     {
         if(class_options == nullptr)
         {
-            class_options = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions>();
+            class_options = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions>();
         }
         return class_options;
     }
@@ -5016,9 +5024,10 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Class
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(class_options != nullptr)
     {
         children["class-options"] = class_options;
@@ -5027,7 +5036,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     return children;
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "l2-interface")
     {
@@ -5043,7 +5052,7 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMa
     }
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "l2-interface")
     {
@@ -5055,24 +5064,24 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMa
     }
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "class-options" || name == "l2-interface" || name == "vrf")
         return true;
     return false;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::ClassOptions()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::ClassOptions()
 {
 
     yang_name = "class-options"; yang_parent_name = "class-match"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::~ClassOptions()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::~ClassOptions()
 {
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::has_data() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::has_data() const
 {
     for (std::size_t index=0; index<class_option.size(); index++)
     {
@@ -5082,7 +5091,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMa
     return false;
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::has_operation() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::has_operation() const
 {
     for (std::size_t index=0; index<class_option.size(); index++)
     {
@@ -5092,14 +5101,14 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMa
     return is_set(yfilter);
 }
 
-std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::get_segment_path() const
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "class-options";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5108,19 +5117,11 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Mod
 
 }
 
-std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "class-option")
     {
-        for(auto const & c : class_option)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::ClassOption>();
+        auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::ClassOption>();
         c->parent = this;
         class_option.push_back(c);
         return c;
@@ -5129,33 +5130,38 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Class
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : class_option)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "class-option")
         return true;
     return false;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::ClassOption::ClassOption()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::ClassOption::ClassOption()
     :
     matchoption{YType::enumeration, "matchoption"},
     pattern{YType::str, "pattern"},
@@ -5165,18 +5171,18 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::
     yang_name = "class-option"; yang_parent_name = "class-options"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::ClassOption::~ClassOption()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::ClassOption::~ClassOption()
 {
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::ClassOption::has_data() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::ClassOption::has_data() const
 {
     return matchoption.is_set
 	|| pattern.is_set
 	|| bit_mask.is_set;
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::ClassOption::has_operation() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::ClassOption::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(matchoption.yfilter)
@@ -5184,14 +5190,14 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMa
 	|| ydk::is_set(bit_mask.yfilter);
 }
 
-std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::ClassOption::get_segment_path() const
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::ClassOption::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "class-option" <<"[matchoption='" <<matchoption <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::ClassOption::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::ClassOption::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5203,18 +5209,19 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Mod
 
 }
 
-std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::ClassOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::ClassOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::ClassOption::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::ClassOption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::ClassOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::ClassOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "matchoption")
     {
@@ -5236,7 +5243,7 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMa
     }
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::ClassOption::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::ClassOption::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "matchoption")
     {
@@ -5252,14 +5259,14 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMa
     }
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::ClassMatch::ClassOptions::ClassOption::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::ClassOption::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "matchoption" || name == "pattern" || name == "bit-mask")
         return true;
     return false;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Lease::Lease()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Lease::Lease()
     :
     infinite{YType::str, "infinite"},
     days{YType::uint32, "days"},
@@ -5270,11 +5277,11 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Lease::Lease
     yang_name = "lease"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Lease::~Lease()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Lease::~Lease()
 {
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Lease::has_data() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Lease::has_data() const
 {
     return infinite.is_set
 	|| days.is_set
@@ -5282,7 +5289,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Lease::
 	|| minutes.is_set;
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Lease::has_operation() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Lease::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(infinite.yfilter)
@@ -5291,14 +5298,14 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Lease::
 	|| ydk::is_set(minutes.yfilter);
 }
 
-std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Lease::get_segment_path() const
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Lease::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lease";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Lease::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Lease::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5311,18 +5318,19 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Mod
 
 }
 
-std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Lease::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Lease::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Lease::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Lease::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Lease::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Lease::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "infinite")
     {
@@ -5350,7 +5358,7 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Lease::
     }
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Lease::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Lease::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "infinite")
     {
@@ -5370,14 +5378,14 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Lease::
     }
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Lease::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::Lease::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "infinite" || name == "days" || name == "hours" || name == "minutes")
         return true;
     return false;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetbiosNodeType::NetbiosNodeType()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetbiosNodeType::NetbiosNodeType()
     :
     broadcast_node{YType::str, "broadcast-node"},
     hybrid_node{YType::str, "hybrid-node"},
@@ -5389,11 +5397,11 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetbiosNodeT
     yang_name = "netbios-node-type"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetbiosNodeType::~NetbiosNodeType()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetbiosNodeType::~NetbiosNodeType()
 {
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetbiosNodeType::has_data() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetbiosNodeType::has_data() const
 {
     return broadcast_node.is_set
 	|| hybrid_node.is_set
@@ -5402,7 +5410,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Netbios
 	|| hexadecimal.is_set;
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetbiosNodeType::has_operation() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetbiosNodeType::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(broadcast_node.yfilter)
@@ -5412,14 +5420,14 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Netbios
 	|| ydk::is_set(hexadecimal.yfilter);
 }
 
-std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetbiosNodeType::get_segment_path() const
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetbiosNodeType::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "netbios-node-type";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetbiosNodeType::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetbiosNodeType::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5433,18 +5441,19 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Mod
 
 }
 
-std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetbiosNodeType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetbiosNodeType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetbiosNodeType::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetbiosNodeType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetbiosNodeType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetbiosNodeType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "broadcast-node")
     {
@@ -5478,7 +5487,7 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Netbios
     }
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetbiosNodeType::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetbiosNodeType::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "broadcast-node")
     {
@@ -5502,14 +5511,14 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::Netbios
     }
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::NetbiosNodeType::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::NetbiosNodeType::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "broadcast-node" || name == "hybrid-node" || name == "mixed-node" || name == "peer-to-peer-node" || name == "hexadecimal")
         return true;
     return false;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DnsServers::DnsServers()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DnsServers::DnsServers()
     :
     dns_server{YType::str, "dns-server"}
 {
@@ -5517,11 +5526,11 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DnsServers::
     yang_name = "dns-servers"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DnsServers::~DnsServers()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DnsServers::~DnsServers()
 {
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DnsServers::has_data() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DnsServers::has_data() const
 {
     for (auto const & leaf : dns_server.getYLeafs())
     {
@@ -5531,7 +5540,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DnsServ
     return false;
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DnsServers::has_operation() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DnsServers::has_operation() const
 {
     for (auto const & leaf : dns_server.getYLeafs())
     {
@@ -5542,14 +5551,14 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DnsServ
 	|| ydk::is_set(dns_server.yfilter);
 }
 
-std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DnsServers::get_segment_path() const
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DnsServers::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dns-servers";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DnsServers::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DnsServers::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5560,18 +5569,19 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Mod
 
 }
 
-std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DnsServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DnsServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DnsServers::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DnsServers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DnsServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DnsServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dns-server")
     {
@@ -5579,7 +5589,7 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DnsServ
     }
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DnsServers::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DnsServers::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dns-server")
     {
@@ -5587,24 +5597,24 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DnsServ
     }
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::DnsServers::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::DnsServers::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dns-server")
         return true;
     return false;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::OptionCodes()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCodes()
 {
 
     yang_name = "option-codes"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::~OptionCodes()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::~OptionCodes()
 {
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::has_data() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::has_data() const
 {
     for (std::size_t index=0; index<option_code.size(); index++)
     {
@@ -5614,7 +5624,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionC
     return false;
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::has_operation() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::has_operation() const
 {
     for (std::size_t index=0; index<option_code.size(); index++)
     {
@@ -5624,14 +5634,14 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionC
     return is_set(yfilter);
 }
 
-std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::get_segment_path() const
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "option-codes";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5640,19 +5650,11 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Mod
 
 }
 
-std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "option-code")
     {
-        for(auto const & c : option_code)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::OptionCode>();
+        auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCode>();
         c->parent = this;
         option_code.push_back(c);
         return c;
@@ -5661,33 +5663,38 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Class
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : option_code)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "option-code")
         return true;
     return false;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::OptionCode::OptionCode()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCode::OptionCode()
     :
     option_code{YType::uint32, "option-code"},
     ascii_string{YType::str, "ascii-string"},
@@ -5699,11 +5706,11 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes:
     yang_name = "option-code"; yang_parent_name = "option-codes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::OptionCode::~OptionCode()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCode::~OptionCode()
 {
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::OptionCode::has_data() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCode::has_data() const
 {
     for (auto const & leaf : ip_address.getYLeafs())
     {
@@ -5716,7 +5723,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionC
 	|| force_insert.is_set;
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::OptionCode::has_operation() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCode::has_operation() const
 {
     for (auto const & leaf : ip_address.getYLeafs())
     {
@@ -5731,14 +5738,14 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionC
 	|| ydk::is_set(ip_address.yfilter);
 }
 
-std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::OptionCode::get_segment_path() const
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCode::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "option-code" <<"[option-code='" <<option_code <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::OptionCode::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCode::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5753,18 +5760,19 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Mod
 
 }
 
-std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::OptionCode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::OptionCode::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::OptionCode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "option-code")
     {
@@ -5796,7 +5804,7 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionC
     }
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::OptionCode::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCode::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "option-code")
     {
@@ -5820,7 +5828,7 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionC
     }
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class_::OptionCodes::OptionCode::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCode::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "option-code" || name == "ascii-string" || name == "hex-string" || name == "force-insert" || name == "ip-address")
         return true;
@@ -5875,6 +5883,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Relay
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Relay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5963,6 +5972,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Lease
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Lease::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6085,6 +6095,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Netbi
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::NetbiosNodeType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6212,6 +6223,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DnsSe
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DnsServers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6288,14 +6300,6 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Optio
 {
     if(child_yang_name == "option-code")
     {
-        for(auto const & c : option_code)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes::OptionCode>();
         c->parent = this;
         option_code.push_back(c);
@@ -6308,9 +6312,14 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Optio
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : option_code)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6405,6 +6414,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Optio
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes::OptionCode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6572,6 +6582,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(gi_addr_policy != nullptr)
     {
         children["gi-addr-policy"] = gi_addr_policy;
@@ -6668,6 +6679,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::GiAddr
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::GiAddrPolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6746,14 +6758,6 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -6766,9 +6770,14 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6851,6 +6860,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(helper_addresses != nullptr)
     {
         children["helper-addresses"] = helper_addresses;
@@ -6934,14 +6944,6 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::
 {
     if(child_yang_name == "helper-address")
     {
-        for(auto const & c : helper_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::HelperAddresses::HelperAddress>();
         c->parent = this;
         helper_address.push_back(c);
@@ -6954,9 +6956,14 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::HelperAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : helper_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7033,6 +7040,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::HelperAddresses::HelperAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7153,6 +7161,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::RelayI
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::RelayInformationOption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7289,6 +7298,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Broadc
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::BroadcastPolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7506,6 +7516,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(giaddr != nullptr)
     {
         children["giaddr"] = giaddr;
@@ -7662,6 +7673,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Giaddr
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Giaddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7740,15 +7752,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classe
 {
     if(child_yang_name == "class")
     {
-        for(auto const & c : class_)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_>();
+        auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class>();
         c->parent = this;
         class_.push_back(c);
         return c;
@@ -7760,9 +7764,14 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classe
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : class_)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7783,13 +7792,13 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::has_leaf_or_chil
     return false;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Class_()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Class()
     :
     class_name{YType::str, "class-name"},
     enable{YType::empty, "enable"}
     	,
-    match(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match>())
-	,vrfs(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs>())
+    match(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match>())
+	,vrfs(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs>())
 {
     match->parent = this;
     vrfs->parent = this;
@@ -7797,11 +7806,11 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Class_()
     yang_name = "class"; yang_parent_name = "classes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::~Class_()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::~Class()
 {
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::has_data() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::has_data() const
 {
     return class_name.is_set
 	|| enable.is_set
@@ -7809,7 +7818,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::has_data
 	|| (vrfs !=  nullptr && vrfs->has_data());
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::has_operation() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(class_name.yfilter)
@@ -7818,14 +7827,14 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::has_oper
 	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
-std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::get_segment_path() const
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "class" <<"[class-name='" <<class_name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7836,13 +7845,13 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Mod
 
 }
 
-std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "match")
     {
         if(match == nullptr)
         {
-            match = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match>();
+            match = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match>();
         }
         return match;
     }
@@ -7851,7 +7860,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classe
     {
         if(vrfs == nullptr)
         {
-            vrfs = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs>();
+            vrfs = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs>();
         }
         return vrfs;
     }
@@ -7859,9 +7868,10 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classe
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(match != nullptr)
     {
         children["match"] = match;
@@ -7875,7 +7885,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     return children;
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "class-name")
     {
@@ -7891,7 +7901,7 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::set_valu
     }
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "class-name")
     {
@@ -7903,49 +7913,49 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::set_filt
     }
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "match" || name == "vrfs" || name == "class-name" || name == "enable")
         return true;
     return false;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::Match()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Match()
     :
     vrf{YType::str, "vrf"}
     	,
-    option(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::Option>())
+    option(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Option>())
 {
     option->parent = this;
 
     yang_name = "match"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::~Match()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::~Match()
 {
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::has_data() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::has_data() const
 {
     return vrf.is_set
 	|| (option !=  nullptr && option->has_data());
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::has_operation() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vrf.yfilter)
 	|| (option !=  nullptr && option->has_operation());
 }
 
-std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::get_segment_path() const
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "match";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7955,13 +7965,13 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Mod
 
 }
 
-std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "option")
     {
         if(option == nullptr)
         {
-            option = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::Option>();
+            option = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Option>();
         }
         return option;
     }
@@ -7969,9 +7979,10 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classe
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(option != nullptr)
     {
         children["option"] = option;
@@ -7980,7 +7991,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     return children;
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf")
     {
@@ -7990,7 +8001,7 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::s
     }
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vrf")
     {
@@ -7998,14 +8009,14 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::s
     }
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "option" || name == "vrf")
         return true;
     return false;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::Option::Option()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Option::Option()
     :
     option_type{YType::enumeration, "option-type"},
     pattern{YType::str, "pattern"},
@@ -8015,18 +8026,18 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::Option
     yang_name = "option"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::Option::~Option()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Option::~Option()
 {
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::Option::has_data() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Option::has_data() const
 {
     return option_type.is_set
 	|| pattern.is_set
 	|| bit_mask.is_set;
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::Option::has_operation() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Option::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(option_type.yfilter)
@@ -8034,14 +8045,14 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::O
 	|| ydk::is_set(bit_mask.yfilter);
 }
 
-std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::Option::get_segment_path() const
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Option::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "option";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::Option::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Option::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8053,18 +8064,19 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Mod
 
 }
 
-std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::Option::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Option::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::Option::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Option::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::Option::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Option::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "option-type")
     {
@@ -8086,7 +8098,7 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::O
     }
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::Option::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Option::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "option-type")
     {
@@ -8102,24 +8114,24 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::O
     }
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Match::Option::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Match::Option::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "option-type" || name == "pattern" || name == "bit-mask")
         return true;
     return false;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrfs()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrfs()
 {
 
     yang_name = "vrfs"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::~Vrfs()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::~Vrfs()
 {
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::has_data() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::has_data() const
 {
     for (std::size_t index=0; index<vrf.size(); index++)
     {
@@ -8129,7 +8141,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::ha
     return false;
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::has_operation() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::has_operation() const
 {
     for (std::size_t index=0; index<vrf.size(); index++)
     {
@@ -8139,14 +8151,14 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::ha
     return is_set(yfilter);
 }
 
-std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::get_segment_path() const
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrfs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8155,19 +8167,11 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Mod
 
 }
 
-std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf>();
+        auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
         return c;
@@ -8176,68 +8180,73 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classe
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vrf")
         return true;
     return false;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::Vrf()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
     	,
-    helper_addresses(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses>())
+    helper_addresses(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses>())
 {
     helper_addresses->parent = this;
 
     yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::~Vrf()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::~Vrf()
 {
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::has_data() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::has_data() const
 {
     return vrf_name.is_set
 	|| (helper_addresses !=  nullptr && helper_addresses->has_data());
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::has_operation() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vrf_name.yfilter)
 	|| (helper_addresses !=  nullptr && helper_addresses->has_operation());
 }
 
-std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::get_segment_path() const
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8247,13 +8256,13 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Mod
 
 }
 
-std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "helper-addresses")
     {
         if(helper_addresses == nullptr)
         {
-            helper_addresses = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses>();
+            helper_addresses = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses>();
         }
         return helper_addresses;
     }
@@ -8261,9 +8270,10 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classe
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(helper_addresses != nullptr)
     {
         children["helper-addresses"] = helper_addresses;
@@ -8272,7 +8282,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Mod
     return children;
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
@@ -8282,7 +8292,7 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vr
     }
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vrf-name")
     {
@@ -8290,24 +8300,24 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vr
     }
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "helper-addresses" || name == "vrf-name")
         return true;
     return false;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::HelperAddresses()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::HelperAddresses()
 {
 
     yang_name = "helper-addresses"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::~HelperAddresses()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::~HelperAddresses()
 {
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::has_data() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::has_data() const
 {
     for (std::size_t index=0; index<helper_address.size(); index++)
     {
@@ -8317,7 +8327,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vr
     return false;
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::has_operation() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::has_operation() const
 {
     for (std::size_t index=0; index<helper_address.size(); index++)
     {
@@ -8327,14 +8337,14 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vr
     return is_set(yfilter);
 }
 
-std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::get_segment_path() const
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "helper-addresses";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8343,19 +8353,11 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Mod
 
 }
 
-std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "helper-address")
     {
-        for(auto const & c : helper_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::HelperAddress>();
+        auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::HelperAddress>();
         c->parent = this;
         helper_address.push_back(c);
         return c;
@@ -8364,33 +8366,38 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classe
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : helper_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "helper-address")
         return true;
     return false;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::HelperAddress::HelperAddress()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::HelperAddress::HelperAddress()
     :
     server_address{YType::str, "server-address"},
     gateway_address{YType::str, "gateway-address"}
@@ -8399,31 +8406,31 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::He
     yang_name = "helper-address"; yang_parent_name = "helper-addresses"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::HelperAddress::~HelperAddress()
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::HelperAddress::~HelperAddress()
 {
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::HelperAddress::has_data() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::HelperAddress::has_data() const
 {
     return server_address.is_set
 	|| gateway_address.is_set;
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::HelperAddress::has_operation() const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::HelperAddress::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(server_address.yfilter)
 	|| ydk::is_set(gateway_address.yfilter);
 }
 
-std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::HelperAddress::get_segment_path() const
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::HelperAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "helper-address" <<"[server-address='" <<server_address <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::HelperAddress::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::HelperAddress::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8434,18 +8441,19 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Mod
 
 }
 
-std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::HelperAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::HelperAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::HelperAddress::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::HelperAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::HelperAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::HelperAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "server-address")
     {
@@ -8461,7 +8469,7 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vr
     }
 }
 
-void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::HelperAddress::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::HelperAddress::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "server-address")
     {
@@ -8473,7 +8481,7 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vr
     }
 }
 
-bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class_::Vrfs::Vrf::HelperAddresses::HelperAddress::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::HelperAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "server-address" || name == "gateway-address")
         return true;
@@ -8532,6 +8540,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::AuthUs
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::AuthUsername::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8658,6 +8667,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::RelayI
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::RelayInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8836,14 +8846,6 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -8856,9 +8858,14 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8941,6 +8948,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(helper_addresses != nullptr)
     {
         children["helper-addresses"] = helper_addresses;
@@ -9024,14 +9032,6 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::
 {
     if(child_yang_name == "helper-address")
     {
-        for(auto const & c : helper_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress>();
         c->parent = this;
         helper_address.push_back(c);
@@ -9044,9 +9044,14 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::HelperAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : helper_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9119,6 +9124,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9214,6 +9220,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Sessio
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Sessions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(proxy_throttle_type != nullptr)
     {
         children["proxy-throttle-type"] = proxy_throttle_type;
@@ -9294,6 +9301,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Sessio
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Sessions::ProxyThrottleType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(proxy_mac_throttle != nullptr)
     {
         children["proxy-mac-throttle"] = proxy_mac_throttle;
@@ -9373,6 +9381,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Sessio
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Sessions::ProxyThrottleType::ProxyMacThrottle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9473,6 +9482,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::LimitL
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::LimitLease::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9563,6 +9573,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::LeaseP
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::LeaseProxy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9649,6 +9660,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Broadc
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::BroadcastFlag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9747,6 +9759,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match:
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(def_options != nullptr)
     {
         children["def-options"] = def_options;
@@ -9825,14 +9838,6 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match:
 {
     if(child_yang_name == "def-option")
     {
-        for(auto const & c : def_option)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions::DefOption>();
         c->parent = this;
         def_option.push_back(c);
@@ -9845,9 +9850,14 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match:
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : def_option)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9920,6 +9930,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match:
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions::DefOption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10008,14 +10019,6 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match:
 {
     if(child_yang_name == "option-filter")
     {
-        for(auto const & c : option_filter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters::OptionFilter>();
         c->parent = this;
         option_filter.push_back(c);
@@ -10028,9 +10031,14 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match:
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : option_filter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10111,6 +10119,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match:
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters::OptionFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10240,6 +10249,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Database::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Database::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10365,14 +10375,6 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Interfaces::get_child_by_name(const std::stri
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv4Dhcpd::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -10385,9 +10387,14 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Interfaces::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10554,6 +10561,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Interfaces::Interface::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(proxy_interface != nullptr)
     {
         children["proxy-interface"] = proxy_interface;
@@ -10678,6 +10686,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Interfaces::Interface::ProxyInterface::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Interfaces::Interface::ProxyInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dhcp_circuit_id != nullptr)
     {
         children["dhcp-circuit-id"] = dhcp_circuit_id;
@@ -10827,6 +10836,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Interfaces::Interface::ProxyInterface::DhcpCi
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Interfaces::Interface::ProxyInterface::DhcpCircuitId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11086,6 +11096,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Interfaces::Interface::BaseInterface::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Interfaces::Interface::BaseInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(base_dhcp_circuit_id != nullptr)
     {
         children["base-dhcp-circuit-id"] = base_dhcp_circuit_id;
@@ -11235,6 +11246,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Interfaces::Interface::BaseInterface::BaseDhc
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Interfaces::Interface::BaseInterface::BaseDhcpCircuitId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11489,6 +11501,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Interfaces::Interface::RelayInterface::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Interfaces::Interface::RelayInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(relay_dhcp_circuit_id != nullptr)
     {
         children["relay-dhcp-circuit-id"] = relay_dhcp_circuit_id;
@@ -11628,6 +11641,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Interfaces::Interface::RelayInterface::RelayD
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Interfaces::Interface::RelayInterface::RelayDhcpCircuitId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11883,6 +11897,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Interfaces::Interface::StaticMode::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Interfaces::Interface::StaticMode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(statics != nullptr)
     {
         children["statics"] = statics;
@@ -11956,15 +11971,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::g
 {
     if(child_yang_name == "static")
     {
-        for(auto const & c : static_)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static_>();
+        auto c = std::make_shared<Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static>();
         c->parent = this;
         static_.push_back(c);
         return c;
@@ -11976,9 +11983,14 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::g
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : static_)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11999,7 +12011,7 @@ bool Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::has_leaf_or_child_of
     return false;
 }
 
-Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static_::Static_()
+Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static::Static()
     :
     mac_address{YType::str, "mac-address"},
     client_id{YType::uint32, "client-id"},
@@ -12010,11 +12022,11 @@ Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static_::Static_()
     yang_name = "static"; yang_parent_name = "statics"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static_::~Static_()
+Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static::~Static()
 {
 }
 
-bool Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static_::has_data() const
+bool Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static::has_data() const
 {
     return mac_address.is_set
 	|| client_id.is_set
@@ -12022,7 +12034,7 @@ bool Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static_::has_data() 
 	|| static_address.is_set;
 }
 
-bool Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static_::has_operation() const
+bool Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mac_address.yfilter)
@@ -12031,14 +12043,14 @@ bool Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static_::has_operati
 	|| ydk::is_set(static_address.yfilter);
 }
 
-std::string Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static_::get_segment_path() const
+std::string Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static" <<"[mac-address='" <<mac_address <<"']" <<"[client-id='" <<client_id <<"']" <<"[layer='" <<layer <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12051,18 +12063,19 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Interfaces::Interface:
 
 }
 
-std::shared_ptr<Entity> Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mac-address")
     {
@@ -12090,7 +12103,7 @@ void Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static_::set_value(c
     }
 }
 
-void Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mac-address")
     {
@@ -12110,7 +12123,7 @@ void Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static_::set_filter(
     }
 }
 
-bool Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mac-address" || name == "client-id" || name == "layer" || name == "static-address")
         return true;
@@ -12169,6 +12182,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Interfaces::Interface::Profile::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Interfaces::Interface::Profile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12268,6 +12282,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Interfaces::Interface::ServerInterface::get_c
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Interfaces::Interface::ServerInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(server_dhcp_circuit_id != nullptr)
     {
         children["server-dhcp-circuit-id"] = server_dhcp_circuit_id;
@@ -12417,6 +12432,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Interfaces::Interface::ServerInterface::Serve
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Interfaces::Interface::ServerInterface::ServerDhcpCircuitId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12672,6 +12688,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Interfaces::Interface::SnoopInterface::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Interfaces::Interface::SnoopInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(snoop_circuit_id != nullptr)
     {
         children["snoop-circuit-id"] = snoop_circuit_id;
@@ -12747,6 +12764,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::Interfaces::Interface::SnoopInterface::SnoopC
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::Interfaces::Interface::SnoopInterface::SnoopCircuitId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12848,6 +12866,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::DuplicateMacAllowed::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::DuplicateMacAllowed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12955,6 +12974,7 @@ std::shared_ptr<Entity> Ipv4Dhcpd::RateLimit::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Ipv4Dhcpd::RateLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

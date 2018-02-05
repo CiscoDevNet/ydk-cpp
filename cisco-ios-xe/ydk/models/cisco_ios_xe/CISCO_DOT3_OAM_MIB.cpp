@@ -133,6 +133,7 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cdot3oamtable != nullptr)
     {
         children["cdot3OamTable"] = cdot3oamtable;
@@ -263,14 +264,6 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oamtable::get_child_by_name(const 
 {
     if(child_yang_name == "cdot3OamEntry")
     {
-        for(auto const & c : cdot3oamentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry>();
         c->parent = this;
         cdot3oamentry.push_back(c);
@@ -283,9 +276,14 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oamtable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oamtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdot3oamentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -385,6 +383,7 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::get_child
 std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -528,14 +527,6 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oampeertable::get_child_by_name(co
 {
     if(child_yang_name == "cdot3OamPeerEntry")
     {
-        for(auto const & c : cdot3oampeerentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry>();
         c->parent = this;
         cdot3oampeerentry.push_back(c);
@@ -548,9 +539,14 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oampeertable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oampeertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdot3oampeerentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -654,6 +650,7 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry::g
 std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -807,14 +804,6 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oamloopbacktable::get_child_by_nam
 {
     if(child_yang_name == "cdot3OamLoopbackEntry")
     {
-        for(auto const & c : cdot3oamloopbackentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry>();
         c->parent = this;
         cdot3oamloopbackentry.push_back(c);
@@ -827,9 +816,14 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oamloopbacktable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oamloopbacktable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdot3oamloopbackentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -913,6 +907,7 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopback
 std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1018,14 +1013,6 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oamstatstable::get_child_by_name(c
 {
     if(child_yang_name == "cdot3OamStatsEntry")
     {
-        for(auto const & c : cdot3oamstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry>();
         c->parent = this;
         cdot3oamstatsentry.push_back(c);
@@ -1038,9 +1025,14 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oamstatstable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oamstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdot3oamstatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1184,6 +1176,7 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry:
 std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1439,14 +1432,6 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oameventconfigtable::get_child_by_
 {
     if(child_yang_name == "cdot3OamEventConfigEntry")
     {
-        for(auto const & c : cdot3oameventconfigentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry>();
         c->parent = this;
         cdot3oameventconfigentry.push_back(c);
@@ -1459,9 +1444,14 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oameventconfigtable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oameventconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdot3oameventconfigentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1601,6 +1591,7 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oamevent
 std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1846,14 +1837,6 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oameventlogtable::get_child_by_nam
 {
     if(child_yang_name == "cdot3OamEventLogEntry")
     {
-        for(auto const & c : cdot3oameventlogentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry>();
         c->parent = this;
         cdot3oameventlogentry.push_back(c);
@@ -1866,9 +1849,14 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oameventlogtable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oameventlogtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdot3oameventlogentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1992,6 +1980,7 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlog
 std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

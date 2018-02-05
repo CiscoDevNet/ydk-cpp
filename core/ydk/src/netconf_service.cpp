@@ -336,7 +336,7 @@ static shared_ptr<path::Rpc> get_rpc_instance(NetconfServiceProvider& provider, 
     path::RootSchemaNode & root_schema = provider.get_session().get_root_schema();
     auto rpc =  root_schema.create_rpc(yfilter);
     if (rpc == nullptr)
-        throw(YCPPError{"Unable to create rpc"});
+        throw(YError{"Unable to create rpc"});
 
     return rpc;
 }
@@ -369,7 +369,7 @@ static void create_input_leaf(path::DataNode & input_datanode, DataStore datasto
     {
         if(url.size() == 0)
         {
-            throw(YCPPServiceError{"URL needs to be specified"});
+            throw(YServiceError{"URL needs to be specified"});
         }
         os << "/url";
 
@@ -401,7 +401,7 @@ static void create_input_leaf(path::DataNode & input_datanode, DataStore datasto
             break;
 
         case DataStore::url:
-            throw(YCPPServiceError{"URL needs to be specified"});
+            throw(YServiceError{"URL needs to be specified"});
             break;
     }
 

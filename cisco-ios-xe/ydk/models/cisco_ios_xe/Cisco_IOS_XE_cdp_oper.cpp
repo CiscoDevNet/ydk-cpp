@@ -61,14 +61,6 @@ std::shared_ptr<Entity> CdpNeighborDetails::get_child_by_name(const std::string 
 {
     if(child_yang_name == "cdp-neighbor-detail")
     {
-        for(auto const & c : cdp_neighbor_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CdpNeighborDetails::CdpNeighborDetail>();
         c->parent = this;
         cdp_neighbor_detail.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> CdpNeighborDetails::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> CdpNeighborDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdp_neighbor_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -325,6 +322,7 @@ std::shared_ptr<Entity> CdpNeighborDetails::CdpNeighborDetail::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CdpNeighborDetails::CdpNeighborDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hello_message != nullptr)
     {
         children["hello-message"] = hello_message;
@@ -653,6 +651,7 @@ std::shared_ptr<Entity> CdpNeighborDetails::CdpNeighborDetail::HelloMessage::get
 std::map<std::string, std::shared_ptr<Entity>> CdpNeighborDetails::CdpNeighborDetail::HelloMessage::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -767,6 +766,7 @@ std::shared_ptr<Entity> CdpNeighborDetails::CdpNeighborDetail::PowerRequest::get
 std::map<std::string, std::shared_ptr<Entity>> CdpNeighborDetails::CdpNeighborDetail::PowerRequest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -875,6 +875,7 @@ std::shared_ptr<Entity> CdpNeighborDetails::CdpNeighborDetail::PowerAvailable::g
 std::map<std::string, std::shared_ptr<Entity>> CdpNeighborDetails::CdpNeighborDetail::PowerAvailable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -993,6 +994,7 @@ std::shared_ptr<Entity> CdpNeighborDetails::CdpNeighborDetail::SparePair::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CdpNeighborDetails::CdpNeighborDetail::SparePair::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

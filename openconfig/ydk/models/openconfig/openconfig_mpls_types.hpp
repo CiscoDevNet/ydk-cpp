@@ -208,14 +208,14 @@ class ADMINUP : public openconfig::openconfig_mpls_types::TunnelAdminStatus, vir
 
 }; // ADMINUP
 
-class EXPLICIT_ : public openconfig::openconfig_mpls_types::NullLabelType, virtual ydk::Identity
+class EXPLICIT : public openconfig::openconfig_mpls_types::NullLabelType, virtual ydk::Identity
 {
     public:
-        EXPLICIT_();
-        ~EXPLICIT_();
+        EXPLICIT();
+        ~EXPLICIT();
 
 
-}; // EXPLICIT_
+}; // EXPLICIT
 
 class IMPLICIT : public openconfig::openconfig_mpls_types::NullLabelType, virtual ydk::Identity
 {

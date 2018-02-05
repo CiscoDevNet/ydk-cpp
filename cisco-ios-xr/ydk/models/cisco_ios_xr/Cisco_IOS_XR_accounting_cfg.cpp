@@ -73,6 +73,7 @@ std::shared_ptr<Entity> Accounting::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Accounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interfaces != nullptr)
     {
         children["interfaces"] = interfaces;
@@ -213,6 +214,7 @@ std::shared_ptr<Entity> Accounting::Interfaces::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Accounting::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mpls != nullptr)
     {
         children["mpls"] = mpls;
@@ -310,6 +312,7 @@ std::shared_ptr<Entity> Accounting::Interfaces::Mpls::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Accounting::Interfaces::Mpls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -411,6 +414,7 @@ std::shared_ptr<Entity> Accounting::Interfaces::SegmentRouting::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Accounting::Interfaces::SegmentRouting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

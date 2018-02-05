@@ -1074,14 +1074,14 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac : public ydk::Entity
         class PortDown; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown
         class Flooding; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding
         class Secure; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure
-        class Static_; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_
+        class Static; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static
 
         std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Limit> limit;
         std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Aging> aging;
         std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::PortDown> port_down;
         std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Flooding> flooding;
         std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure> secure; // presence node
-        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_> static_;
+        std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static> static_;
         
 }; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac
 
@@ -1196,11 +1196,11 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure : public ydk:
 }; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Secure
 
 
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_ : public ydk::Entity
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1212,14 +1212,14 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_ : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MacAddresses; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses
+        class MacAddresses; //type: BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses
 
-        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses> > mac_addresses;
+        std::vector<std::shared_ptr<cisco_ios_xe::cisco_bridge_domain::BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses> > mac_addresses;
         
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static
 
 
-class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses : public ydk::Entity
+class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses : public ydk::Entity
 {
     public:
         MacAddresses();
@@ -1238,7 +1238,7 @@ class BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresse
         ydk::YLeaf mac_addr; //type: string
         ydk::YLeaf drop; //type: boolean
 
-}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static_::MacAddresses
+}; // BridgeDomainConfig::BridgeDomains::BridgeDomain::Mac::Static::MacAddresses
 
 
 class BridgeDomainConfig::BridgeDomains::BridgeDomain::DynamicArpInspection : public ydk::Entity

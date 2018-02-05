@@ -10,11 +10,11 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_infra_clock_linux_cfg {
 
-class Clock_ : public ydk::Entity
+class Clock : public ydk::Entity
 {
     public:
-        Clock_();
-        ~Clock_();
+        Clock();
+        ~Clock();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -31,14 +31,14 @@ class Clock_ : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class TimeZone; //type: Clock_::TimeZone
+        class TimeZone; //type: Clock::TimeZone
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_infra_clock_linux_cfg::Clock_::TimeZone> time_zone; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_infra_clock_linux_cfg::Clock::TimeZone> time_zone; // presence node
         
-}; // Clock_
+}; // Clock
 
 
-class Clock_::TimeZone : public ydk::Entity
+class Clock::TimeZone : public ydk::Entity
 {
     public:
         TimeZone();
@@ -58,7 +58,7 @@ class Clock_::TimeZone : public ydk::Entity
         ydk::YLeaf time_zone_name; //type: string
         ydk::YLeaf area_name; //type: string
 
-}; // Clock_::TimeZone
+}; // Clock::TimeZone
 
 
 }

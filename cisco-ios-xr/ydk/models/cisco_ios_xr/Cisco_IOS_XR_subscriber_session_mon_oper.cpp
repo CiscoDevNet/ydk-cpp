@@ -68,6 +68,7 @@ std::shared_ptr<Entity> SessionMon::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> SessionMon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> SessionMon::Nodes::get_child_by_name(const std::string &
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SessionMon::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> SessionMon::Nodes::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> SessionMon::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -311,6 +309,7 @@ std::shared_ptr<Entity> SessionMon::Nodes::Node::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> SessionMon::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(session_mon_statistics != nullptr)
     {
         children["session-mon-statistics"] = session_mon_statistics;
@@ -450,6 +449,7 @@ std::shared_ptr<Entity> SessionMon::Nodes::Node::SessionMonStatistics::get_child
 std::map<std::string, std::shared_ptr<Entity>> SessionMon::Nodes::Node::SessionMonStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -648,14 +648,6 @@ std::shared_ptr<Entity> SessionMon::Nodes::Node::InterfaceAllStatistics::get_chi
 {
     if(child_yang_name == "interface-all-statistic")
     {
-        for(auto const & c : interface_all_statistic)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic>();
         c->parent = this;
         interface_all_statistic.push_back(c);
@@ -668,9 +660,14 @@ std::shared_ptr<Entity> SessionMon::Nodes::Node::InterfaceAllStatistics::get_chi
 std::map<std::string, std::shared_ptr<Entity>> SessionMon::Nodes::Node::InterfaceAllStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_all_statistic)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -791,6 +788,7 @@ std::shared_ptr<Entity> SessionMon::Nodes::Node::InterfaceAllStatistics::Interfa
 std::map<std::string, std::shared_ptr<Entity>> SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1045,6 +1043,7 @@ std::shared_ptr<Entity> SessionMon::Nodes::Node::LicenseStatistics::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> SessionMon::Nodes::Node::LicenseStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

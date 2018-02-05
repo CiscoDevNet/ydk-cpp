@@ -5,9 +5,9 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ifmgr_cfg_0.hpp"
-#include "Cisco_IOS_XR_ifmgr_cfg_2.hpp"
 #include "Cisco_IOS_XR_ifmgr_cfg_1.hpp"
 #include "Cisco_IOS_XR_ifmgr_cfg_4.hpp"
+#include "Cisco_IOS_XR_ifmgr_cfg_2.hpp"
 
 using namespace ydk;
 
@@ -62,6 +62,7 @@ std::shared_ptr<Entity> GlobalInterfaceConfiguration::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> GlobalInterfaceConfiguration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -165,14 +166,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::get_child_by_name(const std::st
 {
     if(child_yang_name == "interface-configuration")
     {
-        for(auto const & c : interface_configuration)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration>();
         c->parent = this;
         interface_configuration.push_back(c);
@@ -185,9 +178,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_configuration)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1258,6 +1256,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::get_chi
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dampening != nullptr)
     {
         children["dampening"] = dampening;
@@ -1854,6 +1853,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Dampeni
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Dampening::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1982,14 +1982,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Mtus::g
 {
     if(child_yang_name == "mtu")
     {
-        for(auto const & c : mtu)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Mtus::Mtu>();
         c->parent = this;
         mtu.push_back(c);
@@ -2002,9 +1994,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Mtus::g
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Mtus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mtu)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2077,6 +2074,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Mtus::M
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Mtus::Mtu::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2167,6 +2165,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Encapsu
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Encapsulation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2262,6 +2261,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::AaaTabl
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::AaaTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(radius != nullptr)
     {
         children["radius"] = radius;
@@ -2342,6 +2342,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::AaaTabl
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::AaaTable::Radius::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(attribute != nullptr)
     {
         children["attribute"] = attribute;
@@ -2413,6 +2414,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::AaaTabl
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::AaaTable::Radius::Attribute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2507,6 +2509,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Etherne
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::EthernetControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(transceiver != nullptr)
     {
         children["transceiver"] = transceiver;
@@ -2607,6 +2610,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Etherne
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(permit != nullptr)
     {
         children["permit"] = permit;
@@ -2682,6 +2686,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Etherne
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::Permit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2945,6 +2950,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ptp::ge
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ptp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(source_ipv6_address != nullptr)
     {
         children["source-ipv6-address"] = source_ipv6_address;
@@ -3245,6 +3251,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ptp::So
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ptp::SourceIpv6Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3335,6 +3342,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ptp::An
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ptp::AnnounceInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3425,6 +3433,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ptp::So
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ptp::SourceIpv4Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3513,14 +3522,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ptp::Sl
 {
     if(child_yang_name == "slave")
     {
-        for(auto const & c : slave)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ptp::Slaves::Slave>();
         c->parent = this;
         slave.push_back(c);
@@ -3533,9 +3534,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ptp::Sl
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ptp::Slaves::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : slave)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3620,14 +3626,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ptp::Sl
 {
     if(child_yang_name == "ethernet")
     {
-        for(auto const & c : ethernet)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ptp::Slaves::Slave::Ethernet>();
         c->parent = this;
         ethernet.push_back(c);
@@ -3636,14 +3634,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ptp::Sl
 
     if(child_yang_name == "ipv4-or-ipv6")
     {
-        for(auto const & c : ipv4_or_ipv6)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ptp::Slaves::Slave::Ipv4OrIpv6>();
         c->parent = this;
         ipv4_or_ipv6.push_back(c);
@@ -3656,14 +3646,23 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ptp::Sl
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ptp::Slaves::Slave::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ethernet)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ipv4_or_ipv6)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3746,6 +3745,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ptp::Sl
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ptp::Slaves::Slave::Ethernet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3836,6 +3836,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ptp::Sl
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ptp::Slaves::Slave::Ipv4OrIpv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3926,6 +3927,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ptp::Sy
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ptp::SyncInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4014,14 +4016,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ptp::Ma
 {
     if(child_yang_name == "master")
     {
-        for(auto const & c : master)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ptp::Masters::Master>();
         c->parent = this;
         master.push_back(c);
@@ -4034,9 +4028,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ptp::Ma
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ptp::Masters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : master)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4121,14 +4120,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ptp::Ma
 {
     if(child_yang_name == "ethernet")
     {
-        for(auto const & c : ethernet)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ptp::Masters::Master::Ethernet>();
         c->parent = this;
         ethernet.push_back(c);
@@ -4137,14 +4128,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ptp::Ma
 
     if(child_yang_name == "ipv4-or-ipv6")
     {
-        for(auto const & c : ipv4_or_ipv6)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Ptp::Masters::Master::Ipv4OrIpv6>();
         c->parent = this;
         ipv4_or_ipv6.push_back(c);
@@ -4157,14 +4140,23 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ptp::Ma
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ptp::Masters::Master::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ethernet)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ipv4_or_ipv6)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4272,6 +4264,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ptp::Ma
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ptp::Masters::Master::Ethernet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(delay_asymmetry != nullptr)
     {
         children["delay-asymmetry"] = delay_asymmetry;
@@ -4397,6 +4390,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ptp::Ma
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ptp::Masters::Master::Ethernet::DelayAsymmetry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4512,6 +4506,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ptp::Ma
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ptp::Masters::Master::Ipv4OrIpv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(delay_asymmetry != nullptr)
     {
         children["delay-asymmetry"] = delay_asymmetry;
@@ -4637,6 +4632,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ptp::Ma
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ptp::Masters::Master::Ipv4OrIpv6::DelayAsymmetry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4731,6 +4727,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ptp::Co
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ptp::Communication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4831,6 +4828,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Ptp::De
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ptp::DelayRequestMinimumInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4921,6 +4919,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Pseudow
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PseudowireEther::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5011,6 +5010,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Pseudow
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::PseudowireIw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5097,6 +5097,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Bvi::ge
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Bvi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5256,6 +5257,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(atm_port_mode_parameters != nullptr)
     {
         children["Cisco-IOS-XR-atm-vcm-cfg:atm-port-mode-parameters"] = atm_port_mode_parameters;
@@ -5380,6 +5382,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::AtmPortModeParameters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cell_packing != nullptr)
     {
         children["cell-packing"] = cell_packing;
@@ -5455,6 +5458,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::AtmPortModeParameters::CellPacking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5543,14 +5547,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 {
     if(child_yang_name == "l2-protocol")
     {
-        for(auto const & c : l2_protocol)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::L2Transport::L2Protocols::L2Protocol>();
         c->parent = this;
         l2_protocol.push_back(c);
@@ -5563,9 +5559,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::L2Protocols::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : l2_protocol)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5642,6 +5643,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::L2Protocols::L2Protocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5742,6 +5744,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::L2EthernetFeatures::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5830,14 +5833,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 {
     if(child_yang_name == "span-monitor-session")
     {
-        for(auto const & c : span_monitor_session)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::L2Transport::SpanMonitorSessions::SpanMonitorSession>();
         c->parent = this;
         span_monitor_session.push_back(c);
@@ -5850,9 +5845,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::SpanMonitorSessions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : span_monitor_session)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5954,6 +5954,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::SpanMonitorSessions::SpanMonitorSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(attachment != nullptr)
     {
         children["attachment"] = attachment;
@@ -6068,6 +6069,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::SpanMonitorSessions::SpanMonitorSession::Attachment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6168,6 +6170,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::SpanMonitorSessions::SpanMonitorSession::Acl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6263,6 +6266,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(qos != nullptr)
     {
         children["qos"] = qos;
@@ -6356,6 +6360,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(output != nullptr)
     {
         children["output"] = output;
@@ -6444,14 +6449,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 {
     if(child_yang_name == "service-policy")
     {
-        for(auto const & c : service_policy)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output::ServicePolicy>();
         c->parent = this;
         service_policy.push_back(c);
@@ -6460,14 +6457,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 
     if(child_yang_name == "service-policy-qos")
     {
-        for(auto const & c : service_policy_qos)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output::ServicePolicyQos>();
         c->parent = this;
         service_policy_qos.push_back(c);
@@ -6480,14 +6469,23 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : service_policy)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : service_policy_qos)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6580,6 +6578,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output::ServicePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6743,6 +6742,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output::ServicePolicyQos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(subscriber_group_names != nullptr)
     {
         children["subscriber-group-names"] = subscriber_group_names;
@@ -6831,14 +6831,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 {
     if(child_yang_name == "subscriber-group-name")
     {
-        for(auto const & c : subscriber_group_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output::ServicePolicyQos::SubscriberGroupNames::SubscriberGroupName>();
         c->parent = this;
         subscriber_group_name.push_back(c);
@@ -6851,9 +6843,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output::ServicePolicyQos::SubscriberGroupNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : subscriber_group_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6950,6 +6947,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output::ServicePolicyQos::SubscriberGroupNames::SubscriberGroupName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7120,6 +7118,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Output::ServicePolicyQos::SubscriberParent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7268,14 +7267,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 {
     if(child_yang_name == "service-policy")
     {
-        for(auto const & c : service_policy)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input::ServicePolicy>();
         c->parent = this;
         service_policy.push_back(c);
@@ -7284,14 +7275,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 
     if(child_yang_name == "service-policy-qos")
     {
-        for(auto const & c : service_policy_qos)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input::ServicePolicyQos>();
         c->parent = this;
         service_policy_qos.push_back(c);
@@ -7304,14 +7287,23 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : service_policy)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : service_policy_qos)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7404,6 +7396,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input::ServicePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7567,6 +7560,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input::ServicePolicyQos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(subscriber_group_names != nullptr)
     {
         children["subscriber-group-names"] = subscriber_group_names;
@@ -7655,14 +7649,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 {
     if(child_yang_name == "subscriber-group-name")
     {
-        for(auto const & c : subscriber_group_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input::ServicePolicyQos::SubscriberGroupNames::SubscriberGroupName>();
         c->parent = this;
         subscriber_group_name.push_back(c);
@@ -7675,9 +7661,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input::ServicePolicyQos::SubscriberGroupNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : subscriber_group_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7774,6 +7765,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input::ServicePolicyQos::SubscriberGroupNames::SubscriberGroupName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7944,6 +7936,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Pac::Qos::Input::ServicePolicyQos::SubscriberParent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8089,6 +8082,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(qos != nullptr)
     {
         children["qos"] = qos;
@@ -8182,6 +8176,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(output != nullptr)
     {
         children["output"] = output;
@@ -8270,14 +8265,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 {
     if(child_yang_name == "service-policy")
     {
-        for(auto const & c : service_policy)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output::ServicePolicy>();
         c->parent = this;
         service_policy.push_back(c);
@@ -8286,14 +8273,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 
     if(child_yang_name == "service-policy-qos")
     {
-        for(auto const & c : service_policy_qos)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output::ServicePolicyQos>();
         c->parent = this;
         service_policy_qos.push_back(c);
@@ -8306,14 +8285,23 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : service_policy)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : service_policy_qos)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8406,6 +8394,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output::ServicePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8569,6 +8558,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output::ServicePolicyQos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(subscriber_group_names != nullptr)
     {
         children["subscriber-group-names"] = subscriber_group_names;
@@ -8657,14 +8647,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 {
     if(child_yang_name == "subscriber-group-name")
     {
-        for(auto const & c : subscriber_group_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output::ServicePolicyQos::SubscriberGroupNames::SubscriberGroupName>();
         c->parent = this;
         subscriber_group_name.push_back(c);
@@ -8677,9 +8659,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output::ServicePolicyQos::SubscriberGroupNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : subscriber_group_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8776,6 +8763,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output::ServicePolicyQos::SubscriberGroupNames::SubscriberGroupName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8946,6 +8934,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Output::ServicePolicyQos::SubscriberParent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9094,14 +9083,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 {
     if(child_yang_name == "service-policy")
     {
-        for(auto const & c : service_policy)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input::ServicePolicy>();
         c->parent = this;
         service_policy.push_back(c);
@@ -9110,14 +9091,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 
     if(child_yang_name == "service-policy-qos")
     {
-        for(auto const & c : service_policy_qos)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input::ServicePolicyQos>();
         c->parent = this;
         service_policy_qos.push_back(c);
@@ -9130,14 +9103,23 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : service_policy)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : service_policy_qos)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9230,6 +9212,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input::ServicePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9393,6 +9376,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input::ServicePolicyQos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(subscriber_group_names != nullptr)
     {
         children["subscriber-group-names"] = subscriber_group_names;
@@ -9481,14 +9465,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 {
     if(child_yang_name == "subscriber-group-name")
     {
-        for(auto const & c : subscriber_group_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input::ServicePolicyQos::SubscriberGroupNames::SubscriberGroupName>();
         c->parent = this;
         subscriber_group_name.push_back(c);
@@ -9501,9 +9477,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input::ServicePolicyQos::SubscriberGroupNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : subscriber_group_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9600,6 +9581,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input::ServicePolicyQos::SubscriberGroupNames::SubscriberGroupName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9770,6 +9752,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::L2Trans
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::L2Transport::Cac::Qos::Input::ServicePolicyQos::SubscriberParent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9962,6 +9945,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::ge
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pvps != nullptr)
     {
         children["pvps"] = pvps;
@@ -10070,14 +10054,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Pv
 {
     if(child_yang_name == "pvp")
     {
-        for(auto const & c : pvp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp>();
         c->parent = this;
         pvp.push_back(c);
@@ -10090,9 +10066,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Pv
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : pvp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10199,6 +10180,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Pv
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(shape != nullptr)
     {
         children["shape"] = shape;
@@ -10327,6 +10309,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Pv
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::Shape::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10437,6 +10420,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Pv
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::CellPacking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10525,14 +10509,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Pv
 {
     if(child_yang_name == "pvc")
     {
-        for(auto const & c : pvc)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc>();
         c->parent = this;
         pvc.push_back(c);
@@ -10545,9 +10521,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Pv
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : pvc)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10683,6 +10664,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Pv
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(shape != nullptr)
     {
         children["shape"] = shape;
@@ -10856,6 +10838,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Pv
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::Shape::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10966,6 +10949,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Pv
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::OamEmulation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11056,6 +11040,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Pv
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::CellPacking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11150,6 +11135,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Ma
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::MaximumCellPackingTimers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11248,14 +11234,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Vp
 {
     if(child_yang_name == "vp-tunnel")
     {
-        for(auto const & c : vp_tunnel)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel>();
         c->parent = this;
         vp_tunnel.push_back(c);
@@ -11268,9 +11246,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Vp
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vp_tunnel)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11365,6 +11348,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Vp
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(shape != nullptr)
     {
         children["shape"] = shape;
@@ -11488,6 +11472,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Vp
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::Shape::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11608,6 +11593,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Bfd::ge
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address_family != nullptr)
     {
         children["address-family"] = address_family;
@@ -11711,6 +11697,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Bfd::Ad
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv6 != nullptr)
     {
         children["ipv6"] = ipv6;
@@ -11813,6 +11800,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Bfd::Ad
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv6_timers != nullptr)
     {
         children["ipv6-timers"] = ipv6_timers;
@@ -11928,6 +11916,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Bfd::Ad
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv6::Ipv6Timers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12053,6 +12042,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Bfd::Ad
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(echo != nullptr)
     {
         children["echo"] = echo;
@@ -12169,6 +12159,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Bfd::Ad
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv4::Echo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12249,6 +12240,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Bfd::Ad
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Bfd::AddressFamily::Ipv4::Timers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12383,6 +12375,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Bundle:
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Bundle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bundle_load_balancing != nullptr)
     {
         children["bundle-load-balancing"] = bundle_load_balancing;
@@ -12507,6 +12500,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Bundle:
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Bundle::BundleLoadBalancing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hash_function != nullptr)
     {
         children["hash-function"] = hash_function;
@@ -12592,6 +12586,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Bundle:
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Bundle::BundleLoadBalancing::HashFunction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12691,6 +12686,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Bundle:
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Bundle::MinimumActive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bandwidth != nullptr)
     {
         children["bandwidth"] = bandwidth;
@@ -12776,6 +12772,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Bundle:
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Bundle::MinimumActive::Bandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12870,6 +12867,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Bundle:
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Bundle::MaximumActive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(links != nullptr)
     {
         children["links"] = links;
@@ -12945,6 +12943,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Bundle:
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Bundle::MaximumActive::Links::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13093,6 +13092,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Lacp::g
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Lacp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cisco_extensions != nullptr)
     {
         children["cisco-extensions"] = cisco_extensions;
@@ -13273,6 +13273,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Lacp::C
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Lacp::CiscoExtensions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13367,6 +13368,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Lacp::T
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Lacp::Timeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13477,6 +13479,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::BundleM
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::BundleMember::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(id != nullptr)
     {
         children["id"] = id;
@@ -13562,6 +13565,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::BundleM
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::BundleMember::Id::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13673,6 +13677,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Mlacp::
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Mlacp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(maximize != nullptr)
     {
         children["maximize"] = maximize;
@@ -13792,6 +13797,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Mlacp::
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Mlacp::Maximize::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13888,6 +13894,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Cdp::ge
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Cdp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14129,6 +14136,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Optics:
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rx_thresholds != nullptr)
     {
         children["rx-thresholds"] = rx_thresholds;
@@ -14482,14 +14490,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Optics:
 {
     if(child_yang_name == "rx-threshold")
     {
-        for(auto const & c : rx_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold>();
         c->parent = this;
         rx_threshold.push_back(c);
@@ -14502,9 +14502,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Optics:
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rx_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14577,6 +14582,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Optics:
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14665,14 +14671,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Optics:
 {
     if(child_yang_name == "optics-network-srlg")
     {
-        for(auto const & c : optics_network_srlg)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg>();
         c->parent = this;
         optics_network_srlg.push_back(c);
@@ -14685,9 +14683,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Optics:
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : optics_network_srlg)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14780,6 +14783,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Optics:
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14924,6 +14928,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Optics:
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15022,14 +15027,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Optics:
 {
     if(child_yang_name == "optics-lane")
     {
-        for(auto const & c : optics_lane)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane>();
         c->parent = this;
         optics_lane.push_back(c);
@@ -15042,9 +15039,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Optics:
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : optics_lane)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15117,6 +15119,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Optics:
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15205,14 +15208,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Optics:
 {
     if(child_yang_name == "tx-threshold")
     {
-        for(auto const & c : tx_threshold)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold>();
         c->parent = this;
         tx_threshold.push_back(c);
@@ -15225,9 +15220,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Optics:
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tx_threshold)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15300,6 +15300,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Optics:
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15554,6 +15555,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Otu::ge
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Otu::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(otn_send_ttitcmos != nullptr)
     {
         children["otn-send-ttitcmos"] = otn_send_ttitcmos;
@@ -15753,6 +15755,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Otu::Ot
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Otu::OtnSendTtitcmos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15853,6 +15856,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Otu::Ot
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Otu::OtnSendTtitcmdapi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15943,6 +15947,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Otu::Ot
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Otu::OtnExpectedTtisapi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16082,6 +16087,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Otu::Pr
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(trigger_threshold != nullptr)
     {
         children["trigger-threshold"] = trigger_threshold;
@@ -16186,6 +16192,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Otu::Pr
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection::TriggerThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16286,6 +16293,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Otu::Pr
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection::RevertWindow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16376,6 +16384,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Otu::Pr
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection::TriggerWindow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16470,6 +16479,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Otu::Pr
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Otu::ProactiveProtection::RevertThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16568,14 +16578,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Otu::Ne
 {
     if(child_yang_name == "network-srlg")
     {
-        for(auto const & c : network_srlg)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Otu::NetworkSrlgs::NetworkSrlg>();
         c->parent = this;
         network_srlg.push_back(c);
@@ -16588,9 +16590,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Otu::Ne
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Otu::NetworkSrlgs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : network_srlg)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16683,6 +16690,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Otu::Ne
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Otu::NetworkSrlgs::NetworkSrlg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16827,6 +16835,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Otu::Ot
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Otu::OtnSendTti::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16927,6 +16936,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Otu::Ot
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Otu::OtnExpectedTtitcmdapi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17017,6 +17027,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Otu::Ot
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Otu::OtnSendTtisapi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17107,6 +17118,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Otu::Pr
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Otu::Prbs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17201,6 +17213,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Otu::Ot
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Otu::OtnExpectedTtitcmos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17305,6 +17318,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Otu::Ot
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Otu::OtnExpectedTti::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17434,6 +17448,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Macsec:
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Macsec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(macsec_service != nullptr)
     {
         children["macsec-service"] = macsec_service;
@@ -17523,6 +17538,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Macsec:
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Macsec::MacsecService::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17623,6 +17639,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Macsec:
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Macsec::Eap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17717,6 +17734,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Macsec:
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Macsec::PskKeyChain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17813,6 +17831,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Dot1XIn
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Dot1XInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17891,14 +17910,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Loopbac
 {
     if(child_yang_name == "loopback")
     {
-        for(auto const & c : loopback)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback>();
         c->parent = this;
         loopback.push_back(c);
@@ -17911,9 +17922,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Loopbac
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Loopbacks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : loopback)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17986,6 +18002,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Loopbac
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18153,6 +18170,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Etherne
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ethernet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(signal_fail_bit_error_rate != nullptr)
     {
         children["signal-fail-bit-error-rate"] = signal_fail_bit_error_rate;
@@ -18327,6 +18345,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Etherne
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ethernet::SignalFailBitErrorRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18423,6 +18442,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Etherne
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ethernet::OpticalPowerDegrade::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18503,6 +18523,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Etherne
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ethernet::SignalDegradeBitErrorRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18593,6 +18614,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Etherne
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Ethernet::CarrierDelay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18746,6 +18768,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::g
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Dwdm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(network_srlgs != nullptr)
     {
         children["network-srlgs"] = network_srlgs;
@@ -18909,14 +18932,6 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::N
 {
     if(child_yang_name == "network-srlg")
     {
-        for(auto const & c : network_srlg)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg>();
         c->parent = this;
         network_srlg.push_back(c);
@@ -18929,9 +18944,14 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::N
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : network_srlg)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -19024,6 +19044,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::N
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19235,6 +19256,7 @@ std::shared_ptr<Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G
 std::map<std::string, std::shared_ptr<Entity>> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(odu != nullptr)
     {
         children["odu"] = odu;

@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Logmsg::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> Logmsg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -175,6 +176,7 @@ std::shared_ptr<Entity> Logmsg::Input::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Logmsg::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

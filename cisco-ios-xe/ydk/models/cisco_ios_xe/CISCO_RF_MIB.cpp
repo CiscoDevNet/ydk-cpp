@@ -133,6 +133,7 @@ std::shared_ptr<Entity> CISCORFMIB::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(crfstatus != nullptr)
     {
         children["cRFStatus"] = crfstatus;
@@ -313,6 +314,7 @@ std::shared_ptr<Entity> CISCORFMIB::Crfstatus::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::Crfstatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -586,6 +588,7 @@ std::shared_ptr<Entity> CISCORFMIB::Crfcfg::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::Crfcfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -827,6 +830,7 @@ std::shared_ptr<Entity> CISCORFMIB::Crfhistory::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::Crfhistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -932,14 +936,6 @@ std::shared_ptr<Entity> CISCORFMIB::Crfstatusrfmodecapstable::get_child_by_name(
 {
     if(child_yang_name == "cRFStatusRFModeCapsEntry")
     {
-        for(auto const & c : crfstatusrfmodecapsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORFMIB::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry>();
         c->parent = this;
         crfstatusrfmodecapsentry.push_back(c);
@@ -952,9 +948,14 @@ std::shared_ptr<Entity> CISCORFMIB::Crfstatusrfmodecapstable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::Crfstatusrfmodecapstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : crfstatusrfmodecapsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1034,6 +1035,7 @@ std::shared_ptr<Entity> CISCORFMIB::Crfstatusrfmodecapstable::Crfstatusrfmodecap
 std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::Crfstatusrfmodecapstable::Crfstatusrfmodecapsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1129,14 +1131,6 @@ std::shared_ptr<Entity> CISCORFMIB::Crfhistoryswitchovertable::get_child_by_name
 {
     if(child_yang_name == "cRFHistorySwitchOverEntry")
     {
-        for(auto const & c : crfhistoryswitchoverentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORFMIB::Crfhistoryswitchovertable::Crfhistoryswitchoverentry>();
         c->parent = this;
         crfhistoryswitchoverentry.push_back(c);
@@ -1149,9 +1143,14 @@ std::shared_ptr<Entity> CISCORFMIB::Crfhistoryswitchovertable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::Crfhistoryswitchovertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : crfhistoryswitchoverentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1243,6 +1242,7 @@ std::shared_ptr<Entity> CISCORFMIB::Crfhistoryswitchovertable::Crfhistoryswitcho
 std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::Crfhistoryswitchovertable::Crfhistoryswitchoverentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1368,14 +1368,6 @@ std::shared_ptr<Entity> CISCORFMIB::Crfstatusrfclienttable::get_child_by_name(co
 {
     if(child_yang_name == "cRFStatusRFClientEntry")
     {
-        for(auto const & c : crfstatusrfcliententry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCORFMIB::Crfstatusrfclienttable::Crfstatusrfcliententry>();
         c->parent = this;
         crfstatusrfcliententry.push_back(c);
@@ -1388,9 +1380,14 @@ std::shared_ptr<Entity> CISCORFMIB::Crfstatusrfclienttable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::Crfstatusrfclienttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : crfstatusrfcliententry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1482,6 +1479,7 @@ std::shared_ptr<Entity> CISCORFMIB::Crfstatusrfclienttable::Crfstatusrfclientent
 std::map<std::string, std::shared_ptr<Entity>> CISCORFMIB::Crfstatusrfclienttable::Crfstatusrfcliententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

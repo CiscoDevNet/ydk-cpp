@@ -276,6 +276,7 @@ std::shared_ptr<Entity> OSPFMIB::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ospfgeneralgroup != nullptr)
     {
         children["ospfGeneralGroup"] = ospfgeneralgroup;
@@ -567,6 +568,7 @@ std::shared_ptr<Entity> OSPFMIB::Ospfgeneralgroup::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfgeneralgroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -922,14 +924,6 @@ std::shared_ptr<Entity> OSPFMIB::Ospfareatable::get_child_by_name(const std::str
 {
     if(child_yang_name == "ospfAreaEntry")
     {
-        for(auto const & c : ospfareaentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<OSPFMIB::Ospfareatable::Ospfareaentry>();
         c->parent = this;
         ospfareaentry.push_back(c);
@@ -942,9 +936,14 @@ std::shared_ptr<Entity> OSPFMIB::Ospfareatable::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfareatable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ospfareaentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1092,6 +1091,7 @@ std::shared_ptr<Entity> OSPFMIB::Ospfareatable::Ospfareaentry::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfareatable::Ospfareaentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1357,14 +1357,6 @@ std::shared_ptr<Entity> OSPFMIB::Ospfstubareatable::get_child_by_name(const std:
 {
     if(child_yang_name == "ospfStubAreaEntry")
     {
-        for(auto const & c : ospfstubareaentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<OSPFMIB::Ospfstubareatable::Ospfstubareaentry>();
         c->parent = this;
         ospfstubareaentry.push_back(c);
@@ -1377,9 +1369,14 @@ std::shared_ptr<Entity> OSPFMIB::Ospfstubareatable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfstubareatable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ospfstubareaentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1471,6 +1468,7 @@ std::shared_ptr<Entity> OSPFMIB::Ospfstubareatable::Ospfstubareaentry::get_child
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfstubareatable::Ospfstubareaentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1596,14 +1594,6 @@ std::shared_ptr<Entity> OSPFMIB::Ospflsdbtable::get_child_by_name(const std::str
 {
     if(child_yang_name == "ospfLsdbEntry")
     {
-        for(auto const & c : ospflsdbentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<OSPFMIB::Ospflsdbtable::Ospflsdbentry>();
         c->parent = this;
         ospflsdbentry.push_back(c);
@@ -1616,9 +1606,14 @@ std::shared_ptr<Entity> OSPFMIB::Ospflsdbtable::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospflsdbtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ospflsdbentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1722,6 +1717,7 @@ std::shared_ptr<Entity> OSPFMIB::Ospflsdbtable::Ospflsdbentry::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospflsdbtable::Ospflsdbentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1877,14 +1873,6 @@ std::shared_ptr<Entity> OSPFMIB::Ospfarearangetable::get_child_by_name(const std
 {
     if(child_yang_name == "ospfAreaRangeEntry")
     {
-        for(auto const & c : ospfarearangeentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<OSPFMIB::Ospfarearangetable::Ospfarearangeentry>();
         c->parent = this;
         ospfarearangeentry.push_back(c);
@@ -1897,9 +1885,14 @@ std::shared_ptr<Entity> OSPFMIB::Ospfarearangetable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfarearangetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ospfarearangeentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1991,6 +1984,7 @@ std::shared_ptr<Entity> OSPFMIB::Ospfarearangetable::Ospfarearangeentry::get_chi
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfarearangetable::Ospfarearangeentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2116,14 +2110,6 @@ std::shared_ptr<Entity> OSPFMIB::Ospfhosttable::get_child_by_name(const std::str
 {
     if(child_yang_name == "ospfHostEntry")
     {
-        for(auto const & c : ospfhostentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<OSPFMIB::Ospfhosttable::Ospfhostentry>();
         c->parent = this;
         ospfhostentry.push_back(c);
@@ -2136,9 +2122,14 @@ std::shared_ptr<Entity> OSPFMIB::Ospfhosttable::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfhosttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ospfhostentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2234,6 +2225,7 @@ std::shared_ptr<Entity> OSPFMIB::Ospfhosttable::Ospfhostentry::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfhosttable::Ospfhostentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2369,14 +2361,6 @@ std::shared_ptr<Entity> OSPFMIB::Ospfiftable::get_child_by_name(const std::strin
 {
     if(child_yang_name == "ospfIfEntry")
     {
-        for(auto const & c : ospfifentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<OSPFMIB::Ospfiftable::Ospfifentry>();
         c->parent = this;
         ospfifentry.push_back(c);
@@ -2389,9 +2373,14 @@ std::shared_ptr<Entity> OSPFMIB::Ospfiftable::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfiftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ospfifentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2567,6 +2556,7 @@ std::shared_ptr<Entity> OSPFMIB::Ospfiftable::Ospfifentry::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfiftable::Ospfifentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2902,14 +2892,6 @@ std::shared_ptr<Entity> OSPFMIB::Ospfifmetrictable::get_child_by_name(const std:
 {
     if(child_yang_name == "ospfIfMetricEntry")
     {
-        for(auto const & c : ospfifmetricentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<OSPFMIB::Ospfifmetrictable::Ospfifmetricentry>();
         c->parent = this;
         ospfifmetricentry.push_back(c);
@@ -2922,9 +2904,14 @@ std::shared_ptr<Entity> OSPFMIB::Ospfifmetrictable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfifmetrictable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ospfifmetricentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3016,6 +3003,7 @@ std::shared_ptr<Entity> OSPFMIB::Ospfifmetrictable::Ospfifmetricentry::get_child
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfifmetrictable::Ospfifmetricentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3141,14 +3129,6 @@ std::shared_ptr<Entity> OSPFMIB::Ospfvirtiftable::get_child_by_name(const std::s
 {
     if(child_yang_name == "ospfVirtIfEntry")
     {
-        for(auto const & c : ospfvirtifentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<OSPFMIB::Ospfvirtiftable::Ospfvirtifentry>();
         c->parent = this;
         ospfvirtifentry.push_back(c);
@@ -3161,9 +3141,14 @@ std::shared_ptr<Entity> OSPFMIB::Ospfvirtiftable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfvirtiftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ospfvirtifentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3295,6 +3280,7 @@ std::shared_ptr<Entity> OSPFMIB::Ospfvirtiftable::Ospfvirtifentry::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfvirtiftable::Ospfvirtifentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3520,14 +3506,6 @@ std::shared_ptr<Entity> OSPFMIB::Ospfnbrtable::get_child_by_name(const std::stri
 {
     if(child_yang_name == "ospfNbrEntry")
     {
-        for(auto const & c : ospfnbrentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<OSPFMIB::Ospfnbrtable::Ospfnbrentry>();
         c->parent = this;
         ospfnbrentry.push_back(c);
@@ -3540,9 +3518,14 @@ std::shared_ptr<Entity> OSPFMIB::Ospfnbrtable::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfnbrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ospfnbrentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3670,6 +3653,7 @@ std::shared_ptr<Entity> OSPFMIB::Ospfnbrtable::Ospfnbrentry::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfnbrtable::Ospfnbrentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3885,14 +3869,6 @@ std::shared_ptr<Entity> OSPFMIB::Ospfvirtnbrtable::get_child_by_name(const std::
 {
     if(child_yang_name == "ospfVirtNbrEntry")
     {
-        for(auto const & c : ospfvirtnbrentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<OSPFMIB::Ospfvirtnbrtable::Ospfvirtnbrentry>();
         c->parent = this;
         ospfvirtnbrentry.push_back(c);
@@ -3905,9 +3881,14 @@ std::shared_ptr<Entity> OSPFMIB::Ospfvirtnbrtable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfvirtnbrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ospfvirtnbrentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4023,6 +4004,7 @@ std::shared_ptr<Entity> OSPFMIB::Ospfvirtnbrtable::Ospfvirtnbrentry::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfvirtnbrtable::Ospfvirtnbrentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4208,14 +4190,6 @@ std::shared_ptr<Entity> OSPFMIB::Ospfextlsdbtable::get_child_by_name(const std::
 {
     if(child_yang_name == "ospfExtLsdbEntry")
     {
-        for(auto const & c : ospfextlsdbentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<OSPFMIB::Ospfextlsdbtable::Ospfextlsdbentry>();
         c->parent = this;
         ospfextlsdbentry.push_back(c);
@@ -4228,9 +4202,14 @@ std::shared_ptr<Entity> OSPFMIB::Ospfextlsdbtable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfextlsdbtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ospfextlsdbentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4330,6 +4309,7 @@ std::shared_ptr<Entity> OSPFMIB::Ospfextlsdbtable::Ospfextlsdbentry::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfextlsdbtable::Ospfextlsdbentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4475,14 +4455,6 @@ std::shared_ptr<Entity> OSPFMIB::Ospfareaaggregatetable::get_child_by_name(const
 {
     if(child_yang_name == "ospfAreaAggregateEntry")
     {
-        for(auto const & c : ospfareaaggregateentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<OSPFMIB::Ospfareaaggregatetable::Ospfareaaggregateentry>();
         c->parent = this;
         ospfareaaggregateentry.push_back(c);
@@ -4495,9 +4467,14 @@ std::shared_ptr<Entity> OSPFMIB::Ospfareaaggregatetable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfareaaggregatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ospfareaaggregateentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4597,6 +4574,7 @@ std::shared_ptr<Entity> OSPFMIB::Ospfareaaggregatetable::Ospfareaaggregateentry:
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfareaaggregatetable::Ospfareaaggregateentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4742,14 +4720,6 @@ std::shared_ptr<Entity> OSPFMIB::Ospflocallsdbtable::get_child_by_name(const std
 {
     if(child_yang_name == "ospfLocalLsdbEntry")
     {
-        for(auto const & c : ospflocallsdbentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<OSPFMIB::Ospflocallsdbtable::Ospflocallsdbentry>();
         c->parent = this;
         ospflocallsdbentry.push_back(c);
@@ -4762,9 +4732,14 @@ std::shared_ptr<Entity> OSPFMIB::Ospflocallsdbtable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospflocallsdbtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ospflocallsdbentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4872,6 +4847,7 @@ std::shared_ptr<Entity> OSPFMIB::Ospflocallsdbtable::Ospflocallsdbentry::get_chi
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospflocallsdbtable::Ospflocallsdbentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5037,14 +5013,6 @@ std::shared_ptr<Entity> OSPFMIB::Ospfvirtlocallsdbtable::get_child_by_name(const
 {
     if(child_yang_name == "ospfVirtLocalLsdbEntry")
     {
-        for(auto const & c : ospfvirtlocallsdbentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<OSPFMIB::Ospfvirtlocallsdbtable::Ospfvirtlocallsdbentry>();
         c->parent = this;
         ospfvirtlocallsdbentry.push_back(c);
@@ -5057,9 +5025,14 @@ std::shared_ptr<Entity> OSPFMIB::Ospfvirtlocallsdbtable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfvirtlocallsdbtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ospfvirtlocallsdbentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5167,6 +5140,7 @@ std::shared_ptr<Entity> OSPFMIB::Ospfvirtlocallsdbtable::Ospfvirtlocallsdbentry:
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfvirtlocallsdbtable::Ospfvirtlocallsdbentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5332,14 +5306,6 @@ std::shared_ptr<Entity> OSPFMIB::Ospfaslsdbtable::get_child_by_name(const std::s
 {
     if(child_yang_name == "ospfAsLsdbEntry")
     {
-        for(auto const & c : ospfaslsdbentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<OSPFMIB::Ospfaslsdbtable::Ospfaslsdbentry>();
         c->parent = this;
         ospfaslsdbentry.push_back(c);
@@ -5352,9 +5318,14 @@ std::shared_ptr<Entity> OSPFMIB::Ospfaslsdbtable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfaslsdbtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ospfaslsdbentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5454,6 +5425,7 @@ std::shared_ptr<Entity> OSPFMIB::Ospfaslsdbtable::Ospfaslsdbentry::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfaslsdbtable::Ospfaslsdbentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5599,14 +5571,6 @@ std::shared_ptr<Entity> OSPFMIB::Ospfarealsacounttable::get_child_by_name(const 
 {
     if(child_yang_name == "ospfAreaLsaCountEntry")
     {
-        for(auto const & c : ospfarealsacountentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<OSPFMIB::Ospfarealsacounttable::Ospfarealsacountentry>();
         c->parent = this;
         ospfarealsacountentry.push_back(c);
@@ -5619,9 +5583,14 @@ std::shared_ptr<Entity> OSPFMIB::Ospfarealsacounttable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfarealsacounttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ospfarealsacountentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5705,6 +5674,7 @@ std::shared_ptr<Entity> OSPFMIB::Ospfarealsacounttable::Ospfarealsacountentry::g
 std::map<std::string, std::shared_ptr<Entity>> OSPFMIB::Ospfarealsacounttable::Ospfarealsacountentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

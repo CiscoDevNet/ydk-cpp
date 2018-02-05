@@ -422,7 +422,7 @@ class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Datab
         class Ospf; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf
         class Ospfv3; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3
         class Rip; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip
-        class Static_; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_
+        class Static; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Bgp> > bgp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Connected> connected;
@@ -432,7 +432,7 @@ class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Datab
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospf> > ospf;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Ospfv3> > ospfv3;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip> rip;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_> static_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static> static_;
         
 }; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database
 
@@ -782,11 +782,11 @@ class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Datab
 }; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Rip::LispIpRouteImport
 
 
-class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_ : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -798,14 +798,14 @@ class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Datab
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class LispIpRouteImport; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport
+        class LispIpRouteImport; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static::LispIpRouteImport
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport> lisp_ip_route_import;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static::LispIpRouteImport> lisp_ip_route_import;
         
-}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static
 
 
-class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static::LispIpRouteImport : public ydk::Entity
 {
     public:
         LispIpRouteImport();
@@ -824,7 +824,7 @@ class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Datab
         ydk::YLeaf route_map; //type: string
         ydk::YLeaf locator_set; //type: string
 
-}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static_::LispIpRouteImport
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::Database::Static::LispIpRouteImport
 
 
 class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache : public ydk::Entity
@@ -851,7 +851,7 @@ class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCa
         class Ospf; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf
         class Ospfv3; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3
         class Rip; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip
-        class Static_; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_
+        class Static; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Bgp> > bgp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Connected> connected; // presence node
@@ -861,7 +861,7 @@ class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCa
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospf> > ospf;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Ospfv3> > ospfv3;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip> rip; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static> static_; // presence node
         
 }; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache
 
@@ -1204,11 +1204,11 @@ class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCa
 }; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Rip::MapCacheContainer
 
 
-class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_ : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1220,14 +1220,14 @@ class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MapCacheContainer; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer
+        class MapCacheContainer; //type: Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static::MapCacheContainer
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer> map_cache_container; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static::MapCacheContainer> map_cache_container; // presence node
         
-}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static
 
 
-class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static::MapCacheContainer : public ydk::Entity
 {
     public:
         MapCacheContainer();
@@ -1245,7 +1245,7 @@ class Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCa
 
         ydk::YLeaf route_map; //type: string
 
-}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static_::MapCacheContainer
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv4::RouteImport::MapCache::Static::MapCacheContainer
 
 
 class Native::Router::LispList::EidTable::InstanceList::Ipv4::SiteRegistration : public ydk::Entity
@@ -1989,7 +1989,7 @@ class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Datab
         class Ospf; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf
         class Ospfv3; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3
         class Rip; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip
-        class Static_; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_
+        class Static; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Bgp> > bgp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Connected> connected;
@@ -1999,7 +1999,7 @@ class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Datab
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospf> > ospf;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Ospfv3> > ospfv3;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip> rip;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_> static_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static> static_;
         
 }; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database
 
@@ -2349,11 +2349,11 @@ class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Datab
 }; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Rip::LispIpRouteImport
 
 
-class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_ : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2365,14 +2365,14 @@ class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Datab
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class LispIpRouteImport; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport
+        class LispIpRouteImport; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static::LispIpRouteImport
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport> lisp_ip_route_import;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static::LispIpRouteImport> lisp_ip_route_import;
         
-}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static
 
 
-class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static::LispIpRouteImport : public ydk::Entity
 {
     public:
         LispIpRouteImport();
@@ -2391,7 +2391,7 @@ class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Datab
         ydk::YLeaf route_map; //type: string
         ydk::YLeaf locator_set; //type: string
 
-}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static_::LispIpRouteImport
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::Database::Static::LispIpRouteImport
 
 
 class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache : public ydk::Entity
@@ -2418,7 +2418,7 @@ class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCa
         class Ospf; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf
         class Ospfv3; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3
         class Rip; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip
-        class Static_; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_
+        class Static; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Bgp> > bgp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Connected> connected; // presence node
@@ -2428,7 +2428,7 @@ class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCa
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospf> > ospf;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Ospfv3> > ospfv3;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip> rip; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static> static_; // presence node
         
 }; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache
 
@@ -2771,11 +2771,11 @@ class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCa
 }; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Rip::MapCacheContainer
 
 
-class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_ : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2787,14 +2787,14 @@ class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCa
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MapCacheContainer; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer
+        class MapCacheContainer; //type: Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static::MapCacheContainer
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer> map_cache_container; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static::MapCacheContainer> map_cache_container; // presence node
         
-}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static
 
 
-class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer : public ydk::Entity
+class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static::MapCacheContainer : public ydk::Entity
 {
     public:
         MapCacheContainer();
@@ -2812,7 +2812,7 @@ class Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCa
 
         ydk::YLeaf route_map; //type: string
 
-}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static_::MapCacheContainer
+}; // Native::Router::LispList::EidTable::InstanceList::Ipv6::RouteImport::MapCache::Static::MapCacheContainer
 
 
 class Native::Router::LispList::EidTable::InstanceList::Ipv6::SiteRegistration : public ydk::Entity
@@ -3246,13 +3246,13 @@ class Native::Router::LispList::Site : public ydk::Entity
         ydk::YLeaf sname; //type: string
         ydk::YLeaf description; //type: string
         ydk::YLeaf site_id; //type: uint32
-        class Default_; //type: Native::Router::LispList::Site::Default_
+        class Default; //type: Native::Router::LispList::Site::Default
         class AuthenticationKey; //type: Native::Router::LispList::Site::AuthenticationKey
         class AllowedLocator; //type: Native::Router::LispList::Site::AllowedLocator
         class EidPrefix; //type: Native::Router::LispList::Site::EidPrefix
         class EidRecord; //type: Native::Router::LispList::Site::EidRecord
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::AuthenticationKey> authentication_key;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::AllowedLocator> allowed_locator;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::EidPrefix> eid_prefix;
@@ -3261,11 +3261,11 @@ class Native::Router::LispList::Site : public ydk::Entity
 }; // Native::Router::LispList::Site
 
 
-class Native::Router::LispList::Site::Default_ : public ydk::Entity
+class Native::Router::LispList::Site::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3279,20 +3279,20 @@ class Native::Router::LispList::Site::Default_ : public ydk::Entity
 
         ydk::YLeaf description; //type: string
         ydk::YLeaf site_id; //type: uint32
-        class AuthenticationKey; //type: Native::Router::LispList::Site::Default_::AuthenticationKey
-        class AllowedLocator; //type: Native::Router::LispList::Site::Default_::AllowedLocator
-        class EidPrefix; //type: Native::Router::LispList::Site::Default_::EidPrefix
-        class EidRecord; //type: Native::Router::LispList::Site::Default_::EidRecord
+        class AuthenticationKey; //type: Native::Router::LispList::Site::Default::AuthenticationKey
+        class AllowedLocator; //type: Native::Router::LispList::Site::Default::AllowedLocator
+        class EidPrefix; //type: Native::Router::LispList::Site::Default::EidPrefix
+        class EidRecord; //type: Native::Router::LispList::Site::Default::EidRecord
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default_::AuthenticationKey> authentication_key;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default_::AllowedLocator> allowed_locator;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default_::EidPrefix> eid_prefix;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default_::EidRecord> eid_record;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default::AuthenticationKey> authentication_key;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default::AllowedLocator> allowed_locator;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default::EidPrefix> eid_prefix;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default::EidRecord> eid_record;
         
-}; // Native::Router::LispList::Site::Default_
+}; // Native::Router::LispList::Site::Default
 
 
-class Native::Router::LispList::Site::Default_::AuthenticationKey : public ydk::Entity
+class Native::Router::LispList::Site::Default::AuthenticationKey : public ydk::Entity
 {
     public:
         AuthenticationKey();
@@ -3313,10 +3313,10 @@ class Native::Router::LispList::Site::Default_::AuthenticationKey : public ydk::
         ydk::YLeaf key_6; //type: string
         ydk::YLeaf key_7; //type: string
 
-}; // Native::Router::LispList::Site::Default_::AuthenticationKey
+}; // Native::Router::LispList::Site::Default::AuthenticationKey
 
 
-class Native::Router::LispList::Site::Default_::AllowedLocator : public ydk::Entity
+class Native::Router::LispList::Site::Default::AllowedLocator : public ydk::Entity
 {
     public:
         AllowedLocator();
@@ -3334,14 +3334,14 @@ class Native::Router::LispList::Site::Default_::AllowedLocator : public ydk::Ent
 
         ydk::YLeaf ls_ipv4; //type: string
         ydk::YLeaf ls_ipv6; //type: string
-        class List; //type: Native::Router::LispList::Site::Default_::AllowedLocator::List
+        class List; //type: Native::Router::LispList::Site::Default::AllowedLocator::List
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default_::AllowedLocator::List> list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default::AllowedLocator::List> list;
         
-}; // Native::Router::LispList::Site::Default_::AllowedLocator
+}; // Native::Router::LispList::Site::Default::AllowedLocator
 
 
-class Native::Router::LispList::Site::Default_::AllowedLocator::List : public ydk::Entity
+class Native::Router::LispList::Site::Default::AllowedLocator::List : public ydk::Entity
 {
     public:
         List();
@@ -3360,10 +3360,10 @@ class Native::Router::LispList::Site::Default_::AllowedLocator::List : public yd
         ydk::YLeaf ipv4; //type: string
         ydk::YLeaf ipv6; //type: string
 
-}; // Native::Router::LispList::Site::Default_::AllowedLocator::List
+}; // Native::Router::LispList::Site::Default::AllowedLocator::List
 
 
-class Native::Router::LispList::Site::Default_::EidPrefix : public ydk::Entity
+class Native::Router::LispList::Site::Default::EidPrefix : public ydk::Entity
 {
     public:
         EidPrefix();
@@ -3380,16 +3380,16 @@ class Native::Router::LispList::Site::Default_::EidPrefix : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf any_mac; //type: empty
-        class Prefixes; //type: Native::Router::LispList::Site::Default_::EidPrefix::Prefixes
-        class InstanceId; //type: Native::Router::LispList::Site::Default_::EidPrefix::InstanceId
+        class Prefixes; //type: Native::Router::LispList::Site::Default::EidPrefix::Prefixes
+        class InstanceId; //type: Native::Router::LispList::Site::Default::EidPrefix::InstanceId
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default_::EidPrefix::Prefixes> > prefixes;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default_::EidPrefix::InstanceId> > instance_id;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default::EidPrefix::Prefixes> > prefixes;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default::EidPrefix::InstanceId> > instance_id;
         
-}; // Native::Router::LispList::Site::Default_::EidPrefix
+}; // Native::Router::LispList::Site::Default::EidPrefix
 
 
-class Native::Router::LispList::Site::Default_::EidPrefix::Prefixes : public ydk::Entity
+class Native::Router::LispList::Site::Default::EidPrefix::Prefixes : public ydk::Entity
 {
     public:
         Prefixes();
@@ -3409,10 +3409,10 @@ class Native::Router::LispList::Site::Default_::EidPrefix::Prefixes : public ydk
         ydk::YLeaf accept_more_specifics; //type: empty
         ydk::YLeaf route_tag; //type: uint32
 
-}; // Native::Router::LispList::Site::Default_::EidPrefix::Prefixes
+}; // Native::Router::LispList::Site::Default::EidPrefix::Prefixes
 
 
-class Native::Router::LispList::Site::Default_::EidPrefix::InstanceId : public ydk::Entity
+class Native::Router::LispList::Site::Default::EidPrefix::InstanceId : public ydk::Entity
 {
     public:
         InstanceId();
@@ -3430,14 +3430,14 @@ class Native::Router::LispList::Site::Default_::EidPrefix::InstanceId : public y
 
         ydk::YLeaf id; //type: uint32
         ydk::YLeaf any_mac; //type: empty
-        class Prefixes; //type: Native::Router::LispList::Site::Default_::EidPrefix::InstanceId::Prefixes
+        class Prefixes; //type: Native::Router::LispList::Site::Default::EidPrefix::InstanceId::Prefixes
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default_::EidPrefix::InstanceId::Prefixes> > prefixes;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default::EidPrefix::InstanceId::Prefixes> > prefixes;
         
-}; // Native::Router::LispList::Site::Default_::EidPrefix::InstanceId
+}; // Native::Router::LispList::Site::Default::EidPrefix::InstanceId
 
 
-class Native::Router::LispList::Site::Default_::EidPrefix::InstanceId::Prefixes : public ydk::Entity
+class Native::Router::LispList::Site::Default::EidPrefix::InstanceId::Prefixes : public ydk::Entity
 {
     public:
         Prefixes();
@@ -3457,10 +3457,10 @@ class Native::Router::LispList::Site::Default_::EidPrefix::InstanceId::Prefixes 
         ydk::YLeaf accept_more_specifics; //type: empty
         ydk::YLeaf route_tag; //type: uint32
 
-}; // Native::Router::LispList::Site::Default_::EidPrefix::InstanceId::Prefixes
+}; // Native::Router::LispList::Site::Default::EidPrefix::InstanceId::Prefixes
 
 
-class Native::Router::LispList::Site::Default_::EidRecord : public ydk::Entity
+class Native::Router::LispList::Site::Default::EidRecord : public ydk::Entity
 {
     public:
         EidRecord();
@@ -3477,16 +3477,16 @@ class Native::Router::LispList::Site::Default_::EidRecord : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf any_mac; //type: empty
-        class Prefixes; //type: Native::Router::LispList::Site::Default_::EidRecord::Prefixes
-        class InstanceId; //type: Native::Router::LispList::Site::Default_::EidRecord::InstanceId
+        class Prefixes; //type: Native::Router::LispList::Site::Default::EidRecord::Prefixes
+        class InstanceId; //type: Native::Router::LispList::Site::Default::EidRecord::InstanceId
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default_::EidRecord::Prefixes> > prefixes;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default_::EidRecord::InstanceId> > instance_id;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default::EidRecord::Prefixes> > prefixes;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default::EidRecord::InstanceId> > instance_id;
         
-}; // Native::Router::LispList::Site::Default_::EidRecord
+}; // Native::Router::LispList::Site::Default::EidRecord
 
 
-class Native::Router::LispList::Site::Default_::EidRecord::Prefixes : public ydk::Entity
+class Native::Router::LispList::Site::Default::EidRecord::Prefixes : public ydk::Entity
 {
     public:
         Prefixes();
@@ -3506,10 +3506,10 @@ class Native::Router::LispList::Site::Default_::EidRecord::Prefixes : public ydk
         ydk::YLeaf accept_more_specifics; //type: empty
         ydk::YLeaf route_tag; //type: uint32
 
-}; // Native::Router::LispList::Site::Default_::EidRecord::Prefixes
+}; // Native::Router::LispList::Site::Default::EidRecord::Prefixes
 
 
-class Native::Router::LispList::Site::Default_::EidRecord::InstanceId : public ydk::Entity
+class Native::Router::LispList::Site::Default::EidRecord::InstanceId : public ydk::Entity
 {
     public:
         InstanceId();
@@ -3527,14 +3527,14 @@ class Native::Router::LispList::Site::Default_::EidRecord::InstanceId : public y
 
         ydk::YLeaf id; //type: uint32
         ydk::YLeaf any_mac; //type: empty
-        class Prefixes; //type: Native::Router::LispList::Site::Default_::EidRecord::InstanceId::Prefixes
+        class Prefixes; //type: Native::Router::LispList::Site::Default::EidRecord::InstanceId::Prefixes
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default_::EidRecord::InstanceId::Prefixes> > prefixes;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::LispList::Site::Default::EidRecord::InstanceId::Prefixes> > prefixes;
         
-}; // Native::Router::LispList::Site::Default_::EidRecord::InstanceId
+}; // Native::Router::LispList::Site::Default::EidRecord::InstanceId
 
 
-class Native::Router::LispList::Site::Default_::EidRecord::InstanceId::Prefixes : public ydk::Entity
+class Native::Router::LispList::Site::Default::EidRecord::InstanceId::Prefixes : public ydk::Entity
 {
     public:
         Prefixes();
@@ -3554,7 +3554,7 @@ class Native::Router::LispList::Site::Default_::EidRecord::InstanceId::Prefixes 
         ydk::YLeaf accept_more_specifics; //type: empty
         ydk::YLeaf route_tag; //type: uint32
 
-}; // Native::Router::LispList::Site::Default_::EidRecord::InstanceId::Prefixes
+}; // Native::Router::LispList::Site::Default::EidRecord::InstanceId::Prefixes
 
 class Native::Router::LispList::EidTable::InstanceList::MapServer::Rloc::Members::ModifyDiscovered::Operator_ : public ydk::Enum
 {

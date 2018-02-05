@@ -61,14 +61,6 @@ std::shared_ptr<Entity> Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUs
 {
     if(child_yang_name == "inform-encrypted-user-community")
     {
-        for(auto const & c : inform_encrypted_user_community)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity>();
         c->parent = this;
         inform_encrypted_user_community.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUs
 std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : inform_encrypted_user_community)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -176,6 +173,7 @@ std::shared_ptr<Entity> Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUs
 std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapHosts::TrapHost::InformHost::InformEncryptedUserCommunities::InformEncryptedUserCommunity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -314,14 +312,6 @@ std::shared_ptr<Entity> Snmp::TrapHosts::TrapHost::DefaultUserCommunities::get_c
 {
     if(child_yang_name == "default-user-community")
     {
-        for(auto const & c : default_user_community)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity>();
         c->parent = this;
         default_user_community.push_back(c);
@@ -334,9 +324,14 @@ std::shared_ptr<Entity> Snmp::TrapHosts::TrapHost::DefaultUserCommunities::get_c
 std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapHosts::TrapHost::DefaultUserCommunities::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : default_user_community)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -429,6 +424,7 @@ std::shared_ptr<Entity> Snmp::TrapHosts::TrapHost::DefaultUserCommunities::Defau
 std::map<std::string, std::shared_ptr<Entity>> Snmp::TrapHosts::TrapHost::DefaultUserCommunities::DefaultUserCommunity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -574,14 +570,6 @@ std::shared_ptr<Entity> Snmp::Contexts::get_child_by_name(const std::string & ch
 {
     if(child_yang_name == "context")
     {
-        for(auto const & c : context)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::Contexts::Context>();
         c->parent = this;
         context.push_back(c);
@@ -594,9 +582,14 @@ std::shared_ptr<Entity> Snmp::Contexts::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Contexts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : context)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -672,6 +665,7 @@ std::shared_ptr<Entity> Snmp::Contexts::Context::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Snmp::Contexts::Context::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -757,14 +751,6 @@ std::shared_ptr<Entity> Snmp::ContextMappings::get_child_by_name(const std::stri
 {
     if(child_yang_name == "context-mapping")
     {
-        for(auto const & c : context_mapping)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Snmp::ContextMappings::ContextMapping>();
         c->parent = this;
         context_mapping.push_back(c);
@@ -777,9 +763,14 @@ std::shared_ptr<Entity> Snmp::ContextMappings::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Snmp::ContextMappings::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : context_mapping)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -871,6 +862,7 @@ std::shared_ptr<Entity> Snmp::ContextMappings::ContextMapping::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Snmp::ContextMappings::ContextMapping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1105,6 +1097,7 @@ std::shared_ptr<Entity> Mib::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Mib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mpls_te_mib != nullptr)
     {
         children["Cisco-IOS-XR-mpls-te-cfg:mpls-te-mib"] = mpls_te_mib;
@@ -1262,6 +1255,7 @@ std::shared_ptr<Entity> Mib::MplsTeMib::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> Mib::MplsTeMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1355,6 +1349,7 @@ std::shared_ptr<Entity> Mib::MplsP2MpMib::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Mib::MplsP2MpMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1438,6 +1433,7 @@ std::shared_ptr<Entity> Mib::MplsTeExtStdMib::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Mib::MplsTeExtStdMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1521,6 +1517,7 @@ std::shared_ptr<Entity> Mib::MplsTeExtMib::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Mib::MplsTeExtMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1604,6 +1601,7 @@ std::shared_ptr<Entity> Mib::MplsFrrMib::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Mib::MplsFrrMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1705,6 +1703,7 @@ std::shared_ptr<Entity> Mib::CbQosmib::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Mib::CbQosmib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cache != nullptr)
     {
         children["cache"] = cache;
@@ -1811,6 +1810,7 @@ std::shared_ptr<Entity> Mib::CbQosmib::Cache::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Mib::CbQosmib::Cache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1914,6 +1914,7 @@ std::shared_ptr<Entity> Mib::EntityMib::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> Mib::EntityMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2053,6 +2054,7 @@ std::shared_ptr<Entity> Mib::InterfaceMib::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Mib::InterfaceMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interfaces != nullptr)
     {
         children["interfaces"] = interfaces;
@@ -2193,14 +2195,6 @@ std::shared_ptr<Entity> Mib::InterfaceMib::Interfaces::get_child_by_name(const s
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mib::InterfaceMib::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -2213,9 +2207,14 @@ std::shared_ptr<Entity> Mib::InterfaceMib::Interfaces::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Mib::InterfaceMib::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2299,6 +2298,7 @@ std::shared_ptr<Entity> Mib::InterfaceMib::Interfaces::Interface::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Mib::InterfaceMib::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2402,6 +2402,7 @@ std::shared_ptr<Entity> Mib::InterfaceMib::Notification::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Mib::InterfaceMib::Notification::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2487,14 +2488,6 @@ std::shared_ptr<Entity> Mib::InterfaceMib::Subsets::get_child_by_name(const std:
 {
     if(child_yang_name == "subset")
     {
-        for(auto const & c : subset)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mib::InterfaceMib::Subsets::Subset>();
         c->parent = this;
         subset.push_back(c);
@@ -2507,9 +2500,14 @@ std::shared_ptr<Entity> Mib::InterfaceMib::Subsets::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Mib::InterfaceMib::Subsets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : subset)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2599,6 +2597,7 @@ std::shared_ptr<Entity> Mib::InterfaceMib::Subsets::Subset::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Mib::InterfaceMib::Subsets::Subset::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(link_up_down != nullptr)
     {
         children["link-up-down"] = link_up_down;
@@ -2684,6 +2683,7 @@ std::shared_ptr<Entity> Mib::InterfaceMib::Subsets::Subset::LinkUpDown::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Mib::InterfaceMib::Subsets::Subset::LinkUpDown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2786,6 +2786,7 @@ std::shared_ptr<Entity> Mib::Subscriber::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -2912,6 +2913,7 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(delta != nullptr)
     {
         children["delta"] = delta;
@@ -3027,6 +3029,7 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(evaluation != nullptr)
     {
         children["evaluation"] = evaluation;
@@ -3132,6 +3135,7 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Evaluation::get_child
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Evaluation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(access_interfaces != nullptr)
     {
         children["access-interfaces"] = access_interfaces;
@@ -3217,14 +3221,6 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Evaluation::AccessInt
 {
     if(child_yang_name == "access-interface")
     {
-        for(auto const & c : access_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::AccessInterface>();
         c->parent = this;
         access_interface.push_back(c);
@@ -3237,9 +3233,14 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Evaluation::AccessInt
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : access_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3323,6 +3324,7 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Evaluation::AccessInt
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Evaluation::AccessInterfaces::AccessInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3428,14 +3430,6 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::ge
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -3448,9 +3442,14 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::ge
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3534,6 +3533,7 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::No
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Evaluation::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3659,6 +3659,7 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Percent::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Percent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(access_interfaces != nullptr)
     {
         children["access-interfaces"] = access_interfaces;
@@ -3744,14 +3745,6 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Percent::AccessInterf
 {
     if(child_yang_name == "access-interface")
     {
-        for(auto const & c : access_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::AccessInterface>();
         c->parent = this;
         access_interface.push_back(c);
@@ -3764,9 +3757,14 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Percent::AccessInterf
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : access_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3850,6 +3848,7 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Percent::AccessInterf
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Percent::AccessInterfaces::AccessInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3955,14 +3954,6 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Percent::Nodes::get_c
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mib::Subscriber::Threshold::Delta::Percent::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -3975,9 +3966,14 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Percent::Nodes::get_c
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Percent::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4061,6 +4057,7 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Delta::Percent::Nodes::Node:
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Delta::Percent::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4173,6 +4170,7 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::AccessInterfaceSub::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(subsets != nullptr)
     {
         children["subsets"] = subsets;
@@ -4253,14 +4251,6 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets:
 {
     if(child_yang_name == "subset")
     {
-        for(auto const & c : subset)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset>();
         c->parent = this;
         subset.push_back(c);
@@ -4273,9 +4263,14 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets:
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : subset)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4365,6 +4360,7 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets:
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(regular_expression != nullptr)
     {
         children["regular-expression"] = regular_expression;
@@ -4455,6 +4451,7 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets:
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(notification != nullptr)
     {
         children["notification"] = notification;
@@ -4535,6 +4532,7 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets:
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rising_falling != nullptr)
     {
         children["rising-falling"] = rising_falling;
@@ -4606,6 +4604,7 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets:
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::AccessInterfaceSub::Subsets::Subset::RegularExpression::Notification::RisingFalling::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4711,6 +4710,7 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Falling::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Falling::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(access_interfaces != nullptr)
     {
         children["access-interfaces"] = access_interfaces;
@@ -4796,14 +4796,6 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Falling::AccessInterfaces::g
 {
     if(child_yang_name == "access-interface")
     {
-        for(auto const & c : access_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mib::Subscriber::Threshold::Falling::AccessInterfaces::AccessInterface>();
         c->parent = this;
         access_interface.push_back(c);
@@ -4816,9 +4808,14 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Falling::AccessInterfaces::g
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Falling::AccessInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : access_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4902,6 +4899,7 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Falling::AccessInterfaces::A
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Falling::AccessInterfaces::AccessInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5007,14 +5005,6 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Falling::Nodes::get_child_by
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mib::Subscriber::Threshold::Falling::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -5027,9 +5017,14 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Falling::Nodes::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Falling::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5113,6 +5108,7 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Falling::Nodes::Node::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Falling::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5238,6 +5234,7 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Rising::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Rising::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(access_interfaces != nullptr)
     {
         children["access-interfaces"] = access_interfaces;
@@ -5323,14 +5320,6 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Rising::AccessInterfaces::ge
 {
     if(child_yang_name == "access-interface")
     {
-        for(auto const & c : access_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mib::Subscriber::Threshold::Rising::AccessInterfaces::AccessInterface>();
         c->parent = this;
         access_interface.push_back(c);
@@ -5343,9 +5332,14 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Rising::AccessInterfaces::ge
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Rising::AccessInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : access_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5429,6 +5423,7 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Rising::AccessInterfaces::Ac
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Rising::AccessInterfaces::AccessInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5534,14 +5529,6 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Rising::Nodes::get_child_by_
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Mib::Subscriber::Threshold::Rising::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -5554,9 +5541,14 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Rising::Nodes::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Rising::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5640,6 +5632,7 @@ std::shared_ptr<Entity> Mib::Subscriber::Threshold::Rising::Nodes::Node::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Mib::Subscriber::Threshold::Rising::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

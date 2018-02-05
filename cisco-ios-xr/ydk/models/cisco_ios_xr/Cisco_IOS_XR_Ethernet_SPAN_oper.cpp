@@ -81,6 +81,7 @@ std::shared_ptr<Entity> SpanMonitorSession::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(global != nullptr)
     {
         children["global"] = global;
@@ -211,6 +212,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Global::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(statistics != nullptr)
     {
         children["statistics"] = statistics;
@@ -296,14 +298,6 @@ std::shared_ptr<Entity> SpanMonitorSession::Global::Statistics::get_child_by_nam
 {
     if(child_yang_name == "statistic")
     {
-        for(auto const & c : statistic)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SpanMonitorSession::Global::Statistics::Statistic>();
         c->parent = this;
         statistic.push_back(c);
@@ -316,9 +310,14 @@ std::shared_ptr<Entity> SpanMonitorSession::Global::Statistics::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : statistic)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -422,6 +421,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Global::Statistics::Statistic::get_c
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::Statistics::Statistic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -577,14 +577,6 @@ std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::get_child_by
 {
     if(child_yang_name == "global-session")
     {
-        for(auto const & c : global_session)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SpanMonitorSession::Global::GlobalSessions::GlobalSession>();
         c->parent = this;
         global_session.push_back(c);
@@ -597,9 +589,14 @@ std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::GlobalSessions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : global_session)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -730,6 +727,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSessio
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination_data != nullptr)
     {
         children["destination-data"] = destination_data;
@@ -943,6 +941,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSessio
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_data != nullptr)
     {
         children["interface-data"] = interface_data;
@@ -1053,6 +1052,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSessio
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::InterfaceData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1143,6 +1143,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSessio
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::PseudowireData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1237,6 +1238,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSessio
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv4Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1341,6 +1343,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSessio
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv6Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1476,6 +1479,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSessio
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4_address_and_vrf != nullptr)
     {
         children["ipv4-address-and-vrf"] = ipv4_address_and_vrf;
@@ -1596,6 +1600,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSessio
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv4AddressAndVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1686,6 +1691,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSessio
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv6AddressAndVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1781,14 +1787,6 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::get_child_by_name(const std::
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SpanMonitorSession::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -1801,9 +1799,14 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1919,6 +1922,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(attachments != nullptr)
     {
         children["attachments"] = attachments;
@@ -2012,14 +2016,6 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Attachments::get_child_
 {
     if(child_yang_name == "attachment")
     {
-        for(auto const & c : attachment)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SpanMonitorSession::Nodes::Node::Attachments::Attachment>();
         c->parent = this;
         attachment.push_back(c);
@@ -2032,9 +2028,14 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Attachments::get_child_
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Attachments::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : attachment)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2182,6 +2183,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Attachments::Attachment
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Attachments::Attachment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(traffic_parameters != nullptr)
     {
         children["traffic-parameters"] = traffic_parameters;
@@ -2418,6 +2420,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Attachments::Attachment
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2583,6 +2586,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Attachments::Attachment
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4_address_and_vrf != nullptr)
     {
         children["ipv4-address-and-vrf"] = ipv4_address_and_vrf;
@@ -2703,6 +2707,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Attachments::Attachment
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv4AddressAndVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2793,6 +2798,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Attachments::Attachment
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv6AddressAndVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2881,14 +2887,6 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::HardwareSessions::get_c
 {
     if(child_yang_name == "hardware-session")
     {
-        for(auto const & c : hardware_session)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession>();
         c->parent = this;
         hardware_session.push_back(c);
@@ -2901,9 +2899,14 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::HardwareSessions::get_c
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::HardwareSessions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hardware_session)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3010,6 +3013,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::HardwareSessions::Hardw
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination_id != nullptr)
     {
         children["destination-id"] = destination_id;
@@ -3190,6 +3194,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::HardwareSessions::Hardw
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4_address_and_vrf != nullptr)
     {
         children["ipv4-address-and-vrf"] = ipv4_address_and_vrf;
@@ -3310,6 +3315,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::HardwareSessions::Hardw
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv4AddressAndVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3400,6 +3406,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::HardwareSessions::Hardw
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv6AddressAndVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3488,14 +3495,6 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::get_child_b
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SpanMonitorSession::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -3508,9 +3507,14 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3628,14 +3632,6 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::
 
     if(child_yang_name == "attachment")
     {
-        for(auto const & c : attachment)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment>();
         c->parent = this;
         attachment.push_back(c);
@@ -3648,6 +3644,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination_id != nullptr)
     {
         children["destination-id"] = destination_id;
@@ -3658,9 +3655,13 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
         children["traffic-mirroring-parameters"] = traffic_mirroring_parameters;
     }
 
+    count = 0;
     for (auto const & c : attachment)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3818,6 +3819,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4_address_and_vrf != nullptr)
     {
         children["ipv4-address-and-vrf"] = ipv4_address_and_vrf;
@@ -3938,6 +3940,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv4AddressAndVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4028,6 +4031,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv6AddressAndVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4134,6 +4138,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParameters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4287,6 +4292,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination_id != nullptr)
     {
         children["destination-id"] = destination_id;
@@ -4412,6 +4418,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4_address_and_vrf != nullptr)
     {
         children["ipv4-address-and-vrf"] = ipv4_address_and_vrf;
@@ -4532,6 +4539,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv4AddressAndVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4622,6 +4630,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv6AddressAndVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4728,6 +4737,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::
 std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

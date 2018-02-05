@@ -94,6 +94,7 @@ std::shared_ptr<Entity> TUNNELMIB::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tunneliftable != nullptr)
     {
         children["tunnelIfTable"] = tunneliftable;
@@ -209,14 +210,6 @@ std::shared_ptr<Entity> TUNNELMIB::Tunneliftable::get_child_by_name(const std::s
 {
     if(child_yang_name == "tunnelIfEntry")
     {
-        for(auto const & c : tunnelifentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<TUNNELMIB::Tunneliftable::Tunnelifentry>();
         c->parent = this;
         tunnelifentry.push_back(c);
@@ -229,9 +222,14 @@ std::shared_ptr<Entity> TUNNELMIB::Tunneliftable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::Tunneliftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tunnelifentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -351,6 +349,7 @@ std::shared_ptr<Entity> TUNNELMIB::Tunneliftable::Tunnelifentry::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::Tunneliftable::Tunnelifentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -546,14 +545,6 @@ std::shared_ptr<Entity> TUNNELMIB::Tunnelconfigtable::get_child_by_name(const st
 {
     if(child_yang_name == "tunnelConfigEntry")
     {
-        for(auto const & c : tunnelconfigentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry>();
         c->parent = this;
         tunnelconfigentry.push_back(c);
@@ -566,9 +557,14 @@ std::shared_ptr<Entity> TUNNELMIB::Tunnelconfigtable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::Tunnelconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tunnelconfigentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -664,6 +660,7 @@ std::shared_ptr<Entity> TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry::get_chi
 std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::Tunnelconfigtable::Tunnelconfigentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -799,14 +796,6 @@ std::shared_ptr<Entity> TUNNELMIB::Tunnelinetconfigtable::get_child_by_name(cons
 {
     if(child_yang_name == "tunnelInetConfigEntry")
     {
-        for(auto const & c : tunnelinetconfigentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry>();
         c->parent = this;
         tunnelinetconfigentry.push_back(c);
@@ -819,9 +808,14 @@ std::shared_ptr<Entity> TUNNELMIB::Tunnelinetconfigtable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::Tunnelinetconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tunnelinetconfigentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -925,6 +919,7 @@ std::shared_ptr<Entity> TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry:
 std::map<std::string, std::shared_ptr<Entity>> TUNNELMIB::Tunnelinetconfigtable::Tunnelinetconfigentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

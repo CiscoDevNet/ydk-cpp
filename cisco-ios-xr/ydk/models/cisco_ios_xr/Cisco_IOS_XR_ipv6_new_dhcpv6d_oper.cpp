@@ -81,6 +81,7 @@ std::shared_ptr<Entity> Dhcpv6::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(issu_status != nullptr)
     {
         children["issu-status"] = issu_status;
@@ -225,6 +226,7 @@ std::shared_ptr<Entity> Dhcpv6::IssuStatus::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::IssuStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -400,14 +402,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -420,9 +414,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -551,6 +550,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(proxy != nullptr)
     {
         children["proxy"] = proxy;
@@ -708,6 +708,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vrfs != nullptr)
     {
         children["vrfs"] = vrfs;
@@ -801,14 +802,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Vrfs::get_child_by_name(cons
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -821,9 +814,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Vrfs::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -906,6 +904,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(statistics != nullptr)
     {
         children["statistics"] = statistics;
@@ -1204,6 +1203,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::get_c
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(solicit != nullptr)
     {
         children["solicit"] = solicit;
@@ -1363,6 +1363,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Solic
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Solicit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1467,6 +1468,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Adver
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Advertise::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1571,6 +1573,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Reque
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Request::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1675,6 +1678,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Reply
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Reply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1779,6 +1783,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Confi
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Confirm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1883,6 +1888,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Decli
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Decline::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1987,6 +1993,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Renew
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Renew::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2091,6 +2098,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Rebin
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Rebind::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2195,6 +2203,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Relea
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Release::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2299,6 +2308,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Recon
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Reconfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2403,6 +2413,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Infor
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Inform::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2507,6 +2518,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Relay
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::RelayForward::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2611,6 +2623,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Relay
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::RelayReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2715,6 +2728,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Lease
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQuery::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2819,6 +2833,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Lease
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQueryReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2923,6 +2938,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Lease
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQueryDone::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3027,6 +3043,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::Lease
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Vrfs::Vrf::Statistics::LeaseQueryData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3125,14 +3142,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Profiles::get_child_by_name(
 {
     if(child_yang_name == "profile")
     {
-        for(auto const & c : profile)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Proxy::Profiles::Profile>();
         c->parent = this;
         profile.push_back(c);
@@ -3145,9 +3154,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Profiles::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Profiles::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : profile)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3243,6 +3257,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::get_child
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(throttle_infos != nullptr)
     {
         children["throttle-infos"] = throttle_infos;
@@ -3331,14 +3346,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleI
 {
     if(child_yang_name == "throttle-info")
     {
-        for(auto const & c : throttle_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos::ThrottleInfo>();
         c->parent = this;
         throttle_info.push_back(c);
@@ -3351,9 +3358,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleI
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : throttle_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3438,6 +3450,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleI
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::ThrottleInfos::ThrottleInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3648,6 +3661,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::get
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_id_references != nullptr)
     {
         children["interface-id-references"] = interface_id_references;
@@ -3795,14 +3809,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::Int
 {
     if(child_yang_name == "ipv6-dhcpv6d-proxy-iid-reference")
     {
-        for(auto const & c : ipv6_dhcpv6d_proxy_iid_reference)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences::Ipv6Dhcpv6DProxyIidReference>();
         c->parent = this;
         ipv6_dhcpv6d_proxy_iid_reference.push_back(c);
@@ -3815,9 +3821,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::Int
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6_dhcpv6d_proxy_iid_reference)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3890,6 +3901,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::Int
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences::Ipv6Dhcpv6DProxyIidReference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3978,14 +3990,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::Vrf
 {
     if(child_yang_name == "ipv6-dhcpv6d-proxy-vrf-reference")
     {
-        for(auto const & c : ipv6_dhcpv6d_proxy_vrf_reference)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dhcpv6DProxyVrfReference>();
         c->parent = this;
         ipv6_dhcpv6d_proxy_vrf_reference.push_back(c);
@@ -3998,9 +4002,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::Vrf
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6_dhcpv6d_proxy_vrf_reference)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4069,6 +4078,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::Vrf
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dhcpv6DProxyVrfReference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4147,14 +4157,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::Int
 {
     if(child_yang_name == "ipv6-dhcpv6d-proxy-interface-reference")
     {
-        for(auto const & c : ipv6_dhcpv6d_proxy_interface_reference)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DProxyInterfaceReference>();
         c->parent = this;
         ipv6_dhcpv6d_proxy_interface_reference.push_back(c);
@@ -4167,9 +4169,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::Int
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6_dhcpv6d_proxy_interface_reference)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4238,6 +4245,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::Int
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DProxyInterfaceReference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4316,14 +4324,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Interfaces::get_child_by_nam
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Proxy::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -4336,9 +4336,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Interfaces::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4451,6 +4456,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Interfaces::Interface::get_c
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4639,14 +4645,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Statistics::get_child_by_nam
 {
     if(child_yang_name == "ipv6-dhcpv6d-proxy-stat")
     {
-        for(auto const & c : ipv6_dhcpv6d_proxy_stat)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat>();
         c->parent = this;
         ipv6_dhcpv6d_proxy_stat.push_back(c);
@@ -4659,9 +4657,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Statistics::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6_dhcpv6d_proxy_stat)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4744,6 +4747,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxy
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(statistics != nullptr)
     {
         children["statistics"] = statistics;
@@ -4833,6 +4837,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxy
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6DProxyStat::Statistics_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4951,6 +4956,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Binding::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Binding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(clients != nullptr)
     {
         children["clients"] = clients;
@@ -5029,14 +5035,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Binding::Clients::get_child_
 {
     if(child_yang_name == "client")
     {
-        for(auto const & c : client)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client>();
         c->parent = this;
         client.push_back(c);
@@ -5049,9 +5047,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Binding::Clients::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Binding::Clients::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : client)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5246,6 +5249,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::ge
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ia_id_pd != nullptr)
     {
         children["ia-id-pd"] = ia_id_pd;
@@ -5609,14 +5613,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::Ia
 {
     if(child_yang_name == "bag-dhcpv6d-ia-id-pd-info")
     {
-        for(auto const & c : bag_dhcpv6d_ia_id_pd_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo>();
         c->parent = this;
         bag_dhcpv6d_ia_id_pd_info.push_back(c);
@@ -5629,9 +5625,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::Ia
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bag_dhcpv6d_ia_id_pd_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5730,6 +5731,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::Ia
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(addresses != nullptr)
     {
         children["addresses"] = addresses;
@@ -5853,14 +5855,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::Ia
 {
     if(child_yang_name == "bag-dhcpv6d-addr-attrb")
     {
-        for(auto const & c : bag_dhcpv6d_addr_attrb)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb>();
         c->parent = this;
         bag_dhcpv6d_addr_attrb.push_back(c);
@@ -5873,9 +5867,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::Ia
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bag_dhcpv6d_addr_attrb)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5956,6 +5955,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::Ia
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6089,6 +6089,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Binding::Summary::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Binding::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(iana != nullptr)
     {
         children["iana"] = iana;
@@ -6199,6 +6200,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Binding::Summary::Iana::get_
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Binding::Summary::Iana::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6359,6 +6361,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Proxy::Binding::Summary::Iapd::get_
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Proxy::Binding::Summary::Iapd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6517,6 +6520,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Base::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(database != nullptr)
     {
         children["database"] = database;
@@ -6653,6 +6657,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Base::Database::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Base::Database::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6881,14 +6886,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Base::AddrBindings::get_child_by_na
 {
     if(child_yang_name == "addr-binding")
     {
-        for(auto const & c : addr_binding)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Base::AddrBindings::AddrBinding>();
         c->parent = this;
         addr_binding.push_back(c);
@@ -6901,9 +6898,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Base::AddrBindings::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Base::AddrBindings::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : addr_binding)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7068,6 +7070,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Base::AddrBindings::AddrBinding::ge
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Base::AddrBindings::AddrBinding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7458,6 +7461,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(binding != nullptr)
     {
         children["binding"] = binding;
@@ -7576,6 +7580,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Binding::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Binding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(summary != nullptr)
     {
         children["summary"] = summary;
@@ -7679,6 +7684,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Binding::Summary::get_child
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Binding::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(iana != nullptr)
     {
         children["iana"] = iana;
@@ -7789,6 +7795,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Binding::Summary::Iana::get
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Binding::Summary::Iana::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7949,6 +7956,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Binding::Summary::Iapd::get
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Binding::Summary::Iapd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8087,14 +8095,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Binding::Clients::get_child
 {
     if(child_yang_name == "client")
     {
-        for(auto const & c : client)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Server::Binding::Clients::Client>();
         c->parent = this;
         client.push_back(c);
@@ -8107,9 +8107,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Binding::Clients::get_child
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Binding::Clients::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : client)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8312,6 +8317,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::g
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ia_id_pd != nullptr)
     {
         children["ia-id-pd"] = ia_id_pd;
@@ -8695,14 +8701,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::I
 {
     if(child_yang_name == "bag-dhcpv6d-ia-id-pd-info")
     {
-        for(auto const & c : bag_dhcpv6d_ia_id_pd_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo>();
         c->parent = this;
         bag_dhcpv6d_ia_id_pd_info.push_back(c);
@@ -8715,9 +8713,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::I
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bag_dhcpv6d_ia_id_pd_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8816,6 +8819,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::I
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(addresses != nullptr)
     {
         children["addresses"] = addresses;
@@ -8939,14 +8943,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::I
 {
     if(child_yang_name == "bag-dhcpv6d-addr-attrb")
     {
-        for(auto const & c : bag_dhcpv6d_addr_attrb)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb>();
         c->parent = this;
         bag_dhcpv6d_addr_attrb.push_back(c);
@@ -8959,9 +8955,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::I
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bag_dhcpv6d_addr_attrb)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9042,6 +9043,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::I
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6DIaIdPdInfo::Addresses::BagDhcpv6DAddrAttrb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9150,14 +9152,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Vrfs::get_child_by_name(con
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Server::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -9170,9 +9164,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Vrfs::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9255,6 +9254,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(statistics != nullptr)
     {
         children["statistics"] = statistics;
@@ -9553,6 +9553,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::get_
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(solicit != nullptr)
     {
         children["solicit"] = solicit;
@@ -9712,6 +9713,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Soli
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Solicit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9816,6 +9818,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Adve
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Advertise::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9920,6 +9923,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Requ
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Request::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10024,6 +10028,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Repl
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Reply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10128,6 +10133,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Conf
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Confirm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10232,6 +10238,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Decl
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Decline::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10336,6 +10343,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Rene
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Renew::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10440,6 +10448,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Rebi
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Rebind::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10544,6 +10553,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Rele
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Release::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10648,6 +10658,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Reco
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Reconfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10752,6 +10763,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Info
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Inform::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10856,6 +10868,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Rela
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::RelayForward::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10960,6 +10973,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Rela
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::RelayReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11064,6 +11078,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Leas
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQuery::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11168,6 +11183,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Leas
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQueryReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11272,6 +11288,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Leas
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQueryDone::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11376,6 +11393,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::Leas
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Vrfs::Vrf::Statistics::LeaseQueryData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11474,14 +11492,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Profiles::get_child_by_name
 {
     if(child_yang_name == "profile")
     {
-        for(auto const & c : profile)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Server::Profiles::Profile>();
         c->parent = this;
         profile.push_back(c);
@@ -11494,9 +11504,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Profiles::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Profiles::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : profile)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11592,6 +11607,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Profiles::Profile::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Profiles::Profile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(info != nullptr)
     {
         children["info"] = info;
@@ -11743,6 +11759,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::ge
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lease != nullptr)
     {
         children["lease"] = lease;
@@ -11901,6 +11918,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::Le
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::Lease::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11989,14 +12007,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::In
 {
     if(child_yang_name == "ipv6-dhcpv6d-server-interface-reference")
     {
-        for(auto const & c : ipv6_dhcpv6d_server_interface_reference)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DServerInterfaceReference>();
         c->parent = this;
         ipv6_dhcpv6d_server_interface_reference.push_back(c);
@@ -12009,9 +12019,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::In
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6_dhcpv6d_server_interface_reference)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12080,6 +12095,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::In
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6DServerInterfaceReference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12158,14 +12174,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Profiles::Profile::Throttle
 {
     if(child_yang_name == "throttle-info")
     {
-        for(auto const & c : throttle_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos::ThrottleInfo>();
         c->parent = this;
         throttle_info.push_back(c);
@@ -12178,9 +12186,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Profiles::Profile::Throttle
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : throttle_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12265,6 +12278,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Profiles::Profile::Throttle
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos::ThrottleInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12383,14 +12397,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Interfaces::get_child_by_na
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Server::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -12403,9 +12409,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Interfaces::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12518,6 +12529,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Interfaces::Interface::get_
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12706,14 +12718,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Statistics::get_child_by_na
 {
     if(child_yang_name == "ipv6-dhcpv6d-server-stat")
     {
-        for(auto const & c : ipv6_dhcpv6d_server_stat)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat>();
         c->parent = this;
         ipv6_dhcpv6d_server_stat.push_back(c);
@@ -12726,9 +12730,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Statistics::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6_dhcpv6d_server_stat)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12811,6 +12820,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServ
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(statistics != nullptr)
     {
         children["statistics"] = statistics;
@@ -12900,6 +12910,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServ
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6DServerStat::Statistics_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13018,6 +13029,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::BindingOptions::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::BindingOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mac_bind_options != nullptr)
     {
         children["mac-bind-options"] = mac_bind_options;
@@ -13096,14 +13108,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOpti
 {
     if(child_yang_name == "mac-bind-option")
     {
-        for(auto const & c : mac_bind_option)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions::MacBindOption>();
         c->parent = this;
         mac_bind_option.push_back(c);
@@ -13116,9 +13120,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOpti
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mac_bind_option)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13217,6 +13226,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOpti
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::BindingOptions::MacBindOptions::MacBindOption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13343,14 +13353,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOpt
 {
     if(child_yang_name == "duid-bind-option")
     {
-        for(auto const & c : duid_bind_option)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions::DuidBindOption>();
         c->parent = this;
         duid_bind_option.push_back(c);
@@ -13363,9 +13365,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOpt
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : duid_bind_option)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13464,6 +13471,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOpt
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Server::BindingOptions::DuidBindOptions::DuidBindOption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13623,6 +13631,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(statistics != nullptr)
     {
         children["statistics"] = statistics;
@@ -13706,14 +13715,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Statistics::get_child_by_nam
 {
     if(child_yang_name == "ipv6-dhcpv6d-relay-stat")
     {
-        for(auto const & c : ipv6_dhcpv6d_relay_stat)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat>();
         c->parent = this;
         ipv6_dhcpv6d_relay_stat.push_back(c);
@@ -13726,9 +13727,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Statistics::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6_dhcpv6d_relay_stat)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13811,6 +13817,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelay
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(statistics != nullptr)
     {
         children["statistics"] = statistics;
@@ -13900,6 +13907,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelay
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6DRelayStat::Statistics_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14018,6 +14026,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Binding::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Binding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(summary != nullptr)
     {
         children["summary"] = summary;
@@ -14094,6 +14103,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Binding::Summary::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Binding::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14172,14 +14182,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Binding::Clients::get_child_
 {
     if(child_yang_name == "client")
     {
-        for(auto const & c : client)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Relay::Binding::Clients::Client>();
         c->parent = this;
         client.push_back(c);
@@ -14192,9 +14194,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Binding::Clients::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Binding::Clients::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : client)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14307,6 +14314,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Binding::Clients::Client::ge
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Binding::Clients::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14495,14 +14503,6 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Vrfs::get_child_by_name(cons
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -14515,9 +14515,14 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Vrfs::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14600,6 +14605,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(statistics != nullptr)
     {
         children["statistics"] = statistics;
@@ -14898,6 +14904,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::get_c
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(solicit != nullptr)
     {
         children["solicit"] = solicit;
@@ -15057,6 +15064,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Solic
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Solicit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15161,6 +15169,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Adver
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Advertise::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15265,6 +15274,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Reque
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Request::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15369,6 +15379,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Reply
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Reply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15473,6 +15484,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Confi
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Confirm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15577,6 +15589,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Decli
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Decline::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15681,6 +15694,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Renew
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Renew::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15785,6 +15799,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Rebin
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Rebind::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15889,6 +15904,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Relea
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Release::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15993,6 +16009,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Recon
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Reconfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16097,6 +16114,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Infor
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Inform::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16201,6 +16219,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Relay
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::RelayForward::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16305,6 +16324,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Relay
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::RelayReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16409,6 +16429,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Lease
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQuery::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16513,6 +16534,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Lease
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16617,6 +16639,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Lease
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryDone::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16721,6 +16744,7 @@ std::shared_ptr<Entity> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::Lease
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

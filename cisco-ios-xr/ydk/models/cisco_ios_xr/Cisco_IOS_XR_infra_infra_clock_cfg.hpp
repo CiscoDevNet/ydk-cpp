@@ -10,11 +10,11 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_infra_clock_cfg {
 
-class Clock_ : public ydk::Entity
+class Clock : public ydk::Entity
 {
     public:
-        Clock_();
-        ~Clock_();
+        Clock();
+        ~Clock();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -31,16 +31,16 @@ class Clock_ : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class SummerTime; //type: Clock_::SummerTime
-        class TimeZone; //type: Clock_::TimeZone
+        class SummerTime; //type: Clock::SummerTime
+        class TimeZone; //type: Clock::TimeZone
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_infra_clock_cfg::Clock_::SummerTime> summer_time; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_infra_clock_cfg::Clock_::TimeZone> time_zone; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_infra_clock_cfg::Clock::SummerTime> summer_time; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_infra_clock_cfg::Clock::TimeZone> time_zone; // presence node
         
-}; // Clock_
+}; // Clock
 
 
-class Clock_::SummerTime : public ydk::Entity
+class Clock::SummerTime : public ydk::Entity
 {
     public:
         SummerTime();
@@ -71,10 +71,10 @@ class Clock_::SummerTime : public ydk::Entity
         ydk::YLeaf end_minute; //type: uint32
         ydk::YLeaf offset; //type: uint32
 
-}; // Clock_::SummerTime
+}; // Clock::SummerTime
 
 
-class Clock_::TimeZone : public ydk::Entity
+class Clock::TimeZone : public ydk::Entity
 {
     public:
         TimeZone();
@@ -95,7 +95,7 @@ class Clock_::TimeZone : public ydk::Entity
         ydk::YLeaf hour_offset; //type: int32
         ydk::YLeaf minute_offset; //type: uint32
 
-}; // Clock_::TimeZone
+}; // Clock::TimeZone
 
 class ClockMonth : public ydk::Enum
 {

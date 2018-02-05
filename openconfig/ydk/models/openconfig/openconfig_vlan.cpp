@@ -61,14 +61,6 @@ std::shared_ptr<Entity> Vlans::get_child_by_name(const std::string & child_yang_
 {
     if(child_yang_name == "vlan")
     {
-        for(auto const & c : vlan)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vlans::Vlan>();
         c->parent = this;
         vlan.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> Vlans::get_child_by_name(const std::string & child_yang_
 std::map<std::string, std::shared_ptr<Entity>> Vlans::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vlan)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -224,6 +221,7 @@ std::shared_ptr<Entity> Vlans::Vlan::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -327,6 +325,7 @@ std::shared_ptr<Entity> Vlans::Vlan::Config::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -445,6 +444,7 @@ std::shared_ptr<Entity> Vlans::Vlan::State::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -553,14 +553,6 @@ std::shared_ptr<Entity> Vlans::Vlan::Members::get_child_by_name(const std::strin
 {
     if(child_yang_name == "member")
     {
-        for(auto const & c : member)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vlans::Vlan::Members::Member>();
         c->parent = this;
         member.push_back(c);
@@ -573,9 +565,14 @@ std::shared_ptr<Entity> Vlans::Vlan::Members::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::Members::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : member)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -653,6 +650,7 @@ std::shared_ptr<Entity> Vlans::Vlan::Members::Member::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::Members::Member::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_ref != nullptr)
     {
         children["interface-ref"] = interface_ref;
@@ -733,6 +731,7 @@ std::shared_ptr<Entity> Vlans::Vlan::Members::Member::InterfaceRef::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::Members::Member::InterfaceRef::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(state != nullptr)
     {
         children["state"] = state;
@@ -808,6 +807,7 @@ std::shared_ptr<Entity> Vlans::Vlan::Members::Member::InterfaceRef::State::get_c
 std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::Members::Member::InterfaceRef::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

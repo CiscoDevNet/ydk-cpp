@@ -146,6 +146,7 @@ std::shared_ptr<Entity> MPLSVPNMIB::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mplsvpnscalars != nullptr)
     {
         children["mplsVpnScalars"] = mplsvpnscalars;
@@ -295,6 +296,7 @@ std::shared_ptr<Entity> MPLSVPNMIB::Mplsvpnscalars::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::Mplsvpnscalars::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -420,14 +422,6 @@ std::shared_ptr<Entity> MPLSVPNMIB::Mplsvpninterfaceconftable::get_child_by_name
 {
     if(child_yang_name == "mplsVpnInterfaceConfEntry")
     {
-        for(auto const & c : mplsvpninterfaceconfentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MPLSVPNMIB::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry>();
         c->parent = this;
         mplsvpninterfaceconfentry.push_back(c);
@@ -440,9 +434,14 @@ std::shared_ptr<Entity> MPLSVPNMIB::Mplsvpninterfaceconftable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::Mplsvpninterfaceconftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplsvpninterfaceconfentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -542,6 +541,7 @@ std::shared_ptr<Entity> MPLSVPNMIB::Mplsvpninterfaceconftable::Mplsvpninterfacec
 std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::Mplsvpninterfaceconftable::Mplsvpninterfaceconfentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -685,14 +685,6 @@ std::shared_ptr<Entity> MPLSVPNMIB::Mplsvpnvrftable::get_child_by_name(const std
 {
     if(child_yang_name == "mplsVpnVrfEntry")
     {
-        for(auto const & c : mplsvpnvrfentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MPLSVPNMIB::Mplsvpnvrftable::Mplsvpnvrfentry>();
         c->parent = this;
         mplsvpnvrfentry.push_back(c);
@@ -705,9 +697,14 @@ std::shared_ptr<Entity> MPLSVPNMIB::Mplsvpnvrftable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::Mplsvpnvrftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplsvpnvrfentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -851,6 +848,7 @@ std::shared_ptr<Entity> MPLSVPNMIB::Mplsvpnvrftable::Mplsvpnvrfentry::get_child_
 std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::Mplsvpnvrftable::Mplsvpnvrfentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1106,14 +1104,6 @@ std::shared_ptr<Entity> MPLSVPNMIB::Mplsvpnvrfroutetargettable::get_child_by_nam
 {
     if(child_yang_name == "mplsVpnVrfRouteTargetEntry")
     {
-        for(auto const & c : mplsvpnvrfroutetargetentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MPLSVPNMIB::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry>();
         c->parent = this;
         mplsvpnvrfroutetargetentry.push_back(c);
@@ -1126,9 +1116,14 @@ std::shared_ptr<Entity> MPLSVPNMIB::Mplsvpnvrfroutetargettable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::Mplsvpnvrfroutetargettable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplsvpnvrfroutetargetentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1224,6 +1219,7 @@ std::shared_ptr<Entity> MPLSVPNMIB::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutet
 std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::Mplsvpnvrfroutetargettable::Mplsvpnvrfroutetargetentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1359,14 +1355,6 @@ std::shared_ptr<Entity> MPLSVPNMIB::Mplsvpnvrfbgpnbraddrtable::get_child_by_name
 {
     if(child_yang_name == "mplsVpnVrfBgpNbrAddrEntry")
     {
-        for(auto const & c : mplsvpnvrfbgpnbraddrentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MPLSVPNMIB::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrentry>();
         c->parent = this;
         mplsvpnvrfbgpnbraddrentry.push_back(c);
@@ -1379,9 +1367,14 @@ std::shared_ptr<Entity> MPLSVPNMIB::Mplsvpnvrfbgpnbraddrtable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::Mplsvpnvrfbgpnbraddrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplsvpnvrfbgpnbraddrentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1485,6 +1478,7 @@ std::shared_ptr<Entity> MPLSVPNMIB::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbra
 std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::Mplsvpnvrfbgpnbraddrtable::Mplsvpnvrfbgpnbraddrentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1640,14 +1634,6 @@ std::shared_ptr<Entity> MPLSVPNMIB::Mplsvpnvrfbgpnbrprefixtable::get_child_by_na
 {
     if(child_yang_name == "mplsVpnVrfBgpNbrPrefixEntry")
     {
-        for(auto const & c : mplsvpnvrfbgpnbrprefixentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MPLSVPNMIB::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry>();
         c->parent = this;
         mplsvpnvrfbgpnbrprefixentry.push_back(c);
@@ -1660,9 +1646,14 @@ std::shared_ptr<Entity> MPLSVPNMIB::Mplsvpnvrfbgpnbrprefixtable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::Mplsvpnvrfbgpnbrprefixtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplsvpnvrfbgpnbrprefixentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1794,6 +1785,7 @@ std::shared_ptr<Entity> MPLSVPNMIB::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnb
 std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::Mplsvpnvrfbgpnbrprefixtable::Mplsvpnvrfbgpnbrprefixentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2019,14 +2011,6 @@ std::shared_ptr<Entity> MPLSVPNMIB::Mplsvpnvrfroutetable::get_child_by_name(cons
 {
     if(child_yang_name == "mplsVpnVrfRouteEntry")
     {
-        for(auto const & c : mplsvpnvrfrouteentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MPLSVPNMIB::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry>();
         c->parent = this;
         mplsvpnvrfrouteentry.push_back(c);
@@ -2039,9 +2023,14 @@ std::shared_ptr<Entity> MPLSVPNMIB::Mplsvpnvrfroutetable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::Mplsvpnvrfroutetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplsvpnvrfrouteentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2197,6 +2186,7 @@ std::shared_ptr<Entity> MPLSVPNMIB::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::
 std::map<std::string, std::shared_ptr<Entity>> MPLSVPNMIB::Mplsvpnvrfroutetable::Mplsvpnvrfrouteentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -266,20 +266,20 @@ class Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Template_; //type: Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_
+        class Template; //type: Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template
         class General; //type: Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tty_server_oper::Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_> template_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tty_server_oper::Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template> template_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tty_server_oper::Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General> general;
         
 }; // Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State
 
 
-class Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_ : public ydk::Entity
+class Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template : public ydk::Entity
 {
     public:
-        Template_();
-        ~Template_();
+        Template();
+        ~Template();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -293,7 +293,7 @@ class Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_ : public ydk
 
         ydk::YLeaf name; //type: string
 
-}; // Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_
+}; // Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template
 
 
 class Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General : public ydk::Entity
@@ -586,20 +586,20 @@ class Tty::VtyLines::VtyLine::State : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Template_; //type: Tty::VtyLines::VtyLine::State::Template_
+        class Template; //type: Tty::VtyLines::VtyLine::State::Template
         class General; //type: Tty::VtyLines::VtyLine::State::General
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tty_server_oper::Tty::VtyLines::VtyLine::State::Template_> template_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tty_server_oper::Tty::VtyLines::VtyLine::State::Template> template_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tty_server_oper::Tty::VtyLines::VtyLine::State::General> general;
         
 }; // Tty::VtyLines::VtyLine::State
 
 
-class Tty::VtyLines::VtyLine::State::Template_ : public ydk::Entity
+class Tty::VtyLines::VtyLine::State::Template : public ydk::Entity
 {
     public:
-        Template_();
-        ~Template_();
+        Template();
+        ~Template();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -613,7 +613,7 @@ class Tty::VtyLines::VtyLine::State::Template_ : public ydk::Entity
 
         ydk::YLeaf name; //type: string
 
-}; // Tty::VtyLines::VtyLine::State::Template_
+}; // Tty::VtyLines::VtyLine::State::Template
 
 
 class Tty::VtyLines::VtyLine::State::General : public ydk::Entity
@@ -1007,20 +1007,20 @@ class Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Template_; //type: Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_
+        class Template; //type: Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template
         class General; //type: Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::General
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tty_server_oper::Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_> template_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tty_server_oper::Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template> template_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tty_server_oper::Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::General> general;
         
 }; // Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State
 
 
-class Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_ : public ydk::Entity
+class Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template : public ydk::Entity
 {
     public:
-        Template_();
-        ~Template_();
+        Template();
+        ~Template();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1034,7 +1034,7 @@ class Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_ : publ
 
         ydk::YLeaf name; //type: string
 
-}; // Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_
+}; // Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template
 
 
 class Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::General : public ydk::Entity

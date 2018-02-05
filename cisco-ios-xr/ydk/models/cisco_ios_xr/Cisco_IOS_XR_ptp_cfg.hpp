@@ -37,12 +37,12 @@ class Ptp : public ydk::Entity
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf min_clock_class; //type: uint32
         ydk::YLeaf uncalibrated_clock_class; //type: uint32
-        class Clock_; //type: Ptp::Clock_
+        class Clock; //type: Ptp::Clock
         class Profiles; //type: Ptp::Profiles
         class Logging; //type: Ptp::Logging
         class TransparentClock; //type: Ptp::TransparentClock
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Clock_> clock_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Clock> clock_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Profiles> profiles;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Logging> logging;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::TransparentClock> transparent_clock;
@@ -50,11 +50,11 @@ class Ptp : public ydk::Entity
 }; // Ptp
 
 
-class Ptp::Clock_ : public ydk::Entity
+class Ptp::Clock : public ydk::Entity
 {
     public:
-        Clock_();
-        ~Clock_();
+        Clock();
+        ~Clock();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -73,16 +73,16 @@ class Ptp::Clock_ : public ydk::Entity
         ydk::YLeaf time_source; //type: PtpTimeSource
         ydk::YLeaf priority1; //type: uint32
         ydk::YLeaf clock_class; //type: uint32
-        class Profile; //type: Ptp::Clock_::Profile
-        class Identity; //type: Ptp::Clock_::Identity
+        class Profile; //type: Ptp::Clock::Profile
+        class Identity; //type: Ptp::Clock::Identity
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Clock_::Profile> profile;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Clock_::Identity> identity;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Clock::Profile> profile;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_cfg::Ptp::Clock::Identity> identity;
         
-}; // Ptp::Clock_
+}; // Ptp::Clock
 
 
-class Ptp::Clock_::Profile : public ydk::Entity
+class Ptp::Clock::Profile : public ydk::Entity
 {
     public:
         Profile();
@@ -102,10 +102,10 @@ class Ptp::Clock_::Profile : public ydk::Entity
         ydk::YLeaf clock_profile; //type: PtpClockProfile
         ydk::YLeaf telecom_clock_type; //type: PtpTelecomClock
 
-}; // Ptp::Clock_::Profile
+}; // Ptp::Clock::Profile
 
 
-class Ptp::Clock_::Identity : public ydk::Entity
+class Ptp::Clock::Identity : public ydk::Entity
 {
     public:
         Identity();
@@ -126,7 +126,7 @@ class Ptp::Clock_::Identity : public ydk::Entity
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf eui; //type: string
 
-}; // Ptp::Clock_::Identity
+}; // Ptp::Clock::Identity
 
 
 class Ptp::Profiles : public ydk::Entity

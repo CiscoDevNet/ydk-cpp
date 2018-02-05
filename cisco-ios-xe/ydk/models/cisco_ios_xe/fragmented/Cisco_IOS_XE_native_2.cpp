@@ -59,6 +59,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Application::Media::Packe
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Application::Media::Packets::Counter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -143,6 +144,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Application::Media::Packe
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Application::Media::Packets::Rate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(variation != nullptr)
     {
         children["variation"] = variation;
@@ -222,6 +224,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Application::Media::Packe
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Application::Media::Packets::Rate::Variation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -318,6 +321,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Application::Name::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Application::Name::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -394,6 +398,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Application::Nntp::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Application::Nntp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -470,6 +475,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Application::Pop3::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Application::Pop3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -546,6 +552,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Application::Rtmp::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Application::Rtmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -622,6 +629,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Application::Rtsp::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Application::Rtsp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -702,6 +710,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Application::Sip::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Application::Sip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -792,6 +801,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Application::Smtp::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Application::Smtp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -878,6 +888,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Application::Ssl::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Application::Ssl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1023,6 +1034,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(client != nullptr)
     {
         children["client"] = client;
@@ -1212,6 +1224,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Client::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(counter != nullptr)
     {
         children["counter"] = counter;
@@ -1330,6 +1343,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Client::Count
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Client::Counter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bytes != nullptr)
     {
         children["bytes"] = bytes;
@@ -1437,6 +1451,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Client::Count
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Client::Counter::Bytes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(network != nullptr)
     {
         children["network"] = network;
@@ -1533,6 +1548,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Client::Count
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Client::Counter::Bytes::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1609,6 +1625,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Client::Count
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Client::Counter::Bytes::Transport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1689,6 +1706,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Client::Count
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Client::Counter::Packets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1775,6 +1793,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Client::Ipv4:
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Client::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1851,6 +1870,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Client::Ipv6:
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Client::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1927,6 +1947,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Client::Trans
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Client::Transport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2043,6 +2064,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Delay::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Delay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(application != nullptr)
     {
         children["application"] = application;
@@ -2142,6 +2164,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Delay::Applic
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Delay::Application::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2286,6 +2309,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Delay::Networ
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Delay::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(client_to_server != nullptr)
     {
         children["client-to-server"] = client_to_server;
@@ -2384,6 +2408,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Delay::Networ
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Delay::Network::ClientToServer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2525,6 +2550,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Delay::Networ
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(client_to_serve != nullptr)
     {
         children["client-to-serve"] = client_to_serve;
@@ -2606,6 +2632,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Delay::Networ
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ClientToServe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2682,6 +2709,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Delay::Networ
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToClient::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2758,6 +2786,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Delay::Networ
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Delay::Network::LongLived::ToServe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2846,6 +2875,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Delay::Networ
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Delay::Network::ToClient::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2964,6 +2994,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Delay::Networ
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Delay::Network::ToServer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3092,6 +3123,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Delay::Respon
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Delay::Response::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(client_to_server != nullptr)
     {
         children["client-to-server"] = client_to_server;
@@ -3176,6 +3208,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Delay::Respon
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Delay::Response::ClientToServer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3284,6 +3317,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Delay::Respon
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Delay::Response::ToServer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3443,6 +3477,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Server::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(counter != nullptr)
     {
         children["counter"] = counter;
@@ -3566,6 +3601,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Server::Count
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Server::Counter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bytes != nullptr)
     {
         children["bytes"] = bytes;
@@ -3683,6 +3719,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Server::Count
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(network != nullptr)
     {
         children["network"] = network;
@@ -3779,6 +3816,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Server::Count
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3855,6 +3893,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Server::Count
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Server::Counter::Bytes::Transport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3935,6 +3974,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Server::Count
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Server::Counter::Packets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4021,6 +4061,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Server::Ipv4:
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Server::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4097,6 +4138,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Server::Ipv6:
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Server::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4173,6 +4215,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Server::Trans
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Server::Transport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4276,6 +4319,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Transaction::
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Transaction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(counter != nullptr)
     {
         children["counter"] = counter;
@@ -4362,6 +4406,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Transaction::
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Transaction::Counter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4446,6 +4491,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Connection::Transaction::
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Connection::Transaction::Duration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4567,6 +4613,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Counter::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Counter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bytes != nullptr)
     {
         children["bytes"] = bytes;
@@ -4679,6 +4726,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Counter::Bytes::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Counter::Bytes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rate != nullptr)
     {
         children["rate"] = rate;
@@ -4773,6 +4821,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Counter::Bytes::Rate::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Counter::Bytes::Rate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(per_flow != nullptr)
     {
         children["per-flow"] = per_flow;
@@ -4848,6 +4897,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Counter::Bytes::Rate::Per
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Counter::Bytes::Rate::PerFlow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4934,6 +4984,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Counter::Bytes::Squared::
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Counter::Bytes::Squared::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5027,6 +5078,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Counter::Packets::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Counter::Packets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rate != nullptr)
     {
         children["rate"] = rate;
@@ -5126,6 +5178,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Counter::Packets::Rate::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Counter::Packets::Rate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(per_flow != nullptr)
     {
         children["per-flow"] = per_flow;
@@ -5201,6 +5254,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Counter::Packets::Rate::P
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Counter::Packets::Rate::PerFlow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5326,6 +5380,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Datalink::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Datalink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dot1q != nullptr)
     {
         children["dot1q"] = dot1q;
@@ -5456,6 +5511,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Datalink::Dot1Q::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Datalink::Dot1Q::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vlan != nullptr)
     {
         children["vlan"] = vlan;
@@ -5541,6 +5597,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Datalink::Dot1Q::Vlan::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Datalink::Dot1Q::Vlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5649,6 +5706,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Datalink::Mac::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Datalink::Mac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination != nullptr)
     {
         children["destination"] = destination;
@@ -5734,6 +5792,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Datalink::Mac::Destinatio
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Datalink::Mac::Destination::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -5809,6 +5868,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Datalink::Mac::Destinatio
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Datalink::Mac::Destination::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5904,6 +5964,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Datalink::Mac::Source::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Datalink::Mac::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -5979,6 +6040,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Datalink::Mac::Source::Ad
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Datalink::Mac::Source::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6100,6 +6162,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Flow_::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Flow_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cts != nullptr)
     {
         children["cts"] = cts;
@@ -6228,6 +6291,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Flow_::Cts::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Flow_::Cts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination != nullptr)
     {
         children["destination"] = destination;
@@ -6304,6 +6368,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Flow_::Cts::Destination::
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Flow_::Cts::Destination::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6380,6 +6445,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Flow_::Cts::Source::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Flow_::Cts::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6456,6 +6522,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Flow_::Observation::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Flow_::Observation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6552,6 +6619,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Interface::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -6628,6 +6696,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Interface::Input::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Interface::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6704,6 +6773,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Interface::Output::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Interface::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6907,6 +6977,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination != nullptr)
     {
         children["destination"] = destination;
@@ -7108,6 +7179,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Destination::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Destination::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mask != nullptr)
     {
         children["mask"] = mask;
@@ -7194,6 +7266,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Destination::Mask::
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Destination::Mask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7270,6 +7343,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Destination::Prefix
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Destination::Prefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7350,6 +7424,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Fragmentation::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Fragmentation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7453,6 +7528,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Length::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Length::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(total != nullptr)
     {
         children["total"] = total;
@@ -7548,6 +7624,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Length::Total::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Length::Total::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7634,6 +7711,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Option::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Option::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7732,6 +7810,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Section::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Section::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(header != nullptr)
     {
         children["header"] = header;
@@ -7808,6 +7887,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Section::Header::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Section::Header::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7884,6 +7964,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Section::Payload::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Section::Payload::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7985,6 +8066,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Source::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mask != nullptr)
     {
         children["mask"] = mask;
@@ -8071,6 +8153,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Source::Mask::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Source::Mask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8147,6 +8230,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Source::Prefix::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Source::Prefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8227,6 +8311,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::TotalLength::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::TotalLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8317,6 +8402,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv4::Ttl::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv4::Ttl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8522,6 +8608,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination != nullptr)
     {
         children["destination"] = destination;
@@ -8728,6 +8815,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Destination::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Destination::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mask != nullptr)
     {
         children["mask"] = mask;
@@ -8814,6 +8902,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Destination::Mask::
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Destination::Mask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8890,6 +8979,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Destination::Prefix
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Destination::Prefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8966,6 +9056,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Extension::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Extension::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9050,6 +9141,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Fragmentation::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Fragmentation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9150,6 +9242,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::HopLimit::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::HopLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9253,6 +9346,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Length::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Length::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(total != nullptr)
     {
         children["total"] = total;
@@ -9348,6 +9442,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Length::Total::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Length::Total::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9456,6 +9551,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Section::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Section::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(header != nullptr)
     {
         children["header"] = header;
@@ -9532,6 +9628,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Section::Header::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Section::Header::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9608,6 +9705,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Section::Payload::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Section::Payload::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9709,6 +9807,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Source::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mask != nullptr)
     {
         children["mask"] = mask;
@@ -9795,6 +9894,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Source::Mask::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Source::Mask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9871,6 +9971,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Ipv6::Source::Prefix::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Ipv6::Source::Prefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9955,6 +10056,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Metadata::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Metadata::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10051,6 +10153,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Monitor::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Monitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10136,6 +10239,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Mpls::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Mpls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(label != nullptr)
     {
         children["label"] = label;
@@ -10281,6 +10385,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Mpls::Label::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Mpls::Label::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(one != nullptr)
     {
         children["one"] = one;
@@ -10389,6 +10494,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Mpls::Label::One::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Mpls::Label::One::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10495,6 +10601,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Mpls::Label::Two::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Mpls::Label::Two::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10571,6 +10678,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Mpls::Label::Three::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Mpls::Label::Three::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10647,6 +10755,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Mpls::Label::Four::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Mpls::Label::Four::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10723,6 +10832,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Mpls::Label::Five::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Mpls::Label::Five::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10799,6 +10909,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Mpls::Label::Six::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Mpls::Label::Six::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10884,6 +10995,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Network::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(delay != nullptr)
     {
         children["delay"] = delay;
@@ -10959,6 +11071,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Network::Delay::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Network::Delay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11093,6 +11206,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(label != nullptr)
     {
         children["label"] = label;
@@ -11179,6 +11293,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Label::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::Label::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11259,6 +11374,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::OneWayDelay::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::OneWayDelay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11353,6 +11469,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Service::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::Service::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11471,6 +11588,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Site::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::Site::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination != nullptr)
     {
         children["destination"] = destination;
@@ -11569,6 +11687,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Site::Destination::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::Site::Destination::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(id != nullptr)
     {
         children["id"] = id;
@@ -11645,6 +11764,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Site::Destination::I
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::Site::Destination::Id::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11735,6 +11855,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Site::Destination::P
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::Site::Destination::Prefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mask != nullptr)
     {
         children["mask"] = mask;
@@ -11816,6 +11937,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Site::Destination::P
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::Site::Destination::Prefix::Mask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11914,6 +12036,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Site::Source::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::Site::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(id != nullptr)
     {
         children["id"] = id;
@@ -11990,6 +12113,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Site::Source::Id::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::Site::Source::Id::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12080,6 +12204,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Site::Source::Prefix
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::Site::Source::Prefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mask != nullptr)
     {
         children["mask"] = mask;
@@ -12161,6 +12286,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Pfr::Site::Source::Prefix
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Pfr::Site::Source::Prefix::Mask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12259,6 +12385,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Policy::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Policy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(performance_monitor != nullptr)
     {
         children["performance-monitor"] = performance_monitor;
@@ -12344,6 +12471,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Policy::PerformanceMonito
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Policy::PerformanceMonitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(classification != nullptr)
     {
         children["classification"] = classification;
@@ -12415,6 +12543,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Policy::PerformanceMonito
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Policy::PerformanceMonitor::Classification::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12513,6 +12642,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Policy::Qos::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Policy::Qos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(classification != nullptr)
     {
         children["classification"] = classification;
@@ -12589,6 +12719,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Policy::Qos::Classificati
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Policy::Qos::Classification::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12669,6 +12800,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Policy::Qos::Queue::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Policy::Qos::Queue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12833,6 +12965,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination != nullptr)
     {
         children["destination"] = destination;
@@ -12952,6 +13085,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::Destination::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::Destination::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(as != nullptr)
     {
         children["as"] = as;
@@ -13046,6 +13180,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::Destination::As:
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::Destination::As::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(peer != nullptr)
     {
         children["peer"] = peer;
@@ -13127,6 +13262,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::Destination::As:
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::Destination::As::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13203,6 +13339,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::ForwardingStatus
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::ForwardingStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13288,6 +13425,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::NextHop::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -13379,6 +13517,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::NextHop::Address
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::NextHop::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -13455,6 +13594,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::NextHop::Address
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::NextHop::Address::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13531,6 +13671,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::NextHop::Address
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::NextHop::Address::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13616,6 +13757,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::Pw::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::Pw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination != nullptr)
     {
         children["destination"] = destination;
@@ -13687,6 +13829,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::Pw::Destination:
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::Pw::Destination::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13776,6 +13919,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::Source::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(as != nullptr)
     {
         children["as"] = as;
@@ -13870,6 +14014,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::Source::As::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::Source::As::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(peer != nullptr)
     {
         children["peer"] = peer;
@@ -13951,6 +14096,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::Source::As::Peer
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::Source::As::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14031,6 +14177,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Routing::Vrf::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Routing::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14126,6 +14273,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Services::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Services::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(waas != nullptr)
     {
         children["waas"] = waas;
@@ -14210,6 +14358,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Services::Waas::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Services::Waas::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(segment != nullptr)
     {
         children["segment"] = segment;
@@ -14291,6 +14440,7 @@ std::shared_ptr<Entity> Native::Flow::Record::Collect::Services::Waas::Segment::
 std::map<std::string, std::shared_ptr<Entity>> Native::Flow::Record::Collect::Services::Waas::Segment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

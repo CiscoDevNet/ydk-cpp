@@ -73,6 +73,7 @@ std::shared_ptr<Entity> Ipv6Virtual::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Virtual::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vrfs != nullptr)
     {
         children["vrfs"] = vrfs;
@@ -188,14 +189,6 @@ std::shared_ptr<Entity> Ipv6Virtual::Vrfs::get_child_by_name(const std::string &
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ipv6Virtual::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -208,9 +201,14 @@ std::shared_ptr<Entity> Ipv6Virtual::Vrfs::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Virtual::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -299,6 +297,7 @@ std::shared_ptr<Entity> Ipv6Virtual::Vrfs::Vrf::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Virtual::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -384,6 +383,7 @@ std::shared_ptr<Entity> Ipv6Virtual::Vrfs::Vrf::Address::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Virtual::Vrfs::Vrf::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -81,6 +81,7 @@ std::shared_ptr<Entity> Suppression::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Suppression::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rule_summaries != nullptr)
     {
         children["rule-summaries"] = rule_summaries;
@@ -191,14 +192,6 @@ std::shared_ptr<Entity> Suppression::RuleSummaries::get_child_by_name(const std:
 {
     if(child_yang_name == "rule-summary")
     {
-        for(auto const & c : rule_summary)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Suppression::RuleSummaries::RuleSummary>();
         c->parent = this;
         rule_summary.push_back(c);
@@ -211,9 +204,14 @@ std::shared_ptr<Entity> Suppression::RuleSummaries::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleSummaries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rule_summary)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -301,6 +299,7 @@ std::shared_ptr<Entity> Suppression::RuleSummaries::RuleSummary::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleSummaries::RuleSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -416,14 +415,6 @@ std::shared_ptr<Entity> Suppression::RuleDetails::get_child_by_name(const std::s
 {
     if(child_yang_name == "rule-detail")
     {
-        for(auto const & c : rule_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Suppression::RuleDetails::RuleDetail>();
         c->parent = this;
         rule_detail.push_back(c);
@@ -436,9 +427,14 @@ std::shared_ptr<Entity> Suppression::RuleDetails::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rule_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -556,14 +552,6 @@ std::shared_ptr<Entity> Suppression::RuleDetails::RuleDetail::get_child_by_name(
 
     if(child_yang_name == "codes")
     {
-        for(auto const & c : codes)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Suppression::RuleDetails::RuleDetail::Codes>();
         c->parent = this;
         codes.push_back(c);
@@ -576,14 +564,19 @@ std::shared_ptr<Entity> Suppression::RuleDetails::RuleDetail::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleDetails::RuleDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rule_summary != nullptr)
     {
         children["rule-summary"] = rule_summary;
     }
 
+    count = 0;
     for (auto const & c : codes)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -698,6 +691,7 @@ std::shared_ptr<Entity> Suppression::RuleDetails::RuleDetail::RuleSummary::get_c
 std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleDetails::RuleDetail::RuleSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -802,6 +796,7 @@ std::shared_ptr<Entity> Suppression::RuleDetails::RuleDetail::Codes::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Suppression::RuleDetails::RuleDetail::Codes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -985,6 +980,7 @@ std::shared_ptr<Entity> Correlator::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Correlator::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rules != nullptr)
     {
         children["rules"] = rules;
@@ -1120,14 +1116,6 @@ std::shared_ptr<Entity> Correlator::Rules::get_child_by_name(const std::string &
 {
     if(child_yang_name == "rule")
     {
-        for(auto const & c : rule)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Correlator::Rules::Rule>();
         c->parent = this;
         rule.push_back(c);
@@ -1140,9 +1128,14 @@ std::shared_ptr<Entity> Correlator::Rules::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Correlator::Rules::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rule)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1264,14 +1257,6 @@ std::shared_ptr<Entity> Correlator::Rules::Rule::get_child_by_name(const std::st
 {
     if(child_yang_name == "codes")
     {
-        for(auto const & c : codes)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Correlator::Rules::Rule::Codes>();
         c->parent = this;
         codes.push_back(c);
@@ -1284,9 +1269,14 @@ std::shared_ptr<Entity> Correlator::Rules::Rule::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Correlator::Rules::Rule::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : codes)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1419,6 +1409,7 @@ std::shared_ptr<Entity> Correlator::Rules::Rule::Codes::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Correlator::Rules::Rule::Codes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1526,6 +1517,7 @@ std::shared_ptr<Entity> Correlator::BufferStatus::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Correlator::BufferStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1621,14 +1613,6 @@ std::shared_ptr<Entity> Correlator::Alarms::get_child_by_name(const std::string 
 {
     if(child_yang_name == "alarm")
     {
-        for(auto const & c : alarm)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Correlator::Alarms::Alarm>();
         c->parent = this;
         alarm.push_back(c);
@@ -1641,9 +1625,14 @@ std::shared_ptr<Entity> Correlator::Alarms::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Correlator::Alarms::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : alarm)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1741,6 +1730,7 @@ std::shared_ptr<Entity> Correlator::Alarms::Alarm::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Correlator::Alarms::Alarm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(alarm_info != nullptr)
     {
         children["alarm-info"] = alarm_info;
@@ -1878,6 +1868,7 @@ std::shared_ptr<Entity> Correlator::Alarms::Alarm::AlarmInfo::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Correlator::Alarms::Alarm::AlarmInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2053,14 +2044,6 @@ std::shared_ptr<Entity> Correlator::RuleSetSummaries::get_child_by_name(const st
 {
     if(child_yang_name == "rule-set-summary")
     {
-        for(auto const & c : rule_set_summary)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Correlator::RuleSetSummaries::RuleSetSummary>();
         c->parent = this;
         rule_set_summary.push_back(c);
@@ -2073,9 +2056,14 @@ std::shared_ptr<Entity> Correlator::RuleSetSummaries::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSetSummaries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rule_set_summary)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2155,6 +2143,7 @@ std::shared_ptr<Entity> Correlator::RuleSetSummaries::RuleSetSummary::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSetSummaries::RuleSetSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2250,14 +2239,6 @@ std::shared_ptr<Entity> Correlator::RuleSetDetails::get_child_by_name(const std:
 {
     if(child_yang_name == "rule-set-detail")
     {
-        for(auto const & c : rule_set_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Correlator::RuleSetDetails::RuleSetDetail>();
         c->parent = this;
         rule_set_detail.push_back(c);
@@ -2270,9 +2251,14 @@ std::shared_ptr<Entity> Correlator::RuleSetDetails::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSetDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rule_set_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2358,14 +2344,6 @@ std::shared_ptr<Entity> Correlator::RuleSetDetails::RuleSetDetail::get_child_by_
 {
     if(child_yang_name == "rules")
     {
-        for(auto const & c : rules)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Correlator::RuleSetDetails::RuleSetDetail::Rules>();
         c->parent = this;
         rules.push_back(c);
@@ -2378,9 +2356,14 @@ std::shared_ptr<Entity> Correlator::RuleSetDetails::RuleSetDetail::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSetDetails::RuleSetDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rules)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2481,6 +2464,7 @@ std::shared_ptr<Entity> Correlator::RuleSetDetails::RuleSetDetail::Rules::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSetDetails::RuleSetDetail::Rules::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2596,14 +2580,6 @@ std::shared_ptr<Entity> Correlator::RuleDetails::get_child_by_name(const std::st
 {
     if(child_yang_name == "rule-detail")
     {
-        for(auto const & c : rule_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Correlator::RuleDetails::RuleDetail>();
         c->parent = this;
         rule_detail.push_back(c);
@@ -2616,9 +2592,14 @@ std::shared_ptr<Entity> Correlator::RuleDetails::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rule_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2766,14 +2747,6 @@ std::shared_ptr<Entity> Correlator::RuleDetails::RuleDetail::get_child_by_name(c
 
     if(child_yang_name == "codes")
     {
-        for(auto const & c : codes)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Correlator::RuleDetails::RuleDetail::Codes>();
         c->parent = this;
         codes.push_back(c);
@@ -2786,14 +2759,19 @@ std::shared_ptr<Entity> Correlator::RuleDetails::RuleDetail::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleDetails::RuleDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rule_summary != nullptr)
     {
         children["rule-summary"] = rule_summary;
     }
 
+    count = 0;
     for (auto const & c : codes)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2960,6 +2938,7 @@ std::shared_ptr<Entity> Correlator::RuleDetails::RuleDetail::RuleSummary::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleDetails::RuleDetail::RuleSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3074,6 +3053,7 @@ std::shared_ptr<Entity> Correlator::RuleDetails::RuleDetail::Codes::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleDetails::RuleDetail::Codes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3179,14 +3159,6 @@ std::shared_ptr<Entity> Correlator::RuleSummaries::get_child_by_name(const std::
 {
     if(child_yang_name == "rule-summary")
     {
-        for(auto const & c : rule_summary)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Correlator::RuleSummaries::RuleSummary>();
         c->parent = this;
         rule_summary.push_back(c);
@@ -3199,9 +3171,14 @@ std::shared_ptr<Entity> Correlator::RuleSummaries::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSummaries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rule_summary)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3293,6 +3270,7 @@ std::shared_ptr<Entity> Correlator::RuleSummaries::RuleSummary::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Correlator::RuleSummaries::RuleSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

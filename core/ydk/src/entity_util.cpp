@@ -38,7 +38,7 @@ std::string get_relative_entity_path(const Entity* current_node, const Entity* a
     path_buffer << path;
     if(ancestor == nullptr)
     {
-        throw(YCPPInvalidArgumentError{"ancestor should not be null."});
+        throw(YInvalidArgumentError{"ancestor should not be null."});
     }
     auto p = current_node->parent;
     std::vector<Entity*> parents {};
@@ -48,7 +48,7 @@ std::string get_relative_entity_path(const Entity* current_node, const Entity* a
     }
 
     if (p == nullptr) {
-        throw(YCPPInvalidArgumentError{"parent is not in the ancestor hierarchy."});
+        throw(YInvalidArgumentError{"parent is not in the ancestor hierarchy."});
     }
 
     std::reverse(parents.begin(), parents.end());
@@ -96,7 +96,7 @@ static bool is_absolute_path(Entity* ancestor)
 //
 // @param[in] parent The ancestor relative to which the path is calculated or nullptr
 // @return EntityPath
-// @throws YCPPInvalidArgumentError if the parent is invalid
+// @throws YInvalidArgumentError if the parent is invalid
 
 const EntityPath get_entity_path(const Entity & entity, Entity* ancestor)
 {
@@ -105,7 +105,7 @@ const EntityPath get_entity_path(const Entity & entity, Entity* ancestor)
     {
         if(entity.has_list_ancestor)
         {
-            throw(YCPPInvalidArgumentError{"ancestor for entity cannot be nullptr as one of the ancestors is a list. Path: "+entity.get_segment_path()});
+            throw(YInvalidArgumentError{"ancestor for entity cannot be nullptr as one of the ancestors is a list. Path: "+entity.get_segment_path()});
         }
         auto a = entity.get_absolute_path();
         if(a.size() == 0)
@@ -121,7 +121,7 @@ const EntityPath get_entity_path(const Entity & entity, Entity* ancestor)
     {
         if(entity.is_top_level_class)
         {
-            throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+entity.get_segment_path()});
+            throw(YInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+entity.get_segment_path()});
         }
         path_buffer << get_relative_entity_path(&entity, ancestor, path_buffer.str());
     }

@@ -121,6 +121,7 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::Exec::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::Exec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(a1 != nullptr)
     {
         children["a1"] = a1;
@@ -237,6 +238,7 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::Exec::A1::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::Exec::A1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -383,6 +385,7 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::Exec::A2::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::Exec::A2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -529,6 +532,7 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::Exec::A3::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::Exec::A3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -675,6 +679,7 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::Exec::A4::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::Exec::A4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -820,6 +825,7 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::Eventmanager::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::Eventmanager::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -986,6 +992,7 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::Network::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(a1 != nullptr)
     {
         children["a1"] = a1;
@@ -1098,6 +1105,7 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::Network::A1::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::Network::A1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1230,6 +1238,7 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::Network::A2::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::Network::A2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1362,6 +1371,7 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::Network::A3::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::Network::A3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1494,6 +1504,7 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::Network::A4::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::Network::A4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1564,7 +1575,7 @@ bool Native::Aaa::Authorization::Network::A4::has_leaf_or_child_of_name(const st
 
 Native::Aaa::Authorization::AuthProxy::AuthProxy()
     :
-    default_(std::make_shared<Native::Aaa::Authorization::AuthProxy::Default_>())
+    default_(std::make_shared<Native::Aaa::Authorization::AuthProxy::Default>())
 {
     default_->parent = this;
 
@@ -1615,7 +1626,7 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::AuthProxy::get_child_by_name
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Aaa::Authorization::AuthProxy::Default_>();
+            default_ = std::make_shared<Native::Aaa::Authorization::AuthProxy::Default>();
         }
         return default_;
     }
@@ -1626,6 +1637,7 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::AuthProxy::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::AuthProxy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_ != nullptr)
     {
         children["default"] = default_;
@@ -1649,45 +1661,45 @@ bool Native::Aaa::Authorization::AuthProxy::has_leaf_or_child_of_name(const std:
     return false;
 }
 
-Native::Aaa::Authorization::AuthProxy::Default_::Default_()
+Native::Aaa::Authorization::AuthProxy::Default::Default()
     :
-    group(std::make_shared<Native::Aaa::Authorization::AuthProxy::Default_::Group>())
+    group(std::make_shared<Native::Aaa::Authorization::AuthProxy::Default::Group>())
 {
     group->parent = this;
 
     yang_name = "default"; yang_parent_name = "auth-proxy"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Aaa::Authorization::AuthProxy::Default_::~Default_()
+Native::Aaa::Authorization::AuthProxy::Default::~Default()
 {
 }
 
-bool Native::Aaa::Authorization::AuthProxy::Default_::has_data() const
+bool Native::Aaa::Authorization::AuthProxy::Default::has_data() const
 {
     return (group !=  nullptr && group->has_data());
 }
 
-bool Native::Aaa::Authorization::AuthProxy::Default_::has_operation() const
+bool Native::Aaa::Authorization::AuthProxy::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| (group !=  nullptr && group->has_operation());
 }
 
-std::string Native::Aaa::Authorization::AuthProxy::Default_::get_absolute_path() const
+std::string Native::Aaa::Authorization::AuthProxy::Default::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:authorization/auth-proxy/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Aaa::Authorization::AuthProxy::Default_::get_segment_path() const
+std::string Native::Aaa::Authorization::AuthProxy::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Authorization::AuthProxy::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Authorization::AuthProxy::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1696,13 +1708,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Authorization::AuthP
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Authorization::AuthProxy::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Aaa::Authorization::AuthProxy::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group")
     {
         if(group == nullptr)
         {
-            group = std::make_shared<Native::Aaa::Authorization::AuthProxy::Default_::Group>();
+            group = std::make_shared<Native::Aaa::Authorization::AuthProxy::Default::Group>();
         }
         return group;
     }
@@ -1710,9 +1722,10 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::AuthProxy::Default_::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::AuthProxy::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::AuthProxy::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(group != nullptr)
     {
         children["group"] = group;
@@ -1721,22 +1734,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::AuthP
     return children;
 }
 
-void Native::Aaa::Authorization::AuthProxy::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Aaa::Authorization::AuthProxy::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Aaa::Authorization::AuthProxy::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Aaa::Authorization::AuthProxy::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Aaa::Authorization::AuthProxy::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Aaa::Authorization::AuthProxy::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "group")
         return true;
     return false;
 }
 
-Native::Aaa::Authorization::AuthProxy::Default_::Group::Group()
+Native::Aaa::Authorization::AuthProxy::Default::Group::Group()
     :
     radius{YType::empty, "radius"},
     group_name{YType::str, "group-name"}
@@ -1745,38 +1758,38 @@ Native::Aaa::Authorization::AuthProxy::Default_::Group::Group()
     yang_name = "group"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Aaa::Authorization::AuthProxy::Default_::Group::~Group()
+Native::Aaa::Authorization::AuthProxy::Default::Group::~Group()
 {
 }
 
-bool Native::Aaa::Authorization::AuthProxy::Default_::Group::has_data() const
+bool Native::Aaa::Authorization::AuthProxy::Default::Group::has_data() const
 {
     return radius.is_set
 	|| group_name.is_set;
 }
 
-bool Native::Aaa::Authorization::AuthProxy::Default_::Group::has_operation() const
+bool Native::Aaa::Authorization::AuthProxy::Default::Group::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(radius.yfilter)
 	|| ydk::is_set(group_name.yfilter);
 }
 
-std::string Native::Aaa::Authorization::AuthProxy::Default_::Group::get_absolute_path() const
+std::string Native::Aaa::Authorization::AuthProxy::Default::Group::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:authorization/auth-proxy/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Aaa::Authorization::AuthProxy::Default_::Group::get_segment_path() const
+std::string Native::Aaa::Authorization::AuthProxy::Default::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "group";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Authorization::AuthProxy::Default_::Group::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Authorization::AuthProxy::Default::Group::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1787,18 +1800,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Authorization::AuthP
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Authorization::AuthProxy::Default_::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Aaa::Authorization::AuthProxy::Default::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::AuthProxy::Default_::Group::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::AuthProxy::Default::Group::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Aaa::Authorization::AuthProxy::Default_::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Aaa::Authorization::AuthProxy::Default::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "radius")
     {
@@ -1814,7 +1828,7 @@ void Native::Aaa::Authorization::AuthProxy::Default_::Group::set_value(const std
     }
 }
 
-void Native::Aaa::Authorization::AuthProxy::Default_::Group::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Aaa::Authorization::AuthProxy::Default::Group::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "radius")
     {
@@ -1826,7 +1840,7 @@ void Native::Aaa::Authorization::AuthProxy::Default_::Group::set_filter(const st
     }
 }
 
-bool Native::Aaa::Authorization::AuthProxy::Default_::Group::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Aaa::Authorization::AuthProxy::Default::Group::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "radius" || name == "group-name")
         return true;
@@ -1835,7 +1849,7 @@ bool Native::Aaa::Authorization::AuthProxy::Default_::Group::has_leaf_or_child_o
 
 Native::Aaa::Authorization::Onep::Onep()
     :
-    default_(std::make_shared<Native::Aaa::Authorization::Onep::Default_>())
+    default_(std::make_shared<Native::Aaa::Authorization::Onep::Default>())
 {
     default_->parent = this;
 
@@ -1886,7 +1900,7 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::Onep::get_child_by_name(cons
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Aaa::Authorization::Onep::Default_>();
+            default_ = std::make_shared<Native::Aaa::Authorization::Onep::Default>();
         }
         return default_;
     }
@@ -1897,6 +1911,7 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::Onep::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::Onep::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_ != nullptr)
     {
         children["default"] = default_;
@@ -1920,45 +1935,45 @@ bool Native::Aaa::Authorization::Onep::has_leaf_or_child_of_name(const std::stri
     return false;
 }
 
-Native::Aaa::Authorization::Onep::Default_::Default_()
+Native::Aaa::Authorization::Onep::Default::Default()
     :
-    group(std::make_shared<Native::Aaa::Authorization::Onep::Default_::Group>())
+    group(std::make_shared<Native::Aaa::Authorization::Onep::Default::Group>())
 {
     group->parent = this;
 
     yang_name = "default"; yang_parent_name = "onep"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Aaa::Authorization::Onep::Default_::~Default_()
+Native::Aaa::Authorization::Onep::Default::~Default()
 {
 }
 
-bool Native::Aaa::Authorization::Onep::Default_::has_data() const
+bool Native::Aaa::Authorization::Onep::Default::has_data() const
 {
     return (group !=  nullptr && group->has_data());
 }
 
-bool Native::Aaa::Authorization::Onep::Default_::has_operation() const
+bool Native::Aaa::Authorization::Onep::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| (group !=  nullptr && group->has_operation());
 }
 
-std::string Native::Aaa::Authorization::Onep::Default_::get_absolute_path() const
+std::string Native::Aaa::Authorization::Onep::Default::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:authorization/onep/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Aaa::Authorization::Onep::Default_::get_segment_path() const
+std::string Native::Aaa::Authorization::Onep::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Authorization::Onep::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Authorization::Onep::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1967,13 +1982,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Authorization::Onep:
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Authorization::Onep::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Aaa::Authorization::Onep::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group")
     {
         if(group == nullptr)
         {
-            group = std::make_shared<Native::Aaa::Authorization::Onep::Default_::Group>();
+            group = std::make_shared<Native::Aaa::Authorization::Onep::Default::Group>();
         }
         return group;
     }
@@ -1981,9 +1996,10 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::Onep::Default_::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::Onep::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::Onep::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(group != nullptr)
     {
         children["group"] = group;
@@ -1992,32 +2008,32 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::Onep:
     return children;
 }
 
-void Native::Aaa::Authorization::Onep::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Aaa::Authorization::Onep::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Aaa::Authorization::Onep::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Aaa::Authorization::Onep::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Aaa::Authorization::Onep::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Aaa::Authorization::Onep::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "group")
         return true;
     return false;
 }
 
-Native::Aaa::Authorization::Onep::Default_::Group::Group()
+Native::Aaa::Authorization::Onep::Default::Group::Group()
 {
 
     yang_name = "group"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Aaa::Authorization::Onep::Default_::Group::~Group()
+Native::Aaa::Authorization::Onep::Default::Group::~Group()
 {
 }
 
-bool Native::Aaa::Authorization::Onep::Default_::Group::has_data() const
+bool Native::Aaa::Authorization::Onep::Default::Group::has_data() const
 {
     for (std::size_t index=0; index<group_word.size(); index++)
     {
@@ -2027,7 +2043,7 @@ bool Native::Aaa::Authorization::Onep::Default_::Group::has_data() const
     return false;
 }
 
-bool Native::Aaa::Authorization::Onep::Default_::Group::has_operation() const
+bool Native::Aaa::Authorization::Onep::Default::Group::has_operation() const
 {
     for (std::size_t index=0; index<group_word.size(); index++)
     {
@@ -2037,21 +2053,21 @@ bool Native::Aaa::Authorization::Onep::Default_::Group::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Native::Aaa::Authorization::Onep::Default_::Group::get_absolute_path() const
+std::string Native::Aaa::Authorization::Onep::Default::Group::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:authorization/onep/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Aaa::Authorization::Onep::Default_::Group::get_segment_path() const
+std::string Native::Aaa::Authorization::Onep::Default::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "group";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Authorization::Onep::Default_::Group::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Authorization::Onep::Default::Group::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2060,19 +2076,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Authorization::Onep:
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Authorization::Onep::Default_::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Aaa::Authorization::Onep::Default::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "group-word")
     {
-        for(auto const & c : group_word)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Aaa::Authorization::Onep::Default_::Group::GroupWord>();
+        auto c = std::make_shared<Native::Aaa::Authorization::Onep::Default::Group::GroupWord>();
         c->parent = this;
         group_word.push_back(c);
         return c;
@@ -2081,33 +2089,38 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::Onep::Default_::Group::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::Onep::Default_::Group::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::Onep::Default::Group::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : group_word)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::Aaa::Authorization::Onep::Default_::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Aaa::Authorization::Onep::Default::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Aaa::Authorization::Onep::Default_::Group::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Aaa::Authorization::Onep::Default::Group::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Aaa::Authorization::Onep::Default_::Group::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Aaa::Authorization::Onep::Default::Group::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "group-word")
         return true;
     return false;
 }
 
-Native::Aaa::Authorization::Onep::Default_::Group::GroupWord::GroupWord()
+Native::Aaa::Authorization::Onep::Default::Group::GroupWord::GroupWord()
     :
     group_word{YType::str, "group-word"}
 {
@@ -2115,36 +2128,36 @@ Native::Aaa::Authorization::Onep::Default_::Group::GroupWord::GroupWord()
     yang_name = "group-word"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Aaa::Authorization::Onep::Default_::Group::GroupWord::~GroupWord()
+Native::Aaa::Authorization::Onep::Default::Group::GroupWord::~GroupWord()
 {
 }
 
-bool Native::Aaa::Authorization::Onep::Default_::Group::GroupWord::has_data() const
+bool Native::Aaa::Authorization::Onep::Default::Group::GroupWord::has_data() const
 {
     return group_word.is_set;
 }
 
-bool Native::Aaa::Authorization::Onep::Default_::Group::GroupWord::has_operation() const
+bool Native::Aaa::Authorization::Onep::Default::Group::GroupWord::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(group_word.yfilter);
 }
 
-std::string Native::Aaa::Authorization::Onep::Default_::Group::GroupWord::get_absolute_path() const
+std::string Native::Aaa::Authorization::Onep::Default::Group::GroupWord::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:authorization/onep/default/group/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Aaa::Authorization::Onep::Default_::Group::GroupWord::get_segment_path() const
+std::string Native::Aaa::Authorization::Onep::Default::Group::GroupWord::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "group-word" <<"[group-word='" <<group_word <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Authorization::Onep::Default_::Group::GroupWord::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Authorization::Onep::Default::Group::GroupWord::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2154,18 +2167,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Authorization::Onep:
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Authorization::Onep::Default_::Group::GroupWord::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Aaa::Authorization::Onep::Default::Group::GroupWord::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::Onep::Default_::Group::GroupWord::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::Onep::Default::Group::GroupWord::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Aaa::Authorization::Onep::Default_::Group::GroupWord::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Aaa::Authorization::Onep::Default::Group::GroupWord::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-word")
     {
@@ -2175,7 +2189,7 @@ void Native::Aaa::Authorization::Onep::Default_::Group::GroupWord::set_value(con
     }
 }
 
-void Native::Aaa::Authorization::Onep::Default_::Group::GroupWord::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Aaa::Authorization::Onep::Default::Group::GroupWord::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "group-word")
     {
@@ -2183,7 +2197,7 @@ void Native::Aaa::Authorization::Onep::Default_::Group::GroupWord::set_filter(co
     }
 }
 
-bool Native::Aaa::Authorization::Onep::Default_::Group::GroupWord::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Aaa::Authorization::Onep::Default::Group::GroupWord::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "group-word")
         return true;
@@ -2311,14 +2325,6 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::get_child_by_name(const std::st
 {
     if(child_yang_name == "commands")
     {
-        for(auto const & c : commands)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Aaa::Accounting::Commands>();
         c->parent = this;
         commands.push_back(c);
@@ -2327,14 +2333,6 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::get_child_by_name(const std::st
 
     if(child_yang_name == "connection")
     {
-        for(auto const & c : connection)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Aaa::Accounting::Connection>();
         c->parent = this;
         connection.push_back(c);
@@ -2352,14 +2350,6 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::get_child_by_name(const std::st
 
     if(child_yang_name == "identity")
     {
-        for(auto const & c : identity)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Aaa::Accounting::Identity>();
         c->parent = this;
         identity.push_back(c);
@@ -2368,14 +2358,6 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::get_child_by_name(const std::st
 
     if(child_yang_name == "exec")
     {
-        for(auto const & c : exec)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Aaa::Accounting::Exec>();
         c->parent = this;
         exec.push_back(c);
@@ -2393,14 +2375,6 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::get_child_by_name(const std::st
 
     if(child_yang_name == "network")
     {
-        for(auto const & c : network)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Aaa::Accounting::Network>();
         c->parent = this;
         network.push_back(c);
@@ -2449,14 +2423,23 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : commands)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : connection)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(delay_start != nullptr)
@@ -2464,14 +2447,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::get_chil
         children["delay-start"] = delay_start;
     }
 
+    count = 0;
     for (auto const & c : identity)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : exec)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(exec_submode != nullptr)
@@ -2479,9 +2470,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::get_chil
         children["exec-submode"] = exec_submode;
     }
 
+    count = 0;
     for (auto const & c : network)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(send != nullptr)
@@ -2593,6 +2588,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Commands::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Commands::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2747,6 +2743,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Connection::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Connection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(start_stop != nullptr)
     {
         children["start-stop"] = start_stop;
@@ -2847,6 +2844,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Connection::StartStop::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Connection::StartStop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2937,6 +2935,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Connection::StopOnly::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Connection::StopOnly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3034,6 +3033,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::DelayStart::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::DelayStart::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3141,6 +3141,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Identity::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Identity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(start_stop != nullptr)
     {
         children["start-stop"] = start_stop;
@@ -3226,6 +3227,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Identity::StartStop::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Identity::StartStop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3350,6 +3352,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Exec::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Exec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(start_stop != nullptr)
     {
         children["start-stop"] = start_stop;
@@ -3450,6 +3453,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Exec::StartStop::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Exec::StartStop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3540,6 +3544,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Exec::StopOnly::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Exec::StopOnly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3635,14 +3640,6 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::ExecSubmode::get_child_by_name(
 {
     if(child_yang_name == "exec")
     {
-        for(auto const & c : exec)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Aaa::Accounting::ExecSubmode::Exec>();
         c->parent = this;
         exec.push_back(c);
@@ -3655,9 +3652,14 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::ExecSubmode::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::ExecSubmode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : exec)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3747,6 +3749,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::ExecSubmode::Exec::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::ExecSubmode::Exec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(action_type != nullptr)
     {
         children["action-type"] = action_type;
@@ -3855,6 +3858,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::ExecSubmode::Exec::ActionType::
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::ExecSubmode::Exec::ActionType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(start_stop != nullptr)
     {
         children["start-stop"] = start_stop;
@@ -3945,6 +3949,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::ExecSubmode::Exec::ActionType::
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::ExecSubmode::Exec::ActionType::StartStop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4035,6 +4040,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::ExecSubmode::Exec::ActionType::
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::ExecSubmode::Exec::ActionType::StopOnly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4206,6 +4212,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Network::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(start_stop != nullptr)
     {
         children["start-stop"] = start_stop;
@@ -4337,6 +4344,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Network::StartStop::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Network::StartStop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4413,6 +4421,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Network::A1::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Network::A1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4489,6 +4498,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Network::A2::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Network::A2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4565,6 +4575,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Network::A3::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Network::A3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4641,6 +4652,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Network::A4::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Network::A4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4746,6 +4758,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Send::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Send::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(counters != nullptr)
     {
         children["counters"] = counters;
@@ -4829,6 +4842,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Send::Counters::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Send::Counters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4926,6 +4940,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Send::StopRecord::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Send::StopRecord::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authentication != nullptr)
     {
         children["authentication"] = authentication;
@@ -5035,6 +5050,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Send::StopRecord::Authenticatio
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Send::StopRecord::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(failure != nullptr)
     {
         children["failure"] = failure;
@@ -5118,6 +5134,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Send::StopRecord::Authenticatio
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Send::StopRecord::Authentication::Failure::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5209,6 +5226,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Send::StopRecord::Authenticatio
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Send::StopRecord::Authentication::Success::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(remote_server != nullptr)
     {
         children["remote-server"] = remote_server;
@@ -5287,6 +5305,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Send::StopRecord::Authenticatio
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Send::StopRecord::Authentication::Success::RemoteServer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5372,7 +5391,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::System::get_child_by_name(const
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Aaa::Accounting::System::Default_>();
+            default_ = std::make_shared<Native::Aaa::Accounting::System::Default>();
         }
         return default_;
     }
@@ -5383,6 +5402,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::System::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::System::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_ != nullptr)
     {
         children["default"] = default_;
@@ -5416,30 +5436,30 @@ bool Native::Aaa::Accounting::System::has_leaf_or_child_of_name(const std::strin
     return false;
 }
 
-Native::Aaa::Accounting::System::Default_::Default_()
+Native::Aaa::Accounting::System::Default::Default()
     :
     none{YType::empty, "none"},
     vrf{YType::str, "vrf"}
     	,
-    start_stop(std::make_shared<Native::Aaa::Accounting::System::Default_::StartStop>())
+    start_stop(std::make_shared<Native::Aaa::Accounting::System::Default::StartStop>())
 {
     start_stop->parent = this;
 
     yang_name = "default"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Aaa::Accounting::System::Default_::~Default_()
+Native::Aaa::Accounting::System::Default::~Default()
 {
 }
 
-bool Native::Aaa::Accounting::System::Default_::has_data() const
+bool Native::Aaa::Accounting::System::Default::has_data() const
 {
     return none.is_set
 	|| vrf.is_set
 	|| (start_stop !=  nullptr && start_stop->has_data());
 }
 
-bool Native::Aaa::Accounting::System::Default_::has_operation() const
+bool Native::Aaa::Accounting::System::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(none.yfilter)
@@ -5447,21 +5467,21 @@ bool Native::Aaa::Accounting::System::Default_::has_operation() const
 	|| (start_stop !=  nullptr && start_stop->has_operation());
 }
 
-std::string Native::Aaa::Accounting::System::Default_::get_absolute_path() const
+std::string Native::Aaa::Accounting::System::Default::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:accounting/system/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Aaa::Accounting::System::Default_::get_segment_path() const
+std::string Native::Aaa::Accounting::System::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::System::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::System::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5472,13 +5492,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::System::
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Accounting::System::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Aaa::Accounting::System::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "start-stop")
     {
         if(start_stop == nullptr)
         {
-            start_stop = std::make_shared<Native::Aaa::Accounting::System::Default_::StartStop>();
+            start_stop = std::make_shared<Native::Aaa::Accounting::System::Default::StartStop>();
         }
         return start_stop;
     }
@@ -5486,9 +5506,10 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::System::Default_::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::System::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::System::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(start_stop != nullptr)
     {
         children["start-stop"] = start_stop;
@@ -5497,7 +5518,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::System::
     return children;
 }
 
-void Native::Aaa::Accounting::System::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Aaa::Accounting::System::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "none")
     {
@@ -5513,7 +5534,7 @@ void Native::Aaa::Accounting::System::Default_::set_value(const std::string & va
     }
 }
 
-void Native::Aaa::Accounting::System::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Aaa::Accounting::System::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "none")
     {
@@ -5525,14 +5546,14 @@ void Native::Aaa::Accounting::System::Default_::set_filter(const std::string & v
     }
 }
 
-bool Native::Aaa::Accounting::System::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Aaa::Accounting::System::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "start-stop" || name == "none" || name == "vrf")
         return true;
     return false;
 }
 
-Native::Aaa::Accounting::System::Default_::StartStop::StartStop()
+Native::Aaa::Accounting::System::Default::StartStop::StartStop()
     :
     broadcast{YType::empty, "broadcast"},
     group{YType::str, "group"}
@@ -5541,38 +5562,38 @@ Native::Aaa::Accounting::System::Default_::StartStop::StartStop()
     yang_name = "start-stop"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Aaa::Accounting::System::Default_::StartStop::~StartStop()
+Native::Aaa::Accounting::System::Default::StartStop::~StartStop()
 {
 }
 
-bool Native::Aaa::Accounting::System::Default_::StartStop::has_data() const
+bool Native::Aaa::Accounting::System::Default::StartStop::has_data() const
 {
     return broadcast.is_set
 	|| group.is_set;
 }
 
-bool Native::Aaa::Accounting::System::Default_::StartStop::has_operation() const
+bool Native::Aaa::Accounting::System::Default::StartStop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(broadcast.yfilter)
 	|| ydk::is_set(group.yfilter);
 }
 
-std::string Native::Aaa::Accounting::System::Default_::StartStop::get_absolute_path() const
+std::string Native::Aaa::Accounting::System::Default::StartStop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:accounting/system/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Aaa::Accounting::System::Default_::StartStop::get_segment_path() const
+std::string Native::Aaa::Accounting::System::Default::StartStop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "start-stop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::System::Default_::StartStop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::System::Default::StartStop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5583,18 +5604,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::System::
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Accounting::System::Default_::StartStop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Aaa::Accounting::System::Default::StartStop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::System::Default_::StartStop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::System::Default::StartStop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Aaa::Accounting::System::Default_::StartStop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Aaa::Accounting::System::Default::StartStop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "broadcast")
     {
@@ -5610,7 +5632,7 @@ void Native::Aaa::Accounting::System::Default_::StartStop::set_value(const std::
     }
 }
 
-void Native::Aaa::Accounting::System::Default_::StartStop::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Aaa::Accounting::System::Default::StartStop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "broadcast")
     {
@@ -5622,7 +5644,7 @@ void Native::Aaa::Accounting::System::Default_::StartStop::set_filter(const std:
     }
 }
 
-bool Native::Aaa::Accounting::System::Default_::StartStop::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Aaa::Accounting::System::Default::StartStop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "broadcast" || name == "group")
         return true;
@@ -5684,6 +5706,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Update::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Update::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5714,7 +5737,7 @@ bool Native::Aaa::Accounting::Update::has_leaf_or_child_of_name(const std::strin
 
 Native::Aaa::Accounting::AuthProxy::AuthProxy()
     :
-    default_(std::make_shared<Native::Aaa::Accounting::AuthProxy::Default_>())
+    default_(std::make_shared<Native::Aaa::Accounting::AuthProxy::Default>())
 {
     default_->parent = this;
 
@@ -5765,7 +5788,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::AuthProxy::get_child_by_name(co
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Aaa::Accounting::AuthProxy::Default_>();
+            default_ = std::make_shared<Native::Aaa::Accounting::AuthProxy::Default>();
         }
         return default_;
     }
@@ -5776,6 +5799,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::AuthProxy::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::AuthProxy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_ != nullptr)
     {
         children["default"] = default_;
@@ -5799,45 +5823,45 @@ bool Native::Aaa::Accounting::AuthProxy::has_leaf_or_child_of_name(const std::st
     return false;
 }
 
-Native::Aaa::Accounting::AuthProxy::Default_::Default_()
+Native::Aaa::Accounting::AuthProxy::Default::Default()
     :
-    start_stop(std::make_shared<Native::Aaa::Accounting::AuthProxy::Default_::StartStop>())
+    start_stop(std::make_shared<Native::Aaa::Accounting::AuthProxy::Default::StartStop>())
 {
     start_stop->parent = this;
 
     yang_name = "default"; yang_parent_name = "auth-proxy"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Aaa::Accounting::AuthProxy::Default_::~Default_()
+Native::Aaa::Accounting::AuthProxy::Default::~Default()
 {
 }
 
-bool Native::Aaa::Accounting::AuthProxy::Default_::has_data() const
+bool Native::Aaa::Accounting::AuthProxy::Default::has_data() const
 {
     return (start_stop !=  nullptr && start_stop->has_data());
 }
 
-bool Native::Aaa::Accounting::AuthProxy::Default_::has_operation() const
+bool Native::Aaa::Accounting::AuthProxy::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| (start_stop !=  nullptr && start_stop->has_operation());
 }
 
-std::string Native::Aaa::Accounting::AuthProxy::Default_::get_absolute_path() const
+std::string Native::Aaa::Accounting::AuthProxy::Default::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:accounting/auth-proxy/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Aaa::Accounting::AuthProxy::Default_::get_segment_path() const
+std::string Native::Aaa::Accounting::AuthProxy::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::AuthProxy::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::AuthProxy::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5846,13 +5870,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::AuthProx
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Accounting::AuthProxy::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Aaa::Accounting::AuthProxy::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "start-stop")
     {
         if(start_stop == nullptr)
         {
-            start_stop = std::make_shared<Native::Aaa::Accounting::AuthProxy::Default_::StartStop>();
+            start_stop = std::make_shared<Native::Aaa::Accounting::AuthProxy::Default::StartStop>();
         }
         return start_stop;
     }
@@ -5860,9 +5884,10 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::AuthProxy::Default_::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::AuthProxy::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::AuthProxy::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(start_stop != nullptr)
     {
         children["start-stop"] = start_stop;
@@ -5871,22 +5896,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::AuthProx
     return children;
 }
 
-void Native::Aaa::Accounting::AuthProxy::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Aaa::Accounting::AuthProxy::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Aaa::Accounting::AuthProxy::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Aaa::Accounting::AuthProxy::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Aaa::Accounting::AuthProxy::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Aaa::Accounting::AuthProxy::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "start-stop")
         return true;
     return false;
 }
 
-Native::Aaa::Accounting::AuthProxy::Default_::StartStop::StartStop()
+Native::Aaa::Accounting::AuthProxy::Default::StartStop::StartStop()
     :
     group{YType::str, "group"}
 {
@@ -5894,36 +5919,36 @@ Native::Aaa::Accounting::AuthProxy::Default_::StartStop::StartStop()
     yang_name = "start-stop"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Aaa::Accounting::AuthProxy::Default_::StartStop::~StartStop()
+Native::Aaa::Accounting::AuthProxy::Default::StartStop::~StartStop()
 {
 }
 
-bool Native::Aaa::Accounting::AuthProxy::Default_::StartStop::has_data() const
+bool Native::Aaa::Accounting::AuthProxy::Default::StartStop::has_data() const
 {
     return group.is_set;
 }
 
-bool Native::Aaa::Accounting::AuthProxy::Default_::StartStop::has_operation() const
+bool Native::Aaa::Accounting::AuthProxy::Default::StartStop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(group.yfilter);
 }
 
-std::string Native::Aaa::Accounting::AuthProxy::Default_::StartStop::get_absolute_path() const
+std::string Native::Aaa::Accounting::AuthProxy::Default::StartStop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:accounting/auth-proxy/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Aaa::Accounting::AuthProxy::Default_::StartStop::get_segment_path() const
+std::string Native::Aaa::Accounting::AuthProxy::Default::StartStop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "start-stop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::AuthProxy::Default_::StartStop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::AuthProxy::Default::StartStop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5933,18 +5958,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::AuthProx
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Accounting::AuthProxy::Default_::StartStop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Aaa::Accounting::AuthProxy::Default::StartStop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::AuthProxy::Default_::StartStop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::AuthProxy::Default::StartStop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Aaa::Accounting::AuthProxy::Default_::StartStop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Aaa::Accounting::AuthProxy::Default::StartStop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group")
     {
@@ -5954,7 +5980,7 @@ void Native::Aaa::Accounting::AuthProxy::Default_::StartStop::set_value(const st
     }
 }
 
-void Native::Aaa::Accounting::AuthProxy::Default_::StartStop::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Aaa::Accounting::AuthProxy::Default::StartStop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "group")
     {
@@ -5962,7 +5988,7 @@ void Native::Aaa::Accounting::AuthProxy::Default_::StartStop::set_filter(const s
     }
 }
 
-bool Native::Aaa::Accounting::AuthProxy::Default_::StartStop::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Aaa::Accounting::AuthProxy::Default::StartStop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "group")
         return true;
@@ -6033,6 +6059,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(radius != nullptr)
     {
         children["radius"] = radius;
@@ -6155,6 +6182,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dynamic_author != nullptr)
     {
         children["dynamic-author"] = dynamic_author;
@@ -6271,14 +6299,6 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::DynamicAuthor::get_child_by
 {
     if(child_yang_name == "client")
     {
-        for(auto const & c : client)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Aaa::Server::Radius::DynamicAuthor::Client>();
         c->parent = this;
         client.push_back(c);
@@ -6318,9 +6338,14 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::DynamicAuthor::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::DynamicAuthor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : client)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(server_key != nullptr)
@@ -6446,14 +6471,6 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::DynamicAuthor::Client::get_
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Aaa::Server::Radius::DynamicAuthor::Client::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -6475,9 +6492,14 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::DynamicAuthor::Client::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::DynamicAuthor::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(server_key != nullptr)
@@ -6589,6 +6611,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::DynamicAuthor::Client::Vrf:
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::DynamicAuthor::Client::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(server_key != nullptr)
     {
         children["server-key"] = server_key;
@@ -6684,6 +6707,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::DynamicAuthor::Client::Vrf:
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::DynamicAuthor::Client::Vrf::ServerKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6774,6 +6798,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::DynamicAuthor::Client::Serv
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::DynamicAuthor::Client::ServerKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6871,6 +6896,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::DynamicAuthor::ServerKey::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::DynamicAuthor::ServerKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6977,6 +7003,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::DynamicAuthor::Domain::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::DynamicAuthor::Domain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(stripping != nullptr)
     {
         children["stripping"] = stripping;
@@ -7065,6 +7092,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::DynamicAuthor::Domain::Stri
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::DynamicAuthor::Domain::Stripping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7156,6 +7184,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::DynamicAuthor::Ignore::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::DynamicAuthor::Ignore::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7295,14 +7324,6 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::PolicyDevice::get_child_by_
 
     if(child_yang_name == "client")
     {
-        for(auto const & c : client)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::Client>();
         c->parent = this;
         client.push_back(c);
@@ -7333,6 +7354,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::PolicyDevice::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::PolicyDevice::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(accounting != nullptr)
     {
         children["accounting"] = accounting;
@@ -7343,9 +7365,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Poli
         children["authentication"] = authentication;
     }
 
+    count = 0;
     for (auto const & c : client)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(key != nullptr)
@@ -7431,6 +7457,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::PolicyDevice::Accounting::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::PolicyDevice::Accounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7514,6 +7541,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::PolicyDevice::Authenticatio
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::PolicyDevice::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7612,14 +7640,6 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::PolicyDevice::Client::get_c
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -7641,9 +7661,14 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::PolicyDevice::Client::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::PolicyDevice::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(key != nullptr)
@@ -7755,6 +7780,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key != nullptr)
     {
         children["key"] = key;
@@ -7850,6 +7876,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::Key::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7940,6 +7967,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::PolicyDevice::Client::Key::
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::PolicyDevice::Client::Key::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8037,6 +8065,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::PolicyDevice::Key::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::PolicyDevice::Key::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8130,6 +8159,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::PolicyDevice::MessageAuthen
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::PolicyDevice::MessageAuthenticator::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8430,6 +8460,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(accounting != nullptr)
     {
         children["accounting"] = accounting;
@@ -8602,6 +8633,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Accounting::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Accounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(method_list != nullptr)
     {
         children["method-list"] = method_list;
@@ -8694,6 +8726,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Accounting::MethodLi
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Accounting::MethodList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8801,6 +8834,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Authentication::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(method_list != nullptr)
     {
         children["method-list"] = method_list;
@@ -8893,6 +8927,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Authentication::Meth
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Authentication::MethodList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8995,6 +9030,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(format != nullptr)
     {
         children["format"] = format;
@@ -9087,6 +9123,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Fo
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mac_address != nullptr)
     {
         children["mac-address"] = mac_address;
@@ -9195,7 +9232,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Fo
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default_>();
+            default_ = std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default>();
         }
         return default_;
     }
@@ -9251,6 +9288,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Fo
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_ != nullptr)
     {
         children["default"] = default_;
@@ -9309,7 +9347,7 @@ bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::h
     return false;
 }
 
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default_::Default_()
+Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::Default()
     :
     type{YType::enumeration, "type"}
 {
@@ -9317,36 +9355,36 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Defaul
     yang_name = "default"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default_::~Default_()
+Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::~Default()
 {
 }
 
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default_::has_data() const
+bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::has_data() const
 {
     return type.is_set;
 }
 
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default_::has_operation() const
+bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter);
 }
 
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default_::get_absolute_path() const
+std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/calling-station-id/format/mac-address/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default_::get_segment_path() const
+std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9356,18 +9394,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -9377,7 +9416,7 @@ void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::D
     }
 }
 
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -9385,7 +9424,7 @@ void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::D
     }
 }
 
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "type")
         return true;
@@ -9447,6 +9486,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Fo
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9539,6 +9579,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Fo
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(delimiter != nullptr)
     {
         children["delimiter"] = delimiter;
@@ -9649,6 +9690,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Fo
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(colon != nullptr)
     {
         children["colon"] = colon;
@@ -9737,6 +9779,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Fo
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9820,6 +9863,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Fo
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9903,6 +9947,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Fo
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9995,6 +10040,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Fo
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(delimiter != nullptr)
     {
         children["delimiter"] = delimiter;
@@ -10105,6 +10151,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Fo
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(colon != nullptr)
     {
         children["colon"] = colon;
@@ -10193,6 +10240,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Fo
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10276,6 +10324,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Fo
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10359,6 +10408,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Fo
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10451,6 +10501,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Fo
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(delimiter != nullptr)
     {
         children["delimiter"] = delimiter;
@@ -10561,6 +10612,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Fo
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(colon != nullptr)
     {
         children["colon"] = colon;
@@ -10649,6 +10701,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Fo
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10732,6 +10785,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Fo
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10815,6 +10869,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Fo
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10898,6 +10953,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Fo
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Unformatted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10981,6 +11037,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::EapUser::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::EapUser::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11099,6 +11156,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Filter::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Filter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(access != nullptr)
     {
         children["access"] = access;
@@ -11222,6 +11280,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Filter::Access::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Access::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ack != nullptr)
     {
         children["ack"] = ack;
@@ -11322,6 +11381,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Filter::Access::Ack:
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Access::Ack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11447,6 +11507,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Filter::Access::Drop
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Access::Drop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11572,6 +11633,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Filter::Access::Igno
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Access::Ignore::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11720,6 +11782,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ack != nullptr)
     {
         children["ack"] = ack;
@@ -11820,6 +11883,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Ack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11945,6 +12009,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Drop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12070,6 +12135,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Ignore::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12187,6 +12253,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Filter::Attribute::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Filter::Attribute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12284,6 +12351,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Key::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Key::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12385,6 +12453,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::MessageAuthenticator
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::MessageAuthenticator::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ignore != nullptr)
     {
         children["ignore"] = ignore;
@@ -12463,6 +12532,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::MessageAuthenticator
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::MessageAuthenticator::Ignore::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12546,6 +12616,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Mode::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Mode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12629,6 +12700,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::PwlanSession::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::PwlanSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12712,6 +12784,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ReAuthentication::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ReAuthentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12809,6 +12882,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::SessionIdentifier::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::SessionIdentifier::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vsa != nullptr)
     {
         children["vsa"] = vsa;
@@ -12901,6 +12975,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::SessionIdentifier::V
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::SessionIdentifier::Vsa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13020,6 +13095,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Timer::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Timer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(disconnect != nullptr)
     {
         children["disconnect"] = disconnect;
@@ -13142,6 +13218,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::Timer::Disconnect::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::Timer::Disconnect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13237,14 +13314,6 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::get_child_
 {
     if(child_yang_name == "client")
     {
-        for(auto const & c : client)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client>();
         c->parent = this;
         client.push_back(c);
@@ -13257,9 +13326,14 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : client)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13492,6 +13566,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(accounting != nullptr)
     {
         children["accounting"] = accounting;
@@ -13642,6 +13717,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ac
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Accounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(method_list != nullptr)
     {
         children["method-list"] = method_list;
@@ -13727,6 +13803,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ac
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Accounting::MethodList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13827,6 +13904,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Au
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(method_list != nullptr)
     {
         children["method-list"] = method_list;
@@ -13912,6 +13990,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Au
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Authentication::MethodList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14007,6 +14086,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(format != nullptr)
     {
         children["format"] = format;
@@ -14092,6 +14172,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mac_address != nullptr)
     {
         children["mac-address"] = mac_address;
@@ -14193,7 +14274,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default_>();
+            default_ = std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default>();
         }
         return default_;
     }
@@ -14249,6 +14330,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_ != nullptr)
     {
         children["default"] = default_;
@@ -14307,7 +14389,7 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::For
     return false;
 }
 
-Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default_::Default_()
+Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default::Default()
     :
     type{YType::enumeration, "type"}
 {
@@ -14315,29 +14397,29 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
     yang_name = "default"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default_::~Default_()
+Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default::~Default()
 {
 }
 
-bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default_::has_data() const
+bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default::has_data() const
 {
     return type.is_set;
 }
 
-bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default_::has_operation() const
+bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter);
 }
 
-std::string Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default_::get_segment_path() const
+std::string Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14347,18 +14429,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Prox
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -14368,7 +14451,7 @@ void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::For
     }
 }
 
-void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -14376,7 +14459,7 @@ void Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::For
     }
 }
 
-bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "type")
         return true;
@@ -14431,6 +14514,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Ietf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14516,6 +14600,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(delimiter != nullptr)
     {
         children["delimiter"] = delimiter;
@@ -14619,6 +14704,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(colon != nullptr)
     {
         children["colon"] = colon;
@@ -14700,6 +14786,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14776,6 +14863,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14852,6 +14940,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14937,6 +15026,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(delimiter != nullptr)
     {
         children["delimiter"] = delimiter;
@@ -15040,6 +15130,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(colon != nullptr)
     {
         children["colon"] = colon;
@@ -15121,6 +15212,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15197,6 +15289,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15273,6 +15366,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15358,6 +15452,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(delimiter != nullptr)
     {
         children["delimiter"] = delimiter;
@@ -15461,6 +15556,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(colon != nullptr)
     {
         children["colon"] = colon;
@@ -15542,6 +15638,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15618,6 +15715,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15694,6 +15792,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15770,6 +15869,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ca
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Unformatted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15846,6 +15946,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Ea
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::EapUser::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15957,6 +16058,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Fi
 std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(access != nullptr)
     {
         children["access"] = access;
@@ -16104,8 +16206,8 @@ const Enum::YLeaf Native::Aaa::Accounting::Network::A4::Group::ldap {0, "ldap"};
 const Enum::YLeaf Native::Aaa::Accounting::Network::A4::Group::radius {1, "radius"};
 const Enum::YLeaf Native::Aaa::Accounting::Network::A4::Group::tacacs {2, "tacacs"};
 
-const Enum::YLeaf Native::Aaa::Accounting::System::Default_::StartStop::Group::radius {0, "radius"};
-const Enum::YLeaf Native::Aaa::Accounting::System::Default_::StartStop::Group::tacacs__PLUS__ {1, "tacacs+"};
+const Enum::YLeaf Native::Aaa::Accounting::System::Default::StartStop::Group::radius {0, "radius"};
+const Enum::YLeaf Native::Aaa::Accounting::System::Default::StartStop::Group::tacacs__PLUS__ {1, "tacacs+"};
 
 const Enum::YLeaf Native::Aaa::Server::Radius::DynamicAuthor::AuthType::all {0, "all"};
 const Enum::YLeaf Native::Aaa::Server::Radius::DynamicAuthor::AuthType::any {1, "any"};
@@ -16135,8 +16237,8 @@ const Enum::YLeaf Native::Aaa::Server::Radius::PolicyDevice::Key::Key_::Y_0 {0, 
 const Enum::YLeaf Native::Aaa::Server::Radius::PolicyDevice::Key::Key_::Y_6 {1, "6"};
 const Enum::YLeaf Native::Aaa::Server::Radius::PolicyDevice::Key::Key_::Y_7 {2, "7"};
 
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default_::Type::lower_case {0, "lower-case"};
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default_::Type::upper_case {1, "upper-case"};
+const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::Type::lower_case {0, "lower-case"};
+const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::Type::upper_case {1, "upper-case"};
 
 const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf::Type::lower_case {0, "lower-case"};
 const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf::Type::upper_case {1, "upper-case"};
@@ -16175,8 +16277,8 @@ const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::Key::Key_::Y_0 {0, "0"};
 const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::Key::Key_::Y_6 {1, "6"};
 const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::Key::Key_::Y_7 {2, "7"};
 
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default_::Type::lower_case {0, "lower-case"};
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default_::Type::upper_case {1, "upper-case"};
+const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default::Type::lower_case {0, "lower-case"};
+const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default::Type::upper_case {1, "upper-case"};
 
 const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Ietf::Type::lower_case {0, "lower-case"};
 const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Ietf::Type::upper_case {1, "upper-case"};

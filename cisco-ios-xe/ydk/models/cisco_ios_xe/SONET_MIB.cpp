@@ -263,6 +263,7 @@ std::shared_ptr<Entity> SONETMIB::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sonetmedium != nullptr)
     {
         children["sonetMedium"] = sonetmedium;
@@ -441,6 +442,7 @@ std::shared_ptr<Entity> SONETMIB::Sonetmedium::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetmedium::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -526,14 +528,6 @@ std::shared_ptr<Entity> SONETMIB::Sonetmediumtable::get_child_by_name(const std:
 {
     if(child_yang_name == "sonetMediumEntry")
     {
-        for(auto const & c : sonetmediumentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SONETMIB::Sonetmediumtable::Sonetmediumentry>();
         c->parent = this;
         sonetmediumentry.push_back(c);
@@ -546,9 +540,14 @@ std::shared_ptr<Entity> SONETMIB::Sonetmediumtable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetmediumtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sonetmediumentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -656,6 +655,7 @@ std::shared_ptr<Entity> SONETMIB::Sonetmediumtable::Sonetmediumentry::get_child_
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetmediumtable::Sonetmediumentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -819,14 +819,6 @@ std::shared_ptr<Entity> SONETMIB::Sonetsectioncurrenttable::get_child_by_name(co
 {
     if(child_yang_name == "sonetSectionCurrentEntry")
     {
-        for(auto const & c : sonetsectioncurrententry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SONETMIB::Sonetsectioncurrenttable::Sonetsectioncurrententry>();
         c->parent = this;
         sonetsectioncurrententry.push_back(c);
@@ -839,9 +831,14 @@ std::shared_ptr<Entity> SONETMIB::Sonetsectioncurrenttable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetsectioncurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sonetsectioncurrententry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -937,6 +934,7 @@ std::shared_ptr<Entity> SONETMIB::Sonetsectioncurrenttable::Sonetsectioncurrente
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetsectioncurrenttable::Sonetsectioncurrententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1072,14 +1070,6 @@ std::shared_ptr<Entity> SONETMIB::Sonetsectionintervaltable::get_child_by_name(c
 {
     if(child_yang_name == "sonetSectionIntervalEntry")
     {
-        for(auto const & c : sonetsectionintervalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SONETMIB::Sonetsectionintervaltable::Sonetsectionintervalentry>();
         c->parent = this;
         sonetsectionintervalentry.push_back(c);
@@ -1092,9 +1082,14 @@ std::shared_ptr<Entity> SONETMIB::Sonetsectionintervaltable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetsectionintervaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sonetsectionintervalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1194,6 +1189,7 @@ std::shared_ptr<Entity> SONETMIB::Sonetsectionintervaltable::Sonetsectioninterva
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetsectionintervaltable::Sonetsectionintervalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1339,14 +1335,6 @@ std::shared_ptr<Entity> SONETMIB::Sonetlinecurrenttable::get_child_by_name(const
 {
     if(child_yang_name == "sonetLineCurrentEntry")
     {
-        for(auto const & c : sonetlinecurrententry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SONETMIB::Sonetlinecurrenttable::Sonetlinecurrententry>();
         c->parent = this;
         sonetlinecurrententry.push_back(c);
@@ -1359,9 +1347,14 @@ std::shared_ptr<Entity> SONETMIB::Sonetlinecurrenttable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetlinecurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sonetlinecurrententry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1457,6 +1450,7 @@ std::shared_ptr<Entity> SONETMIB::Sonetlinecurrenttable::Sonetlinecurrententry::
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetlinecurrenttable::Sonetlinecurrententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1592,14 +1586,6 @@ std::shared_ptr<Entity> SONETMIB::Sonetlineintervaltable::get_child_by_name(cons
 {
     if(child_yang_name == "sonetLineIntervalEntry")
     {
-        for(auto const & c : sonetlineintervalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SONETMIB::Sonetlineintervaltable::Sonetlineintervalentry>();
         c->parent = this;
         sonetlineintervalentry.push_back(c);
@@ -1612,9 +1598,14 @@ std::shared_ptr<Entity> SONETMIB::Sonetlineintervaltable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetlineintervaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sonetlineintervalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1714,6 +1705,7 @@ std::shared_ptr<Entity> SONETMIB::Sonetlineintervaltable::Sonetlineintervalentry
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetlineintervaltable::Sonetlineintervalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1859,14 +1851,6 @@ std::shared_ptr<Entity> SONETMIB::Sonetfarendlinecurrenttable::get_child_by_name
 {
     if(child_yang_name == "sonetFarEndLineCurrentEntry")
     {
-        for(auto const & c : sonetfarendlinecurrententry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SONETMIB::Sonetfarendlinecurrenttable::Sonetfarendlinecurrententry>();
         c->parent = this;
         sonetfarendlinecurrententry.push_back(c);
@@ -1879,9 +1863,14 @@ std::shared_ptr<Entity> SONETMIB::Sonetfarendlinecurrenttable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetfarendlinecurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sonetfarendlinecurrententry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1973,6 +1962,7 @@ std::shared_ptr<Entity> SONETMIB::Sonetfarendlinecurrenttable::Sonetfarendlinecu
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetfarendlinecurrenttable::Sonetfarendlinecurrententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2098,14 +2088,6 @@ std::shared_ptr<Entity> SONETMIB::Sonetfarendlineintervaltable::get_child_by_nam
 {
     if(child_yang_name == "sonetFarEndLineIntervalEntry")
     {
-        for(auto const & c : sonetfarendlineintervalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SONETMIB::Sonetfarendlineintervaltable::Sonetfarendlineintervalentry>();
         c->parent = this;
         sonetfarendlineintervalentry.push_back(c);
@@ -2118,9 +2100,14 @@ std::shared_ptr<Entity> SONETMIB::Sonetfarendlineintervaltable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetfarendlineintervaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sonetfarendlineintervalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2220,6 +2207,7 @@ std::shared_ptr<Entity> SONETMIB::Sonetfarendlineintervaltable::Sonetfarendlinei
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetfarendlineintervaltable::Sonetfarendlineintervalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2365,14 +2353,6 @@ std::shared_ptr<Entity> SONETMIB::Sonetpathcurrenttable::get_child_by_name(const
 {
     if(child_yang_name == "sonetPathCurrentEntry")
     {
-        for(auto const & c : sonetpathcurrententry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SONETMIB::Sonetpathcurrenttable::Sonetpathcurrententry>();
         c->parent = this;
         sonetpathcurrententry.push_back(c);
@@ -2385,9 +2365,14 @@ std::shared_ptr<Entity> SONETMIB::Sonetpathcurrenttable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetpathcurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sonetpathcurrententry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2503,6 +2488,7 @@ std::shared_ptr<Entity> SONETMIB::Sonetpathcurrenttable::Sonetpathcurrententry::
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetpathcurrenttable::Sonetpathcurrententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2688,14 +2674,6 @@ std::shared_ptr<Entity> SONETMIB::Sonetpathintervaltable::get_child_by_name(cons
 {
     if(child_yang_name == "sonetPathIntervalEntry")
     {
-        for(auto const & c : sonetpathintervalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SONETMIB::Sonetpathintervaltable::Sonetpathintervalentry>();
         c->parent = this;
         sonetpathintervalentry.push_back(c);
@@ -2708,9 +2686,14 @@ std::shared_ptr<Entity> SONETMIB::Sonetpathintervaltable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetpathintervaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sonetpathintervalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2810,6 +2793,7 @@ std::shared_ptr<Entity> SONETMIB::Sonetpathintervaltable::Sonetpathintervalentry
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetpathintervaltable::Sonetpathintervalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2955,14 +2939,6 @@ std::shared_ptr<Entity> SONETMIB::Sonetfarendpathcurrenttable::get_child_by_name
 {
     if(child_yang_name == "sonetFarEndPathCurrentEntry")
     {
-        for(auto const & c : sonetfarendpathcurrententry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SONETMIB::Sonetfarendpathcurrenttable::Sonetfarendpathcurrententry>();
         c->parent = this;
         sonetfarendpathcurrententry.push_back(c);
@@ -2975,9 +2951,14 @@ std::shared_ptr<Entity> SONETMIB::Sonetfarendpathcurrenttable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetfarendpathcurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sonetfarendpathcurrententry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3069,6 +3050,7 @@ std::shared_ptr<Entity> SONETMIB::Sonetfarendpathcurrenttable::Sonetfarendpathcu
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetfarendpathcurrenttable::Sonetfarendpathcurrententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3194,14 +3176,6 @@ std::shared_ptr<Entity> SONETMIB::Sonetfarendpathintervaltable::get_child_by_nam
 {
     if(child_yang_name == "sonetFarEndPathIntervalEntry")
     {
-        for(auto const & c : sonetfarendpathintervalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SONETMIB::Sonetfarendpathintervaltable::Sonetfarendpathintervalentry>();
         c->parent = this;
         sonetfarendpathintervalentry.push_back(c);
@@ -3214,9 +3188,14 @@ std::shared_ptr<Entity> SONETMIB::Sonetfarendpathintervaltable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetfarendpathintervaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sonetfarendpathintervalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3316,6 +3295,7 @@ std::shared_ptr<Entity> SONETMIB::Sonetfarendpathintervaltable::Sonetfarendpathi
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetfarendpathintervaltable::Sonetfarendpathintervalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3461,14 +3441,6 @@ std::shared_ptr<Entity> SONETMIB::Sonetvtcurrenttable::get_child_by_name(const s
 {
     if(child_yang_name == "sonetVTCurrentEntry")
     {
-        for(auto const & c : sonetvtcurrententry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SONETMIB::Sonetvtcurrenttable::Sonetvtcurrententry>();
         c->parent = this;
         sonetvtcurrententry.push_back(c);
@@ -3481,9 +3453,14 @@ std::shared_ptr<Entity> SONETMIB::Sonetvtcurrenttable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetvtcurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sonetvtcurrententry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3583,6 +3560,7 @@ std::shared_ptr<Entity> SONETMIB::Sonetvtcurrenttable::Sonetvtcurrententry::get_
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetvtcurrenttable::Sonetvtcurrententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3728,14 +3706,6 @@ std::shared_ptr<Entity> SONETMIB::Sonetvtintervaltable::get_child_by_name(const 
 {
     if(child_yang_name == "sonetVTIntervalEntry")
     {
-        for(auto const & c : sonetvtintervalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SONETMIB::Sonetvtintervaltable::Sonetvtintervalentry>();
         c->parent = this;
         sonetvtintervalentry.push_back(c);
@@ -3748,9 +3718,14 @@ std::shared_ptr<Entity> SONETMIB::Sonetvtintervaltable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetvtintervaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sonetvtintervalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3850,6 +3825,7 @@ std::shared_ptr<Entity> SONETMIB::Sonetvtintervaltable::Sonetvtintervalentry::ge
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetvtintervaltable::Sonetvtintervalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3995,14 +3971,6 @@ std::shared_ptr<Entity> SONETMIB::Sonetfarendvtcurrenttable::get_child_by_name(c
 {
     if(child_yang_name == "sonetFarEndVTCurrentEntry")
     {
-        for(auto const & c : sonetfarendvtcurrententry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SONETMIB::Sonetfarendvtcurrenttable::Sonetfarendvtcurrententry>();
         c->parent = this;
         sonetfarendvtcurrententry.push_back(c);
@@ -4015,9 +3983,14 @@ std::shared_ptr<Entity> SONETMIB::Sonetfarendvtcurrenttable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetfarendvtcurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sonetfarendvtcurrententry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4109,6 +4082,7 @@ std::shared_ptr<Entity> SONETMIB::Sonetfarendvtcurrenttable::Sonetfarendvtcurren
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetfarendvtcurrenttable::Sonetfarendvtcurrententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4234,14 +4208,6 @@ std::shared_ptr<Entity> SONETMIB::Sonetfarendvtintervaltable::get_child_by_name(
 {
     if(child_yang_name == "sonetFarEndVTIntervalEntry")
     {
-        for(auto const & c : sonetfarendvtintervalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SONETMIB::Sonetfarendvtintervaltable::Sonetfarendvtintervalentry>();
         c->parent = this;
         sonetfarendvtintervalentry.push_back(c);
@@ -4254,9 +4220,14 @@ std::shared_ptr<Entity> SONETMIB::Sonetfarendvtintervaltable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetfarendvtintervaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sonetfarendvtintervalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4356,6 +4327,7 @@ std::shared_ptr<Entity> SONETMIB::Sonetfarendvtintervaltable::Sonetfarendvtinter
 std::map<std::string, std::shared_ptr<Entity>> SONETMIB::Sonetfarendvtintervaltable::Sonetfarendvtintervalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

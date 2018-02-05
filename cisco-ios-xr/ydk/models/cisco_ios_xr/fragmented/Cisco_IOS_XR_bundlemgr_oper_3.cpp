@@ -66,14 +66,6 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
 {
     if(child_yang_name == "items")
     {
-        for(auto const & c : items)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items>();
         c->parent = this;
         items.push_back(c);
@@ -86,9 +78,14 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : items)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -207,6 +204,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(member_evt_info != nullptr)
     {
         children["member-evt-info"] = member_evt_info;
@@ -316,6 +314,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items::MemberEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -419,6 +418,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items::MemberEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -543,6 +543,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items::BundleEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -646,6 +647,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items::BundleEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -770,6 +772,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items::RgEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -873,6 +876,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items::RgEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -995,6 +999,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(iccp_groups != nullptr)
     {
         children["iccp-groups"] = iccp_groups;
@@ -1075,14 +1080,6 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::g
 {
     if(child_yang_name == "iccp-group")
     {
-        for(auto const & c : iccp_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup>();
         c->parent = this;
         iccp_group.push_back(c);
@@ -1095,9 +1092,14 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::g
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : iccp_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1226,6 +1228,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(iccp_group_ancestor_bundle != nullptr)
     {
         children["iccp-group-ancestor-bundle"] = iccp_group_ancestor_bundle;
@@ -1336,6 +1339,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorBundle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(iccp_group_counters != nullptr)
     {
         children["iccp-group-counters"] = iccp_group_counters;
@@ -1491,6 +1495,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorBundle::IccpGroupCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(connection != nullptr)
     {
         children["connection"] = connection;
@@ -1648,6 +1653,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorBundle::IccpGroupCounters::Connection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1874,6 +1880,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorBundle::IccpGroupCounters::TlVs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2116,6 +2123,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorBundle::IccpGroupCounters::InvalidTlVs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2244,6 +2252,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorBundle::IccpGroupCounters::IccpMessages::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2390,6 +2399,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorBundle::IccpGroupCounters::IccpEvents::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2580,6 +2590,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorMember::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(iccp_group_counters != nullptr)
     {
         children["iccp-group-counters"] = iccp_group_counters;
@@ -2735,6 +2746,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorMember::IccpGroupCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(connection != nullptr)
     {
         children["connection"] = connection;
@@ -2892,6 +2904,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorMember::IccpGroupCounters::Connection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3118,6 +3131,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorMember::IccpGroupCounters::TlVs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3360,6 +3374,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorMember::IccpGroupCounters::InvalidTlVs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3488,6 +3503,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorMember::IccpGroupCounters::IccpMessages::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3634,6 +3650,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorMember::IccpGroupCounters::IccpEvents::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3824,6 +3841,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorNode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(iccp_group_counters != nullptr)
     {
         children["iccp-group-counters"] = iccp_group_counters;
@@ -3979,6 +3997,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorNode::IccpGroupCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(connection != nullptr)
     {
         children["connection"] = connection;
@@ -4136,6 +4155,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorNode::IccpGroupCounters::Connection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4362,6 +4382,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorNode::IccpGroupCounters::TlVs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4604,6 +4625,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorNode::IccpGroupCounters::InvalidTlVs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4732,6 +4754,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorNode::IccpGroupCounters::IccpMessages::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4878,6 +4901,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupAncestorNode::IccpGroupCounters::IccpEvents::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5068,6 +5092,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupItem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(iccp_group_counters != nullptr)
     {
         children["iccp-group-counters"] = iccp_group_counters;
@@ -5223,6 +5248,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(connection != nullptr)
     {
         children["connection"] = connection;
@@ -5380,6 +5406,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupCounters::Connection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5606,6 +5633,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupCounters::TlVs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5848,6 +5876,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupCounters::InvalidTlVs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5976,6 +6005,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupCounters::IccpMessages::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6122,6 +6152,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpIccpGroupCounters::IccpGroups::I
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup::IccpGroupItem::IccpGroupCounters::IccpEvents::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6327,6 +6358,7 @@ std::shared_ptr<Entity> BundleInformation::SystemId::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::SystemId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(system_id_global != nullptr)
     {
         children["system-id-global"] = system_id_global;
@@ -6419,6 +6451,7 @@ std::shared_ptr<Entity> BundleInformation::SystemId::SystemIdGlobal::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::SystemId::SystemIdGlobal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(system_id_global_item != nullptr)
     {
         children["system-id-global-item"] = system_id_global_item;
@@ -6519,6 +6552,7 @@ std::shared_ptr<Entity> BundleInformation::SystemId::SystemIdGlobal::SystemIdGlo
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::SystemId::SystemIdGlobal::SystemIdGlobalItem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(system_id != nullptr)
     {
         children["system-id"] = system_id;
@@ -6641,6 +6675,7 @@ std::shared_ptr<Entity> BundleInformation::SystemId::SystemIdGlobal::SystemIdGlo
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::SystemId::SystemIdGlobal::SystemIdGlobalItem::SystemId_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(system_mac_addr != nullptr)
     {
         children["system-mac-addr"] = system_mac_addr;
@@ -6729,6 +6764,7 @@ std::shared_ptr<Entity> BundleInformation::SystemId::SystemIdGlobal::SystemIdGlo
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::SystemId::SystemIdGlobal::SystemIdGlobalItem::SystemId_::SystemMacAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6814,14 +6850,6 @@ std::shared_ptr<Entity> BundleInformation::SystemId::SystemIdIccpGroups::get_chi
 {
     if(child_yang_name == "system-id-iccp-group")
     {
-        for(auto const & c : system_id_iccp_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::SystemId::SystemIdIccpGroups::SystemIdIccpGroup>();
         c->parent = this;
         system_id_iccp_group.push_back(c);
@@ -6834,9 +6862,14 @@ std::shared_ptr<Entity> BundleInformation::SystemId::SystemIdIccpGroups::get_chi
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::SystemId::SystemIdIccpGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : system_id_iccp_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6926,6 +6959,7 @@ std::shared_ptr<Entity> BundleInformation::SystemId::SystemIdIccpGroups::SystemI
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::SystemId::SystemIdIccpGroups::SystemIdIccpGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(system_id_iccp_group_item != nullptr)
     {
         children["system-id-iccp-group-item"] = system_id_iccp_group_item;
@@ -7029,6 +7063,7 @@ std::shared_ptr<Entity> BundleInformation::SystemId::SystemIdIccpGroups::SystemI
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::SystemId::SystemIdIccpGroups::SystemIdIccpGroup::SystemIdIccpGroupItem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(system_id != nullptr)
     {
         children["system-id"] = system_id;
@@ -7144,6 +7179,7 @@ std::shared_ptr<Entity> BundleInformation::SystemId::SystemIdIccpGroups::SystemI
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::SystemId::SystemIdIccpGroups::SystemIdIccpGroup::SystemIdIccpGroupItem::SystemId_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(system_mac_addr != nullptr)
     {
         children["system-mac-addr"] = system_mac_addr;
@@ -7225,6 +7261,7 @@ std::shared_ptr<Entity> BundleInformation::SystemId::SystemIdIccpGroups::SystemI
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::SystemId::SystemIdIccpGroups::SystemIdIccpGroup::SystemIdIccpGroupItem::SystemId_::SystemMacAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7356,6 +7393,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(iccp_groups != nullptr)
     {
         children["iccp-groups"] = iccp_groups;
@@ -7451,14 +7489,6 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::IccpGroups::get_
 {
     if(child_yang_name == "iccp-group")
     {
-        for(auto const & c : iccp_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup>();
         c->parent = this;
         iccp_group.push_back(c);
@@ -7471,9 +7501,14 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::IccpGroups::get_
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::IccpGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : iccp_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7563,6 +7598,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::IccpGroups::Iccp
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(iccp_group_item != nullptr)
     {
         children["iccp-group-item"] = iccp_group_item;
@@ -7646,14 +7682,6 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::IccpGroups::Iccp
 {
     if(child_yang_name == "items")
     {
-        for(auto const & c : items)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items>();
         c->parent = this;
         items.push_back(c);
@@ -7666,9 +7694,14 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::IccpGroups::Iccp
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : items)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7762,14 +7795,6 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::IccpGroups::Iccp
 
     if(child_yang_name == "node-data")
     {
-        for(auto const & c : node_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::NodeData>();
         c->parent = this;
         node_data.push_back(c);
@@ -7778,14 +7803,6 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::IccpGroups::Iccp
 
     if(child_yang_name == "member-data")
     {
-        for(auto const & c : member_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::MemberData>();
         c->parent = this;
         member_data.push_back(c);
@@ -7798,19 +7815,28 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::IccpGroups::Iccp
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bundle_data != nullptr)
     {
         children["bundle-data"] = bundle_data;
     }
 
+    count = 0;
     for (auto const & c : node_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : member_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7897,6 +7923,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::IccpGroups::Iccp
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::BundleData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mlacp_sync_requests_on_all_local_ports != nullptr)
     {
         children["mlacp-sync-requests-on-all-local-ports"] = mlacp_sync_requests_on_all_local_ports;
@@ -8006,6 +8033,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::IccpGroups::Iccp
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::BundleData::MlacpSyncRequestsOnAllLocalPorts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(received_sync_requests != nullptr)
     {
         children["received-sync-requests"] = received_sync_requests;
@@ -8105,6 +8133,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::IccpGroups::Iccp
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::BundleData::MlacpSyncRequestsOnAllLocalPorts::ReceivedSyncRequests::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8229,14 +8258,6 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::IccpGroups::Iccp
 
     if(child_yang_name == "member-data")
     {
-        for(auto const & c : member_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::NodeData::MemberData>();
         c->parent = this;
         member_data.push_back(c);
@@ -8249,6 +8270,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::IccpGroups::Iccp
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::NodeData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(node_data != nullptr)
     {
         children["node-data"] = node_data;
@@ -8259,9 +8281,13 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCou
         children["mlacp-sync-requests-on-all-foreign-ports"] = mlacp_sync_requests_on_all_foreign_ports;
     }
 
+    count = 0;
     for (auto const & c : member_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8334,6 +8360,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::IccpGroups::Iccp
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::NodeData::NodeData_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8438,6 +8465,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::IccpGroups::Iccp
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::NodeData::MlacpSyncRequestsOnAllForeignPorts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(received_sync_requests != nullptr)
     {
         children["received-sync-requests"] = received_sync_requests;
@@ -8537,6 +8565,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::IccpGroups::Iccp
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::NodeData::MlacpSyncRequestsOnAllForeignPorts::ReceivedSyncRequests::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8647,6 +8676,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::IccpGroups::Iccp
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::NodeData::MemberData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mlacp_tlv_counters != nullptr)
     {
         children["mlacp-tlv-counters"] = mlacp_tlv_counters;
@@ -8770,6 +8800,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::IccpGroups::Iccp
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::NodeData::MemberData::MlacpTlvCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(received_sync_requests != nullptr)
     {
         children["received-sync-requests"] = received_sync_requests;
@@ -8929,6 +8960,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::IccpGroups::Iccp
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::NodeData::MemberData::MlacpTlvCounters::ReceivedSyncRequests::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9039,6 +9071,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::IccpGroups::Iccp
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::MemberData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mlacp_tlv_counters != nullptr)
     {
         children["mlacp-tlv-counters"] = mlacp_tlv_counters;
@@ -9162,6 +9195,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::IccpGroups::Iccp
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::MemberData::MlacpTlvCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(received_sync_requests != nullptr)
     {
         children["received-sync-requests"] = received_sync_requests;
@@ -9321,6 +9355,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::IccpGroups::Iccp
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::MemberData::MlacpTlvCounters::ReceivedSyncRequests::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9426,14 +9461,6 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Members::get_chi
 {
     if(child_yang_name == "member")
     {
-        for(auto const & c : member)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::MlacpMemberCounters::Members::Member>();
         c->parent = this;
         member.push_back(c);
@@ -9446,9 +9473,14 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Members::get_chi
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Members::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : member)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9538,6 +9570,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Members::Member:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Members::Member::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(member_item != nullptr)
     {
         children["member-item"] = member_item;
@@ -9621,14 +9654,6 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Members::Member:
 {
     if(child_yang_name == "items")
     {
-        for(auto const & c : items)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items>();
         c->parent = this;
         items.push_back(c);
@@ -9641,9 +9666,14 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Members::Member:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : items)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9737,14 +9767,6 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Members::Member:
 
     if(child_yang_name == "node-data")
     {
-        for(auto const & c : node_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::NodeData>();
         c->parent = this;
         node_data.push_back(c);
@@ -9753,14 +9775,6 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Members::Member:
 
     if(child_yang_name == "member-data")
     {
-        for(auto const & c : member_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::MemberData>();
         c->parent = this;
         member_data.push_back(c);
@@ -9773,19 +9787,28 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Members::Member:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bundle_data != nullptr)
     {
         children["bundle-data"] = bundle_data;
     }
 
+    count = 0;
     for (auto const & c : node_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : member_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9872,6 +9895,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Members::Member:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::BundleData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mlacp_sync_requests_on_all_local_ports != nullptr)
     {
         children["mlacp-sync-requests-on-all-local-ports"] = mlacp_sync_requests_on_all_local_ports;
@@ -9981,6 +10005,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Members::Member:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::BundleData::MlacpSyncRequestsOnAllLocalPorts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(received_sync_requests != nullptr)
     {
         children["received-sync-requests"] = received_sync_requests;
@@ -10080,6 +10105,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Members::Member:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::BundleData::MlacpSyncRequestsOnAllLocalPorts::ReceivedSyncRequests::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10204,14 +10230,6 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Members::Member:
 
     if(child_yang_name == "member-data")
     {
-        for(auto const & c : member_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::NodeData::MemberData>();
         c->parent = this;
         member_data.push_back(c);
@@ -10224,6 +10242,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Members::Member:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::NodeData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(node_data != nullptr)
     {
         children["node-data"] = node_data;
@@ -10234,9 +10253,13 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCou
         children["mlacp-sync-requests-on-all-foreign-ports"] = mlacp_sync_requests_on_all_foreign_ports;
     }
 
+    count = 0;
     for (auto const & c : member_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10309,6 +10332,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Members::Member:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::NodeData::NodeData_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10413,6 +10437,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Members::Member:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::NodeData::MlacpSyncRequestsOnAllForeignPorts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(received_sync_requests != nullptr)
     {
         children["received-sync-requests"] = received_sync_requests;
@@ -10512,6 +10537,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Members::Member:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::NodeData::MlacpSyncRequestsOnAllForeignPorts::ReceivedSyncRequests::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10622,6 +10648,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Members::Member:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::NodeData::MemberData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mlacp_tlv_counters != nullptr)
     {
         children["mlacp-tlv-counters"] = mlacp_tlv_counters;
@@ -10745,6 +10772,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Members::Member:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::NodeData::MemberData::MlacpTlvCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(received_sync_requests != nullptr)
     {
         children["received-sync-requests"] = received_sync_requests;
@@ -10904,6 +10932,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Members::Member:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::NodeData::MemberData::MlacpTlvCounters::ReceivedSyncRequests::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11014,6 +11043,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Members::Member:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::MemberData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mlacp_tlv_counters != nullptr)
     {
         children["mlacp-tlv-counters"] = mlacp_tlv_counters;
@@ -11137,6 +11167,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Members::Member:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::MemberData::MlacpTlvCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(received_sync_requests != nullptr)
     {
         children["received-sync-requests"] = received_sync_requests;
@@ -11296,6 +11327,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Members::Member:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::MemberData::MlacpTlvCounters::ReceivedSyncRequests::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11401,14 +11433,6 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Bundles::get_chi
 {
     if(child_yang_name == "bundle")
     {
-        for(auto const & c : bundle)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::MlacpMemberCounters::Bundles::Bundle>();
         c->parent = this;
         bundle.push_back(c);
@@ -11421,9 +11445,14 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Bundles::get_chi
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Bundles::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bundle)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11513,6 +11542,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Bundles::Bundle:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Bundles::Bundle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bundle_item != nullptr)
     {
         children["bundle-item"] = bundle_item;
@@ -11619,14 +11649,6 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Bundles::Bundle:
 
     if(child_yang_name == "node-data")
     {
-        for(auto const & c : node_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::NodeData>();
         c->parent = this;
         node_data.push_back(c);
@@ -11635,14 +11657,6 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Bundles::Bundle:
 
     if(child_yang_name == "member-data")
     {
-        for(auto const & c : member_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::MemberData>();
         c->parent = this;
         member_data.push_back(c);
@@ -11655,19 +11669,28 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Bundles::Bundle:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bundle_data != nullptr)
     {
         children["bundle-data"] = bundle_data;
     }
 
+    count = 0;
     for (auto const & c : node_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : member_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11754,6 +11777,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Bundles::Bundle:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::BundleData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mlacp_sync_requests_on_all_local_ports != nullptr)
     {
         children["mlacp-sync-requests-on-all-local-ports"] = mlacp_sync_requests_on_all_local_ports;
@@ -11863,6 +11887,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Bundles::Bundle:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::BundleData::MlacpSyncRequestsOnAllLocalPorts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(received_sync_requests != nullptr)
     {
         children["received-sync-requests"] = received_sync_requests;
@@ -11962,6 +11987,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Bundles::Bundle:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::BundleData::MlacpSyncRequestsOnAllLocalPorts::ReceivedSyncRequests::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12086,14 +12112,6 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Bundles::Bundle:
 
     if(child_yang_name == "member-data")
     {
-        for(auto const & c : member_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::NodeData::MemberData>();
         c->parent = this;
         member_data.push_back(c);
@@ -12106,6 +12124,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Bundles::Bundle:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::NodeData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(node_data != nullptr)
     {
         children["node-data"] = node_data;
@@ -12116,9 +12135,13 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCou
         children["mlacp-sync-requests-on-all-foreign-ports"] = mlacp_sync_requests_on_all_foreign_ports;
     }
 
+    count = 0;
     for (auto const & c : member_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12191,6 +12214,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Bundles::Bundle:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::NodeData::NodeData_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12295,6 +12319,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Bundles::Bundle:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::NodeData::MlacpSyncRequestsOnAllForeignPorts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(received_sync_requests != nullptr)
     {
         children["received-sync-requests"] = received_sync_requests;
@@ -12394,6 +12419,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Bundles::Bundle:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::NodeData::MlacpSyncRequestsOnAllForeignPorts::ReceivedSyncRequests::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12504,6 +12530,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Bundles::Bundle:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::NodeData::MemberData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mlacp_tlv_counters != nullptr)
     {
         children["mlacp-tlv-counters"] = mlacp_tlv_counters;
@@ -12627,6 +12654,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Bundles::Bundle:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::NodeData::MemberData::MlacpTlvCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(received_sync_requests != nullptr)
     {
         children["received-sync-requests"] = received_sync_requests;
@@ -12786,6 +12814,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Bundles::Bundle:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::NodeData::MemberData::MlacpTlvCounters::ReceivedSyncRequests::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12896,6 +12925,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Bundles::Bundle:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::MemberData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mlacp_tlv_counters != nullptr)
     {
         children["mlacp-tlv-counters"] = mlacp_tlv_counters;
@@ -13019,6 +13049,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Bundles::Bundle:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::MemberData::MlacpTlvCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(received_sync_requests != nullptr)
     {
         children["received-sync-requests"] = received_sync_requests;
@@ -13178,6 +13209,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Bundles::Bundle:
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::MemberData::MlacpTlvCounters::ReceivedSyncRequests::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13283,14 +13315,6 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Nodes::get_child
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::MlacpMemberCounters::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -13303,9 +13327,14 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Nodes::get_child
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13395,6 +13424,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Nodes::Node::get
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(node_item != nullptr)
     {
         children["node-item"] = node_item;
@@ -13478,14 +13508,6 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Nodes::Node::Nod
 {
     if(child_yang_name == "items")
     {
-        for(auto const & c : items)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items>();
         c->parent = this;
         items.push_back(c);
@@ -13498,9 +13520,14 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Nodes::Node::Nod
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : items)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13594,14 +13621,6 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Nodes::Node::Nod
 
     if(child_yang_name == "node-data")
     {
-        for(auto const & c : node_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::NodeData>();
         c->parent = this;
         node_data.push_back(c);
@@ -13610,14 +13629,6 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Nodes::Node::Nod
 
     if(child_yang_name == "member-data")
     {
-        for(auto const & c : member_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::MemberData>();
         c->parent = this;
         member_data.push_back(c);
@@ -13630,19 +13641,28 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Nodes::Node::Nod
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bundle_data != nullptr)
     {
         children["bundle-data"] = bundle_data;
     }
 
+    count = 0;
     for (auto const & c : node_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : member_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13729,6 +13749,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Nodes::Node::Nod
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::BundleData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mlacp_sync_requests_on_all_local_ports != nullptr)
     {
         children["mlacp-sync-requests-on-all-local-ports"] = mlacp_sync_requests_on_all_local_ports;
@@ -13838,6 +13859,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Nodes::Node::Nod
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::BundleData::MlacpSyncRequestsOnAllLocalPorts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(received_sync_requests != nullptr)
     {
         children["received-sync-requests"] = received_sync_requests;
@@ -13937,6 +13959,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Nodes::Node::Nod
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::BundleData::MlacpSyncRequestsOnAllLocalPorts::ReceivedSyncRequests::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14061,14 +14084,6 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Nodes::Node::Nod
 
     if(child_yang_name == "member-data")
     {
-        for(auto const & c : member_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::NodeData::MemberData>();
         c->parent = this;
         member_data.push_back(c);
@@ -14081,6 +14096,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Nodes::Node::Nod
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::NodeData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(node_data != nullptr)
     {
         children["node-data"] = node_data;
@@ -14091,9 +14107,13 @@ std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCou
         children["mlacp-sync-requests-on-all-foreign-ports"] = mlacp_sync_requests_on_all_foreign_ports;
     }
 
+    count = 0;
     for (auto const & c : member_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14166,6 +14186,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Nodes::Node::Nod
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::NodeData::NodeData_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14270,6 +14291,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Nodes::Node::Nod
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::NodeData::MlacpSyncRequestsOnAllForeignPorts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(received_sync_requests != nullptr)
     {
         children["received-sync-requests"] = received_sync_requests;
@@ -14369,6 +14391,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Nodes::Node::Nod
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::NodeData::MlacpSyncRequestsOnAllForeignPorts::ReceivedSyncRequests::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14479,6 +14502,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Nodes::Node::Nod
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::NodeData::MemberData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mlacp_tlv_counters != nullptr)
     {
         children["mlacp-tlv-counters"] = mlacp_tlv_counters;
@@ -14602,6 +14626,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Nodes::Node::Nod
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::NodeData::MemberData::MlacpTlvCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(received_sync_requests != nullptr)
     {
         children["received-sync-requests"] = received_sync_requests;
@@ -14761,6 +14786,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Nodes::Node::Nod
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::NodeData::MemberData::MlacpTlvCounters::ReceivedSyncRequests::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14871,6 +14897,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Nodes::Node::Nod
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::MemberData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mlacp_tlv_counters != nullptr)
     {
         children["mlacp-tlv-counters"] = mlacp_tlv_counters;
@@ -14994,6 +15021,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Nodes::Node::Nod
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::MemberData::MlacpTlvCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(received_sync_requests != nullptr)
     {
         children["received-sync-requests"] = received_sync_requests;
@@ -15153,6 +15181,7 @@ std::shared_ptr<Entity> BundleInformation::MlacpMemberCounters::Nodes::Node::Nod
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::MemberData::MlacpTlvCounters::ReceivedSyncRequests::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15258,6 +15287,7 @@ std::shared_ptr<Entity> LacpData::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> LacpData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(global != nullptr)
     {
         children["global"] = global;
@@ -15370,6 +15400,7 @@ std::shared_ptr<Entity> LacpData::Global::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> LacpData::Global::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(system_id != nullptr)
     {
         children["system-id"] = system_id;
@@ -15470,6 +15501,7 @@ std::shared_ptr<Entity> LacpData::Global::SystemId::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> LacpData::Global::SystemId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(system_id != nullptr)
     {
         children["system-id"] = system_id;
@@ -15592,6 +15624,7 @@ std::shared_ptr<Entity> LacpData::Global::SystemId::SystemId_::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> LacpData::Global::SystemId::SystemId_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(system_mac_addr != nullptr)
     {
         children["system-mac-addr"] = system_mac_addr;
@@ -15680,6 +15713,7 @@ std::shared_ptr<Entity> LacpData::Global::SystemId::SystemId_::SystemMacAddr::ge
 std::map<std::string, std::shared_ptr<Entity>> LacpData::Global::SystemId::SystemId_::SystemMacAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15765,6 +15799,7 @@ std::shared_ptr<Entity> Bundles::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> Bundles::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bundles != nullptr)
     {
         children["bundles"] = bundles;
@@ -15870,14 +15905,6 @@ std::shared_ptr<Entity> Bundles::Bundles_::get_child_by_name(const std::string &
 {
     if(child_yang_name == "bundle")
     {
-        for(auto const & c : bundle)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Bundles::Bundles_::Bundle>();
         c->parent = this;
         bundle.push_back(c);
@@ -15890,9 +15917,14 @@ std::shared_ptr<Entity> Bundles::Bundles_::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Bundles::Bundles_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bundle)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15995,6 +16027,7 @@ std::shared_ptr<Entity> Bundles::Bundles_::Bundle::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Bundles::Bundles_::Bundle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -16249,14 +16282,6 @@ std::shared_ptr<Entity> Bundles::Bundles_::Bundle::Data::get_child_by_name(const
 
     if(child_yang_name == "bfd-config")
     {
-        for(auto const & c : bfd_config)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Bundles::Bundles_::Bundle::Data::BfdConfig>();
         c->parent = this;
         bfd_config.push_back(c);
@@ -16269,14 +16294,19 @@ std::shared_ptr<Entity> Bundles::Bundles_::Bundle::Data::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Bundles::Bundles_::Bundle::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mac_address != nullptr)
     {
         children["mac-address"] = mac_address;
     }
 
+    count = 0;
     for (auto const & c : bfd_config)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16725,6 +16755,7 @@ std::shared_ptr<Entity> Bundles::Bundles_::Bundle::Data::MacAddress::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Bundles::Bundles_::Bundle::Data::MacAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16843,6 +16874,7 @@ std::shared_ptr<Entity> Bundles::Bundles_::Bundle::Data::BfdConfig::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Bundles::Bundles_::Bundle::Data::BfdConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination_address != nullptr)
     {
         children["destination-address"] = destination_address;
@@ -17002,6 +17034,7 @@ std::shared_ptr<Entity> Bundles::Bundles_::Bundle::Data::BfdConfig::DestinationA
 std::map<std::string, std::shared_ptr<Entity>> Bundles::Bundles_::Bundle::Data::BfdConfig::DestinationAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17100,14 +17133,6 @@ std::shared_ptr<Entity> Bundles::Bundles_::Bundle::Members::get_child_by_name(co
 {
     if(child_yang_name == "member")
     {
-        for(auto const & c : member)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Bundles::Bundles_::Bundle::Members::Member>();
         c->parent = this;
         member.push_back(c);
@@ -17120,9 +17145,14 @@ std::shared_ptr<Entity> Bundles::Bundles_::Bundle::Members::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Bundles::Bundles_::Bundle::Members::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : member)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17284,6 +17314,7 @@ std::shared_ptr<Entity> Bundles::Bundles_::Bundle::Members::Member::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Bundles::Bundles_::Bundle::Members::Member::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(counters != nullptr)
     {
         children["counters"] = counters;
@@ -17520,6 +17551,7 @@ std::shared_ptr<Entity> Bundles::Bundles_::Bundle::Members::Member::Counters::ge
 std::map<std::string, std::shared_ptr<Entity>> Bundles::Bundles_::Bundle::Members::Member::Counters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17752,6 +17784,7 @@ std::shared_ptr<Entity> Bundles::Bundles_::Bundle::Members::Member::LinkData::ge
 std::map<std::string, std::shared_ptr<Entity>> Bundles::Bundles_::Bundle::Members::Member::LinkData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17998,6 +18031,7 @@ std::shared_ptr<Entity> Bundles::Bundles_::Bundle::Members::Member::MemberMuxDat
 std::map<std::string, std::shared_ptr<Entity>> Bundles::Bundles_::Bundle::Members::Member::MemberMuxData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(member_mux_state_reason_data != nullptr)
     {
         children["member-mux-state-reason-data"] = member_mux_state_reason_data;
@@ -18123,6 +18157,7 @@ std::shared_ptr<Entity> Bundles::Bundles_::Bundle::Members::Member::MemberMuxDat
 std::map<std::string, std::shared_ptr<Entity>> Bundles::Bundles_::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18209,6 +18244,7 @@ std::shared_ptr<Entity> Bundles::Bundles_::Bundle::Members::Member::MacAddress::
 std::map<std::string, std::shared_ptr<Entity>> Bundles::Bundles_::Bundle::Members::Member::MacAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18307,6 +18343,7 @@ std::shared_ptr<Entity> LacpBundleMembers::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> LacpBundleMembers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -18417,14 +18454,6 @@ std::shared_ptr<Entity> LacpBundleMembers::Nodes::get_child_by_name(const std::s
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<LacpBundleMembers::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -18437,9 +18466,14 @@ std::shared_ptr<Entity> LacpBundleMembers::Nodes::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> LacpBundleMembers::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -18529,6 +18563,7 @@ std::shared_ptr<Entity> LacpBundleMembers::Nodes::Node::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> LacpBundleMembers::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(counters != nullptr)
     {
         children["counters"] = counters;
@@ -18634,6 +18669,7 @@ std::shared_ptr<Entity> LacpBundleMembers::Nodes::Node::Counters::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> LacpBundleMembers::Nodes::Node::Counters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18779,14 +18815,6 @@ std::shared_ptr<Entity> LacpBundleMembers::Members::get_child_by_name(const std:
 {
     if(child_yang_name == "member")
     {
-        for(auto const & c : member)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<LacpBundleMembers::Members::Member>();
         c->parent = this;
         member.push_back(c);
@@ -18799,9 +18827,14 @@ std::shared_ptr<Entity> LacpBundleMembers::Members::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> LacpBundleMembers::Members::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : member)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -18904,6 +18937,7 @@ std::shared_ptr<Entity> LacpBundleMembers::Members::Member::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> LacpBundleMembers::Members::Member::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -19046,6 +19080,7 @@ std::shared_ptr<Entity> LacpBundleMembers::Members::Member::Data::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> LacpBundleMembers::Members::Member::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19314,6 +19349,7 @@ std::shared_ptr<Entity> LacpBundleMembers::Members::Member::Counters::get_child_
 std::map<std::string, std::shared_ptr<Entity>> LacpBundleMembers::Members::Member::Counters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19529,6 +19565,7 @@ std::shared_ptr<Entity> BundlesAdjacency::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -19634,14 +19671,6 @@ std::shared_ptr<Entity> BundlesAdjacency::Nodes::get_child_by_name(const std::st
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundlesAdjacency::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -19654,9 +19683,14 @@ std::shared_ptr<Entity> BundlesAdjacency::Nodes::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -19759,6 +19793,7 @@ std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(brief != nullptr)
     {
         children["brief"] = brief;
@@ -19847,14 +19882,6 @@ std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Brief::get_child_by_name(
 {
     if(child_yang_name == "bundle-data")
     {
-        for(auto const & c : bundle_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundlesAdjacency::Nodes::Node::Brief::BundleData>();
         c->parent = this;
         bundle_data.push_back(c);
@@ -19867,9 +19894,14 @@ std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Brief::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Brief::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bundle_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -19956,14 +19988,6 @@ std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Brief::BundleData::get_ch
 {
     if(child_yang_name == "sub-interface")
     {
-        for(auto const & c : sub_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface>();
         c->parent = this;
         sub_interface.push_back(c);
@@ -19976,9 +20000,14 @@ std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Brief::BundleData::get_ch
 std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Brief::BundleData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sub_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -20101,6 +20130,7 @@ std::shared_ptr<Entity> BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInt
 std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(load_balance_data != nullptr)
     {
         children["load-balance-data"] = load_balance_data;

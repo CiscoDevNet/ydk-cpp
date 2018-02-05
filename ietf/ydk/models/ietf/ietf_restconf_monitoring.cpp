@@ -81,6 +81,7 @@ std::shared_ptr<Entity> RestconfState::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> RestconfState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(capabilities != nullptr)
     {
         children["capabilities"] = capabilities;
@@ -200,6 +201,7 @@ std::shared_ptr<Entity> RestconfState::Capabilities::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> RestconfState::Capabilities::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -283,14 +285,6 @@ std::shared_ptr<Entity> RestconfState::Streams::get_child_by_name(const std::str
 {
     if(child_yang_name == "stream")
     {
-        for(auto const & c : stream)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RestconfState::Streams::Stream>();
         c->parent = this;
         stream.push_back(c);
@@ -303,9 +297,14 @@ std::shared_ptr<Entity> RestconfState::Streams::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> RestconfState::Streams::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : stream)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -399,14 +398,6 @@ std::shared_ptr<Entity> RestconfState::Streams::Stream::get_child_by_name(const 
 {
     if(child_yang_name == "access")
     {
-        for(auto const & c : access)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RestconfState::Streams::Stream::Access>();
         c->parent = this;
         access.push_back(c);
@@ -419,9 +410,14 @@ std::shared_ptr<Entity> RestconfState::Streams::Stream::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> RestconfState::Streams::Stream::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : access)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -534,6 +530,7 @@ std::shared_ptr<Entity> RestconfState::Streams::Stream::Access::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> RestconfState::Streams::Stream::Access::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

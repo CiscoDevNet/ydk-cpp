@@ -179,22 +179,22 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit
         ydk::YLeaf source_address_mask; //type: string
         ydk::YLeaf destination_address; //type: string
         ydk::YLeaf destination_address_mask; //type: string
-        class Value_; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value_
+        class Value; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value
         class Mask; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask
         class Result; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value_> value_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value> value_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask> mask;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result> result;
         
 }; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value_ : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value : public ydk::Entity
 {
     public:
-        Value_();
-        ~Value_();
+        Value();
+        ~Value();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -218,14 +218,14 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit
         ydk::YLeaf fragment; //type: uint8
         ydk::YLeaf tos; //type: uint8
         ydk::YLeaf packet_length_range; //type: uint32
-        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags
+        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags> tcp_flags;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags> tcp_flags;
         
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value_
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags : public ydk::Entity
 {
     public:
         TcpFlags();
@@ -248,7 +248,7 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit
         ydk::YLeaf synchronization; //type: uint8
         ydk::YLeaf finish; //type: uint8
 
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags
 
 
 class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask : public ydk::Entity
@@ -517,22 +517,22 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Value_; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value_
+        class Value; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value
         class Mask; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask
         class Result; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value_> value_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value> value_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask> mask;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result> result;
         
 }; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value_ : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value : public ydk::Entity
 {
     public:
-        Value_();
-        ~Value_();
+        Value();
+        ~Value();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -556,14 +556,14 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit
         ydk::YLeaf destination_address; //type: string
         ydk::YLeaf layer4_destination_port; //type: uint16
         ydk::YLeaf packet_length_range; //type: uint8
-        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value_::TcpFlags
+        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value_::TcpFlags> tcp_flags;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags> tcp_flags;
         
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value_
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value_::TcpFlags : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags : public ydk::Entity
 {
     public:
         TcpFlags();
@@ -586,7 +586,7 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit
         ydk::YLeaf synchronization; //type: uint8
         ydk::YLeaf finish; //type: uint8
 
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value_::TcpFlags
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags
 
 
 class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask : public ydk::Entity
@@ -754,22 +754,22 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit
         ydk::YLeaf source_address_mask; //type: string
         ydk::YLeaf destination_address; //type: string
         ydk::YLeaf destination_address_mask; //type: string
-        class Value_; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value_
+        class Value; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value
         class Mask; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask
         class Result; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value_> value_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value> value_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask> mask;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result> result;
         
 }; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value_ : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value : public ydk::Entity
 {
     public:
-        Value_();
-        ~Value_();
+        Value();
+        ~Value();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -793,14 +793,14 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit
         ydk::YLeaf fragment; //type: uint8
         ydk::YLeaf tos; //type: uint8
         ydk::YLeaf packet_length_range; //type: uint32
-        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags
+        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags> tcp_flags;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags> tcp_flags;
         
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value_
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags : public ydk::Entity
 {
     public:
         TcpFlags();
@@ -823,7 +823,7 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit
         ydk::YLeaf synchronization; //type: uint8
         ydk::YLeaf finish; //type: uint8
 
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags
 
 
 class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask : public ydk::Entity
@@ -1141,22 +1141,22 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Sequence
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Value_; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value_
+        class Value; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value
         class Mask; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask
         class Result; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value_> value_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value> value_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask> mask;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result> result;
         
 }; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value_ : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value : public ydk::Entity
 {
     public:
-        Value_();
-        ~Value_();
+        Value();
+        ~Value();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1180,14 +1180,14 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Sequence
         ydk::YLeaf destination_address; //type: string
         ydk::YLeaf layer4_destination_port; //type: uint16
         ydk::YLeaf packet_length_range; //type: uint8
-        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value_::TcpFlags
+        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value_::TcpFlags> tcp_flags;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags> tcp_flags;
         
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value_
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value_::TcpFlags : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags : public ydk::Entity
 {
     public:
         TcpFlags();
@@ -1210,7 +1210,7 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Sequence
         ydk::YLeaf synchronization; //type: uint8
         ydk::YLeaf finish; //type: uint8
 
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value_::TcpFlags
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags
 
 
 class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask : public ydk::Entity
@@ -1378,22 +1378,22 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Sequence
         ydk::YLeaf source_address_mask; //type: string
         ydk::YLeaf destination_address; //type: string
         ydk::YLeaf destination_address_mask; //type: string
-        class Value_; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value_
+        class Value; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value
         class Mask; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask
         class Result; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value_> value_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value> value_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask> mask;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result> result;
         
 }; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value_ : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value : public ydk::Entity
 {
     public:
-        Value_();
-        ~Value_();
+        Value();
+        ~Value();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1417,14 +1417,14 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Sequence
         ydk::YLeaf fragment; //type: uint8
         ydk::YLeaf tos; //type: uint8
         ydk::YLeaf packet_length_range; //type: uint32
-        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags
+        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags> tcp_flags;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags> tcp_flags;
         
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value_
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags : public ydk::Entity
 {
     public:
         TcpFlags();
@@ -1447,7 +1447,7 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Sequence
         ydk::YLeaf synchronization; //type: uint8
         ydk::YLeaf finish; //type: uint8
 
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags
 
 
 class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask : public ydk::Entity
@@ -1716,22 +1716,22 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Sequence
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Value_; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value_
+        class Value; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value
         class Mask; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask
         class Result; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value_> value_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value> value_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask> mask;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result> result;
         
 }; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value_ : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value : public ydk::Entity
 {
     public:
-        Value_();
-        ~Value_();
+        Value();
+        ~Value();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1755,14 +1755,14 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Sequence
         ydk::YLeaf destination_address; //type: string
         ydk::YLeaf layer4_destination_port; //type: uint16
         ydk::YLeaf packet_length_range; //type: uint8
-        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value_::TcpFlags
+        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value_::TcpFlags> tcp_flags;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags> tcp_flags;
         
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value_
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value_::TcpFlags : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags : public ydk::Entity
 {
     public:
         TcpFlags();
@@ -1785,7 +1785,7 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Sequence
         ydk::YLeaf synchronization; //type: uint8
         ydk::YLeaf finish; //type: uint8
 
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value_::TcpFlags
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags
 
 
 class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask : public ydk::Entity
@@ -1953,22 +1953,22 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Sequence
         ydk::YLeaf source_address_mask; //type: string
         ydk::YLeaf destination_address; //type: string
         ydk::YLeaf destination_address_mask; //type: string
-        class Value_; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value_
+        class Value; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value
         class Mask; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask
         class Result; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value_> value_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value> value_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask> mask;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result> result;
         
 }; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value_ : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value : public ydk::Entity
 {
     public:
-        Value_();
-        ~Value_();
+        Value();
+        ~Value();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1992,14 +1992,14 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Sequence
         ydk::YLeaf fragment; //type: uint8
         ydk::YLeaf tos; //type: uint8
         ydk::YLeaf packet_length_range; //type: uint32
-        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags
+        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags> tcp_flags;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags> tcp_flags;
         
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value_
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags : public ydk::Entity
 {
     public:
         TcpFlags();
@@ -2022,7 +2022,7 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::Sequence
         ydk::YLeaf synchronization; //type: uint8
         ydk::YLeaf finish; //type: uint8
 
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags
 
 
 class AccessListHardware::Nodes::Node::Ingress::Ipv4::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask : public ydk::Entity
@@ -2597,22 +2597,22 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Value_; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value_
+        class Value; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value
         class Mask; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask
         class Result; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value_> value_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value> value_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask> mask;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result> result;
         
 }; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value_ : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value : public ydk::Entity
 {
     public:
-        Value_();
-        ~Value_();
+        Value();
+        ~Value();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2636,14 +2636,14 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit
         ydk::YLeaf destination_address; //type: string
         ydk::YLeaf layer4_destination_port; //type: uint16
         ydk::YLeaf packet_length_range; //type: uint8
-        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value_::TcpFlags
+        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value_::TcpFlags> tcp_flags;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags> tcp_flags;
         
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value_
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value_::TcpFlags : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags : public ydk::Entity
 {
     public:
         TcpFlags();
@@ -2666,7 +2666,7 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit
         ydk::YLeaf synchronization; //type: uint8
         ydk::YLeaf finish; //type: uint8
 
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value_::TcpFlags
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags
 
 
 class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask : public ydk::Entity
@@ -2834,22 +2834,22 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit
         ydk::YLeaf source_address_mask; //type: string
         ydk::YLeaf destination_address; //type: string
         ydk::YLeaf destination_address_mask; //type: string
-        class Value_; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value_
+        class Value; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value
         class Mask; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask
         class Result; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value_> value_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value> value_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask> mask;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result> result;
         
 }; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value_ : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value : public ydk::Entity
 {
     public:
-        Value_();
-        ~Value_();
+        Value();
+        ~Value();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2873,14 +2873,14 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit
         ydk::YLeaf fragment; //type: uint8
         ydk::YLeaf tos; //type: uint8
         ydk::YLeaf packet_length_range; //type: uint32
-        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags
+        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags> tcp_flags;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags> tcp_flags;
         
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value_
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags : public ydk::Entity
 {
     public:
         TcpFlags();
@@ -2903,7 +2903,7 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit
         ydk::YLeaf synchronization; //type: uint8
         ydk::YLeaf finish; //type: uint8
 
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags
 
 
 class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask : public ydk::Entity
@@ -3172,22 +3172,22 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Value_; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value_
+        class Value; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value
         class Mask; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask
         class Result; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value_> value_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value> value_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask> mask;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result> result;
         
 }; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value_ : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value : public ydk::Entity
 {
     public:
-        Value_();
-        ~Value_();
+        Value();
+        ~Value();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3211,14 +3211,14 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit
         ydk::YLeaf destination_address; //type: string
         ydk::YLeaf layer4_destination_port; //type: uint16
         ydk::YLeaf packet_length_range; //type: uint8
-        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value_::TcpFlags
+        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value_::TcpFlags> tcp_flags;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags> tcp_flags;
         
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value_
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value_::TcpFlags : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags : public ydk::Entity
 {
     public:
         TcpFlags();
@@ -3241,7 +3241,7 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit
         ydk::YLeaf synchronization; //type: uint8
         ydk::YLeaf finish; //type: uint8
 
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value_::TcpFlags
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags
 
 
 class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask : public ydk::Entity
@@ -3409,22 +3409,22 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit
         ydk::YLeaf source_address_mask; //type: string
         ydk::YLeaf destination_address; //type: string
         ydk::YLeaf destination_address_mask; //type: string
-        class Value_; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value_
+        class Value; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value
         class Mask; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask
         class Result; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value_> value_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value> value_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask> mask;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result> result;
         
 }; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value_ : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value : public ydk::Entity
 {
     public:
-        Value_();
-        ~Value_();
+        Value();
+        ~Value();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3448,14 +3448,14 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit
         ydk::YLeaf fragment; //type: uint8
         ydk::YLeaf tos; //type: uint8
         ydk::YLeaf packet_length_range; //type: uint32
-        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags
+        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags> tcp_flags;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags> tcp_flags;
         
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value_
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags : public ydk::Entity
 {
     public:
         TcpFlags();
@@ -3478,7 +3478,7 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit
         ydk::YLeaf synchronization; //type: uint8
         ydk::YLeaf finish; //type: uint8
 
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags
 
 
 class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask : public ydk::Entity
@@ -3747,22 +3747,22 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Value_; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value_
+        class Value; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value
         class Mask; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask
         class Result; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value_> value_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value> value_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask> mask;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result> result;
         
 }; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value_ : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value : public ydk::Entity
 {
     public:
-        Value_();
-        ~Value_();
+        Value();
+        ~Value();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3786,14 +3786,14 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit
         ydk::YLeaf destination_address; //type: string
         ydk::YLeaf layer4_destination_port; //type: uint16
         ydk::YLeaf packet_length_range; //type: uint8
-        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value_::TcpFlags
+        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value_::TcpFlags> tcp_flags;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags> tcp_flags;
         
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value_
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value_::TcpFlags : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags : public ydk::Entity
 {
     public:
         TcpFlags();
@@ -3816,7 +3816,7 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit
         ydk::YLeaf synchronization; //type: uint8
         ydk::YLeaf finish; //type: uint8
 
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value_::TcpFlags
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags
 
 
 class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask : public ydk::Entity
@@ -3984,22 +3984,22 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit
         ydk::YLeaf source_address_mask; //type: string
         ydk::YLeaf destination_address; //type: string
         ydk::YLeaf destination_address_mask; //type: string
-        class Value_; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value_
+        class Value; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value
         class Mask; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask
         class Result; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value_> value_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value> value_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask> mask;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result> result;
         
 }; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value_ : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value : public ydk::Entity
 {
     public:
-        Value_();
-        ~Value_();
+        Value();
+        ~Value();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -4023,14 +4023,14 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit
         ydk::YLeaf fragment; //type: uint8
         ydk::YLeaf tos; //type: uint8
         ydk::YLeaf packet_length_range; //type: uint32
-        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags
+        class TcpFlags; //type: AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags> tcp_flags;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ncs6k_acl_oper::AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags> tcp_flags;
         
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value_
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value
 
 
-class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags : public ydk::Entity
+class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags : public ydk::Entity
 {
     public:
         TcpFlags();
@@ -4053,7 +4053,7 @@ class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit
         ydk::YLeaf synchronization; //type: uint8
         ydk::YLeaf finish; //type: uint8
 
-}; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value_::TcpFlags
+}; // AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags
 
 
 class AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::CommonAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask : public ydk::Entity

@@ -107,6 +107,7 @@ std::shared_ptr<Entity> DRAFTMSDPMIB::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(msdp != nullptr)
     {
         children["msdp"] = msdp;
@@ -237,6 +238,7 @@ std::shared_ptr<Entity> DRAFTMSDPMIB::Msdp::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::Msdp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -352,14 +354,6 @@ std::shared_ptr<Entity> DRAFTMSDPMIB::Msdprequeststable::get_child_by_name(const
 {
     if(child_yang_name == "msdpRequestsEntry")
     {
-        for(auto const & c : msdprequestsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry>();
         c->parent = this;
         msdprequestsentry.push_back(c);
@@ -372,9 +366,14 @@ std::shared_ptr<Entity> DRAFTMSDPMIB::Msdprequeststable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::Msdprequeststable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : msdprequestsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -462,6 +461,7 @@ std::shared_ptr<Entity> DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::get_
 std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -577,14 +577,6 @@ std::shared_ptr<Entity> DRAFTMSDPMIB::Msdppeertable::get_child_by_name(const std
 {
     if(child_yang_name == "msdpPeerEntry")
     {
-        for(auto const & c : msdppeerentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DRAFTMSDPMIB::Msdppeertable::Msdppeerentry>();
         c->parent = this;
         msdppeerentry.push_back(c);
@@ -597,9 +589,14 @@ std::shared_ptr<Entity> DRAFTMSDPMIB::Msdppeertable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::Msdppeertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : msdppeerentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -799,6 +796,7 @@ std::shared_ptr<Entity> DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1194,14 +1192,6 @@ std::shared_ptr<Entity> DRAFTMSDPMIB::Msdpsacachetable::get_child_by_name(const 
 {
     if(child_yang_name == "msdpSACacheEntry")
     {
-        for(auto const & c : msdpsacacheentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry>();
         c->parent = this;
         msdpsacacheentry.push_back(c);
@@ -1214,9 +1204,14 @@ std::shared_ptr<Entity> DRAFTMSDPMIB::Msdpsacachetable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::Msdpsacachetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : msdpsacacheentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1328,6 +1323,7 @@ std::shared_ptr<Entity> DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::get_ch
 std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

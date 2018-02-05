@@ -81,6 +81,7 @@ std::shared_ptr<Entity> Fpd_::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Fpd_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -191,14 +192,6 @@ std::shared_ptr<Entity> Fpd_::Nodes::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fpd_::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -211,9 +204,14 @@ std::shared_ptr<Entity> Fpd_::Nodes::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Fpd_::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -303,6 +301,7 @@ std::shared_ptr<Entity> Fpd_::Nodes::Node::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Fpd_::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(devices != nullptr)
     {
         children["devices"] = devices;
@@ -386,14 +385,6 @@ std::shared_ptr<Entity> Fpd_::Nodes::Node::Devices::get_child_by_name(const std:
 {
     if(child_yang_name == "device")
     {
-        for(auto const & c : device)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fpd_::Nodes::Node::Devices::Device>();
         c->parent = this;
         device.push_back(c);
@@ -406,9 +397,14 @@ std::shared_ptr<Entity> Fpd_::Nodes::Node::Devices::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Fpd_::Nodes::Node::Devices::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : device)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -501,6 +497,7 @@ std::shared_ptr<Entity> Fpd_::Nodes::Node::Devices::Device::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Fpd_::Nodes::Node::Devices::Device::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -646,14 +643,6 @@ std::shared_ptr<Entity> Fpd_::Packages::get_child_by_name(const std::string & ch
 {
     if(child_yang_name == "all-package")
     {
-        for(auto const & c : all_package)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Fpd_::Packages::AllPackage>();
         c->parent = this;
         all_package.push_back(c);
@@ -666,9 +655,14 @@ std::shared_ptr<Entity> Fpd_::Packages::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> Fpd_::Packages::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : all_package)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -768,6 +762,7 @@ std::shared_ptr<Entity> Fpd_::Packages::AllPackage::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Fpd_::Packages::AllPackage::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

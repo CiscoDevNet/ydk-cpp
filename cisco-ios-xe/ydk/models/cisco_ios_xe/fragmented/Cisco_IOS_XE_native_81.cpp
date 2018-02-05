@@ -64,6 +64,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::Pa
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathOption::Protect::List::Bandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -189,6 +190,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::Pa
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathSelection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(invalidation != nullptr)
     {
         children["invalidation"] = invalidation;
@@ -309,6 +311,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::Pa
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathSelection::Invalidation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -395,6 +398,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::Pa
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::PathSelection::SegmentRouting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -475,6 +479,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::Pr
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -557,6 +562,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Tunnel_::Mpls::TrafficEng::RecordRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -641,6 +647,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Tunnel_::Rbscp::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Tunnel_::Rbscp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -771,6 +778,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Tunnel_::SrcPort::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Tunnel_::SrcPort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -865,6 +873,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Tunnel_::Udlr::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Tunnel_::Udlr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -969,6 +978,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Tunnel_::Vlan::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Tunnel_::Vlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1087,6 +1097,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Crypto::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Crypto::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(map != nullptr)
     {
         children["map"] = map;
@@ -1171,6 +1182,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Crypto::Map::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Crypto::Map::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1271,6 +1283,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Crypto::Ipsec::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Crypto::Ipsec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1383,6 +1396,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Cts::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Cts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(manual != nullptr)
     {
         children["manual"] = manual;
@@ -1504,6 +1518,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Cts::Manual::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Cts::Manual::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(policy != nullptr)
     {
         children["policy"] = policy;
@@ -1539,7 +1554,7 @@ bool Native::Interface::Tunnel::Cts::Manual::has_leaf_or_child_of_name(const std
 
 Native::Interface::Tunnel::Cts::Manual::Policy::Policy()
     :
-    static_(std::make_shared<Native::Interface::Tunnel::Cts::Manual::Policy::Static_>())
+    static_(std::make_shared<Native::Interface::Tunnel::Cts::Manual::Policy::Static>())
 {
     static_->parent = this;
 
@@ -1583,7 +1598,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Cts::Manual::Policy::get_chil
     {
         if(static_ == nullptr)
         {
-            static_ = std::make_shared<Native::Interface::Tunnel::Cts::Manual::Policy::Static_>();
+            static_ = std::make_shared<Native::Interface::Tunnel::Cts::Manual::Policy::Static>();
         }
         return static_;
     }
@@ -1594,6 +1609,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Cts::Manual::Policy::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Cts::Manual::Policy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(static_ != nullptr)
     {
         children["static"] = static_;
@@ -1617,7 +1633,7 @@ bool Native::Interface::Tunnel::Cts::Manual::Policy::has_leaf_or_child_of_name(c
     return false;
 }
 
-Native::Interface::Tunnel::Cts::Manual::Policy::Static_::Static_()
+Native::Interface::Tunnel::Cts::Manual::Policy::Static::Static()
     :
     sgt{YType::uint16, "sgt"},
     trusted{YType::empty, "trusted"}
@@ -1626,31 +1642,31 @@ Native::Interface::Tunnel::Cts::Manual::Policy::Static_::Static_()
     yang_name = "static"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::Tunnel::Cts::Manual::Policy::Static_::~Static_()
+Native::Interface::Tunnel::Cts::Manual::Policy::Static::~Static()
 {
 }
 
-bool Native::Interface::Tunnel::Cts::Manual::Policy::Static_::has_data() const
+bool Native::Interface::Tunnel::Cts::Manual::Policy::Static::has_data() const
 {
     return sgt.is_set
 	|| trusted.is_set;
 }
 
-bool Native::Interface::Tunnel::Cts::Manual::Policy::Static_::has_operation() const
+bool Native::Interface::Tunnel::Cts::Manual::Policy::Static::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(sgt.yfilter)
 	|| ydk::is_set(trusted.yfilter);
 }
 
-std::string Native::Interface::Tunnel::Cts::Manual::Policy::Static_::get_segment_path() const
+std::string Native::Interface::Tunnel::Cts::Manual::Policy::Static::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Tunnel::Cts::Manual::Policy::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Tunnel::Cts::Manual::Policy::Static::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1661,18 +1677,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Tunnel::Cts::M
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Tunnel::Cts::Manual::Policy::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Tunnel::Cts::Manual::Policy::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Cts::Manual::Policy::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Cts::Manual::Policy::Static::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Interface::Tunnel::Cts::Manual::Policy::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Tunnel::Cts::Manual::Policy::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sgt")
     {
@@ -1688,7 +1705,7 @@ void Native::Interface::Tunnel::Cts::Manual::Policy::Static_::set_value(const st
     }
 }
 
-void Native::Interface::Tunnel::Cts::Manual::Policy::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Tunnel::Cts::Manual::Policy::Static::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "sgt")
     {
@@ -1700,7 +1717,7 @@ void Native::Interface::Tunnel::Cts::Manual::Policy::Static_::set_filter(const s
     }
 }
 
-bool Native::Interface::Tunnel::Cts::Manual::Policy::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Tunnel::Cts::Manual::Policy::Static::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sgt" || name == "trusted")
         return true;
@@ -1757,14 +1774,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Cts::Manual::Sap::get_child_b
 {
     if(child_yang_name == "pmk")
     {
-        for(auto const & c : pmk)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Cts::Manual::Sap::Pmk>();
         c->parent = this;
         pmk.push_back(c);
@@ -1777,9 +1786,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Cts::Manual::Sap::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Cts::Manual::Sap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : pmk)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1862,6 +1876,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mode_list != nullptr)
     {
         children["mode-list"] = mode_list;
@@ -1963,6 +1978,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeLi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(gcm_encrypt != nullptr)
     {
         children["gcm-encrypt"] = gcm_encrypt;
@@ -2047,6 +2063,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeLi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(gmac != nullptr)
     {
         children["gmac"] = gmac;
@@ -2118,6 +2135,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeLi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::GcmEncrypt::Gmac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2202,6 +2220,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeLi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::NoEncap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(gmac != nullptr)
     {
         children["gmac"] = gmac;
@@ -2273,6 +2292,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeLi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2349,6 +2369,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Cts::Manual::Propagate::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Cts::Manual::Propagate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2453,6 +2474,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Cts::RoleBased::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Cts::RoleBased::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sgt_map != nullptr)
     {
         children["sgt-map"] = sgt_map;
@@ -2546,6 +2568,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Cts::RoleBased::SgtMap::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Cts::RoleBased::SgtMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2641,6 +2664,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Performance::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Performance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(monitor != nullptr)
     {
         children["monitor"] = monitor;
@@ -2723,6 +2747,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Performance::Monitor::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Performance::Monitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2819,6 +2844,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::ServicePolicy::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::ServicePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(type != nullptr)
     {
         children["type"] = type;
@@ -2955,6 +2981,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::ServicePolicy::Type::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::ServicePolicy::Type::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(control != nullptr)
     {
         children["control"] = control;
@@ -3036,6 +3063,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::ServicePolicy::Type::Control:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::ServicePolicy::Type::Control::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3116,6 +3144,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::ServicePolicy::Type::Performa
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::ServicePolicy::Type::PerformanceMonitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3224,6 +3253,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::ServicePolicy::Type::ServiceC
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::ServicePolicy::Type::ServiceChain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -3300,6 +3330,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::ServicePolicy::Type::ServiceC
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::ServicePolicy::Type::ServiceChain::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3376,6 +3407,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::ServicePolicy::Type::ServiceC
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::ServicePolicy::Type::ServiceChain::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3466,6 +3498,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Lisp::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Lisp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mobility != nullptr)
     {
         children["mobility"] = mobility;
@@ -3582,6 +3615,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Lisp::Mobility::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Lisp::Mobility::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dynamic_eid != nullptr)
     {
         children["dynamic-eid"] = dynamic_eid;
@@ -3671,6 +3705,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Lisp::Mobility::DynamicEid::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Lisp::Mobility::DynamicEid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3767,6 +3802,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Lisp::Mobility::Discover::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Lisp::Mobility::Discover::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3847,6 +3883,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Lisp::Mobility::Liveness::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Lisp::Mobility::Liveness::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4015,14 +4052,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::get_child_by_name(con
 {
     if(child_yang_name == "process-id")
     {
-        for(auto const & c : process_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ospfv3::ProcessId>();
         c->parent = this;
         process_id.push_back(c);
@@ -4103,14 +4132,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::get_child_by_name(con
 
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ospfv3::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -4141,9 +4162,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : process_id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(authentication != nullptr)
@@ -4186,9 +4212,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3
         children["multi-area"] = multi_area;
     }
 
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(network != nullptr)
@@ -4505,14 +4535,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::get_child_
 
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ospfv3::ProcessId::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -4570,6 +4592,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authentication != nullptr)
     {
         children["authentication"] = authentication;
@@ -4615,9 +4638,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3
         children["multi-area"] = multi_area;
     }
 
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(network != nullptr)
@@ -4775,6 +4802,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Authentica
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4861,6 +4889,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Bfd::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4950,6 +4979,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dynamic != nullptr)
     {
         children["dynamic"] = dynamic;
@@ -5057,6 +5087,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dyna
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hysteresis != nullptr)
     {
         children["hysteresis"] = hysteresis;
@@ -5147,6 +5178,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dyna
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Hysteresis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5277,6 +5309,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dyna
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(l2_factor != nullptr)
     {
         children["L2-factor"] = l2_factor;
@@ -5363,6 +5396,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dyna
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::L2Factor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5439,6 +5473,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dyna
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Latency::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5515,6 +5550,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dyna
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Resources::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5591,6 +5627,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dyna
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Cost::Dynamic::Weight::Throughput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5671,6 +5708,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::DatabaseFi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::DatabaseFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5761,6 +5799,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::DemandCirc
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::DemandCircuit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5847,6 +5886,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::FloodReduc
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::FloodReduction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5932,6 +5972,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Manet::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Manet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(peering != nullptr)
     {
         children["peering"] = peering;
@@ -6017,6 +6058,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Manet::Pee
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Manet::Peering::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cost != nullptr)
     {
         children["cost"] = cost;
@@ -6102,6 +6144,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Manet::Pee
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Manet::Peering::Cost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6188,6 +6231,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::MtuIgnore:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::MtuIgnore::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6272,6 +6316,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::MultiArea:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::MultiArea::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6394,6 +6439,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Neighbor::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(database_filter != nullptr)
     {
         children["database-filter"] = database_filter;
@@ -6505,6 +6551,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Neighbor::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Neighbor::DatabaseFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6606,6 +6653,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Network::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(point_to_multipoint != nullptr)
     {
         children["point-to-multipoint"] = point_to_multipoint;
@@ -6717,6 +6765,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Network::P
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Network::PointToMultipoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6793,6 +6842,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::PrefixSupp
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::PrefixSuppression::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6869,6 +6919,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Shutdown::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Shutdown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7020,14 +7071,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::get_
 {
     if(child_yang_name == "area")
     {
-        for(auto const & c : area)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Area>();
         c->parent = this;
         area.push_back(c);
@@ -7117,14 +7160,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::get_
 
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -7164,9 +7199,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : area)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(authentication != nullptr)
@@ -7214,9 +7254,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3
         children["multi-area"] = multi_area;
     }
 
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(network != nullptr)
@@ -7354,6 +7398,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Area
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Area::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7444,6 +7489,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Auth
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7530,6 +7576,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Bfd:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7619,6 +7666,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dynamic != nullptr)
     {
         children["dynamic"] = dynamic;
@@ -7726,6 +7774,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hysteresis != nullptr)
     {
         children["hysteresis"] = hysteresis;
@@ -7816,6 +7865,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7946,6 +7996,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(l2_factor != nullptr)
     {
         children["L2-factor"] = l2_factor;
@@ -8032,6 +8083,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8108,6 +8160,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8184,6 +8237,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8260,6 +8314,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8340,6 +8395,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Data
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::DatabaseFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8430,6 +8486,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Dema
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::DemandCircuit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8516,6 +8573,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Floo
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::FloodReduction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8601,6 +8659,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Mane
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Manet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(peering != nullptr)
     {
         children["peering"] = peering;
@@ -8686,6 +8745,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Mane
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Manet::Peering::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cost != nullptr)
     {
         children["cost"] = cost;
@@ -8771,6 +8831,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Mane
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8857,6 +8918,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::MtuI
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::MtuIgnore::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8941,6 +9003,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Mult
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::MultiArea::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9063,6 +9126,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Neig
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(database_filter != nullptr)
     {
         children["database-filter"] = database_filter;
@@ -9174,6 +9238,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Neig
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9275,6 +9340,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Netw
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(point_to_multipoint != nullptr)
     {
         children["point-to-multipoint"] = point_to_multipoint;
@@ -9386,6 +9452,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Netw
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9462,6 +9529,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Pref
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::PrefixSuppression::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9538,6 +9606,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Shut
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv4::Shutdown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9689,14 +9758,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::get_
 {
     if(child_yang_name == "area")
     {
-        for(auto const & c : area)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Area>();
         c->parent = this;
         area.push_back(c);
@@ -9786,14 +9847,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::get_
 
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -9833,9 +9886,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : area)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(authentication != nullptr)
@@ -9883,9 +9941,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3
         children["multi-area"] = multi_area;
     }
 
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(network != nullptr)
@@ -10023,6 +10085,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Area
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Area::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10113,6 +10176,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Auth
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10199,6 +10263,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Bfd:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10288,6 +10353,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dynamic != nullptr)
     {
         children["dynamic"] = dynamic;
@@ -10395,6 +10461,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hysteresis != nullptr)
     {
         children["hysteresis"] = hysteresis;
@@ -10485,6 +10552,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10615,6 +10683,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(l2_factor != nullptr)
     {
         children["L2-factor"] = l2_factor;
@@ -10701,6 +10770,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10777,6 +10847,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10853,6 +10924,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10929,6 +11001,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11009,6 +11082,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Data
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::DatabaseFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11099,6 +11173,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Dema
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::DemandCircuit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11185,6 +11260,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Floo
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::FloodReduction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11270,6 +11346,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Mane
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Manet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(peering != nullptr)
     {
         children["peering"] = peering;
@@ -11355,6 +11432,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Mane
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Manet::Peering::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cost != nullptr)
     {
         children["cost"] = cost;
@@ -11440,6 +11518,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Mane
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Manet::Peering::Cost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11526,6 +11605,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::MtuI
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::MtuIgnore::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11610,6 +11690,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Mult
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::MultiArea::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11732,6 +11813,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Neig
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(database_filter != nullptr)
     {
         children["database-filter"] = database_filter;
@@ -11843,6 +11925,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Neig
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11944,6 +12027,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Netw
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(point_to_multipoint != nullptr)
     {
         children["point-to-multipoint"] = point_to_multipoint;
@@ -12055,6 +12139,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Netw
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Network::PointToMultipoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12131,6 +12216,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Pref
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::PrefixSuppression::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12207,6 +12293,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Shut
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::ProcessId::Ipv6::Shutdown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12301,6 +12388,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Authentication::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipsec != nullptr)
     {
         children["ipsec"] = ipsec;
@@ -12419,6 +12507,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(md5 != nullptr)
     {
         children["md5"] = md5;
@@ -12514,6 +12603,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Md5::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_string != nullptr)
     {
         children["key-string"] = key_string;
@@ -12589,6 +12679,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Md5::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12684,6 +12775,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Sha1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_string != nullptr)
     {
         children["key-string"] = key_string;
@@ -12759,6 +12851,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Authentication::Ipsec::Sha1::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12845,6 +12938,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Bfd::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12934,6 +13028,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Cost::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Cost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dynamic != nullptr)
     {
         children["dynamic"] = dynamic;
@@ -13041,6 +13136,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hysteresis != nullptr)
     {
         children["hysteresis"] = hysteresis;
@@ -13131,6 +13227,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Hyster
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Hysteresis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13261,6 +13358,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(l2_factor != nullptr)
     {
         children["L2-factor"] = l2_factor;
@@ -13347,6 +13445,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::L2Factor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13423,6 +13522,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::Latency::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13499,6 +13599,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::Resources::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13575,6 +13676,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Cost::Dynamic::Weight::Throughput::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13651,6 +13753,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::DatabaseFilter::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::DatabaseFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13727,6 +13830,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::DemandCircuit::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::DemandCircuit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13817,6 +13921,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Encryption::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Encryption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipsec != nullptr)
     {
         children["ipsec"] = ipsec;
@@ -13929,6 +14034,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipsec_3des != nullptr)
     {
         children["ipsec_3des"] = ipsec_3des;
@@ -14034,6 +14140,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::Ip
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::Ipsec3Des::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_string != nullptr)
     {
         children["key-string"] = key_string;
@@ -14109,6 +14216,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::Ip
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::Ipsec3Des::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14230,6 +14338,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::Ae
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(aes_cbc_128 != nullptr)
     {
         children["aes-cbc-128"] = aes_cbc_128;
@@ -14320,6 +14429,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::Ae
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_string != nullptr)
     {
         children["key-string"] = key_string;
@@ -14395,6 +14505,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::Ae
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14490,6 +14601,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::Ae
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_string != nullptr)
     {
         children["key-string"] = key_string;
@@ -14565,6 +14677,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::Ae
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes192::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14660,6 +14773,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::Ae
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_string != nullptr)
     {
         children["key-string"] = key_string;
@@ -14735,6 +14849,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::Ae
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14830,6 +14945,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Manet::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Manet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(peering != nullptr)
     {
         children["peering"] = peering;
@@ -14915,6 +15031,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Manet::Peering::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Manet::Peering::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cost != nullptr)
     {
         children["cost"] = cost;
@@ -15000,6 +15117,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ospfv3::Manet::Peering::Cost:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ospfv3::Manet::Peering::Cost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -75,6 +75,7 @@ std::shared_ptr<Entity> Native::Exception::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Native::Exception::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(crashinfo != nullptr)
     {
         children["crashinfo"] = crashinfo;
@@ -153,6 +154,7 @@ std::shared_ptr<Entity> Native::Exception::Crashinfo::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Exception::Crashinfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -232,6 +234,7 @@ std::shared_ptr<Entity> Native::Iox::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Native::Iox::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -305,14 +308,6 @@ std::shared_ptr<Entity> Native::Arp::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "arp-entry")
     {
-        for(auto const & c : arp_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Arp::ArpEntry>();
         c->parent = this;
         arp_entry.push_back(c);
@@ -325,9 +320,14 @@ std::shared_ptr<Entity> Native::Arp::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Native::Arp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : arp_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -411,6 +411,7 @@ std::shared_ptr<Entity> Native::Arp::ArpEntry::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Native::Arp::ArpEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -514,6 +515,7 @@ std::shared_ptr<Entity> Native::Esmc::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Esmc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -599,14 +601,6 @@ std::shared_ptr<Entity> Native::BbaGroup::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "pppoe")
     {
-        for(auto const & c : pppoe)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::BbaGroup::Pppoe>();
         c->parent = this;
         pppoe.push_back(c);
@@ -619,9 +613,14 @@ std::shared_ptr<Entity> Native::BbaGroup::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Native::BbaGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : pppoe)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -715,6 +714,7 @@ std::shared_ptr<Entity> Native::BbaGroup::Pppoe::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Native::BbaGroup::Pppoe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vendor_tag != nullptr)
     {
         children["vendor-tag"] = vendor_tag;
@@ -846,6 +846,7 @@ std::shared_ptr<Entity> Native::BbaGroup::Pppoe::VendorTag::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::BbaGroup::Pppoe::VendorTag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(circuit_id != nullptr)
     {
         children["circuit-id"] = circuit_id;
@@ -937,6 +938,7 @@ std::shared_ptr<Entity> Native::BbaGroup::Pppoe::VendorTag::CircuitId::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::BbaGroup::Pppoe::VendorTag::CircuitId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1013,6 +1015,7 @@ std::shared_ptr<Entity> Native::BbaGroup::Pppoe::VendorTag::DslSyncRate::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::BbaGroup::Pppoe::VendorTag::DslSyncRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1089,6 +1092,7 @@ std::shared_ptr<Entity> Native::BbaGroup::Pppoe::VendorTag::RemoteId::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::BbaGroup::Pppoe::VendorTag::RemoteId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1180,6 +1184,7 @@ std::shared_ptr<Entity> Native::Card::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Card::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1292,6 +1297,7 @@ std::shared_ptr<Entity> Native::Cef::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(table != nullptr)
     {
         children["table"] = table;
@@ -1410,6 +1416,7 @@ std::shared_ptr<Entity> Native::Cef::Table::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(output_chain != nullptr)
     {
         children["output-chain"] = output_chain;
@@ -1517,6 +1524,7 @@ std::shared_ptr<Entity> Native::Cef::Table::OutputChain::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::OutputChain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(build != nullptr)
     {
         children["build"] = build;
@@ -1630,6 +1638,7 @@ std::shared_ptr<Entity> Native::Cef::Table::OutputChain::Build::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::OutputChain::Build::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(favor != nullptr)
     {
         children["favor"] = favor;
@@ -1722,6 +1731,7 @@ std::shared_ptr<Entity> Native::Cef::Table::OutputChain::Build::Favor::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::OutputChain::Build::Favor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1835,6 +1845,7 @@ std::shared_ptr<Entity> Native::Cef::Table::OutputChain::Build::Indirection::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::OutputChain::Build::Indirection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1972,6 +1983,7 @@ std::shared_ptr<Entity> Native::Cef::Table::OutputChain::Build::InplaceModify::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::OutputChain::Build::InplaceModify::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2087,6 +2099,7 @@ std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -2201,6 +2214,7 @@ std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv4::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(auto_repair != nullptr)
     {
         children["auto-repair"] = auto_repair;
@@ -2308,6 +2322,7 @@ std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv4::AutoRepair::
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv4::AutoRepair::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2454,6 +2469,7 @@ std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(scan_ios_rib != nullptr)
     {
         children["scan-ios-rib"] = scan_ios_rib;
@@ -2566,6 +2582,7 @@ std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIo
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(scan_opt != nullptr)
     {
         children["scan-opt"] = scan_opt;
@@ -2648,6 +2665,7 @@ std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIo
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::ScanOpt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2750,6 +2768,7 @@ std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRi
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(scan_opt != nullptr)
     {
         children["scan-opt"] = scan_opt;
@@ -2832,6 +2851,7 @@ std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRi
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::ScanOpt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2934,6 +2954,7 @@ std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLc
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(scan_opt != nullptr)
     {
         children["scan-opt"] = scan_opt;
@@ -3016,6 +3037,7 @@ std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLc
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::ScanOpt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3118,6 +3140,7 @@ std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRp
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(scan_opt != nullptr)
     {
         children["scan-opt"] = scan_opt;
@@ -3200,6 +3223,7 @@ std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRp
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::ScanOpt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3324,6 +3348,7 @@ std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv6::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(auto_repair != nullptr)
     {
         children["auto-repair"] = auto_repair;
@@ -3431,6 +3456,7 @@ std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv6::AutoRepair::
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv6::AutoRepair::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3564,6 +3590,7 @@ std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(scan_ios_rib != nullptr)
     {
         children["scan-ios-rib"] = scan_ios_rib;
@@ -3671,6 +3698,7 @@ std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIo
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(scan_opt != nullptr)
     {
         children["scan-opt"] = scan_opt;
@@ -3753,6 +3781,7 @@ std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIo
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::ScanOpt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3855,6 +3884,7 @@ std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLc
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(scan_opt != nullptr)
     {
         children["scan-opt"] = scan_opt;
@@ -3937,6 +3967,7 @@ std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLc
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::ScanOpt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4039,6 +4070,7 @@ std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRp
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(scan_opt != nullptr)
     {
         children["scan-opt"] = scan_opt;
@@ -4121,6 +4153,7 @@ std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRp
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::ScanOpt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4288,6 +4321,7 @@ std::shared_ptr<Entity> Native::Cef::Table::Download::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(catch_all != nullptr)
     {
         children["catch-all"] = catch_all;
@@ -4400,6 +4434,7 @@ std::shared_ptr<Entity> Native::Cef::Table::Download::CatchAll::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::CatchAll::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(priority != nullptr)
     {
         children["priority"] = priority;
@@ -4490,6 +4525,7 @@ std::shared_ptr<Entity> Native::Cef::Table::Download::CatchAll::Priority::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::CatchAll::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4612,6 +4648,7 @@ std::shared_ptr<Entity> Native::Cef::Table::Download::ConnectedRoute::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::ConnectedRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(priority != nullptr)
     {
         children["priority"] = priority;
@@ -4702,6 +4739,7 @@ std::shared_ptr<Entity> Native::Cef::Table::Download::ConnectedRoute::Priority::
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::ConnectedRoute::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4824,6 +4862,7 @@ std::shared_ptr<Entity> Native::Cef::Table::Download::DefaultRoute::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::DefaultRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(priority != nullptr)
     {
         children["priority"] = priority;
@@ -4914,6 +4953,7 @@ std::shared_ptr<Entity> Native::Cef::Table::Download::DefaultRoute::Priority::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::DefaultRoute::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5036,6 +5076,7 @@ std::shared_ptr<Entity> Native::Cef::Table::Download::ReceiveRoute::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::ReceiveRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(priority != nullptr)
     {
         children["priority"] = priority;
@@ -5126,6 +5167,7 @@ std::shared_ptr<Entity> Native::Cef::Table::Download::ReceiveRoute::Priority::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::ReceiveRoute::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5248,6 +5290,7 @@ std::shared_ptr<Entity> Native::Cef::Table::Download::RecursiveDependents::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::RecursiveDependents::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(priority != nullptr)
     {
         children["priority"] = priority;
@@ -5338,6 +5381,7 @@ std::shared_ptr<Entity> Native::Cef::Table::Download::RecursiveDependents::Prior
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::RecursiveDependents::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5460,6 +5504,7 @@ std::shared_ptr<Entity> Native::Cef::Table::Download::RouteInVrf::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::RouteInVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(priority != nullptr)
     {
         children["priority"] = priority;
@@ -5550,6 +5595,7 @@ std::shared_ptr<Entity> Native::Cef::Table::Download::RouteInVrf::Priority::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::RouteInVrf::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5711,6 +5757,7 @@ std::shared_ptr<Entity> Native::Diagnostic::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bootup != nullptr)
     {
         children["bootup"] = bootup;
@@ -5804,6 +5851,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Bootup::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Bootup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5887,6 +5935,7 @@ std::shared_ptr<Entity> Native::Diagnostic::EventLog::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::EventLog::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5994,15 +6043,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Monitor::get_child_by_name(const std
 
     if(child_yang_name == "switch")
     {
-        for(auto const & c : switch_)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Diagnostic::Monitor::Switch_>();
+        auto c = std::make_shared<Native::Diagnostic::Monitor::Switch>();
         c->parent = this;
         switch_.push_back(c);
         return c;
@@ -6023,14 +6064,19 @@ std::shared_ptr<Entity> Native::Diagnostic::Monitor::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interval != nullptr)
     {
         children["interval"] = interval;
     }
 
+    count = 0;
     for (auto const & c : switch_)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(threshold != nullptr)
@@ -6068,7 +6114,7 @@ bool Native::Diagnostic::Monitor::has_leaf_or_child_of_name(const std::string & 
 
 Native::Diagnostic::Monitor::Interval::Interval()
     :
-    switch_(std::make_shared<Native::Diagnostic::Monitor::Interval::Switch_>())
+    switch_(std::make_shared<Native::Diagnostic::Monitor::Interval::Switch>())
 {
     switch_->parent = this;
 
@@ -6119,7 +6165,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Monitor::Interval::get_child_by_name
     {
         if(switch_ == nullptr)
         {
-            switch_ = std::make_shared<Native::Diagnostic::Monitor::Interval::Switch_>();
+            switch_ = std::make_shared<Native::Diagnostic::Monitor::Interval::Switch>();
         }
         return switch_;
     }
@@ -6130,6 +6176,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Monitor::Interval::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Interval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(switch_ != nullptr)
     {
         children["switch"] = switch_;
@@ -6153,17 +6200,17 @@ bool Native::Diagnostic::Monitor::Interval::has_leaf_or_child_of_name(const std:
     return false;
 }
 
-Native::Diagnostic::Monitor::Interval::Switch_::Switch_()
+Native::Diagnostic::Monitor::Interval::Switch::Switch()
 {
 
     yang_name = "switch"; yang_parent_name = "interval"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Diagnostic::Monitor::Interval::Switch_::~Switch_()
+Native::Diagnostic::Monitor::Interval::Switch::~Switch()
 {
 }
 
-bool Native::Diagnostic::Monitor::Interval::Switch_::has_data() const
+bool Native::Diagnostic::Monitor::Interval::Switch::has_data() const
 {
     for (std::size_t index=0; index<switch_.size(); index++)
     {
@@ -6173,7 +6220,7 @@ bool Native::Diagnostic::Monitor::Interval::Switch_::has_data() const
     return false;
 }
 
-bool Native::Diagnostic::Monitor::Interval::Switch_::has_operation() const
+bool Native::Diagnostic::Monitor::Interval::Switch::has_operation() const
 {
     for (std::size_t index=0; index<switch_.size(); index++)
     {
@@ -6183,21 +6230,21 @@ bool Native::Diagnostic::Monitor::Interval::Switch_::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Native::Diagnostic::Monitor::Interval::Switch_::get_absolute_path() const
+std::string Native::Diagnostic::Monitor::Interval::Switch::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-diagnostics:diagnostic/monitor/interval/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Diagnostic::Monitor::Interval::Switch_::get_segment_path() const
+std::string Native::Diagnostic::Monitor::Interval::Switch::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "switch";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Interval::Switch_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Interval::Switch::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6206,19 +6253,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Inte
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Monitor::Interval::Switch_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Monitor::Interval::Switch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "switch")
     {
-        for(auto const & c : switch_)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Diagnostic::Monitor::Interval::Switch_::Switch__>();
+        auto c = std::make_shared<Native::Diagnostic::Monitor::Interval::Switch::Switch_>();
         c->parent = this;
         switch_.push_back(c);
         return c;
@@ -6227,75 +6266,80 @@ std::shared_ptr<Entity> Native::Diagnostic::Monitor::Interval::Switch_::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Interval::Switch_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Interval::Switch::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : switch_)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::Diagnostic::Monitor::Interval::Switch_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Monitor::Interval::Switch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Diagnostic::Monitor::Interval::Switch_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Monitor::Interval::Switch::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Diagnostic::Monitor::Interval::Switch_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Monitor::Interval::Switch::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "switch")
         return true;
     return false;
 }
 
-Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Switch__()
+Native::Diagnostic::Monitor::Interval::Switch::Switch_::Switch_()
     :
     number{YType::uint8, "number"}
     	,
-    test(std::make_shared<Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test>())
+    test(std::make_shared<Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test>())
 {
     test->parent = this;
 
     yang_name = "switch"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Diagnostic::Monitor::Interval::Switch_::Switch__::~Switch__()
+Native::Diagnostic::Monitor::Interval::Switch::Switch_::~Switch_()
 {
 }
 
-bool Native::Diagnostic::Monitor::Interval::Switch_::Switch__::has_data() const
+bool Native::Diagnostic::Monitor::Interval::Switch::Switch_::has_data() const
 {
     return number.is_set
 	|| (test !=  nullptr && test->has_data());
 }
 
-bool Native::Diagnostic::Monitor::Interval::Switch_::Switch__::has_operation() const
+bool Native::Diagnostic::Monitor::Interval::Switch::Switch_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
 	|| (test !=  nullptr && test->has_operation());
 }
 
-std::string Native::Diagnostic::Monitor::Interval::Switch_::Switch__::get_absolute_path() const
+std::string Native::Diagnostic::Monitor::Interval::Switch::Switch_::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-diagnostics:diagnostic/monitor/interval/switch/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Diagnostic::Monitor::Interval::Switch_::Switch__::get_segment_path() const
+std::string Native::Diagnostic::Monitor::Interval::Switch::Switch_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "switch" <<"[number='" <<number <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Interval::Switch_::Switch__::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Interval::Switch::Switch_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6305,13 +6349,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Inte
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Monitor::Interval::Switch_::Switch__::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Monitor::Interval::Switch::Switch_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "test")
     {
         if(test == nullptr)
         {
-            test = std::make_shared<Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test>();
+            test = std::make_shared<Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test>();
         }
         return test;
     }
@@ -6319,9 +6363,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Monitor::Interval::Switch_::Switch__
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Interval::Switch_::Switch__::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Interval::Switch::Switch_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(test != nullptr)
     {
         children["test"] = test;
@@ -6330,7 +6375,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Inte
     return children;
 }
 
-void Native::Diagnostic::Monitor::Interval::Switch_::Switch__::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Monitor::Interval::Switch::Switch_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -6340,7 +6385,7 @@ void Native::Diagnostic::Monitor::Interval::Switch_::Switch__::set_value(const s
     }
 }
 
-void Native::Diagnostic::Monitor::Interval::Switch_::Switch__::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Monitor::Interval::Switch::Switch_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -6348,27 +6393,27 @@ void Native::Diagnostic::Monitor::Interval::Switch_::Switch__::set_filter(const 
     }
 }
 
-bool Native::Diagnostic::Monitor::Interval::Switch_::Switch__::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Monitor::Interval::Switch::Switch_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "test" || name == "number")
         return true;
     return false;
 }
 
-Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::Test()
+Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::Test()
     :
-    all(std::make_shared<Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::All>())
+    all(std::make_shared<Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::All>())
 {
     all->parent = this;
 
     yang_name = "test"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::~Test()
+Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::~Test()
 {
 }
 
-bool Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::has_data() const
+bool Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::has_data() const
 {
     for (std::size_t index=0; index<test_ids.size(); index++)
     {
@@ -6378,7 +6423,7 @@ bool Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::has_data() 
     return (all !=  nullptr && all->has_data());
 }
 
-bool Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::has_operation() const
+bool Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::has_operation() const
 {
     for (std::size_t index=0; index<test_ids.size(); index++)
     {
@@ -6389,14 +6434,14 @@ bool Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::has_operati
 	|| (all !=  nullptr && all->has_operation());
 }
 
-std::string Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::get_segment_path() const
+std::string Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "test";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6405,19 +6450,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Inte
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "test-ids")
     {
-        for(auto const & c : test_ids)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::TestIds>();
+        auto c = std::make_shared<Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::TestIds>();
         c->parent = this;
         test_ids.push_back(c);
         return c;
@@ -6427,7 +6464,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Monitor::Interval::Switch_::Switch__
     {
         if(all == nullptr)
         {
-            all = std::make_shared<Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::All>();
+            all = std::make_shared<Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::All>();
         }
         return all;
     }
@@ -6435,12 +6472,17 @@ std::shared_ptr<Entity> Native::Diagnostic::Monitor::Interval::Switch_::Switch__
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : test_ids)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(all != nullptr)
@@ -6451,22 +6493,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Inte
     return children;
 }
 
-void Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "test-ids" || name == "all")
         return true;
     return false;
 }
 
-Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::TestIds::TestIds()
+Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::TestIds::TestIds()
     :
     id{YType::str, "id"},
     hh_mm_ss{YType::str, "hh-mm-ss"},
@@ -6477,11 +6519,11 @@ Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::TestIds::TestIds
     yang_name = "test-ids"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::TestIds::~TestIds()
+Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::TestIds::~TestIds()
 {
 }
 
-bool Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::TestIds::has_data() const
+bool Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::TestIds::has_data() const
 {
     return id.is_set
 	|| hh_mm_ss.is_set
@@ -6489,7 +6531,7 @@ bool Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::TestIds::ha
 	|| number_of_days.is_set;
 }
 
-bool Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::TestIds::has_operation() const
+bool Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::TestIds::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
@@ -6498,14 +6540,14 @@ bool Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::TestIds::ha
 	|| ydk::is_set(number_of_days.yfilter);
 }
 
-std::string Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::TestIds::get_segment_path() const
+std::string Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::TestIds::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "test-ids" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::TestIds::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::TestIds::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6518,18 +6560,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Inte
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::TestIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::TestIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::TestIds::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::TestIds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::TestIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::TestIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -6557,7 +6600,7 @@ void Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::TestIds::se
     }
 }
 
-void Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::TestIds::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::TestIds::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -6577,14 +6620,14 @@ void Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::TestIds::se
     }
 }
 
-bool Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::TestIds::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::TestIds::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "id" || name == "hh-mm-ss" || name == "milli-seconds" || name == "number-of-days")
         return true;
     return false;
 }
 
-Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::All::All()
+Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::All::All()
     :
     hh_mm_ss{YType::str, "hh-mm-ss"},
     milli_seconds{YType::uint16, "milli-seconds"},
@@ -6594,18 +6637,18 @@ Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::All::All()
     yang_name = "all"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::All::~All()
+Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::All::~All()
 {
 }
 
-bool Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::All::has_data() const
+bool Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::All::has_data() const
 {
     return hh_mm_ss.is_set
 	|| milli_seconds.is_set
 	|| number_of_days.is_set;
 }
 
-bool Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::All::has_operation() const
+bool Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::All::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hh_mm_ss.yfilter)
@@ -6613,14 +6656,14 @@ bool Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::All::has_op
 	|| ydk::is_set(number_of_days.yfilter);
 }
 
-std::string Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::All::get_segment_path() const
+std::string Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::All::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "all";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::All::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::All::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6632,18 +6675,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Inte
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::All::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::All::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hh-mm-ss")
     {
@@ -6665,7 +6709,7 @@ void Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::All::set_va
     }
 }
 
-void Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::All::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::All::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hh-mm-ss")
     {
@@ -6681,56 +6725,56 @@ void Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::All::set_fi
     }
 }
 
-bool Native::Diagnostic::Monitor::Interval::Switch_::Switch__::Test::All::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Monitor::Interval::Switch::Switch_::Test::All::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hh-mm-ss" || name == "milli-seconds" || name == "number-of-days")
         return true;
     return false;
 }
 
-Native::Diagnostic::Monitor::Switch_::Switch_()
+Native::Diagnostic::Monitor::Switch::Switch()
     :
     number{YType::uint8, "number"}
     	,
-    test(std::make_shared<Native::Diagnostic::Monitor::Switch_::Test>())
+    test(std::make_shared<Native::Diagnostic::Monitor::Switch::Test>())
 {
     test->parent = this;
 
     yang_name = "switch"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Diagnostic::Monitor::Switch_::~Switch_()
+Native::Diagnostic::Monitor::Switch::~Switch()
 {
 }
 
-bool Native::Diagnostic::Monitor::Switch_::has_data() const
+bool Native::Diagnostic::Monitor::Switch::has_data() const
 {
     return number.is_set
 	|| (test !=  nullptr && test->has_data());
 }
 
-bool Native::Diagnostic::Monitor::Switch_::has_operation() const
+bool Native::Diagnostic::Monitor::Switch::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
 	|| (test !=  nullptr && test->has_operation());
 }
 
-std::string Native::Diagnostic::Monitor::Switch_::get_absolute_path() const
+std::string Native::Diagnostic::Monitor::Switch::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-diagnostics:diagnostic/monitor/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Diagnostic::Monitor::Switch_::get_segment_path() const
+std::string Native::Diagnostic::Monitor::Switch::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "switch" <<"[number='" <<number <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Switch_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Switch::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6740,13 +6784,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Swit
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Monitor::Switch_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Monitor::Switch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "test")
     {
         if(test == nullptr)
         {
-            test = std::make_shared<Native::Diagnostic::Monitor::Switch_::Test>();
+            test = std::make_shared<Native::Diagnostic::Monitor::Switch::Test>();
         }
         return test;
     }
@@ -6754,9 +6798,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Monitor::Switch_::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Switch_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Switch::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(test != nullptr)
     {
         children["test"] = test;
@@ -6765,7 +6810,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Swit
     return children;
 }
 
-void Native::Diagnostic::Monitor::Switch_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Monitor::Switch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -6775,7 +6820,7 @@ void Native::Diagnostic::Monitor::Switch_::set_value(const std::string & value_p
     }
 }
 
-void Native::Diagnostic::Monitor::Switch_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Monitor::Switch::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -6783,14 +6828,14 @@ void Native::Diagnostic::Monitor::Switch_::set_filter(const std::string & value_
     }
 }
 
-bool Native::Diagnostic::Monitor::Switch_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Monitor::Switch::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "test" || name == "number")
         return true;
     return false;
 }
 
-Native::Diagnostic::Monitor::Switch_::Test::Test()
+Native::Diagnostic::Monitor::Switch::Test::Test()
     :
     id{YType::str, "id"},
     all{YType::empty, "all"}
@@ -6799,31 +6844,31 @@ Native::Diagnostic::Monitor::Switch_::Test::Test()
     yang_name = "test"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Monitor::Switch_::Test::~Test()
+Native::Diagnostic::Monitor::Switch::Test::~Test()
 {
 }
 
-bool Native::Diagnostic::Monitor::Switch_::Test::has_data() const
+bool Native::Diagnostic::Monitor::Switch::Test::has_data() const
 {
     return id.is_set
 	|| all.is_set;
 }
 
-bool Native::Diagnostic::Monitor::Switch_::Test::has_operation() const
+bool Native::Diagnostic::Monitor::Switch::Test::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| ydk::is_set(all.yfilter);
 }
 
-std::string Native::Diagnostic::Monitor::Switch_::Test::get_segment_path() const
+std::string Native::Diagnostic::Monitor::Switch::Test::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "test";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Switch_::Test::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Switch::Test::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6834,18 +6879,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Swit
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Monitor::Switch_::Test::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Monitor::Switch::Test::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Switch_::Test::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Switch::Test::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Monitor::Switch_::Test::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Monitor::Switch::Test::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -6861,7 +6907,7 @@ void Native::Diagnostic::Monitor::Switch_::Test::set_value(const std::string & v
     }
 }
 
-void Native::Diagnostic::Monitor::Switch_::Test::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Monitor::Switch::Test::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -6873,7 +6919,7 @@ void Native::Diagnostic::Monitor::Switch_::Test::set_filter(const std::string & 
     }
 }
 
-bool Native::Diagnostic::Monitor::Switch_::Test::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Monitor::Switch::Test::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "id" || name == "all")
         return true;
@@ -6937,15 +6983,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::get_child_by_nam
 {
     if(child_yang_name == "switch")
     {
-        for(auto const & c : switch_)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Diagnostic::Monitor::Threshold::Switch_>();
+        auto c = std::make_shared<Native::Diagnostic::Monitor::Threshold::Switch>();
         c->parent = this;
         switch_.push_back(c);
         return c;
@@ -6957,9 +6995,14 @@ std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : switch_)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6980,49 +7023,49 @@ bool Native::Diagnostic::Monitor::Threshold::has_leaf_or_child_of_name(const std
     return false;
 }
 
-Native::Diagnostic::Monitor::Threshold::Switch_::Switch_()
+Native::Diagnostic::Monitor::Threshold::Switch::Switch()
     :
     number{YType::uint8, "number"}
     	,
-    test(std::make_shared<Native::Diagnostic::Monitor::Threshold::Switch_::Test>())
+    test(std::make_shared<Native::Diagnostic::Monitor::Threshold::Switch::Test>())
 {
     test->parent = this;
 
     yang_name = "switch"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Diagnostic::Monitor::Threshold::Switch_::~Switch_()
+Native::Diagnostic::Monitor::Threshold::Switch::~Switch()
 {
 }
 
-bool Native::Diagnostic::Monitor::Threshold::Switch_::has_data() const
+bool Native::Diagnostic::Monitor::Threshold::Switch::has_data() const
 {
     return number.is_set
 	|| (test !=  nullptr && test->has_data());
 }
 
-bool Native::Diagnostic::Monitor::Threshold::Switch_::has_operation() const
+bool Native::Diagnostic::Monitor::Threshold::Switch::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
 	|| (test !=  nullptr && test->has_operation());
 }
 
-std::string Native::Diagnostic::Monitor::Threshold::Switch_::get_absolute_path() const
+std::string Native::Diagnostic::Monitor::Threshold::Switch::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-diagnostics:diagnostic/monitor/threshold/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Diagnostic::Monitor::Threshold::Switch_::get_segment_path() const
+std::string Native::Diagnostic::Monitor::Threshold::Switch::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "switch" <<"[number='" <<number <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Threshold::Switch_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Threshold::Switch::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7032,13 +7075,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Thre
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "test")
     {
         if(test == nullptr)
         {
-            test = std::make_shared<Native::Diagnostic::Monitor::Threshold::Switch_::Test>();
+            test = std::make_shared<Native::Diagnostic::Monitor::Threshold::Switch::Test>();
         }
         return test;
     }
@@ -7046,9 +7089,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch_::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Threshold::Switch_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Threshold::Switch::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(test != nullptr)
     {
         children["test"] = test;
@@ -7057,7 +7101,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Thre
     return children;
 }
 
-void Native::Diagnostic::Monitor::Threshold::Switch_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Monitor::Threshold::Switch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -7067,7 +7111,7 @@ void Native::Diagnostic::Monitor::Threshold::Switch_::set_value(const std::strin
     }
 }
 
-void Native::Diagnostic::Monitor::Threshold::Switch_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Monitor::Threshold::Switch::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -7075,27 +7119,27 @@ void Native::Diagnostic::Monitor::Threshold::Switch_::set_filter(const std::stri
     }
 }
 
-bool Native::Diagnostic::Monitor::Threshold::Switch_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Monitor::Threshold::Switch::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "test" || name == "number")
         return true;
     return false;
 }
 
-Native::Diagnostic::Monitor::Threshold::Switch_::Test::Test()
+Native::Diagnostic::Monitor::Threshold::Switch::Test::Test()
     :
-    all(std::make_shared<Native::Diagnostic::Monitor::Threshold::Switch_::Test::All>())
+    all(std::make_shared<Native::Diagnostic::Monitor::Threshold::Switch::Test::All>())
 {
     all->parent = this;
 
     yang_name = "test"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Monitor::Threshold::Switch_::Test::~Test()
+Native::Diagnostic::Monitor::Threshold::Switch::Test::~Test()
 {
 }
 
-bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::has_data() const
+bool Native::Diagnostic::Monitor::Threshold::Switch::Test::has_data() const
 {
     for (std::size_t index=0; index<test_ids.size(); index++)
     {
@@ -7105,7 +7149,7 @@ bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::has_data() const
     return (all !=  nullptr && all->has_data());
 }
 
-bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::has_operation() const
+bool Native::Diagnostic::Monitor::Threshold::Switch::Test::has_operation() const
 {
     for (std::size_t index=0; index<test_ids.size(); index++)
     {
@@ -7116,14 +7160,14 @@ bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::has_operation() cons
 	|| (all !=  nullptr && all->has_operation());
 }
 
-std::string Native::Diagnostic::Monitor::Threshold::Switch_::Test::get_segment_path() const
+std::string Native::Diagnostic::Monitor::Threshold::Switch::Test::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "test";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Threshold::Switch_::Test::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Threshold::Switch::Test::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7132,19 +7176,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Thre
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch_::Test::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch::Test::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "test-ids")
     {
-        for(auto const & c : test_ids)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds>();
+        auto c = std::make_shared<Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds>();
         c->parent = this;
         test_ids.push_back(c);
         return c;
@@ -7154,7 +7190,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch_::Test::g
     {
         if(all == nullptr)
         {
-            all = std::make_shared<Native::Diagnostic::Monitor::Threshold::Switch_::Test::All>();
+            all = std::make_shared<Native::Diagnostic::Monitor::Threshold::Switch::Test::All>();
         }
         return all;
     }
@@ -7162,12 +7198,17 @@ std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch_::Test::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Threshold::Switch_::Test::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Threshold::Switch::Test::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : test_ids)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(all != nullptr)
@@ -7178,57 +7219,57 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Thre
     return children;
 }
 
-void Native::Diagnostic::Monitor::Threshold::Switch_::Test::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Monitor::Threshold::Switch::Test::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Diagnostic::Monitor::Threshold::Switch_::Test::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Monitor::Threshold::Switch::Test::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Monitor::Threshold::Switch::Test::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "test-ids" || name == "all")
         return true;
     return false;
 }
 
-Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::TestIds()
+Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::TestIds()
     :
     id{YType::str, "id"}
     	,
-    failure(std::make_shared<Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure>())
+    failure(std::make_shared<Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure>())
 {
     failure->parent = this;
 
     yang_name = "test-ids"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::~TestIds()
+Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::~TestIds()
 {
 }
 
-bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::has_data() const
+bool Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::has_data() const
 {
     return id.is_set
 	|| (failure !=  nullptr && failure->has_data());
 }
 
-bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::has_operation() const
+bool Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
 	|| (failure !=  nullptr && failure->has_operation());
 }
 
-std::string Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::get_segment_path() const
+std::string Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "test-ids" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7238,13 +7279,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Thre
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "failure")
     {
         if(failure == nullptr)
         {
-            failure = std::make_shared<Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure>();
+            failure = std::make_shared<Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure>();
         }
         return failure;
     }
@@ -7252,9 +7293,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch_::Test::T
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(failure != nullptr)
     {
         children["failure"] = failure;
@@ -7263,7 +7305,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Thre
     return children;
 }
 
-void Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -7273,7 +7315,7 @@ void Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::set_value(c
     }
 }
 
-void Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -7281,24 +7323,24 @@ void Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::set_filter(
     }
 }
 
-bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "failure" || name == "id")
         return true;
     return false;
 }
 
-Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::Failure()
+Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::Failure()
 {
 
     yang_name = "failure"; yang_parent_name = "test-ids"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::~Failure()
+Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::~Failure()
 {
 }
 
-bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::has_data() const
+bool Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::has_data() const
 {
     for (std::size_t index=0; index<count.size(); index++)
     {
@@ -7308,7 +7350,7 @@ bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::ha
     return false;
 }
 
-bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::has_operation() const
+bool Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::has_operation() const
 {
     for (std::size_t index=0; index<count.size(); index++)
     {
@@ -7318,14 +7360,14 @@ bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::ha
     return is_set(yfilter);
 }
 
-std::string Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::get_segment_path() const
+std::string Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "failure";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7334,19 +7376,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Thre
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "count")
     {
-        for(auto const & c : count)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::Count>();
+        auto c = std::make_shared<Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::Count>();
         c->parent = this;
         count.push_back(c);
         return c;
@@ -7355,33 +7389,38 @@ std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch_::Test::T
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : count)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "count")
         return true;
     return false;
 }
 
-Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::Count::Count()
+Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::Count::Count()
     :
     range{YType::uint16, "range"},
     days{YType::uint32, "days"},
@@ -7395,11 +7434,11 @@ Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::Count::
     yang_name = "count"; yang_parent_name = "failure"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::Count::~Count()
+Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::Count::~Count()
 {
 }
 
-bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::Count::has_data() const
+bool Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::Count::has_data() const
 {
     return range.is_set
 	|| days.is_set
@@ -7410,7 +7449,7 @@ bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::Co
 	|| seconds.is_set;
 }
 
-bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::Count::has_operation() const
+bool Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::Count::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(range.yfilter)
@@ -7422,14 +7461,14 @@ bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::Co
 	|| ydk::is_set(seconds.yfilter);
 }
 
-std::string Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::Count::get_segment_path() const
+std::string Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::Count::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "count" <<"[range='" <<range <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::Count::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::Count::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7445,18 +7484,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Thre
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::Count::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::Count::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::Count::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::Count::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::Count::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::Count::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "range")
     {
@@ -7502,7 +7542,7 @@ void Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::Co
     }
 }
 
-void Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::Count::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::Count::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "range")
     {
@@ -7534,45 +7574,45 @@ void Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::Co
     }
 }
 
-bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::TestIds::Failure::Count::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Monitor::Threshold::Switch::Test::TestIds::Failure::Count::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "range" || name == "days" || name == "hours" || name == "milli-seconds" || name == "minutes" || name == "runs" || name == "seconds")
         return true;
     return false;
 }
 
-Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::All()
+Native::Diagnostic::Monitor::Threshold::Switch::Test::All::All()
     :
-    failure(std::make_shared<Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure>())
+    failure(std::make_shared<Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure>())
 {
     failure->parent = this;
 
     yang_name = "all"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::~All()
+Native::Diagnostic::Monitor::Threshold::Switch::Test::All::~All()
 {
 }
 
-bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::has_data() const
+bool Native::Diagnostic::Monitor::Threshold::Switch::Test::All::has_data() const
 {
     return (failure !=  nullptr && failure->has_data());
 }
 
-bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::has_operation() const
+bool Native::Diagnostic::Monitor::Threshold::Switch::Test::All::has_operation() const
 {
     return is_set(yfilter)
 	|| (failure !=  nullptr && failure->has_operation());
 }
 
-std::string Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::get_segment_path() const
+std::string Native::Diagnostic::Monitor::Threshold::Switch::Test::All::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "all";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Threshold::Switch::Test::All::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7581,13 +7621,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Thre
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch::Test::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "failure")
     {
         if(failure == nullptr)
         {
-            failure = std::make_shared<Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure>();
+            failure = std::make_shared<Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure>();
         }
         return failure;
     }
@@ -7595,9 +7635,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch_::Test::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Threshold::Switch::Test::All::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(failure != nullptr)
     {
         children["failure"] = failure;
@@ -7606,32 +7647,32 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Thre
     return children;
 }
 
-void Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Monitor::Threshold::Switch::Test::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Monitor::Threshold::Switch::Test::All::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Monitor::Threshold::Switch::Test::All::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "failure")
         return true;
     return false;
 }
 
-Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::Failure()
+Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::Failure()
 {
 
     yang_name = "failure"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::~Failure()
+Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::~Failure()
 {
 }
 
-bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::has_data() const
+bool Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::has_data() const
 {
     for (std::size_t index=0; index<count.size(); index++)
     {
@@ -7641,7 +7682,7 @@ bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::has_da
     return false;
 }
 
-bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::has_operation() const
+bool Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::has_operation() const
 {
     for (std::size_t index=0; index<count.size(); index++)
     {
@@ -7651,14 +7692,14 @@ bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::has_op
     return is_set(yfilter);
 }
 
-std::string Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::get_segment_path() const
+std::string Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "failure";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7667,19 +7708,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Thre
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "count")
     {
-        for(auto const & c : count)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::Count>();
+        auto c = std::make_shared<Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::Count>();
         c->parent = this;
         count.push_back(c);
         return c;
@@ -7688,33 +7721,38 @@ std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch_::Test::A
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : count)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "count")
         return true;
     return false;
 }
 
-Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::Count::Count()
+Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::Count::Count()
     :
     range{YType::uint16, "range"},
     days{YType::uint32, "days"},
@@ -7728,11 +7766,11 @@ Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::Count::Coun
     yang_name = "count"; yang_parent_name = "failure"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::Count::~Count()
+Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::Count::~Count()
 {
 }
 
-bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::Count::has_data() const
+bool Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::Count::has_data() const
 {
     return range.is_set
 	|| days.is_set
@@ -7743,7 +7781,7 @@ bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::Count:
 	|| seconds.is_set;
 }
 
-bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::Count::has_operation() const
+bool Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::Count::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(range.yfilter)
@@ -7755,14 +7793,14 @@ bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::Count:
 	|| ydk::is_set(seconds.yfilter);
 }
 
-std::string Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::Count::get_segment_path() const
+std::string Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::Count::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "count" <<"[range='" <<range <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::Count::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::Count::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7778,18 +7816,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Monitor::Thre
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::Count::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::Count::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::Count::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::Count::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::Count::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::Count::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "range")
     {
@@ -7835,7 +7874,7 @@ void Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::Count:
     }
 }
 
-void Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::Count::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::Count::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "range")
     {
@@ -7867,7 +7906,7 @@ void Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::Count:
     }
 }
 
-bool Native::Diagnostic::Monitor::Threshold::Switch_::Test::All::Failure::Count::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Monitor::Threshold::Switch::Test::All::Failure::Count::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "range" || name == "days" || name == "hours" || name == "milli-seconds" || name == "minutes" || name == "runs" || name == "seconds")
         return true;
@@ -7931,15 +7970,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::get_child_by_name(const st
 {
     if(child_yang_name == "switch")
     {
-        for(auto const & c : switch_)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch_>();
+        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch>();
         c->parent = this;
         switch_.push_back(c);
         return c;
@@ -7951,9 +7982,14 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : switch_)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7974,49 +8010,49 @@ bool Native::Diagnostic::Schedule::has_leaf_or_child_of_name(const std::string &
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Switch_()
+Native::Diagnostic::Schedule::Switch::Switch()
     :
     switch_number{YType::uint8, "switch-number"}
     	,
-    test(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test>())
+    test(std::make_shared<Native::Diagnostic::Schedule::Switch::Test>())
 {
     test->parent = this;
 
     yang_name = "switch"; yang_parent_name = "schedule"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Diagnostic::Schedule::Switch_::~Switch_()
+Native::Diagnostic::Schedule::Switch::~Switch()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::has_data() const
+bool Native::Diagnostic::Schedule::Switch::has_data() const
 {
     return switch_number.is_set
 	|| (test !=  nullptr && test->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(switch_number.yfilter)
 	|| (test !=  nullptr && test->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::get_absolute_path() const
+std::string Native::Diagnostic::Schedule::Switch::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-diagnostics:diagnostic/schedule/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "switch" <<"[switch-number='" <<switch_number <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8026,13 +8062,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "test")
     {
         if(test == nullptr)
         {
-            test = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test>();
+            test = std::make_shared<Native::Diagnostic::Schedule::Switch::Test>();
         }
         return test;
     }
@@ -8040,9 +8076,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::get_child_by_name
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(test != nullptr)
     {
         children["test"] = test;
@@ -8051,7 +8088,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "switch-number")
     {
@@ -8061,7 +8098,7 @@ void Native::Diagnostic::Schedule::Switch_::set_value(const std::string & value_
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "switch-number")
     {
@@ -8069,21 +8106,21 @@ void Native::Diagnostic::Schedule::Switch_::set_filter(const std::string & value
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "test" || name == "switch-number")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Test()
+Native::Diagnostic::Schedule::Switch::Test::Test()
     :
-    all(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All>())
-	,basic(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic>())
-	,complete(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Complete>())
-	,minimal(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Minimal>())
-	,non_disruptive(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive>())
-	,per_port(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort>())
+    all(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All>())
+	,basic(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic>())
+	,complete(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Complete>())
+	,minimal(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Minimal>())
+	,non_disruptive(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive>())
+	,per_port(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort>())
 {
     all->parent = this;
     basic->parent = this;
@@ -8095,11 +8132,11 @@ Native::Diagnostic::Schedule::Switch_::Test::Test()
     yang_name = "test"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::~Test()
+Native::Diagnostic::Schedule::Switch::Test::~Test()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::has_data() const
 {
     for (std::size_t index=0; index<test_ids.size(); index++)
     {
@@ -8114,7 +8151,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::has_data() const
 	|| (per_port !=  nullptr && per_port->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::has_operation() const
 {
     for (std::size_t index=0; index<test_ids.size(); index++)
     {
@@ -8130,14 +8167,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::has_operation() const
 	|| (per_port !=  nullptr && per_port->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "test";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8146,19 +8183,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "test-ids")
     {
-        for(auto const & c : test_ids)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds>();
+        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds>();
         c->parent = this;
         test_ids.push_back(c);
         return c;
@@ -8168,7 +8197,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::get_child_b
     {
         if(all == nullptr)
         {
-            all = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All>();
+            all = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All>();
         }
         return all;
     }
@@ -8177,7 +8206,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::get_child_b
     {
         if(basic == nullptr)
         {
-            basic = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic>();
+            basic = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic>();
         }
         return basic;
     }
@@ -8186,7 +8215,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::get_child_b
     {
         if(complete == nullptr)
         {
-            complete = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Complete>();
+            complete = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Complete>();
         }
         return complete;
     }
@@ -8195,7 +8224,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::get_child_b
     {
         if(minimal == nullptr)
         {
-            minimal = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Minimal>();
+            minimal = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Minimal>();
         }
         return minimal;
     }
@@ -8204,7 +8233,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::get_child_b
     {
         if(non_disruptive == nullptr)
         {
-            non_disruptive = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive>();
+            non_disruptive = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive>();
         }
         return non_disruptive;
     }
@@ -8213,7 +8242,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::get_child_b
     {
         if(per_port == nullptr)
         {
-            per_port = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::PerPort>();
+            per_port = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort>();
         }
         return per_port;
     }
@@ -8221,12 +8250,17 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : test_ids)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(all != nullptr)
@@ -8262,29 +8296,29 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "test-ids" || name == "all" || name == "basic" || name == "complete" || name == "minimal" || name == "non-disruptive" || name == "per-port")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::TestIds()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::TestIds()
     :
     id{YType::str, "id"}
     	,
-    daily(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Daily>())
-	,on(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::On>())
-	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Weekly>())
-	,port(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port>())
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Daily>())
+	,on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::On>())
+	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Weekly>())
+	,port(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Port>())
 {
     daily->parent = this;
     on->parent = this;
@@ -8294,11 +8328,11 @@ Native::Diagnostic::Schedule::Switch_::Test::TestIds::TestIds()
     yang_name = "test-ids"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::~TestIds()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::~TestIds()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::has_data() const
 {
     return id.is_set
 	|| (daily !=  nullptr && daily->has_data())
@@ -8307,7 +8341,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::has_data() const
 	|| (port !=  nullptr && port->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(id.yfilter)
@@ -8317,14 +8351,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::has_operation() const
 	|| (port !=  nullptr && port->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::TestIds::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::TestIds::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "test-ids" <<"[id='" <<id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::TestIds::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::TestIds::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8334,13 +8368,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::TestIds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daily")
     {
         if(daily == nullptr)
         {
-            daily = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Daily>();
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Daily>();
         }
         return daily;
     }
@@ -8349,7 +8383,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::ge
     {
         if(on == nullptr)
         {
-            on = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::On>();
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::On>();
         }
         return on;
     }
@@ -8358,7 +8392,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::ge
     {
         if(weekly == nullptr)
         {
-            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Weekly>();
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Weekly>();
         }
         return weekly;
     }
@@ -8367,7 +8401,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::ge
     {
         if(port == nullptr)
         {
-            port = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port>();
+            port = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Port>();
         }
         return port;
     }
@@ -8375,9 +8409,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::TestIds::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::TestIds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daily != nullptr)
     {
         children["daily"] = daily;
@@ -8401,7 +8436,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -8411,7 +8446,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::set_value(const std::
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -8419,14 +8454,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::set_filter(const std:
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daily" || name == "on" || name == "weekly" || name == "port" || name == "id")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Daily::Daily()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Daily::Daily()
     :
     hh_mm{YType::str, "hh-mm"}
 {
@@ -8434,29 +8469,29 @@ Native::Diagnostic::Schedule::Switch_::Test::TestIds::Daily::Daily()
     yang_name = "daily"; yang_parent_name = "test-ids"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Daily::~Daily()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Daily::~Daily()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Daily::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Daily::has_data() const
 {
     return hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Daily::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Daily::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::TestIds::Daily::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::TestIds::Daily::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daily";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::TestIds::Daily::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::TestIds::Daily::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8466,18 +8501,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::TestIds::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Daily::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::TestIds::Daily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hh-mm")
     {
@@ -8487,7 +8523,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Daily::set_value(cons
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Daily::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hh-mm")
     {
@@ -8495,14 +8531,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Daily::set_filter(con
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Daily::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Daily::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::On::On()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::On::On()
     :
     month{YType::enumeration, "month"},
     day_of_month{YType::uint16, "day-of-month"},
@@ -8513,11 +8549,11 @@ Native::Diagnostic::Schedule::Switch_::Test::TestIds::On::On()
     yang_name = "on"; yang_parent_name = "test-ids"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::On::~On()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::On::~On()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::On::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::On::has_data() const
 {
     return month.is_set
 	|| day_of_month.is_set
@@ -8525,7 +8561,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::On::has_data() const
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::On::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::On::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(month.yfilter)
@@ -8534,14 +8570,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::On::has_operation() c
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::TestIds::On::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::TestIds::On::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "on";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::TestIds::On::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::TestIds::On::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8554,18 +8590,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::TestIds::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::TestIds::On::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::TestIds::On::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "month")
     {
@@ -8593,7 +8630,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::On::set_value(const s
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::On::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::On::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "month")
     {
@@ -8613,14 +8650,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::On::set_filter(const 
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::On::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::On::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Weekly::Weekly()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Weekly::Weekly()
     :
     day{YType::enumeration, "day"},
     hh_mm{YType::str, "hh-mm"}
@@ -8629,31 +8666,31 @@ Native::Diagnostic::Schedule::Switch_::Test::TestIds::Weekly::Weekly()
     yang_name = "weekly"; yang_parent_name = "test-ids"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Weekly::~Weekly()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Weekly::~Weekly()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Weekly::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Weekly::has_data() const
 {
     return day.is_set
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Weekly::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Weekly::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(day.yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::TestIds::Weekly::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::TestIds::Weekly::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weekly";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::TestIds::Weekly::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::TestIds::Weekly::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8664,18 +8701,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::TestIds::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Weekly::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::TestIds::Weekly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "day")
     {
@@ -8691,7 +8729,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Weekly::set_value(con
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "day")
     {
@@ -8703,27 +8741,27 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Weekly::set_filter(co
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Weekly::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "day" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::Port()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::Port()
     :
-    all(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All>())
+    all(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All>())
 {
     all->parent = this;
 
     yang_name = "port"; yang_parent_name = "test-ids"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::~Port()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::~Port()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::has_data() const
 {
     for (std::size_t index=0; index<interface_port_number.size(); index++)
     {
@@ -8738,7 +8776,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::has_data() cons
     return (all !=  nullptr && all->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::has_operation() const
 {
     for (std::size_t index=0; index<interface_port_number.size(); index++)
     {
@@ -8754,14 +8792,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::has_operation()
 	|| (all !=  nullptr && all->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "port";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8770,19 +8808,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-port-number")
     {
-        for(auto const & c : interface_port_number)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber>();
+        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber>();
         c->parent = this;
         interface_port_number.push_back(c);
         return c;
@@ -8790,15 +8820,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Po
 
     if(child_yang_name == "port-number-list")
     {
-        for(auto const & c : port_number_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList>();
+        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList>();
         c->parent = this;
         port_number_list.push_back(c);
         return c;
@@ -8808,7 +8830,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Po
     {
         if(all == nullptr)
         {
-            all = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All>();
+            all = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All>();
         }
         return all;
     }
@@ -8816,17 +8838,26 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Po
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_port_number)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : port_number_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(all != nullptr)
@@ -8837,28 +8868,28 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-port-number" || name == "port-number-list" || name == "all")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::InterfacePortNumber()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::InterfacePortNumber()
     :
     number{YType::uint8, "number"}
     	,
-    daily(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Daily>())
-	,on(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::On>())
-	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Weekly>())
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Daily>())
+	,on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::On>())
+	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Weekly>())
 {
     daily->parent = this;
     on->parent = this;
@@ -8867,11 +8898,11 @@ Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber:
     yang_name = "interface-port-number"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::~InterfacePortNumber()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::~InterfacePortNumber()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::has_data() const
 {
     return number.is_set
 	|| (daily !=  nullptr && daily->has_data())
@@ -8879,7 +8910,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNu
 	|| (weekly !=  nullptr && weekly->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -8888,14 +8919,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNu
 	|| (weekly !=  nullptr && weekly->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-port-number" <<"[number='" <<number <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8905,13 +8936,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daily")
     {
         if(daily == nullptr)
         {
-            daily = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Daily>();
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Daily>();
         }
         return daily;
     }
@@ -8920,7 +8951,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Po
     {
         if(on == nullptr)
         {
-            on = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::On>();
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::On>();
         }
         return on;
     }
@@ -8929,7 +8960,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Po
     {
         if(weekly == nullptr)
         {
-            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Weekly>();
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Weekly>();
         }
         return weekly;
     }
@@ -8937,9 +8968,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Po
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daily != nullptr)
     {
         children["daily"] = daily;
@@ -8958,7 +8990,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -8968,7 +9000,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNu
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -8976,14 +9008,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNu
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daily" || name == "on" || name == "weekly" || name == "number")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Daily::Daily()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Daily::Daily()
     :
     hh_mm{YType::str, "hh-mm"}
 {
@@ -8991,29 +9023,29 @@ Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber:
     yang_name = "daily"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Daily::~Daily()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Daily::~Daily()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Daily::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Daily::has_data() const
 {
     return hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Daily::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Daily::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Daily::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Daily::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daily";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Daily::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Daily::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9023,18 +9055,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Daily::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Daily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hh-mm")
     {
@@ -9044,7 +9077,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNu
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Daily::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hh-mm")
     {
@@ -9052,14 +9085,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNu
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Daily::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Daily::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::On::On()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::On::On()
     :
     month{YType::enumeration, "month"},
     day_of_month{YType::uint16, "day-of-month"},
@@ -9070,11 +9103,11 @@ Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber:
     yang_name = "on"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::On::~On()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::On::~On()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::On::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::On::has_data() const
 {
     return month.is_set
 	|| day_of_month.is_set
@@ -9082,7 +9115,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNu
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::On::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::On::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(month.yfilter)
@@ -9091,14 +9124,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNu
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::On::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::On::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "on";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::On::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::On::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9111,18 +9144,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::On::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::On::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "month")
     {
@@ -9150,7 +9184,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNu
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::On::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::On::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "month")
     {
@@ -9170,14 +9204,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNu
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::On::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::On::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Weekly::Weekly()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Weekly::Weekly()
     :
     day{YType::enumeration, "day"},
     hh_mm{YType::str, "hh-mm"}
@@ -9186,31 +9220,31 @@ Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber:
     yang_name = "weekly"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Weekly::~Weekly()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Weekly::~Weekly()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Weekly::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Weekly::has_data() const
 {
     return day.is_set
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Weekly::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Weekly::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(day.yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Weekly::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Weekly::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weekly";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Weekly::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Weekly::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9221,18 +9255,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Weekly::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Weekly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "day")
     {
@@ -9248,7 +9283,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNu
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "day")
     {
@@ -9260,20 +9295,20 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNu
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::InterfacePortNumber::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::InterfacePortNumber::Weekly::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "day" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::PortNumberList()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::PortNumberList()
     :
     number_list{YType::str, "number-list"}
     	,
-    daily(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Daily>())
-	,on(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::On>())
-	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Weekly>())
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Daily>())
+	,on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::On>())
+	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Weekly>())
 {
     daily->parent = this;
     on->parent = this;
@@ -9282,11 +9317,11 @@ Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Port
     yang_name = "port-number-list"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::~PortNumberList()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::~PortNumberList()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::has_data() const
 {
     return number_list.is_set
 	|| (daily !=  nullptr && daily->has_data())
@@ -9294,7 +9329,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList:
 	|| (weekly !=  nullptr && weekly->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number_list.yfilter)
@@ -9303,14 +9338,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList:
 	|| (weekly !=  nullptr && weekly->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "port-number-list" <<"[number-list='" <<number_list <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9320,13 +9355,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daily")
     {
         if(daily == nullptr)
         {
-            daily = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Daily>();
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Daily>();
         }
         return daily;
     }
@@ -9335,7 +9370,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Po
     {
         if(on == nullptr)
         {
-            on = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::On>();
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::On>();
         }
         return on;
     }
@@ -9344,7 +9379,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Po
     {
         if(weekly == nullptr)
         {
-            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Weekly>();
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Weekly>();
         }
         return weekly;
     }
@@ -9352,9 +9387,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Po
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daily != nullptr)
     {
         children["daily"] = daily;
@@ -9373,7 +9409,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number-list")
     {
@@ -9383,7 +9419,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList:
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number-list")
     {
@@ -9391,14 +9427,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList:
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daily" || name == "on" || name == "weekly" || name == "number-list")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Daily::Daily()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Daily::Daily()
     :
     hh_mm{YType::str, "hh-mm"}
 {
@@ -9406,29 +9442,29 @@ Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Dail
     yang_name = "daily"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Daily::~Daily()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Daily::~Daily()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Daily::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Daily::has_data() const
 {
     return hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Daily::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Daily::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Daily::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Daily::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daily";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Daily::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Daily::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9438,18 +9474,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Daily::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Daily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hh-mm")
     {
@@ -9459,7 +9496,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList:
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Daily::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hh-mm")
     {
@@ -9467,14 +9504,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList:
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Daily::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Daily::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::On::On()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::On::On()
     :
     month{YType::enumeration, "month"},
     day_of_month{YType::uint16, "day-of-month"},
@@ -9485,11 +9522,11 @@ Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::On::
     yang_name = "on"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::On::~On()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::On::~On()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::On::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::On::has_data() const
 {
     return month.is_set
 	|| day_of_month.is_set
@@ -9497,7 +9534,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList:
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::On::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::On::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(month.yfilter)
@@ -9506,14 +9543,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList:
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::On::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::On::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "on";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::On::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::On::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9526,18 +9563,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::On::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::On::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "month")
     {
@@ -9565,7 +9603,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList:
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::On::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::On::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "month")
     {
@@ -9585,14 +9623,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList:
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::On::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::On::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Weekly::Weekly()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Weekly::Weekly()
     :
     day{YType::enumeration, "day"},
     hh_mm{YType::str, "hh-mm"}
@@ -9601,31 +9639,31 @@ Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Week
     yang_name = "weekly"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Weekly::~Weekly()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Weekly::~Weekly()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Weekly::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Weekly::has_data() const
 {
     return day.is_set
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Weekly::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Weekly::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(day.yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Weekly::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Weekly::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weekly";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Weekly::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Weekly::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9636,18 +9674,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Weekly::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Weekly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "day")
     {
@@ -9663,7 +9702,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList:
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "day")
     {
@@ -9675,18 +9714,18 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList:
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::PortNumberList::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::PortNumberList::Weekly::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "day" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::All()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::All()
     :
-    daily(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Daily>())
-	,on(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::On>())
-	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Weekly>())
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Daily>())
+	,on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::On>())
+	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Weekly>())
 {
     daily->parent = this;
     on->parent = this;
@@ -9695,18 +9734,18 @@ Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::All()
     yang_name = "all"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::~All()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::~All()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::has_data() const
 {
     return (daily !=  nullptr && daily->has_data())
 	|| (on !=  nullptr && on->has_data())
 	|| (weekly !=  nullptr && weekly->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::has_operation() const
 {
     return is_set(yfilter)
 	|| (daily !=  nullptr && daily->has_operation())
@@ -9714,14 +9753,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::has_operat
 	|| (weekly !=  nullptr && weekly->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "all";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9730,13 +9769,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daily")
     {
         if(daily == nullptr)
         {
-            daily = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Daily>();
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Daily>();
         }
         return daily;
     }
@@ -9745,7 +9784,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Po
     {
         if(on == nullptr)
         {
-            on = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::On>();
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::On>();
         }
         return on;
     }
@@ -9754,7 +9793,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Po
     {
         if(weekly == nullptr)
         {
-            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Weekly>();
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Weekly>();
         }
         return weekly;
     }
@@ -9762,9 +9801,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Po
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daily != nullptr)
     {
         children["daily"] = daily;
@@ -9783,22 +9823,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daily" || name == "on" || name == "weekly")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Daily::Daily()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Daily::Daily()
     :
     hh_mm{YType::str, "hh-mm"}
 {
@@ -9806,29 +9846,29 @@ Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Daily::Daily()
     yang_name = "daily"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Daily::~Daily()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Daily::~Daily()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Daily::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Daily::has_data() const
 {
     return hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Daily::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Daily::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Daily::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Daily::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daily";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Daily::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Daily::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9838,18 +9878,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Daily::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Daily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hh-mm")
     {
@@ -9859,7 +9900,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Daily::set
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Daily::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hh-mm")
     {
@@ -9867,14 +9908,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Daily::set
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Daily::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Daily::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::On::On()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::On::On()
     :
     month{YType::enumeration, "month"},
     day_of_month{YType::uint16, "day-of-month"},
@@ -9885,11 +9926,11 @@ Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::On::On()
     yang_name = "on"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::On::~On()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::On::~On()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::On::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::On::has_data() const
 {
     return month.is_set
 	|| day_of_month.is_set
@@ -9897,7 +9938,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::On::has_da
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::On::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::On::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(month.yfilter)
@@ -9906,14 +9947,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::On::has_op
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::On::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::On::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "on";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::On::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::On::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9926,18 +9967,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::On::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::On::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "month")
     {
@@ -9965,7 +10007,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::On::set_va
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::On::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::On::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "month")
     {
@@ -9985,14 +10027,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::On::set_fi
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::On::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::On::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Weekly::Weekly()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Weekly::Weekly()
     :
     day{YType::enumeration, "day"},
     hh_mm{YType::str, "hh-mm"}
@@ -10001,31 +10043,31 @@ Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Weekly::Weekly(
     yang_name = "weekly"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Weekly::~Weekly()
+Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Weekly::~Weekly()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Weekly::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Weekly::has_data() const
 {
     return day.is_set
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Weekly::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Weekly::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(day.yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Weekly::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Weekly::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weekly";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Weekly::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Weekly::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10036,18 +10078,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Weekly::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Weekly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "day")
     {
@@ -10063,7 +10106,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Weekly::se
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "day")
     {
@@ -10075,19 +10118,19 @@ void Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Weekly::se
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::TestIds::Port::All::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::TestIds::Port::All::Weekly::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "day" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::All()
+Native::Diagnostic::Schedule::Switch::Test::All::All()
     :
-    daily(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Daily>())
-	,on(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::On>())
-	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Weekly>())
-	,port(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Port>())
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Daily>())
+	,on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::On>())
+	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Weekly>())
+	,port(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port>())
 {
     daily->parent = this;
     on->parent = this;
@@ -10097,11 +10140,11 @@ Native::Diagnostic::Schedule::Switch_::Test::All::All()
     yang_name = "all"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::~All()
+Native::Diagnostic::Schedule::Switch::Test::All::~All()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::has_data() const
 {
     return (daily !=  nullptr && daily->has_data())
 	|| (on !=  nullptr && on->has_data())
@@ -10109,7 +10152,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::All::has_data() const
 	|| (port !=  nullptr && port->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::has_operation() const
 {
     return is_set(yfilter)
 	|| (daily !=  nullptr && daily->has_operation())
@@ -10118,14 +10161,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::All::has_operation() const
 	|| (port !=  nullptr && port->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::All::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::All::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "all";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::All::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10134,13 +10177,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daily")
     {
         if(daily == nullptr)
         {
-            daily = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Daily>();
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Daily>();
         }
         return daily;
     }
@@ -10149,7 +10192,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::get_ch
     {
         if(on == nullptr)
         {
-            on = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::On>();
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::On>();
         }
         return on;
     }
@@ -10158,7 +10201,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::get_ch
     {
         if(weekly == nullptr)
         {
-            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Weekly>();
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Weekly>();
         }
         return weekly;
     }
@@ -10167,7 +10210,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::get_ch
     {
         if(port == nullptr)
         {
-            port = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Port>();
+            port = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port>();
         }
         return port;
     }
@@ -10175,9 +10218,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::All::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daily != nullptr)
     {
         children["daily"] = daily;
@@ -10201,22 +10245,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::All::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::All::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daily" || name == "on" || name == "weekly" || name == "port")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Daily::Daily()
+Native::Diagnostic::Schedule::Switch::Test::All::Daily::Daily()
     :
     hh_mm{YType::str, "hh-mm"}
 {
@@ -10224,29 +10268,29 @@ Native::Diagnostic::Schedule::Switch_::Test::All::Daily::Daily()
     yang_name = "daily"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Daily::~Daily()
+Native::Diagnostic::Schedule::Switch::Test::All::Daily::~Daily()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Daily::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Daily::has_data() const
 {
     return hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Daily::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Daily::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::All::Daily::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Daily::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daily";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::All::Daily::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Daily::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10256,18 +10300,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::All::Daily::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Daily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::All::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hh-mm")
     {
@@ -10277,7 +10322,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Daily::set_value(const st
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::All::Daily::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hh-mm")
     {
@@ -10285,14 +10330,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Daily::set_filter(const s
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Daily::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Daily::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::On::On()
+Native::Diagnostic::Schedule::Switch::Test::All::On::On()
     :
     month{YType::enumeration, "month"},
     day_of_month{YType::uint16, "day-of-month"},
@@ -10303,11 +10348,11 @@ Native::Diagnostic::Schedule::Switch_::Test::All::On::On()
     yang_name = "on"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::On::~On()
+Native::Diagnostic::Schedule::Switch::Test::All::On::~On()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::On::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::On::has_data() const
 {
     return month.is_set
 	|| day_of_month.is_set
@@ -10315,7 +10360,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::All::On::has_data() const
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::On::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::On::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(month.yfilter)
@@ -10324,14 +10369,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::All::On::has_operation() const
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::All::On::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::All::On::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "on";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::All::On::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::On::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10344,18 +10389,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::All::On::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::On::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::All::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "month")
     {
@@ -10383,7 +10429,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::On::set_value(const std::
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::On::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::All::On::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "month")
     {
@@ -10403,14 +10449,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::On::set_filter(const std:
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::On::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::All::On::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Weekly::Weekly()
+Native::Diagnostic::Schedule::Switch::Test::All::Weekly::Weekly()
     :
     day{YType::enumeration, "day"},
     hh_mm{YType::str, "hh-mm"}
@@ -10419,31 +10465,31 @@ Native::Diagnostic::Schedule::Switch_::Test::All::Weekly::Weekly()
     yang_name = "weekly"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Weekly::~Weekly()
+Native::Diagnostic::Schedule::Switch::Test::All::Weekly::~Weekly()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Weekly::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Weekly::has_data() const
 {
     return day.is_set
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Weekly::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Weekly::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(day.yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::All::Weekly::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Weekly::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weekly";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::All::Weekly::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Weekly::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10454,18 +10500,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::All::Weekly::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Weekly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::All::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "day")
     {
@@ -10481,7 +10528,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Weekly::set_value(const s
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::All::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "day")
     {
@@ -10493,27 +10540,27 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Weekly::set_filter(const 
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Weekly::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "day" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::Port()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::Port()
     :
-    all(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_>())
+    all(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::All_>())
 {
     all->parent = this;
 
     yang_name = "port"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::~Port()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::~Port()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::has_data() const
 {
     for (std::size_t index=0; index<interface_port_number.size(); index++)
     {
@@ -10528,7 +10575,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::has_data() const
     return (all !=  nullptr && all->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::has_operation() const
 {
     for (std::size_t index=0; index<interface_port_number.size(); index++)
     {
@@ -10544,14 +10591,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::has_operation() con
 	|| (all !=  nullptr && all->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::All::Port::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "port";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::All::Port::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10560,19 +10607,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-port-number")
     {
-        for(auto const & c : interface_port_number)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber>();
+        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber>();
         c->parent = this;
         interface_port_number.push_back(c);
         return c;
@@ -10580,15 +10619,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::
 
     if(child_yang_name == "port-number-list")
     {
-        for(auto const & c : port_number_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList>();
+        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList>();
         c->parent = this;
         port_number_list.push_back(c);
         return c;
@@ -10598,7 +10629,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::
     {
         if(all == nullptr)
         {
-            all = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_>();
+            all = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::All_>();
         }
         return all;
     }
@@ -10606,17 +10637,26 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::All::Port::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_port_number)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : port_number_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(all != nullptr)
@@ -10627,28 +10667,28 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-port-number" || name == "port-number-list" || name == "all")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::InterfacePortNumber()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::InterfacePortNumber()
     :
     number{YType::uint8, "number"}
     	,
-    daily(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Daily>())
-	,on(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::On>())
-	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Weekly>())
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily>())
+	,on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On>())
+	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly>())
 {
     daily->parent = this;
     on->parent = this;
@@ -10657,11 +10697,11 @@ Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Int
     yang_name = "interface-port-number"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::~InterfacePortNumber()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::~InterfacePortNumber()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::has_data() const
 {
     return number.is_set
 	|| (daily !=  nullptr && daily->has_data())
@@ -10669,7 +10709,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber
 	|| (weekly !=  nullptr && weekly->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -10678,14 +10718,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber
 	|| (weekly !=  nullptr && weekly->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-port-number" <<"[number='" <<number <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10695,13 +10735,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daily")
     {
         if(daily == nullptr)
         {
-            daily = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Daily>();
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily>();
         }
         return daily;
     }
@@ -10710,7 +10750,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::
     {
         if(on == nullptr)
         {
-            on = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::On>();
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On>();
         }
         return on;
     }
@@ -10719,7 +10759,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::
     {
         if(weekly == nullptr)
         {
-            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Weekly>();
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly>();
         }
         return weekly;
     }
@@ -10727,9 +10767,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daily != nullptr)
     {
         children["daily"] = daily;
@@ -10748,7 +10789,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -10758,7 +10799,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -10766,14 +10807,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daily" || name == "on" || name == "weekly" || name == "number")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Daily::Daily()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily::Daily()
     :
     hh_mm{YType::str, "hh-mm"}
 {
@@ -10781,29 +10822,29 @@ Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Dai
     yang_name = "daily"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Daily::~Daily()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily::~Daily()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Daily::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily::has_data() const
 {
     return hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Daily::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Daily::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daily";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Daily::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10813,18 +10854,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Daily::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hh-mm")
     {
@@ -10834,7 +10876,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hh-mm")
     {
@@ -10842,14 +10884,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Daily::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::On::On()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On::On()
     :
     month{YType::enumeration, "month"},
     day_of_month{YType::uint16, "day-of-month"},
@@ -10860,11 +10902,11 @@ Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::On:
     yang_name = "on"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::On::~On()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On::~On()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::On::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On::has_data() const
 {
     return month.is_set
 	|| day_of_month.is_set
@@ -10872,7 +10914,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::On::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(month.yfilter)
@@ -10881,14 +10923,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::On::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "on";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::On::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10901,18 +10943,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::On::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "month")
     {
@@ -10940,7 +10983,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::On::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "month")
     {
@@ -10960,14 +11003,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::On::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Weekly::Weekly()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly::Weekly()
     :
     day{YType::enumeration, "day"},
     hh_mm{YType::str, "hh-mm"}
@@ -10976,31 +11019,31 @@ Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Wee
     yang_name = "weekly"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Weekly::~Weekly()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly::~Weekly()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Weekly::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly::has_data() const
 {
     return day.is_set
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Weekly::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(day.yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Weekly::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weekly";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Weekly::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11011,18 +11054,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Weekly::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "day")
     {
@@ -11038,7 +11082,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "day")
     {
@@ -11050,20 +11094,20 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::InterfacePortNumber::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "day" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::PortNumberList()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::PortNumberList()
     :
     number_list{YType::str, "number-list"}
     	,
-    daily(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Daily>())
-	,on(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::On>())
-	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Weekly>())
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily>())
+	,on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On>())
+	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly>())
 {
     daily->parent = this;
     on->parent = this;
@@ -11072,11 +11116,11 @@ Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::PortNumb
     yang_name = "port-number-list"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::~PortNumberList()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::~PortNumberList()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::has_data() const
 {
     return number_list.is_set
 	|| (daily !=  nullptr && daily->has_data())
@@ -11084,7 +11128,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::has
 	|| (weekly !=  nullptr && weekly->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number_list.yfilter)
@@ -11093,14 +11137,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::has
 	|| (weekly !=  nullptr && weekly->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "port-number-list" <<"[number-list='" <<number_list <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11110,13 +11154,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daily")
     {
         if(daily == nullptr)
         {
-            daily = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Daily>();
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily>();
         }
         return daily;
     }
@@ -11125,7 +11169,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::
     {
         if(on == nullptr)
         {
-            on = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::On>();
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On>();
         }
         return on;
     }
@@ -11134,7 +11178,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::
     {
         if(weekly == nullptr)
         {
-            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Weekly>();
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly>();
         }
         return weekly;
     }
@@ -11142,9 +11186,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daily != nullptr)
     {
         children["daily"] = daily;
@@ -11163,7 +11208,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number-list")
     {
@@ -11173,7 +11218,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::set
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number-list")
     {
@@ -11181,14 +11226,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::set
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daily" || name == "on" || name == "weekly" || name == "number-list")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Daily::Daily()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily::Daily()
     :
     hh_mm{YType::str, "hh-mm"}
 {
@@ -11196,29 +11241,29 @@ Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Daily::D
     yang_name = "daily"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Daily::~Daily()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily::~Daily()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Daily::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily::has_data() const
 {
     return hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Daily::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Daily::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daily";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Daily::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11228,18 +11273,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Daily::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hh-mm")
     {
@@ -11249,7 +11295,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Dai
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hh-mm")
     {
@@ -11257,14 +11303,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Dai
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Daily::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::On::On()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On::On()
     :
     month{YType::enumeration, "month"},
     day_of_month{YType::uint16, "day-of-month"},
@@ -11275,11 +11321,11 @@ Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::On::On()
     yang_name = "on"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::On::~On()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On::~On()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::On::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On::has_data() const
 {
     return month.is_set
 	|| day_of_month.is_set
@@ -11287,7 +11333,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::On:
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::On::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(month.yfilter)
@@ -11296,14 +11342,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::On:
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::On::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "on";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::On::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11316,18 +11362,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::On::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "month")
     {
@@ -11355,7 +11402,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::On:
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::On::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "month")
     {
@@ -11375,14 +11422,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::On:
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::On::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Weekly::Weekly()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly::Weekly()
     :
     day{YType::enumeration, "day"},
     hh_mm{YType::str, "hh-mm"}
@@ -11391,31 +11438,31 @@ Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Weekly::
     yang_name = "weekly"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Weekly::~Weekly()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly::~Weekly()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Weekly::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly::has_data() const
 {
     return day.is_set
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Weekly::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(day.yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Weekly::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weekly";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Weekly::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11426,18 +11473,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Weekly::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "day")
     {
@@ -11453,7 +11501,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Wee
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "day")
     {
@@ -11465,18 +11513,18 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Wee
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::PortNumberList::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "day" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::All_()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::All_()
     :
-    daily(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Daily>())
-	,on(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::On>())
-	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Weekly>())
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily>())
+	,on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On>())
+	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly>())
 {
     daily->parent = this;
     on->parent = this;
@@ -11485,18 +11533,18 @@ Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::All_()
     yang_name = "all"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::~All_()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::~All_()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::has_data() const
 {
     return (daily !=  nullptr && daily->has_data())
 	|| (on !=  nullptr && on->has_data())
 	|| (weekly !=  nullptr && weekly->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::has_operation() const
 {
     return is_set(yfilter)
 	|| (daily !=  nullptr && daily->has_operation())
@@ -11504,14 +11552,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::has_operation
 	|| (weekly !=  nullptr && weekly->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "all";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11520,13 +11568,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daily")
     {
         if(daily == nullptr)
         {
-            daily = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Daily>();
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily>();
         }
         return daily;
     }
@@ -11535,7 +11583,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::
     {
         if(on == nullptr)
         {
-            on = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::On>();
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On>();
         }
         return on;
     }
@@ -11544,7 +11592,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::
     {
         if(weekly == nullptr)
         {
-            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Weekly>();
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly>();
         }
         return weekly;
     }
@@ -11552,9 +11600,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daily != nullptr)
     {
         children["daily"] = daily;
@@ -11573,22 +11622,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daily" || name == "on" || name == "weekly")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Daily::Daily()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily::Daily()
     :
     hh_mm{YType::str, "hh-mm"}
 {
@@ -11596,29 +11645,29 @@ Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Daily::Daily()
     yang_name = "daily"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Daily::~Daily()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily::~Daily()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Daily::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily::has_data() const
 {
     return hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Daily::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Daily::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daily";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Daily::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11628,18 +11677,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Daily::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hh-mm")
     {
@@ -11649,7 +11699,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Daily::set_va
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hh-mm")
     {
@@ -11657,14 +11707,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Daily::set_fi
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Daily::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::On::On()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On::On()
     :
     month{YType::enumeration, "month"},
     day_of_month{YType::uint16, "day-of-month"},
@@ -11675,11 +11725,11 @@ Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::On::On()
     yang_name = "on"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::On::~On()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On::~On()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::On::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On::has_data() const
 {
     return month.is_set
 	|| day_of_month.is_set
@@ -11687,7 +11737,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::On::has_data(
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::On::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(month.yfilter)
@@ -11696,14 +11746,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::On::has_opera
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::On::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "on";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::On::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11716,18 +11766,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::On::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "month")
     {
@@ -11755,7 +11806,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::On::set_value
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::On::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "month")
     {
@@ -11775,14 +11826,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::On::set_filte
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::On::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Weekly::Weekly()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly::Weekly()
     :
     day{YType::enumeration, "day"},
     hh_mm{YType::str, "hh-mm"}
@@ -11791,31 +11842,31 @@ Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Weekly::Weekly()
     yang_name = "weekly"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Weekly::~Weekly()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly::~Weekly()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Weekly::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly::has_data() const
 {
     return day.is_set
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Weekly::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(day.yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Weekly::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weekly";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Weekly::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11826,18 +11877,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Weekly::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "day")
     {
@@ -11853,7 +11905,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Weekly::set_v
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "day")
     {
@@ -11865,19 +11917,19 @@ void Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Weekly::set_f
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::All::Port::All_::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "day" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Basic()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Basic()
     :
-    daily(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Daily>())
-	,on(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::On>())
-	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Weekly>())
-	,port(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Port>())
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Daily>())
+	,on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::On>())
+	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly>())
+	,port(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port>())
 {
     daily->parent = this;
     on->parent = this;
@@ -11887,11 +11939,11 @@ Native::Diagnostic::Schedule::Switch_::Test::Basic::Basic()
     yang_name = "basic"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::~Basic()
+Native::Diagnostic::Schedule::Switch::Test::Basic::~Basic()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::has_data() const
 {
     return (daily !=  nullptr && daily->has_data())
 	|| (on !=  nullptr && on->has_data())
@@ -11899,7 +11951,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::Basic::has_data() const
 	|| (port !=  nullptr && port->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::has_operation() const
 {
     return is_set(yfilter)
 	|| (daily !=  nullptr && daily->has_operation())
@@ -11908,14 +11960,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::Basic::has_operation() const
 	|| (port !=  nullptr && port->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Basic::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "basic";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Basic::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11924,13 +11976,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daily")
     {
         if(daily == nullptr)
         {
-            daily = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Daily>();
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Daily>();
         }
         return daily;
     }
@@ -11939,7 +11991,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::get_
     {
         if(on == nullptr)
         {
-            on = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::On>();
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::On>();
         }
         return on;
     }
@@ -11948,7 +12000,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::get_
     {
         if(weekly == nullptr)
         {
-            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Weekly>();
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly>();
         }
         return weekly;
     }
@@ -11957,7 +12009,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::get_
     {
         if(port == nullptr)
         {
-            port = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Port>();
+            port = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port>();
         }
         return port;
     }
@@ -11965,9 +12017,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Basic::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daily != nullptr)
     {
         children["daily"] = daily;
@@ -11991,22 +12044,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daily" || name == "on" || name == "weekly" || name == "port")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Daily::Daily()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Daily::Daily()
     :
     hh_mm{YType::str, "hh-mm"}
 {
@@ -12014,29 +12067,29 @@ Native::Diagnostic::Schedule::Switch_::Test::Basic::Daily::Daily()
     yang_name = "daily"; yang_parent_name = "basic"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Daily::~Daily()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Daily::~Daily()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Daily::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Daily::has_data() const
 {
     return hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Daily::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Daily::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Basic::Daily::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Daily::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daily";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Basic::Daily::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Daily::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12046,18 +12099,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Basic::Daily::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Daily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hh-mm")
     {
@@ -12067,7 +12121,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Daily::set_value(const 
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Daily::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hh-mm")
     {
@@ -12075,14 +12129,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Daily::set_filter(const
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Daily::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Daily::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::On::On()
+Native::Diagnostic::Schedule::Switch::Test::Basic::On::On()
     :
     month{YType::enumeration, "month"},
     day_of_month{YType::uint16, "day-of-month"},
@@ -12093,11 +12147,11 @@ Native::Diagnostic::Schedule::Switch_::Test::Basic::On::On()
     yang_name = "on"; yang_parent_name = "basic"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::On::~On()
+Native::Diagnostic::Schedule::Switch::Test::Basic::On::~On()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::On::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::On::has_data() const
 {
     return month.is_set
 	|| day_of_month.is_set
@@ -12105,7 +12159,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::Basic::On::has_data() const
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::On::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::On::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(month.yfilter)
@@ -12114,14 +12168,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::Basic::On::has_operation() con
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Basic::On::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::On::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "on";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Basic::On::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::On::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12134,18 +12188,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Basic::On::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::On::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "month")
     {
@@ -12173,7 +12228,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::On::set_value(const std
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::On::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::On::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "month")
     {
@@ -12193,14 +12248,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::On::set_filter(const st
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::On::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::On::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Weekly::Weekly()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly::Weekly()
     :
     day{YType::enumeration, "day"},
     hh_mm{YType::str, "hh-mm"}
@@ -12209,31 +12264,31 @@ Native::Diagnostic::Schedule::Switch_::Test::Basic::Weekly::Weekly()
     yang_name = "weekly"; yang_parent_name = "basic"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Weekly::~Weekly()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly::~Weekly()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Weekly::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly::has_data() const
 {
     return day.is_set
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Weekly::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(day.yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Basic::Weekly::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weekly";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Basic::Weekly::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12244,18 +12299,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Basic::Weekly::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "day")
     {
@@ -12271,7 +12327,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Weekly::set_value(const
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "day")
     {
@@ -12283,27 +12339,27 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Weekly::set_filter(cons
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "day" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::Port()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::Port()
     :
-    all(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All>())
+    all(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All>())
 {
     all->parent = this;
 
     yang_name = "port"; yang_parent_name = "basic"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::~Port()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::~Port()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::has_data() const
 {
     for (std::size_t index=0; index<interface_port_number.size(); index++)
     {
@@ -12318,7 +12374,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::has_data() const
     return (all !=  nullptr && all->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::has_operation() const
 {
     for (std::size_t index=0; index<interface_port_number.size(); index++)
     {
@@ -12334,14 +12390,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::has_operation() c
 	|| (all !=  nullptr && all->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "port";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12350,19 +12406,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-port-number")
     {
-        for(auto const & c : interface_port_number)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber>();
+        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber>();
         c->parent = this;
         interface_port_number.push_back(c);
         return c;
@@ -12370,15 +12418,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port
 
     if(child_yang_name == "port-number-list")
     {
-        for(auto const & c : port_number_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList>();
+        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList>();
         c->parent = this;
         port_number_list.push_back(c);
         return c;
@@ -12388,7 +12428,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port
     {
         if(all == nullptr)
         {
-            all = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All>();
+            all = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All>();
         }
         return all;
     }
@@ -12396,17 +12436,26 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_port_number)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : port_number_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(all != nullptr)
@@ -12417,28 +12466,28 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-port-number" || name == "port-number-list" || name == "all")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::InterfacePortNumber()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::InterfacePortNumber()
     :
     number{YType::uint8, "number"}
     	,
-    daily(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Daily>())
-	,on(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::On>())
-	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Weekly>())
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily>())
+	,on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On>())
+	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly>())
 {
     daily->parent = this;
     on->parent = this;
@@ -12447,11 +12496,11 @@ Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::I
     yang_name = "interface-port-number"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::~InterfacePortNumber()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::~InterfacePortNumber()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::has_data() const
 {
     return number.is_set
 	|| (daily !=  nullptr && daily->has_data())
@@ -12459,7 +12508,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumb
 	|| (weekly !=  nullptr && weekly->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -12468,14 +12517,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumb
 	|| (weekly !=  nullptr && weekly->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-port-number" <<"[number='" <<number <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12485,13 +12534,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daily")
     {
         if(daily == nullptr)
         {
-            daily = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Daily>();
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily>();
         }
         return daily;
     }
@@ -12500,7 +12549,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port
     {
         if(on == nullptr)
         {
-            on = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::On>();
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On>();
         }
         return on;
     }
@@ -12509,7 +12558,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port
     {
         if(weekly == nullptr)
         {
-            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Weekly>();
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly>();
         }
         return weekly;
     }
@@ -12517,9 +12566,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daily != nullptr)
     {
         children["daily"] = daily;
@@ -12538,7 +12588,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -12548,7 +12598,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumb
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -12556,14 +12606,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumb
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daily" || name == "on" || name == "weekly" || name == "number")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Daily::Daily()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily::Daily()
     :
     hh_mm{YType::str, "hh-mm"}
 {
@@ -12571,29 +12621,29 @@ Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::D
     yang_name = "daily"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Daily::~Daily()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily::~Daily()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Daily::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily::has_data() const
 {
     return hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Daily::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Daily::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daily";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Daily::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12603,18 +12653,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Daily::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hh-mm")
     {
@@ -12624,7 +12675,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumb
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hh-mm")
     {
@@ -12632,14 +12683,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumb
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Daily::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::On::On()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On::On()
     :
     month{YType::enumeration, "month"},
     day_of_month{YType::uint16, "day-of-month"},
@@ -12650,11 +12701,11 @@ Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::O
     yang_name = "on"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::On::~On()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On::~On()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::On::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On::has_data() const
 {
     return month.is_set
 	|| day_of_month.is_set
@@ -12662,7 +12713,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumb
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::On::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(month.yfilter)
@@ -12671,14 +12722,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumb
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::On::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "on";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::On::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12691,18 +12742,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::On::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "month")
     {
@@ -12730,7 +12782,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumb
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::On::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "month")
     {
@@ -12750,14 +12802,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumb
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::On::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Weekly::Weekly()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly::Weekly()
     :
     day{YType::enumeration, "day"},
     hh_mm{YType::str, "hh-mm"}
@@ -12766,31 +12818,31 @@ Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::W
     yang_name = "weekly"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Weekly::~Weekly()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly::~Weekly()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Weekly::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly::has_data() const
 {
     return day.is_set
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Weekly::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(day.yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Weekly::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weekly";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Weekly::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12801,18 +12853,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Weekly::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "day")
     {
@@ -12828,7 +12881,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumb
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "day")
     {
@@ -12840,20 +12893,20 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumb
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::InterfacePortNumber::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "day" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::PortNumberList()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::PortNumberList()
     :
     number_list{YType::str, "number-list"}
     	,
-    daily(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Daily>())
-	,on(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::On>())
-	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Weekly>())
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily>())
+	,on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On>())
+	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly>())
 {
     daily->parent = this;
     on->parent = this;
@@ -12862,11 +12915,11 @@ Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::PortNu
     yang_name = "port-number-list"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::~PortNumberList()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::~PortNumberList()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::has_data() const
 {
     return number_list.is_set
 	|| (daily !=  nullptr && daily->has_data())
@@ -12874,7 +12927,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::h
 	|| (weekly !=  nullptr && weekly->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number_list.yfilter)
@@ -12883,14 +12936,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::h
 	|| (weekly !=  nullptr && weekly->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "port-number-list" <<"[number-list='" <<number_list <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12900,13 +12953,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daily")
     {
         if(daily == nullptr)
         {
-            daily = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Daily>();
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily>();
         }
         return daily;
     }
@@ -12915,7 +12968,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port
     {
         if(on == nullptr)
         {
-            on = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::On>();
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On>();
         }
         return on;
     }
@@ -12924,7 +12977,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port
     {
         if(weekly == nullptr)
         {
-            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Weekly>();
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly>();
         }
         return weekly;
     }
@@ -12932,9 +12985,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daily != nullptr)
     {
         children["daily"] = daily;
@@ -12953,7 +13007,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number-list")
     {
@@ -12963,7 +13017,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::s
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number-list")
     {
@@ -12971,14 +13025,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::s
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daily" || name == "on" || name == "weekly" || name == "number-list")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Daily::Daily()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily::Daily()
     :
     hh_mm{YType::str, "hh-mm"}
 {
@@ -12986,29 +13040,29 @@ Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Daily:
     yang_name = "daily"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Daily::~Daily()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily::~Daily()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Daily::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily::has_data() const
 {
     return hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Daily::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Daily::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daily";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Daily::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13018,18 +13072,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Daily::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hh-mm")
     {
@@ -13039,7 +13094,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::D
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hh-mm")
     {
@@ -13047,14 +13102,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::D
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Daily::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::On::On()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On::On()
     :
     month{YType::enumeration, "month"},
     day_of_month{YType::uint16, "day-of-month"},
@@ -13065,11 +13120,11 @@ Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::On::On
     yang_name = "on"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::On::~On()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On::~On()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::On::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On::has_data() const
 {
     return month.is_set
 	|| day_of_month.is_set
@@ -13077,7 +13132,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::O
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::On::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(month.yfilter)
@@ -13086,14 +13141,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::O
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::On::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "on";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::On::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13106,18 +13161,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::On::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "month")
     {
@@ -13145,7 +13201,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::O
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::On::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "month")
     {
@@ -13165,14 +13221,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::O
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::On::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Weekly::Weekly()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly::Weekly()
     :
     day{YType::enumeration, "day"},
     hh_mm{YType::str, "hh-mm"}
@@ -13181,31 +13237,31 @@ Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Weekly
     yang_name = "weekly"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Weekly::~Weekly()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly::~Weekly()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Weekly::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly::has_data() const
 {
     return day.is_set
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Weekly::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(day.yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Weekly::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weekly";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Weekly::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13216,18 +13272,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Weekly::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "day")
     {
@@ -13243,7 +13300,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::W
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "day")
     {
@@ -13255,18 +13312,18 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::W
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::PortNumberList::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "day" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::All()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::All()
     :
-    daily(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Daily>())
-	,on(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::On>())
-	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Weekly>())
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily>())
+	,on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On>())
+	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly>())
 {
     daily->parent = this;
     on->parent = this;
@@ -13275,18 +13332,18 @@ Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::All()
     yang_name = "all"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::~All()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::~All()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::has_data() const
 {
     return (daily !=  nullptr && daily->has_data())
 	|| (on !=  nullptr && on->has_data())
 	|| (weekly !=  nullptr && weekly->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::has_operation() const
 {
     return is_set(yfilter)
 	|| (daily !=  nullptr && daily->has_operation())
@@ -13294,14 +13351,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::has_operatio
 	|| (weekly !=  nullptr && weekly->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "all";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13310,13 +13367,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daily")
     {
         if(daily == nullptr)
         {
-            daily = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Daily>();
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily>();
         }
         return daily;
     }
@@ -13325,7 +13382,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port
     {
         if(on == nullptr)
         {
-            on = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::On>();
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On>();
         }
         return on;
     }
@@ -13334,7 +13391,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port
     {
         if(weekly == nullptr)
         {
-            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Weekly>();
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly>();
         }
         return weekly;
     }
@@ -13342,9 +13399,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daily != nullptr)
     {
         children["daily"] = daily;
@@ -13363,22 +13421,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daily" || name == "on" || name == "weekly")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Daily::Daily()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily::Daily()
     :
     hh_mm{YType::str, "hh-mm"}
 {
@@ -13386,29 +13444,29 @@ Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Daily::Daily()
     yang_name = "daily"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Daily::~Daily()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily::~Daily()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Daily::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily::has_data() const
 {
     return hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Daily::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Daily::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daily";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Daily::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13418,18 +13476,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Daily::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hh-mm")
     {
@@ -13439,7 +13498,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Daily::set_v
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hh-mm")
     {
@@ -13447,14 +13506,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Daily::set_f
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Daily::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::On::On()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On::On()
     :
     month{YType::enumeration, "month"},
     day_of_month{YType::uint16, "day-of-month"},
@@ -13465,11 +13524,11 @@ Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::On::On()
     yang_name = "on"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::On::~On()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On::~On()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::On::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On::has_data() const
 {
     return month.is_set
 	|| day_of_month.is_set
@@ -13477,7 +13536,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::On::has_data
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::On::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(month.yfilter)
@@ -13486,14 +13545,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::On::has_oper
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::On::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "on";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::On::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13506,18 +13565,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::On::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "month")
     {
@@ -13545,7 +13605,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::On::set_valu
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::On::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "month")
     {
@@ -13565,14 +13625,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::On::set_filt
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::On::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Weekly::Weekly()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly::Weekly()
     :
     day{YType::enumeration, "day"},
     hh_mm{YType::str, "hh-mm"}
@@ -13581,31 +13641,31 @@ Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Weekly::Weekly()
     yang_name = "weekly"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Weekly::~Weekly()
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly::~Weekly()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Weekly::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly::has_data() const
 {
     return day.is_set
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Weekly::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(day.yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Weekly::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weekly";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Weekly::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13616,18 +13676,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Weekly::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "day")
     {
@@ -13643,7 +13704,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Weekly::set_
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "day")
     {
@@ -13655,18 +13716,18 @@ void Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Weekly::set_
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Basic::Port::All::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "day" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Complete::Complete()
+Native::Diagnostic::Schedule::Switch::Test::Complete::Complete()
     :
-    daily(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Complete::Daily>())
-	,on(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Complete::On>())
-	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Complete::Weekly>())
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Complete::Daily>())
+	,on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Complete::On>())
+	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly>())
 {
     daily->parent = this;
     on->parent = this;
@@ -13675,18 +13736,18 @@ Native::Diagnostic::Schedule::Switch_::Test::Complete::Complete()
     yang_name = "complete"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Complete::~Complete()
+Native::Diagnostic::Schedule::Switch::Test::Complete::~Complete()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Complete::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Complete::has_data() const
 {
     return (daily !=  nullptr && daily->has_data())
 	|| (on !=  nullptr && on->has_data())
 	|| (weekly !=  nullptr && weekly->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Complete::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Complete::has_operation() const
 {
     return is_set(yfilter)
 	|| (daily !=  nullptr && daily->has_operation())
@@ -13694,14 +13755,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::Complete::has_operation() cons
 	|| (weekly !=  nullptr && weekly->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Complete::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Complete::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "complete";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Complete::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Complete::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13710,13 +13771,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Complete::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Complete::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daily")
     {
         if(daily == nullptr)
         {
-            daily = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Complete::Daily>();
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Complete::Daily>();
         }
         return daily;
     }
@@ -13725,7 +13786,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Complete::g
     {
         if(on == nullptr)
         {
-            on = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Complete::On>();
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Complete::On>();
         }
         return on;
     }
@@ -13734,7 +13795,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Complete::g
     {
         if(weekly == nullptr)
         {
-            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Complete::Weekly>();
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly>();
         }
         return weekly;
     }
@@ -13742,9 +13803,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Complete::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Complete::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Complete::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daily != nullptr)
     {
         children["daily"] = daily;
@@ -13763,22 +13825,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Complete::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Complete::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Complete::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Complete::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Complete::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Complete::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daily" || name == "on" || name == "weekly")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Complete::Daily::Daily()
+Native::Diagnostic::Schedule::Switch::Test::Complete::Daily::Daily()
     :
     hh_mm{YType::str, "hh-mm"}
 {
@@ -13786,29 +13848,29 @@ Native::Diagnostic::Schedule::Switch_::Test::Complete::Daily::Daily()
     yang_name = "daily"; yang_parent_name = "complete"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Complete::Daily::~Daily()
+Native::Diagnostic::Schedule::Switch::Test::Complete::Daily::~Daily()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Complete::Daily::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Complete::Daily::has_data() const
 {
     return hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Complete::Daily::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Complete::Daily::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Complete::Daily::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Complete::Daily::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daily";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Complete::Daily::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Complete::Daily::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13818,18 +13880,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Complete::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Complete::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Complete::Daily::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Complete::Daily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Complete::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Complete::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hh-mm")
     {
@@ -13839,7 +13902,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::Complete::Daily::set_value(con
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Complete::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Complete::Daily::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hh-mm")
     {
@@ -13847,14 +13910,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::Complete::Daily::set_filter(co
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Complete::Daily::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Complete::Daily::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Complete::On::On()
+Native::Diagnostic::Schedule::Switch::Test::Complete::On::On()
     :
     month{YType::enumeration, "month"},
     day_of_month{YType::uint16, "day-of-month"},
@@ -13865,11 +13928,11 @@ Native::Diagnostic::Schedule::Switch_::Test::Complete::On::On()
     yang_name = "on"; yang_parent_name = "complete"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Complete::On::~On()
+Native::Diagnostic::Schedule::Switch::Test::Complete::On::~On()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Complete::On::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Complete::On::has_data() const
 {
     return month.is_set
 	|| day_of_month.is_set
@@ -13877,7 +13940,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::Complete::On::has_data() const
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Complete::On::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Complete::On::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(month.yfilter)
@@ -13886,14 +13949,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::Complete::On::has_operation() 
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Complete::On::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Complete::On::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "on";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Complete::On::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Complete::On::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13906,18 +13969,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Complete::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Complete::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Complete::On::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Complete::On::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Complete::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Complete::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "month")
     {
@@ -13945,7 +14009,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::Complete::On::set_value(const 
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Complete::On::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Complete::On::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "month")
     {
@@ -13965,14 +14029,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::Complete::On::set_filter(const
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Complete::On::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Complete::On::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Complete::Weekly::Weekly()
+Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly::Weekly()
     :
     day{YType::enumeration, "day"},
     hh_mm{YType::str, "hh-mm"}
@@ -13981,31 +14045,31 @@ Native::Diagnostic::Schedule::Switch_::Test::Complete::Weekly::Weekly()
     yang_name = "weekly"; yang_parent_name = "complete"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Complete::Weekly::~Weekly()
+Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly::~Weekly()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Complete::Weekly::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly::has_data() const
 {
     return day.is_set
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Complete::Weekly::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(day.yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Complete::Weekly::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weekly";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Complete::Weekly::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14016,18 +14080,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Complete::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Complete::Weekly::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Complete::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "day")
     {
@@ -14043,7 +14108,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::Complete::Weekly::set_value(co
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Complete::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "day")
     {
@@ -14055,18 +14120,18 @@ void Native::Diagnostic::Schedule::Switch_::Test::Complete::Weekly::set_filter(c
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Complete::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "day" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Minimal::Minimal()
+Native::Diagnostic::Schedule::Switch::Test::Minimal::Minimal()
     :
-    daily(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Minimal::Daily>())
-	,on(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Minimal::On>())
-	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Minimal::Weekly>())
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily>())
+	,on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Minimal::On>())
+	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly>())
 {
     daily->parent = this;
     on->parent = this;
@@ -14075,18 +14140,18 @@ Native::Diagnostic::Schedule::Switch_::Test::Minimal::Minimal()
     yang_name = "minimal"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Minimal::~Minimal()
+Native::Diagnostic::Schedule::Switch::Test::Minimal::~Minimal()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Minimal::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Minimal::has_data() const
 {
     return (daily !=  nullptr && daily->has_data())
 	|| (on !=  nullptr && on->has_data())
 	|| (weekly !=  nullptr && weekly->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Minimal::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Minimal::has_operation() const
 {
     return is_set(yfilter)
 	|| (daily !=  nullptr && daily->has_operation())
@@ -14094,14 +14159,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::Minimal::has_operation() const
 	|| (weekly !=  nullptr && weekly->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Minimal::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Minimal::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "minimal";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Minimal::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Minimal::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14110,13 +14175,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Minimal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Minimal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daily")
     {
         if(daily == nullptr)
         {
-            daily = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Minimal::Daily>();
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily>();
         }
         return daily;
     }
@@ -14125,7 +14190,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Minimal::ge
     {
         if(on == nullptr)
         {
-            on = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Minimal::On>();
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Minimal::On>();
         }
         return on;
     }
@@ -14134,7 +14199,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Minimal::ge
     {
         if(weekly == nullptr)
         {
-            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::Minimal::Weekly>();
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly>();
         }
         return weekly;
     }
@@ -14142,9 +14207,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Minimal::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Minimal::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Minimal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daily != nullptr)
     {
         children["daily"] = daily;
@@ -14163,22 +14229,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Minimal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Minimal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Minimal::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Minimal::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Minimal::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Minimal::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daily" || name == "on" || name == "weekly")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Minimal::Daily::Daily()
+Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily::Daily()
     :
     hh_mm{YType::str, "hh-mm"}
 {
@@ -14186,29 +14252,29 @@ Native::Diagnostic::Schedule::Switch_::Test::Minimal::Daily::Daily()
     yang_name = "daily"; yang_parent_name = "minimal"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Minimal::Daily::~Daily()
+Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily::~Daily()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Minimal::Daily::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily::has_data() const
 {
     return hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Minimal::Daily::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Minimal::Daily::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daily";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Minimal::Daily::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14218,18 +14284,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Minimal::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Minimal::Daily::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Minimal::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hh-mm")
     {
@@ -14239,7 +14306,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::Minimal::Daily::set_value(cons
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Minimal::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hh-mm")
     {
@@ -14247,14 +14314,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::Minimal::Daily::set_filter(con
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Minimal::Daily::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Minimal::On::On()
+Native::Diagnostic::Schedule::Switch::Test::Minimal::On::On()
     :
     month{YType::enumeration, "month"},
     day_of_month{YType::uint16, "day-of-month"},
@@ -14265,11 +14332,11 @@ Native::Diagnostic::Schedule::Switch_::Test::Minimal::On::On()
     yang_name = "on"; yang_parent_name = "minimal"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Minimal::On::~On()
+Native::Diagnostic::Schedule::Switch::Test::Minimal::On::~On()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Minimal::On::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Minimal::On::has_data() const
 {
     return month.is_set
 	|| day_of_month.is_set
@@ -14277,7 +14344,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::Minimal::On::has_data() const
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Minimal::On::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Minimal::On::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(month.yfilter)
@@ -14286,14 +14353,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::Minimal::On::has_operation() c
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Minimal::On::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Minimal::On::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "on";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Minimal::On::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Minimal::On::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14306,18 +14373,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Minimal::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Minimal::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Minimal::On::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Minimal::On::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Minimal::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Minimal::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "month")
     {
@@ -14345,7 +14413,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::Minimal::On::set_value(const s
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Minimal::On::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Minimal::On::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "month")
     {
@@ -14365,14 +14433,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::Minimal::On::set_filter(const 
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Minimal::On::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Minimal::On::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Minimal::Weekly::Weekly()
+Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly::Weekly()
     :
     day{YType::enumeration, "day"},
     hh_mm{YType::str, "hh-mm"}
@@ -14381,31 +14449,31 @@ Native::Diagnostic::Schedule::Switch_::Test::Minimal::Weekly::Weekly()
     yang_name = "weekly"; yang_parent_name = "minimal"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::Minimal::Weekly::~Weekly()
+Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly::~Weekly()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Minimal::Weekly::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly::has_data() const
 {
     return day.is_set
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Minimal::Weekly::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(day.yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::Minimal::Weekly::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weekly";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::Minimal::Weekly::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14416,18 +14484,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::Minimal::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::Minimal::Weekly::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Minimal::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "day")
     {
@@ -14443,7 +14512,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::Minimal::Weekly::set_value(con
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::Minimal::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "day")
     {
@@ -14455,19 +14524,19 @@ void Native::Diagnostic::Schedule::Switch_::Test::Minimal::Weekly::set_filter(co
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::Minimal::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "day" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::NonDisruptive()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::NonDisruptive()
     :
-    daily(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Daily>())
-	,on(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::On>())
-	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Weekly>())
-	,port(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port>())
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily>())
+	,on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On>())
+	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly>())
+	,port(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port>())
 {
     daily->parent = this;
     on->parent = this;
@@ -14477,11 +14546,11 @@ Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::NonDisruptive()
     yang_name = "non-disruptive"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::~NonDisruptive()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::~NonDisruptive()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::has_data() const
 {
     return (daily !=  nullptr && daily->has_data())
 	|| (on !=  nullptr && on->has_data())
@@ -14489,7 +14558,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::has_data() cons
 	|| (port !=  nullptr && port->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::has_operation() const
 {
     return is_set(yfilter)
 	|| (daily !=  nullptr && daily->has_operation())
@@ -14498,14 +14567,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::has_operation()
 	|| (port !=  nullptr && port->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "non-disruptive";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14514,13 +14583,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daily")
     {
         if(daily == nullptr)
         {
-            daily = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Daily>();
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily>();
         }
         return daily;
     }
@@ -14529,7 +14598,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisrupti
     {
         if(on == nullptr)
         {
-            on = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::On>();
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On>();
         }
         return on;
     }
@@ -14538,7 +14607,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisrupti
     {
         if(weekly == nullptr)
         {
-            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Weekly>();
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly>();
         }
         return weekly;
     }
@@ -14547,7 +14616,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisrupti
     {
         if(port == nullptr)
         {
-            port = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port>();
+            port = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port>();
         }
         return port;
     }
@@ -14555,9 +14624,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisrupti
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daily != nullptr)
     {
         children["daily"] = daily;
@@ -14581,22 +14651,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daily" || name == "on" || name == "weekly" || name == "port")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Daily::Daily()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily::Daily()
     :
     hh_mm{YType::str, "hh-mm"}
 {
@@ -14604,29 +14674,29 @@ Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Daily::Daily()
     yang_name = "daily"; yang_parent_name = "non-disruptive"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Daily::~Daily()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily::~Daily()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Daily::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily::has_data() const
 {
     return hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Daily::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Daily::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daily";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Daily::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14636,18 +14706,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Daily::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hh-mm")
     {
@@ -14657,7 +14728,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Daily::set_valu
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hh-mm")
     {
@@ -14665,14 +14736,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Daily::set_filt
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Daily::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::On::On()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On::On()
     :
     month{YType::enumeration, "month"},
     day_of_month{YType::uint16, "day-of-month"},
@@ -14683,11 +14754,11 @@ Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::On::On()
     yang_name = "on"; yang_parent_name = "non-disruptive"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::On::~On()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On::~On()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::On::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On::has_data() const
 {
     return month.is_set
 	|| day_of_month.is_set
@@ -14695,7 +14766,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::On::has_data() 
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::On::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(month.yfilter)
@@ -14704,14 +14775,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::On::has_operati
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::On::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "on";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::On::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14724,18 +14795,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::On::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "month")
     {
@@ -14763,7 +14835,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::On::set_value(c
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::On::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "month")
     {
@@ -14783,14 +14855,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::On::set_filter(
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::On::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Weekly::Weekly()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly::Weekly()
     :
     day{YType::enumeration, "day"},
     hh_mm{YType::str, "hh-mm"}
@@ -14799,31 +14871,31 @@ Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Weekly::Weekly()
     yang_name = "weekly"; yang_parent_name = "non-disruptive"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Weekly::~Weekly()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly::~Weekly()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Weekly::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly::has_data() const
 {
     return day.is_set
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Weekly::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(day.yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Weekly::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weekly";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Weekly::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14834,18 +14906,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Weekly::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "day")
     {
@@ -14861,7 +14934,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Weekly::set_val
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "day")
     {
@@ -14873,27 +14946,27 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Weekly::set_fil
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "day" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::Port()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::Port()
     :
-    all(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All>())
+    all(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All>())
 {
     all->parent = this;
 
     yang_name = "port"; yang_parent_name = "non-disruptive"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::~Port()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::~Port()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::has_data() const
 {
     for (std::size_t index=0; index<interface_port_number.size(); index++)
     {
@@ -14908,7 +14981,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::has_data(
     return (all !=  nullptr && all->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::has_operation() const
 {
     for (std::size_t index=0; index<interface_port_number.size(); index++)
     {
@@ -14924,14 +14997,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::has_opera
 	|| (all !=  nullptr && all->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "port";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14940,19 +15013,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface-port-number")
     {
-        for(auto const & c : interface_port_number)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber>();
+        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber>();
         c->parent = this;
         interface_port_number.push_back(c);
         return c;
@@ -14960,15 +15025,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisrupti
 
     if(child_yang_name == "port-number-list")
     {
-        for(auto const & c : port_number_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList>();
+        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList>();
         c->parent = this;
         port_number_list.push_back(c);
         return c;
@@ -14978,7 +15035,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisrupti
     {
         if(all == nullptr)
         {
-            all = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::All>();
+            all = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All>();
         }
         return all;
     }
@@ -14986,17 +15043,26 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisrupti
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_port_number)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : port_number_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(all != nullptr)
@@ -15007,28 +15073,28 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-port-number" || name == "port-number-list" || name == "all")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::InterfacePortNumber()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::InterfacePortNumber()
     :
     number{YType::uint8, "number"}
     	,
-    daily(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Daily>())
-	,on(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::On>())
-	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Weekly>())
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily>())
+	,on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On>())
+	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly>())
 {
     daily->parent = this;
     on->parent = this;
@@ -15037,11 +15103,11 @@ Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortN
     yang_name = "interface-port-number"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::~InterfacePortNumber()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::~InterfacePortNumber()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::has_data() const
 {
     return number.is_set
 	|| (daily !=  nullptr && daily->has_data())
@@ -15049,7 +15115,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::Interface
 	|| (weekly !=  nullptr && weekly->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -15058,14 +15124,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::Interface
 	|| (weekly !=  nullptr && weekly->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-port-number" <<"[number='" <<number <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15075,13 +15141,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daily")
     {
         if(daily == nullptr)
         {
-            daily = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Daily>();
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily>();
         }
         return daily;
     }
@@ -15090,7 +15156,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisrupti
     {
         if(on == nullptr)
         {
-            on = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::On>();
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On>();
         }
         return on;
     }
@@ -15099,7 +15165,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisrupti
     {
         if(weekly == nullptr)
         {
-            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Weekly>();
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly>();
         }
         return weekly;
     }
@@ -15107,9 +15173,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisrupti
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daily != nullptr)
     {
         children["daily"] = daily;
@@ -15128,7 +15195,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -15138,7 +15205,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::Interface
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -15146,14 +15213,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::Interface
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daily" || name == "on" || name == "weekly" || name == "number")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Daily::Daily()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily::Daily()
     :
     hh_mm{YType::str, "hh-mm"}
 {
@@ -15161,29 +15228,29 @@ Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortN
     yang_name = "daily"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Daily::~Daily()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily::~Daily()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Daily::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily::has_data() const
 {
     return hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Daily::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Daily::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daily";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Daily::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15193,18 +15260,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Daily::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hh-mm")
     {
@@ -15214,7 +15282,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::Interface
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hh-mm")
     {
@@ -15222,14 +15290,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::Interface
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Daily::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::On::On()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On::On()
     :
     month{YType::enumeration, "month"},
     day_of_month{YType::uint16, "day-of-month"},
@@ -15240,11 +15308,11 @@ Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortN
     yang_name = "on"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::On::~On()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On::~On()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::On::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On::has_data() const
 {
     return month.is_set
 	|| day_of_month.is_set
@@ -15252,7 +15320,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::Interface
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::On::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(month.yfilter)
@@ -15261,14 +15329,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::Interface
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::On::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "on";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::On::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15281,18 +15349,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::On::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "month")
     {
@@ -15320,7 +15389,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::Interface
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::On::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "month")
     {
@@ -15340,14 +15409,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::Interface
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::On::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::Weekly()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::Weekly()
     :
     day{YType::enumeration, "day"},
     hh_mm{YType::str, "hh-mm"}
@@ -15356,31 +15425,31 @@ Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortN
     yang_name = "weekly"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::~Weekly()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::~Weekly()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::has_data() const
 {
     return day.is_set
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(day.yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weekly";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15391,18 +15460,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "day")
     {
@@ -15418,7 +15488,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::Interface
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "day")
     {
@@ -15430,20 +15500,20 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::Interface
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "day" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::PortNumberList()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::PortNumberList()
     :
     number_list{YType::str, "number-list"}
     	,
-    daily(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Daily>())
-	,on(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::On>())
-	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Weekly>())
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily>())
+	,on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On>())
+	,weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly>())
 {
     daily->parent = this;
     on->parent = this;
@@ -15452,11 +15522,11 @@ Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList
     yang_name = "port-number-list"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::~PortNumberList()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::~PortNumberList()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::has_data() const
 {
     return number_list.is_set
 	|| (daily !=  nullptr && daily->has_data())
@@ -15464,7 +15534,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumbe
 	|| (weekly !=  nullptr && weekly->has_data());
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number_list.yfilter)
@@ -15473,14 +15543,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumbe
 	|| (weekly !=  nullptr && weekly->has_operation());
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "port-number-list" <<"[number-list='" <<number_list <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15490,13 +15560,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "daily")
     {
         if(daily == nullptr)
         {
-            daily = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Daily>();
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily>();
         }
         return daily;
     }
@@ -15505,7 +15575,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisrupti
     {
         if(on == nullptr)
         {
-            on = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::On>();
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On>();
         }
         return on;
     }
@@ -15514,7 +15584,7 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisrupti
     {
         if(weekly == nullptr)
         {
-            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Weekly>();
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly>();
         }
         return weekly;
     }
@@ -15522,9 +15592,10 @@ std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisrupti
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daily != nullptr)
     {
         children["daily"] = daily;
@@ -15543,7 +15614,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Swi
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number-list")
     {
@@ -15553,7 +15624,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumbe
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number-list")
     {
@@ -15561,14 +15632,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumbe
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "daily" || name == "on" || name == "weekly" || name == "number-list")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Daily::Daily()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily::Daily()
     :
     hh_mm{YType::str, "hh-mm"}
 {
@@ -15576,29 +15647,29 @@ Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList
     yang_name = "daily"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Daily::~Daily()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily::~Daily()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Daily::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily::has_data() const
 {
     return hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Daily::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Daily::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "daily";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Daily::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15608,18 +15679,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Daily::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hh-mm")
     {
@@ -15629,7 +15701,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumbe
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hh-mm")
     {
@@ -15637,14 +15709,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumbe
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Daily::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::On::On()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On::On()
     :
     month{YType::enumeration, "month"},
     day_of_month{YType::uint16, "day-of-month"},
@@ -15655,11 +15727,11 @@ Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList
     yang_name = "on"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::On::~On()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On::~On()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::On::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On::has_data() const
 {
     return month.is_set
 	|| day_of_month.is_set
@@ -15667,7 +15739,7 @@ bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumbe
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::On::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(month.yfilter)
@@ -15676,14 +15748,14 @@ bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumbe
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::On::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "on";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::On::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15696,18 +15768,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::On::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "month")
     {
@@ -15735,7 +15808,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumbe
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::On::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "month")
     {
@@ -15755,14 +15828,14 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumbe
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::On::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
         return true;
     return false;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Weekly::Weekly()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly::Weekly()
     :
     day{YType::enumeration, "day"},
     hh_mm{YType::str, "hh-mm"}
@@ -15771,31 +15844,31 @@ Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList
     yang_name = "weekly"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Weekly::~Weekly()
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly::~Weekly()
 {
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Weekly::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly::has_data() const
 {
     return day.is_set
 	|| hh_mm.is_set;
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Weekly::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(day.yfilter)
 	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Weekly::get_segment_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "weekly";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Weekly::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15806,18 +15879,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Swi
 
 }
 
-std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Weekly::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "day")
     {
@@ -15833,7 +15907,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumbe
     }
 }
 
-void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "day")
     {
@@ -15845,7 +15919,7 @@ void Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumbe
     }
 }
 
-bool Native::Diagnostic::Schedule::Switch_::Test::NonDisruptive::Port::PortNumberList::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "day" || name == "hh-mm")
         return true;

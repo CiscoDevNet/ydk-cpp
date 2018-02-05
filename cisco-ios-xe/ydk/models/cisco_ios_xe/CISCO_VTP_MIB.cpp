@@ -237,6 +237,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vtpstatus != nullptr)
     {
         children["vtpStatus"] = vtpstatus;
@@ -421,6 +422,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpstatus::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpstatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -544,6 +546,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::Internalvlaninfo::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Internalvlaninfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -631,6 +634,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vlantrunkports::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vlantrunkports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -736,6 +740,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vlanstatistics::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vlanstatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -851,14 +856,6 @@ std::shared_ptr<Entity> CISCOVTPMIB::Managementdomaintable::get_child_by_name(co
 {
     if(child_yang_name == "managementDomainEntry")
     {
-        for(auto const & c : managementdomainentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVTPMIB::Managementdomaintable::Managementdomainentry>();
         c->parent = this;
         managementdomainentry.push_back(c);
@@ -871,9 +868,14 @@ std::shared_ptr<Entity> CISCOVTPMIB::Managementdomaintable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Managementdomaintable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : managementdomainentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1073,6 +1075,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::Managementdomaintable::Managementdomainentr
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Managementdomaintable::Managementdomainentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1468,14 +1471,6 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpvlantable::get_child_by_name(const std::
 {
     if(child_yang_name == "vtpVlanEntry")
     {
-        for(auto const & c : vtpvlanentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVTPMIB::Vtpvlantable::Vtpvlanentry>();
         c->parent = this;
         vtpvlanentry.push_back(c);
@@ -1488,9 +1483,14 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpvlantable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpvlantable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vtpvlanentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1642,6 +1642,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1915,14 +1916,6 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpinternalvlantable::get_child_by_name(con
 {
     if(child_yang_name == "vtpInternalVlanEntry")
     {
-        for(auto const & c : vtpinternalvlanentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlanentry>();
         c->parent = this;
         vtpinternalvlanentry.push_back(c);
@@ -1935,9 +1928,14 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpinternalvlantable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpinternalvlantable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vtpinternalvlanentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2021,6 +2019,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlanentry:
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlanentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2126,14 +2125,6 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpvlanedittable::get_child_by_name(const s
 {
     if(child_yang_name == "vtpVlanEditEntry")
     {
-        for(auto const & c : vtpvlaneditentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry>();
         c->parent = this;
         vtpvlaneditentry.push_back(c);
@@ -2146,9 +2137,14 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpvlanedittable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpvlanedittable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vtpvlaneditentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2304,6 +2300,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2585,14 +2582,6 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpvlanlocalshutdowntable::get_child_by_nam
 {
     if(child_yang_name == "vtpVlanLocalShutdownEntry")
     {
-        for(auto const & c : vtpvlanlocalshutdownentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry>();
         c->parent = this;
         vtpvlanlocalshutdownentry.push_back(c);
@@ -2605,9 +2594,14 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpvlanlocalshutdowntable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpvlanlocalshutdowntable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vtpvlanlocalshutdownentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2691,6 +2685,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshut
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2796,14 +2791,6 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vlantrunkporttable::get_child_by_name(const
 {
     if(child_yang_name == "vlanTrunkPortEntry")
     {
-        for(auto const & c : vlantrunkportentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry>();
         c->parent = this;
         vlantrunkportentry.push_back(c);
@@ -2816,9 +2803,14 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vlantrunkporttable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vlantrunkporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vlantrunkportentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3038,6 +3030,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::get
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3483,14 +3476,6 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpdiscovertable::get_child_by_name(const s
 {
     if(child_yang_name == "vtpDiscoverEntry")
     {
-        for(auto const & c : vtpdiscoverentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry>();
         c->parent = this;
         vtpdiscoverentry.push_back(c);
@@ -3503,9 +3488,14 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpdiscovertable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpdiscovertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vtpdiscoverentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3593,6 +3583,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3708,14 +3699,6 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpdiscoverresulttable::get_child_by_name(c
 {
     if(child_yang_name == "vtpDiscoverResultEntry")
     {
-        for(auto const & c : vtpdiscoverresultentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry>();
         c->parent = this;
         vtpdiscoverresultentry.push_back(c);
@@ -3728,9 +3711,14 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpdiscoverresulttable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpdiscoverresulttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vtpdiscoverresultentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3834,6 +3822,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresulten
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3989,14 +3978,6 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpdatabasetable::get_child_by_name(const s
 {
     if(child_yang_name == "vtpDatabaseEntry")
     {
-        for(auto const & c : vtpdatabaseentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry>();
         c->parent = this;
         vtpdatabaseentry.push_back(c);
@@ -4009,9 +3990,14 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpdatabasetable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpdatabasetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vtpdatabaseentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4119,6 +4105,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4284,14 +4271,6 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpauthenticationtable::get_child_by_name(c
 {
     if(child_yang_name == "vtpAuthEntry")
     {
-        for(auto const & c : vtpauthentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry>();
         c->parent = this;
         vtpauthentry.push_back(c);
@@ -4304,9 +4283,14 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpauthenticationtable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpauthenticationtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vtpauthentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4394,6 +4378,7 @@ std::shared_ptr<Entity> CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry::get_c
 std::map<std::string, std::shared_ptr<Entity>> CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

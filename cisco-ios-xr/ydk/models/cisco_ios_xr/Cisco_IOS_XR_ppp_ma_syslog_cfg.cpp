@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Ppp::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Ppp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(syslog != nullptr)
     {
         children["syslog"] = syslog;
@@ -171,6 +172,7 @@ std::shared_ptr<Entity> Ppp::Syslog::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Ppp::Syslog::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

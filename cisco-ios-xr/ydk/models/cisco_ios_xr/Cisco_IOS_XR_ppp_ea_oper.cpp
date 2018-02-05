@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Pppea::get_child_by_name(const std::string & child_yang_
 std::map<std::string, std::shared_ptr<Entity>> Pppea::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> Pppea::Nodes::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pppea::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> Pppea::Nodes::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Pppea::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -285,6 +283,7 @@ std::shared_ptr<Entity> Pppea::Nodes::Node::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Pppea::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ea_interface_names != nullptr)
     {
         children["ea-interface-names"] = ea_interface_names;
@@ -368,14 +367,6 @@ std::shared_ptr<Entity> Pppea::Nodes::Node::EaInterfaceNames::get_child_by_name(
 {
     if(child_yang_name == "ea-interface-name")
     {
-        for(auto const & c : ea_interface_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceName>();
         c->parent = this;
         ea_interface_name.push_back(c);
@@ -388,9 +379,14 @@ std::shared_ptr<Entity> Pppea::Nodes::Node::EaInterfaceNames::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Pppea::Nodes::Node::EaInterfaceNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ea_interface_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -591,6 +587,7 @@ std::shared_ptr<Entity> Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceName::g
 std::map<std::string, std::shared_ptr<Entity>> Pppea::Nodes::Node::EaInterfaceNames::EaInterfaceName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

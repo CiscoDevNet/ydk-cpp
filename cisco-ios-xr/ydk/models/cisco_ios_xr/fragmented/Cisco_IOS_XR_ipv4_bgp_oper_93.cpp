@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sr_policy != nullptr)
     {
         children["sr-policy"] = sr_policy;
@@ -184,14 +185,6 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 
     if(child_yang_name == "segment-list")
     {
-        for(auto const & c : segment_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy::SegmentList>();
         c->parent = this;
         segment_list.push_back(c);
@@ -204,6 +197,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(binding_sid != nullptr)
     {
         children["binding-sid"] = binding_sid;
@@ -214,9 +208,13 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::Instanc
         children["allocated-binding-sid"] = allocated_binding_sid;
     }
 
+    count = 0;
     for (auto const & c : segment_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -333,6 +331,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy::BindingSid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -437,6 +436,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -539,14 +539,6 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 {
     if(child_yang_name == "segment")
     {
-        for(auto const & c : segment)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment>();
         c->parent = this;
         segment.push_back(c);
@@ -559,9 +551,14 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy::SegmentList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : segment)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -652,6 +649,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -758,6 +756,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::Community::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -834,6 +833,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::ExtendedCommunity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -910,6 +910,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::UnknownAttribute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -986,6 +987,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::Cluster::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1062,6 +1064,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::L2Tpv3Cookie::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1138,6 +1141,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::ConnectorValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1214,6 +1218,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::PmsiValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1290,6 +1295,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::LsAttr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1366,6 +1372,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::LabelIndexAttr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1446,6 +1453,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::PeDistinguisherLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1540,6 +1548,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::AttrSet::LargeCommunity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1648,6 +1657,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::RnhAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1891,6 +1901,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::RibrnhIp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(l2vpn_vpls_address != nullptr)
     {
         children["l2vpn-vpls-address"] = l2vpn_vpls_address;
@@ -2197,6 +2208,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::RibrnhIp::L2VpnVplsAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2273,6 +2285,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::RibrnhIp::L2VpnMspwAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2349,6 +2362,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::RibrnhIp::Ipv4SrPolicyAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2425,6 +2439,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::Attributes::A
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::Attributes::Attribute::AttributeInfo::RibrnhIp::Ipv6SrPolicyAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2503,14 +2518,6 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::RtEntries::ge
 {
     if(child_yang_name == "rt-entry")
     {
-        for(auto const & c : rt_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::RtEntries::RtEntry>();
         c->parent = this;
         rt_entry.push_back(c);
@@ -2523,9 +2530,14 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::RtEntries::ge
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::RtEntries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rt_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2624,6 +2636,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::RtEntries::Rt
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::RtEntries::RtEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rt != nullptr)
     {
         children["rt"] = rt;
@@ -2745,6 +2758,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::RtEntries::Rt
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::RtEntries::RtEntry::Rt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2823,14 +2837,6 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::AttributeFilt
 {
     if(child_yang_name == "attribute-filter-group")
     {
-        for(auto const & c : attribute_filter_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::AttributeFilterGroups::AttributeFilterGroup>();
         c->parent = this;
         attribute_filter_group.push_back(c);
@@ -2843,9 +2849,14 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::AttributeFilt
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::AttributeFilterGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : attribute_filter_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2928,14 +2939,6 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::AttributeFilt
 {
     if(child_yang_name == "attribute-filter-entry")
     {
-        for(auto const & c : attribute_filter_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::AttributeFilterGroups::AttributeFilterGroup::AttributeFilterEntry>();
         c->parent = this;
         attribute_filter_entry.push_back(c);
@@ -2948,9 +2951,14 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::AttributeFilt
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::AttributeFilterGroups::AttributeFilterGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : attribute_filter_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3057,6 +3065,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::AttributeFilt
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::AttributeFilterGroups::AttributeFilterGroup::AttributeFilterEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3155,14 +3164,6 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::RpkiServerLis
 {
     if(child_yang_name == "rpki-server")
     {
-        for(auto const & c : rpki_server)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::RpkiServerList::RpkiServer>();
         c->parent = this;
         rpki_server.push_back(c);
@@ -3175,9 +3176,14 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::RpkiServerLis
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::RpkiServerList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rpki_server)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3362,6 +3368,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::RpkiServerLis
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::RpkiServerList::RpkiServer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3730,14 +3737,6 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::RpkiRoutes::g
 {
     if(child_yang_name == "rpki-route")
     {
-        for(auto const & c : rpki_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::RpkiRoutes::RpkiRoute>();
         c->parent = this;
         rpki_route.push_back(c);
@@ -3750,9 +3749,14 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::RpkiRoutes::g
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::RpkiRoutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rpki_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3839,14 +3843,6 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::RpkiRoutes::R
 {
     if(child_yang_name == "rpki-route")
     {
-        for(auto const & c : rpki_route)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Bgp::Instances::Instance::InstanceStandby::RpkiRoutes::RpkiRoute::RpkiRoute_>();
         c->parent = this;
         rpki_route.push_back(c);
@@ -3859,9 +3855,14 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::RpkiRoutes::R
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::RpkiRoutes::RpkiRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rpki_route)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3998,6 +3999,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::RpkiRoutes::R
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::RpkiRoutes::RpkiRoute::RpkiRoute_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4182,6 +4184,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::UpdateInbound
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::UpdateInboundErrorProcess::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_update_malformed_timestamp != nullptr)
     {
         children["last-update-malformed-timestamp"] = last_update_malformed_timestamp;
@@ -4327,6 +4330,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::UpdateInbound
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::UpdateInboundErrorProcess::LastUpdateMalformedTimestamp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4445,6 +4449,7 @@ std::shared_ptr<Entity> Bgp::Instances::Instance::InstanceStandby::RpkiSummary::
 std::map<std::string, std::shared_ptr<Entity>> Bgp::Instances::Instance::InstanceStandby::RpkiSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4617,6 +4622,7 @@ std::shared_ptr<Entity> Bgp::BpmInstancesTable::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Bgp::BpmInstancesTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bpm_instances != nullptr)
     {
         children["bpm-instances"] = bpm_instances;
@@ -4697,14 +4703,6 @@ std::shared_ptr<Entity> Bgp::BpmInstancesTable::BpmInstances::get_child_by_name(
 {
     if(child_yang_name == "instance")
     {
-        for(auto const & c : instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Bgp::BpmInstancesTable::BpmInstances::Instance>();
         c->parent = this;
         instance.push_back(c);
@@ -4717,9 +4715,14 @@ std::shared_ptr<Entity> Bgp::BpmInstancesTable::BpmInstances::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Bgp::BpmInstancesTable::BpmInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4833,14 +4836,6 @@ std::shared_ptr<Entity> Bgp::BpmInstancesTable::BpmInstances::Instance::get_chil
 {
     if(child_yang_name == "af-array")
     {
-        for(auto const & c : af_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Bgp::BpmInstancesTable::BpmInstances::Instance::AfArray>();
         c->parent = this;
         af_array.push_back(c);
@@ -4853,9 +4848,14 @@ std::shared_ptr<Entity> Bgp::BpmInstancesTable::BpmInstances::Instance::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Bgp::BpmInstancesTable::BpmInstances::Instance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : af_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5021,6 +5021,7 @@ std::shared_ptr<Entity> Bgp::BpmInstancesTable::BpmInstances::Instance::AfArray:
 std::map<std::string, std::shared_ptr<Entity>> Bgp::BpmInstancesTable::BpmInstances::Instance::AfArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

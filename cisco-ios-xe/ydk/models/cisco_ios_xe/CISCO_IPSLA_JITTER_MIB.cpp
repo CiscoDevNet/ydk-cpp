@@ -81,6 +81,7 @@ std::shared_ptr<Entity> CISCOIPSLAJITTERMIB::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAJITTERMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cipslaudpjittertmpltable != nullptr)
     {
         children["cipslaUdpJitterTmplTable"] = cipslaudpjittertmpltable;
@@ -191,14 +192,6 @@ std::shared_ptr<Entity> CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::get_child
 {
     if(child_yang_name == "cipslaUdpJitterTmplEntry")
     {
-        for(auto const & c : cipslaudpjittertmplentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry>();
         c->parent = this;
         cipslaudpjittertmplentry.push_back(c);
@@ -211,9 +204,14 @@ std::shared_ptr<Entity> CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipslaudpjittertmplentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -401,6 +399,7 @@ std::shared_ptr<Entity> CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudp
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAJITTERMIB::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -766,14 +765,6 @@ std::shared_ptr<Entity> CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::get_chil
 {
     if(child_yang_name == "cipslaIcmpJitterTmplEntry")
     {
-        for(auto const & c : cipslaicmpjittertmplentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry>();
         c->parent = this;
         cipslaicmpjittertmplentry.push_back(c);
@@ -786,9 +777,14 @@ std::shared_ptr<Entity> CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cipslaicmpjittertmplentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -924,6 +920,7 @@ std::shared_ptr<Entity> CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaic
 std::map<std::string, std::shared_ptr<Entity>> CISCOIPSLAJITTERMIB::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

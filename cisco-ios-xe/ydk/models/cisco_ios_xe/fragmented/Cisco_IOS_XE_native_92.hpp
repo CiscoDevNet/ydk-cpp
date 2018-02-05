@@ -340,18 +340,18 @@ class Native::Aaa::Authorization::AuthProxy : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Default_; //type: Native::Aaa::Authorization::AuthProxy::Default_
+        class Default; //type: Native::Aaa::Authorization::AuthProxy::Default
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authorization::AuthProxy::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authorization::AuthProxy::Default> default_;
         
 }; // Native::Aaa::Authorization::AuthProxy
 
 
-class Native::Aaa::Authorization::AuthProxy::Default_ : public ydk::Entity
+class Native::Aaa::Authorization::AuthProxy::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -364,14 +364,14 @@ class Native::Aaa::Authorization::AuthProxy::Default_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Group; //type: Native::Aaa::Authorization::AuthProxy::Default_::Group
+        class Group; //type: Native::Aaa::Authorization::AuthProxy::Default::Group
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authorization::AuthProxy::Default_::Group> group;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authorization::AuthProxy::Default::Group> group;
         
-}; // Native::Aaa::Authorization::AuthProxy::Default_
+}; // Native::Aaa::Authorization::AuthProxy::Default
 
 
-class Native::Aaa::Authorization::AuthProxy::Default_::Group : public ydk::Entity
+class Native::Aaa::Authorization::AuthProxy::Default::Group : public ydk::Entity
 {
     public:
         Group();
@@ -391,7 +391,7 @@ class Native::Aaa::Authorization::AuthProxy::Default_::Group : public ydk::Entit
         ydk::YLeaf radius; //type: empty
         ydk::YLeaf group_name; //type: string
 
-}; // Native::Aaa::Authorization::AuthProxy::Default_::Group
+}; // Native::Aaa::Authorization::AuthProxy::Default::Group
 
 
 class Native::Aaa::Authorization::Onep : public ydk::Entity
@@ -411,18 +411,18 @@ class Native::Aaa::Authorization::Onep : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Default_; //type: Native::Aaa::Authorization::Onep::Default_
+        class Default; //type: Native::Aaa::Authorization::Onep::Default
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authorization::Onep::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authorization::Onep::Default> default_;
         
 }; // Native::Aaa::Authorization::Onep
 
 
-class Native::Aaa::Authorization::Onep::Default_ : public ydk::Entity
+class Native::Aaa::Authorization::Onep::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -435,14 +435,14 @@ class Native::Aaa::Authorization::Onep::Default_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Group; //type: Native::Aaa::Authorization::Onep::Default_::Group
+        class Group; //type: Native::Aaa::Authorization::Onep::Default::Group
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authorization::Onep::Default_::Group> group;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authorization::Onep::Default::Group> group;
         
-}; // Native::Aaa::Authorization::Onep::Default_
+}; // Native::Aaa::Authorization::Onep::Default
 
 
-class Native::Aaa::Authorization::Onep::Default_::Group : public ydk::Entity
+class Native::Aaa::Authorization::Onep::Default::Group : public ydk::Entity
 {
     public:
         Group();
@@ -459,14 +459,14 @@ class Native::Aaa::Authorization::Onep::Default_::Group : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class GroupWord; //type: Native::Aaa::Authorization::Onep::Default_::Group::GroupWord
+        class GroupWord; //type: Native::Aaa::Authorization::Onep::Default::Group::GroupWord
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authorization::Onep::Default_::Group::GroupWord> > group_word;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Authorization::Onep::Default::Group::GroupWord> > group_word;
         
-}; // Native::Aaa::Authorization::Onep::Default_::Group
+}; // Native::Aaa::Authorization::Onep::Default::Group
 
 
-class Native::Aaa::Authorization::Onep::Default_::Group::GroupWord : public ydk::Entity
+class Native::Aaa::Authorization::Onep::Default::Group::GroupWord : public ydk::Entity
 {
     public:
         GroupWord();
@@ -485,7 +485,7 @@ class Native::Aaa::Authorization::Onep::Default_::Group::GroupWord : public ydk:
 
         ydk::YLeaf group_word; //type: string
 
-}; // Native::Aaa::Authorization::Onep::Default_::Group::GroupWord
+}; // Native::Aaa::Authorization::Onep::Default::Group::GroupWord
 
 
 class Native::Aaa::Accounting : public ydk::Entity
@@ -1234,18 +1234,18 @@ class Native::Aaa::Accounting::System : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf guarantee_first; //type: boolean
-        class Default_; //type: Native::Aaa::Accounting::System::Default_
+        class Default; //type: Native::Aaa::Accounting::System::Default
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Accounting::System::Default_> default_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Accounting::System::Default> default_; // presence node
         
 }; // Native::Aaa::Accounting::System
 
 
-class Native::Aaa::Accounting::System::Default_ : public ydk::Entity
+class Native::Aaa::Accounting::System::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1260,14 +1260,14 @@ class Native::Aaa::Accounting::System::Default_ : public ydk::Entity
 
         ydk::YLeaf none; //type: empty
         ydk::YLeaf vrf; //type: string
-        class StartStop; //type: Native::Aaa::Accounting::System::Default_::StartStop
+        class StartStop; //type: Native::Aaa::Accounting::System::Default::StartStop
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Accounting::System::Default_::StartStop> start_stop;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Accounting::System::Default::StartStop> start_stop;
         
-}; // Native::Aaa::Accounting::System::Default_
+}; // Native::Aaa::Accounting::System::Default
 
 
-class Native::Aaa::Accounting::System::Default_::StartStop : public ydk::Entity
+class Native::Aaa::Accounting::System::Default::StartStop : public ydk::Entity
 {
     public:
         StartStop();
@@ -1288,7 +1288,7 @@ class Native::Aaa::Accounting::System::Default_::StartStop : public ydk::Entity
         ydk::YLeaf group; //type: one of string, enumeration
         class Group;
 
-}; // Native::Aaa::Accounting::System::Default_::StartStop
+}; // Native::Aaa::Accounting::System::Default::StartStop
 
 
 class Native::Aaa::Accounting::Update : public ydk::Entity
@@ -1330,18 +1330,18 @@ class Native::Aaa::Accounting::AuthProxy : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Default_; //type: Native::Aaa::Accounting::AuthProxy::Default_
+        class Default; //type: Native::Aaa::Accounting::AuthProxy::Default
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Accounting::AuthProxy::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Accounting::AuthProxy::Default> default_;
         
 }; // Native::Aaa::Accounting::AuthProxy
 
 
-class Native::Aaa::Accounting::AuthProxy::Default_ : public ydk::Entity
+class Native::Aaa::Accounting::AuthProxy::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1354,14 +1354,14 @@ class Native::Aaa::Accounting::AuthProxy::Default_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class StartStop; //type: Native::Aaa::Accounting::AuthProxy::Default_::StartStop
+        class StartStop; //type: Native::Aaa::Accounting::AuthProxy::Default::StartStop
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Accounting::AuthProxy::Default_::StartStop> start_stop;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Accounting::AuthProxy::Default::StartStop> start_stop;
         
-}; // Native::Aaa::Accounting::AuthProxy::Default_
+}; // Native::Aaa::Accounting::AuthProxy::Default
 
 
-class Native::Aaa::Accounting::AuthProxy::Default_::StartStop : public ydk::Entity
+class Native::Aaa::Accounting::AuthProxy::Default::StartStop : public ydk::Entity
 {
     public:
         StartStop();
@@ -1380,7 +1380,7 @@ class Native::Aaa::Accounting::AuthProxy::Default_::StartStop : public ydk::Enti
 
         ydk::YLeaf group; //type: string
 
-}; // Native::Aaa::Accounting::AuthProxy::Default_::StartStop
+}; // Native::Aaa::Accounting::AuthProxy::Default::StartStop
 
 
 class Native::Aaa::Server : public ydk::Entity
@@ -2104,14 +2104,14 @@ class Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress :
         std::string get_absolute_path() const override;
 
         ydk::YLeaf none; //type: empty
-        class Default_; //type: Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default_
+        class Default; //type: Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default
         class Ietf; //type: Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf
         class OneByte; //type: Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte
         class ThreeByte; //type: Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte
         class TwoByte; //type: Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte
         class Unformatted; //type: Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Unformatted
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default_> default_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default> default_; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf> ietf; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte> one_byte;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte> three_byte;
@@ -2121,11 +2121,11 @@ class Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress :
 }; // Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress
 
 
-class Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default_ : public ydk::Entity
+class Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2141,7 +2141,7 @@ class Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::
         ydk::YLeaf type; //type: Type
         class Type;
 
-}; // Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default_
+}; // Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default
 
 
 class Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf : public ydk::Entity
@@ -3294,14 +3294,14 @@ class Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Fo
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf none; //type: empty
-        class Default_; //type: Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default_
+        class Default; //type: Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default
         class Ietf; //type: Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Ietf
         class OneByte; //type: Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte
         class ThreeByte; //type: Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte
         class TwoByte; //type: Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte
         class Unformatted; //type: Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Unformatted
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default_> default_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default> default_; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Ietf> ietf; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte> one_byte;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte> three_byte;
@@ -3311,11 +3311,11 @@ class Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Fo
 }; // Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress
 
 
-class Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default_ : public ydk::Entity
+class Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3330,7 +3330,7 @@ class Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Fo
         ydk::YLeaf type; //type: Type
         class Type;
 
-}; // Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default_
+}; // Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default
 
 
 class Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Ietf : public ydk::Entity
@@ -4061,7 +4061,7 @@ class Native::Aaa::Accounting::Network::A4::Group : public ydk::Enum
 
 };
 
-class Native::Aaa::Accounting::System::Default_::StartStop::Group : public ydk::Enum
+class Native::Aaa::Accounting::System::Default::StartStop::Group : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf radius;
@@ -4132,7 +4132,7 @@ class Native::Aaa::Server::Radius::PolicyDevice::Key::Key_ : public ydk::Enum
 
 };
 
-class Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default_::Type : public ydk::Enum
+class Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::Type : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf lower_case;
@@ -4237,7 +4237,7 @@ class Native::Aaa::Server::Radius::Proxy::Key::Key_ : public ydk::Enum
 
 };
 
-class Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default_::Type : public ydk::Enum
+class Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default::Type : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf lower_case;

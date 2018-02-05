@@ -163,18 +163,18 @@ class Components::Component::PlatformProperties::PlatformProperty : public ydk::
         ydk::YLeaf name; //type: string
         ydk::YLeaf configurable; //type: boolean
         ydk::YLeaf parent_platform_component_cname_key; //type: string
-        class Value_; //type: Components::Component::PlatformProperties::PlatformProperty::Value_
+        class Value; //type: Components::Component::PlatformProperties::PlatformProperty::Value
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_oper::Components::Component::PlatformProperties::PlatformProperty::Value_> value_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_oper::Components::Component::PlatformProperties::PlatformProperty::Value> value_;
         
 }; // Components::Component::PlatformProperties::PlatformProperty
 
 
-class Components::Component::PlatformProperties::PlatformProperty::Value_ : public ydk::Entity
+class Components::Component::PlatformProperties::PlatformProperty::Value : public ydk::Entity
 {
     public:
-        Value_();
-        ~Value_();
+        Value();
+        ~Value();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -192,7 +192,7 @@ class Components::Component::PlatformProperties::PlatformProperty::Value_ : publ
         ydk::YLeaf uintsixfour; //type: uint64
         ydk::YLeaf decimal; //type: decimal64
 
-}; // Components::Component::PlatformProperties::PlatformProperty::Value_
+}; // Components::Component::PlatformProperties::PlatformProperty::Value
 
 
 class Components::Component::PlatformSubcomponents : public ydk::Entity

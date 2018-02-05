@@ -16,7 +16,7 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ConformSetQosTransmitTable::ConformAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ConformSetQosTransmitTable::ConformAction : public ydk::Entity
 {
     public:
         ConformAction();
@@ -32,14 +32,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_qos_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_qos_transmit; //type: one of enumeration, uint8
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ConformSetQosTransmitTable::ConformAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ConformSetQosTransmitTable::ConformAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ConformTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ConformTransmit : public ydk::Entity
 {
     public:
         ConformTransmit();
@@ -55,14 +55,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ConformTransmit::ConformAction
+        class ConformAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ConformTransmit::ConformAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ConformTransmit::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ConformTransmit::ConformAction> conform_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ConformTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ConformTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ConformTransmit::ConformAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ConformTransmit::ConformAction : public ydk::Entity
 {
     public:
         ConformAction();
@@ -80,10 +80,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
 
         ydk::YLeaf transmit; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ConformTransmit::ConformAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ConformTransmit::ConformAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ConformDrop : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ConformDrop : public ydk::Entity
 {
     public:
         ConformDrop();
@@ -99,14 +99,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ConformDrop::ConformAction
+        class ConformAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ConformDrop::ConformAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ConformDrop::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ConformDrop::ConformAction> conform_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ConformDrop
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ConformDrop
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ConformDrop::ConformAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ConformDrop::ConformAction : public ydk::Entity
 {
     public:
         ConformAction();
@@ -124,10 +124,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
 
         ydk::YLeaf drop; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ConformDrop::ConformAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ConformDrop::ConformAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDscp : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDscp : public ydk::Entity
 {
     public:
         ExceedDscp();
@@ -143,14 +143,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDscp::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDscp::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDscp::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDscp::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDscp
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDscp
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDscp::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDscp::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -166,12 +166,12 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf dscp; //type: one of uint8, enumeration
+        ydk::YLeaf dscp; //type: one of enumeration, uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDscp::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDscp::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetClpTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetClpTransmit : public ydk::Entity
 {
     public:
         ExceedSetClpTransmit();
@@ -187,14 +187,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetClpTransmit::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetClpTransmit::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetClpTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetClpTransmit::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetClpTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetClpTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetClpTransmit::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetClpTransmit::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -212,10 +212,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
 
         ydk::YLeaf set_clp_transmit; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetClpTransmit::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetClpTransmit::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetCosTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetCosTransmit : public ydk::Entity
 {
     public:
         ExceedSetCosTransmit();
@@ -231,14 +231,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetCosTransmit::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetCosTransmit::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetCosTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetCosTransmit::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetCosTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetCosTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetCosTransmit::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetCosTransmit::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -254,14 +254,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_cos_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_cos_transmit; //type: one of enumeration, uint8
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetCosTransmit::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetCosTransmit::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDiscardClassTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDiscardClassTransmit : public ydk::Entity
 {
     public:
         ExceedSetDiscardClassTransmit();
@@ -277,14 +277,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDiscardClassTransmit::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDiscardClassTransmit::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDiscardClassTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDiscardClassTransmit::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDiscardClassTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDiscardClassTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDiscardClassTransmit::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDiscardClassTransmit::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -302,10 +302,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
 
         ydk::YLeaf set_discard_class_transmit; //type: uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDiscardClassTransmit::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDiscardClassTransmit::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit : public ydk::Entity
 {
     public:
         ExceedSetDscpTransmit();
@@ -321,14 +321,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -344,14 +344,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SetDscpTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit
+        class SetDscpTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit> set_dscp_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit> set_dscp_transmit;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit : public ydk::Entity
 {
     public:
         SetDscpTransmit();
@@ -367,14 +367,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Dscp; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp
+        class Dscp; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp> dscp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp> dscp;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp : public ydk::Entity
 {
     public:
         Dscp();
@@ -393,10 +393,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         ydk::YLeaf table; //type: Table
         class Table;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmitTable : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmitTable : public ydk::Entity
 {
     public:
         ExceedSetDscpTransmitTable();
@@ -412,14 +412,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmitTable::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmitTable::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmitTable::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmitTable::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmitTable
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmitTable
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmitTable::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmitTable::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -435,14 +435,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_dscp_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_dscp_transmit; //type: one of enumeration, uint8
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmitTable::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmitTable::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetFrdeTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetFrdeTransmit : public ydk::Entity
 {
     public:
         ExceedSetFrdeTransmit();
@@ -458,14 +458,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetFrdeTransmit::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetFrdeTransmit::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetFrdeTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetFrdeTransmit::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetFrdeTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetFrdeTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetFrdeTransmit::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetFrdeTransmit::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -483,10 +483,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
 
         ydk::YLeaf set_frde_transmit; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetFrdeTransmit::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetFrdeTransmit::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetMplsExpImpositionTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetMplsExpImpositionTransmit : public ydk::Entity
 {
     public:
         ExceedSetMplsExpImpositionTransmit();
@@ -502,14 +502,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetMplsExpImpositionTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetMplsExpImpositionTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -525,12 +525,12 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of enumeration, uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetMplsExpTopmostTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetMplsExpTopmostTransmit : public ydk::Entity
 {
     public:
         ExceedSetMplsExpTopmostTransmit();
@@ -546,14 +546,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetMplsExpTopmostTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetMplsExpTopmostTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -569,12 +569,12 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of enumeration, uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetPrecTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetPrecTransmit : public ydk::Entity
 {
     public:
         ExceedSetPrecTransmit();
@@ -590,14 +590,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetPrecTransmit::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetPrecTransmit::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetPrecTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetPrecTransmit::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetPrecTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetPrecTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetPrecTransmit::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetPrecTransmit::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -613,14 +613,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_prec_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_prec_transmit; //type: one of enumeration, uint8
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetPrecTransmit::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetPrecTransmit::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetQosTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetQosTransmit : public ydk::Entity
 {
     public:
         ExceedSetQosTransmit();
@@ -636,14 +636,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetQosTransmit::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetQosTransmit::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetQosTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetQosTransmit::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetQosTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetQosTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetQosTransmit::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetQosTransmit::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -659,12 +659,12 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_qos_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_qos_transmit; //type: one of enumeration, uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetQosTransmit::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetQosTransmit::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedTransmit : public ydk::Entity
 {
     public:
         ExceedTransmit();
@@ -680,14 +680,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedTransmit::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedTransmit::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedTransmit::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedTransmit::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedTransmit::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -705,10 +705,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
 
         ydk::YLeaf transmit; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedTransmit::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedTransmit::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDrop : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDrop : public ydk::Entity
 {
     public:
         ExceedDrop();
@@ -724,14 +724,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDrop::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDrop::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDrop::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDrop::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDrop
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDrop
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDrop::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDrop::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -749,10 +749,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
 
         ydk::YLeaf drop; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDrop::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedDrop::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetClpTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetClpTransmit : public ydk::Entity
 {
     public:
         ViolateSetClpTransmit();
@@ -768,14 +768,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetClpTransmit::ViolateAction
+        class ViolateAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetClpTransmit::ViolateAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetClpTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetClpTransmit::ViolateAction> violate_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetClpTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetClpTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetClpTransmit::ViolateAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetClpTransmit::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -793,10 +793,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
 
         ydk::YLeaf set_clp_transmit; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetClpTransmit::ViolateAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetClpTransmit::ViolateAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetCosTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetCosTransmit : public ydk::Entity
 {
     public:
         ViolateSetCosTransmit();
@@ -812,14 +812,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetCosTransmit::ViolateAction
+        class ViolateAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetCosTransmit::ViolateAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetCosTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetCosTransmit::ViolateAction> violate_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetCosTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetCosTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetCosTransmit::ViolateAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetCosTransmit::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -835,14 +835,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_cos_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_cos_transmit; //type: one of enumeration, uint8
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetCosTransmit::ViolateAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetCosTransmit::ViolateAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDiscardClassTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDiscardClassTransmit : public ydk::Entity
 {
     public:
         ViolateSetDiscardClassTransmit();
@@ -858,14 +858,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDiscardClassTransmit::ViolateAction
+        class ViolateAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDiscardClassTransmit::ViolateAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDiscardClassTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDiscardClassTransmit::ViolateAction> violate_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDiscardClassTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDiscardClassTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDiscardClassTransmit::ViolateAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDiscardClassTransmit::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -883,10 +883,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
 
         ydk::YLeaf set_discard_class_transmit; //type: uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDiscardClassTransmit::ViolateAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDiscardClassTransmit::ViolateAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDscpTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDscpTransmit : public ydk::Entity
 {
     public:
         ViolateSetDscpTransmit();
@@ -902,14 +902,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDscpTransmit::ViolateAction
+        class ViolateAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDscpTransmit::ViolateAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDscpTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDscpTransmit::ViolateAction> violate_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDscpTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDscpTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDscpTransmit::ViolateAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDscpTransmit::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -925,14 +925,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_dscp_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_dscp_transmit; //type: one of enumeration, uint8
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDscpTransmit::ViolateAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetDscpTransmit::ViolateAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetFrdeTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetFrdeTransmit : public ydk::Entity
 {
     public:
         ViolateSetFrdeTransmit();
@@ -948,14 +948,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetFrdeTransmit::ViolateAction
+        class ViolateAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetFrdeTransmit::ViolateAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetFrdeTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetFrdeTransmit::ViolateAction> violate_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetFrdeTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetFrdeTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetFrdeTransmit::ViolateAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetFrdeTransmit::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -973,10 +973,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
 
         ydk::YLeaf set_frde_transmit; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetFrdeTransmit::ViolateAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetFrdeTransmit::ViolateAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpImpositionTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpImpositionTransmit : public ydk::Entity
 {
     public:
         ViolateSetMplsExpImpositionTransmit();
@@ -992,14 +992,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction
+        class ViolateAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction> violate_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpImpositionTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpImpositionTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -1015,12 +1015,12 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of enumeration, uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpTopmostTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpTopmostTransmit : public ydk::Entity
 {
     public:
         ViolateSetMplsExpTopmostTransmit();
@@ -1036,14 +1036,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction
+        class ViolateAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction> violate_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpTopmostTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpTopmostTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -1059,12 +1059,12 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of enumeration, uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit : public ydk::Entity
 {
     public:
         ViolateSetPrecTransmit();
@@ -1080,14 +1080,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit::ViolateAction
+        class ViolateAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit::ViolateAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit::ViolateAction> violate_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit::ViolateAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -1103,14 +1103,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_prec_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_prec_transmit; //type: one of enumeration, uint8
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit::ViolateAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetPrecTransmit::ViolateAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit : public ydk::Entity
 {
     public:
         ViolateSetQosTransmit();
@@ -1126,14 +1126,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit::ViolateAction
+        class ViolateAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit::ViolateAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit::ViolateAction> violate_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit::ViolateAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -1149,12 +1149,12 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_qos_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_qos_transmit; //type: one of enumeration, uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit::ViolateAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateSetQosTransmit::ViolateAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit : public ydk::Entity
 {
     public:
         ViolateTransmit();
@@ -1170,14 +1170,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit::ViolateAction
+        class ViolateAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit::ViolateAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit::ViolateAction> violate_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit::ViolateAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -1195,10 +1195,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
 
         ydk::YLeaf transmit; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit::ViolateAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateTransmit::ViolateAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop : public ydk::Entity
 {
     public:
         ViolateDrop();
@@ -1214,14 +1214,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop::ViolateAction
+        class ViolateAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop::ViolateAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop::ViolateAction> violate_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop::ViolateAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -1239,10 +1239,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::A
 
         ydk::YLeaf drop; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop::ViolateAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ViolateDrop::ViolateAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst : public ydk::Entity
 {
     public:
         PoliceCatalyst();
@@ -1258,14 +1258,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Police; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police
+        class Police; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police> police;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police> police;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police : public ydk::Entity
 {
     public:
         Police();
@@ -1285,14 +1285,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police : pu
         ydk::YLeaf bps; //type: empty
         ydk::YLeaf byte_value; //type: string
         ydk::YLeaf byte; //type: empty
-        class Actions; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions
+        class Actions; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions> actions;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions> actions;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions : public ydk::Entity
 {
     public:
         Actions();
@@ -1308,94 +1308,94 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformSetClpTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit
-        class ConformSetCosTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit
-        class ConformSetCosTransmitTable; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable
-        class ConformSetDiscardClassTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit
-        class ConformSetDscpTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit
-        class ConformSetDscpTransmitTable; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable
-        class ConformSetFrdeTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit
-        class ConformSetMplsExpImpositionTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit
-        class ConformSetMplsExpImpositionTransmitTable; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable
-        class ConformSetMplsExpTopmostTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit
-        class ConformSetMplsExpTopmostTransmitTable; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable
-        class ConformSetPrecTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit
-        class ConformSetPrecTransmitTable; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable
-        class ConformSetQosTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit
-        class ConformSetQosTransmitTable; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable
-        class ConformTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit
-        class ConformDrop; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformDrop
-        class ExceedDscp; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp
-        class ExceedSetClpTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit
-        class ExceedSetCosTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit
-        class ExceedSetDiscardClassTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit
-        class ExceedSetDscpTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit
-        class ExceedSetDscpTransmitTable; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable
-        class ExceedSetFrdeTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit
-        class ExceedSetMplsExpImpositionTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit
-        class ExceedSetMplsExpTopmostTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit
-        class ExceedSetPrecTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit
-        class ExceedSetQosTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit
-        class ExceedTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit
-        class ExceedDrop; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop
-        class ViolateSetClpTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit
-        class ViolateSetCosTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit
-        class ViolateSetDiscardClassTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit
-        class ViolateSetDscpTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit
-        class ViolateSetFrdeTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit
-        class ViolateSetMplsExpImpositionTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit
-        class ViolateSetMplsExpTopmostTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit
-        class ViolateSetPrecTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit
-        class ViolateSetQosTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit
-        class ViolateTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit
-        class ViolateDrop; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop
+        class ConformSetClpTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit
+        class ConformSetCosTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit
+        class ConformSetCosTransmitTable; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable
+        class ConformSetDiscardClassTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit
+        class ConformSetDscpTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit
+        class ConformSetDscpTransmitTable; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable
+        class ConformSetFrdeTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit
+        class ConformSetMplsExpImpositionTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit
+        class ConformSetMplsExpImpositionTransmitTable; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable
+        class ConformSetMplsExpTopmostTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit
+        class ConformSetMplsExpTopmostTransmitTable; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable
+        class ConformSetPrecTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit
+        class ConformSetPrecTransmitTable; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable
+        class ConformSetQosTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit
+        class ConformSetQosTransmitTable; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable
+        class ConformTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit
+        class ConformDrop; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformDrop
+        class ExceedDscp; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp
+        class ExceedSetClpTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit
+        class ExceedSetCosTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit
+        class ExceedSetDiscardClassTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit
+        class ExceedSetDscpTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit
+        class ExceedSetDscpTransmitTable; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable
+        class ExceedSetFrdeTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit
+        class ExceedSetMplsExpImpositionTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit
+        class ExceedSetMplsExpTopmostTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit
+        class ExceedSetPrecTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit
+        class ExceedSetQosTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit
+        class ExceedTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit
+        class ExceedDrop; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop
+        class ViolateSetClpTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit
+        class ViolateSetCosTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit
+        class ViolateSetDiscardClassTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit
+        class ViolateSetDscpTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit
+        class ViolateSetFrdeTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit
+        class ViolateSetMplsExpImpositionTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit
+        class ViolateSetMplsExpTopmostTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit
+        class ViolateSetPrecTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit
+        class ViolateSetQosTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit
+        class ViolateTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit
+        class ViolateDrop; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit> conform_set_clp_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit> conform_set_cos_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable> conform_set_cos_transmit_table;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit> conform_set_discard_class_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit> conform_set_dscp_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable> conform_set_dscp_transmit_table;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit> conform_set_frde_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit> conform_set_mpls_exp_imposition_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable> conform_set_mpls_exp_imposition_transmit_table;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit> conform_set_mpls_exp_topmost_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable> conform_set_mpls_exp_topmost_transmit_table;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit> conform_set_prec_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable> conform_set_prec_transmit_table;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit> conform_set_qos_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable> conform_set_qos_transmit_table;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit> conform_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformDrop> conform_drop;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp> exceed_dscp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit> exceed_set_clp_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit> exceed_set_cos_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit> exceed_set_discard_class_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit> exceed_set_dscp_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable> exceed_set_dscp_transmit_table;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit> exceed_set_frde_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit> exceed_set_mpls_exp_imposition_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit> exceed_set_mpls_exp_topmost_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit> exceed_set_prec_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit> exceed_set_qos_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit> exceed_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop> exceed_drop;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit> violate_set_clp_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit> violate_set_cos_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit> violate_set_discard_class_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit> violate_set_dscp_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit> violate_set_frde_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit> violate_set_mpls_exp_imposition_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit> violate_set_mpls_exp_topmost_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit> violate_set_prec_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit> violate_set_qos_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit> violate_transmit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop> violate_drop;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit> conform_set_clp_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit> conform_set_cos_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable> conform_set_cos_transmit_table;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit> conform_set_discard_class_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit> conform_set_dscp_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable> conform_set_dscp_transmit_table;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit> conform_set_frde_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit> conform_set_mpls_exp_imposition_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable> conform_set_mpls_exp_imposition_transmit_table;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit> conform_set_mpls_exp_topmost_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable> conform_set_mpls_exp_topmost_transmit_table;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit> conform_set_prec_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable> conform_set_prec_transmit_table;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit> conform_set_qos_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable> conform_set_qos_transmit_table;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit> conform_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformDrop> conform_drop;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp> exceed_dscp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit> exceed_set_clp_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit> exceed_set_cos_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit> exceed_set_discard_class_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit> exceed_set_dscp_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable> exceed_set_dscp_transmit_table;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit> exceed_set_frde_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit> exceed_set_mpls_exp_imposition_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit> exceed_set_mpls_exp_topmost_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit> exceed_set_prec_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit> exceed_set_qos_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit> exceed_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop> exceed_drop;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit> violate_set_clp_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit> violate_set_cos_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit> violate_set_discard_class_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit> violate_set_dscp_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit> violate_set_frde_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit> violate_set_mpls_exp_imposition_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit> violate_set_mpls_exp_topmost_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit> violate_set_prec_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit> violate_set_qos_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit> violate_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop> violate_drop;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit : public ydk::Entity
 {
     public:
         ConformSetClpTransmit();
@@ -1411,14 +1411,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit::ConformAction
+        class ConformAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit::ConformAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit::ConformAction> conform_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit::ConformAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit::ConformAction : public ydk::Entity
 {
     public:
         ConformAction();
@@ -1436,10 +1436,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
 
         ydk::YLeaf set_clp_transmit; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit::ConformAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetClpTransmit::ConformAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit : public ydk::Entity
 {
     public:
         ConformSetCosTransmit();
@@ -1455,14 +1455,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit::ConformAction
+        class ConformAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit::ConformAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit::ConformAction> conform_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit::ConformAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit::ConformAction : public ydk::Entity
 {
     public:
         ConformAction();
@@ -1478,12 +1478,12 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_cos_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_cos_transmit; //type: one of enumeration, uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit::ConformAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmit::ConformAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable : public ydk::Entity
 {
     public:
         ConformSetCosTransmitTable();
@@ -1499,14 +1499,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable::ConformAction
+        class ConformAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable::ConformAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable::ConformAction> conform_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable::ConformAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable::ConformAction : public ydk::Entity
 {
     public:
         ConformAction();
@@ -1522,14 +1522,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_cos_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_cos_transmit; //type: one of enumeration, uint8
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable::ConformAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetCosTransmitTable::ConformAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit : public ydk::Entity
 {
     public:
         ConformSetDiscardClassTransmit();
@@ -1545,14 +1545,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit::ConformAction
+        class ConformAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit::ConformAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit::ConformAction> conform_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit::ConformAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit::ConformAction : public ydk::Entity
 {
     public:
         ConformAction();
@@ -1570,10 +1570,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
 
         ydk::YLeaf set_discard_class_transmit; //type: uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit::ConformAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDiscardClassTransmit::ConformAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit : public ydk::Entity
 {
     public:
         ConformSetDscpTransmit();
@@ -1589,14 +1589,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit::ConformAction
+        class ConformAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit::ConformAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit::ConformAction> conform_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit::ConformAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit::ConformAction : public ydk::Entity
 {
     public:
         ConformAction();
@@ -1612,12 +1612,12 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_dscp_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_dscp_transmit; //type: one of enumeration, uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit::ConformAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmit::ConformAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable : public ydk::Entity
 {
     public:
         ConformSetDscpTransmitTable();
@@ -1633,14 +1633,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable::ConformAction
+        class ConformAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable::ConformAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable::ConformAction> conform_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable::ConformAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable::ConformAction : public ydk::Entity
 {
     public:
         ConformAction();
@@ -1656,14 +1656,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_dscp_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_dscp_transmit; //type: one of enumeration, uint8
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable::ConformAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetDscpTransmitTable::ConformAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit : public ydk::Entity
 {
     public:
         ConformSetFrdeTransmit();
@@ -1679,14 +1679,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit::ConformAction
+        class ConformAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit::ConformAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit::ConformAction> conform_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit::ConformAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit::ConformAction : public ydk::Entity
 {
     public:
         ConformAction();
@@ -1704,10 +1704,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
 
         ydk::YLeaf set_frde_transmit; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit::ConformAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetFrdeTransmit::ConformAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit : public ydk::Entity
 {
     public:
         ConformSetMplsExpImpositionTransmit();
@@ -1723,14 +1723,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit::ConformAction
+        class ConformAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit::ConformAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit::ConformAction> conform_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit::ConformAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit::ConformAction : public ydk::Entity
 {
     public:
         ConformAction();
@@ -1746,12 +1746,12 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of enumeration, uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit::ConformAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmit::ConformAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable : public ydk::Entity
 {
     public:
         ConformSetMplsExpImpositionTransmitTable();
@@ -1767,14 +1767,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction
+        class ConformAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction> conform_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction : public ydk::Entity
 {
     public:
         ConformAction();
@@ -1790,14 +1790,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of enumeration, uint8
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpImpositionTransmitTable::ConformAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit : public ydk::Entity
 {
     public:
         ConformSetMplsExpTopmostTransmit();
@@ -1813,14 +1813,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit::ConformAction
+        class ConformAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit::ConformAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit::ConformAction> conform_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit::ConformAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit::ConformAction : public ydk::Entity
 {
     public:
         ConformAction();
@@ -1836,12 +1836,12 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of enumeration, uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit::ConformAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmit::ConformAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable : public ydk::Entity
 {
     public:
         ConformSetMplsExpTopmostTransmitTable();
@@ -1857,14 +1857,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction
+        class ConformAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction> conform_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction : public ydk::Entity
 {
     public:
         ConformAction();
@@ -1880,14 +1880,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of enumeration, uint8
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetMplsExpTopmostTransmitTable::ConformAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit : public ydk::Entity
 {
     public:
         ConformSetPrecTransmit();
@@ -1903,14 +1903,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit::ConformAction
+        class ConformAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit::ConformAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit::ConformAction> conform_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit::ConformAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit::ConformAction : public ydk::Entity
 {
     public:
         ConformAction();
@@ -1926,12 +1926,12 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_prec_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_prec_transmit; //type: one of enumeration, uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit::ConformAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmit::ConformAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable : public ydk::Entity
 {
     public:
         ConformSetPrecTransmitTable();
@@ -1947,14 +1947,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable::ConformAction
+        class ConformAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable::ConformAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable::ConformAction> conform_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable::ConformAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable::ConformAction : public ydk::Entity
 {
     public:
         ConformAction();
@@ -1970,14 +1970,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_prec_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_prec_transmit; //type: one of enumeration, uint8
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable::ConformAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetPrecTransmitTable::ConformAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit : public ydk::Entity
 {
     public:
         ConformSetQosTransmit();
@@ -1993,14 +1993,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit::ConformAction
+        class ConformAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit::ConformAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit::ConformAction> conform_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit::ConformAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit::ConformAction : public ydk::Entity
 {
     public:
         ConformAction();
@@ -2016,12 +2016,12 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_qos_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_qos_transmit; //type: one of enumeration, uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit::ConformAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmit::ConformAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable : public ydk::Entity
 {
     public:
         ConformSetQosTransmitTable();
@@ -2037,14 +2037,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable::ConformAction
+        class ConformAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable::ConformAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable::ConformAction> conform_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable::ConformAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable::ConformAction : public ydk::Entity
 {
     public:
         ConformAction();
@@ -2060,14 +2060,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_qos_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_qos_transmit; //type: one of enumeration, uint8
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable::ConformAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformSetQosTransmitTable::ConformAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit : public ydk::Entity
 {
     public:
         ConformTransmit();
@@ -2083,14 +2083,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit::ConformAction
+        class ConformAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit::ConformAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit::ConformAction> conform_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit::ConformAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit::ConformAction : public ydk::Entity
 {
     public:
         ConformAction();
@@ -2108,10 +2108,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
 
         ydk::YLeaf transmit; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit::ConformAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformTransmit::ConformAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformDrop : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformDrop : public ydk::Entity
 {
     public:
         ConformDrop();
@@ -2127,14 +2127,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ConformAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformDrop::ConformAction
+        class ConformAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformDrop::ConformAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformDrop::ConformAction> conform_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformDrop::ConformAction> conform_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformDrop
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformDrop
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformDrop::ConformAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformDrop::ConformAction : public ydk::Entity
 {
     public:
         ConformAction();
@@ -2152,10 +2152,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
 
         ydk::YLeaf drop; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ConformDrop::ConformAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ConformDrop::ConformAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp : public ydk::Entity
 {
     public:
         ExceedDscp();
@@ -2171,14 +2171,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -2194,12 +2194,12 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf dscp; //type: one of uint8, enumeration
+        ydk::YLeaf dscp; //type: one of enumeration, uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDscp::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit : public ydk::Entity
 {
     public:
         ExceedSetClpTransmit();
@@ -2215,14 +2215,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -2240,10 +2240,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
 
         ydk::YLeaf set_clp_transmit; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetClpTransmit::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit : public ydk::Entity
 {
     public:
         ExceedSetCosTransmit();
@@ -2259,14 +2259,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -2282,14 +2282,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_cos_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_cos_transmit; //type: one of enumeration, uint8
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetCosTransmit::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit : public ydk::Entity
 {
     public:
         ExceedSetDiscardClassTransmit();
@@ -2305,14 +2305,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -2330,10 +2330,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
 
         ydk::YLeaf set_discard_class_transmit; //type: uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDiscardClassTransmit::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit : public ydk::Entity
 {
     public:
         ExceedSetDscpTransmit();
@@ -2349,14 +2349,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -2372,14 +2372,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SetDscpTransmit; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit
+        class SetDscpTransmit; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit> set_dscp_transmit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit> set_dscp_transmit;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit : public ydk::Entity
 {
     public:
         SetDscpTransmit();
@@ -2395,14 +2395,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Dscp; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp
+        class Dscp; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp> dscp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp> dscp;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp : public ydk::Entity
 {
     public:
         Dscp();
@@ -2421,10 +2421,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         ydk::YLeaf table; //type: Table
         class Table;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable : public ydk::Entity
 {
     public:
         ExceedSetDscpTransmitTable();
@@ -2440,14 +2440,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -2463,14 +2463,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_dscp_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_dscp_transmit; //type: one of enumeration, uint8
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmitTable::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit : public ydk::Entity
 {
     public:
         ExceedSetFrdeTransmit();
@@ -2486,14 +2486,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -2511,10 +2511,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
 
         ydk::YLeaf set_frde_transmit; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetFrdeTransmit::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit : public ydk::Entity
 {
     public:
         ExceedSetMplsExpImpositionTransmit();
@@ -2530,14 +2530,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -2553,12 +2553,12 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of enumeration, uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpImpositionTransmit::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit : public ydk::Entity
 {
     public:
         ExceedSetMplsExpTopmostTransmit();
@@ -2574,14 +2574,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -2597,12 +2597,12 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of enumeration, uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetMplsExpTopmostTransmit::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit : public ydk::Entity
 {
     public:
         ExceedSetPrecTransmit();
@@ -2618,14 +2618,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -2641,14 +2641,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_prec_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_prec_transmit; //type: one of enumeration, uint8
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetPrecTransmit::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit : public ydk::Entity
 {
     public:
         ExceedSetQosTransmit();
@@ -2664,14 +2664,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -2687,12 +2687,12 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_qos_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_qos_transmit; //type: one of enumeration, uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetQosTransmit::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit : public ydk::Entity
 {
     public:
         ExceedTransmit();
@@ -2708,14 +2708,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -2733,10 +2733,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
 
         ydk::YLeaf transmit; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedTransmit::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop : public ydk::Entity
 {
     public:
         ExceedDrop();
@@ -2752,14 +2752,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ExceedAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop::ExceedAction
+        class ExceedAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop::ExceedAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop::ExceedAction> exceed_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop::ExceedAction> exceed_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop::ExceedAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -2777,10 +2777,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
 
         ydk::YLeaf drop; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop::ExceedAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedDrop::ExceedAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit : public ydk::Entity
 {
     public:
         ViolateSetClpTransmit();
@@ -2796,14 +2796,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit::ViolateAction
+        class ViolateAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit::ViolateAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit::ViolateAction> violate_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit::ViolateAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -2821,10 +2821,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
 
         ydk::YLeaf set_clp_transmit; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit::ViolateAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetClpTransmit::ViolateAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit : public ydk::Entity
 {
     public:
         ViolateSetCosTransmit();
@@ -2840,14 +2840,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit::ViolateAction
+        class ViolateAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit::ViolateAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit::ViolateAction> violate_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit::ViolateAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -2863,14 +2863,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_cos_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_cos_transmit; //type: one of enumeration, uint8
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit::ViolateAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetCosTransmit::ViolateAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit : public ydk::Entity
 {
     public:
         ViolateSetDiscardClassTransmit();
@@ -2886,14 +2886,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit::ViolateAction
+        class ViolateAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit::ViolateAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit::ViolateAction> violate_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit::ViolateAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -2911,10 +2911,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
 
         ydk::YLeaf set_discard_class_transmit; //type: uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit::ViolateAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDiscardClassTransmit::ViolateAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit : public ydk::Entity
 {
     public:
         ViolateSetDscpTransmit();
@@ -2930,14 +2930,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit::ViolateAction
+        class ViolateAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit::ViolateAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit::ViolateAction> violate_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit::ViolateAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -2953,14 +2953,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_dscp_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_dscp_transmit; //type: one of enumeration, uint8
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit::ViolateAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetDscpTransmit::ViolateAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit : public ydk::Entity
 {
     public:
         ViolateSetFrdeTransmit();
@@ -2976,14 +2976,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit::ViolateAction
+        class ViolateAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit::ViolateAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit::ViolateAction> violate_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit::ViolateAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -3001,10 +3001,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
 
         ydk::YLeaf set_frde_transmit; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit::ViolateAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetFrdeTransmit::ViolateAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit : public ydk::Entity
 {
     public:
         ViolateSetMplsExpImpositionTransmit();
@@ -3020,14 +3020,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction
+        class ViolateAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction> violate_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -3043,12 +3043,12 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_mpls_exp_imposition_transmit; //type: one of enumeration, uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpImpositionTransmit::ViolateAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit : public ydk::Entity
 {
     public:
         ViolateSetMplsExpTopmostTransmit();
@@ -3064,14 +3064,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction
+        class ViolateAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction> violate_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -3087,12 +3087,12 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_mpls_exp_topmost_transmit; //type: one of enumeration, uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetMplsExpTopmostTransmit::ViolateAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit : public ydk::Entity
 {
     public:
         ViolateSetPrecTransmit();
@@ -3108,14 +3108,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit::ViolateAction
+        class ViolateAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit::ViolateAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit::ViolateAction> violate_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit::ViolateAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -3131,14 +3131,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_prec_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_prec_transmit; //type: one of enumeration, uint8
         //type: string (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::TableMap::name)
         ydk::YLeaf table;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit::ViolateAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetPrecTransmit::ViolateAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit : public ydk::Entity
 {
     public:
         ViolateSetQosTransmit();
@@ -3154,14 +3154,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit::ViolateAction
+        class ViolateAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit::ViolateAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit::ViolateAction> violate_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit::ViolateAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -3177,12 +3177,12 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf set_qos_transmit; //type: one of uint8, enumeration
+        ydk::YLeaf set_qos_transmit; //type: one of enumeration, uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit::ViolateAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateSetQosTransmit::ViolateAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit : public ydk::Entity
 {
     public:
         ViolateTransmit();
@@ -3198,14 +3198,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit::ViolateAction
+        class ViolateAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit::ViolateAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit::ViolateAction> violate_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit::ViolateAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -3223,10 +3223,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
 
         ydk::YLeaf transmit; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit::ViolateAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateTransmit::ViolateAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop : public ydk::Entity
 {
     public:
         ViolateDrop();
@@ -3242,14 +3242,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ViolateAction; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop::ViolateAction
+        class ViolateAction; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop::ViolateAction
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop::ViolateAction> violate_action;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop::ViolateAction> violate_action;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop::ViolateAction : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -3267,10 +3267,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Act
 
         ydk::YLeaf drop; //type: empty
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop::ViolateAction
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ViolateDrop::ViolateAction
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceSwitch : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch : public ydk::Entity
 {
     public:
         PoliceSwitch();
@@ -3286,14 +3286,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceSwitch : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Police; //type: Native::Policy::PolicyMap::Class_::ActionList::PoliceSwitch::Police
+        class Police; //type: Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch::Police
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::PoliceSwitch::Police> police;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch::Police> police;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceSwitch
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceSwitch::Police : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch::Police : public ydk::Entity
 {
     public:
         Police();
@@ -3314,10 +3314,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceSwitch::Police : publ
         ydk::YLeaf exceed_action; //type: ExceedAction
         class ExceedAction;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::PoliceSwitch::Police
+}; // Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch::Police
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::Priority : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::Priority : public ydk::Entity
 {
     public:
         Priority();
@@ -3338,10 +3338,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::Priority : public ydk::Enti
         ydk::YLeaf percent; //type: uint16
         ydk::YLeaf burst; //type: uint32
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::Priority
+}; // Native::Policy::PolicyMap::Class::ActionList::Priority
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::QueueBuffers : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::QueueBuffers : public ydk::Entity
 {
     public:
         QueueBuffers();
@@ -3359,10 +3359,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::QueueBuffers : public ydk::
 
         ydk::YLeaf ratio; //type: uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::QueueBuffers
+}; // Native::Policy::PolicyMap::Class::ActionList::QueueBuffers
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::QueueLimit : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::QueueLimit : public ydk::Entity
 {
     public:
         QueueLimit();
@@ -3382,10 +3382,10 @@ class Native::Policy::PolicyMap::Class_::ActionList::QueueLimit : public ydk::En
         ydk::YLeaf queue_limit_type; //type: QueueLimitType
         class QueueLimitType;
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::QueueLimit
+}; // Native::Policy::PolicyMap::Class::ActionList::QueueLimit
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::QueueLimitDscp : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp : public ydk::Entity
 {
     public:
         QueueLimitDscp();
@@ -3401,14 +3401,14 @@ class Native::Policy::PolicyMap::Class_::ActionList::QueueLimitDscp : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Dscp; //type: Native::Policy::PolicyMap::Class_::ActionList::QueueLimitDscp::Dscp
+        class Dscp; //type: Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::Dscp
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::QueueLimitDscp::Dscp> > dscp;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::Dscp> > dscp;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::QueueLimitDscp
+}; // Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::QueueLimitDscp::Dscp : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::Dscp : public ydk::Entity
 {
     public:
         Dscp();
@@ -3424,15 +3424,15 @@ class Native::Policy::PolicyMap::Class_::ActionList::QueueLimitDscp::Dscp : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf dscp_val; //type: one of uint8, enumeration
+        ydk::YLeaf dscp_val; //type: one of enumeration, uint8
         ydk::YLeaf values; //type: empty
-        ydk::YLeaf dscp_val1; //type: one of uint8, enumeration
+        ydk::YLeaf dscp_val1; //type: one of enumeration, uint8
         ydk::YLeaf percent; //type: uint8
 
-}; // Native::Policy::PolicyMap::Class_::ActionList::QueueLimitDscp::Dscp
+}; // Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::Dscp
 
 
-class Native::Policy::PolicyMap::Class_::ActionList::RandomDetect : public ydk::Entity
+class Native::Policy::PolicyMap::Class::ActionList::RandomDetect : public ydk::Entity
 {
     public:
         RandomDetect();
@@ -3454,35 +3454,35 @@ class Native::Policy::PolicyMap::Class_::ActionList::RandomDetect : public ydk::
         ydk::YLeaf ecn; //type: empty
         ydk::YLeaf exponential_weighting_constant; //type: uint16
         ydk::YLeaf precedence_based; //type: empty
-        class Aggregate; //type: Native::Policy::PolicyMap::Class_::ActionList::RandomDetect::Aggregate
-        class Cos; //type: Native::Policy::PolicyMap::Class_::ActionList::RandomDetect::Cos
-        class DiscardClass; //type: Native::Policy::PolicyMap::Class_::ActionList::RandomDetect::DiscardClass
-        class Dscp; //type: Native::Policy::PolicyMap::Class_::ActionList::RandomDetect::Dscp
-        class Precedence; //type: Native::Policy::PolicyMap::Class_::ActionList::RandomDetect::Precedence
+        class Aggregate; //type: Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Aggregate
+        class Cos; //type: Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Cos
+        class DiscardClass; //type: Native::Policy::PolicyMap::Class::ActionList::RandomDetect::DiscardClass
+        class Dscp; //type: Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Dscp
+        class Precedence; //type: Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Precedence
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::RandomDetect::Aggregate> aggregate; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::RandomDetect::Cos> cos;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::RandomDetect::DiscardClass> discard_class;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::RandomDetect::Dscp> > dscp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class_::ActionList::RandomDetect::Precedence> precedence;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Aggregate> aggregate; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Cos> cos;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::RandomDetect::DiscardClass> discard_class;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Dscp> > dscp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Precedence> precedence;
         
-}; // Native::Policy::PolicyMap::Class_::ActionList::RandomDetect
+}; // Native::Policy::PolicyMap::Class::ActionList::RandomDetect
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp::Table : public ydk::Enum
+class Native::Policy::PolicyMap::Class::ActionList::PoliceFlow::Police::Flow::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp::Table : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf policed_dscp;
 
 };
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp::Table : public ydk::Enum
+class Native::Policy::PolicyMap::Class::ActionList::PoliceCatalyst::Police::Actions::ExceedSetDscpTransmit::ExceedAction::SetDscpTransmit::Dscp::Table : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf policed_dscp;
 
 };
 
-class Native::Policy::PolicyMap::Class_::ActionList::PoliceSwitch::Police::ExceedAction : public ydk::Enum
+class Native::Policy::PolicyMap::Class::ActionList::PoliceSwitch::Police::ExceedAction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf drop;
@@ -3490,7 +3490,7 @@ class Native::Policy::PolicyMap::Class_::ActionList::PoliceSwitch::Police::Excee
 
 };
 
-class Native::Policy::PolicyMap::Class_::ActionList::QueueLimit::QueueLimitType : public ydk::Enum
+class Native::Policy::PolicyMap::Class::ActionList::QueueLimit::QueueLimitType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf bytes;

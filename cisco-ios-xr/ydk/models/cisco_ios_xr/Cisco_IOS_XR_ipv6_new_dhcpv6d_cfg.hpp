@@ -212,20 +212,20 @@ class Dhcpv6::Profiles::Profile::Base : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf enable; //type: empty
-        class Default_; //type: Dhcpv6::Profiles::Profile::Base::Default_
+        class Default; //type: Dhcpv6::Profiles::Profile::Base::Default
         class Match; //type: Dhcpv6::Profiles::Profile::Base::Match
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Base::Default_> default_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Base::Default> default_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Base::Match> match;
         
 }; // Dhcpv6::Profiles::Profile::Base
 
 
-class Dhcpv6::Profiles::Profile::Base::Default_ : public ydk::Entity
+class Dhcpv6::Profiles::Profile::Base::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -237,14 +237,14 @@ class Dhcpv6::Profiles::Profile::Base::Default_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Profile_; //type: Dhcpv6::Profiles::Profile::Base::Default_::Profile_
+        class Profile_; //type: Dhcpv6::Profiles::Profile::Base::Default::Profile_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Base::Default_::Profile_> > profile;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Base::Default::Profile_> > profile;
         
-}; // Dhcpv6::Profiles::Profile::Base::Default_
+}; // Dhcpv6::Profiles::Profile::Base::Default
 
 
-class Dhcpv6::Profiles::Profile::Base::Default_::Profile_ : public ydk::Entity
+class Dhcpv6::Profiles::Profile::Base::Default::Profile_ : public ydk::Entity
 {
     public:
         Profile_();
@@ -264,7 +264,7 @@ class Dhcpv6::Profiles::Profile::Base::Default_::Profile_ : public ydk::Entity
         ydk::YLeaf server_mode; //type: empty
         ydk::YLeaf proxy_mode; //type: empty
 
-}; // Dhcpv6::Profiles::Profile::Base::Default_::Profile_
+}; // Dhcpv6::Profiles::Profile::Base::Default::Profile_
 
 
 class Dhcpv6::Profiles::Profile::Base::Match : public ydk::Entity
@@ -644,18 +644,18 @@ class Dhcpv6::Profiles::Profile::Proxy::Classes : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Class_; //type: Dhcpv6::Profiles::Profile::Proxy::Classes::Class_
+        class Class; //type: Dhcpv6::Profiles::Profile::Proxy::Classes::Class
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Classes::Class_> > class_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Classes::Class> > class_;
         
 }; // Dhcpv6::Profiles::Profile::Proxy::Classes
 
 
-class Dhcpv6::Profiles::Profile::Proxy::Classes::Class_ : public ydk::Entity
+class Dhcpv6::Profiles::Profile::Proxy::Classes::Class : public ydk::Entity
 {
     public:
-        Class_();
-        ~Class_();
+        Class();
+        ~Class();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -669,14 +669,14 @@ class Dhcpv6::Profiles::Profile::Proxy::Classes::Class_ : public ydk::Entity
 
         ydk::YLeaf class_name; //type: string
         ydk::YLeaf link_address; //type: string
-        class HelperAddresses; //type: Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses
+        class HelperAddresses; //type: Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses> helper_addresses;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses> helper_addresses;
         
-}; // Dhcpv6::Profiles::Profile::Proxy::Classes::Class_
+}; // Dhcpv6::Profiles::Profile::Proxy::Classes::Class
 
 
-class Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses : public ydk::Entity
+class Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses : public ydk::Entity
 {
     public:
         HelperAddresses();
@@ -692,14 +692,14 @@ class Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses : publi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class HelperAddress; //type: Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress
+        class HelperAddress; //type: Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::HelperAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress> > helper_address;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::HelperAddress> > helper_address;
         
-}; // Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses
+}; // Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses
 
 
-class Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress : public ydk::Entity
+class Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::HelperAddress : public ydk::Entity
 {
     public:
         HelperAddress();
@@ -718,7 +718,7 @@ class Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::Helper
         ydk::YLeaf vrf_name; //type: string
         ydk::YLeaf helper_address; //type: string
 
-}; // Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress
+}; // Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::HelperAddress
 
 
 class Dhcpv6::Profiles::Profile::Proxy::Sessions : public ydk::Entity
@@ -934,18 +934,18 @@ class Dhcpv6::Profiles::Profile::Server::Classes : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Class_; //type: Dhcpv6::Profiles::Profile::Server::Classes::Class_
+        class Class; //type: Dhcpv6::Profiles::Profile::Server::Classes::Class
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Classes::Class_> > class_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Classes::Class> > class_;
         
 }; // Dhcpv6::Profiles::Profile::Server::Classes
 
 
-class Dhcpv6::Profiles::Profile::Server::Classes::Class_ : public ydk::Entity
+class Dhcpv6::Profiles::Profile::Server::Classes::Class : public ydk::Entity
 {
     public:
-        Class_();
-        ~Class_();
+        Class();
+        ~Class();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -962,14 +962,14 @@ class Dhcpv6::Profiles::Profile::Server::Classes::Class_ : public ydk::Entity
         ydk::YLeaf domain_name; //type: string
         ydk::YLeaf preference; //type: uint32
         ydk::YLeaf prefix_pool; //type: string
-        class DnsServers; //type: Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers
+        class DnsServers; //type: Dhcpv6::Profiles::Profile::Server::Classes::Class::DnsServers
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers> dns_servers;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Classes::Class::DnsServers> dns_servers;
         
-}; // Dhcpv6::Profiles::Profile::Server::Classes::Class_
+}; // Dhcpv6::Profiles::Profile::Server::Classes::Class
 
 
-class Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers : public ydk::Entity
+class Dhcpv6::Profiles::Profile::Server::Classes::Class::DnsServers : public ydk::Entity
 {
     public:
         DnsServers();
@@ -987,7 +987,7 @@ class Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers : public yd
 
         ydk::YLeafList dns_server; //type: list of  string
 
-}; // Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers
+}; // Dhcpv6::Profiles::Profile::Server::Classes::Class::DnsServers
 
 
 class Dhcpv6::Profiles::Profile::Server::Lease : public ydk::Entity

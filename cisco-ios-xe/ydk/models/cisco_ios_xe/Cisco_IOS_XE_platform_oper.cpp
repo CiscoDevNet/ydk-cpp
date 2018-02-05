@@ -61,14 +61,6 @@ std::shared_ptr<Entity> Components::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "component")
     {
-        for(auto const & c : component)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Components::Component>();
         c->parent = this;
         component.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> Components::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Components::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : component)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -224,6 +221,7 @@ std::shared_ptr<Entity> Components::Component::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(state != nullptr)
     {
         children["state"] = state;
@@ -353,6 +351,7 @@ std::shared_ptr<Entity> Components::Component::State::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(temp != nullptr)
     {
         children["temp"] = temp;
@@ -506,6 +505,7 @@ std::shared_ptr<Entity> Components::Component::State::Temp::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::State::Temp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -614,14 +614,6 @@ std::shared_ptr<Entity> Components::Component::PlatformProperties::get_child_by_
 {
     if(child_yang_name == "platform-property")
     {
-        for(auto const & c : platform_property)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Components::Component::PlatformProperties::PlatformProperty>();
         c->parent = this;
         platform_property.push_back(c);
@@ -634,9 +626,14 @@ std::shared_ptr<Entity> Components::Component::PlatformProperties::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::PlatformProperties::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : platform_property)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -663,7 +660,7 @@ Components::Component::PlatformProperties::PlatformProperty::PlatformProperty()
     configurable{YType::boolean, "configurable"},
     parent_platform_component_cname_key{YType::str, "parent-platform-component-cname-key"}
     	,
-    value_(std::make_shared<Components::Component::PlatformProperties::PlatformProperty::Value_>())
+    value_(std::make_shared<Components::Component::PlatformProperties::PlatformProperty::Value>())
 {
     value_->parent = this;
 
@@ -716,7 +713,7 @@ std::shared_ptr<Entity> Components::Component::PlatformProperties::PlatformPrope
     {
         if(value_ == nullptr)
         {
-            value_ = std::make_shared<Components::Component::PlatformProperties::PlatformProperty::Value_>();
+            value_ = std::make_shared<Components::Component::PlatformProperties::PlatformProperty::Value>();
         }
         return value_;
     }
@@ -727,6 +724,7 @@ std::shared_ptr<Entity> Components::Component::PlatformProperties::PlatformPrope
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::PlatformProperties::PlatformProperty::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(value_ != nullptr)
     {
         children["value"] = value_;
@@ -780,7 +778,7 @@ bool Components::Component::PlatformProperties::PlatformProperty::has_leaf_or_ch
     return false;
 }
 
-Components::Component::PlatformProperties::PlatformProperty::Value_::Value_()
+Components::Component::PlatformProperties::PlatformProperty::Value::Value()
     :
     string{YType::str, "string"},
     boolean{YType::boolean, "boolean"},
@@ -792,11 +790,11 @@ Components::Component::PlatformProperties::PlatformProperty::Value_::Value_()
     yang_name = "value"; yang_parent_name = "platform-property"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Components::Component::PlatformProperties::PlatformProperty::Value_::~Value_()
+Components::Component::PlatformProperties::PlatformProperty::Value::~Value()
 {
 }
 
-bool Components::Component::PlatformProperties::PlatformProperty::Value_::has_data() const
+bool Components::Component::PlatformProperties::PlatformProperty::Value::has_data() const
 {
     return string.is_set
 	|| boolean.is_set
@@ -805,7 +803,7 @@ bool Components::Component::PlatformProperties::PlatformProperty::Value_::has_da
 	|| decimal.is_set;
 }
 
-bool Components::Component::PlatformProperties::PlatformProperty::Value_::has_operation() const
+bool Components::Component::PlatformProperties::PlatformProperty::Value::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(string.yfilter)
@@ -815,14 +813,14 @@ bool Components::Component::PlatformProperties::PlatformProperty::Value_::has_op
 	|| ydk::is_set(decimal.yfilter);
 }
 
-std::string Components::Component::PlatformProperties::PlatformProperty::Value_::get_segment_path() const
+std::string Components::Component::PlatformProperties::PlatformProperty::Value::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Components::Component::PlatformProperties::PlatformProperty::Value_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Components::Component::PlatformProperties::PlatformProperty::Value::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -836,18 +834,19 @@ std::vector<std::pair<std::string, LeafData> > Components::Component::PlatformPr
 
 }
 
-std::shared_ptr<Entity> Components::Component::PlatformProperties::PlatformProperty::Value_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Components::Component::PlatformProperties::PlatformProperty::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Components::Component::PlatformProperties::PlatformProperty::Value_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Components::Component::PlatformProperties::PlatformProperty::Value::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Components::Component::PlatformProperties::PlatformProperty::Value_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Components::Component::PlatformProperties::PlatformProperty::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "string")
     {
@@ -881,7 +880,7 @@ void Components::Component::PlatformProperties::PlatformProperty::Value_::set_va
     }
 }
 
-void Components::Component::PlatformProperties::PlatformProperty::Value_::set_filter(const std::string & value_path, YFilter yfilter)
+void Components::Component::PlatformProperties::PlatformProperty::Value::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "string")
     {
@@ -905,7 +904,7 @@ void Components::Component::PlatformProperties::PlatformProperty::Value_::set_fi
     }
 }
 
-bool Components::Component::PlatformProperties::PlatformProperty::Value_::has_leaf_or_child_of_name(const std::string & name) const
+bool Components::Component::PlatformProperties::PlatformProperty::Value::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "string" || name == "boolean" || name == "intsixfour" || name == "uintsixfour" || name == "decimal")
         return true;
@@ -962,14 +961,6 @@ std::shared_ptr<Entity> Components::Component::PlatformSubcomponents::get_child_
 {
     if(child_yang_name == "platform-subcomponent")
     {
-        for(auto const & c : platform_subcomponent)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Components::Component::PlatformSubcomponents::PlatformSubcomponent>();
         c->parent = this;
         platform_subcomponent.push_back(c);
@@ -982,9 +973,14 @@ std::shared_ptr<Entity> Components::Component::PlatformSubcomponents::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::PlatformSubcomponents::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : platform_subcomponent)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1057,6 +1053,7 @@ std::shared_ptr<Entity> Components::Component::PlatformSubcomponents::PlatformSu
 std::map<std::string, std::shared_ptr<Entity>> Components::Component::PlatformSubcomponents::PlatformSubcomponent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

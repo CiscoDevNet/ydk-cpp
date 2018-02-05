@@ -75,6 +75,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::DpdContainer::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::DpdContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -178,6 +179,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Fragmentation::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Fragmentation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -261,6 +263,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::HttpUrl::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::HttpUrl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -350,14 +353,6 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Keyring::get_child_by_name(const 
 {
     if(child_yang_name == "peer")
     {
-        for(auto const & c : peer)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::Ikev2::Keyring::Peer>();
         c->parent = this;
         peer.push_back(c);
@@ -370,9 +365,14 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Keyring::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Keyring::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : peer)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -499,6 +499,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Keyring::Peer::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Keyring::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -624,6 +625,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Keyring::Peer::Address::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Keyring::Peer::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -709,6 +711,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Keyring::Peer::Address::Ipv4::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Keyring::Peer::Address::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -826,6 +829,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Keyring::Peer::Identity::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Keyring::Peer::Identity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(email != nullptr)
     {
         children["email"] = email;
@@ -926,6 +930,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Keyring::Peer::Identity::Email::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Keyring::Peer::Identity::Email::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1016,6 +1021,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Keyring::Peer::Identity::Fqdn::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Keyring::Peer::Identity::Fqdn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1118,6 +1124,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Keyring::Peer::PreSharedKey::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Keyring::Peer::PreSharedKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1255,6 +1262,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Limit::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Limit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(max_neg_sa != nullptr)
     {
         children["max-neg-sa"] = max_neg_sa;
@@ -1347,6 +1355,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Limit::MaxNegSa::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Limit::MaxNegSa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1440,6 +1449,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Nat::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Nat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1541,6 +1551,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Policy::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Policy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(match != nullptr)
     {
         children["match"] = match;
@@ -1654,6 +1665,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Policy::Match::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Policy::Match::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -1730,6 +1742,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Policy::Match::Address::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Policy::Match::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1810,6 +1823,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Policy::Match::Fvrf::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Policy::Match::Fvrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2097,6 +2111,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(aaa != nullptr)
     {
         children["aaa"] = aaa;
@@ -2308,6 +2323,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(accounting != nullptr)
     {
         children["accounting"] = accounting;
@@ -2401,6 +2417,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Accounting::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Accounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2511,6 +2528,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authentication::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2619,6 +2637,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(group != nullptr)
     {
         children["group"] = group;
@@ -2748,6 +2767,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Grou
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(anyconnect_eap != nullptr)
     {
         children["anyconnect-eap"] = anyconnect_eap;
@@ -2846,14 +2866,6 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Grou
 {
     if(child_yang_name == "list")
     {
-        for(auto const & c : list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::AnyconnectEap::List>();
         c->parent = this;
         list.push_back(c);
@@ -2866,9 +2878,14 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Grou
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::AnyconnectEap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2963,6 +2980,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Grou
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::AnyconnectEap::List::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(password != nullptr)
     {
         children["password"] = password;
@@ -3078,6 +3096,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Grou
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::AnyconnectEap::List::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3166,14 +3185,6 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Grou
 {
     if(child_yang_name == "list")
     {
-        for(auto const & c : list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::Cert::List>();
         c->parent = this;
         list.push_back(c);
@@ -3186,9 +3197,14 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Grou
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::Cert::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3283,6 +3299,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Grou
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::Cert::List::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(password != nullptr)
     {
         children["password"] = password;
@@ -3398,6 +3415,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Grou
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::Cert::List::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3486,14 +3504,6 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Grou
 {
     if(child_yang_name == "list")
     {
-        for(auto const & c : list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::Eap::List>();
         c->parent = this;
         list.push_back(c);
@@ -3506,9 +3516,14 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Grou
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::Eap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3603,6 +3618,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Grou
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::Eap::List::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(password != nullptr)
     {
         children["password"] = password;
@@ -3718,6 +3734,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Grou
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::Eap::List::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3806,14 +3823,6 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Grou
 {
     if(child_yang_name == "list")
     {
-        for(auto const & c : list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::Psk::List>();
         c->parent = this;
         list.push_back(c);
@@ -3826,9 +3835,14 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Grou
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::Psk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3923,6 +3937,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Grou
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::Psk::List::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(password != nullptr)
     {
         children["password"] = password;
@@ -4038,6 +4053,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Grou
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::Psk::List::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4172,6 +4188,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(anyconnect_eap != nullptr)
     {
         children["anyconnect-eap"] = anyconnect_eap;
@@ -4264,14 +4281,6 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User
 {
     if(child_yang_name == "list")
     {
-        for(auto const & c : list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::AnyconnectEap::List>();
         c->parent = this;
         list.push_back(c);
@@ -4284,9 +4293,14 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::AnyconnectEap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4391,6 +4405,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::AnyconnectEap::List::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(password != nullptr)
     {
         children["password"] = password;
@@ -4506,6 +4521,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::AnyconnectEap::List::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4594,14 +4610,6 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User
 {
     if(child_yang_name == "list")
     {
-        for(auto const & c : list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::Cert::List>();
         c->parent = this;
         list.push_back(c);
@@ -4614,9 +4622,14 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::Cert::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4711,6 +4724,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::Cert::List::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(password != nullptr)
     {
         children["password"] = password;
@@ -4826,6 +4840,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::Cert::List::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4918,14 +4933,6 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User
 {
     if(child_yang_name == "list")
     {
-        for(auto const & c : list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::Eap::List>();
         c->parent = this;
         list.push_back(c);
@@ -4938,9 +4945,14 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::Eap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5045,6 +5057,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::Eap::List::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(password != nullptr)
     {
         children["password"] = password;
@@ -5160,6 +5173,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::Eap::List::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5252,14 +5266,6 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User
 {
     if(child_yang_name == "list")
     {
-        for(auto const & c : list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::Psk::List>();
         c->parent = this;
         list.push_back(c);
@@ -5272,9 +5278,14 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::Psk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5379,6 +5390,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::Psk::List::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(password != nullptr)
     {
         children["password"] = password;
@@ -5494,6 +5506,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::Psk::List::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5602,6 +5615,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Authentication::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(local != nullptr)
     {
         children["local"] = local;
@@ -5707,6 +5721,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Authentication::Local::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Authentication::Local::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(eap != nullptr)
     {
         children["eap"] = eap;
@@ -5838,6 +5853,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Authentication::Local::E
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Authentication::Local::Eap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(gtc != nullptr)
     {
         children["gtc"] = gtc;
@@ -5933,6 +5949,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Authentication::Local::E
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Authentication::Local::Eap::Gtc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(password != nullptr)
     {
         children["password"] = password;
@@ -6018,6 +6035,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Authentication::Local::E
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Authentication::Local::Eap::Gtc::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6118,6 +6136,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Authentication::Local::E
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Authentication::Local::Eap::Md5::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(password != nullptr)
     {
         children["password"] = password;
@@ -6203,6 +6222,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Authentication::Local::E
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Authentication::Local::Eap::Md5::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6303,6 +6323,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Authentication::Local::E
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Authentication::Local::Eap::Mschapv2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(password != nullptr)
     {
         children["password"] = password;
@@ -6388,6 +6409,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Authentication::Local::E
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Authentication::Local::Eap::Mschapv2::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6483,6 +6505,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Authentication::Local::P
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Authentication::Local::PreShare::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key != nullptr)
     {
         children["key"] = key;
@@ -6558,6 +6581,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Authentication::Local::P
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Authentication::Local::PreShare::Key::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6686,6 +6710,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Authentication::Remote::
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Authentication::Remote::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(anyconnect_eap != nullptr)
     {
         children["anyconnect-eap"] = anyconnect_eap;
@@ -6795,6 +6820,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Authentication::Remote::
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Authentication::Remote::AnyconnectEap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(aggregate != nullptr)
     {
         children["aggregate"] = aggregate;
@@ -6866,6 +6892,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Authentication::Remote::
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Authentication::Remote::AnyconnectEap::Aggregate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6946,6 +6973,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Authentication::Remote::
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Authentication::Remote::Eap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7041,6 +7069,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Authentication::Remote::
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Authentication::Remote::PreShare::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key != nullptr)
     {
         children["key"] = key;
@@ -7116,6 +7145,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Authentication::Remote::
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Authentication::Remote::PreShare::Key::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7206,6 +7236,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::ConfigExchange::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::ConfigExchange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7300,6 +7331,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Dpd::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Dpd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7405,6 +7437,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Identity::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Identity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(local != nullptr)
     {
         children["local"] = local;
@@ -7492,6 +7525,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Identity::Local::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Identity::Local::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7608,6 +7642,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::InitialContact::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::InitialContact::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7690,14 +7725,6 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Keyring::get_child_by_na
 {
     if(child_yang_name == "aaa")
     {
-        for(auto const & c : aaa)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::Ikev2::Profile::Keyring::Aaa>();
         c->parent = this;
         aaa.push_back(c);
@@ -7710,9 +7737,14 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Keyring::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Keyring::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : aaa)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7809,6 +7841,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Keyring::Aaa::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Keyring::Aaa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(password != nullptr)
     {
         children["password"] = password;
@@ -7904,6 +7937,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Keyring::Aaa::Password::
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Keyring::Aaa::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7994,6 +8028,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Lifetime::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Lifetime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8120,6 +8155,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Match::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Match::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -8220,6 +8256,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Match::Address::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Match::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(local != nullptr)
     {
         children["local"] = local;
@@ -8295,6 +8332,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Match::Address::Local::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Match::Address::Local::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8385,6 +8423,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Match::Fvrf::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Match::Fvrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8480,6 +8519,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Match::Identity::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Match::Identity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(remote != nullptr)
     {
         children["remote"] = remote;
@@ -8595,6 +8635,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Match::Identity::Remote:
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Match::Identity::Remote::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -8713,14 +8754,6 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Match::Identity::Remote:
 {
     if(child_yang_name == "ipv4")
     {
-        for(auto const & c : ipv4)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::Ikev2::Profile::Match::Identity::Remote::Address::Ipv4>();
         c->parent = this;
         ipv4.push_back(c);
@@ -8733,9 +8766,14 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Match::Identity::Remote:
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Match::Identity::Remote::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv4)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8816,6 +8854,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Match::Identity::Remote:
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Match::Identity::Remote::Address::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8906,6 +8945,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Match::Identity::Remote:
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Match::Identity::Remote::Email::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8996,6 +9036,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Match::Identity::Remote:
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Match::Identity::Remote::Fqdn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9082,6 +9123,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Nat::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Nat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9162,6 +9204,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Pki::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Pki::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9248,6 +9291,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Reconnect::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Reconnect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9333,6 +9377,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Redirect::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(gateway != nullptr)
     {
         children["gateway"] = gateway;
@@ -9404,6 +9449,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::Redirect::Gateway::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::Redirect::Gateway::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9484,6 +9530,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Profile::VirtualTemplate::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Profile::VirtualTemplate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9630,6 +9677,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Proposal::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Proposal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(encryption != nullptr)
     {
         children["encryption"] = encryption;
@@ -9750,6 +9798,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Proposal::Encryption::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Proposal::Encryption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9922,6 +9971,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Proposal::Group::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Proposal::Group::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10104,6 +10154,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Proposal::Integrity::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Proposal::Integrity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10236,6 +10287,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Proposal::Prf::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Proposal::Prf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10367,6 +10419,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Reconnect::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Reconnect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10483,6 +10536,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Redirect::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(client != nullptr)
     {
         children["client"] = client;
@@ -10571,6 +10625,7 @@ std::shared_ptr<Entity> Native::Crypto::Ikev2::Redirect::Client::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ikev2::Redirect::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10656,14 +10711,6 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::get_child_by_name(const std::string
 {
     if(child_yang_name == "group")
     {
-        for(auto const & c : group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::Gkm::Group>();
         c->parent = this;
         group.push_back(c);
@@ -10676,9 +10723,14 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10708,7 +10760,7 @@ Native::Crypto::Gkm::Group::Group()
     client(std::make_shared<Native::Crypto::Gkm::Group::Client>())
 	,identity(std::make_shared<Native::Crypto::Gkm::Group::Identity>())
 	,server(std::make_shared<Native::Crypto::Gkm::Group::Server>())
-	,default_(std::make_shared<Native::Crypto::Gkm::Group::Default_>())
+	,default_(std::make_shared<Native::Crypto::Gkm::Group::Default>())
 {
     client->parent = this;
     identity->parent = this;
@@ -10804,7 +10856,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::get_child_by_name(const std:
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Crypto::Gkm::Group::Default_>();
+            default_ = std::make_shared<Native::Crypto::Gkm::Group::Default>();
         }
         return default_;
     }
@@ -10815,6 +10867,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(client != nullptr)
     {
         children["client"] = client;
@@ -11015,6 +11068,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Client::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(protocol != nullptr)
     {
         children["protocol"] = protocol;
@@ -11138,6 +11192,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Client::Protocol::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Client::Protocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11224,6 +11279,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Client::RecoveryCheck::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Client::RecoveryCheck::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11300,6 +11356,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Client::Registration::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Client::Registration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11398,6 +11455,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Client::Rekey::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Client::Rekey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(encryption != nullptr)
     {
         children["encryption"] = encryption;
@@ -11490,6 +11548,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Client::Rekey::Encryption::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Client::Rekey::Encryption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11618,6 +11677,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Client::Rekey::Hash::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Client::Rekey::Hash::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11733,6 +11793,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Client::Status::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Client::Status::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(active_sa != nullptr)
     {
         children["active-sa"] = active_sa;
@@ -11804,6 +11865,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Client::Status::ActiveSa::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Client::Status::ActiveSa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11894,6 +11956,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Identity::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Identity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -11975,6 +12038,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Identity::Address::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Identity::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12086,6 +12150,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -12192,6 +12257,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Address::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12274,6 +12340,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Hostname::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Hostname::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12315,7 +12382,7 @@ Native::Crypto::Gkm::Group::Server::Local::Local()
 	,registration(std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Registration>())
 	,rekey(std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Rekey>())
 	,sa(std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Sa>())
-	,default_(std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Default_>())
+	,default_(std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Default>())
 {
     address->parent = this;
     authorization->parent = this;
@@ -12461,7 +12528,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::get_child_by_
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Default_>();
+            default_ = std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Default>();
         }
         return default_;
     }
@@ -12472,6 +12539,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -12603,6 +12671,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Address::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12693,6 +12762,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Authorization
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Authorization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -12774,6 +12844,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Authorization
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Authorization::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12859,6 +12930,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Group_::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Group_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(size != nullptr)
     {
         children["size"] = size;
@@ -12938,6 +13010,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Group_::Size:
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Group_::Size::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12990,7 +13063,7 @@ Native::Crypto::Gkm::Group::Server::Local::Identifier::Identifier()
     :
     value_{YType::uint8, "value"}
     	,
-    default_(std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_>())
+    default_(std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Identifier::Default>())
 	,range(std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Identifier::Range>())
 {
     default_->parent = this;
@@ -13041,7 +13114,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Identifier::g
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_>();
+            default_ = std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Identifier::Default>();
         }
         return default_;
     }
@@ -13061,6 +13134,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Identifier::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Identifier::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_ != nullptr)
     {
         children["default"] = default_;
@@ -13099,42 +13173,42 @@ bool Native::Crypto::Gkm::Group::Server::Local::Identifier::has_leaf_or_child_of
     return false;
 }
 
-Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::Default_()
+Native::Crypto::Gkm::Group::Server::Local::Identifier::Default::Default()
     :
     value_{YType::uint8, "value"}
     	,
-    range(std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::Range>())
+    range(std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Identifier::Default::Range>())
 {
     range->parent = this;
 
     yang_name = "default"; yang_parent_name = "identifier"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::~Default_()
+Native::Crypto::Gkm::Group::Server::Local::Identifier::Default::~Default()
 {
 }
 
-bool Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::has_data() const
+bool Native::Crypto::Gkm::Group::Server::Local::Identifier::Default::has_data() const
 {
     return value_.is_set
 	|| (range !=  nullptr && range->has_data());
 }
 
-bool Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::has_operation() const
+bool Native::Crypto::Gkm::Group::Server::Local::Identifier::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter)
 	|| (range !=  nullptr && range->has_operation());
 }
 
-std::string Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::get_segment_path() const
+std::string Native::Crypto::Gkm::Group::Server::Local::Identifier::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gkm::Group::Server::Local::Identifier::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13144,13 +13218,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gkm::Group::Serve
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Identifier::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "range")
     {
         if(range == nullptr)
         {
-            range = std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::Range>();
+            range = std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Identifier::Default::Range>();
         }
         return range;
     }
@@ -13158,9 +13232,10 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Identifier::D
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Identifier::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(range != nullptr)
     {
         children["range"] = range;
@@ -13169,7 +13244,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Serve
     return children;
 }
 
-void Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Gkm::Group::Server::Local::Identifier::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -13179,7 +13254,7 @@ void Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::set_value(
     }
 }
 
-void Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Gkm::Group::Server::Local::Identifier::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -13187,14 +13262,14 @@ void Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::set_filter
     }
 }
 
-bool Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Gkm::Group::Server::Local::Identifier::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "range" || name == "value")
         return true;
     return false;
 }
 
-Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::Range::Range()
+Native::Crypto::Gkm::Group::Server::Local::Identifier::Default::Range::Range()
     :
     lowest{YType::uint8, "lowest"},
     hyphen{YType::empty, "hyphen"},
@@ -13204,18 +13279,18 @@ Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::Range::Range()
     yang_name = "range"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::Range::~Range()
+Native::Crypto::Gkm::Group::Server::Local::Identifier::Default::Range::~Range()
 {
 }
 
-bool Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::Range::has_data() const
+bool Native::Crypto::Gkm::Group::Server::Local::Identifier::Default::Range::has_data() const
 {
     return lowest.is_set
 	|| hyphen.is_set
 	|| highest.is_set;
 }
 
-bool Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::Range::has_operation() const
+bool Native::Crypto::Gkm::Group::Server::Local::Identifier::Default::Range::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(lowest.yfilter)
@@ -13223,14 +13298,14 @@ bool Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::Range::has
 	|| ydk::is_set(highest.yfilter);
 }
 
-std::string Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::Range::get_segment_path() const
+std::string Native::Crypto::Gkm::Group::Server::Local::Identifier::Default::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::Range::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gkm::Group::Server::Local::Identifier::Default::Range::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13242,18 +13317,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gkm::Group::Serve
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Identifier::Default::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::Range::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Identifier::Default::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Gkm::Group::Server::Local::Identifier::Default::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lowest")
     {
@@ -13275,7 +13351,7 @@ void Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::Range::set
     }
 }
 
-void Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::Range::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Gkm::Group::Server::Local::Identifier::Default::Range::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "lowest")
     {
@@ -13291,7 +13367,7 @@ void Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::Range::set
     }
 }
 
-bool Native::Crypto::Gkm::Group::Server::Local::Identifier::Default_::Range::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Gkm::Group::Server::Local::Identifier::Default::Range::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lowest" || name == "hyphen" || name == "highest")
         return true;
@@ -13354,6 +13430,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Identifier::R
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Identifier::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13404,7 +13481,7 @@ bool Native::Crypto::Gkm::Group::Server::Local::Identifier::Range::has_leaf_or_c
 
 Native::Crypto::Gkm::Group::Server::Local::Redundancy::Redundancy()
     :
-    default_(std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_>())
+    default_(std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default>())
 	,local(nullptr) // presence node
 	,peer(std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Redundancy::Peer>())
 	,protocol(nullptr) // presence node
@@ -13458,7 +13535,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Redundancy::g
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_>();
+            default_ = std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default>();
         }
         return default_;
     }
@@ -13496,6 +13573,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Redundancy::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Redundancy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_ != nullptr)
     {
         children["default"] = default_;
@@ -13534,10 +13612,10 @@ bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::has_leaf_or_child_of
     return false;
 }
 
-Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Default_()
+Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Default()
     :
     local(nullptr) // presence node
-	,peer(std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer>())
+	,peer(std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer>())
 	,protocol(nullptr) // presence node
 {
     peer->parent = this;
@@ -13545,18 +13623,18 @@ Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Default_()
     yang_name = "default"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::~Default_()
+Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::~Default()
 {
 }
 
-bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::has_data() const
+bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::has_data() const
 {
     return (local !=  nullptr && local->has_data())
 	|| (peer !=  nullptr && peer->has_data())
 	|| (protocol !=  nullptr && protocol->has_data());
 }
 
-bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::has_operation() const
+bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| (local !=  nullptr && local->has_operation())
@@ -13564,14 +13642,14 @@ bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::has_operat
 	|| (protocol !=  nullptr && protocol->has_operation());
 }
 
-std::string Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::get_segment_path() const
+std::string Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13580,13 +13658,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gkm::Group::Serve
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local")
     {
         if(local == nullptr)
         {
-            local = std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Local_>();
+            local = std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Local_>();
         }
         return local;
     }
@@ -13595,7 +13673,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Redundancy::D
     {
         if(peer == nullptr)
         {
-            peer = std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer>();
+            peer = std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer>();
         }
         return peer;
     }
@@ -13604,7 +13682,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Redundancy::D
     {
         if(protocol == nullptr)
         {
-            protocol = std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Protocol>();
+            protocol = std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Protocol>();
         }
         return protocol;
     }
@@ -13612,9 +13690,10 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Redundancy::D
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(local != nullptr)
     {
         children["local"] = local;
@@ -13633,22 +13712,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Serve
     return children;
 }
 
-void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "local" || name == "peer" || name == "protocol")
         return true;
     return false;
 }
 
-Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Local_::Local_()
+Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Local_::Local_()
     :
     priority{YType::uint8, "priority"}
 {
@@ -13656,29 +13735,29 @@ Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Local_::Local_(
     yang_name = "local"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Local_::~Local_()
+Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Local_::~Local_()
 {
 }
 
-bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Local_::has_data() const
+bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Local_::has_data() const
 {
     return priority.is_set;
 }
 
-bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Local_::has_operation() const
+bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Local_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(priority.yfilter);
 }
 
-std::string Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Local_::get_segment_path() const
+std::string Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Local_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "local";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Local_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Local_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13688,18 +13767,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gkm::Group::Serve
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Local_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Local_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Local_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Local_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Local_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Local_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "priority")
     {
@@ -13709,7 +13789,7 @@ void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Local_::se
     }
 }
 
-void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Local_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Local_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "priority")
     {
@@ -13717,45 +13797,45 @@ void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Local_::se
     }
 }
 
-bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Local_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Local_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "priority")
         return true;
     return false;
 }
 
-Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::Peer()
+Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer::Peer()
     :
-    address(std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::Address>())
+    address(std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer::Address>())
 {
     address->parent = this;
 
     yang_name = "peer"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::~Peer()
+Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer::~Peer()
 {
 }
 
-bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::has_data() const
+bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer::has_data() const
 {
     return (address !=  nullptr && address->has_data());
 }
 
-bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::has_operation() const
+bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer::has_operation() const
 {
     return is_set(yfilter)
 	|| (address !=  nullptr && address->has_operation());
 }
 
-std::string Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::get_segment_path() const
+std::string Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "peer";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13764,13 +13844,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gkm::Group::Serve
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
         if(address == nullptr)
         {
-            address = std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::Address>();
+            address = std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer::Address>();
         }
         return address;
     }
@@ -13778,9 +13858,10 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Redundancy::D
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -13789,22 +13870,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Serve
     return children;
 }
 
-void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address")
         return true;
     return false;
 }
 
-Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::Address::Address()
+Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer::Address::Address()
     :
     ipv4{YType::str, "ipv4"}
 {
@@ -13812,29 +13893,29 @@ Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::Address::
     yang_name = "address"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::Address::~Address()
+Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer::Address::~Address()
 {
 }
 
-bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::Address::has_data() const
+bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer::Address::has_data() const
 {
     return ipv4.is_set;
 }
 
-bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::Address::has_operation() const
+bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer::Address::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipv4.yfilter);
 }
 
-std::string Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::Address::get_segment_path() const
+std::string Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::Address::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer::Address::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13844,18 +13925,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gkm::Group::Serve
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::Address::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4")
     {
@@ -13865,7 +13947,7 @@ void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::Addr
     }
 }
 
-void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::Address::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer::Address::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipv4")
     {
@@ -13873,14 +13955,14 @@ void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::Addr
     }
 }
 
-bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Peer::Address::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Peer::Address::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4")
         return true;
     return false;
 }
 
-Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Protocol::Protocol()
+Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Protocol::Protocol()
     :
     pdu{YType::uint32, "pdu"},
     version{YType::enumeration, "version"}
@@ -13889,31 +13971,31 @@ Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Protocol::Proto
     yang_name = "protocol"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Protocol::~Protocol()
+Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Protocol::~Protocol()
 {
 }
 
-bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Protocol::has_data() const
+bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Protocol::has_data() const
 {
     return pdu.is_set
 	|| version.is_set;
 }
 
-bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Protocol::has_operation() const
+bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Protocol::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pdu.yfilter)
 	|| ydk::is_set(version.yfilter);
 }
 
-std::string Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Protocol::get_segment_path() const
+std::string Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Protocol::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Protocol::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Protocol::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13924,18 +14006,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Gkm::Group::Serve
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Protocol::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Protocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pdu")
     {
@@ -13951,7 +14034,7 @@ void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Protocol::
     }
 }
 
-void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Protocol::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Protocol::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pdu")
     {
@@ -13963,7 +14046,7 @@ void Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Protocol::
     }
 }
 
-bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Protocol::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Protocol::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pdu" || name == "version")
         return true;
@@ -14018,6 +14101,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Redundancy::L
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Redundancy::Local_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14103,6 +14187,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Redundancy::P
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Redundancy::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -14174,6 +14259,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Redundancy::P
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Redundancy::Peer::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14254,6 +14340,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Redundancy::P
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Redundancy::Protocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14354,6 +14441,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Registration:
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Registration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(periodic != nullptr)
     {
         children["periodic"] = periodic;
@@ -14444,6 +14532,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Registration:
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Registration::Periodic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(crl != nullptr)
     {
         children["crl"] = crl;
@@ -14515,6 +14604,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Registration:
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Registration::Periodic::Crl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14683,6 +14773,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Rekey::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Rekey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -14794,6 +14885,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Rekey::Addres
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Rekey::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14886,6 +14978,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Rekey::Algori
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Rekey::Algorithm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15011,6 +15104,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Rekey::Authen
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Rekey::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mypubkey != nullptr)
     {
         children["mypubkey"] = mypubkey;
@@ -15082,6 +15176,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Rekey::Authen
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Rekey::Authentication::Mypubkey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15162,6 +15257,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Rekey::Lifeti
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Rekey::Lifetime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15256,6 +15352,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Rekey::Retran
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Rekey::Retransmit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15352,6 +15449,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Rekey::SigHas
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Rekey::SigHash::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15428,6 +15526,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Rekey::Transp
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Rekey::Transport::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15528,14 +15627,6 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Sa::get_child
 
     if(child_yang_name == "ipsec")
     {
-        for(auto const & c : ipsec)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::Gkm::Group::Server::Local::Sa::Ipsec>();
         c->parent = this;
         ipsec.push_back(c);
@@ -15557,14 +15648,19 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Sa::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Sa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(d3p != nullptr)
     {
         children["d3p"] = d3p;
     }
 
+    count = 0;
     for (auto const & c : ipsec)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(pair_wise_keying != nullptr)
@@ -15657,6 +15753,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Sa::D3P::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Sa::D3P::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(window != nullptr)
     {
         children["window"] = window;
@@ -15732,6 +15829,7 @@ std::shared_ptr<Entity> Native::Crypto::Gkm::Group::Server::Local::Sa::D3P::Wind
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Gkm::Group::Server::Local::Sa::D3P::Window::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15842,8 +15940,8 @@ const Enum::YLeaf Native::Crypto::Gkm::Group::Server::Local::Group_::Size::Small
 const Enum::YLeaf Native::Crypto::Gkm::Group::Server::Local::Group_::Size::Small::Y_16 {1, "16"};
 const Enum::YLeaf Native::Crypto::Gkm::Group::Server::Local::Group_::Size::Small::Y_8 {2, "8"};
 
-const Enum::YLeaf Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Protocol::Version::base {0, "base"};
-const Enum::YLeaf Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default_::Protocol::Version::optimize {1, "optimize"};
+const Enum::YLeaf Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Protocol::Version::base {0, "base"};
+const Enum::YLeaf Native::Crypto::Gkm::Group::Server::Local::Redundancy::Default::Protocol::Version::optimize {1, "optimize"};
 
 const Enum::YLeaf Native::Crypto::Gkm::Group::Server::Local::Redundancy::Protocol::Version::base {0, "base"};
 const Enum::YLeaf Native::Crypto::Gkm::Group::Server::Local::Redundancy::Protocol::Version::optimize {1, "optimize"};

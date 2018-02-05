@@ -40,7 +40,7 @@ class Native : public ydk::Entity
         ydk::YLeaf aqm_register_fnf; //type: empty
         ydk::YLeaf config_register; //type: string
         ydk::YLeaf disable_eadi; //type: empty
-        class Default_; //type: Native::Default_
+        class Default; //type: Native::Default
         class Bfd; //type: Native::Bfd
         class StackwiseVirtual; //type: Native::StackwiseVirtual
         class Boot; //type: Native::Boot
@@ -82,7 +82,7 @@ class Native : public ydk::Entity
         class PseudowireClass; //type: Native::PseudowireClass
         class ControlPlane; //type: Native::ControlPlane
         class ControlPlaneHost; //type: Native::ControlPlaneHost
-        class Clock_; //type: Native::Clock_
+        class Clock; //type: Native::Clock
         class Logging; //type: Native::Logging
         class Aaa; //type: Native::Aaa
         class Privilege; //type: Native::Privilege
@@ -161,7 +161,7 @@ class Native : public ydk::Entity
         class Ntp; //type: Native::Ntp
         class Wsma; //type: Native::Wsma
         class Event; //type: Native::Event
-        class Template_; //type: Native::Template_
+        class Template; //type: Native::Template
         class Process; //type: Native::Process
         class Exception; //type: Native::Exception
         class Iox; //type: Native::Iox
@@ -187,7 +187,7 @@ class Native : public ydk::Entity
         class VoiceCard; //type: Native::VoiceCard
         class Vpdn; //type: Native::Vpdn
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Bfd> bfd;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::StackwiseVirtual> stackwise_virtual; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Boot> boot;
@@ -229,7 +229,7 @@ class Native : public ydk::Entity
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PseudowireClass> > pseudowire_class;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ControlPlane> control_plane; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ControlPlaneHost> control_plane_host;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Clock_> clock_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Clock> clock_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Logging> logging;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa> aaa;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Privilege> privilege;
@@ -308,7 +308,7 @@ class Native : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ntp> ntp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Wsma> wsma;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Event> event;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template_> template_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Template> template_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Process> process;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Exception> exception;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Iox> iox; // presence node
@@ -337,11 +337,11 @@ class Native : public ydk::Entity
 }; // Native
 
 
-class Native::Default_ : public ydk::Entity
+class Native::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -354,14 +354,14 @@ class Native::Default_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Crypto; //type: Native::Default_::Crypto
+        class Crypto; //type: Native::Default::Crypto
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Default_::Crypto> crypto;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Default::Crypto> crypto;
         
-}; // Native::Default_
+}; // Native::Default
 
 
-class Native::Default_::Crypto : public ydk::Entity
+class Native::Default::Crypto : public ydk::Entity
 {
     public:
         Crypto();
@@ -378,14 +378,14 @@ class Native::Default_::Crypto : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ikev2; //type: Native::Default_::Crypto::Ikev2
+        class Ikev2; //type: Native::Default::Crypto::Ikev2
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Default_::Crypto::Ikev2> ikev2;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Default::Crypto::Ikev2> ikev2;
         
-}; // Native::Default_::Crypto
+}; // Native::Default::Crypto
 
 
-class Native::Default_::Crypto::Ikev2 : public ydk::Entity
+class Native::Default::Crypto::Ikev2 : public ydk::Entity
 {
     public:
         Ikev2();
@@ -405,7 +405,7 @@ class Native::Default_::Crypto::Ikev2 : public ydk::Entity
         ydk::YLeaf proposal; //type: empty
         ydk::YLeaf policy; //type: empty
 
-}; // Native::Default_::Crypto::Ikev2
+}; // Native::Default::Crypto::Ikev2
 
 
 class Native::Bfd : public ydk::Entity
@@ -2121,7 +2121,7 @@ class Native::Domain::Vrf::Master : public ydk::Entity
         class Password; //type: Native::Domain::Vrf::Master::Password
         class SitePrefixes; //type: Native::Domain::Vrf::Master::SitePrefixes
         class SourceInterface; //type: Native::Domain::Vrf::Master::SourceInterface
-        class Class_; //type: Native::Domain::Vrf::Master::Class_
+        class Class; //type: Native::Domain::Vrf::Master::Class
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Domain::Vrf::Master::Advanced> advanced;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Domain::Vrf::Master::Collector> collector;
@@ -2130,7 +2130,7 @@ class Native::Domain::Vrf::Master : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Domain::Vrf::Master::Password> password;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Domain::Vrf::Master::SitePrefixes> site_prefixes;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Domain::Vrf::Master::SourceInterface> source_interface;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Domain::Vrf::Master::Class_> > class_;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Domain::Vrf::Master::Class> > class_;
         
 }; // Native::Domain::Vrf::Master
 
@@ -2391,7 +2391,7 @@ class Native::Domain::Vrf::Master::LoadBalance::Advanced::Match::Dscp : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of uint8, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint8
         ydk::YLeaf policy; //type: Policy
         class Policy;
 
@@ -2490,11 +2490,11 @@ class Native::Domain::Vrf::Master::SourceInterface : public ydk::Entity
 }; // Native::Domain::Vrf::Master::SourceInterface
 
 
-class Native::Domain::Vrf::Master::Class_ : public ydk::Entity
+class Native::Domain::Vrf::Master::Class : public ydk::Entity
 {
     public:
-        Class_();
-        ~Class_();
+        Class();
+        ~Class();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2509,16 +2509,16 @@ class Native::Domain::Vrf::Master::Class_ : public ydk::Entity
         ydk::YLeaf name; //type: string
         ydk::YLeaf sequence; //type: uint16
         ydk::YLeaf path_last_resort; //type: string
-        class Match; //type: Native::Domain::Vrf::Master::Class_::Match
-        class PathPreference; //type: Native::Domain::Vrf::Master::Class_::PathPreference
+        class Match; //type: Native::Domain::Vrf::Master::Class::Match
+        class PathPreference; //type: Native::Domain::Vrf::Master::Class::PathPreference
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Domain::Vrf::Master::Class_::Match> match;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Domain::Vrf::Master::Class_::PathPreference> path_preference;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Domain::Vrf::Master::Class::Match> match;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Domain::Vrf::Master::Class::PathPreference> path_preference;
         
-}; // Native::Domain::Vrf::Master::Class_
+}; // Native::Domain::Vrf::Master::Class
 
 
-class Native::Domain::Vrf::Master::Class_::Match : public ydk::Entity
+class Native::Domain::Vrf::Master::Class::Match : public ydk::Entity
 {
     public:
         Match();
@@ -2534,14 +2534,14 @@ class Native::Domain::Vrf::Master::Class_::Match : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Dscp; //type: Native::Domain::Vrf::Master::Class_::Match::Dscp
+        class Dscp; //type: Native::Domain::Vrf::Master::Class::Match::Dscp
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Domain::Vrf::Master::Class_::Match::Dscp> > dscp;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Domain::Vrf::Master::Class::Match::Dscp> > dscp;
         
-}; // Native::Domain::Vrf::Master::Class_::Match
+}; // Native::Domain::Vrf::Master::Class::Match
 
 
-class Native::Domain::Vrf::Master::Class_::Match::Dscp : public ydk::Entity
+class Native::Domain::Vrf::Master::Class::Match::Dscp : public ydk::Entity
 {
     public:
         Dscp();
@@ -2557,14 +2557,14 @@ class Native::Domain::Vrf::Master::Class_::Match::Dscp : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of uint8, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint8
         ydk::YLeaf policy; //type: Policy
         class Policy;
 
-}; // Native::Domain::Vrf::Master::Class_::Match::Dscp
+}; // Native::Domain::Vrf::Master::Class::Match::Dscp
 
 
-class Native::Domain::Vrf::Master::Class_::PathPreference : public ydk::Entity
+class Native::Domain::Vrf::Master::Class::PathPreference : public ydk::Entity
 {
     public:
         PathPreference();
@@ -2588,7 +2588,7 @@ class Native::Domain::Vrf::Master::Class_::PathPreference : public ydk::Entity
         ydk::YLeaf fallback3; //type: string
         class Fallback;
 
-}; // Native::Domain::Vrf::Master::Class_::PathPreference
+}; // Native::Domain::Vrf::Master::Class::PathPreference
 
 
 class Native::Parser : public ydk::Entity
@@ -4185,7 +4185,7 @@ class Native::Domain::Vrf::Master::Password::Encryption : public ydk::Enum
 
 };
 
-class Native::Domain::Vrf::Master::Class_::Match::Dscp::Policy : public ydk::Enum
+class Native::Domain::Vrf::Master::Class::Match::Dscp::Policy : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf best_effort;
@@ -4198,7 +4198,7 @@ class Native::Domain::Vrf::Master::Class_::Match::Dscp::Policy : public ydk::Enu
 
 };
 
-class Native::Domain::Vrf::Master::Class_::PathPreference::Fallback : public ydk::Enum
+class Native::Domain::Vrf::Master::Class::PathPreference::Fallback : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf routing;

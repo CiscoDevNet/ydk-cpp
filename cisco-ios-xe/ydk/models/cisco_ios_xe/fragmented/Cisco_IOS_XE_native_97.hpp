@@ -14,7 +14,7 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
-class Native::Crypto::DynamicMap::Default_::Set::Nat : public ydk::Entity
+class Native::Crypto::DynamicMap::Default::Set::Nat : public ydk::Entity
 {
     public:
         Nat();
@@ -32,10 +32,10 @@ class Native::Crypto::DynamicMap::Default_::Set::Nat : public ydk::Entity
 
         ydk::YLeaf demux; //type: empty
 
-}; // Native::Crypto::DynamicMap::Default_::Set::Nat
+}; // Native::Crypto::DynamicMap::Default::Set::Nat
 
 
-class Native::Crypto::DynamicMap::Default_::Set::PeerContainer : public ydk::Entity
+class Native::Crypto::DynamicMap::Default::Set::PeerContainer : public ydk::Entity
 {
     public:
         PeerContainer();
@@ -54,10 +54,10 @@ class Native::Crypto::DynamicMap::Default_::Set::PeerContainer : public ydk::Ent
         ydk::YLeaf peer; //type: one of string, union
         ydk::YLeaf default_; //type: empty
 
-}; // Native::Crypto::DynamicMap::Default_::Set::PeerContainer
+}; // Native::Crypto::DynamicMap::Default::Set::PeerContainer
 
 
-class Native::Crypto::DynamicMap::Default_::Set::Pfs : public ydk::Entity
+class Native::Crypto::DynamicMap::Default::Set::Pfs : public ydk::Entity
 {
     public:
         Pfs();
@@ -74,10 +74,10 @@ class Native::Crypto::DynamicMap::Default_::Set::Pfs : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::DynamicMap::Default_::Set::Pfs
+}; // Native::Crypto::DynamicMap::Default::Set::Pfs
 
 
-class Native::Crypto::DynamicMap::Default_::Set::ReverseRoute : public ydk::Entity
+class Native::Crypto::DynamicMap::Default::Set::ReverseRoute : public ydk::Entity
 {
     public:
         ReverseRoute();
@@ -94,10 +94,10 @@ class Native::Crypto::DynamicMap::Default_::Set::ReverseRoute : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::DynamicMap::Default_::Set::ReverseRoute
+}; // Native::Crypto::DynamicMap::Default::Set::ReverseRoute
 
 
-class Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation : public ydk::Entity
+class Native::Crypto::DynamicMap::Default::Set::SecurityAssociation : public ydk::Entity
 {
     public:
         SecurityAssociation();
@@ -115,20 +115,20 @@ class Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation : public yd
 
         ydk::YLeaf dfbit; //type: empty
         ydk::YLeaf ecn; //type: empty
-        class Dummy; //type: Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation::Dummy
-        class IdleTimeContainer; //type: Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation::IdleTimeContainer
-        class Lifetime; //type: Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation::Lifetime
-        class Replay; //type: Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation::Replay
+        class Dummy; //type: Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Dummy
+        class IdleTimeContainer; //type: Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::IdleTimeContainer
+        class Lifetime; //type: Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Lifetime
+        class Replay; //type: Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Replay
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation::Dummy> dummy; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation::IdleTimeContainer> idle_time_container;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation::Lifetime> lifetime;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation::Replay> replay;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Dummy> dummy; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::IdleTimeContainer> idle_time_container;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Lifetime> lifetime;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Replay> replay;
         
-}; // Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation
+}; // Native::Crypto::DynamicMap::Default::Set::SecurityAssociation
 
 
-class Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation::Dummy : public ydk::Entity
+class Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Dummy : public ydk::Entity
 {
     public:
         Dummy();
@@ -145,10 +145,10 @@ class Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation::Dummy : pu
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation::Dummy
+}; // Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Dummy
 
 
-class Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation::IdleTimeContainer : public ydk::Entity
+class Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::IdleTimeContainer : public ydk::Entity
 {
     public:
         IdleTimeContainer();
@@ -167,10 +167,10 @@ class Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation::IdleTimeCo
         ydk::YLeaf idle_time; //type: empty
         ydk::YLeaf default_; //type: empty
 
-}; // Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation::IdleTimeContainer
+}; // Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::IdleTimeContainer
 
 
-class Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation::Lifetime : public ydk::Entity
+class Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Lifetime : public ydk::Entity
 {
     public:
         Lifetime();
@@ -190,10 +190,10 @@ class Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation::Lifetime :
         ydk::YLeaf kilobytes; //type: empty
         ydk::YLeaf seconds; //type: empty
 
-}; // Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation::Lifetime
+}; // Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Lifetime
 
 
-class Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation::Replay : public ydk::Entity
+class Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Replay : public ydk::Entity
 {
     public:
         Replay();
@@ -212,7 +212,7 @@ class Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation::Replay : p
         ydk::YLeaf disable; //type: empty
         ydk::YLeaf window_size; //type: empty
 
-}; // Native::Crypto::DynamicMap::Default_::Set::SecurityAssociation::Replay
+}; // Native::Crypto::DynamicMap::Default::Set::SecurityAssociation::Replay
 
 
 class Native::Crypto::DynamicMap::Dialer : public ydk::Entity
@@ -252,7 +252,7 @@ class Native::Crypto::DynamicMap::Match : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf address; //type: one of string, uint16
+        ydk::YLeaf address; //type: one of uint16, string
 
 }; // Native::Crypto::DynamicMap::Match
 
@@ -473,7 +473,7 @@ class Native::Crypto::DynamicMap::Set::IpIn::Ip : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf access_group; //type: one of string, uint16
+        ydk::YLeaf access_group; //type: one of uint16, string
         ydk::YLeaf in; //type: empty
 
 }; // Native::Crypto::DynamicMap::Set::IpIn::Ip
@@ -518,7 +518,7 @@ class Native::Crypto::DynamicMap::Set::IpOut::Ip : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf access_group; //type: one of string, uint16
+        ydk::YLeaf access_group; //type: one of uint16, string
         ydk::YLeaf out; //type: empty
 
 }; // Native::Crypto::DynamicMap::Set::IpOut::Ip
@@ -761,12 +761,12 @@ class Native::Crypto::Gdoi::Group : public ydk::Entity
         class Client; //type: Native::Crypto::Gdoi::Group::Client
         class Identity; //type: Native::Crypto::Gdoi::Group::Identity
         class Server; //type: Native::Crypto::Gdoi::Group::Server
-        class Default_; //type: Native::Crypto::Gdoi::Group::Default_
+        class Default; //type: Native::Crypto::Gdoi::Group::Default
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Client> client;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Identity> identity;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server> server;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default> default_;
         
 }; // Native::Crypto::Gdoi::Group
 
@@ -1129,7 +1129,7 @@ class Native::Crypto::Gdoi::Group::Server::Local : public ydk::Entity
         class Registration; //type: Native::Crypto::Gdoi::Group::Server::Local::Registration
         class Rekey; //type: Native::Crypto::Gdoi::Group::Server::Local::Rekey
         class Sa; //type: Native::Crypto::Gdoi::Group::Server::Local::Sa
-        class Default_; //type: Native::Crypto::Gdoi::Group::Server::Local::Default_
+        class Default; //type: Native::Crypto::Gdoi::Group::Server::Local::Default
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Address> address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Authorization> authorization;
@@ -1139,7 +1139,7 @@ class Native::Crypto::Gdoi::Group::Server::Local : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Registration> registration;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Rekey> rekey;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Sa> sa;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default> default_;
         
 }; // Native::Crypto::Gdoi::Group::Server::Local
 
@@ -1205,7 +1205,7 @@ class Native::Crypto::Gdoi::Group::Server::Local::Authorization::Address : publi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ipv4; //type: one of string, uint16
+        ydk::YLeaf ipv4; //type: one of uint16, string
 
 }; // Native::Crypto::Gdoi::Group::Server::Local::Authorization::Address
 
@@ -1274,20 +1274,20 @@ class Native::Crypto::Gdoi::Group::Server::Local::Identifier : public ydk::Entit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf value_; //type: uint8
-        class Default_; //type: Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default_
+        class Default; //type: Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default
         class Range; //type: Native::Crypto::Gdoi::Group::Server::Local::Identifier::Range
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Identifier::Range> range;
         
 }; // Native::Crypto::Gdoi::Group::Server::Local::Identifier
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default_ : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1300,14 +1300,14 @@ class Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default_ : public 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf value_; //type: uint8
-        class Range; //type: Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default_::Range
+        class Range; //type: Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default::Range
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default_::Range> range;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default::Range> range;
         
-}; // Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default_
+}; // Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default_::Range : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default::Range : public ydk::Entity
 {
     public:
         Range();
@@ -1327,7 +1327,7 @@ class Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default_::Range : 
         ydk::YLeaf hyphen; //type: empty
         ydk::YLeaf highest; //type: uint8
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default_::Range
+}; // Native::Crypto::Gdoi::Group::Server::Local::Identifier::Default::Range
 
 
 class Native::Crypto::Gdoi::Group::Server::Local::Identifier::Range : public ydk::Entity
@@ -1369,12 +1369,12 @@ class Native::Crypto::Gdoi::Group::Server::Local::Redundancy : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Default_; //type: Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_
+        class Default; //type: Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default
         class Local_; //type: Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Local_
         class Peer; //type: Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Peer
         class Protocol; //type: Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Protocol
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Local_> local; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Peer> peer;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Protocol> protocol; // presence node
@@ -1382,11 +1382,11 @@ class Native::Crypto::Gdoi::Group::Server::Local::Redundancy : public ydk::Entit
 }; // Native::Crypto::Gdoi::Group::Server::Local::Redundancy
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_ : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1398,18 +1398,18 @@ class Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_ : public 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Local_; //type: Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_::Local_
-        class Peer; //type: Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_::Peer
-        class Protocol; //type: Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_::Protocol
+        class Local_; //type: Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Local_
+        class Peer; //type: Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Peer
+        class Protocol; //type: Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Protocol
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_::Local_> local; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_::Peer> peer;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_::Protocol> protocol; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Local_> local; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Peer> peer;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Protocol> protocol; // presence node
         
-}; // Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_
+}; // Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_::Local_ : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Local_ : public ydk::Entity
 {
     public:
         Local_();
@@ -1427,10 +1427,10 @@ class Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_::Local_ :
 
         ydk::YLeaf priority; //type: uint8
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_::Local_
+}; // Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Local_
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_::Peer : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Peer : public ydk::Entity
 {
     public:
         Peer();
@@ -1446,14 +1446,14 @@ class Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_::Peer : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Address; //type: Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_::Peer::Address
+        class Address; //type: Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Peer::Address
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_::Peer::Address> address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Peer::Address> address;
         
-}; // Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_::Peer
+}; // Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Peer
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_::Peer::Address : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Peer::Address : public ydk::Entity
 {
     public:
         Address();
@@ -1471,10 +1471,10 @@ class Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_::Peer::Ad
 
         ydk::YLeaf ipv4; //type: string
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_::Peer::Address
+}; // Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Peer::Address
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_::Protocol : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Protocol : public ydk::Entity
 {
     public:
         Protocol();
@@ -1494,7 +1494,7 @@ class Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_::Protocol
         ydk::YLeaf version; //type: Version
         class Version;
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_::Protocol
+}; // Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Protocol
 
 
 class Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Local_ : public ydk::Entity
@@ -1706,7 +1706,7 @@ class Native::Crypto::Gdoi::Group::Server::Local::Rekey::Address : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ipv4; //type: one of string, uint16
+        ydk::YLeaf ipv4; //type: one of uint16, string
 
 }; // Native::Crypto::Gdoi::Group::Server::Local::Rekey::Address
 
@@ -1959,12 +1959,12 @@ class Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec : public ydk::Entity
 
         ydk::YLeaf sequence; //type: uint16
         ydk::YLeaf profile; //type: string
-        class Default_; //type: Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_
+        class Default; //type: Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default
         class Match; //type: Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Match
         class Replay; //type: Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Replay
         class Tag; //type: Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Tag
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Match> match;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Replay> replay;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Tag> tag;
@@ -1972,11 +1972,11 @@ class Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec : public ydk::Entity
 }; // Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_ : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1989,18 +1989,18 @@ class Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_ : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf profile; //type: empty
-        class Match; //type: Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_::Match
-        class Replay; //type: Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_::Replay
-        class Tag; //type: Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_::Tag
+        class Match; //type: Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::Match
+        class Replay; //type: Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::Replay
+        class Tag; //type: Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::Tag
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_::Match> match;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_::Replay> replay; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_::Tag> tag; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::Match> match;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::Replay> replay; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::Tag> tag; // presence node
         
-}; // Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_
+}; // Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_::Match : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::Match : public ydk::Entity
 {
     public:
         Match();
@@ -2016,14 +2016,14 @@ class Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_::Match : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Address; //type: Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_::Match::Address
+        class Address; //type: Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::Match::Address
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_::Match::Address> address; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::Match::Address> address; // presence node
         
-}; // Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_::Match
+}; // Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::Match
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_::Match::Address : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::Match::Address : public ydk::Entity
 {
     public:
         Address();
@@ -2040,10 +2040,10 @@ class Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_::Match::Ad
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_::Match::Address
+}; // Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::Match::Address
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_::Replay : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::Replay : public ydk::Entity
 {
     public:
         Replay();
@@ -2060,10 +2060,10 @@ class Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_::Replay : 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_::Replay
+}; // Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::Replay
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_::Tag : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::Tag : public ydk::Entity
 {
     public:
         Tag();
@@ -2080,7 +2080,7 @@ class Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_::Tag : pub
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default_::Tag
+}; // Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Default::Tag
 
 
 class Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Match : public ydk::Entity
@@ -2122,7 +2122,7 @@ class Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Match::Address : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ipv4; //type: one of string, uint16
+        ydk::YLeaf ipv4; //type: one of uint16, string
         ydk::YLeaf ipv6; //type: string
 
 }; // Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Match::Address
@@ -2261,11 +2261,11 @@ class Native::Crypto::Gdoi::Group::Server::Local::Sa::PairWiseKeying : public yd
 }; // Native::Crypto::Gdoi::Group::Server::Local::Sa::PairWiseKeying
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Default_ : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2279,28 +2279,28 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default_ : public ydk::Entity
 
         ydk::YLeaf gdoi; //type: empty
         ydk::YLeaf gikev2; //type: empty
-        class Address; //type: Native::Crypto::Gdoi::Group::Server::Local::Default_::Address
-        class Authorization; //type: Native::Crypto::Gdoi::Group::Server::Local::Default_::Authorization
-        class Group_; //type: Native::Crypto::Gdoi::Group::Server::Local::Default_::Group_
-        class Identifier; //type: Native::Crypto::Gdoi::Group::Server::Local::Default_::Identifier
-        class Redundancy; //type: Native::Crypto::Gdoi::Group::Server::Local::Default_::Redundancy
-        class Registration; //type: Native::Crypto::Gdoi::Group::Server::Local::Default_::Registration
-        class Rekey; //type: Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey
-        class Sa; //type: Native::Crypto::Gdoi::Group::Server::Local::Default_::Sa
+        class Address; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Address
+        class Authorization; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Authorization
+        class Group_; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Group_
+        class Identifier; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Identifier
+        class Redundancy; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Redundancy
+        class Registration; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Registration
+        class Rekey; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey
+        class Sa; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Sa
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default_::Address> address; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default_::Authorization> authorization;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default_::Group_> group;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default_::Identifier> identifier; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default_::Redundancy> redundancy; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default_::Registration> registration;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey> rekey;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default_::Sa> sa;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Address> address; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Authorization> authorization;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Group_> group;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Identifier> identifier; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Redundancy> redundancy; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Registration> registration;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey> rekey;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Sa> sa;
         
-}; // Native::Crypto::Gdoi::Group::Server::Local::Default_
+}; // Native::Crypto::Gdoi::Group::Server::Local::Default
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Default_::Address : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Default::Address : public ydk::Entity
 {
     public:
         Address();
@@ -2317,10 +2317,10 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default_::Address : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Default_::Address
+}; // Native::Crypto::Gdoi::Group::Server::Local::Default::Address
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Default_::Authorization : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Default::Authorization : public ydk::Entity
 {
     public:
         Authorization();
@@ -2337,14 +2337,14 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default_::Authorization : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf identity; //type: empty
-        class Address; //type: Native::Crypto::Gdoi::Group::Server::Local::Default_::Authorization::Address
+        class Address; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Authorization::Address
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default_::Authorization::Address> address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Authorization::Address> address;
         
-}; // Native::Crypto::Gdoi::Group::Server::Local::Default_::Authorization
+}; // Native::Crypto::Gdoi::Group::Server::Local::Default::Authorization
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Default_::Authorization::Address : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Default::Authorization::Address : public ydk::Entity
 {
     public:
         Address();
@@ -2362,10 +2362,10 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default_::Authorization::Addre
 
         ydk::YLeaf ipv4; //type: empty
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Default_::Authorization::Address
+}; // Native::Crypto::Gdoi::Group::Server::Local::Default::Authorization::Address
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Default_::Group_ : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Default::Group_ : public ydk::Entity
 {
     public:
         Group_();
@@ -2381,14 +2381,14 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default_::Group_ : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Size; //type: Native::Crypto::Gdoi::Group::Server::Local::Default_::Group_::Size
+        class Size; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Group_::Size
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default_::Group_::Size> size; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Group_::Size> size; // presence node
         
-}; // Native::Crypto::Gdoi::Group::Server::Local::Default_::Group_
+}; // Native::Crypto::Gdoi::Group::Server::Local::Default::Group_
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Default_::Group_::Size : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Default::Group_::Size : public ydk::Entity
 {
     public:
         Size();
@@ -2405,10 +2405,10 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default_::Group_::Size : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Default_::Group_::Size
+}; // Native::Crypto::Gdoi::Group::Server::Local::Default::Group_::Size
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Default_::Identifier : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Default::Identifier : public ydk::Entity
 {
     public:
         Identifier();
@@ -2425,10 +2425,10 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default_::Identifier : public 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Default_::Identifier
+}; // Native::Crypto::Gdoi::Group::Server::Local::Default::Identifier
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Default_::Redundancy : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Default::Redundancy : public ydk::Entity
 {
     public:
         Redundancy();
@@ -2445,10 +2445,10 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default_::Redundancy : public 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Default_::Redundancy
+}; // Native::Crypto::Gdoi::Group::Server::Local::Default::Redundancy
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Default_::Registration : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Default::Registration : public ydk::Entity
 {
     public:
         Registration();
@@ -2465,14 +2465,14 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default_::Registration : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf interface; //type: string
-        class Periodic; //type: Native::Crypto::Gdoi::Group::Server::Local::Default_::Registration::Periodic
+        class Periodic; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Registration::Periodic
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default_::Registration::Periodic> periodic;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Registration::Periodic> periodic;
         
-}; // Native::Crypto::Gdoi::Group::Server::Local::Default_::Registration
+}; // Native::Crypto::Gdoi::Group::Server::Local::Default::Registration
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Default_::Registration::Periodic : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Default::Registration::Periodic : public ydk::Entity
 {
     public:
         Periodic();
@@ -2488,14 +2488,14 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default_::Registration::Period
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Crl; //type: Native::Crypto::Gdoi::Group::Server::Local::Default_::Registration::Periodic::Crl
+        class Crl; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Registration::Periodic::Crl
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default_::Registration::Periodic::Crl> crl;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Registration::Periodic::Crl> crl;
         
-}; // Native::Crypto::Gdoi::Group::Server::Local::Default_::Registration::Periodic
+}; // Native::Crypto::Gdoi::Group::Server::Local::Default::Registration::Periodic
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Default_::Registration::Periodic::Crl : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Default::Registration::Periodic::Crl : public ydk::Entity
 {
     public:
         Crl();
@@ -2513,10 +2513,10 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default_::Registration::Period
 
         ydk::YLeaf trustpoint; //type: empty
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Default_::Registration::Periodic::Crl
+}; // Native::Crypto::Gdoi::Group::Server::Local::Default::Registration::Periodic::Crl
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey : public ydk::Entity
 {
     public:
         Rekey();
@@ -2533,26 +2533,26 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf acknowledgement; //type: empty
-        class Address; //type: Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Address
-        class Algorithm; //type: Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Algorithm
-        class Authentication; //type: Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Authentication
-        class Lifetime; //type: Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Lifetime
-        class Retransmit; //type: Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Retransmit
-        class SigHash; //type: Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::SigHash
-        class Transport; //type: Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Transport
+        class Address; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::Address
+        class Algorithm; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::Algorithm
+        class Authentication; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::Authentication
+        class Lifetime; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::Lifetime
+        class Retransmit; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::Retransmit
+        class SigHash; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::SigHash
+        class Transport; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::Transport
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Address> address; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Algorithm> algorithm; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Authentication> authentication; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Lifetime> lifetime;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Retransmit> retransmit; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::SigHash> sig_hash;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Transport> transport;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::Address> address; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::Algorithm> algorithm; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::Authentication> authentication; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::Lifetime> lifetime;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::Retransmit> retransmit; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::SigHash> sig_hash;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::Transport> transport;
         
-}; // Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey
+}; // Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Address : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::Address : public ydk::Entity
 {
     public:
         Address();
@@ -2569,10 +2569,10 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Address : pub
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Address
+}; // Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::Address
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Algorithm : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::Algorithm : public ydk::Entity
 {
     public:
         Algorithm();
@@ -2589,10 +2589,10 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Algorithm : p
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Algorithm
+}; // Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::Algorithm
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Authentication : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -2609,10 +2609,10 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Authenticatio
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Authentication
+}; // Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::Authentication
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Lifetime : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::Lifetime : public ydk::Entity
 {
     public:
         Lifetime();
@@ -2631,10 +2631,10 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Lifetime : pu
         ydk::YLeaf days; //type: empty
         ydk::YLeaf seconds; //type: empty
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Lifetime
+}; // Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::Lifetime
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Retransmit : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::Retransmit : public ydk::Entity
 {
     public:
         Retransmit();
@@ -2651,10 +2651,10 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Retransmit : 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Retransmit
+}; // Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::Retransmit
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::SigHash : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::SigHash : public ydk::Entity
 {
     public:
         SigHash();
@@ -2672,10 +2672,10 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::SigHash : pub
 
         ydk::YLeaf algorithm; //type: empty
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::SigHash
+}; // Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::SigHash
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Transport : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::Transport : public ydk::Entity
 {
     public:
         Transport();
@@ -2693,10 +2693,10 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Transport : p
 
         ydk::YLeaf unicast; //type: empty
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Default_::Rekey::Transport
+}; // Native::Crypto::Gdoi::Group::Server::Local::Default::Rekey::Transport
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Default_::Sa : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Default::Sa : public ydk::Entity
 {
     public:
         Sa();
@@ -2713,18 +2713,18 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default_::Sa : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf receive_only; //type: empty
-        class D3P; //type: Native::Crypto::Gdoi::Group::Server::Local::Default_::Sa::D3P
-        class Ipsec; //type: Native::Crypto::Gdoi::Group::Server::Local::Default_::Sa::Ipsec
-        class PairWiseKeying; //type: Native::Crypto::Gdoi::Group::Server::Local::Default_::Sa::PairWiseKeying
+        class D3P; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::D3P
+        class Ipsec; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::Ipsec
+        class PairWiseKeying; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::PairWiseKeying
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default_::Sa::D3P> d3p; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default_::Sa::Ipsec> > ipsec;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default_::Sa::PairWiseKeying> pair_wise_keying; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::D3P> d3p; // presence node
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::Ipsec> > ipsec;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::PairWiseKeying> pair_wise_keying; // presence node
         
-}; // Native::Crypto::Gdoi::Group::Server::Local::Default_::Sa
+}; // Native::Crypto::Gdoi::Group::Server::Local::Default::Sa
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Default_::Sa::D3P : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::D3P : public ydk::Entity
 {
     public:
         D3P();
@@ -2741,10 +2741,10 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default_::Sa::D3P : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Default_::Sa::D3P
+}; // Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::D3P
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Default_::Sa::Ipsec : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::Ipsec : public ydk::Entity
 {
     public:
         Ipsec();
@@ -2762,10 +2762,10 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default_::Sa::Ipsec : public y
 
         ydk::YLeaf sequence; //type: uint16
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Default_::Sa::Ipsec
+}; // Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::Ipsec
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Default_::Sa::PairWiseKeying : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::PairWiseKeying : public ydk::Entity
 {
     public:
         PairWiseKeying();
@@ -2782,14 +2782,14 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default_::Sa::PairWiseKeying :
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Default_::Sa::PairWiseKeying
+}; // Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::PairWiseKeying
 
 
-class Native::Crypto::Gdoi::Group::Default_ : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2802,18 +2802,18 @@ class Native::Crypto::Gdoi::Group::Default_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf passive; //type: empty
-        class Client; //type: Native::Crypto::Gdoi::Group::Default_::Client
-        class Identity; //type: Native::Crypto::Gdoi::Group::Default_::Identity
-        class Server; //type: Native::Crypto::Gdoi::Group::Default_::Server
+        class Client; //type: Native::Crypto::Gdoi::Group::Default::Client
+        class Identity; //type: Native::Crypto::Gdoi::Group::Default::Identity
+        class Server; //type: Native::Crypto::Gdoi::Group::Default::Server
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default_::Client> client;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default_::Identity> identity; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default_::Server> server;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default::Client> client;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default::Identity> identity; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default::Server> server;
         
-}; // Native::Crypto::Gdoi::Group::Default_
+}; // Native::Crypto::Gdoi::Group::Default
 
 
-class Native::Crypto::Gdoi::Group::Default_::Client : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Default::Client : public ydk::Entity
 {
     public:
         Client();
@@ -2832,23 +2832,23 @@ class Native::Crypto::Gdoi::Group::Default_::Client : public ydk::Entity
         ydk::YLeaf bypass_policy; //type: empty
         ydk::YLeaf transform_sets; //type: empty
         ydk::YLeaf transport_encrypt_key; //type: TransportEncryptKey
-        class Protocol; //type: Native::Crypto::Gdoi::Group::Default_::Client::Protocol
-        class RecoveryCheck; //type: Native::Crypto::Gdoi::Group::Default_::Client::RecoveryCheck
-        class Registration; //type: Native::Crypto::Gdoi::Group::Default_::Client::Registration
-        class Rekey; //type: Native::Crypto::Gdoi::Group::Default_::Client::Rekey
-        class Status; //type: Native::Crypto::Gdoi::Group::Default_::Client::Status
+        class Protocol; //type: Native::Crypto::Gdoi::Group::Default::Client::Protocol
+        class RecoveryCheck; //type: Native::Crypto::Gdoi::Group::Default::Client::RecoveryCheck
+        class Registration; //type: Native::Crypto::Gdoi::Group::Default::Client::Registration
+        class Rekey; //type: Native::Crypto::Gdoi::Group::Default::Client::Rekey
+        class Status; //type: Native::Crypto::Gdoi::Group::Default::Client::Status
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default_::Client::Protocol> protocol; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default_::Client::RecoveryCheck> recovery_check; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default_::Client::Registration> registration;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default_::Client::Rekey> rekey;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default_::Client::Status> status;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default::Client::Protocol> protocol; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default::Client::RecoveryCheck> recovery_check; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default::Client::Registration> registration;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default::Client::Rekey> rekey;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default::Client::Status> status;
                 class TransportEncryptKey;
 
-}; // Native::Crypto::Gdoi::Group::Default_::Client
+}; // Native::Crypto::Gdoi::Group::Default::Client
 
 
-class Native::Crypto::Gdoi::Group::Default_::Client::Protocol : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Default::Client::Protocol : public ydk::Entity
 {
     public:
         Protocol();
@@ -2865,10 +2865,10 @@ class Native::Crypto::Gdoi::Group::Default_::Client::Protocol : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gdoi::Group::Default_::Client::Protocol
+}; // Native::Crypto::Gdoi::Group::Default::Client::Protocol
 
 
-class Native::Crypto::Gdoi::Group::Default_::Client::RecoveryCheck : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Default::Client::RecoveryCheck : public ydk::Entity
 {
     public:
         RecoveryCheck();
@@ -2885,10 +2885,10 @@ class Native::Crypto::Gdoi::Group::Default_::Client::RecoveryCheck : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gdoi::Group::Default_::Client::RecoveryCheck
+}; // Native::Crypto::Gdoi::Group::Default::Client::RecoveryCheck
 
 
-class Native::Crypto::Gdoi::Group::Default_::Client::Registration : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Default::Client::Registration : public ydk::Entity
 {
     public:
         Registration();
@@ -2906,10 +2906,10 @@ class Native::Crypto::Gdoi::Group::Default_::Client::Registration : public ydk::
 
         ydk::YLeaf interface; //type: empty
 
-}; // Native::Crypto::Gdoi::Group::Default_::Client::Registration
+}; // Native::Crypto::Gdoi::Group::Default::Client::Registration
 
 
-class Native::Crypto::Gdoi::Group::Default_::Client::Rekey : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Default::Client::Rekey : public ydk::Entity
 {
     public:
         Rekey();
@@ -2925,16 +2925,16 @@ class Native::Crypto::Gdoi::Group::Default_::Client::Rekey : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Encryption; //type: Native::Crypto::Gdoi::Group::Default_::Client::Rekey::Encryption
-        class Hash; //type: Native::Crypto::Gdoi::Group::Default_::Client::Rekey::Hash
+        class Encryption; //type: Native::Crypto::Gdoi::Group::Default::Client::Rekey::Encryption
+        class Hash; //type: Native::Crypto::Gdoi::Group::Default::Client::Rekey::Hash
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default_::Client::Rekey::Encryption> encryption; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default_::Client::Rekey::Hash> hash; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default::Client::Rekey::Encryption> encryption; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default::Client::Rekey::Hash> hash; // presence node
         
-}; // Native::Crypto::Gdoi::Group::Default_::Client::Rekey
+}; // Native::Crypto::Gdoi::Group::Default::Client::Rekey
 
 
-class Native::Crypto::Gdoi::Group::Default_::Client::Rekey::Encryption : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Default::Client::Rekey::Encryption : public ydk::Entity
 {
     public:
         Encryption();
@@ -2951,10 +2951,10 @@ class Native::Crypto::Gdoi::Group::Default_::Client::Rekey::Encryption : public 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gdoi::Group::Default_::Client::Rekey::Encryption
+}; // Native::Crypto::Gdoi::Group::Default::Client::Rekey::Encryption
 
 
-class Native::Crypto::Gdoi::Group::Default_::Client::Rekey::Hash : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Default::Client::Rekey::Hash : public ydk::Entity
 {
     public:
         Hash();
@@ -2971,10 +2971,10 @@ class Native::Crypto::Gdoi::Group::Default_::Client::Rekey::Hash : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gdoi::Group::Default_::Client::Rekey::Hash
+}; // Native::Crypto::Gdoi::Group::Default::Client::Rekey::Hash
 
 
-class Native::Crypto::Gdoi::Group::Default_::Client::Status : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Default::Client::Status : public ydk::Entity
 {
     public:
         Status();
@@ -2990,14 +2990,14 @@ class Native::Crypto::Gdoi::Group::Default_::Client::Status : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ActiveSa; //type: Native::Crypto::Gdoi::Group::Default_::Client::Status::ActiveSa
+        class ActiveSa; //type: Native::Crypto::Gdoi::Group::Default::Client::Status::ActiveSa
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default_::Client::Status::ActiveSa> active_sa; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default::Client::Status::ActiveSa> active_sa; // presence node
         
-}; // Native::Crypto::Gdoi::Group::Default_::Client::Status
+}; // Native::Crypto::Gdoi::Group::Default::Client::Status
 
 
-class Native::Crypto::Gdoi::Group::Default_::Client::Status::ActiveSa : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Default::Client::Status::ActiveSa : public ydk::Entity
 {
     public:
         ActiveSa();
@@ -3014,10 +3014,10 @@ class Native::Crypto::Gdoi::Group::Default_::Client::Status::ActiveSa : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gdoi::Group::Default_::Client::Status::ActiveSa
+}; // Native::Crypto::Gdoi::Group::Default::Client::Status::ActiveSa
 
 
-class Native::Crypto::Gdoi::Group::Default_::Identity : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Default::Identity : public ydk::Entity
 {
     public:
         Identity();
@@ -3034,10 +3034,10 @@ class Native::Crypto::Gdoi::Group::Default_::Identity : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gdoi::Group::Default_::Identity
+}; // Native::Crypto::Gdoi::Group::Default::Identity
 
 
-class Native::Crypto::Gdoi::Group::Default_::Server : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Default::Server : public ydk::Entity
 {
     public:
         Server();
@@ -3054,16 +3054,16 @@ class Native::Crypto::Gdoi::Group::Default_::Server : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf local; //type: empty
-        class Address; //type: Native::Crypto::Gdoi::Group::Default_::Server::Address
-        class Hostname; //type: Native::Crypto::Gdoi::Group::Default_::Server::Hostname
+        class Address; //type: Native::Crypto::Gdoi::Group::Default::Server::Address
+        class Hostname; //type: Native::Crypto::Gdoi::Group::Default::Server::Hostname
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default_::Server::Address> address;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default_::Server::Hostname> hostname;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default::Server::Address> address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Default::Server::Hostname> hostname;
         
-}; // Native::Crypto::Gdoi::Group::Default_::Server
+}; // Native::Crypto::Gdoi::Group::Default::Server
 
 
-class Native::Crypto::Gdoi::Group::Default_::Server::Address : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Default::Server::Address : public ydk::Entity
 {
     public:
         Address();
@@ -3081,10 +3081,10 @@ class Native::Crypto::Gdoi::Group::Default_::Server::Address : public ydk::Entit
 
         ydk::YLeaf ipv4; //type: string
 
-}; // Native::Crypto::Gdoi::Group::Default_::Server::Address
+}; // Native::Crypto::Gdoi::Group::Default::Server::Address
 
 
-class Native::Crypto::Gdoi::Group::Default_::Server::Hostname : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Default::Server::Hostname : public ydk::Entity
 {
     public:
         Hostname();
@@ -3102,7 +3102,7 @@ class Native::Crypto::Gdoi::Group::Default_::Server::Hostname : public ydk::Enti
 
         ydk::YLeaf ipv4; //type: string
 
-}; // Native::Crypto::Gdoi::Group::Default_::Server::Hostname
+}; // Native::Crypto::Gdoi::Group::Default::Server::Hostname
 
 
 class Native::Crypto::Ikev2 : public ydk::Entity
@@ -3638,7 +3638,7 @@ class Native::Crypto::Gdoi::Group::Server::Local::Group_::Size::Small : public y
 
 };
 
-class Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default_::Protocol::Version : public ydk::Enum
+class Native::Crypto::Gdoi::Group::Server::Local::Redundancy::Default::Protocol::Version : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf base;
@@ -3684,7 +3684,7 @@ class Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec::Replay::Counter::Wi
 
 };
 
-class Native::Crypto::Gdoi::Group::Default_::Client::TransportEncryptKey : public ydk::Enum
+class Native::Crypto::Gdoi::Group::Default::Client::TransportEncryptKey : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf group_key;

@@ -120,6 +120,7 @@ std::shared_ptr<Entity> Eem::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Eem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dir_user != nullptr)
     {
         children["dir-user"] = dir_user;
@@ -265,6 +266,7 @@ std::shared_ptr<Entity> Eem::DirUser::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Eem::DirUser::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(library != nullptr)
     {
         children["library"] = library;
@@ -352,6 +354,7 @@ std::shared_ptr<Entity> Eem::DirUser::Library::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Eem::DirUser::Library::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -449,6 +452,7 @@ std::shared_ptr<Entity> Eem::DirUser::Policy::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Eem::DirUser::Policy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -544,14 +548,6 @@ std::shared_ptr<Entity> Eem::EnvVariables::get_child_by_name(const std::string &
 {
     if(child_yang_name == "env-variable")
     {
-        for(auto const & c : env_variable)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Eem::EnvVariables::EnvVariable>();
         c->parent = this;
         env_variable.push_back(c);
@@ -564,9 +560,14 @@ std::shared_ptr<Entity> Eem::EnvVariables::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Eem::EnvVariables::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : env_variable)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -650,6 +651,7 @@ std::shared_ptr<Entity> Eem::EnvVariables::EnvVariable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Eem::EnvVariables::EnvVariable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -753,6 +755,7 @@ std::shared_ptr<Entity> Eem::RefreshTime::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Eem::RefreshTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -838,14 +841,6 @@ std::shared_ptr<Entity> Eem::RegPolicies::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "reg-policy")
     {
-        for(auto const & c : reg_policy)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Eem::RegPolicies::RegPolicy>();
         c->parent = this;
         reg_policy.push_back(c);
@@ -858,9 +853,14 @@ std::shared_ptr<Entity> Eem::RegPolicies::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Eem::RegPolicies::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : reg_policy)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -972,6 +972,7 @@ std::shared_ptr<Entity> Eem::RegPolicies::RegPolicy::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Eem::RegPolicies::RegPolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1147,14 +1148,6 @@ std::shared_ptr<Entity> Eem::AvlPolicies::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "avl-policy")
     {
-        for(auto const & c : avl_policy)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Eem::AvlPolicies::AvlPolicy>();
         c->parent = this;
         avl_policy.push_back(c);
@@ -1167,9 +1160,14 @@ std::shared_ptr<Entity> Eem::AvlPolicies::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Eem::AvlPolicies::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : avl_policy)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1257,6 +1255,7 @@ std::shared_ptr<Entity> Eem::AvlPolicies::AvlPolicy::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Eem::AvlPolicies::AvlPolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

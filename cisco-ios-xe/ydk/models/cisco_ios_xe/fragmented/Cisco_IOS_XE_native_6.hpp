@@ -701,17 +701,17 @@ class Native::Flow::Exporter : public ydk::Entity
         class Option; //type: Native::Flow::Exporter::Option
         class OutputFeatures; //type: Native::Flow::Exporter::OutputFeatures
         class Source; //type: Native::Flow::Exporter::Source
-        class Template_; //type: Native::Flow::Exporter::Template_
+        class Template; //type: Native::Flow::Exporter::Template
         class Transport; //type: Native::Flow::Exporter::Transport
-        class Default_; //type: Native::Flow::Exporter::Default_
+        class Default; //type: Native::Flow::Exporter::Default
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Destination> destination;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Option> option;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::OutputFeatures> output_features; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Source> source;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Template_> template_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Template> template_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Transport> transport;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default> default_;
                 class ExportProtocol;
 
 }; // Native::Flow::Exporter
@@ -1152,11 +1152,11 @@ class Native::Flow::Exporter::Source::PortChannelSubinterface : public ydk::Enti
 }; // Native::Flow::Exporter::Source::PortChannelSubinterface
 
 
-class Native::Flow::Exporter::Template_ : public ydk::Entity
+class Native::Flow::Exporter::Template : public ydk::Entity
 {
     public:
-        Template_();
-        ~Template_();
+        Template();
+        ~Template();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1168,14 +1168,14 @@ class Native::Flow::Exporter::Template_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Data; //type: Native::Flow::Exporter::Template_::Data
+        class Data; //type: Native::Flow::Exporter::Template::Data
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Template_::Data> data;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Template::Data> data;
         
-}; // Native::Flow::Exporter::Template_
+}; // Native::Flow::Exporter::Template
 
 
-class Native::Flow::Exporter::Template_::Data : public ydk::Entity
+class Native::Flow::Exporter::Template::Data : public ydk::Entity
 {
     public:
         Data();
@@ -1193,7 +1193,7 @@ class Native::Flow::Exporter::Template_::Data : public ydk::Entity
 
         ydk::YLeaf timeout; //type: uint32
 
-}; // Native::Flow::Exporter::Template_::Data
+}; // Native::Flow::Exporter::Template::Data
 
 
 class Native::Flow::Exporter::Transport : public ydk::Entity
@@ -1217,11 +1217,11 @@ class Native::Flow::Exporter::Transport : public ydk::Entity
 }; // Native::Flow::Exporter::Transport
 
 
-class Native::Flow::Exporter::Default_ : public ydk::Entity
+class Native::Flow::Exporter::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1238,16 +1238,16 @@ class Native::Flow::Exporter::Default_ : public ydk::Entity
         ydk::YLeaf export_protocol; //type: empty
         ydk::YLeaf transport; //type: empty
         ydk::YLeaf ttl; //type: empty
-        class Option; //type: Native::Flow::Exporter::Default_::Option
-        class Template_; //type: Native::Flow::Exporter::Default_::Template_
+        class Option; //type: Native::Flow::Exporter::Default::Option
+        class Template; //type: Native::Flow::Exporter::Default::Template
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default_::Option> option;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default_::Template_> template_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default::Option> option;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default::Template> template_;
         
-}; // Native::Flow::Exporter::Default_
+}; // Native::Flow::Exporter::Default
 
 
-class Native::Flow::Exporter::Default_::Option : public ydk::Entity
+class Native::Flow::Exporter::Default::Option : public ydk::Entity
 {
     public:
         Option();
@@ -1263,30 +1263,30 @@ class Native::Flow::Exporter::Default_::Option : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ApplicationAttributes; //type: Native::Flow::Exporter::Default_::Option::ApplicationAttributes
-        class C3PlClassTable; //type: Native::Flow::Exporter::Default_::Option::C3PlClassTable
-        class C3PlPolicyTable; //type: Native::Flow::Exporter::Default_::Option::C3PlPolicyTable
-        class ExporterStats; //type: Native::Flow::Exporter::Default_::Option::ExporterStats
-        class InterfaceTable; //type: Native::Flow::Exporter::Default_::Option::InterfaceTable
-        class MetadataVersionTable; //type: Native::Flow::Exporter::Default_::Option::MetadataVersionTable
-        class SamplerTable; //type: Native::Flow::Exporter::Default_::Option::SamplerTable
-        class SubApplicationTable; //type: Native::Flow::Exporter::Default_::Option::SubApplicationTable
-        class VrfTable; //type: Native::Flow::Exporter::Default_::Option::VrfTable
+        class ApplicationAttributes; //type: Native::Flow::Exporter::Default::Option::ApplicationAttributes
+        class C3PlClassTable; //type: Native::Flow::Exporter::Default::Option::C3PlClassTable
+        class C3PlPolicyTable; //type: Native::Flow::Exporter::Default::Option::C3PlPolicyTable
+        class ExporterStats; //type: Native::Flow::Exporter::Default::Option::ExporterStats
+        class InterfaceTable; //type: Native::Flow::Exporter::Default::Option::InterfaceTable
+        class MetadataVersionTable; //type: Native::Flow::Exporter::Default::Option::MetadataVersionTable
+        class SamplerTable; //type: Native::Flow::Exporter::Default::Option::SamplerTable
+        class SubApplicationTable; //type: Native::Flow::Exporter::Default::Option::SubApplicationTable
+        class VrfTable; //type: Native::Flow::Exporter::Default::Option::VrfTable
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default_::Option::ApplicationAttributes> application_attributes; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default_::Option::C3PlClassTable> c3pl_class_table; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default_::Option::C3PlPolicyTable> c3pl_policy_table; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default_::Option::ExporterStats> exporter_stats; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default_::Option::InterfaceTable> interface_table; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default_::Option::MetadataVersionTable> metadata_version_table; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default_::Option::SamplerTable> sampler_table; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default_::Option::SubApplicationTable> sub_application_table; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default_::Option::VrfTable> vrf_table; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default::Option::ApplicationAttributes> application_attributes; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default::Option::C3PlClassTable> c3pl_class_table; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default::Option::C3PlPolicyTable> c3pl_policy_table; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default::Option::ExporterStats> exporter_stats; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default::Option::InterfaceTable> interface_table; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default::Option::MetadataVersionTable> metadata_version_table; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default::Option::SamplerTable> sampler_table; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default::Option::SubApplicationTable> sub_application_table; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default::Option::VrfTable> vrf_table; // presence node
         
-}; // Native::Flow::Exporter::Default_::Option
+}; // Native::Flow::Exporter::Default::Option
 
 
-class Native::Flow::Exporter::Default_::Option::ApplicationAttributes : public ydk::Entity
+class Native::Flow::Exporter::Default::Option::ApplicationAttributes : public ydk::Entity
 {
     public:
         ApplicationAttributes();
@@ -1303,10 +1303,10 @@ class Native::Flow::Exporter::Default_::Option::ApplicationAttributes : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Flow::Exporter::Default_::Option::ApplicationAttributes
+}; // Native::Flow::Exporter::Default::Option::ApplicationAttributes
 
 
-class Native::Flow::Exporter::Default_::Option::C3PlClassTable : public ydk::Entity
+class Native::Flow::Exporter::Default::Option::C3PlClassTable : public ydk::Entity
 {
     public:
         C3PlClassTable();
@@ -1323,10 +1323,10 @@ class Native::Flow::Exporter::Default_::Option::C3PlClassTable : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Flow::Exporter::Default_::Option::C3PlClassTable
+}; // Native::Flow::Exporter::Default::Option::C3PlClassTable
 
 
-class Native::Flow::Exporter::Default_::Option::C3PlPolicyTable : public ydk::Entity
+class Native::Flow::Exporter::Default::Option::C3PlPolicyTable : public ydk::Entity
 {
     public:
         C3PlPolicyTable();
@@ -1343,10 +1343,10 @@ class Native::Flow::Exporter::Default_::Option::C3PlPolicyTable : public ydk::En
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Flow::Exporter::Default_::Option::C3PlPolicyTable
+}; // Native::Flow::Exporter::Default::Option::C3PlPolicyTable
 
 
-class Native::Flow::Exporter::Default_::Option::ExporterStats : public ydk::Entity
+class Native::Flow::Exporter::Default::Option::ExporterStats : public ydk::Entity
 {
     public:
         ExporterStats();
@@ -1363,10 +1363,10 @@ class Native::Flow::Exporter::Default_::Option::ExporterStats : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Flow::Exporter::Default_::Option::ExporterStats
+}; // Native::Flow::Exporter::Default::Option::ExporterStats
 
 
-class Native::Flow::Exporter::Default_::Option::InterfaceTable : public ydk::Entity
+class Native::Flow::Exporter::Default::Option::InterfaceTable : public ydk::Entity
 {
     public:
         InterfaceTable();
@@ -1383,10 +1383,10 @@ class Native::Flow::Exporter::Default_::Option::InterfaceTable : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Flow::Exporter::Default_::Option::InterfaceTable
+}; // Native::Flow::Exporter::Default::Option::InterfaceTable
 
 
-class Native::Flow::Exporter::Default_::Option::MetadataVersionTable : public ydk::Entity
+class Native::Flow::Exporter::Default::Option::MetadataVersionTable : public ydk::Entity
 {
     public:
         MetadataVersionTable();
@@ -1403,10 +1403,10 @@ class Native::Flow::Exporter::Default_::Option::MetadataVersionTable : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Flow::Exporter::Default_::Option::MetadataVersionTable
+}; // Native::Flow::Exporter::Default::Option::MetadataVersionTable
 
 
-class Native::Flow::Exporter::Default_::Option::SamplerTable : public ydk::Entity
+class Native::Flow::Exporter::Default::Option::SamplerTable : public ydk::Entity
 {
     public:
         SamplerTable();
@@ -1423,10 +1423,10 @@ class Native::Flow::Exporter::Default_::Option::SamplerTable : public ydk::Entit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Flow::Exporter::Default_::Option::SamplerTable
+}; // Native::Flow::Exporter::Default::Option::SamplerTable
 
 
-class Native::Flow::Exporter::Default_::Option::SubApplicationTable : public ydk::Entity
+class Native::Flow::Exporter::Default::Option::SubApplicationTable : public ydk::Entity
 {
     public:
         SubApplicationTable();
@@ -1443,10 +1443,10 @@ class Native::Flow::Exporter::Default_::Option::SubApplicationTable : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Flow::Exporter::Default_::Option::SubApplicationTable
+}; // Native::Flow::Exporter::Default::Option::SubApplicationTable
 
 
-class Native::Flow::Exporter::Default_::Option::VrfTable : public ydk::Entity
+class Native::Flow::Exporter::Default::Option::VrfTable : public ydk::Entity
 {
     public:
         VrfTable();
@@ -1463,14 +1463,14 @@ class Native::Flow::Exporter::Default_::Option::VrfTable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Flow::Exporter::Default_::Option::VrfTable
+}; // Native::Flow::Exporter::Default::Option::VrfTable
 
 
-class Native::Flow::Exporter::Default_::Template_ : public ydk::Entity
+class Native::Flow::Exporter::Default::Template : public ydk::Entity
 {
     public:
-        Template_();
-        ~Template_();
+        Template();
+        ~Template();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1482,14 +1482,14 @@ class Native::Flow::Exporter::Default_::Template_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Data; //type: Native::Flow::Exporter::Default_::Template_::Data
+        class Data; //type: Native::Flow::Exporter::Default::Template::Data
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default_::Template_::Data> data;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Exporter::Default::Template::Data> data;
         
-}; // Native::Flow::Exporter::Default_::Template_
+}; // Native::Flow::Exporter::Default::Template
 
 
-class Native::Flow::Exporter::Default_::Template_::Data : public ydk::Entity
+class Native::Flow::Exporter::Default::Template::Data : public ydk::Entity
 {
     public:
         Data();
@@ -1507,7 +1507,7 @@ class Native::Flow::Exporter::Default_::Template_::Data : public ydk::Entity
 
         ydk::YLeaf timeout; //type: empty
 
-}; // Native::Flow::Exporter::Default_::Template_::Data
+}; // Native::Flow::Exporter::Default::Template::Data
 
 
 class Native::Flow::Monitor : public ydk::Entity
@@ -1535,14 +1535,14 @@ class Native::Flow::Monitor : public ydk::Entity
         class History; //type: Native::Flow::Monitor::History
         class Record; //type: Native::Flow::Monitor::Record
         class Statistics; //type: Native::Flow::Monitor::Statistics
-        class Default_; //type: Native::Flow::Monitor::Default_
+        class Default; //type: Native::Flow::Monitor::Default
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor::Cache> cache;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor::Exporter> > exporter;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor::History> history;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor::Record> record;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor::Statistics> statistics;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor::Default> default_;
                 class Type;
 
 }; // Native::Flow::Monitor
@@ -2220,11 +2220,11 @@ class Native::Flow::Monitor::Statistics::Packet : public ydk::Entity
 }; // Native::Flow::Monitor::Statistics::Packet
 
 
-class Native::Flow::Monitor::Default_ : public ydk::Entity
+class Native::Flow::Monitor::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2239,16 +2239,16 @@ class Native::Flow::Monitor::Default_ : public ydk::Entity
         ydk::YLeaf description; //type: empty
         ydk::YLeaf exporter; //type: empty
         ydk::YLeaf record; //type: empty
-        class Cache; //type: Native::Flow::Monitor::Default_::Cache
-        class Statistics; //type: Native::Flow::Monitor::Default_::Statistics
+        class Cache; //type: Native::Flow::Monitor::Default::Cache
+        class Statistics; //type: Native::Flow::Monitor::Default::Statistics
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor::Default_::Cache> cache;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor::Default_::Statistics> statistics;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor::Default::Cache> cache;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor::Default::Statistics> statistics;
         
-}; // Native::Flow::Monitor::Default_
+}; // Native::Flow::Monitor::Default
 
 
-class Native::Flow::Monitor::Default_::Cache : public ydk::Entity
+class Native::Flow::Monitor::Default::Cache : public ydk::Entity
 {
     public:
         Cache();
@@ -2266,14 +2266,14 @@ class Native::Flow::Monitor::Default_::Cache : public ydk::Entity
 
         ydk::YLeaf entries; //type: empty
         ydk::YLeaf type; //type: empty
-        class Timeout; //type: Native::Flow::Monitor::Default_::Cache::Timeout
+        class Timeout; //type: Native::Flow::Monitor::Default::Cache::Timeout
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor::Default_::Cache::Timeout> timeout;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor::Default::Cache::Timeout> timeout;
         
-}; // Native::Flow::Monitor::Default_::Cache
+}; // Native::Flow::Monitor::Default::Cache
 
 
-class Native::Flow::Monitor::Default_::Cache::Timeout : public ydk::Entity
+class Native::Flow::Monitor::Default::Cache::Timeout : public ydk::Entity
 {
     public:
         Timeout();
@@ -2293,14 +2293,14 @@ class Native::Flow::Monitor::Default_::Cache::Timeout : public ydk::Entity
         ydk::YLeaf inactive; //type: empty
         ydk::YLeaf synchronized; //type: empty
         ydk::YLeaf update; //type: empty
-        class Event; //type: Native::Flow::Monitor::Default_::Cache::Timeout::Event
+        class Event; //type: Native::Flow::Monitor::Default::Cache::Timeout::Event
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor::Default_::Cache::Timeout::Event> event;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor::Default::Cache::Timeout::Event> event;
         
-}; // Native::Flow::Monitor::Default_::Cache::Timeout
+}; // Native::Flow::Monitor::Default::Cache::Timeout
 
 
-class Native::Flow::Monitor::Default_::Cache::Timeout::Event : public ydk::Entity
+class Native::Flow::Monitor::Default::Cache::Timeout::Event : public ydk::Entity
 {
     public:
         Event();
@@ -2318,10 +2318,10 @@ class Native::Flow::Monitor::Default_::Cache::Timeout::Event : public ydk::Entit
 
         ydk::YLeaf transaction_end; //type: empty
 
-}; // Native::Flow::Monitor::Default_::Cache::Timeout::Event
+}; // Native::Flow::Monitor::Default::Cache::Timeout::Event
 
 
-class Native::Flow::Monitor::Default_::Statistics : public ydk::Entity
+class Native::Flow::Monitor::Default::Statistics : public ydk::Entity
 {
     public:
         Statistics();
@@ -2337,14 +2337,14 @@ class Native::Flow::Monitor::Default_::Statistics : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Packet; //type: Native::Flow::Monitor::Default_::Statistics::Packet
+        class Packet; //type: Native::Flow::Monitor::Default::Statistics::Packet
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor::Default_::Statistics::Packet> packet;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Monitor::Default::Statistics::Packet> packet;
         
-}; // Native::Flow::Monitor::Default_::Statistics
+}; // Native::Flow::Monitor::Default::Statistics
 
 
-class Native::Flow::Monitor::Default_::Statistics::Packet : public ydk::Entity
+class Native::Flow::Monitor::Default::Statistics::Packet : public ydk::Entity
 {
     public:
         Packet();
@@ -2363,7 +2363,7 @@ class Native::Flow::Monitor::Default_::Statistics::Packet : public ydk::Entity
         ydk::YLeaf protocol; //type: empty
         ydk::YLeaf size; //type: empty
 
-}; // Native::Flow::Monitor::Default_::Statistics::Packet
+}; // Native::Flow::Monitor::Default::Statistics::Packet
 
 
 class Native::Ip : public ydk::Entity
@@ -2995,7 +2995,7 @@ class Native::Ip::Vrf : public ydk::Entity
         ydk::YLeaf description; //type: string
         ydk::YLeaf rd; //type: string
         class Bgp; //type: Native::Ip::Vrf::Bgp
-        class Export_; //type: Native::Ip::Vrf::Export_
+        class Export; //type: Native::Ip::Vrf::Export
         class Import; //type: Native::Ip::Vrf::Import
         class Maximum; //type: Native::Ip::Vrf::Maximum
         class Mdt; //type: Native::Ip::Vrf::Mdt
@@ -3003,7 +3003,7 @@ class Native::Ip::Vrf : public ydk::Entity
         class Vpn; //type: Native::Ip::Vrf::Vpn
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Vrf::Bgp> bgp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Vrf::Export_> export_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Vrf::Export> export_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Vrf::Import> import;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Vrf::Maximum> maximum; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Vrf::Mdt> mdt; // presence node
@@ -3057,11 +3057,11 @@ class Native::Ip::Vrf::Bgp::NextHop : public ydk::Entity
 }; // Native::Ip::Vrf::Bgp::NextHop
 
 
-class Native::Ip::Vrf::Export_ : public ydk::Entity
+class Native::Ip::Vrf::Export : public ydk::Entity
 {
     public:
-        Export_();
-        ~Export_();
+        Export();
+        ~Export();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3074,14 +3074,14 @@ class Native::Ip::Vrf::Export_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf map; //type: string
-        class Ipv4; //type: Native::Ip::Vrf::Export_::Ipv4
+        class Ipv4; //type: Native::Ip::Vrf::Export::Ipv4
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Vrf::Export_::Ipv4> ipv4;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Vrf::Export::Ipv4> ipv4;
         
-}; // Native::Ip::Vrf::Export_
+}; // Native::Ip::Vrf::Export
 
 
-class Native::Ip::Vrf::Export_::Ipv4 : public ydk::Entity
+class Native::Ip::Vrf::Export::Ipv4 : public ydk::Entity
 {
     public:
         Ipv4();
@@ -3103,7 +3103,7 @@ class Native::Ip::Vrf::Export_::Ipv4 : public ydk::Entity
         ydk::YLeaf map_only; //type: string
         class Ipv4Type;
 
-}; // Native::Ip::Vrf::Export_::Ipv4
+}; // Native::Ip::Vrf::Export::Ipv4
 
 
 class Native::Ip::Vrf::Import : public ydk::Entity
@@ -3222,8 +3222,8 @@ class Native::Ip::Vrf::Mdt::Data : public ydk::Entity
         ydk::YLeaf mulicast_address; //type: string
         ydk::YLeaf wildcard_bits; //type: string
         ydk::YLeaf threshold; //type: uint32
-        ydk::YLeaf threshold_list; //type: one of string, uint16
-        ydk::YLeaf list; //type: one of string, uint16
+        ydk::YLeaf threshold_list; //type: one of uint16, string
+        ydk::YLeaf list; //type: one of uint16, string
 
 }; // Native::Ip::Vrf::Mdt::Data
 
@@ -3746,7 +3746,7 @@ class Native::Flow::Monitor::Record::Type : public ydk::Enum
 
 };
 
-class Native::Ip::Vrf::Export_::Ipv4::Ipv4Type : public ydk::Enum
+class Native::Ip::Vrf::Export::Ipv4::Ipv4Type : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unicast;

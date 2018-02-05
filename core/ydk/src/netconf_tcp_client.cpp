@@ -95,7 +95,7 @@ void NetconfTCPClient::initialize_curl(const std::string& address, int port)
     curl = curl_easy_init();
     if (!curl)
     {
-        throw(YCPPClientError{"Unable to create curl environment."});
+        throw(YClientError{"Unable to create curl environment."});
     }
 
     // curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L); // uncomment for debugging
@@ -136,7 +136,7 @@ void NetconfTCPClient::init_capabilities()
     if (!found)
     {
         YLOG_ERROR("The device need to support NETCONF 1.1");
-        throw(YCPPClientError{"The device need to support NETCONF 1.1"});
+        throw(YClientError{"The device need to support NETCONF 1.1"});
     }
 }
 
@@ -202,7 +202,7 @@ std::string NetconfTCPClient::execute_payload(const std::string & payload)
     if(!connected)
     {
         auto err_msg = "Could not execute payload. Not connected to " + hostname;
-        throw(YCPPClientError{err_msg});
+        throw(YClientError{err_msg});
     }
     send(payload);
     return recv();
@@ -313,7 +313,7 @@ void NetconfTCPClient::check_ok(CURLcode res, const char* fmt)
     if (res != CURLE_OK)
     {
         YLOG_ERROR(fmt, curl_easy_strerror(res));
-        throw(YCPPClientError{curl_easy_strerror(res)});
+        throw(YClientError{curl_easy_strerror(res)});
     }
 }
 
@@ -322,7 +322,7 @@ void NetconfTCPClient::check_timeout(CURLcode res, int for_recv, const char* fmt
     if (res == CURLE_AGAIN && !wait_on_socket(sockfd, for_recv, TIMEOUT))
     {
         YLOG_ERROR(fmt, curl_easy_strerror(res));
-        throw(YCPPClientError(curl_easy_strerror(res)));
+        throw(YClientError(curl_easy_strerror(res)));
     }
 }
 
@@ -377,7 +377,7 @@ static xmlDocPtr get_xml_doc(const std::string &payload)
     doc = xmlReadMemory(payload.c_str(), strlen(payload.c_str()), "noname.xml", NULL, 0);
     if (doc == NULL) {
         YLOG_ERROR("Could not build payload");
-        throw(YCPPClientError{"Could not build payload"});
+        throw(YClientError{"Could not build payload"});
     }
     return doc;
 }

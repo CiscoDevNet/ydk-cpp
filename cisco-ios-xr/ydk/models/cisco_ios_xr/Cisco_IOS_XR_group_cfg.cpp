@@ -61,14 +61,6 @@ std::shared_ptr<Entity> Groups::get_child_by_name(const std::string & child_yang
 {
     if(child_yang_name == "group")
     {
-        for(auto const & c : group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Groups::Group>();
         c->parent = this;
         group.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> Groups::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> Groups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -184,6 +181,7 @@ std::shared_ptr<Entity> Groups::Group::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Groups::Group::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -260,6 +258,7 @@ std::shared_ptr<Entity> ApplyGroups::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> ApplyGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

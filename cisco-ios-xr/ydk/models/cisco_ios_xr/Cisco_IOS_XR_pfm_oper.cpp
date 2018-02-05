@@ -81,6 +81,7 @@ std::shared_ptr<Entity> PlatformFaultManager::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(exclude != nullptr)
     {
         children["exclude"] = exclude;
@@ -198,6 +199,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fault_type1s != nullptr)
     {
         children["fault-type1s"] = fault_type1s;
@@ -278,14 +280,6 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::get_child_by
 {
     if(child_yang_name == "fault-type1")
     {
-        for(auto const & c : fault_type1)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1>();
         c->parent = this;
         fault_type1.push_back(c);
@@ -298,9 +292,14 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : fault_type1)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -403,6 +402,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fault_type2s != nullptr)
     {
         children["fault-type2s"] = fault_type2s;
@@ -491,14 +491,6 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 {
     if(child_yang_name == "fault-type2")
     {
-        for(auto const & c : fault_type2)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2>();
         c->parent = this;
         fault_type2.push_back(c);
@@ -511,9 +503,14 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : fault_type2)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -609,6 +606,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fault_type3s != nullptr)
     {
         children["fault-type3s"] = fault_type3s;
@@ -697,14 +695,6 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 {
     if(child_yang_name == "fault-type3")
     {
-        for(auto const & c : fault_type3)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3>();
         c->parent = this;
         fault_type3.push_back(c);
@@ -717,9 +707,14 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : fault_type3)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -802,6 +797,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(racks != nullptr)
     {
         children["racks"] = racks;
@@ -885,14 +881,6 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 {
     if(child_yang_name == "rack")
     {
-        for(auto const & c : rack)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack>();
         c->parent = this;
         rack.push_back(c);
@@ -905,9 +893,14 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rack)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -990,6 +983,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(slots != nullptr)
     {
         children["slots"] = slots;
@@ -1073,14 +1067,6 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 {
     if(child_yang_name == "slot")
     {
-        for(auto const & c : slot)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot>();
         c->parent = this;
         slot.push_back(c);
@@ -1093,9 +1079,14 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : slot)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1191,6 +1182,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fault_summary != nullptr)
     {
         children["fault-summary"] = fault_summary;
@@ -1289,6 +1281,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::FaultSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1397,14 +1390,6 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 {
     if(child_yang_name == "hardware-fault-device")
     {
-        for(auto const & c : hardware_fault_device)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice>();
         c->parent = this;
         hardware_fault_device.push_back(c);
@@ -1417,9 +1402,14 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hardware_fault_device)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1494,14 +1484,6 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 {
     if(child_yang_name == "hardware-fault-type")
     {
-        for(auto const & c : hardware_fault_type)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType>();
         c->parent = this;
         hardware_fault_type.push_back(c);
@@ -1514,9 +1496,14 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hardware_fault_type)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1627,6 +1614,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::FaultType3S::FaultType3::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1785,14 +1773,6 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 {
     if(child_yang_name == "rack")
     {
-        for(auto const & c : rack)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack>();
         c->parent = this;
         rack.push_back(c);
@@ -1805,9 +1785,14 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rack)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1890,6 +1875,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(slots != nullptr)
     {
         children["slots"] = slots;
@@ -1973,14 +1959,6 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 {
     if(child_yang_name == "slot")
     {
-        for(auto const & c : slot)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot>();
         c->parent = this;
         slot.push_back(c);
@@ -1993,9 +1971,14 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : slot)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2091,6 +2074,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fault_summary != nullptr)
     {
         children["fault-summary"] = fault_summary;
@@ -2189,6 +2173,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::FaultSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2297,14 +2282,6 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 {
     if(child_yang_name == "hardware-fault-device")
     {
-        for(auto const & c : hardware_fault_device)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice>();
         c->parent = this;
         hardware_fault_device.push_back(c);
@@ -2317,9 +2294,14 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hardware_fault_device)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2394,14 +2376,6 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 {
     if(child_yang_name == "hardware-fault-type")
     {
-        for(auto const & c : hardware_fault_type)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType>();
         c->parent = this;
         hardware_fault_type.push_back(c);
@@ -2414,9 +2388,14 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hardware_fault_type)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2527,6 +2506,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::FaultType2S::FaultType2::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2685,14 +2665,6 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 {
     if(child_yang_name == "rack")
     {
-        for(auto const & c : rack)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack>();
         c->parent = this;
         rack.push_back(c);
@@ -2705,9 +2677,14 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rack)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2790,6 +2767,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(slots != nullptr)
     {
         children["slots"] = slots;
@@ -2873,14 +2851,6 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 {
     if(child_yang_name == "slot")
     {
-        for(auto const & c : slot)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot>();
         c->parent = this;
         slot.push_back(c);
@@ -2893,9 +2863,14 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : slot)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2991,6 +2966,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fault_summary != nullptr)
     {
         children["fault-summary"] = fault_summary;
@@ -3089,6 +3065,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::FaultSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3197,14 +3174,6 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 {
     if(child_yang_name == "hardware-fault-device")
     {
-        for(auto const & c : hardware_fault_device)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice>();
         c->parent = this;
         hardware_fault_device.push_back(c);
@@ -3217,9 +3186,14 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hardware_fault_device)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3294,14 +3268,6 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 {
     if(child_yang_name == "hardware-fault-type")
     {
-        for(auto const & c : hardware_fault_type)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType>();
         c->parent = this;
         hardware_fault_type.push_back(c);
@@ -3314,9 +3280,14 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hardware_fault_type)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3427,6 +3398,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Exclude::FaultType1S::FaultType1::
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Exclude::FaultType1S::FaultType1::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3592,14 +3564,6 @@ std::shared_ptr<Entity> PlatformFaultManager::Racks::get_child_by_name(const std
 {
     if(child_yang_name == "rack")
     {
-        for(auto const & c : rack)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformFaultManager::Racks::Rack>();
         c->parent = this;
         rack.push_back(c);
@@ -3612,9 +3576,14 @@ std::shared_ptr<Entity> PlatformFaultManager::Racks::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Racks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rack)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3704,6 +3673,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Racks::Rack::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Racks::Rack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(slots != nullptr)
     {
         children["slots"] = slots;
@@ -3787,14 +3757,6 @@ std::shared_ptr<Entity> PlatformFaultManager::Racks::Rack::Slots::get_child_by_n
 {
     if(child_yang_name == "slot")
     {
-        for(auto const & c : slot)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformFaultManager::Racks::Rack::Slots::Slot>();
         c->parent = this;
         slot.push_back(c);
@@ -3807,9 +3769,14 @@ std::shared_ptr<Entity> PlatformFaultManager::Racks::Rack::Slots::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Racks::Rack::Slots::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : slot)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3905,6 +3872,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Racks::Rack::Slots::Slot::get_chil
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Racks::Rack::Slots::Slot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fault_summary != nullptr)
     {
         children["fault-summary"] = fault_summary;
@@ -4003,6 +3971,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSum
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Racks::Rack::Slots::Slot::FaultSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4111,14 +4080,6 @@ std::shared_ptr<Entity> PlatformFaultManager::Racks::Rack::Slots::Slot::Hardware
 {
     if(child_yang_name == "hardware-fault-device")
     {
-        for(auto const & c : hardware_fault_device)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice>();
         c->parent = this;
         hardware_fault_device.push_back(c);
@@ -4131,9 +4092,14 @@ std::shared_ptr<Entity> PlatformFaultManager::Racks::Rack::Slots::Slot::Hardware
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hardware_fault_device)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4208,14 +4174,6 @@ std::shared_ptr<Entity> PlatformFaultManager::Racks::Rack::Slots::Slot::Hardware
 {
     if(child_yang_name == "hardware-fault-type")
     {
-        for(auto const & c : hardware_fault_type)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType>();
         c->parent = this;
         hardware_fault_type.push_back(c);
@@ -4228,9 +4186,14 @@ std::shared_ptr<Entity> PlatformFaultManager::Racks::Rack::Slots::Slot::Hardware
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hardware_fault_type)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4341,6 +4304,7 @@ std::shared_ptr<Entity> PlatformFaultManager::Racks::Rack::Slots::Slot::Hardware
 std::map<std::string, std::shared_ptr<Entity>> PlatformFaultManager::Racks::Rack::Slots::Slot::HardwareFaultDevices::HardwareFaultDevice::HardwareFaultType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

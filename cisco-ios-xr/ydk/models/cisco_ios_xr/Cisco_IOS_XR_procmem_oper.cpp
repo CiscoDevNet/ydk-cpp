@@ -68,6 +68,7 @@ std::shared_ptr<Entity> ProcessesMemory::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> ProcessesMemory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> ProcessesMemory::Nodes::get_child_by_name(const std::str
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ProcessesMemory::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> ProcessesMemory::Nodes::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> ProcessesMemory::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -285,6 +283,7 @@ std::shared_ptr<Entity> ProcessesMemory::Nodes::Node::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> ProcessesMemory::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(process_ids != nullptr)
     {
         children["process-ids"] = process_ids;
@@ -368,14 +367,6 @@ std::shared_ptr<Entity> ProcessesMemory::Nodes::Node::ProcessIds::get_child_by_n
 {
     if(child_yang_name == "process-id")
     {
-        for(auto const & c : process_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ProcessesMemory::Nodes::Node::ProcessIds::ProcessId>();
         c->parent = this;
         process_id.push_back(c);
@@ -388,9 +379,14 @@ std::shared_ptr<Entity> ProcessesMemory::Nodes::Node::ProcessIds::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> ProcessesMemory::Nodes::Node::ProcessIds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : process_id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -499,6 +495,7 @@ std::shared_ptr<Entity> ProcessesMemory::Nodes::Node::ProcessIds::ProcessId::get
 std::map<std::string, std::shared_ptr<Entity>> ProcessesMemory::Nodes::Node::ProcessIds::ProcessId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

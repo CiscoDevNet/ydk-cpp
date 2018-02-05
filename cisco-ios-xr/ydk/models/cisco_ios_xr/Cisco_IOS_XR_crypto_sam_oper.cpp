@@ -133,6 +133,7 @@ std::shared_ptr<Entity> Sam::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Sam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(system_information != nullptr)
     {
         children["system-information"] = system_information;
@@ -269,6 +270,7 @@ std::shared_ptr<Entity> Sam::SystemInformation::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Sam::SystemInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -374,14 +376,6 @@ std::shared_ptr<Entity> Sam::LogContents::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "log-content")
     {
-        for(auto const & c : log_content)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Sam::LogContents::LogContent>();
         c->parent = this;
         log_content.push_back(c);
@@ -394,9 +388,14 @@ std::shared_ptr<Entity> Sam::LogContents::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Sam::LogContents::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : log_content)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -486,14 +485,6 @@ std::shared_ptr<Entity> Sam::LogContents::LogContent::get_child_by_name(const st
 {
     if(child_yang_name == "logs")
     {
-        for(auto const & c : logs)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Sam::LogContents::LogContent::Logs>();
         c->parent = this;
         logs.push_back(c);
@@ -506,9 +497,14 @@ std::shared_ptr<Entity> Sam::LogContents::LogContent::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Sam::LogContents::LogContent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : logs)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -647,6 +643,7 @@ std::shared_ptr<Entity> Sam::LogContents::LogContent::Logs::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Sam::LogContents::LogContent::Logs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -832,14 +829,6 @@ std::shared_ptr<Entity> Sam::Devices::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "device")
     {
-        for(auto const & c : device)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Sam::Devices::Device>();
         c->parent = this;
         device.push_back(c);
@@ -852,9 +841,14 @@ std::shared_ptr<Entity> Sam::Devices::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : device)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -944,6 +938,7 @@ std::shared_ptr<Entity> Sam::Devices::Device::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(certificate != nullptr)
     {
         children["certificate"] = certificate;
@@ -1047,6 +1042,7 @@ std::shared_ptr<Entity> Sam::Devices::Device::Certificate::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(brief != nullptr)
     {
         children["brief"] = brief;
@@ -1141,6 +1137,7 @@ std::shared_ptr<Entity> Sam::Devices::Device::Certificate::Brief::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::Brief::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(certificate_flags != nullptr)
     {
         children["certificate-flags"] = certificate_flags;
@@ -1244,6 +1241,7 @@ std::shared_ptr<Entity> Sam::Devices::Device::Certificate::Brief::CertificateFla
 std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::Brief::CertificateFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1352,14 +1350,6 @@ std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::g
 {
     if(child_yang_name == "certificate-index")
     {
-        for(auto const & c : certificate_index)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex>();
         c->parent = this;
         certificate_index.push_back(c);
@@ -1372,9 +1362,14 @@ std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::g
 std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::CertificateIndexes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : certificate_index)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1457,6 +1452,7 @@ std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::C
 std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(detail != nullptr)
     {
         children["detail"] = detail;
@@ -1556,6 +1552,7 @@ std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::C
 std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(certificate_flags != nullptr)
     {
         children["certificate-flags"] = certificate_flags;
@@ -1659,6 +1656,7 @@ std::shared_ptr<Entity> Sam::Devices::Device::Certificate::CertificateIndexes::C
 std::map<std::string, std::shared_ptr<Entity>> Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail::CertificateFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1774,14 +1772,6 @@ std::shared_ptr<Entity> Sam::Packages::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "package")
     {
-        for(auto const & c : package)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Sam::Packages::Package>();
         c->parent = this;
         package.push_back(c);
@@ -1794,9 +1784,14 @@ std::shared_ptr<Entity> Sam::Packages::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Sam::Packages::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : package)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1894,6 +1889,7 @@ std::shared_ptr<Entity> Sam::Packages::Package::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Sam::Packages::Package::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(certificate_flags != nullptr)
     {
         children["certificate-flags"] = certificate_flags;
@@ -2007,6 +2003,7 @@ std::shared_ptr<Entity> Sam::Packages::Package::CertificateFlags::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Sam::Packages::Package::CertificateFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2122,14 +2119,6 @@ std::shared_ptr<Entity> Sam::CertificateRevocations::get_child_by_name(const std
 {
     if(child_yang_name == "certificate-revocation")
     {
-        for(auto const & c : certificate_revocation)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Sam::CertificateRevocations::CertificateRevocation>();
         c->parent = this;
         certificate_revocation.push_back(c);
@@ -2142,9 +2131,14 @@ std::shared_ptr<Entity> Sam::CertificateRevocations::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : certificate_revocation)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2234,6 +2228,7 @@ std::shared_ptr<Entity> Sam::CertificateRevocations::CertificateRevocation::get_
 std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocations::CertificateRevocation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(certificate_revocation_list_detail != nullptr)
     {
         children["certificate-revocation-list-detail"] = certificate_revocation_list_detail;
@@ -2333,6 +2328,7 @@ std::shared_ptr<Entity> Sam::CertificateRevocations::CertificateRevocation::Cert
 std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(issuer != nullptr)
     {
         children["issuer"] = issuer;
@@ -2432,6 +2428,7 @@ std::shared_ptr<Entity> Sam::CertificateRevocations::CertificateRevocation::Cert
 std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail::Issuer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2553,6 +2550,7 @@ std::shared_ptr<Entity> Sam::CertificateRevocationListSummary::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocationListSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(issuer != nullptr)
     {
         children["issuer"] = issuer;
@@ -2659,6 +2657,7 @@ std::shared_ptr<Entity> Sam::CertificateRevocationListSummary::Issuer::get_child
 std::map<std::string, std::shared_ptr<Entity>> Sam::CertificateRevocationListSummary::Issuer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

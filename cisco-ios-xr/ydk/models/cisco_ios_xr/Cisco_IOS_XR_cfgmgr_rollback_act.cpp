@@ -68,6 +68,7 @@ std::shared_ptr<Entity> RollBackConfigurationLast::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> RollBackConfigurationLast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -187,6 +188,7 @@ std::shared_ptr<Entity> RollBackConfigurationLast::Input::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> RollBackConfigurationLast::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -312,6 +314,7 @@ std::shared_ptr<Entity> RollBackConfigurationTo::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> RollBackConfigurationTo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -431,6 +434,7 @@ std::shared_ptr<Entity> RollBackConfigurationTo::Input::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> RollBackConfigurationTo::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -556,6 +560,7 @@ std::shared_ptr<Entity> RollBackConfigurationToExclude::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> RollBackConfigurationToExclude::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -675,6 +680,7 @@ std::shared_ptr<Entity> RollBackConfigurationToExclude::Input::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> RollBackConfigurationToExclude::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -800,6 +806,7 @@ std::shared_ptr<Entity> RollBackConfiguration::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> RollBackConfiguration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -919,6 +926,7 @@ std::shared_ptr<Entity> RollBackConfiguration::Input::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> RollBackConfiguration::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

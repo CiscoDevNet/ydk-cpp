@@ -10,11 +10,11 @@
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_rpc {
 
-class Switch_ : public ydk::Entity
+class Switch : public ydk::Entity
 {
     public:
-        Switch_();
-        ~Switch_();
+        Switch();
+        ~Switch();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -31,16 +31,16 @@ class Switch_ : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: Switch_::Input
-        class Output; //type: Switch_::Output
+        class Input; //type: Switch::Input
+        class Output; //type: Switch::Output
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_rpc::Switch_::Input> input;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_rpc::Switch_::Output> output;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_rpc::Switch::Input> input;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_rpc::Switch::Output> output;
         
-}; // Switch_
+}; // Switch
 
 
-class Switch_::Input : public ydk::Entity
+class Switch::Input : public ydk::Entity
 {
     public:
         Input();
@@ -60,14 +60,14 @@ class Switch_::Input : public ydk::Entity
         ydk::YLeaf y_switch_number; //type: uint8
         ydk::YLeaf priority; //type: uint8
         ydk::YLeaf renumber; //type: uint8
-        class Statck; //type: Switch_::Input::Statck
+        class Statck; //type: Switch::Input::Statck
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_rpc::Switch_::Input::Statck> statck;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_rpc::Switch::Input::Statck> statck;
         
-}; // Switch_::Input
+}; // Switch::Input
 
 
-class Switch_::Input::Statck : public ydk::Entity
+class Switch::Input::Statck : public ydk::Entity
 {
     public:
         Statck();
@@ -86,10 +86,10 @@ class Switch_::Input::Statck : public ydk::Entity
 
         ydk::YLeaf port; //type: uint8
 
-}; // Switch_::Input::Statck
+}; // Switch::Input::Statck
 
 
-class Switch_::Output : public ydk::Entity
+class Switch::Output : public ydk::Entity
 {
     public:
         Output();
@@ -108,13 +108,13 @@ class Switch_::Output : public ydk::Entity
 
         ydk::YLeaf result; //type: string
 
-}; // Switch_::Output
+}; // Switch::Output
 
-class Default_ : public ydk::Entity
+class Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -131,16 +131,16 @@ class Default_ : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: Default_::Input
-        class Output; //type: Default_::Output
+        class Input; //type: Default::Input
+        class Output; //type: Default::Output
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_rpc::Default_::Input> input;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_rpc::Default_::Output> output;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_rpc::Default::Input> input;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_rpc::Default::Output> output;
         
-}; // Default_
+}; // Default
 
 
-class Default_::Input : public ydk::Entity
+class Default::Input : public ydk::Entity
 {
     public:
         Input();
@@ -159,10 +159,10 @@ class Default_::Input : public ydk::Entity
 
         ydk::YLeaf interface; //type: string
 
-}; // Default_::Input
+}; // Default::Input
 
 
-class Default_::Output : public ydk::Entity
+class Default::Output : public ydk::Entity
 {
     public:
         Output();
@@ -181,7 +181,7 @@ class Default_::Output : public ydk::Entity
 
         ydk::YLeaf result; //type: string
 
-}; // Default_::Output
+}; // Default::Output
 
 class Reload : public ydk::Entity
 {
@@ -328,20 +328,20 @@ class License::Input::Smart : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf deregister; //type: empty
-        class Register_; //type: License::Input::Smart::Register_
+        class Register; //type: License::Input::Smart::Register
         class Renew; //type: License::Input::Smart::Renew
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_rpc::License::Input::Smart::Register_> register_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_rpc::License::Input::Smart::Register> register_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_rpc::License::Input::Smart::Renew> renew;
         
 }; // License::Input::Smart
 
 
-class License::Input::Smart::Register_ : public ydk::Entity
+class License::Input::Smart::Register : public ydk::Entity
 {
     public:
-        Register_();
-        ~Register_();
+        Register();
+        ~Register();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -356,7 +356,7 @@ class License::Input::Smart::Register_ : public ydk::Entity
 
         ydk::YLeaf idtoken; //type: empty
 
-}; // License::Input::Smart::Register_
+}; // License::Input::Smart::Register
 
 
 class License::Input::Smart::Renew : public ydk::Entity

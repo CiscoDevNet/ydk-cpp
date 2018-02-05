@@ -275,7 +275,7 @@ class Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute : public ydk:
         class Mobile; //type: Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Mobile
         class Odr; //type: Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Odr
         class Rip; //type: Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Rip
-        class Static_; //type: Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static_
+        class Static; //type: Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static
         class Vrf; //type: Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Vrf
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Bgp> > bgp;
@@ -285,7 +285,7 @@ class Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute : public ydk:
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Mobile> mobile; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Odr> odr; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Rip> rip; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static> static_; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Vrf> vrf;
         
 }; // Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute
@@ -478,11 +478,11 @@ class Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Rip : public
 }; // Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Rip
 
 
-class Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static_ : public ydk::Entity
+class Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -497,7 +497,7 @@ class Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static_ : pu
         ydk::YLeaf metric; //type: empty
         ydk::YLeaf route_map; //type: empty
 
-}; // Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static_
+}; // Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Static
 
 
 class Native::Router::Eigrp::AddressFamily::AfIpList::Redistribute::Vrf : public ydk::Entity
@@ -916,11 +916,11 @@ class Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribu
         ydk::YLeaf connected; //type: empty
         class Eigrp_; //type: Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Eigrp_
         class Ospf; //type: Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Ospf
-        class Static_; //type: Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static_
+        class Static; //type: Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Eigrp_> eigrp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Ospf> ospf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static> static_; // presence node
         
 }; // Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute
 
@@ -1013,11 +1013,11 @@ class Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribu
 }; // Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Ospf::PidList
 
 
-class Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static_ : public ydk::Entity
+class Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1030,7 +1030,7 @@ class Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribu
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static_
+}; // Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::Redistribute::Static
 
 
 class Native::Router::Eigrp::AddressFamily::AfIpList::Topology::Base::SummaryMetric : public ydk::Entity
@@ -1779,7 +1779,7 @@ class Native::Router::Eigrp::AddressFamily::AfIpVrfList::DistributeList::EigFilt
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf eig_filt; //type: one of string, uint16
+        ydk::YLeaf eig_filt; //type: one of uint16, string
         class In; //type: Native::Router::Eigrp::AddressFamily::AfIpVrfList::DistributeList::EigFilt::In
         class Out; //type: Native::Router::Eigrp::AddressFamily::AfIpVrfList::DistributeList::EigFilt::Out
 
@@ -2350,7 +2350,7 @@ class Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute : public y
         class Mobile; //type: Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Mobile
         class Odr; //type: Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Odr
         class Rip; //type: Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Rip
-        class Static_; //type: Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static_
+        class Static; //type: Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static
         class Vrf; //type: Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Vrf
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Bgp> > bgp;
@@ -2360,7 +2360,7 @@ class Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute : public y
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Mobile> mobile; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Odr> odr; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Rip> rip; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static> static_; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Vrf> vrf;
         
 }; // Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute
@@ -2553,11 +2553,11 @@ class Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Rip : pub
 }; // Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Rip
 
 
-class Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static_ : public ydk::Entity
+class Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2572,7 +2572,7 @@ class Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static_ :
         ydk::YLeaf metric; //type: empty
         ydk::YLeaf route_map; //type: empty
 
-}; // Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static_
+}; // Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Static
 
 
 class Native::Router::Eigrp::AddressFamily::AfIpVrfList::Redistribute::Vrf : public ydk::Entity
@@ -2991,11 +2991,11 @@ class Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistr
         ydk::YLeaf connected; //type: empty
         class Eigrp_; //type: Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Eigrp_
         class Ospf; //type: Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Ospf
-        class Static_; //type: Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static_
+        class Static; //type: Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Eigrp_> eigrp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Ospf> ospf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static> static_; // presence node
         
 }; // Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute
 
@@ -3088,11 +3088,11 @@ class Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistr
 }; // Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Ospf::PidList
 
 
-class Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static_ : public ydk::Entity
+class Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3105,7 +3105,7 @@ class Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistr
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static_
+}; // Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::Redistribute::Static
 
 
 class Native::Router::Eigrp::AddressFamily::AfIpVrfList::Topology::Base::SummaryMetric : public ydk::Entity

@@ -68,6 +68,7 @@ std::shared_ptr<Entity> AddressPoolService::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::get_child_by_name(const std::
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AddressPoolService::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -311,6 +309,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pools != nullptr)
     {
         children["pools"] = pools;
@@ -404,14 +403,6 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::get_child_by_nam
 {
     if(child_yang_name == "pool")
     {
-        for(auto const & c : pool)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool>();
         c->parent = this;
         pool.push_back(c);
@@ -424,9 +415,14 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : pool)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -535,6 +531,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::get_child_
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address_ranges != nullptr)
     {
         children["address-ranges"] = address_ranges;
@@ -628,14 +625,6 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRan
 {
     if(child_yang_name == "address-range")
     {
-        for(auto const & c : address_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange>();
         c->parent = this;
         address_range.push_back(c);
@@ -648,9 +637,14 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRan
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : address_range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -791,6 +785,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRan
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(start_address_xr != nullptr)
     {
         children["start-address-xr"] = start_address_xr;
@@ -971,6 +966,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRan
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -1050,6 +1046,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRan
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::StartAddressXr::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1155,6 +1152,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRan
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -1234,6 +1232,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRan
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::EndAddress::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1339,6 +1338,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRan
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -1418,6 +1418,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AddressRan
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::DefaultRouter::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1539,14 +1540,6 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedA
 
     if(child_yang_name == "address-range")
     {
-        for(auto const & c : address_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange>();
         c->parent = this;
         address_range.push_back(c);
@@ -1555,14 +1548,6 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedA
 
     if(child_yang_name == "in-use-address")
     {
-        for(auto const & c : in_use_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress>();
         c->parent = this;
         in_use_address.push_back(c);
@@ -1575,19 +1560,28 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedA
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pool_allocations != nullptr)
     {
         children["pool-allocations"] = pool_allocations;
     }
 
+    count = 0;
     for (auto const & c : address_range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : in_use_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1703,6 +1697,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedA
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(high_threshold != nullptr)
     {
         children["high-threshold"] = high_threshold;
@@ -1847,6 +1842,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedA
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::HighThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1951,6 +1947,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedA
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::PoolAllocations::LowThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2082,6 +2079,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedA
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(start_address != nullptr)
     {
         children["start-address"] = start_address;
@@ -2197,6 +2195,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedA
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -2276,6 +2275,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedA
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::StartAddress::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2381,6 +2381,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedA
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -2460,6 +2461,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedA
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::AddressRange::EndAddress::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2570,6 +2572,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedA
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -2660,6 +2663,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedA
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -2739,6 +2743,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedA
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::InUseAddress::Address::Address_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2871,6 +2876,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Pools::Pool::Configurat
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Pools::Pool::Configuration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3045,6 +3051,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::TotalUtilization::get_c
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::TotalUtilization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3143,14 +3150,6 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::get_child_by_name
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AddressPoolService::Nodes::Node::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -3163,9 +3162,14 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3261,6 +3265,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::Vrf::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -3362,14 +3367,6 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::get_ch
 
     if(child_yang_name == "pools")
     {
-        for(auto const & c : pools)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools>();
         c->parent = this;
         pools.push_back(c);
@@ -3382,14 +3379,19 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::get_ch
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(allocation_summary != nullptr)
     {
         children["allocation-summary"] = allocation_summary;
     }
 
+    count = 0;
     for (auto const & c : pools)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3482,6 +3484,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Alloca
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::AllocationSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3638,6 +3641,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools:
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3779,14 +3783,6 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::get_ch
 
     if(child_yang_name == "pools")
     {
-        for(auto const & c : pools)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools>();
         c->parent = this;
         pools.push_back(c);
@@ -3799,14 +3795,19 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::get_ch
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(allocation_summary != nullptr)
     {
         children["allocation-summary"] = allocation_summary;
     }
 
+    count = 0;
     for (auto const & c : pools)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3899,6 +3900,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Alloca
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::AllocationSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4055,6 +4057,7 @@ std::shared_ptr<Entity> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools:
 std::map<std::string, std::shared_ptr<Entity>> AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -68,6 +68,7 @@ std::shared_ptr<Entity> KeyGenerateRsaGeneralKeys::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> KeyGenerateRsaGeneralKeys::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -175,6 +176,7 @@ std::shared_ptr<Entity> KeyGenerateRsaGeneralKeys::Input::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> KeyGenerateRsaGeneralKeys::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -270,6 +272,7 @@ std::shared_ptr<Entity> KeyGenerateRsaUsageKeys::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> KeyGenerateRsaUsageKeys::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -377,6 +380,7 @@ std::shared_ptr<Entity> KeyGenerateRsaUsageKeys::Input::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> KeyGenerateRsaUsageKeys::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -472,6 +476,7 @@ std::shared_ptr<Entity> KeyGenerateRsa::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> KeyGenerateRsa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -579,6 +584,7 @@ std::shared_ptr<Entity> KeyGenerateRsa::Input::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> KeyGenerateRsa::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -674,6 +680,7 @@ std::shared_ptr<Entity> KeyGenerateDsa::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> KeyGenerateDsa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -777,6 +784,7 @@ std::shared_ptr<Entity> KeyGenerateDsa::Input::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> KeyGenerateDsa::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -862,6 +870,7 @@ std::shared_ptr<Entity> KeyZeroizeRsa::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> KeyZeroizeRsa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -965,6 +974,7 @@ std::shared_ptr<Entity> KeyZeroizeRsa::Input::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> KeyZeroizeRsa::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1037,6 +1047,7 @@ std::shared_ptr<Entity> KeyZeroizeDsa::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> KeyZeroizeDsa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1122,6 +1133,7 @@ std::shared_ptr<Entity> KeyZeroizeAuthenticationRsa::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> KeyZeroizeAuthenticationRsa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1220,6 +1232,7 @@ std::shared_ptr<Entity> KeyImportAuthenticationRsa::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> KeyImportAuthenticationRsa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1323,6 +1336,7 @@ std::shared_ptr<Entity> KeyImportAuthenticationRsa::Input::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> KeyImportAuthenticationRsa::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1408,6 +1422,7 @@ std::shared_ptr<Entity> CaAuthenticate::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> CaAuthenticate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1511,6 +1526,7 @@ std::shared_ptr<Entity> CaAuthenticate::Input::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> CaAuthenticate::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1596,6 +1612,7 @@ std::shared_ptr<Entity> CaEnroll::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> CaEnroll::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1699,6 +1716,7 @@ std::shared_ptr<Entity> CaEnroll::Input::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> CaEnroll::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1784,6 +1802,7 @@ std::shared_ptr<Entity> CaImportCertificate::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> CaImportCertificate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1887,6 +1906,7 @@ std::shared_ptr<Entity> CaImportCertificate::Input::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> CaImportCertificate::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1972,6 +1992,7 @@ std::shared_ptr<Entity> CaCancelEnroll::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> CaCancelEnroll::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -2075,6 +2096,7 @@ std::shared_ptr<Entity> CaCancelEnroll::Input::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> CaCancelEnroll::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2173,6 +2195,7 @@ std::shared_ptr<Entity> CaCrlRequest::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> CaCrlRequest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -2281,6 +2304,7 @@ std::shared_ptr<Entity> CaCrlRequest::Input::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> CaCrlRequest::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2364,6 +2388,7 @@ std::shared_ptr<Entity> CaCrlRequest::Output::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> CaCrlRequest::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2449,6 +2474,7 @@ std::shared_ptr<Entity> CaTrustpoolImportUrl::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> CaTrustpoolImportUrl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -2552,6 +2578,7 @@ std::shared_ptr<Entity> CaTrustpoolImportUrl::Input::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> CaTrustpoolImportUrl::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2637,6 +2664,7 @@ std::shared_ptr<Entity> CaTrustpoolImportUrlClean::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> CaTrustpoolImportUrlClean::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -2740,6 +2768,7 @@ std::shared_ptr<Entity> CaTrustpoolImportUrlClean::Input::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> CaTrustpoolImportUrlClean::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

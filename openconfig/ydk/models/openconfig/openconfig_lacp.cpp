@@ -94,6 +94,7 @@ std::shared_ptr<Entity> Lacp::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Lacp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -207,6 +208,7 @@ std::shared_ptr<Entity> Lacp::Config::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Lacp::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -290,6 +292,7 @@ std::shared_ptr<Entity> Lacp::State::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Lacp::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -375,14 +378,6 @@ std::shared_ptr<Entity> Lacp::Interfaces::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lacp::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -395,9 +390,14 @@ std::shared_ptr<Entity> Lacp::Interfaces::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Lacp::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -513,6 +513,7 @@ std::shared_ptr<Entity> Lacp::Interfaces::Interface::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Lacp::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -620,6 +621,7 @@ std::shared_ptr<Entity> Lacp::Interfaces::Interface::Config::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Lacp::Interfaces::Interface::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -752,6 +754,7 @@ std::shared_ptr<Entity> Lacp::Interfaces::Interface::State::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Lacp::Interfaces::Interface::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -870,14 +873,6 @@ std::shared_ptr<Entity> Lacp::Interfaces::Interface::Members::get_child_by_name(
 {
     if(child_yang_name == "member")
     {
-        for(auto const & c : member)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Lacp::Interfaces::Interface::Members::Member>();
         c->parent = this;
         member.push_back(c);
@@ -890,9 +885,14 @@ std::shared_ptr<Entity> Lacp::Interfaces::Interface::Members::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Lacp::Interfaces::Interface::Members::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : member)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -975,6 +975,7 @@ std::shared_ptr<Entity> Lacp::Interfaces::Interface::Members::Member::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Lacp::Interfaces::Interface::Members::Member::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(state != nullptr)
     {
         children["state"] = state;
@@ -1110,6 +1111,7 @@ std::shared_ptr<Entity> Lacp::Interfaces::Interface::Members::Member::State::get
 std::map<std::string, std::shared_ptr<Entity>> Lacp::Interfaces::Interface::Members::Member::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(counters != nullptr)
     {
         children["counters"] = counters;
@@ -1311,6 +1313,7 @@ std::shared_ptr<Entity> Lacp::Interfaces::Interface::Members::Member::State::Cou
 std::map<std::string, std::shared_ptr<Entity>> Lacp::Interfaces::Interface::Members::Member::State::Counters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

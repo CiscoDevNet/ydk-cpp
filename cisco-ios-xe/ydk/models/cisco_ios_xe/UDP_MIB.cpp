@@ -94,6 +94,7 @@ std::shared_ptr<Entity> UDPMIB::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> UDPMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(udp != nullptr)
     {
         children["udp"] = udp;
@@ -227,6 +228,7 @@ std::shared_ptr<Entity> UDPMIB::Udp::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> UDPMIB::Udp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -362,14 +364,6 @@ std::shared_ptr<Entity> UDPMIB::Udptable::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "udpEntry")
     {
-        for(auto const & c : udpentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<UDPMIB::Udptable::Udpentry>();
         c->parent = this;
         udpentry.push_back(c);
@@ -382,9 +376,14 @@ std::shared_ptr<Entity> UDPMIB::Udptable::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> UDPMIB::Udptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : udpentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -464,6 +463,7 @@ std::shared_ptr<Entity> UDPMIB::Udptable::Udpentry::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> UDPMIB::Udptable::Udpentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -559,14 +559,6 @@ std::shared_ptr<Entity> UDPMIB::Udpendpointtable::get_child_by_name(const std::s
 {
     if(child_yang_name == "udpEndpointEntry")
     {
-        for(auto const & c : udpendpointentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<UDPMIB::Udpendpointtable::Udpendpointentry>();
         c->parent = this;
         udpendpointentry.push_back(c);
@@ -579,9 +571,14 @@ std::shared_ptr<Entity> UDPMIB::Udpendpointtable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> UDPMIB::Udpendpointtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : udpendpointentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -685,6 +682,7 @@ std::shared_ptr<Entity> UDPMIB::Udpendpointtable::Udpendpointentry::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> UDPMIB::Udpendpointtable::Udpendpointentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

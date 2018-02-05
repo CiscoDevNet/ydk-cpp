@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Ssespan::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> Ssespan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> Ssespan::Nodes::get_child_by_name(const std::string & ch
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ssespan::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> Ssespan::Nodes::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> Ssespan::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -311,6 +309,7 @@ std::shared_ptr<Entity> Ssespan::Nodes::Node::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Ssespan::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(span_mirr_infos != nullptr)
     {
         children["span-mirr-infos"] = span_mirr_infos;
@@ -404,14 +403,6 @@ std::shared_ptr<Entity> Ssespan::Nodes::Node::SpanMirrInfos::get_child_by_name(c
 {
     if(child_yang_name == "span-mirr-info")
     {
-        for(auto const & c : span_mirr_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo>();
         c->parent = this;
         span_mirr_info.push_back(c);
@@ -424,9 +415,14 @@ std::shared_ptr<Entity> Ssespan::Nodes::Node::SpanMirrInfos::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Ssespan::Nodes::Node::SpanMirrInfos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : span_mirr_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -607,6 +603,7 @@ std::shared_ptr<Entity> Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo::get_c
 std::map<std::string, std::shared_ptr<Entity>> Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -976,6 +973,7 @@ std::shared_ptr<Entity> Ssespan::Nodes::Node::Spanudf::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Ssespan::Nodes::Node::Spanudf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1084,14 +1082,6 @@ std::shared_ptr<Entity> Ssespan::Nodes::Node::SpanSessInfos::get_child_by_name(c
 {
     if(child_yang_name == "span-sess-info")
     {
-        for(auto const & c : span_sess_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo>();
         c->parent = this;
         span_sess_info.push_back(c);
@@ -1104,9 +1094,14 @@ std::shared_ptr<Entity> Ssespan::Nodes::Node::SpanSessInfos::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Ssespan::Nodes::Node::SpanSessInfos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : span_sess_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1269,6 +1264,7 @@ std::shared_ptr<Entity> Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo::get_c
 std::map<std::string, std::shared_ptr<Entity>> Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

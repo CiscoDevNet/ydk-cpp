@@ -81,6 +81,7 @@ std::shared_ptr<Entity> HeadlessFuncData::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(otn_port_names != nullptr)
     {
         children["otn-port-names"] = otn_port_names;
@@ -191,14 +192,6 @@ std::shared_ptr<Entity> HeadlessFuncData::OtnPortNames::get_child_by_name(const 
 {
     if(child_yang_name == "otn-port-name")
     {
-        for(auto const & c : otn_port_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HeadlessFuncData::OtnPortNames::OtnPortName>();
         c->parent = this;
         otn_port_name.push_back(c);
@@ -211,9 +204,14 @@ std::shared_ptr<Entity> HeadlessFuncData::OtnPortNames::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::OtnPortNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : otn_port_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -328,6 +326,7 @@ std::shared_ptr<Entity> HeadlessFuncData::OtnPortNames::OtnPortName::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::OtnPortNames::OtnPortName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(otn_statistics != nullptr)
     {
         children["otn-statistics"] = otn_statistics;
@@ -456,6 +455,7 @@ std::shared_ptr<Entity> HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatisti
 std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -566,6 +566,7 @@ std::shared_ptr<Entity> HeadlessFuncData::OtnPortNames::OtnPortName::PrbsStatist
 std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::OtnPortNames::OtnPortName::PrbsStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -661,14 +662,6 @@ std::shared_ptr<Entity> HeadlessFuncData::EthernetPortNames::get_child_by_name(c
 {
     if(child_yang_name == "ethernet-port-name")
     {
-        for(auto const & c : ethernet_port_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HeadlessFuncData::EthernetPortNames::EthernetPortName>();
         c->parent = this;
         ethernet_port_name.push_back(c);
@@ -681,9 +674,14 @@ std::shared_ptr<Entity> HeadlessFuncData::EthernetPortNames::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::EthernetPortNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ethernet_port_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -785,6 +783,7 @@ std::shared_ptr<Entity> HeadlessFuncData::EthernetPortNames::EthernetPortName::g
 std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::EthernetPortNames::EthernetPortName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ether_statistics != nullptr)
     {
         children["ether-statistics"] = ether_statistics;
@@ -1020,6 +1019,7 @@ std::shared_ptr<Entity> HeadlessFuncData::EthernetPortNames::EthernetPortName::E
 std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

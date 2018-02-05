@@ -824,7 +824,7 @@ class Snmp::Notification : public ydk::Entity
         class Otn; //type: Snmp::Notification::Otn
         class Bridge; //type: Snmp::Notification::Bridge
         class Sensor; //type: Snmp::Notification::Sensor
-        class Entity_; //type: Snmp::Notification::Entity_
+        class Entity; //type: Snmp::Notification::Entity
         class EntityState; //type: Snmp::Notification::EntityState
         class FruControl; //type: Snmp::Notification::FruControl
         class Rf; //type: Snmp::Notification::Rf
@@ -867,7 +867,7 @@ class Snmp::Notification : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Otn> otn;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Bridge> bridge;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Sensor> sensor;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Entity_> entity_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Entity> entity_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::EntityState> entity_state;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::FruControl> fru_control;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_snmp_agent_cfg::Snmp::Notification::Rf> rf;
@@ -1947,11 +1947,11 @@ class Snmp::Notification::Sensor : public ydk::Entity
 }; // Snmp::Notification::Sensor
 
 
-class Snmp::Notification::Entity_ : public ydk::Entity
+class Snmp::Notification::Entity : public ydk::Entity
 {
     public:
-        Entity_();
-        ~Entity_();
+        Entity();
+        ~Entity();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1966,7 +1966,7 @@ class Snmp::Notification::Entity_ : public ydk::Entity
 
         ydk::YLeaf enable; //type: empty
 
-}; // Snmp::Notification::Entity_
+}; // Snmp::Notification::Entity
 
 
 class Snmp::Notification::EntityState : public ydk::Entity

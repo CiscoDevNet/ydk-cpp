@@ -94,6 +94,7 @@ std::shared_ptr<Entity> TrustsecState::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> TrustsecState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cts_rolebased_sgtmaps != nullptr)
     {
         children["cts-rolebased-sgtmaps"] = cts_rolebased_sgtmaps;
@@ -209,14 +210,6 @@ std::shared_ptr<Entity> TrustsecState::CtsRolebasedSgtmaps::get_child_by_name(co
 {
     if(child_yang_name == "cts-rolebased-sgtmap")
     {
-        for(auto const & c : cts_rolebased_sgtmap)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap>();
         c->parent = this;
         cts_rolebased_sgtmap.push_back(c);
@@ -229,9 +222,14 @@ std::shared_ptr<Entity> TrustsecState::CtsRolebasedSgtmaps::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> TrustsecState::CtsRolebasedSgtmaps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cts_rolebased_sgtmap)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -319,6 +317,7 @@ std::shared_ptr<Entity> TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::
 std::map<std::string, std::shared_ptr<Entity>> TrustsecState::CtsRolebasedSgtmaps::CtsRolebasedSgtmap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -434,14 +433,6 @@ std::shared_ptr<Entity> TrustsecState::CtsRolebasedPolicies::get_child_by_name(c
 {
     if(child_yang_name == "cts-rolebased-policy")
     {
-        for(auto const & c : cts_rolebased_policy)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy>();
         c->parent = this;
         cts_rolebased_policy.push_back(c);
@@ -454,9 +445,14 @@ std::shared_ptr<Entity> TrustsecState::CtsRolebasedPolicies::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> TrustsecState::CtsRolebasedPolicies::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cts_rolebased_policy)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -588,6 +584,7 @@ std::shared_ptr<Entity> TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy:
 std::map<std::string, std::shared_ptr<Entity>> TrustsecState::CtsRolebasedPolicies::CtsRolebasedPolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -813,14 +810,6 @@ std::shared_ptr<Entity> TrustsecState::CtsSxpConnections::get_child_by_name(cons
 {
     if(child_yang_name == "cts-sxp-connection")
     {
-        for(auto const & c : cts_sxp_connection)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<TrustsecState::CtsSxpConnections::CtsSxpConnection>();
         c->parent = this;
         cts_sxp_connection.push_back(c);
@@ -833,9 +822,14 @@ std::shared_ptr<Entity> TrustsecState::CtsSxpConnections::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> TrustsecState::CtsSxpConnections::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cts_sxp_connection)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -939,6 +933,7 @@ std::shared_ptr<Entity> TrustsecState::CtsSxpConnections::CtsSxpConnection::get_
 std::map<std::string, std::shared_ptr<Entity>> TrustsecState::CtsSxpConnections::CtsSxpConnection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

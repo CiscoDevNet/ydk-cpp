@@ -156,7 +156,7 @@ class Native::Ip::Msdp::FilterSaRequest : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name_addr; //type: string
-        ydk::YLeaf list; //type: one of string, uint16
+        ydk::YLeaf list; //type: one of uint16, string
 
 }; // Native::Ip::Msdp::FilterSaRequest
 
@@ -273,7 +273,7 @@ class Native::Ip::Msdp::Redistribute : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf list; //type: one of string, uint16
+        ydk::YLeaf list; //type: one of uint16, string
         ydk::YLeaf asn; //type: uint16
         ydk::YLeaf route_map; //type: string
 
@@ -324,9 +324,9 @@ class Native::Ip::Msdp::SaFilter::In : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf addr; //type: string
-        ydk::YLeaf list; //type: one of string, uint16
+        ydk::YLeaf list; //type: one of uint16, string
         ydk::YLeaf route_map; //type: string
-        ydk::YLeaf rp_list; //type: one of string, uint16
+        ydk::YLeaf rp_list; //type: one of uint16, string
         ydk::YLeaf rp_route_map; //type: string
 
 }; // Native::Ip::Msdp::SaFilter::In
@@ -350,9 +350,9 @@ class Native::Ip::Msdp::SaFilter::Out : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf addr; //type: string
-        ydk::YLeaf list; //type: one of string, uint16
+        ydk::YLeaf list; //type: one of uint16, string
         ydk::YLeaf route_map; //type: string
-        ydk::YLeaf rp_list; //type: one of string, uint16
+        ydk::YLeaf rp_list; //type: one of uint16, string
         ydk::YLeaf rp_route_map; //type: string
 
 }; // Native::Ip::Msdp::SaFilter::Out
@@ -563,7 +563,7 @@ class Native::Ip::Msdp::Vrf::FilterSaRequest : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name_addr; //type: string
-        ydk::YLeaf list; //type: one of string, uint16
+        ydk::YLeaf list; //type: one of uint16, string
 
 }; // Native::Ip::Msdp::Vrf::FilterSaRequest
 
@@ -675,7 +675,7 @@ class Native::Ip::Msdp::Vrf::Redistribute : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf list; //type: one of string, uint16
+        ydk::YLeaf list; //type: one of uint16, string
         ydk::YLeaf asn; //type: uint16
         ydk::YLeaf route_map; //type: string
 
@@ -724,9 +724,9 @@ class Native::Ip::Msdp::Vrf::SaFilter::In : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf addr; //type: string
-        ydk::YLeaf list; //type: one of string, uint16
+        ydk::YLeaf list; //type: one of uint16, string
         ydk::YLeaf route_map; //type: string
-        ydk::YLeaf rp_list; //type: one of string, uint16
+        ydk::YLeaf rp_list; //type: one of uint16, string
         ydk::YLeaf rp_route_map; //type: string
 
 }; // Native::Ip::Msdp::Vrf::SaFilter::In
@@ -749,9 +749,9 @@ class Native::Ip::Msdp::Vrf::SaFilter::Out : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf addr; //type: string
-        ydk::YLeaf list; //type: one of string, uint16
+        ydk::YLeaf list; //type: one of uint16, string
         ydk::YLeaf route_map; //type: string
-        ydk::YLeaf rp_list; //type: one of string, uint16
+        ydk::YLeaf rp_list; //type: one of uint16, string
         ydk::YLeaf rp_route_map; //type: string
 
 }; // Native::Ip::Msdp::Vrf::SaFilter::Out
@@ -1020,11 +1020,11 @@ class Native::Ip::Nat::Inside::Source : public ydk::Entity
 
         class List; //type: Native::Ip::Nat::Inside::Source::List
         class RouteMap; //type: Native::Ip::Nat::Inside::Source::RouteMap
-        class Static_; //type: Native::Ip::Nat::Inside::Source::Static_
+        class Static; //type: Native::Ip::Nat::Inside::Source::Static
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat::Inside::Source::List> > list;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat::Inside::Source::RouteMap> > route_map;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat::Inside::Source::Static_> static_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat::Inside::Source::Static> static_;
         
 }; // Native::Ip::Nat::Inside::Source
 
@@ -1046,7 +1046,7 @@ class Native::Ip::Nat::Inside::Source::List : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf id; //type: one of string, uint16
+        ydk::YLeaf id; //type: one of uint16, string
         ydk::YLeaf pool; //type: string
         ydk::YLeaf redundancy; //type: uint8
         ydk::YLeaf mapping_id; //type: uint32
@@ -1515,11 +1515,11 @@ class Native::Ip::Nat::Inside::Source::RouteMap::Vrf::Overload : public ydk::Ent
 }; // Native::Ip::Nat::Inside::Source::RouteMap::Vrf::Overload
 
 
-class Native::Ip::Nat::Inside::Source::Static_ : public ydk::Entity
+class Native::Ip::Nat::Inside::Source::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1532,16 +1532,16 @@ class Native::Ip::Nat::Inside::Source::Static_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class NatStaticTransportList; //type: Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportList
-        class NatStaticTransportInterfaceList; //type: Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList
+        class NatStaticTransportList; //type: Native::Ip::Nat::Inside::Source::Static::NatStaticTransportList
+        class NatStaticTransportInterfaceList; //type: Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportList> > nat_static_transport_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList> > nat_static_transport_interface_list;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat::Inside::Source::Static::NatStaticTransportList> > nat_static_transport_list;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList> > nat_static_transport_interface_list;
         
-}; // Native::Ip::Nat::Inside::Source::Static_
+}; // Native::Ip::Nat::Inside::Source::Static
 
 
-class Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportList : public ydk::Entity
+class Native::Ip::Nat::Inside::Source::Static::NatStaticTransportList : public ydk::Entity
 {
     public:
         NatStaticTransportList();
@@ -1578,10 +1578,10 @@ class Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportList : public 
         ydk::YLeaf overload; //type: empty
         class Proto;
 
-}; // Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportList
+}; // Native::Ip::Nat::Inside::Source::Static::NatStaticTransportList
 
 
-class Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList : public ydk::Entity
+class Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList : public ydk::Entity
 {
     public:
         NatStaticTransportInterfaceList();
@@ -1602,15 +1602,15 @@ class Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList 
         ydk::YLeaf local_ip; //type: string
         ydk::YLeaf local_port; //type: uint16
         ydk::YLeaf global_port; //type: uint16
-        class Interface; //type: Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList::Interface
+        class Interface; //type: Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList::Interface
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList::Interface> interface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList::Interface> interface;
                 class Proto;
 
-}; // Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList
+}; // Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList
 
 
-class Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList::Interface : public ydk::Entity
+class Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -1655,20 +1655,20 @@ class Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList:
         ydk::YLeaf virtualportgroup; //type: uint16
         ydk::YLeaf vasileft; //type: uint16
         ydk::YLeaf vasiright; //type: uint16
-        class ATMSubinterface; //type: Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList::Interface::ATMSubinterface
-        class ATMACRsubinterface; //type: Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList::Interface::ATMACRsubinterface
-        class LISPSubinterface; //type: Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList::Interface::LISPSubinterface
-        class PortChannelSubinterface; //type: Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList::Interface::PortChannelSubinterface
+        class ATMSubinterface; //type: Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList::Interface::ATMSubinterface
+        class ATMACRsubinterface; //type: Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList::Interface::ATMACRsubinterface
+        class LISPSubinterface; //type: Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList::Interface::LISPSubinterface
+        class PortChannelSubinterface; //type: Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList::Interface::PortChannelSubinterface
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList::Interface::ATMSubinterface> atm_subinterface;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList::Interface::ATMACRsubinterface> atm_acrsubinterface;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList::Interface::LISPSubinterface> lisp_subinterface;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList::Interface::PortChannelSubinterface> port_channel_subinterface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList::Interface::ATMSubinterface> atm_subinterface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList::Interface::ATMACRsubinterface> atm_acrsubinterface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList::Interface::LISPSubinterface> lisp_subinterface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList::Interface::PortChannelSubinterface> port_channel_subinterface;
         
-}; // Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList::Interface
+}; // Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList::Interface
 
 
-class Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList::Interface::ATMSubinterface : public ydk::Entity
+class Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList::Interface::ATMSubinterface : public ydk::Entity
 {
     public:
         ATMSubinterface();
@@ -1686,10 +1686,10 @@ class Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList:
 
         ydk::YLeaf atm; //type: string
 
-}; // Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList::Interface::ATMSubinterface
+}; // Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList::Interface::ATMSubinterface
 
 
-class Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList::Interface::ATMACRsubinterface : public ydk::Entity
+class Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList::Interface::ATMACRsubinterface : public ydk::Entity
 {
     public:
         ATMACRsubinterface();
@@ -1707,10 +1707,10 @@ class Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList:
 
         ydk::YLeaf atm_acr; //type: string
 
-}; // Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList::Interface::ATMACRsubinterface
+}; // Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList::Interface::ATMACRsubinterface
 
 
-class Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList::Interface::LISPSubinterface : public ydk::Entity
+class Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList::Interface::LISPSubinterface : public ydk::Entity
 {
     public:
         LISPSubinterface();
@@ -1728,10 +1728,10 @@ class Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList:
 
         ydk::YLeaf lisp; //type: string
 
-}; // Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList::Interface::LISPSubinterface
+}; // Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList::Interface::LISPSubinterface
 
 
-class Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList::Interface::PortChannelSubinterface : public ydk::Entity
+class Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList::Interface::PortChannelSubinterface : public ydk::Entity
 {
     public:
         PortChannelSubinterface();
@@ -1749,7 +1749,7 @@ class Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList:
 
         ydk::YLeaf port_channel; //type: string
 
-}; // Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList::Interface::PortChannelSubinterface
+}; // Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList::Interface::PortChannelSubinterface
 
 
 class Native::Ip::Nat::Inside::Destination : public ydk::Entity
@@ -1793,7 +1793,7 @@ class Native::Ip::Nat::Inside::Destination::List : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf id; //type: one of string, uint16
+        ydk::YLeaf id; //type: one of uint16, string
         ydk::YLeaf pool; //type: string
         ydk::YLeaf redundancy; //type: uint8
         ydk::YLeaf mapping_id; //type: uint32
@@ -1846,18 +1846,18 @@ class Native::Ip::Nat::Outside::Source : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Static_; //type: Native::Ip::Nat::Outside::Source::Static_
+        class Static; //type: Native::Ip::Nat::Outside::Source::Static
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat::Outside::Source::Static_> static_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat::Outside::Source::Static> static_;
         
 }; // Native::Ip::Nat::Outside::Source
 
 
-class Native::Ip::Nat::Outside::Source::Static_ : public ydk::Entity
+class Native::Ip::Nat::Outside::Source::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1870,14 +1870,14 @@ class Native::Ip::Nat::Outside::Source::Static_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class NatStaticTransportList; //type: Native::Ip::Nat::Outside::Source::Static_::NatStaticTransportList
+        class NatStaticTransportList; //type: Native::Ip::Nat::Outside::Source::Static::NatStaticTransportList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat::Outside::Source::Static_::NatStaticTransportList> > nat_static_transport_list;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat::Outside::Source::Static::NatStaticTransportList> > nat_static_transport_list;
         
-}; // Native::Ip::Nat::Outside::Source::Static_
+}; // Native::Ip::Nat::Outside::Source::Static
 
 
-class Native::Ip::Nat::Outside::Source::Static_::NatStaticTransportList : public ydk::Entity
+class Native::Ip::Nat::Outside::Source::Static::NatStaticTransportList : public ydk::Entity
 {
     public:
         NatStaticTransportList();
@@ -1900,7 +1900,7 @@ class Native::Ip::Nat::Outside::Source::Static_::NatStaticTransportList : public
         ydk::YLeaf extendable; //type: empty
         ydk::YLeaf no_payload; //type: empty
 
-}; // Native::Ip::Nat::Outside::Source::Static_::NatStaticTransportList
+}; // Native::Ip::Nat::Outside::Source::Static::NatStaticTransportList
 
 
 class Native::Ip::Nat::Outside::List : public ydk::Entity
@@ -1920,7 +1920,7 @@ class Native::Ip::Nat::Outside::List : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf id; //type: one of string, uint16
+        ydk::YLeaf id; //type: one of uint16, string
         ydk::YLeaf pool; //type: string
         ydk::YLeaf mapping_id; //type: uint32
         ydk::YLeaf vrf; //type: string
@@ -3929,7 +3929,7 @@ class Native::Ip::Nat::Pool::Type : public ydk::Enum
 
 };
 
-class Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportList::Proto : public ydk::Enum
+class Native::Ip::Nat::Inside::Source::Static::NatStaticTransportList::Proto : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf tcp;
@@ -3937,7 +3937,7 @@ class Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportList::Proto : 
 
 };
 
-class Native::Ip::Nat::Inside::Source::Static_::NatStaticTransportInterfaceList::Proto : public ydk::Enum
+class Native::Ip::Nat::Inside::Source::Static::NatStaticTransportInterfaceList::Proto : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf tcp;

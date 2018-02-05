@@ -231,13 +231,13 @@ ADMINUP::~ADMINUP()
 {
 }
 
-EXPLICIT_::EXPLICIT_()
+EXPLICIT::EXPLICIT()
      : Identity("http://openconfig.net/yang/mpls-types", "openconfig-mpls-types", "openconfig-mpls-types:EXPLICIT")
 {
 
 }
 
-EXPLICIT_::~EXPLICIT_()
+EXPLICIT::~EXPLICIT()
 {
 }
 

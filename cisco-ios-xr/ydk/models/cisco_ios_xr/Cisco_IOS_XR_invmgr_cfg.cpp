@@ -61,15 +61,7 @@ std::shared_ptr<Entity> InventoryConfigurations::get_child_by_name(const std::st
 {
     if(child_yang_name == "entity")
     {
-        for(auto const & c : entity_)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<InventoryConfigurations::Entity_>();
+        auto c = std::make_shared<InventoryConfigurations::Entity>();
         c->parent = this;
         entity_.push_back(c);
         return c;
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> InventoryConfigurations::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> InventoryConfigurations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : entity_)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -129,7 +126,7 @@ bool InventoryConfigurations::has_leaf_or_child_of_name(const std::string & name
     return false;
 }
 
-InventoryConfigurations::Entity_::Entity_()
+InventoryConfigurations::Entity::Entity()
     :
     name{YType::str, "name"},
     name_xr{YType::str, "name-xr"}
@@ -138,38 +135,38 @@ InventoryConfigurations::Entity_::Entity_()
     yang_name = "entity"; yang_parent_name = "inventory-configurations"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-InventoryConfigurations::Entity_::~Entity_()
+InventoryConfigurations::Entity::~Entity()
 {
 }
 
-bool InventoryConfigurations::Entity_::has_data() const
+bool InventoryConfigurations::Entity::has_data() const
 {
     return name.is_set
 	|| name_xr.is_set;
 }
 
-bool InventoryConfigurations::Entity_::has_operation() const
+bool InventoryConfigurations::Entity::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
 	|| ydk::is_set(name_xr.yfilter);
 }
 
-std::string InventoryConfigurations::Entity_::get_absolute_path() const
+std::string InventoryConfigurations::Entity::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-invmgr-cfg:inventory-configurations/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string InventoryConfigurations::Entity_::get_segment_path() const
+std::string InventoryConfigurations::Entity::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "entity" <<"[name='" <<name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > InventoryConfigurations::Entity_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > InventoryConfigurations::Entity::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -180,18 +177,19 @@ std::vector<std::pair<std::string, LeafData> > InventoryConfigurations::Entity_:
 
 }
 
-std::shared_ptr<Entity> InventoryConfigurations::Entity_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InventoryConfigurations::Entity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InventoryConfigurations::Entity_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> InventoryConfigurations::Entity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void InventoryConfigurations::Entity_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void InventoryConfigurations::Entity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -207,7 +205,7 @@ void InventoryConfigurations::Entity_::set_value(const std::string & value_path,
     }
 }
 
-void InventoryConfigurations::Entity_::set_filter(const std::string & value_path, YFilter yfilter)
+void InventoryConfigurations::Entity::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -219,7 +217,7 @@ void InventoryConfigurations::Entity_::set_filter(const std::string & value_path
     }
 }
 
-bool InventoryConfigurations::Entity_::has_leaf_or_child_of_name(const std::string & name) const
+bool InventoryConfigurations::Entity::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name" || name == "name-xr")
         return true;

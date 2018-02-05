@@ -81,6 +81,7 @@ std::shared_ptr<Entity> IGMPSTDMIB::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> IGMPSTDMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(igmpinterfacetable != nullptr)
     {
         children["igmpInterfaceTable"] = igmpinterfacetable;
@@ -191,14 +192,6 @@ std::shared_ptr<Entity> IGMPSTDMIB::Igmpinterfacetable::get_child_by_name(const 
 {
     if(child_yang_name == "igmpInterfaceEntry")
     {
-        for(auto const & c : igmpinterfaceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry>();
         c->parent = this;
         igmpinterfaceentry.push_back(c);
@@ -211,9 +204,14 @@ std::shared_ptr<Entity> IGMPSTDMIB::Igmpinterfacetable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> IGMPSTDMIB::Igmpinterfacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : igmpinterfaceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -345,6 +343,7 @@ std::shared_ptr<Entity> IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::get_
 std::map<std::string, std::shared_ptr<Entity>> IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -570,14 +569,6 @@ std::shared_ptr<Entity> IGMPSTDMIB::Igmpcachetable::get_child_by_name(const std:
 {
     if(child_yang_name == "igmpCacheEntry")
     {
-        for(auto const & c : igmpcacheentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IGMPSTDMIB::Igmpcachetable::Igmpcacheentry>();
         c->parent = this;
         igmpcacheentry.push_back(c);
@@ -590,9 +581,14 @@ std::shared_ptr<Entity> IGMPSTDMIB::Igmpcachetable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> IGMPSTDMIB::Igmpcachetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : igmpcacheentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -696,6 +692,7 @@ std::shared_ptr<Entity> IGMPSTDMIB::Igmpcachetable::Igmpcacheentry::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> IGMPSTDMIB::Igmpcachetable::Igmpcacheentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

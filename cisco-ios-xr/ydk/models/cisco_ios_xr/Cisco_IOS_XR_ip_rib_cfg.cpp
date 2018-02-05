@@ -73,6 +73,7 @@ std::shared_ptr<Entity> Rib::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Rib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(af != nullptr)
     {
         children["af"] = af;
@@ -208,6 +209,7 @@ std::shared_ptr<Entity> Rib::Af::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> Rib::Af::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -305,6 +307,7 @@ std::shared_ptr<Entity> Rib::Af::Ipv4::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Rib::Af::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redistribution_history != nullptr)
     {
         children["redistribution-history"] = redistribution_history;
@@ -411,6 +414,7 @@ std::shared_ptr<Entity> Rib::Af::Ipv4::RedistributionHistory::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Rib::Af::Ipv4::RedistributionHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(keep != nullptr)
     {
         children["keep"] = keep;
@@ -509,6 +513,7 @@ std::shared_ptr<Entity> Rib::Af::Ipv4::RedistributionHistory::Keep::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Rib::Af::Ipv4::RedistributionHistory::Keep::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -606,6 +611,7 @@ std::shared_ptr<Entity> Rib::Af::Ipv6::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Rib::Af::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redistribution_history != nullptr)
     {
         children["redistribution-history"] = redistribution_history;
@@ -712,6 +718,7 @@ std::shared_ptr<Entity> Rib::Af::Ipv6::RedistributionHistory::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Rib::Af::Ipv6::RedistributionHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(keep != nullptr)
     {
         children["keep"] = keep;
@@ -810,6 +817,7 @@ std::shared_ptr<Entity> Rib::Af::Ipv6::RedistributionHistory::Keep::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Rib::Af::Ipv6::RedistributionHistory::Keep::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

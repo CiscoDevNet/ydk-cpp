@@ -81,6 +81,7 @@ std::shared_ptr<Entity> AutoRp::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> AutoRp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(standby != nullptr)
     {
         children["standby"] = standby;
@@ -211,6 +212,7 @@ std::shared_ptr<Entity> AutoRp::Standby::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(candidate_rp != nullptr)
     {
         children["candidate-rp"] = candidate_rp;
@@ -316,6 +318,7 @@ std::shared_ptr<Entity> AutoRp::Standby::CandidateRp::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::CandidateRp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(traffic != nullptr)
     {
         children["traffic"] = traffic;
@@ -403,6 +406,7 @@ std::shared_ptr<Entity> AutoRp::Standby::CandidateRp::Traffic::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::CandidateRp::Traffic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -498,14 +502,6 @@ std::shared_ptr<Entity> AutoRp::Standby::CandidateRp::Rps::get_child_by_name(con
 {
     if(child_yang_name == "rp")
     {
-        for(auto const & c : rp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AutoRp::Standby::CandidateRp::Rps::Rp>();
         c->parent = this;
         rp.push_back(c);
@@ -518,9 +514,14 @@ std::shared_ptr<Entity> AutoRp::Standby::CandidateRp::Rps::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::CandidateRp::Rps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -620,6 +621,7 @@ std::shared_ptr<Entity> AutoRp::Standby::CandidateRp::Rps::Rp::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::CandidateRp::Rps::Rp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -798,6 +800,7 @@ std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(traffic != nullptr)
     {
         children["traffic"] = traffic;
@@ -898,6 +901,7 @@ std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::Traffic::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::Traffic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1013,14 +1017,6 @@ std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::RpAddresses::get_child_by
 {
     if(child_yang_name == "rp-address")
     {
-        for(auto const & c : rp_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AutoRp::Standby::MappingAgent::RpAddresses::RpAddress>();
         c->parent = this;
         rp_address.push_back(c);
@@ -1033,9 +1029,14 @@ std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::RpAddresses::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::RpAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rp_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1129,14 +1130,6 @@ std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::g
 {
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range>();
         c->parent = this;
         range.push_back(c);
@@ -1149,9 +1142,14 @@ std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::g
 std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1284,6 +1282,7 @@ std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::R
 std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1435,6 +1434,7 @@ std::shared_ptr<Entity> AutoRp::Standby::MappingAgent::Summary::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1560,6 +1560,7 @@ std::shared_ptr<Entity> AutoRp::Active::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(candidate_rp != nullptr)
     {
         children["candidate-rp"] = candidate_rp;
@@ -1665,6 +1666,7 @@ std::shared_ptr<Entity> AutoRp::Active::CandidateRp::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::CandidateRp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(traffic != nullptr)
     {
         children["traffic"] = traffic;
@@ -1752,6 +1754,7 @@ std::shared_ptr<Entity> AutoRp::Active::CandidateRp::Traffic::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::CandidateRp::Traffic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1847,14 +1850,6 @@ std::shared_ptr<Entity> AutoRp::Active::CandidateRp::Rps::get_child_by_name(cons
 {
     if(child_yang_name == "rp")
     {
-        for(auto const & c : rp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AutoRp::Active::CandidateRp::Rps::Rp>();
         c->parent = this;
         rp.push_back(c);
@@ -1867,9 +1862,14 @@ std::shared_ptr<Entity> AutoRp::Active::CandidateRp::Rps::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::CandidateRp::Rps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1969,6 +1969,7 @@ std::shared_ptr<Entity> AutoRp::Active::CandidateRp::Rps::Rp::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::CandidateRp::Rps::Rp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2147,6 +2148,7 @@ std::shared_ptr<Entity> AutoRp::Active::MappingAgent::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(traffic != nullptr)
     {
         children["traffic"] = traffic;
@@ -2247,6 +2249,7 @@ std::shared_ptr<Entity> AutoRp::Active::MappingAgent::Traffic::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::Traffic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2362,14 +2365,6 @@ std::shared_ptr<Entity> AutoRp::Active::MappingAgent::RpAddresses::get_child_by_
 {
     if(child_yang_name == "rp-address")
     {
-        for(auto const & c : rp_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AutoRp::Active::MappingAgent::RpAddresses::RpAddress>();
         c->parent = this;
         rp_address.push_back(c);
@@ -2382,9 +2377,14 @@ std::shared_ptr<Entity> AutoRp::Active::MappingAgent::RpAddresses::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::RpAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rp_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2478,14 +2478,6 @@ std::shared_ptr<Entity> AutoRp::Active::MappingAgent::RpAddresses::RpAddress::ge
 {
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range>();
         c->parent = this;
         range.push_back(c);
@@ -2498,9 +2490,14 @@ std::shared_ptr<Entity> AutoRp::Active::MappingAgent::RpAddresses::RpAddress::ge
 std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::RpAddresses::RpAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2633,6 +2630,7 @@ std::shared_ptr<Entity> AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Ra
 std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2784,6 +2782,7 @@ std::shared_ptr<Entity> AutoRp::Active::MappingAgent::Summary::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -55,6 +55,7 @@ std::shared_ptr<Entity> ClearBgpAllGraceful::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAllGraceful::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -140,6 +141,7 @@ std::shared_ptr<Entity> ClearBgpAll::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAll::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -238,6 +240,7 @@ std::shared_ptr<Entity> ClearBgpIpAddrGraceful::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpIpAddrGraceful::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -341,6 +344,7 @@ std::shared_ptr<Entity> ClearBgpIpAddrGraceful::Input::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpIpAddrGraceful::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -426,6 +430,7 @@ std::shared_ptr<Entity> ClearBgpIpAddrLongLivedStale::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpIpAddrLongLivedStale::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -529,6 +534,7 @@ std::shared_ptr<Entity> ClearBgpIpAddrLongLivedStale::Input::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpIpAddrLongLivedStale::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -614,6 +620,7 @@ std::shared_ptr<Entity> ClearBgpIpAddr::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpIpAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -717,6 +724,7 @@ std::shared_ptr<Entity> ClearBgpIpAddr::Input::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpIpAddr::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -802,6 +810,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiAllSoftInPrefixFilter::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAllSoftInPrefixFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -905,6 +914,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiAllSoftInPrefixFilter::Input::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAllSoftInPrefixFilter::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -990,6 +1000,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiAllSoftIn::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAllSoftIn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1093,6 +1104,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiAllSoftIn::Input::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAllSoftIn::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1178,6 +1190,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiAllSoftOut::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAllSoftOut::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1281,6 +1294,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiAllSoftOut::Input::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAllSoftOut::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1366,6 +1380,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiAllSoft::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAllSoft::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1469,6 +1484,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiAllSoft::Input::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAllSoft::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1554,6 +1570,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrLongLivedStale::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiIpAddrLongLivedStale::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1661,6 +1678,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrLongLivedStale::Input::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiIpAddrLongLivedStale::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1756,6 +1774,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrSoftInPrefixFilter::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiIpAddrSoftInPrefixFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1863,6 +1882,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrSoftInPrefixFilter::Input::get_chil
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiIpAddrSoftInPrefixFilter::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1958,6 +1978,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrSoftIn::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiIpAddrSoftIn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -2065,6 +2086,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrSoftIn::Input::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiIpAddrSoftIn::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2160,6 +2182,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrSoftOut::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiIpAddrSoftOut::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -2267,6 +2290,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrSoftOut::Input::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiIpAddrSoftOut::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2362,6 +2386,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrSoft::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiIpAddrSoft::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -2469,6 +2494,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiIpAddrSoft::Input::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiIpAddrSoft::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2564,6 +2590,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiAsSoftInPrefixFilter::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAsSoftInPrefixFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -2671,6 +2698,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiAsSoftInPrefixFilter::Input::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAsSoftInPrefixFilter::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2766,6 +2794,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiAsSoftIn::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAsSoftIn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -2873,6 +2902,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiAsSoftIn::Input::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAsSoftIn::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2968,6 +2998,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiAsSoftOut::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAsSoftOut::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -3075,6 +3106,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiAsSoftOut::Input::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAsSoftOut::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3170,6 +3202,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiAsSoft::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAsSoft::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -3277,6 +3310,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiAsSoft::Input::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiAsSoft::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3372,6 +3406,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiDampeningIpPrefix::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiDampeningIpPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -3479,6 +3514,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiDampeningIpPrefix::Input::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiDampeningIpPrefix::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3574,6 +3610,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiDampening::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiDampening::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -3677,6 +3714,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiDampening::Input::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiDampening::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3762,6 +3800,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiExternalSoftInPrefixFilter::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiExternalSoftInPrefixFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -3865,6 +3904,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiExternalSoftInPrefixFilter::Input::get_ch
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiExternalSoftInPrefixFilter::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3950,6 +3990,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiExternalSoftIn::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiExternalSoftIn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -4053,6 +4094,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiExternalSoftIn::Input::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiExternalSoftIn::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4138,6 +4180,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiExternalSoftOut::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiExternalSoftOut::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -4241,6 +4284,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiExternalSoftOut::Input::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiExternalSoftOut::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4326,6 +4370,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiExternalSoft::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiExternalSoft::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -4429,6 +4474,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiExternalSoft::Input::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiExternalSoft::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4514,6 +4560,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsIpAddrIpv4Mask::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiFlapStatisticsIpAddrIpv4Mask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -4625,6 +4672,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsIpAddrIpv4Mask::Input::get_
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiFlapStatisticsIpAddrIpv4Mask::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4730,6 +4778,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsIpAddr::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiFlapStatisticsIpAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -4837,6 +4886,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsIpAddr::Input::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiFlapStatisticsIpAddr::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4932,6 +4982,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsIpPrefix::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiFlapStatisticsIpPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -5039,6 +5090,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsIpPrefix::Input::get_child_
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiFlapStatisticsIpPrefix::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5134,6 +5186,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsRegexp::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiFlapStatisticsRegexp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -5241,6 +5294,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsRegexp::Input::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiFlapStatisticsRegexp::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5336,6 +5390,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsRoutePolicy::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiFlapStatisticsRoutePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -5443,6 +5498,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatisticsRoutePolicy::Input::get_chi
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiFlapStatisticsRoutePolicy::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5538,6 +5594,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatistics::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiFlapStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -5641,6 +5698,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiFlapStatistics::Input::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiFlapStatistics::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5726,6 +5784,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiNexthopPerformanceStatistics::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiNexthopPerformanceStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -5829,6 +5888,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiNexthopPerformanceStatistics::Input::get_
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiNexthopPerformanceStatistics::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5914,6 +5974,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiNexthopRegistrationIpAddr::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiNexthopRegistrationIpAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -6021,6 +6082,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiNexthopRegistrationIpAddr::Input::get_chi
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiNexthopRegistrationIpAddr::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6116,6 +6178,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiSelfOriginated::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiSelfOriginated::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -6219,6 +6282,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiSelfOriginated::Input::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiSelfOriginated::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6304,6 +6368,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiShutdown::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiShutdown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -6407,6 +6472,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiShutdown::Input::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiShutdown::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6492,6 +6558,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParent::get_
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -6595,6 +6662,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParent::Inpu
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqAddressFamilyUpdateParent::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6680,6 +6748,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqAddressFamily::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqAddressFamily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -6783,6 +6852,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqAddressFamily::Input::get_child
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqAddressFamily::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6868,6 +6938,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdatePare
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -6975,6 +7046,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdatePare
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefreshUpdateParent::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7070,6 +7142,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefresh::get_chil
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefresh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -7177,6 +7250,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefresh::Input::g
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqNeighborIpAddrRefresh::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7272,6 +7346,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParent::get
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -7379,6 +7454,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParent::Inp
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqNeighborIpAddrUpdateParent::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7474,6 +7550,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqNeighborIpAddr::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqNeighborIpAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -7581,6 +7658,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqNeighborIpAddr::Input::get_chil
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqNeighborIpAddr::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7676,6 +7754,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParent
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -7787,6 +7866,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParent
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupUpdateParent::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7892,6 +7972,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroup::get_child_
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -8003,6 +8084,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroup::Input::get
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroup::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8108,6 +8190,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGr
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -8219,6 +8302,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGr
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroupUpdateParent::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8324,6 +8408,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGr
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -8435,6 +8520,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGr
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqUpdateGroupSubGroupRefreshSubGroup::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8540,6 +8626,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParent::get_ch
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -8647,6 +8734,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParent::Input:
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqUpdateGroupUpdateParent::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8742,6 +8830,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroup::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqUpdateGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -8849,6 +8938,7 @@ std::shared_ptr<Entity> ClearBgpAfiSafiUpdateOutqUpdateGroup::Input::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAfiSafiUpdateOutqUpdateGroup::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8944,6 +9034,7 @@ std::shared_ptr<Entity> ClearBgpAsGraceful::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAsGraceful::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -9047,6 +9138,7 @@ std::shared_ptr<Entity> ClearBgpAsGraceful::Input::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAsGraceful::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9132,6 +9224,7 @@ std::shared_ptr<Entity> ClearBgpAs::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -9235,6 +9328,7 @@ std::shared_ptr<Entity> ClearBgpAs::Input::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpAs::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9320,6 +9414,7 @@ std::shared_ptr<Entity> ClearBgpBestpathIpAddrIpNetmask::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathIpAddrIpNetmask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -9427,6 +9522,7 @@ std::shared_ptr<Entity> ClearBgpBestpathIpAddrIpNetmask::Input::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathIpAddrIpNetmask::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9522,6 +9618,7 @@ std::shared_ptr<Entity> ClearBgpBestpathIpAddr::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathIpAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -9625,6 +9722,7 @@ std::shared_ptr<Entity> ClearBgpBestpathIpAddr::Input::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathIpAddr::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9710,6 +9808,7 @@ std::shared_ptr<Entity> ClearBgpBestpathIpPrefix::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathIpPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -9813,6 +9912,7 @@ std::shared_ptr<Entity> ClearBgpBestpathIpPrefix::Input::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathIpPrefix::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9898,6 +9998,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpAddrIpNetmask::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpAddrIpNetmask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -10009,6 +10110,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpAddrIpNetmask::Input::get_child
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpAddrIpNetmask::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10114,6 +10216,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpAddr::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -10221,6 +10324,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpAddr::Input::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpAddr::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10316,6 +10420,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpPrefix::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -10423,6 +10528,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpPrefix::Input::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpPrefix::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10518,6 +10624,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmask::get_
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -10633,6 +10740,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmask::Inpu
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiBridgeDomainIpAddrIpNetmask::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10748,6 +10856,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiBridgeDomainIpAddr::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiBridgeDomainIpAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -10859,6 +10968,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiBridgeDomainIpAddr::Input::get_ch
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiBridgeDomainIpAddr::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10964,6 +11074,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiBridgeDomainIpPrefix::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiBridgeDomainIpPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -11075,6 +11186,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiBridgeDomainIpPrefix::Input::get_
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiBridgeDomainIpPrefix::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11180,6 +11292,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpAddrIpNetmask::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRdIpAddrIpNetmask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -11295,6 +11408,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpAddrIpNetmask::Input::get_chi
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRdIpAddrIpNetmask::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11410,6 +11524,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpAddr::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRdIpAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -11521,6 +11636,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpAddr::Input::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRdIpAddr::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11626,6 +11742,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpPrefix::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRdIpPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -11737,6 +11854,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpPrefix::Input::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRdIpPrefix::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11842,6 +11960,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv4AddrIpv4Mask::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv4AddrIpv4Mask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -11953,6 +12072,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv4AddrIpv4Mask::Input::get_chil
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv4AddrIpv4Mask::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12058,6 +12178,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv4Addr::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv4Addr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -12165,6 +12286,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv4Addr::Input::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv4Addr::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12260,6 +12382,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv4Prefix::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv4Prefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -12367,6 +12490,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv4Prefix::Input::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv4Prefix::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12462,6 +12586,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpv4Addr::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRdIpv4Addr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -12573,6 +12698,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdIpv4Addr::Input::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRdIpv4Addr::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12678,6 +12804,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrfIpv4Addr::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiVrfIpv4Addr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -12789,6 +12916,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrfIpv4Addr::Input::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiVrfIpv4Addr::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12894,6 +13022,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiNetwork::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiNetwork::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -13001,6 +13130,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiNetwork::Input::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiNetwork::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13096,6 +13226,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdNetwork::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRdNetwork::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -13207,6 +13338,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRdNetwork::Input::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRdNetwork::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13312,6 +13444,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrfNetwork::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiVrfNetwork::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -13423,6 +13556,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrfNetwork::Input::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiVrfNetwork::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13528,6 +13662,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRtConstraintNetwork::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRtConstraintNetwork::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -13635,6 +13770,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRtConstraintNetwork::Input::get_c
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRtConstraintNetwork::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13730,6 +13866,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv4TunnelNetwork::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv4TunnelNetwork::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -13837,6 +13974,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv4TunnelNetwork::Input::get_chi
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv4TunnelNetwork::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13932,6 +14070,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv6AddrIpv6Netmask::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv6AddrIpv6Netmask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -14043,6 +14182,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv6AddrIpv6Netmask::Input::get_c
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv6AddrIpv6Netmask::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14148,6 +14288,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv6Addr::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv6Addr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -14255,6 +14396,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv6Addr::Input::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv6Addr::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14350,6 +14492,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv6Prefix::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv6Prefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -14457,6 +14600,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiIpv6Prefix::Input::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiIpv6Prefix::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14552,6 +14696,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRd::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -14659,6 +14804,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiRd::Input::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiRd::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14754,6 +14900,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrf::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -14861,6 +15008,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafiVrf::Input::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafiVrf::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14956,6 +15104,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafi::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -15059,6 +15208,7 @@ std::shared_ptr<Entity> ClearBgpBestpathAfiSafi::Input::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> ClearBgpBestpathAfiSafi::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

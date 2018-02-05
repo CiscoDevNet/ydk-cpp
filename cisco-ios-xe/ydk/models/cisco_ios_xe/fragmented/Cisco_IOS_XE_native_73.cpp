@@ -94,6 +94,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::ServicePolicy::Type::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::ServicePolicy::Type::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(control != nullptr)
     {
         children["control"] = control;
@@ -175,6 +176,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::ServicePolicy::Type::Control::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::ServicePolicy::Type::Control::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -255,6 +257,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::ServicePolicy::Type::Performanc
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::ServicePolicy::Type::PerformanceMonitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -363,6 +366,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::ServicePolicy::Type::ServiceCha
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::ServicePolicy::Type::ServiceChain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -439,6 +443,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::ServicePolicy::Type::ServiceCha
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::ServicePolicy::Type::ServiceChain::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -515,6 +520,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::ServicePolicy::Type::ServiceCha
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::ServicePolicy::Type::ServiceChain::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -605,6 +611,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Lisp::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Lisp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mobility != nullptr)
     {
         children["mobility"] = mobility;
@@ -721,6 +728,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Lisp::Mobility::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Lisp::Mobility::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dynamic_eid != nullptr)
     {
         children["dynamic-eid"] = dynamic_eid;
@@ -810,6 +818,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Lisp::Mobility::DynamicEid::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Lisp::Mobility::DynamicEid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -906,6 +915,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Lisp::Mobility::Discover::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Lisp::Mobility::Discover::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -986,6 +996,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Lisp::Mobility::Liveness::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Lisp::Mobility::Liveness::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1128,14 +1139,6 @@ std::shared_ptr<Entity> Native::Interface::Vlan::SpanningTree::get_child_by_name
 
     if(child_yang_name == "vlan")
     {
-        for(auto const & c : vlan)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vlan::SpanningTree::Vlan_>();
         c->parent = this;
         vlan.push_back(c);
@@ -1166,6 +1169,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::SpanningTree::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::SpanningTree::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bpduguard != nullptr)
     {
         children["bpduguard"] = bpduguard;
@@ -1176,9 +1180,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Spanning
         children["portfast"] = portfast;
     }
 
+    count = 0;
     for (auto const & c : vlan)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(loopguard != nullptr)
@@ -1311,6 +1319,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::SpanningTree::Bpduguard::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::SpanningTree::Bpduguard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1405,6 +1414,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::SpanningTree::Portfast::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::SpanningTree::Portfast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1509,6 +1519,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::SpanningTree::Vlan_::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::SpanningTree::Vlan_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1605,6 +1616,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::SpanningTree::Loopguard::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::SpanningTree::Loopguard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1687,14 +1699,6 @@ std::shared_ptr<Entity> Native::Interface::Vlan::SpanningTree::Mst::get_child_by
 {
     if(child_yang_name == "mst-instance")
     {
-        for(auto const & c : mst_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vlan::SpanningTree::Mst::MstInstance>();
         c->parent = this;
         mst_instance.push_back(c);
@@ -1707,9 +1711,14 @@ std::shared_ptr<Entity> Native::Interface::Vlan::SpanningTree::Mst::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::SpanningTree::Mst::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mst_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1796,6 +1805,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::SpanningTree::Mst::MstInstance:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::SpanningTree::Mst::MstInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1896,6 +1906,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Umbrella::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Umbrella::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1982,6 +1993,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Utd::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Utd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2058,6 +2070,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::PrivateVlan::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::PrivateVlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2140,14 +2153,6 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Vrrp::get_child_by_name(const s
 {
     if(child_yang_name == "ip")
     {
-        for(auto const & c : ip)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vlan::Vrrp::Ip>();
         c->parent = this;
         ip.push_back(c);
@@ -2160,9 +2165,14 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Vrrp::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Vrrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ip)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2245,6 +2255,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Vrrp::Ip::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Vrrp::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2339,6 +2350,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::ServiceRouting::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::ServiceRouting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mdns_sd != nullptr)
     {
         children["mdns-sd"] = mdns_sd;
@@ -2419,6 +2431,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::ServiceRouting::MdnsSd::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::ServiceRouting::MdnsSd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redistribute != nullptr)
     {
         children["redistribute"] = redistribute;
@@ -2494,6 +2507,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::ServiceRouting::MdnsSd::Redistr
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::ServiceRouting::MdnsSd::Redistribute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2582,14 +2596,6 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Glbp::get_child_by_name(const s
 {
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vlan::Glbp::Range>();
         c->parent = this;
         range.push_back(c);
@@ -2602,9 +2608,14 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Glbp::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Glbp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2745,6 +2756,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Glbp::Range::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Glbp::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(forwarder != nullptr)
     {
         children["forwarder"] = forwarder;
@@ -2874,6 +2886,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Glbp::Range::Forwarder::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Glbp::Range::Forwarder::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(preempt != nullptr)
     {
         children["preempt"] = preempt;
@@ -2954,6 +2967,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Glbp::Range::Forwarder::Preempt
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Glbp::Range::Forwarder::Preempt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(delay != nullptr)
     {
         children["delay"] = delay;
@@ -3025,6 +3039,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Glbp::Range::Forwarder::Preempt
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Glbp::Range::Forwarder::Preempt::Delay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3103,14 +3118,6 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Glbp::Range::Ip::get_child_by_n
 {
     if(child_yang_name == "ipv4")
     {
-        for(auto const & c : ipv4)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vlan::Glbp::Range::Ip::Ipv4>();
         c->parent = this;
         ipv4.push_back(c);
@@ -3123,9 +3130,14 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Glbp::Range::Ip::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Glbp::Range::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv4)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3194,6 +3206,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Glbp::Range::Ip::Ipv4::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Glbp::Range::Ip::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3279,6 +3292,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Glbp::Range::Preempt::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Glbp::Range::Preempt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(delay != nullptr)
     {
         children["delay"] = delay;
@@ -3350,6 +3364,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Glbp::Range::Preempt::Delay::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Glbp::Range::Preempt::Delay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3432,15 +3447,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Glbp::Range::Weighting::get_chi
 {
     if(child_yang_name == "value")
     {
-        for(auto const & c : value_)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Interface::Vlan::Glbp::Range::Weighting::Value_>();
+        auto c = std::make_shared<Native::Interface::Vlan::Glbp::Range::Weighting::Value>();
         c->parent = this;
         value_.push_back(c);
         return c;
@@ -3461,9 +3468,14 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Glbp::Range::Weighting::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Glbp::Range::Weighting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : value_)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(track != nullptr)
@@ -3489,7 +3501,7 @@ bool Native::Interface::Vlan::Glbp::Range::Weighting::has_leaf_or_child_of_name(
     return false;
 }
 
-Native::Interface::Vlan::Glbp::Range::Weighting::Value_::Value_()
+Native::Interface::Vlan::Glbp::Range::Weighting::Value::Value()
     :
     value_{YType::int8, "value"},
     upper{YType::int8, "upper"},
@@ -3499,18 +3511,18 @@ Native::Interface::Vlan::Glbp::Range::Weighting::Value_::Value_()
     yang_name = "value"; yang_parent_name = "weighting"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::Vlan::Glbp::Range::Weighting::Value_::~Value_()
+Native::Interface::Vlan::Glbp::Range::Weighting::Value::~Value()
 {
 }
 
-bool Native::Interface::Vlan::Glbp::Range::Weighting::Value_::has_data() const
+bool Native::Interface::Vlan::Glbp::Range::Weighting::Value::has_data() const
 {
     return value_.is_set
 	|| upper.is_set
 	|| lower.is_set;
 }
 
-bool Native::Interface::Vlan::Glbp::Range::Weighting::Value_::has_operation() const
+bool Native::Interface::Vlan::Glbp::Range::Weighting::Value::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter)
@@ -3518,14 +3530,14 @@ bool Native::Interface::Vlan::Glbp::Range::Weighting::Value_::has_operation() co
 	|| ydk::is_set(lower.yfilter);
 }
 
-std::string Native::Interface::Vlan::Glbp::Range::Weighting::Value_::get_segment_path() const
+std::string Native::Interface::Vlan::Glbp::Range::Weighting::Value::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "value" <<"[value='" <<value_ <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Glbp::Range::Weighting::Value_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Glbp::Range::Weighting::Value::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3537,18 +3549,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Glbp::Ra
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Vlan::Glbp::Range::Weighting::Value_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Vlan::Glbp::Range::Weighting::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Glbp::Range::Weighting::Value_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Glbp::Range::Weighting::Value::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Interface::Vlan::Glbp::Range::Weighting::Value_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Vlan::Glbp::Range::Weighting::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -3570,7 +3583,7 @@ void Native::Interface::Vlan::Glbp::Range::Weighting::Value_::set_value(const st
     }
 }
 
-void Native::Interface::Vlan::Glbp::Range::Weighting::Value_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Vlan::Glbp::Range::Weighting::Value::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -3586,7 +3599,7 @@ void Native::Interface::Vlan::Glbp::Range::Weighting::Value_::set_filter(const s
     }
 }
 
-bool Native::Interface::Vlan::Glbp::Range::Weighting::Value_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Vlan::Glbp::Range::Weighting::Value::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value" || name == "upper" || name == "lower")
         return true;
@@ -3643,14 +3656,6 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Glbp::Range::Weighting::Track::
 {
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vlan::Glbp::Range::Weighting::Track::Range_>();
         c->parent = this;
         range.push_back(c);
@@ -3663,9 +3668,14 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Glbp::Range::Weighting::Track::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Glbp::Range::Weighting::Track::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3738,6 +3748,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Glbp::Range::Weighting::Track::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Glbp::Range::Weighting::Track::Range_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3833,6 +3844,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Glbp::Range::Timers::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Glbp::Range::Timers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(msec != nullptr)
     {
         children["msec"] = msec;
@@ -3906,14 +3918,6 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Glbp::Range::Timers::Msec::get_
 {
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vlan::Glbp::Range::Timers::Msec::Range_>();
         c->parent = this;
         range.push_back(c);
@@ -3926,9 +3930,14 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Glbp::Range::Timers::Msec::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Glbp::Range::Timers::Msec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4001,6 +4010,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Glbp::Range::Timers::Msec::Rang
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Glbp::Range::Timers::Msec::Range_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4087,6 +4097,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesSwitchportC
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesSwitchportConf_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4159,6 +4170,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesSwitchport_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesSwitchport_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4227,6 +4239,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesStackwiseVi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesStackwiseVirtual_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4313,6 +4326,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesArp_::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesArp_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4424,6 +4438,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesBackup_::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesBackup_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(delay != nullptr)
     {
         children["delay"] = delay;
@@ -4509,6 +4524,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesBackup_::De
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesBackup_::Delay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4760,6 +4776,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesBackup_::In
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesBackup_::Interface_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(atm_subinterface != nullptr)
     {
         children["ATM-subinterface"] = atm_subinterface;
@@ -5136,6 +5153,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesBackup_::In
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesBackup_::Interface_::ATMSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5212,6 +5230,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesBackup_::In
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesBackup_::Interface_::ATMACRsubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5288,6 +5307,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesBackup_::In
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesBackup_::Interface_::LISPSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5364,6 +5384,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesBackup_::In
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesBackup_::Interface_::PortChannelSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5444,6 +5465,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesBackup_::Lo
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesBackup_::Load::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5539,6 +5561,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesCemoudp_::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesCemoudp_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(reserve != nullptr)
     {
         children["reserve"] = reserve;
@@ -5610,6 +5633,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesCemoudp_::R
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesCemoudp_::Reserve::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5700,6 +5724,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesCwsTunnel_:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesCwsTunnel_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(out != nullptr)
     {
         children["out"] = out;
@@ -5781,6 +5806,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesCwsTunnel_:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesCwsTunnel_::Out::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5892,6 +5918,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesL2ProtocolT
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesL2ProtocolTunnel_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(drop_threshold != nullptr)
     {
         children["drop-threshold"] = drop_threshold;
@@ -6010,6 +6037,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesL2ProtocolT
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesL2ProtocolTunnel_::DropThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6128,6 +6156,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesL2ProtocolT
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesL2ProtocolTunnel_::ShutdownThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6292,6 +6321,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesEncapsulati
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesEncapsulation_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dot1q != nullptr)
     {
         children["dot1Q"] = dot1q;
@@ -6387,6 +6417,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesEncapsulati
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesEncapsulation_::Dot1Q::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6473,6 +6504,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesEncapsulati
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesEncapsulation_::Isl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6545,6 +6577,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesEncapsulati
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesEncapsulation_::Ppp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6605,6 +6638,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesEncapsulati
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesEncapsulation_::Slip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6669,6 +6703,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesEncapsulati
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesEncapsulation_::FrameRelay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6745,6 +6780,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesFairQueueCo
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesFairQueueConf_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6821,6 +6857,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesFairQueue_:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesFairQueue_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6901,6 +6938,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesFlowcontrol
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesFlowcontrol_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6983,6 +7021,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIsis_::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIsis_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7055,6 +7094,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::KeepaliveSettings_::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::KeepaliveSettings_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(keepalive != nullptr)
     {
         children["keepalive"] = keepalive;
@@ -7130,6 +7170,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::KeepaliveSettings_::Keepalive::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::KeepaliveSettings_::Keepalive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7212,6 +7253,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesBfd_::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesBfd_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7306,6 +7348,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesBandwidth_:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesBandwidth_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(receive != nullptr)
     {
         children["receive"] = receive;
@@ -7406,6 +7449,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesBandwidth_:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesBandwidth_::Receive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7492,6 +7536,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesBandwidth_:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesBandwidth_::Inherit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7594,6 +7639,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesDampening_:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesDampening_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(restart != nullptr)
     {
         children["restart"] = restart;
@@ -7709,6 +7755,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesDampening_:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesDampening_::Restart::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7815,6 +7862,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesDomain_::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesDomain_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7945,6 +7993,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesHoldQueue_:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesHoldQueue_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8027,6 +8076,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesMpls_::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesMpls_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8100,6 +8150,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::IpVrf_::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::IpVrf_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ip != nullptr)
     {
         children["ip"] = ip;
@@ -8180,6 +8231,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::IpVrf_::Ip::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::IpVrf_::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vrf != nullptr)
     {
         children["vrf"] = vrf;
@@ -8251,6 +8303,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::IpVrf_::Ip::Vrf::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::IpVrf_::Ip::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8327,6 +8380,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::Vrf_::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::Vrf_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8585,14 +8639,6 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::get_ch
 
     if(child_yang_name == "helper-address")
     {
-        for(auto const & c : helper_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::HelperAddress>();
         c->parent = this;
         helper_address.push_back(c);
@@ -8704,6 +8750,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(access_group != nullptr)
     {
         children["access-group"] = access_group;
@@ -8744,9 +8791,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOS
         children["hold-time"] = hold_time;
     }
 
+    count = 0;
     for (auto const & c : helper_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(pim != nullptr)
@@ -8972,6 +9023,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Access
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::AccessGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(in != nullptr)
     {
         children["in"] = in;
@@ -9070,6 +9122,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Access
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::AccessGroup::In::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(common_acl != nullptr)
     {
         children["common-acl"] = common_acl;
@@ -9150,6 +9203,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Access
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::AccessGroup::In::CommonAcl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9240,6 +9294,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Access
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::AccessGroup::In::Acl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9348,6 +9403,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Access
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::AccessGroup::Out::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(common_acl != nullptr)
     {
         children["common-acl"] = common_acl;
@@ -9428,6 +9484,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Access
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::AccessGroup::Out::CommonAcl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9518,6 +9575,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Access
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::AccessGroup::Out::Acl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9613,6 +9671,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Arp::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Arp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(inspection != nullptr)
     {
         children["inspection"] = inspection;
@@ -9698,6 +9757,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Arp::I
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Arp::Inspection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(limit != nullptr)
     {
         children["limit"] = limit;
@@ -9783,6 +9843,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Arp::I
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Arp::Inspection::Limit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9887,6 +9948,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Vrf::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(forwarding != nullptr)
     {
         children["forwarding"] = forwarding;
@@ -9986,6 +10048,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Vrf::F
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Vrf::Forwarding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10082,6 +10145,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::NoAddr
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::NoAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10181,14 +10245,6 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Addres
 
     if(child_yang_name == "secondary")
     {
-        for(auto const & c : secondary)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Address::Secondary>();
         c->parent = this;
         secondary.push_back(c);
@@ -10210,14 +10266,19 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Addres
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(primary != nullptr)
     {
         children["primary"] = primary;
     }
 
+    count = 0;
     for (auto const & c : secondary)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(dhcp != nullptr)
@@ -10305,6 +10366,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Addres
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Address::Primary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10399,6 +10461,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Addres
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Address::Secondary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10509,6 +10572,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Addres
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Address::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(client_id != nullptr)
     {
         children["client-id"] = client_id;
@@ -10622,6 +10686,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Addres
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Address::Dhcp::ClientId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10782,6 +10847,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::HelloI
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::HelloInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10890,6 +10956,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Authen
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_chain != nullptr)
     {
         children["key-chain"] = key_chain;
@@ -10970,6 +11037,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Authen
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Authentication::KeyChain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11060,6 +11128,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Authen
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Authentication::Mode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11150,6 +11219,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::HoldTi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::HoldTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11244,6 +11314,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Helper
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::HelperAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11336,6 +11407,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Pim::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Pim::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11400,6 +11472,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Policy
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Policy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11485,6 +11558,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Rip::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Rip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authentication != nullptr)
     {
         children["authentication"] = authentication;
@@ -11570,6 +11644,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Rip::A
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Rip::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mode != nullptr)
     {
         children["mode"] = mode;
@@ -11655,6 +11730,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Rip::A
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Rip::Authentication::Mode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11741,6 +11817,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::RouteC
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::RouteCacheConf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11829,6 +11906,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::RouteC
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::RouteCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11943,6 +12021,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Router
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Router::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(isis != nullptr)
     {
         children["isis"] = isis;
@@ -12014,6 +12093,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Router
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Router::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12090,6 +12170,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Tcp::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Tcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12182,6 +12263,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Virtua
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::VirtualReassembly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12294,6 +12376,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Dhcp::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12360,14 +12443,6 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Summar
 {
     if(child_yang_name == "eigrp")
     {
-        for(auto const & c : eigrp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::SummaryAddress::Eigrp>();
         c->parent = this;
         eigrp.push_back(c);
@@ -12380,9 +12455,14 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Summar
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::SummaryAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : eigrp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12463,6 +12543,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Summar
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::SummaryAddress::Eigrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12590,6 +12671,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Verify
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Verify::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(source != nullptr)
     {
         children["source"] = source;
@@ -12675,6 +12757,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Verify
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Verify::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vlan != nullptr)
     {
         children["vlan"] = vlan;
@@ -12754,6 +12837,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Verify
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Verify::Source::Vlan_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dhcp_snooping != nullptr)
     {
         children["dhcp-snooping"] = dhcp_snooping;
@@ -12825,6 +12909,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Verify
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Verify::Source::Vlan_::DhcpSnooping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12922,6 +13007,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Verify
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Verify::Unicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(reverse_path != nullptr)
     {
         children["reverse-path"] = reverse_path;
@@ -12994,6 +13080,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Verify
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Verify::Unicast::ReversePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13066,6 +13153,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Verify
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp_::Verify::Unicast::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13257,14 +13345,6 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::get_
 
     if(child_yang_name == "traffic-filter")
     {
-        for(auto const & c : traffic_filter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::TrafficFilter>();
         c->parent = this;
         traffic_filter.push_back(c);
@@ -13277,6 +13357,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination_guard != nullptr)
     {
         children["destination-guard"] = destination_guard;
@@ -13307,9 +13388,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOS
         children["tcp"] = tcp;
     }
 
+    count = 0;
     for (auto const & c : traffic_filter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13418,6 +13503,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Dest
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::DestinationGuard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13494,6 +13580,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Sour
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::SourceGuard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13566,6 +13653,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Dhcp
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13666,14 +13754,6 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Addr
 
     if(child_yang_name == "prefix-list")
     {
-        for(auto const & c : prefix_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Address::PrefixList>();
         c->parent = this;
         prefix_list.push_back(c);
@@ -13682,14 +13762,6 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Addr
 
     if(child_yang_name == "link-local-address")
     {
-        for(auto const & c : link_local_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Address::LinkLocalAddress>();
         c->parent = this;
         link_local_address.push_back(c);
@@ -13702,6 +13774,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Addr
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dhcp != nullptr)
     {
         children["dhcp"] = dhcp;
@@ -13712,14 +13785,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOS
         children["autoconfig"] = autoconfig;
     }
 
+    count = 0;
     for (auto const & c : prefix_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : link_local_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13788,6 +13869,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Addr
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Address::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13864,6 +13946,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Addr
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Address::Autoconfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13948,6 +14031,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Addr
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Address::PrefixList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14048,6 +14132,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Addr
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Address::LinkLocalAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14130,6 +14215,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Nd::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Nd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14194,6 +14280,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Tcp:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Tcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14274,6 +14361,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::Traf
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6_::TrafficFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14369,6 +14457,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesLogging_::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesLogging_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(event != nullptr)
     {
         children["event"] = event;
@@ -14485,6 +14574,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesLogging_::E
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesLogging_::Event::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(spanning_tree != nullptr)
     {
         children["spanning-tree"] = spanning_tree;
@@ -14621,6 +14711,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesLogging_::E
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesLogging_::Event::SpanningTree::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14697,6 +14788,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesLogging_::E
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesLogging_::Event::SubifLinkStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14773,6 +14865,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesMdix_::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesMdix_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14853,6 +14946,7 @@ std::shared_ptr<Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesMop_::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesMop_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

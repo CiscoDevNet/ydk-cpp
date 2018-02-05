@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Nsr::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Nsr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(process_failure != nullptr)
     {
         children["process-failure"] = process_failure;
@@ -171,6 +172,7 @@ std::shared_ptr<Entity> Nsr::ProcessFailure::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Nsr::ProcessFailure::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

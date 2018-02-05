@@ -68,14 +68,6 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Rd::Sets_::get_child_by_name(const 
 {
     if(child_yang_name == "set")
     {
-        for(auto const & c : set)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingPolicy::Sets::Rd::Sets_::Set>();
         c->parent = this;
         set.push_back(c);
@@ -88,9 +80,14 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Rd::Sets_::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Rd::Sets_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : set)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -193,6 +190,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Rd::Sets_::Set::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Rd::Sets_::Set::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(used_by != nullptr)
     {
         children["used-by"] = used_by;
@@ -281,14 +279,6 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::get_child_b
 {
     if(child_yang_name == "reference")
     {
-        for(auto const & c : reference)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::Reference>();
         c->parent = this;
         reference.push_back(c);
@@ -301,9 +291,14 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : reference)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -380,6 +375,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::Reference::
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::Reference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -478,14 +474,6 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Rd::Sets_::Set::Attached::get_child
 {
     if(child_yang_name == "binding")
     {
-        for(auto const & c : binding)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingPolicy::Sets::Rd::Sets_::Set::Attached::Binding>();
         c->parent = this;
         binding.push_back(c);
@@ -498,9 +486,14 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Rd::Sets_::Set::Attached::get_child
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Rd::Sets_::Set::Attached::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : binding)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -645,6 +638,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Rd::Sets_::Set::Attached::Binding::
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Rd::Sets_::Set::Attached::Binding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -929,6 +923,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Rd::Unused::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Rd::Unused::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1021,6 +1016,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Rd::Inactive::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Rd::Inactive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1113,6 +1109,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Rd::Active::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Rd::Active::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1242,6 +1239,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Mac::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Mac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sets != nullptr)
     {
         children["sets"] = sets;
@@ -1337,14 +1335,6 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Mac::Sets_::get_child_by_name(const
 {
     if(child_yang_name == "set")
     {
-        for(auto const & c : set)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingPolicy::Sets::Mac::Sets_::Set>();
         c->parent = this;
         set.push_back(c);
@@ -1357,9 +1347,14 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Mac::Sets_::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Mac::Sets_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : set)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1462,6 +1457,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Mac::Sets_::Set::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Mac::Sets_::Set::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(used_by != nullptr)
     {
         children["used-by"] = used_by;
@@ -1550,14 +1546,6 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Mac::Sets_::Set::UsedBy::get_child_
 {
     if(child_yang_name == "reference")
     {
-        for(auto const & c : reference)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingPolicy::Sets::Mac::Sets_::Set::UsedBy::Reference>();
         c->parent = this;
         reference.push_back(c);
@@ -1570,9 +1558,14 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Mac::Sets_::Set::UsedBy::get_child_
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Mac::Sets_::Set::UsedBy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : reference)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1649,6 +1642,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Mac::Sets_::Set::UsedBy::Reference:
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Mac::Sets_::Set::UsedBy::Reference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1747,14 +1741,6 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Mac::Sets_::Set::Attached::get_chil
 {
     if(child_yang_name == "binding")
     {
-        for(auto const & c : binding)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingPolicy::Sets::Mac::Sets_::Set::Attached::Binding>();
         c->parent = this;
         binding.push_back(c);
@@ -1767,9 +1753,14 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Mac::Sets_::Set::Attached::get_chil
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Mac::Sets_::Set::Attached::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : binding)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1914,6 +1905,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Mac::Sets_::Set::Attached::Binding:
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Mac::Sets_::Set::Attached::Binding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2198,6 +2190,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Mac::Unused::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Mac::Unused::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2290,6 +2283,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Mac::Inactive::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Mac::Inactive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2382,6 +2376,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::Mac::Active::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Mac::Active::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2511,6 +2506,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityCost::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedCommunityCost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sets != nullptr)
     {
         children["sets"] = sets;
@@ -2606,14 +2602,6 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::get_c
 {
     if(child_yang_name == "set")
     {
-        for(auto const & c : set)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set>();
         c->parent = this;
         set.push_back(c);
@@ -2626,9 +2614,14 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::get_c
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : set)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2731,6 +2724,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(used_by != nullptr)
     {
         children["used-by"] = used_by;
@@ -2819,14 +2813,6 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::
 {
     if(child_yang_name == "reference")
     {
-        for(auto const & c : reference)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy::Reference>();
         c->parent = this;
         reference.push_back(c);
@@ -2839,9 +2825,14 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : reference)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2918,6 +2909,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy::Reference::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3016,14 +3008,6 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::
 {
     if(child_yang_name == "binding")
     {
-        for(auto const & c : binding)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::Attached::Binding>();
         c->parent = this;
         binding.push_back(c);
@@ -3036,9 +3020,14 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::Attached::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : binding)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3183,6 +3172,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::Attached::Binding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3467,6 +3457,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityCost::Unused::get_
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedCommunityCost::Unused::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3559,6 +3550,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityCost::Inactive::ge
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedCommunityCost::Inactive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3651,6 +3643,7 @@ std::shared_ptr<Entity> RoutingPolicy::Sets::ExtendedCommunityCost::Active::get_
 std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedCommunityCost::Active::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

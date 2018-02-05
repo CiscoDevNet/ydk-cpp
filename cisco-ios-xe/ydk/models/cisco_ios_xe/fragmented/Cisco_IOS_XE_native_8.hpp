@@ -249,7 +249,7 @@ class Native::Ip::Tcp::PathMtuDiscovery : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf age_timer; //type: one of uint8, enumeration
+        ydk::YLeaf age_timer; //type: one of enumeration, uint8
         class AgeTimer;
 
 }; // Native::Ip::Tcp::PathMtuDiscovery
@@ -631,12 +631,12 @@ class Native::Ip::AccessList::Standard : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf name; //type: one of string, uint16
+        ydk::YLeaf name; //type: one of uint16, string
         class AccessListSeqRule; //type: Native::Ip::AccessList::Standard::AccessListSeqRule
-        class Default_; //type: Native::Ip::AccessList::Standard::Default_
+        class Default; //type: Native::Ip::AccessList::Standard::Default
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Standard::AccessListSeqRule> > access_list_seq_rule;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Standard::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Standard::Default> default_;
         
 }; // Native::Ip::AccessList::Standard
 
@@ -764,11 +764,11 @@ class Native::Ip::AccessList::Standard::AccessListSeqRule::Permit::StdAce : publ
 }; // Native::Ip::AccessList::Standard::AccessListSeqRule::Permit::StdAce
 
 
-class Native::Ip::AccessList::Standard::Default_ : public ydk::Entity
+class Native::Ip::AccessList::Standard::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -780,14 +780,14 @@ class Native::Ip::AccessList::Standard::Default_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class AccessListSeqRule; //type: Native::Ip::AccessList::Standard::Default_::AccessListSeqRule
+        class AccessListSeqRule; //type: Native::Ip::AccessList::Standard::Default::AccessListSeqRule
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Standard::Default_::AccessListSeqRule> > access_list_seq_rule;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Standard::Default::AccessListSeqRule> > access_list_seq_rule;
         
-}; // Native::Ip::AccessList::Standard::Default_
+}; // Native::Ip::AccessList::Standard::Default
 
 
-class Native::Ip::AccessList::Standard::Default_::AccessListSeqRule : public ydk::Entity
+class Native::Ip::AccessList::Standard::Default::AccessListSeqRule : public ydk::Entity
 {
     public:
         AccessListSeqRule();
@@ -805,16 +805,16 @@ class Native::Ip::AccessList::Standard::Default_::AccessListSeqRule : public ydk
 
         ydk::YLeaf sequence; //type: uint64
         ydk::YLeaf remark; //type: string
-        class Deny; //type: Native::Ip::AccessList::Standard::Default_::AccessListSeqRule::Deny
-        class Permit; //type: Native::Ip::AccessList::Standard::Default_::AccessListSeqRule::Permit
+        class Deny; //type: Native::Ip::AccessList::Standard::Default::AccessListSeqRule::Deny
+        class Permit; //type: Native::Ip::AccessList::Standard::Default::AccessListSeqRule::Permit
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Standard::Default_::AccessListSeqRule::Deny> deny;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Standard::Default_::AccessListSeqRule::Permit> permit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Standard::Default::AccessListSeqRule::Deny> deny;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Standard::Default::AccessListSeqRule::Permit> permit;
         
-}; // Native::Ip::AccessList::Standard::Default_::AccessListSeqRule
+}; // Native::Ip::AccessList::Standard::Default::AccessListSeqRule
 
 
-class Native::Ip::AccessList::Standard::Default_::AccessListSeqRule::Deny : public ydk::Entity
+class Native::Ip::AccessList::Standard::Default::AccessListSeqRule::Deny : public ydk::Entity
 {
     public:
         Deny();
@@ -830,14 +830,14 @@ class Native::Ip::AccessList::Standard::Default_::AccessListSeqRule::Deny : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class StdAce; //type: Native::Ip::AccessList::Standard::Default_::AccessListSeqRule::Deny::StdAce
+        class StdAce; //type: Native::Ip::AccessList::Standard::Default::AccessListSeqRule::Deny::StdAce
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Standard::Default_::AccessListSeqRule::Deny::StdAce> std_ace;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Standard::Default::AccessListSeqRule::Deny::StdAce> std_ace;
         
-}; // Native::Ip::AccessList::Standard::Default_::AccessListSeqRule::Deny
+}; // Native::Ip::AccessList::Standard::Default::AccessListSeqRule::Deny
 
 
-class Native::Ip::AccessList::Standard::Default_::AccessListSeqRule::Deny::StdAce : public ydk::Entity
+class Native::Ip::AccessList::Standard::Default::AccessListSeqRule::Deny::StdAce : public ydk::Entity
 {
     public:
         StdAce();
@@ -859,10 +859,10 @@ class Native::Ip::AccessList::Standard::Default_::AccessListSeqRule::Deny::StdAc
         ydk::YLeaf host; //type: string
         ydk::YLeaf log; //type: empty
 
-}; // Native::Ip::AccessList::Standard::Default_::AccessListSeqRule::Deny::StdAce
+}; // Native::Ip::AccessList::Standard::Default::AccessListSeqRule::Deny::StdAce
 
 
-class Native::Ip::AccessList::Standard::Default_::AccessListSeqRule::Permit : public ydk::Entity
+class Native::Ip::AccessList::Standard::Default::AccessListSeqRule::Permit : public ydk::Entity
 {
     public:
         Permit();
@@ -878,14 +878,14 @@ class Native::Ip::AccessList::Standard::Default_::AccessListSeqRule::Permit : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class StdAce; //type: Native::Ip::AccessList::Standard::Default_::AccessListSeqRule::Permit::StdAce
+        class StdAce; //type: Native::Ip::AccessList::Standard::Default::AccessListSeqRule::Permit::StdAce
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Standard::Default_::AccessListSeqRule::Permit::StdAce> std_ace;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Standard::Default::AccessListSeqRule::Permit::StdAce> std_ace;
         
-}; // Native::Ip::AccessList::Standard::Default_::AccessListSeqRule::Permit
+}; // Native::Ip::AccessList::Standard::Default::AccessListSeqRule::Permit
 
 
-class Native::Ip::AccessList::Standard::Default_::AccessListSeqRule::Permit::StdAce : public ydk::Entity
+class Native::Ip::AccessList::Standard::Default::AccessListSeqRule::Permit::StdAce : public ydk::Entity
 {
     public:
         StdAce();
@@ -907,7 +907,7 @@ class Native::Ip::AccessList::Standard::Default_::AccessListSeqRule::Permit::Std
         ydk::YLeaf host; //type: string
         ydk::YLeaf log; //type: empty
 
-}; // Native::Ip::AccessList::Standard::Default_::AccessListSeqRule::Permit::StdAce
+}; // Native::Ip::AccessList::Standard::Default::AccessListSeqRule::Permit::StdAce
 
 
 class Native::Ip::AccessList::RoleBased : public ydk::Entity
@@ -929,10 +929,10 @@ class Native::Ip::AccessList::RoleBased : public ydk::Entity
 
         ydk::YLeaf name; //type: string
         class AccessListSeqRule; //type: Native::Ip::AccessList::RoleBased::AccessListSeqRule
-        class Default_; //type: Native::Ip::AccessList::RoleBased::Default_
+        class Default; //type: Native::Ip::AccessList::RoleBased::Default
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::RoleBased::AccessListSeqRule> > access_list_seq_rule;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::RoleBased::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::RoleBased::Default> default_;
         
 }; // Native::Ip::AccessList::RoleBased
 
@@ -979,16 +979,16 @@ class Native::Ip::AccessList::RoleBased::AccessListSeqRule::AceRule : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf action; //type: Action
-        ydk::YLeaf protocol; //type: one of uint8, enumeration
+        ydk::YLeaf protocol; //type: one of enumeration, uint8
         ydk::YLeaf object_group_str; //type: string
-        ydk::YLeaf dscp; //type: one of uint8, enumeration
+        ydk::YLeaf dscp; //type: one of enumeration, uint8
         ydk::YLeaf fragments; //type: empty
         ydk::YLeaf log; //type: empty
         ydk::YLeaf log_input; //type: empty
-        ydk::YLeaf option; //type: one of uint8, enumeration
-        ydk::YLeaf precedence; //type: one of uint8, enumeration
+        ydk::YLeaf option; //type: one of enumeration, uint8
+        ydk::YLeaf precedence; //type: one of enumeration, uint8
         ydk::YLeaf time_range; //type: string
-        ydk::YLeaf tos; //type: one of uint8, enumeration
+        ydk::YLeaf tos; //type: one of enumeration, uint8
         ydk::YLeaf ack; //type: empty
         ydk::YLeaf fin; //type: empty
         ydk::YLeaf psh; //type: empty
@@ -1129,11 +1129,11 @@ class Native::Ip::AccessList::RoleBased::AccessListSeqRule::AceRule::MatchAny : 
 }; // Native::Ip::AccessList::RoleBased::AccessListSeqRule::AceRule::MatchAny
 
 
-class Native::Ip::AccessList::RoleBased::Default_ : public ydk::Entity
+class Native::Ip::AccessList::RoleBased::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1145,14 +1145,14 @@ class Native::Ip::AccessList::RoleBased::Default_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class AccessListSeqRule; //type: Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule
+        class AccessListSeqRule; //type: Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule> > access_list_seq_rule;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule> > access_list_seq_rule;
         
-}; // Native::Ip::AccessList::RoleBased::Default_
+}; // Native::Ip::AccessList::RoleBased::Default
 
 
-class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule : public ydk::Entity
+class Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule : public ydk::Entity
 {
     public:
         AccessListSeqRule();
@@ -1170,14 +1170,14 @@ class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule : public yd
 
         ydk::YLeaf sequence; //type: uint64
         ydk::YLeaf remark; //type: string
-        class AceRule; //type: Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule
+        class AceRule; //type: Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule> ace_rule;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule> ace_rule;
         
-}; // Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule
+}; // Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule
 
 
-class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule : public ydk::Entity
+class Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule : public ydk::Entity
 {
     public:
         AceRule();
@@ -1194,16 +1194,16 @@ class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule : 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf action; //type: Action
-        ydk::YLeaf protocol; //type: one of uint8, enumeration
+        ydk::YLeaf protocol; //type: one of enumeration, uint8
         ydk::YLeaf object_group_str; //type: string
-        ydk::YLeaf dscp; //type: one of uint8, enumeration
+        ydk::YLeaf dscp; //type: one of enumeration, uint8
         ydk::YLeaf fragments; //type: empty
         ydk::YLeaf log; //type: empty
         ydk::YLeaf log_input; //type: empty
-        ydk::YLeaf option; //type: one of uint8, enumeration
-        ydk::YLeaf precedence; //type: one of uint8, enumeration
+        ydk::YLeaf option; //type: one of enumeration, uint8
+        ydk::YLeaf precedence; //type: one of enumeration, uint8
         ydk::YLeaf time_range; //type: string
-        ydk::YLeaf tos; //type: one of uint8, enumeration
+        ydk::YLeaf tos; //type: one of enumeration, uint8
         ydk::YLeaf ack; //type: empty
         ydk::YLeaf fin; //type: empty
         ydk::YLeaf psh; //type: empty
@@ -1214,13 +1214,13 @@ class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule : 
         ydk::YLeaf msg_type; //type: uint8
         ydk::YLeaf msg_code; //type: uint8
         ydk::YLeaf named_msg_type; //type: NamedMsgType
-        class Ttl; //type: Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::Ttl
-        class MatchAll; //type: Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::MatchAll
-        class MatchAny; //type: Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::MatchAny
+        class Ttl; //type: Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule::Ttl
+        class MatchAll; //type: Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule::MatchAll
+        class MatchAny; //type: Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule::MatchAny
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::Ttl> ttl;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::MatchAll> match_all;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::MatchAny> match_any;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule::Ttl> ttl;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule::MatchAll> match_all;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule::MatchAny> match_any;
                 class Action;
         class Protocol;
         class Option;
@@ -1228,10 +1228,10 @@ class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule : 
         class Tos;
         class NamedMsgType;
 
-}; // Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule
+}; // Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule
 
 
-class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::Ttl : public ydk::Entity
+class Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule::Ttl : public ydk::Entity
 {
     public:
         Ttl();
@@ -1251,14 +1251,14 @@ class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::T
         ydk::YLeaf gt; //type: uint8
         ydk::YLeaf lt; //type: uint8
         ydk::YLeaf neq; //type: uint8
-        class Range; //type: Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::Ttl::Range
+        class Range; //type: Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule::Ttl::Range
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::Ttl::Range> range;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule::Ttl::Range> range;
         
-}; // Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::Ttl
+}; // Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule::Ttl
 
 
-class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::Ttl::Range : public ydk::Entity
+class Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule::Ttl::Range : public ydk::Entity
 {
     public:
         Range();
@@ -1277,10 +1277,10 @@ class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::T
         ydk::YLeaf value1; //type: uint8
         ydk::YLeaf value2; //type: uint8
 
-}; // Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::Ttl::Range
+}; // Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule::Ttl::Range
 
 
-class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::MatchAll : public ydk::Entity
+class Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule::MatchAll : public ydk::Entity
 {
     public:
         MatchAll();
@@ -1309,10 +1309,10 @@ class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::M
         ydk::YLeaf minussyn; //type: empty
         ydk::YLeaf minusurg; //type: empty
 
-}; // Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::MatchAll
+}; // Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule::MatchAll
 
 
-class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::MatchAny : public ydk::Entity
+class Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule::MatchAny : public ydk::Entity
 {
     public:
         MatchAny();
@@ -1341,7 +1341,7 @@ class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::M
         ydk::YLeaf minussyn; //type: empty
         ydk::YLeaf minusurg; //type: empty
 
-}; // Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::MatchAny
+}; // Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule::MatchAny
 
 
 class Native::Ip::AccessList::Extended : public ydk::Entity
@@ -1361,12 +1361,12 @@ class Native::Ip::AccessList::Extended : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf name; //type: one of string, uint16
+        ydk::YLeaf name; //type: one of uint16, string
         class AccessListSeqRule; //type: Native::Ip::AccessList::Extended::AccessListSeqRule
-        class Default_; //type: Native::Ip::AccessList::Extended::Default_
+        class Default; //type: Native::Ip::AccessList::Extended::Default
 
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Extended::AccessListSeqRule> > access_list_seq_rule;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Extended::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Extended::Default> default_;
         
 }; // Native::Ip::AccessList::Extended
 
@@ -1413,7 +1413,7 @@ class Native::Ip::AccessList::Extended::AccessListSeqRule::AceRule : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf action; //type: Action
-        ydk::YLeaf protocol; //type: one of uint8, enumeration
+        ydk::YLeaf protocol; //type: one of enumeration, uint8
         ydk::YLeaf object_group_str; //type: string
         ydk::YLeaf ipv4_address; //type: string
         ydk::YLeaf mask; //type: string
@@ -1437,14 +1437,14 @@ class Native::Ip::AccessList::Extended::AccessListSeqRule::AceRule : public ydk:
         ydk::YLeaf dst_neq; //type: one of uint16, enumeration
         ydk::YLeaf dst_range1; //type: one of uint16, enumeration
         ydk::YLeaf dst_range2; //type: one of uint16, enumeration
-        ydk::YLeaf dscp; //type: one of uint8, enumeration
+        ydk::YLeaf dscp; //type: one of enumeration, uint8
         ydk::YLeaf fragments; //type: empty
         ydk::YLeaf log; //type: empty
         ydk::YLeaf log_input; //type: empty
-        ydk::YLeaf option; //type: one of uint8, enumeration
-        ydk::YLeaf precedence; //type: one of uint8, enumeration
+        ydk::YLeaf option; //type: one of enumeration, uint8
+        ydk::YLeaf precedence; //type: one of enumeration, uint8
         ydk::YLeaf time_range; //type: string
-        ydk::YLeaf tos; //type: one of uint8, enumeration
+        ydk::YLeaf tos; //type: one of enumeration, uint8
         ydk::YLeaf ack; //type: empty
         ydk::YLeaf fin; //type: empty
         ydk::YLeaf psh; //type: empty
@@ -1585,11 +1585,11 @@ class Native::Ip::AccessList::Extended::AccessListSeqRule::AceRule::MatchAny : p
 }; // Native::Ip::AccessList::Extended::AccessListSeqRule::AceRule::MatchAny
 
 
-class Native::Ip::AccessList::Extended::Default_ : public ydk::Entity
+class Native::Ip::AccessList::Extended::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1601,14 +1601,14 @@ class Native::Ip::AccessList::Extended::Default_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class AccessListSeqRule; //type: Native::Ip::AccessList::Extended::Default_::AccessListSeqRule
+        class AccessListSeqRule; //type: Native::Ip::AccessList::Extended::Default::AccessListSeqRule
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Extended::Default_::AccessListSeqRule> > access_list_seq_rule;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Extended::Default::AccessListSeqRule> > access_list_seq_rule;
         
-}; // Native::Ip::AccessList::Extended::Default_
+}; // Native::Ip::AccessList::Extended::Default
 
 
-class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule : public ydk::Entity
+class Native::Ip::AccessList::Extended::Default::AccessListSeqRule : public ydk::Entity
 {
     public:
         AccessListSeqRule();
@@ -1626,14 +1626,14 @@ class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule : public ydk
 
         ydk::YLeaf sequence; //type: uint64
         ydk::YLeaf remark; //type: string
-        class AceRule; //type: Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule
+        class AceRule; //type: Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule> ace_rule;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule> ace_rule;
         
-}; // Native::Ip::AccessList::Extended::Default_::AccessListSeqRule
+}; // Native::Ip::AccessList::Extended::Default::AccessListSeqRule
 
 
-class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule : public ydk::Entity
+class Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule : public ydk::Entity
 {
     public:
         AceRule();
@@ -1650,7 +1650,7 @@ class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule : p
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf action; //type: Action
-        ydk::YLeaf protocol; //type: one of uint8, enumeration
+        ydk::YLeaf protocol; //type: one of enumeration, uint8
         ydk::YLeaf object_group_str; //type: string
         ydk::YLeaf ipv4_address; //type: string
         ydk::YLeaf mask; //type: string
@@ -1674,14 +1674,14 @@ class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule : p
         ydk::YLeaf dst_neq; //type: one of uint16, enumeration
         ydk::YLeaf dst_range1; //type: one of uint16, enumeration
         ydk::YLeaf dst_range2; //type: one of uint16, enumeration
-        ydk::YLeaf dscp; //type: one of uint8, enumeration
+        ydk::YLeaf dscp; //type: one of enumeration, uint8
         ydk::YLeaf fragments; //type: empty
         ydk::YLeaf log; //type: empty
         ydk::YLeaf log_input; //type: empty
-        ydk::YLeaf option; //type: one of uint8, enumeration
-        ydk::YLeaf precedence; //type: one of uint8, enumeration
+        ydk::YLeaf option; //type: one of enumeration, uint8
+        ydk::YLeaf precedence; //type: one of enumeration, uint8
         ydk::YLeaf time_range; //type: string
-        ydk::YLeaf tos; //type: one of uint8, enumeration
+        ydk::YLeaf tos; //type: one of enumeration, uint8
         ydk::YLeaf ack; //type: empty
         ydk::YLeaf fin; //type: empty
         ydk::YLeaf psh; //type: empty
@@ -1692,13 +1692,13 @@ class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule : p
         ydk::YLeaf msg_type; //type: uint8
         ydk::YLeaf msg_code; //type: uint8
         ydk::YLeaf named_msg_type; //type: NamedMsgType
-        class Ttl; //type: Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::Ttl
-        class MatchAll; //type: Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::MatchAll
-        class MatchAny; //type: Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::MatchAny
+        class Ttl; //type: Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule::Ttl
+        class MatchAll; //type: Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule::MatchAll
+        class MatchAny; //type: Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule::MatchAny
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::Ttl> ttl;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::MatchAll> match_all;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::MatchAny> match_any;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule::Ttl> ttl;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule::MatchAll> match_all;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule::MatchAny> match_any;
                 class Action;
         class Protocol;
         class Option;
@@ -1706,10 +1706,10 @@ class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule : p
         class Tos;
         class NamedMsgType;
 
-}; // Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule
+}; // Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule
 
 
-class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::Ttl : public ydk::Entity
+class Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule::Ttl : public ydk::Entity
 {
     public:
         Ttl();
@@ -1729,14 +1729,14 @@ class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::Tt
         ydk::YLeaf gt; //type: uint8
         ydk::YLeaf lt; //type: uint8
         ydk::YLeaf neq; //type: uint8
-        class Range; //type: Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::Ttl::Range
+        class Range; //type: Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule::Ttl::Range
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::Ttl::Range> range;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule::Ttl::Range> range;
         
-}; // Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::Ttl
+}; // Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule::Ttl
 
 
-class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::Ttl::Range : public ydk::Entity
+class Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule::Ttl::Range : public ydk::Entity
 {
     public:
         Range();
@@ -1755,10 +1755,10 @@ class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::Tt
         ydk::YLeaf value1; //type: uint8
         ydk::YLeaf value2; //type: uint8
 
-}; // Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::Ttl::Range
+}; // Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule::Ttl::Range
 
 
-class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::MatchAll : public ydk::Entity
+class Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule::MatchAll : public ydk::Entity
 {
     public:
         MatchAll();
@@ -1787,10 +1787,10 @@ class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::Ma
         ydk::YLeaf minussyn; //type: empty
         ydk::YLeaf minusurg; //type: empty
 
-}; // Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::MatchAll
+}; // Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule::MatchAll
 
 
-class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::MatchAny : public ydk::Entity
+class Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule::MatchAny : public ydk::Entity
 {
     public:
         MatchAny();
@@ -1819,7 +1819,7 @@ class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::Ma
         ydk::YLeaf minussyn; //type: empty
         ydk::YLeaf minusurg; //type: empty
 
-}; // Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::MatchAny
+}; // Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule::MatchAny
 
 
 class Native::Ip::AccessList::Helper : public ydk::Entity
@@ -2453,7 +2453,7 @@ class Native::Ip::CommunityList::NumberStandard::Deny : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList deny_list; //type: list of  one of union, enumeration
+        ydk::YLeafList deny_list; //type: list of  one of enumeration, union
 
 }; // Native::Ip::CommunityList::NumberStandard::Deny
 
@@ -2474,7 +2474,7 @@ class Native::Ip::CommunityList::NumberStandard::Permit : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList permit_list; //type: list of  one of union, enumeration
+        ydk::YLeafList permit_list; //type: list of  one of enumeration, union
 
 }; // Native::Ip::CommunityList::NumberStandard::Permit
 
@@ -2660,7 +2660,7 @@ class Native::Ip::CommunityList::Standard::Deny : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList deny_list; //type: list of  one of union, enumeration
+        ydk::YLeafList deny_list; //type: list of  one of enumeration, union
 
 }; // Native::Ip::CommunityList::Standard::Deny
 
@@ -2681,7 +2681,7 @@ class Native::Ip::CommunityList::Standard::Permit : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList permit_list; //type: list of  one of union, enumeration
+        ydk::YLeafList permit_list; //type: list of  one of enumeration, union
 
 }; // Native::Ip::CommunityList::Standard::Permit
 
@@ -3863,10 +3863,10 @@ class Native::Ip::Igmp::SsmMap : public ydk::Entity
 
         ydk::YLeaf enable; //type: empty
         class Query; //type: Native::Ip::Igmp::SsmMap::Query
-        class Static_; //type: Native::Ip::Igmp::SsmMap::Static_
+        class Static; //type: Native::Ip::Igmp::SsmMap::Static
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Igmp::SsmMap::Query> query;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Igmp::SsmMap::Static_> static_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Igmp::SsmMap::Static> static_;
         
 }; // Native::Ip::Igmp::SsmMap
 
@@ -3893,11 +3893,11 @@ class Native::Ip::Igmp::SsmMap::Query : public ydk::Entity
 }; // Native::Ip::Igmp::SsmMap::Query
 
 
-class Native::Ip::Igmp::SsmMap::Static_ : public ydk::Entity
+class Native::Ip::Igmp::SsmMap::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3910,10 +3910,10 @@ class Native::Ip::Igmp::SsmMap::Static_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf acl; //type: one of string, uint16
+        ydk::YLeaf acl; //type: one of uint16, string
         ydk::YLeaf source_ip; //type: string
 
-}; // Native::Ip::Igmp::SsmMap::Static_
+}; // Native::Ip::Igmp::SsmMap::Static
 
 
 class Native::Ip::Igmp::Vrf : public ydk::Entity
@@ -3958,18 +3958,18 @@ class Native::Ip::Igmp::Vrf::SsmMap : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf enable; //type: empty
-        class Static_; //type: Native::Ip::Igmp::Vrf::SsmMap::Static_
+        class Static; //type: Native::Ip::Igmp::Vrf::SsmMap::Static
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Igmp::Vrf::SsmMap::Static_> > static_;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Igmp::Vrf::SsmMap::Static> > static_;
         
 }; // Native::Ip::Igmp::Vrf::SsmMap
 
 
-class Native::Ip::Igmp::Vrf::SsmMap::Static_ : public ydk::Entity
+class Native::Ip::Igmp::Vrf::SsmMap::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3984,7 +3984,7 @@ class Native::Ip::Igmp::Vrf::SsmMap::Static_ : public ydk::Entity
         ydk::YLeaf srcaddress; //type: string
         ydk::YLeaf aclname; //type: string
 
-}; // Native::Ip::Igmp::Vrf::SsmMap::Static_
+}; // Native::Ip::Igmp::Vrf::SsmMap::Static
 
 class Native::Ip::Ssh::PubkeyChain::Username::KeyHash::KeyType : public ydk::Enum
 {
@@ -4136,7 +4136,7 @@ class Native::Ip::AccessList::RoleBased::AccessListSeqRule::AceRule::NamedMsgTyp
 
 };
 
-class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::Action : public ydk::Enum
+class Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule::Action : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf deny;
@@ -4144,7 +4144,7 @@ class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::A
 
 };
 
-class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::Protocol : public ydk::Enum
+class Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule::Protocol : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ahp;
@@ -4165,7 +4165,7 @@ class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::P
 
 };
 
-class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::Option : public ydk::Enum
+class Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule::Option : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf add_ext;
@@ -4197,7 +4197,7 @@ class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::O
 
 };
 
-class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::Precedence : public ydk::Enum
+class Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule::Precedence : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf critical;
@@ -4211,7 +4211,7 @@ class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::P
 
 };
 
-class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::Tos : public ydk::Enum
+class Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule::Tos : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf max_reliability;
@@ -4222,7 +4222,7 @@ class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::T
 
 };
 
-class Native::Ip::AccessList::RoleBased::Default_::AccessListSeqRule::AceRule::NamedMsgType : public ydk::Enum
+class Native::Ip::AccessList::RoleBased::Default::AccessListSeqRule::AceRule::NamedMsgType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf administratively_prohibited;
@@ -4408,7 +4408,7 @@ class Native::Ip::AccessList::Extended::AccessListSeqRule::AceRule::NamedMsgType
 
 };
 
-class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::Action : public ydk::Enum
+class Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule::Action : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf deny;
@@ -4416,7 +4416,7 @@ class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::Ac
 
 };
 
-class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::Protocol : public ydk::Enum
+class Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule::Protocol : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ahp;
@@ -4437,7 +4437,7 @@ class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::Pr
 
 };
 
-class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::Option : public ydk::Enum
+class Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule::Option : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf add_ext;
@@ -4469,7 +4469,7 @@ class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::Op
 
 };
 
-class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::Precedence : public ydk::Enum
+class Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule::Precedence : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf critical;
@@ -4483,7 +4483,7 @@ class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::Pr
 
 };
 
-class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::Tos : public ydk::Enum
+class Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule::Tos : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf max_reliability;
@@ -4494,7 +4494,7 @@ class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::To
 
 };
 
-class Native::Ip::AccessList::Extended::Default_::AccessListSeqRule::AceRule::NamedMsgType : public ydk::Enum
+class Native::Ip::AccessList::Extended::Default::AccessListSeqRule::AceRule::NamedMsgType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf administratively_prohibited;

@@ -103,6 +103,7 @@ std::shared_ptr<Entity> Dhcpv6::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(database != nullptr)
     {
         children["database"] = database;
@@ -252,6 +253,7 @@ std::shared_ptr<Entity> Dhcpv6::Database::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Database::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -377,14 +379,6 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "profile")
     {
-        for(auto const & c : profile)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Profiles::Profile>();
         c->parent = this;
         profile.push_back(c);
@@ -397,9 +391,14 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : profile)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -524,6 +523,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(relay != nullptr)
     {
         children["relay"] = relay;
@@ -638,6 +638,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Relay::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Relay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(helper_addresses != nullptr)
     {
         children["helper-addresses"] = helper_addresses;
@@ -731,14 +732,6 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Relay::HelperAddresses::get_c
 {
     if(child_yang_name == "helper-address")
     {
-        for(auto const & c : helper_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress>();
         c->parent = this;
         helper_address.push_back(c);
@@ -751,9 +744,14 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Relay::HelperAddresses::get_c
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Relay::HelperAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : helper_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -826,6 +824,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Relay::HelperAddresses::Helpe
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -868,7 +867,7 @@ Dhcpv6::Profiles::Profile::Base::Base()
     :
     enable{YType::empty, "enable"}
     	,
-    default_(std::make_shared<Dhcpv6::Profiles::Profile::Base::Default_>())
+    default_(std::make_shared<Dhcpv6::Profiles::Profile::Base::Default>())
 	,match(std::make_shared<Dhcpv6::Profiles::Profile::Base::Match>())
 {
     default_->parent = this;
@@ -919,7 +918,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Base::get_child_by_name(const
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Dhcpv6::Profiles::Profile::Base::Default_>();
+            default_ = std::make_shared<Dhcpv6::Profiles::Profile::Base::Default>();
         }
         return default_;
     }
@@ -939,6 +938,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Base::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_ != nullptr)
     {
         children["default"] = default_;
@@ -977,17 +977,17 @@ bool Dhcpv6::Profiles::Profile::Base::has_leaf_or_child_of_name(const std::strin
     return false;
 }
 
-Dhcpv6::Profiles::Profile::Base::Default_::Default_()
+Dhcpv6::Profiles::Profile::Base::Default::Default()
 {
 
     yang_name = "default"; yang_parent_name = "base"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Dhcpv6::Profiles::Profile::Base::Default_::~Default_()
+Dhcpv6::Profiles::Profile::Base::Default::~Default()
 {
 }
 
-bool Dhcpv6::Profiles::Profile::Base::Default_::has_data() const
+bool Dhcpv6::Profiles::Profile::Base::Default::has_data() const
 {
     for (std::size_t index=0; index<profile.size(); index++)
     {
@@ -997,7 +997,7 @@ bool Dhcpv6::Profiles::Profile::Base::Default_::has_data() const
     return false;
 }
 
-bool Dhcpv6::Profiles::Profile::Base::Default_::has_operation() const
+bool Dhcpv6::Profiles::Profile::Base::Default::has_operation() const
 {
     for (std::size_t index=0; index<profile.size(); index++)
     {
@@ -1007,14 +1007,14 @@ bool Dhcpv6::Profiles::Profile::Base::Default_::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Dhcpv6::Profiles::Profile::Base::Default_::get_segment_path() const
+std::string Dhcpv6::Profiles::Profile::Base::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Base::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Base::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1023,19 +1023,11 @@ std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Base::
 
 }
 
-std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Base::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Base::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "profile")
     {
-        for(auto const & c : profile)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Dhcpv6::Profiles::Profile::Base::Default_::Profile_>();
+        auto c = std::make_shared<Dhcpv6::Profiles::Profile::Base::Default::Profile_>();
         c->parent = this;
         profile.push_back(c);
         return c;
@@ -1044,33 +1036,38 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Base::Default_::get_child_by_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Base::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Base::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : profile)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Dhcpv6::Profiles::Profile::Base::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dhcpv6::Profiles::Profile::Base::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Dhcpv6::Profiles::Profile::Base::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Dhcpv6::Profiles::Profile::Base::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Dhcpv6::Profiles::Profile::Base::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Dhcpv6::Profiles::Profile::Base::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "profile")
         return true;
     return false;
 }
 
-Dhcpv6::Profiles::Profile::Base::Default_::Profile_::Profile_()
+Dhcpv6::Profiles::Profile::Base::Default::Profile_::Profile_()
     :
     profile_name{YType::str, "profile-name"},
     server_mode{YType::empty, "server-mode"},
@@ -1080,18 +1077,18 @@ Dhcpv6::Profiles::Profile::Base::Default_::Profile_::Profile_()
     yang_name = "profile"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Dhcpv6::Profiles::Profile::Base::Default_::Profile_::~Profile_()
+Dhcpv6::Profiles::Profile::Base::Default::Profile_::~Profile_()
 {
 }
 
-bool Dhcpv6::Profiles::Profile::Base::Default_::Profile_::has_data() const
+bool Dhcpv6::Profiles::Profile::Base::Default::Profile_::has_data() const
 {
     return profile_name.is_set
 	|| server_mode.is_set
 	|| proxy_mode.is_set;
 }
 
-bool Dhcpv6::Profiles::Profile::Base::Default_::Profile_::has_operation() const
+bool Dhcpv6::Profiles::Profile::Base::Default::Profile_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(profile_name.yfilter)
@@ -1099,14 +1096,14 @@ bool Dhcpv6::Profiles::Profile::Base::Default_::Profile_::has_operation() const
 	|| ydk::is_set(proxy_mode.yfilter);
 }
 
-std::string Dhcpv6::Profiles::Profile::Base::Default_::Profile_::get_segment_path() const
+std::string Dhcpv6::Profiles::Profile::Base::Default::Profile_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "profile" <<"[profile-name='" <<profile_name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Base::Default_::Profile_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Base::Default::Profile_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1118,18 +1115,19 @@ std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Base::
 
 }
 
-std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Base::Default_::Profile_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Base::Default::Profile_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Base::Default_::Profile_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Base::Default::Profile_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Dhcpv6::Profiles::Profile::Base::Default_::Profile_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dhcpv6::Profiles::Profile::Base::Default::Profile_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile-name")
     {
@@ -1151,7 +1149,7 @@ void Dhcpv6::Profiles::Profile::Base::Default_::Profile_::set_value(const std::s
     }
 }
 
-void Dhcpv6::Profiles::Profile::Base::Default_::Profile_::set_filter(const std::string & value_path, YFilter yfilter)
+void Dhcpv6::Profiles::Profile::Base::Default::Profile_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "profile-name")
     {
@@ -1167,7 +1165,7 @@ void Dhcpv6::Profiles::Profile::Base::Default_::Profile_::set_filter(const std::
     }
 }
 
-bool Dhcpv6::Profiles::Profile::Base::Default_::Profile_::has_leaf_or_child_of_name(const std::string & name) const
+bool Dhcpv6::Profiles::Profile::Base::Default::Profile_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "profile-name" || name == "server-mode" || name == "proxy-mode")
         return true;
@@ -1231,6 +1229,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Base::Match::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Base::Match::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mode_classes != nullptr)
     {
         children["mode-classes"] = mode_classes;
@@ -1304,14 +1303,6 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::get
 {
     if(child_yang_name == "mode-class")
     {
-        for(auto const & c : mode_class)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass>();
         c->parent = this;
         mode_class.push_back(c);
@@ -1324,9 +1315,14 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::get
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mode_class)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1401,14 +1397,6 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::Mod
 {
     if(child_yang_name == "profile")
     {
-        for(auto const & c : profile)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::Profile_>();
         c->parent = this;
         profile.push_back(c);
@@ -1421,9 +1409,14 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::Mod
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : profile)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1510,6 +1503,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::Mod
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::Profile_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1701,6 +1695,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interfaces != nullptr)
     {
         children["interfaces"] = interfaces;
@@ -1849,14 +1844,6 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Interfaces::get_child_
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -1869,9 +1856,14 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Interfaces::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1944,6 +1936,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Interfaces::Interface:
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2039,6 +2032,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Relay::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Relay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(option != nullptr)
     {
         children["option"] = option;
@@ -2136,6 +2130,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Relay::Option::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Relay::Option::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_id != nullptr)
     {
         children["interface-id"] = interface_id;
@@ -2247,6 +2242,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Relay::Option::Interfa
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Relay::Option::InterfaceId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2325,14 +2321,6 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Vrfs::get_child_by_nam
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -2345,9 +2333,14 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Vrfs::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2430,6 +2423,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(helper_addresses != nullptr)
     {
         children["helper-addresses"] = helper_addresses;
@@ -2513,14 +2507,6 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddre
 {
     if(child_yang_name == "helper-address")
     {
-        for(auto const & c : helper_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress>();
         c->parent = this;
         helper_address.push_back(c);
@@ -2533,9 +2519,14 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddre
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : helper_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2612,6 +2603,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddre
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2708,6 +2700,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Authentication::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2786,15 +2779,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Classes::get_child_by_
 {
     if(child_yang_name == "class")
     {
-        for(auto const & c : class_)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Classes::Class_>();
+        auto c = std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Classes::Class>();
         c->parent = this;
         class_.push_back(c);
         return c;
@@ -2806,9 +2791,14 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Classes::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Classes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : class_)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2829,30 +2819,30 @@ bool Dhcpv6::Profiles::Profile::Proxy::Classes::has_leaf_or_child_of_name(const 
     return false;
 }
 
-Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::Class_()
+Dhcpv6::Profiles::Profile::Proxy::Classes::Class::Class()
     :
     class_name{YType::str, "class-name"},
     link_address{YType::str, "link-address"}
     	,
-    helper_addresses(std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses>())
+    helper_addresses(std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses>())
 {
     helper_addresses->parent = this;
 
     yang_name = "class"; yang_parent_name = "classes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::~Class_()
+Dhcpv6::Profiles::Profile::Proxy::Classes::Class::~Class()
 {
 }
 
-bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::has_data() const
+bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class::has_data() const
 {
     return class_name.is_set
 	|| link_address.is_set
 	|| (helper_addresses !=  nullptr && helper_addresses->has_data());
 }
 
-bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::has_operation() const
+bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(class_name.yfilter)
@@ -2860,14 +2850,14 @@ bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::has_operation() const
 	|| (helper_addresses !=  nullptr && helper_addresses->has_operation());
 }
 
-std::string Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::get_segment_path() const
+std::string Dhcpv6::Profiles::Profile::Proxy::Classes::Class::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "class" <<"[class-name='" <<class_name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy::Classes::Class::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2878,13 +2868,13 @@ std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy:
 
 }
 
-std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Classes::Class::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "helper-addresses")
     {
         if(helper_addresses == nullptr)
         {
-            helper_addresses = std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses>();
+            helper_addresses = std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses>();
         }
         return helper_addresses;
     }
@@ -2892,9 +2882,10 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Classes::Class::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(helper_addresses != nullptr)
     {
         children["helper-addresses"] = helper_addresses;
@@ -2903,7 +2894,7 @@ std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy:
     return children;
 }
 
-void Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dhcpv6::Profiles::Profile::Proxy::Classes::Class::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "class-name")
     {
@@ -2919,7 +2910,7 @@ void Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::set_value(const std::str
     }
 }
 
-void Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::set_filter(const std::string & value_path, YFilter yfilter)
+void Dhcpv6::Profiles::Profile::Proxy::Classes::Class::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "class-name")
     {
@@ -2931,24 +2922,24 @@ void Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::set_filter(const std::st
     }
 }
 
-bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::has_leaf_or_child_of_name(const std::string & name) const
+bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "helper-addresses" || name == "class-name" || name == "link-address")
         return true;
     return false;
 }
 
-Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddresses()
+Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::HelperAddresses()
 {
 
     yang_name = "helper-addresses"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::~HelperAddresses()
+Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::~HelperAddresses()
 {
 }
 
-bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::has_data() const
+bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::has_data() const
 {
     for (std::size_t index=0; index<helper_address.size(); index++)
     {
@@ -2958,7 +2949,7 @@ bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::has_dat
     return false;
 }
 
-bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::has_operation() const
+bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::has_operation() const
 {
     for (std::size_t index=0; index<helper_address.size(); index++)
     {
@@ -2968,14 +2959,14 @@ bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::has_ope
     return is_set(yfilter);
 }
 
-std::string Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::get_segment_path() const
+std::string Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "helper-addresses";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2984,19 +2975,11 @@ std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy:
 
 }
 
-std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "helper-address")
     {
-        for(auto const & c : helper_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress>();
+        auto c = std::make_shared<Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::HelperAddress>();
         c->parent = this;
         helper_address.push_back(c);
         return c;
@@ -3005,33 +2988,38 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::Helpe
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : helper_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+void Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::has_leaf_or_child_of_name(const std::string & name) const
+bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "helper-address")
         return true;
     return false;
 }
 
-Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::HelperAddress()
+Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::HelperAddress::HelperAddress()
     :
     vrf_name{YType::str, "vrf-name"},
     helper_address{YType::str, "helper-address"}
@@ -3040,31 +3028,31 @@ Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddres
     yang_name = "helper-address"; yang_parent_name = "helper-addresses"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::~HelperAddress()
+Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::HelperAddress::~HelperAddress()
 {
 }
 
-bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::has_data() const
+bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::HelperAddress::has_data() const
 {
     return vrf_name.is_set
 	|| helper_address.is_set;
 }
 
-bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::has_operation() const
+bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::HelperAddress::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vrf_name.yfilter)
 	|| ydk::is_set(helper_address.yfilter);
 }
 
-std::string Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::get_segment_path() const
+std::string Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::HelperAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "helper-address" <<"[vrf-name='" <<vrf_name <<"']" <<"[helper-address='" <<helper_address <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::HelperAddress::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3075,18 +3063,19 @@ std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Proxy:
 
 }
 
-std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::HelperAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::HelperAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::HelperAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
@@ -3102,7 +3091,7 @@ void Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperA
     }
 }
 
-void Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::set_filter(const std::string & value_path, YFilter yfilter)
+void Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::HelperAddress::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vrf-name")
     {
@@ -3114,7 +3103,7 @@ void Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperA
     }
 }
 
-bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class_::HelperAddresses::HelperAddress::has_leaf_or_child_of_name(const std::string & name) const
+bool Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::HelperAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vrf-name" || name == "helper-address")
         return true;
@@ -3178,6 +3167,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Sessions::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Sessions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mac != nullptr)
     {
         children["mac"] = mac;
@@ -3258,6 +3248,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(throttle != nullptr)
     {
         children["throttle"] = throttle;
@@ -3337,6 +3328,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::Throttl
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Proxy::Sessions::Mac::Throttle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3523,6 +3515,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sessions != nullptr)
     {
         children["sessions"] = sessions;
@@ -3693,6 +3686,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::Sessions::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::Sessions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mac != nullptr)
     {
         children["mac"] = mac;
@@ -3773,6 +3767,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::Sessions::Mac::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::Sessions::Mac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(throttle != nullptr)
     {
         children["throttle"] = throttle;
@@ -3852,6 +3847,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Thrott
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::Sessions::Mac::Throttle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3959,6 +3955,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::DnsServers::get_child
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::DnsServers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4035,15 +4032,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::Classes::get_child_by
 {
     if(child_yang_name == "class")
     {
-        for(auto const & c : class_)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Dhcpv6::Profiles::Profile::Server::Classes::Class_>();
+        auto c = std::make_shared<Dhcpv6::Profiles::Profile::Server::Classes::Class>();
         c->parent = this;
         class_.push_back(c);
         return c;
@@ -4055,9 +4044,14 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::Classes::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::Classes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : class_)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4078,7 +4072,7 @@ bool Dhcpv6::Profiles::Profile::Server::Classes::has_leaf_or_child_of_name(const
     return false;
 }
 
-Dhcpv6::Profiles::Profile::Server::Classes::Class_::Class_()
+Dhcpv6::Profiles::Profile::Server::Classes::Class::Class()
     :
     class_name{YType::str, "class-name"},
     address_pool{YType::str, "address-pool"},
@@ -4086,18 +4080,18 @@ Dhcpv6::Profiles::Profile::Server::Classes::Class_::Class_()
     preference{YType::uint32, "preference"},
     prefix_pool{YType::str, "prefix-pool"}
     	,
-    dns_servers(std::make_shared<Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers>())
+    dns_servers(std::make_shared<Dhcpv6::Profiles::Profile::Server::Classes::Class::DnsServers>())
 {
     dns_servers->parent = this;
 
     yang_name = "class"; yang_parent_name = "classes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Dhcpv6::Profiles::Profile::Server::Classes::Class_::~Class_()
+Dhcpv6::Profiles::Profile::Server::Classes::Class::~Class()
 {
 }
 
-bool Dhcpv6::Profiles::Profile::Server::Classes::Class_::has_data() const
+bool Dhcpv6::Profiles::Profile::Server::Classes::Class::has_data() const
 {
     return class_name.is_set
 	|| address_pool.is_set
@@ -4107,7 +4101,7 @@ bool Dhcpv6::Profiles::Profile::Server::Classes::Class_::has_data() const
 	|| (dns_servers !=  nullptr && dns_servers->has_data());
 }
 
-bool Dhcpv6::Profiles::Profile::Server::Classes::Class_::has_operation() const
+bool Dhcpv6::Profiles::Profile::Server::Classes::Class::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(class_name.yfilter)
@@ -4118,14 +4112,14 @@ bool Dhcpv6::Profiles::Profile::Server::Classes::Class_::has_operation() const
 	|| (dns_servers !=  nullptr && dns_servers->has_operation());
 }
 
-std::string Dhcpv6::Profiles::Profile::Server::Classes::Class_::get_segment_path() const
+std::string Dhcpv6::Profiles::Profile::Server::Classes::Class::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "class" <<"[class-name='" <<class_name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Server::Classes::Class_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Server::Classes::Class::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4139,13 +4133,13 @@ std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Server
 
 }
 
-std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::Classes::Class_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::Classes::Class::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dns-servers")
     {
         if(dns_servers == nullptr)
         {
-            dns_servers = std::make_shared<Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers>();
+            dns_servers = std::make_shared<Dhcpv6::Profiles::Profile::Server::Classes::Class::DnsServers>();
         }
         return dns_servers;
     }
@@ -4153,9 +4147,10 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::Classes::Class_::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::Classes::Class_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::Classes::Class::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dns_servers != nullptr)
     {
         children["dns-servers"] = dns_servers;
@@ -4164,7 +4159,7 @@ std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server
     return children;
 }
 
-void Dhcpv6::Profiles::Profile::Server::Classes::Class_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dhcpv6::Profiles::Profile::Server::Classes::Class::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "class-name")
     {
@@ -4198,7 +4193,7 @@ void Dhcpv6::Profiles::Profile::Server::Classes::Class_::set_value(const std::st
     }
 }
 
-void Dhcpv6::Profiles::Profile::Server::Classes::Class_::set_filter(const std::string & value_path, YFilter yfilter)
+void Dhcpv6::Profiles::Profile::Server::Classes::Class::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "class-name")
     {
@@ -4222,14 +4217,14 @@ void Dhcpv6::Profiles::Profile::Server::Classes::Class_::set_filter(const std::s
     }
 }
 
-bool Dhcpv6::Profiles::Profile::Server::Classes::Class_::has_leaf_or_child_of_name(const std::string & name) const
+bool Dhcpv6::Profiles::Profile::Server::Classes::Class::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dns-servers" || name == "class-name" || name == "address-pool" || name == "domain-name" || name == "preference" || name == "prefix-pool")
         return true;
     return false;
 }
 
-Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::DnsServers()
+Dhcpv6::Profiles::Profile::Server::Classes::Class::DnsServers::DnsServers()
     :
     dns_server{YType::str, "dns-server"}
 {
@@ -4237,11 +4232,11 @@ Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::DnsServers()
     yang_name = "dns-servers"; yang_parent_name = "class"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::~DnsServers()
+Dhcpv6::Profiles::Profile::Server::Classes::Class::DnsServers::~DnsServers()
 {
 }
 
-bool Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::has_data() const
+bool Dhcpv6::Profiles::Profile::Server::Classes::Class::DnsServers::has_data() const
 {
     for (auto const & leaf : dns_server.getYLeafs())
     {
@@ -4251,7 +4246,7 @@ bool Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::has_data() 
     return false;
 }
 
-bool Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::has_operation() const
+bool Dhcpv6::Profiles::Profile::Server::Classes::Class::DnsServers::has_operation() const
 {
     for (auto const & leaf : dns_server.getYLeafs())
     {
@@ -4262,14 +4257,14 @@ bool Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::has_operati
 	|| ydk::is_set(dns_server.yfilter);
 }
 
-std::string Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::get_segment_path() const
+std::string Dhcpv6::Profiles::Profile::Server::Classes::Class::DnsServers::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dns-servers";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Server::Classes::Class::DnsServers::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4280,18 +4275,19 @@ std::vector<std::pair<std::string, LeafData> > Dhcpv6::Profiles::Profile::Server
 
 }
 
-std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::Classes::Class::DnsServers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::Classes::Class::DnsServers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dhcpv6::Profiles::Profile::Server::Classes::Class::DnsServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dns-server")
     {
@@ -4299,7 +4295,7 @@ void Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::set_value(c
     }
 }
 
-void Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::set_filter(const std::string & value_path, YFilter yfilter)
+void Dhcpv6::Profiles::Profile::Server::Classes::Class::DnsServers::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dns-server")
     {
@@ -4307,7 +4303,7 @@ void Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::set_filter(
     }
 }
 
-bool Dhcpv6::Profiles::Profile::Server::Classes::Class_::DnsServers::has_leaf_or_child_of_name(const std::string & name) const
+bool Dhcpv6::Profiles::Profile::Server::Classes::Class::DnsServers::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dns-server")
         return true;
@@ -4374,6 +4370,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::Lease::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::Lease::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4489,6 +4486,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vendor_options != nullptr)
     {
         children["vendor-options"] = vendor_options;
@@ -4564,6 +4562,7 @@ std::shared_ptr<Entity> Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::Vendor
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Profiles::Profile::Server::Dhcpv6Options::VendorOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4659,14 +4658,6 @@ std::shared_ptr<Entity> Dhcpv6::Interfaces::get_child_by_name(const std::string 
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Dhcpv6::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -4679,9 +4670,14 @@ std::shared_ptr<Entity> Dhcpv6::Interfaces::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4823,6 +4819,7 @@ std::shared_ptr<Entity> Dhcpv6::Interfaces::Interface::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pppoe != nullptr)
     {
         children["pppoe"] = pppoe;
@@ -4924,6 +4921,7 @@ std::shared_ptr<Entity> Dhcpv6::Interfaces::Interface::Pppoe::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Interfaces::Interface::Pppoe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5000,6 +4998,7 @@ std::shared_ptr<Entity> Dhcpv6::Interfaces::Interface::Proxy::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Interfaces::Interface::Proxy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5076,6 +5075,7 @@ std::shared_ptr<Entity> Dhcpv6::Interfaces::Interface::Base::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Interfaces::Interface::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5152,6 +5152,7 @@ std::shared_ptr<Entity> Dhcpv6::Interfaces::Interface::Server::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Interfaces::Interface::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5228,6 +5229,7 @@ std::shared_ptr<Entity> Dhcpv6::Interfaces::Interface::Relay::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Dhcpv6::Interfaces::Interface::Relay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

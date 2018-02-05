@@ -327,7 +327,7 @@ class Vpls : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Ide
 
 }; // Vpls
 
-class Qos : public policy_types::PolicyType, virtual ydk::Identity
+class Qos : public ietf::policy_types::PolicyType, virtual ydk::Identity
 {
     public:
         Qos();
@@ -336,7 +336,7 @@ class Qos : public policy_types::PolicyType, virtual ydk::Identity
 
 }; // Qos
 
-class Pbr : public policy_types::PolicyType, virtual ydk::Identity
+class Pbr : public ietf::policy_types::PolicyType, virtual ydk::Identity
 {
     public:
         Pbr();
@@ -345,7 +345,7 @@ class Pbr : public policy_types::PolicyType, virtual ydk::Identity
 
 }; // Pbr
 
-class PerfMon : public policy_types::PolicyType, virtual ydk::Identity
+class PerfMon : public ietf::policy_types::PolicyType, virtual ydk::Identity
 {
     public:
         PerfMon();
@@ -354,7 +354,7 @@ class PerfMon : public policy_types::PolicyType, virtual ydk::Identity
 
 }; // PerfMon
 
-class AccessControl : public policy_types::PolicyType, virtual ydk::Identity
+class AccessControl : public ietf::policy_types::PolicyType, virtual ydk::Identity
 {
     public:
         AccessControl();
@@ -363,7 +363,7 @@ class AccessControl : public policy_types::PolicyType, virtual ydk::Identity
 
 }; // AccessControl
 
-class Appnav : public policy_types::PolicyType, virtual ydk::Identity
+class Appnav : public ietf::policy_types::PolicyType, virtual ydk::Identity
 {
     public:
         Appnav();
@@ -372,7 +372,7 @@ class Appnav : public policy_types::PolicyType, virtual ydk::Identity
 
 }; // Appnav
 
-class Control : public policy_types::PolicyType, virtual ydk::Identity
+class Control : public ietf::policy_types::PolicyType, virtual ydk::Identity
 {
     public:
         Control();
@@ -381,7 +381,7 @@ class Control : public policy_types::PolicyType, virtual ydk::Identity
 
 }; // Control
 
-class Inspect : public policy_types::PolicyType, virtual ydk::Identity
+class Inspect : public ietf::policy_types::PolicyType, virtual ydk::Identity
 {
     public:
         Inspect();
@@ -390,7 +390,7 @@ class Inspect : public policy_types::PolicyType, virtual ydk::Identity
 
 }; // Inspect
 
-class PacketService : public policy_types::PolicyType, virtual ydk::Identity
+class PacketService : public ietf::policy_types::PolicyType, virtual ydk::Identity
 {
     public:
         PacketService();
@@ -399,7 +399,7 @@ class PacketService : public policy_types::PolicyType, virtual ydk::Identity
 
 }; // PacketService
 
-class Service : public policy_types::PolicyType, virtual ydk::Identity
+class Service : public ietf::policy_types::PolicyType, virtual ydk::Identity
 {
     public:
         Service();
@@ -408,7 +408,7 @@ class Service : public policy_types::PolicyType, virtual ydk::Identity
 
 }; // Service
 
-class QosClass : public policy_types::ClassType, virtual ydk::Identity
+class QosClass : public ietf::policy_types::ClassType, virtual ydk::Identity
 {
     public:
         QosClass();
@@ -417,7 +417,7 @@ class QosClass : public policy_types::ClassType, virtual ydk::Identity
 
 }; // QosClass
 
-class AccessControlClass : public policy_types::ClassType, virtual ydk::Identity
+class AccessControlClass : public ietf::policy_types::ClassType, virtual ydk::Identity
 {
     public:
         AccessControlClass();
@@ -426,7 +426,7 @@ class AccessControlClass : public policy_types::ClassType, virtual ydk::Identity
 
 }; // AccessControlClass
 
-class AppnavClass : public policy_types::ClassType, virtual ydk::Identity
+class AppnavClass : public ietf::policy_types::ClassType, virtual ydk::Identity
 {
     public:
         AppnavClass();
@@ -435,7 +435,7 @@ class AppnavClass : public policy_types::ClassType, virtual ydk::Identity
 
 }; // AppnavClass
 
-class ControlClass : public policy_types::ClassType, virtual ydk::Identity
+class ControlClass : public ietf::policy_types::ClassType, virtual ydk::Identity
 {
     public:
         ControlClass();
@@ -444,7 +444,7 @@ class ControlClass : public policy_types::ClassType, virtual ydk::Identity
 
 }; // ControlClass
 
-class InspectClass : public policy_types::ClassType, virtual ydk::Identity
+class InspectClass : public ietf::policy_types::ClassType, virtual ydk::Identity
 {
     public:
         InspectClass();

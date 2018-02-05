@@ -172,7 +172,7 @@ static void add_annotation_to_datanode(const pair<string, LeafData> & name_value
 static path::Annotation get_annotation(YFilter yfilter)
 {
     if(yfilter == YFilter::not_set)
-        throw(YCPPInvalidArgumentError{"Invalid yfilter"});
+        throw(YInvalidArgumentError{"Invalid yfilter"});
     return {IETF_NETCONF_MODULE_NAME, "operation", to_string(yfilter)};
 }
 
@@ -220,7 +220,7 @@ void get_entity_from_data_node(path::DataNode * node, shared_ptr<Entity> entity)
             if(child_entity == nullptr)
             {
                 YLOG_ERROR("Couldn't fetch child entity {} in parent {}!", child_name, node->get_path());
-                throw(path::YCPPCoreError{"Couldn't fetch child entity '" + child_name + "' in parent " + node->get_path()});
+                throw(path::YCoreError{"Couldn't fetch child entity '" + child_name + "' in parent " + node->get_path()});
             }
             child_entity->parent = entity.get();
             get_entity_from_data_node(child_data_node.get(), child_entity);

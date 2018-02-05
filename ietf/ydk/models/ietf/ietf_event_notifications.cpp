@@ -141,6 +141,7 @@ std::shared_ptr<Entity> EstablishSubscription::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> EstablishSubscription::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -319,6 +320,7 @@ std::shared_ptr<Entity> EstablishSubscription::Input::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> EstablishSubscription::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -628,6 +630,7 @@ std::shared_ptr<Entity> EstablishSubscription::Output::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> EstablishSubscription::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -881,6 +884,7 @@ std::shared_ptr<Entity> CreateSubscription::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> CreateSubscription::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1000,6 +1004,7 @@ std::shared_ptr<Entity> CreateSubscription::Input::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> CreateSubscription::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1138,6 +1143,7 @@ std::shared_ptr<Entity> ModifySubscription::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> ModifySubscription::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1300,6 +1306,7 @@ std::shared_ptr<Entity> ModifySubscription::Input::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> ModifySubscription::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1569,6 +1576,7 @@ std::shared_ptr<Entity> ModifySubscription::Output::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> ModifySubscription::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1835,6 +1843,7 @@ std::shared_ptr<Entity> DeleteSubscription::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> DeleteSubscription::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1943,6 +1952,7 @@ std::shared_ptr<Entity> DeleteSubscription::Input::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> DeleteSubscription::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2026,6 +2036,7 @@ std::shared_ptr<Entity> DeleteSubscription::Output::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> DeleteSubscription::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2113,6 +2124,7 @@ std::shared_ptr<Entity> Streams::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> Streams::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2215,14 +2227,6 @@ std::shared_ptr<Entity> Filters::get_child_by_name(const std::string & child_yan
 {
     if(child_yang_name == "filter")
     {
-        for(auto const & c : filter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Filters::Filter>();
         c->parent = this;
         filter.push_back(c);
@@ -2235,9 +2239,14 @@ std::shared_ptr<Entity> Filters::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> Filters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : filter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2350,6 +2359,7 @@ std::shared_ptr<Entity> Filters::Filter::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Filters::Filter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2458,14 +2468,6 @@ std::shared_ptr<Entity> SubscriptionConfig::get_child_by_name(const std::string 
 {
     if(child_yang_name == "subscription")
     {
-        for(auto const & c : subscription)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SubscriptionConfig::Subscription>();
         c->parent = this;
         subscription.push_back(c);
@@ -2478,9 +2480,14 @@ std::shared_ptr<Entity> SubscriptionConfig::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> SubscriptionConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : subscription)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2681,6 +2688,7 @@ std::shared_ptr<Entity> SubscriptionConfig::Subscription::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> SubscriptionConfig::Subscription::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(receivers != nullptr)
     {
         children["receivers"] = receivers;
@@ -2952,14 +2960,6 @@ std::shared_ptr<Entity> SubscriptionConfig::Subscription::Receivers::get_child_b
 {
     if(child_yang_name == "receiver")
     {
-        for(auto const & c : receiver)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SubscriptionConfig::Subscription::Receivers::Receiver>();
         c->parent = this;
         receiver.push_back(c);
@@ -2972,9 +2972,14 @@ std::shared_ptr<Entity> SubscriptionConfig::Subscription::Receivers::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> SubscriptionConfig::Subscription::Receivers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : receiver)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3051,6 +3056,7 @@ std::shared_ptr<Entity> SubscriptionConfig::Subscription::Receivers::Receiver::g
 std::map<std::string, std::shared_ptr<Entity>> SubscriptionConfig::Subscription::Receivers::Receiver::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3149,14 +3155,6 @@ std::shared_ptr<Entity> Subscriptions::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "subscription")
     {
-        for(auto const & c : subscription)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Subscriptions::Subscription>();
         c->parent = this;
         subscription.push_back(c);
@@ -3169,9 +3167,14 @@ std::shared_ptr<Entity> Subscriptions::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Subscriptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : subscription)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3380,6 +3383,7 @@ std::shared_ptr<Entity> Subscriptions::Subscription::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Subscriptions::Subscription::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(receivers != nullptr)
     {
         children["receivers"] = receivers;
@@ -3671,14 +3675,6 @@ std::shared_ptr<Entity> Subscriptions::Subscription::Receivers::get_child_by_nam
 {
     if(child_yang_name == "receiver")
     {
-        for(auto const & c : receiver)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Subscriptions::Subscription::Receivers::Receiver>();
         c->parent = this;
         receiver.push_back(c);
@@ -3691,9 +3687,14 @@ std::shared_ptr<Entity> Subscriptions::Subscription::Receivers::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Subscriptions::Subscription::Receivers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : receiver)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3770,6 +3771,7 @@ std::shared_ptr<Entity> Subscriptions::Subscription::Receivers::Receiver::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Subscriptions::Subscription::Receivers::Receiver::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

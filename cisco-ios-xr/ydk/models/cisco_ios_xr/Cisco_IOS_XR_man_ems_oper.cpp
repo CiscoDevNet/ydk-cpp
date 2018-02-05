@@ -81,6 +81,7 @@ std::shared_ptr<Entity> Grpc::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Grpc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(statistics != nullptr)
     {
         children["statistics"] = statistics;
@@ -269,6 +270,7 @@ std::shared_ptr<Entity> Grpc::Statistics::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Grpc::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -580,6 +582,7 @@ std::shared_ptr<Entity> Grpc::Status::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Grpc::Status::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -514,18 +514,18 @@ class Sla::Protocols::Ethernet::Operations : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Operation_; //type: Sla::Protocols::Ethernet::Operations::Operation_
+        class Operation; //type: Sla::Protocols::Ethernet::Operations::Operation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation_> > operation_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation> > operation_;
         
 }; // Sla::Protocols::Ethernet::Operations
 
 
-class Sla::Protocols::Ethernet::Operations::Operation_ : public ydk::Entity
+class Sla::Protocols::Ethernet::Operations::Operation : public ydk::Entity
 {
     public:
-        Operation_();
-        ~Operation_();
+        Operation();
+        ~Operation();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -546,16 +546,16 @@ class Sla::Protocols::Ethernet::Operations::Operation_ : public ydk::Entity
         ydk::YLeaf display_short; //type: string
         ydk::YLeaf display_long; //type: string
         ydk::YLeaf last_run; //type: uint32
-        class ProfileOptions; //type: Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions
-        class SpecificOptions; //type: Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions
+        class ProfileOptions; //type: Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions
+        class SpecificOptions; //type: Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions> profile_options;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions> specific_options;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions> profile_options;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions> specific_options;
         
-}; // Sla::Protocols::Ethernet::Operations::Operation_
+}; // Sla::Protocols::Ethernet::Operations::Operation
 
 
-class Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions : public ydk::Entity
+class Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions : public ydk::Entity
 {
     public:
         ProfileOptions();
@@ -578,20 +578,20 @@ class Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions : public 
         ydk::YLeaf bursts_per_probe; //type: uint32
         ydk::YLeaf inter_burst_interval; //type: uint32
         ydk::YLeaf flr_calculation_interval; //type: uint32
-        class PacketPadding; //type: Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::PacketPadding
-        class Priority; //type: Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Priority
-        class OperationSchedule; //type: Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationSchedule
-        class OperationMetric; //type: Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric
+        class PacketPadding; //type: Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::PacketPadding
+        class Priority; //type: Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::Priority
+        class OperationSchedule; //type: Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationSchedule
+        class OperationMetric; //type: Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::PacketPadding> packet_padding;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Priority> priority;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationSchedule> operation_schedule;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric> > operation_metric;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::PacketPadding> packet_padding;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::Priority> priority;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationSchedule> operation_schedule;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric> > operation_metric;
         
-}; // Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions
+}; // Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions
 
 
-class Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::PacketPadding : public ydk::Entity
+class Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::PacketPadding : public ydk::Entity
 {
     public:
         PacketPadding();
@@ -612,10 +612,10 @@ class Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::PacketPa
         ydk::YLeaf test_pattern_pad_scheme; //type: SlaOperTestPatternScheme
         ydk::YLeaf test_pattern_pad_hex_string; //type: uint32
 
-}; // Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::PacketPadding
+}; // Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::PacketPadding
 
 
-class Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Priority : public ydk::Entity
+class Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::Priority : public ydk::Entity
 {
     public:
         Priority();
@@ -635,10 +635,10 @@ class Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Priority
         ydk::YLeaf priority_type; //type: SlaOperPacketPriority
         ydk::YLeaf cos; //type: uint8
 
-}; // Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Priority
+}; // Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::Priority
 
 
-class Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationSchedule : public ydk::Entity
+class Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationSchedule : public ydk::Entity
 {
     public:
         OperationSchedule();
@@ -660,10 +660,10 @@ class Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Operatio
         ydk::YLeaf schedule_duration; //type: uint32
         ydk::YLeaf schedule_interval; //type: uint32
 
-}; // Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationSchedule
+}; // Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationSchedule
 
 
-class Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric : public ydk::Entity
+class Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric : public ydk::Entity
 {
     public:
         OperationMetric();
@@ -681,14 +681,14 @@ class Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Operatio
         std::string get_absolute_path() const override;
 
         ydk::YLeaf current_buckets_archive; //type: uint32
-        class MetricConfig; //type: Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric::MetricConfig
+        class MetricConfig; //type: Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric::MetricConfig
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric::MetricConfig> metric_config;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric::MetricConfig> metric_config;
         
-}; // Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric
+}; // Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric
 
 
-class Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric::MetricConfig : public ydk::Entity
+class Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric::MetricConfig : public ydk::Entity
 {
     public:
         MetricConfig();
@@ -712,10 +712,10 @@ class Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Operatio
         ydk::YLeaf bucket_size_unit; //type: SlaBucketSize
         ydk::YLeaf buckets_archive; //type: uint32
 
-}; // Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric::MetricConfig
+}; // Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric::MetricConfig
 
 
-class Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions : public ydk::Entity
+class Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions : public ydk::Entity
 {
     public:
         SpecificOptions();
@@ -733,16 +733,16 @@ class Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions : public
         std::string get_absolute_path() const override;
 
         ydk::YLeaf oper_type; //type: SlaOperOperation
-        class ConfiguredOperationOptions; //type: Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::ConfiguredOperationOptions
-        class OndemandOperationOptions; //type: Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::OndemandOperationOptions
+        class ConfiguredOperationOptions; //type: Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::ConfiguredOperationOptions
+        class OndemandOperationOptions; //type: Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::OndemandOperationOptions
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::ConfiguredOperationOptions> configured_operation_options;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::OndemandOperationOptions> ondemand_operation_options;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::ConfiguredOperationOptions> configured_operation_options;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_oper::Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::OndemandOperationOptions> ondemand_operation_options;
         
-}; // Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions
+}; // Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions
 
 
-class Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::ConfiguredOperationOptions : public ydk::Entity
+class Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::ConfiguredOperationOptions : public ydk::Entity
 {
     public:
         ConfiguredOperationOptions();
@@ -761,10 +761,10 @@ class Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::Configu
 
         ydk::YLeaf profile_name; //type: string
 
-}; // Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::ConfiguredOperationOptions
+}; // Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::ConfiguredOperationOptions
 
 
-class Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::OndemandOperationOptions : public ydk::Entity
+class Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::OndemandOperationOptions : public ydk::Entity
 {
     public:
         OndemandOperationOptions();
@@ -784,7 +784,7 @@ class Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::Ondeman
         ydk::YLeaf ondemand_operation_id; //type: uint32
         ydk::YLeaf probe_count; //type: uint8
 
-}; // Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::OndemandOperationOptions
+}; // Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::OndemandOperationOptions
 
 
 class Sla::Protocols::Ethernet::StatisticsHistoricals : public ydk::Entity

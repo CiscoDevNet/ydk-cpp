@@ -105,6 +105,7 @@ std::shared_ptr<Entity> Watchdog::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> Watchdog::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold_memory != nullptr)
     {
         children["threshold-memory"] = threshold_memory;
@@ -306,6 +307,7 @@ std::shared_ptr<Entity> Watchdog::ThresholdMemory::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Watchdog::ThresholdMemory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

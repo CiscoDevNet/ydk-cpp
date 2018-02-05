@@ -390,18 +390,18 @@ class Native::Interface::Tunnel::Cts::Manual::Policy : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Static_; //type: Native::Interface::Tunnel::Cts::Manual::Policy::Static_
+        class Static; //type: Native::Interface::Tunnel::Cts::Manual::Policy::Static
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Cts::Manual::Policy::Static_> static_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Cts::Manual::Policy::Static> static_;
         
 }; // Native::Interface::Tunnel::Cts::Manual::Policy
 
 
-class Native::Interface::Tunnel::Cts::Manual::Policy::Static_ : public ydk::Entity
+class Native::Interface::Tunnel::Cts::Manual::Policy::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -416,7 +416,7 @@ class Native::Interface::Tunnel::Cts::Manual::Policy::Static_ : public ydk::Enti
         ydk::YLeaf sgt; //type: uint16
         ydk::YLeaf trusted; //type: empty
 
-}; // Native::Interface::Tunnel::Cts::Manual::Policy::Static_
+}; // Native::Interface::Tunnel::Cts::Manual::Policy::Static
 
 
 class Native::Interface::Tunnel::Cts::Manual::Sap : public ydk::Entity

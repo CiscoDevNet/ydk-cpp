@@ -59,7 +59,7 @@ CodecService::encode(CodecServiceProvider & provider, Entity & entity, bool pret
         if(provider.m_encoding != EncodingFormat::XML)
         {
             YLOG_ERROR("Subtree option can only be used with XML encoding");
-            throw(YCPPServiceProviderError("Subtree option can only be used with XML encoding"));
+            throw(YServiceProviderError("Subtree option can only be used with XML encoding"));
         }
         XmlSubtreeCodec codec{};
         return codec.encode(entity, root_schema);
@@ -95,7 +95,7 @@ CodecService::decode(CodecServiceProvider & provider, const std::string & payloa
         if(provider.m_encoding != EncodingFormat::XML)
         {
             YLOG_ERROR("Subtree option can only be used with XML encoding");
-            throw(YCPPServiceProviderError("Subtree option can only be used with XML encoding"));
+            throw(YServiceProviderError("Subtree option can only be used with XML encoding"));
         }
         XmlSubtreeCodec codec{};
         return codec.decode(payload, entity);
@@ -111,7 +111,7 @@ CodecService::decode(CodecServiceProvider & provider, const std::string & payloa
     if (root_data_node->get_children().size() != 1)
     {
         YLOG_ERROR(PAYLOAD_ERROR_MSG);
-        throw(YCPPServiceProviderError(PAYLOAD_ERROR_MSG));
+        throw(YServiceProviderError(PAYLOAD_ERROR_MSG));
     }
     else
     {

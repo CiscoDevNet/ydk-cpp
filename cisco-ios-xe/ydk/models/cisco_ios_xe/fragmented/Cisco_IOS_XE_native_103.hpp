@@ -866,18 +866,18 @@ class Native::L2Vpn::Pseudowire::StaticOam : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Class_; //type: Native::L2Vpn::Pseudowire::StaticOam::Class_
+        class Class; //type: Native::L2Vpn::Pseudowire::StaticOam::Class
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::L2Vpn::Pseudowire::StaticOam::Class_> > class_;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::L2Vpn::Pseudowire::StaticOam::Class> > class_;
         
 }; // Native::L2Vpn::Pseudowire::StaticOam
 
 
-class Native::L2Vpn::Pseudowire::StaticOam::Class_ : public ydk::Entity
+class Native::L2Vpn::Pseudowire::StaticOam::Class : public ydk::Entity
 {
     public:
-        Class_();
-        ~Class_();
+        Class();
+        ~Class();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -891,14 +891,14 @@ class Native::L2Vpn::Pseudowire::StaticOam::Class_ : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf pw_nm; //type: string
-        class Timeout; //type: Native::L2Vpn::Pseudowire::StaticOam::Class_::Timeout
+        class Timeout; //type: Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::L2Vpn::Pseudowire::StaticOam::Class_::Timeout> timeout;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout> timeout;
         
-}; // Native::L2Vpn::Pseudowire::StaticOam::Class_
+}; // Native::L2Vpn::Pseudowire::StaticOam::Class
 
 
-class Native::L2Vpn::Pseudowire::StaticOam::Class_::Timeout : public ydk::Entity
+class Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout : public ydk::Entity
 {
     public:
         Timeout();
@@ -914,14 +914,14 @@ class Native::L2Vpn::Pseudowire::StaticOam::Class_::Timeout : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Refresh; //type: Native::L2Vpn::Pseudowire::StaticOam::Class_::Timeout::Refresh
+        class Refresh; //type: Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::L2Vpn::Pseudowire::StaticOam::Class_::Timeout::Refresh> refresh;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh> refresh;
         
-}; // Native::L2Vpn::Pseudowire::StaticOam::Class_::Timeout
+}; // Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout
 
 
-class Native::L2Vpn::Pseudowire::StaticOam::Class_::Timeout::Refresh : public ydk::Entity
+class Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh : public ydk::Entity
 {
     public:
         Refresh();
@@ -937,14 +937,14 @@ class Native::L2Vpn::Pseudowire::StaticOam::Class_::Timeout::Refresh : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Send; //type: Native::L2Vpn::Pseudowire::StaticOam::Class_::Timeout::Refresh::Send
+        class Send; //type: Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::L2Vpn::Pseudowire::StaticOam::Class_::Timeout::Refresh::Send> send;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send> send;
         
-}; // Native::L2Vpn::Pseudowire::StaticOam::Class_::Timeout::Refresh
+}; // Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh
 
 
-class Native::L2Vpn::Pseudowire::StaticOam::Class_::Timeout::Refresh::Send : public ydk::Entity
+class Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send : public ydk::Entity
 {
     public:
         Send();
@@ -962,7 +962,7 @@ class Native::L2Vpn::Pseudowire::StaticOam::Class_::Timeout::Refresh::Send : pub
 
         ydk::YLeaf interval; //type: uint32
 
-}; // Native::L2Vpn::Pseudowire::StaticOam::Class_::Timeout::Refresh::Send
+}; // Native::L2Vpn::Pseudowire::StaticOam::Class::Timeout::Refresh::Send
 
 
 class Native::L2Vpn::Pseudowire::Tlv : public ydk::Entity
@@ -982,18 +982,18 @@ class Native::L2Vpn::Pseudowire::Tlv : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Template_; //type: Native::L2Vpn::Pseudowire::Tlv::Template_
+        class Template; //type: Native::L2Vpn::Pseudowire::Tlv::Template
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::L2Vpn::Pseudowire::Tlv::Template_> > template_;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::L2Vpn::Pseudowire::Tlv::Template> > template_;
         
 }; // Native::L2Vpn::Pseudowire::Tlv
 
 
-class Native::L2Vpn::Pseudowire::Tlv::Template_ : public ydk::Entity
+class Native::L2Vpn::Pseudowire::Tlv::Template : public ydk::Entity
 {
     public:
-        Template_();
-        ~Template_();
+        Template();
+        ~Template();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1007,14 +1007,14 @@ class Native::L2Vpn::Pseudowire::Tlv::Template_ : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf tlv_nm; //type: string
-        class Tlv_; //type: Native::L2Vpn::Pseudowire::Tlv::Template_::Tlv_
+        class Tlv_; //type: Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::L2Vpn::Pseudowire::Tlv::Template_::Tlv_> tlv;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_> tlv;
         
-}; // Native::L2Vpn::Pseudowire::Tlv::Template_
+}; // Native::L2Vpn::Pseudowire::Tlv::Template
 
 
-class Native::L2Vpn::Pseudowire::Tlv::Template_::Tlv_ : public ydk::Entity
+class Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_ : public ydk::Entity
 {
     public:
         Tlv_();
@@ -1030,16 +1030,16 @@ class Native::L2Vpn::Pseudowire::Tlv::Template_::Tlv_ : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class TlvType; //type: Native::L2Vpn::Pseudowire::Tlv::Template_::Tlv_::TlvType
-        class TlvDescription; //type: Native::L2Vpn::Pseudowire::Tlv::Template_::Tlv_::TlvDescription
+        class TlvType; //type: Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvType
+        class TlvDescription; //type: Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::L2Vpn::Pseudowire::Tlv::Template_::Tlv_::TlvType> tlv_type;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::L2Vpn::Pseudowire::Tlv::Template_::Tlv_::TlvDescription> tlv_description;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvType> tlv_type;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription> tlv_description;
         
-}; // Native::L2Vpn::Pseudowire::Tlv::Template_::Tlv_
+}; // Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_
 
 
-class Native::L2Vpn::Pseudowire::Tlv::Template_::Tlv_::TlvType : public ydk::Entity
+class Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvType : public ydk::Entity
 {
     public:
         TlvType();
@@ -1057,10 +1057,10 @@ class Native::L2Vpn::Pseudowire::Tlv::Template_::Tlv_::TlvType : public ydk::Ent
 
         ydk::YLeaf type; //type: uint8
 
-}; // Native::L2Vpn::Pseudowire::Tlv::Template_::Tlv_::TlvType
+}; // Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvType
 
 
-class Native::L2Vpn::Pseudowire::Tlv::Template_::Tlv_::TlvDescription : public ydk::Entity
+class Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription : public ydk::Entity
 {
     public:
         TlvDescription();
@@ -1078,7 +1078,7 @@ class Native::L2Vpn::Pseudowire::Tlv::Template_::Tlv_::TlvDescription : public y
 
         ydk::YLeaf description; //type: string
 
-}; // Native::L2Vpn::Pseudowire::Tlv::Template_::Tlv_::TlvDescription
+}; // Native::L2Vpn::Pseudowire::Tlv::Template::Tlv_::TlvDescription
 
 
 class Native::L2Vpn::Pseudowire::Group : public ydk::Entity
@@ -1947,7 +1947,7 @@ class Native::L3Vpn::Encapsulation::Ip::Mpls : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mtu; //type: one of uint32, enumeration
+        ydk::YLeaf mtu; //type: one of enumeration, uint32
         class Mtu;
 
 }; // Native::L3Vpn::Encapsulation::Ip::Mpls
@@ -1976,7 +1976,7 @@ class Native::Mpls : public ydk::Entity
         class Label; //type: Native::Mpls::Label
         class Ldp; //type: Native::Mpls::Ldp
         class PrefixMap; //type: Native::Mpls::PrefixMap
-        class Static_; //type: Native::Mpls::Static_
+        class Static; //type: Native::Mpls::Static
         class TrafficEng; //type: Native::Mpls::TrafficEng
         class Tp; //type: Native::Mpls::Tp
 
@@ -1985,7 +1985,7 @@ class Native::Mpls : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Label> label;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp> ldp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::PrefixMap> prefix_map;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Static> static_; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::TrafficEng> traffic_eng;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Tp> tp; // presence node
         
@@ -2505,18 +2505,18 @@ class Native::Mpls::Label::Range : public ydk::Entity
 
         ydk::YLeaf min; //type: uint32
         ydk::YLeaf max; //type: uint32
-        class Static_; //type: Native::Mpls::Label::Range::Static_
+        class Static; //type: Native::Mpls::Label::Range::Static
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Label::Range::Static_> static_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Label::Range::Static> static_;
         
 }; // Native::Mpls::Label::Range
 
 
-class Native::Mpls::Label::Range::Static_ : public ydk::Entity
+class Native::Mpls::Label::Range::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2532,7 +2532,7 @@ class Native::Mpls::Label::Range::Static_ : public ydk::Entity
         ydk::YLeaf min; //type: uint32
         ydk::YLeaf max; //type: uint32
 
-}; // Native::Mpls::Label::Range::Static_
+}; // Native::Mpls::Label::Range::Static
 
 
 class Native::Mpls::Ldp : public ydk::Entity
@@ -2660,22 +2660,22 @@ class Native::Mpls::Ldp::Enable2::AdvertiseLabels : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf oldstyle; //type: empty
-        class For_; //type: Native::Mpls::Ldp::Enable2::AdvertiseLabels::For_
+        class For; //type: Native::Mpls::Ldp::Enable2::AdvertiseLabels::For
         class Interface; //type: Native::Mpls::Ldp::Enable2::AdvertiseLabels::Interface
         class Vrf; //type: Native::Mpls::Ldp::Enable2::AdvertiseLabels::Vrf
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::AdvertiseLabels::For_> for_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::AdvertiseLabels::For> for_;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::AdvertiseLabels::Interface> > interface;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::AdvertiseLabels::Vrf> vrf;
         
 }; // Native::Mpls::Ldp::Enable2::AdvertiseLabels
 
 
-class Native::Mpls::Ldp::Enable2::AdvertiseLabels::For_ : public ydk::Entity
+class Native::Mpls::Ldp::Enable2::AdvertiseLabels::For : public ydk::Entity
 {
     public:
-        For_();
-        ~For_();
+        For();
+        ~For();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2691,7 +2691,7 @@ class Native::Mpls::Ldp::Enable2::AdvertiseLabels::For_ : public ydk::Entity
         ydk::YLeaf from; //type: string
         ydk::YLeaf to; //type: string
 
-}; // Native::Mpls::Ldp::Enable2::AdvertiseLabels::For_
+}; // Native::Mpls::Ldp::Enable2::AdvertiseLabels::For
 
 
 class Native::Mpls::Ldp::Enable2::AdvertiseLabels::Interface : public ydk::Entity
@@ -2759,20 +2759,20 @@ class Native::Mpls::Ldp::Enable2::AdvertiseLabels::Vrf::Vrf_ : public ydk::Entit
 
         ydk::YLeaf vrf_name; //type: string
         ydk::YLeaf oldstyle; //type: empty
-        class For_; //type: Native::Mpls::Ldp::Enable2::AdvertiseLabels::Vrf::Vrf_::For_
+        class For; //type: Native::Mpls::Ldp::Enable2::AdvertiseLabels::Vrf::Vrf_::For
         class Interface; //type: Native::Mpls::Ldp::Enable2::AdvertiseLabels::Vrf::Vrf_::Interface
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::AdvertiseLabels::Vrf::Vrf_::For_> for_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::AdvertiseLabels::Vrf::Vrf_::For> for_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::AdvertiseLabels::Vrf::Vrf_::Interface> interface;
         
 }; // Native::Mpls::Ldp::Enable2::AdvertiseLabels::Vrf::Vrf_
 
 
-class Native::Mpls::Ldp::Enable2::AdvertiseLabels::Vrf::Vrf_::For_ : public ydk::Entity
+class Native::Mpls::Ldp::Enable2::AdvertiseLabels::Vrf::Vrf_::For : public ydk::Entity
 {
     public:
-        For_();
-        ~For_();
+        For();
+        ~For();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2787,7 +2787,7 @@ class Native::Mpls::Ldp::Enable2::AdvertiseLabels::Vrf::Vrf_::For_ : public ydk:
         ydk::YLeaf from; //type: string
         ydk::YLeaf to; //type: string
 
-}; // Native::Mpls::Ldp::Enable2::AdvertiseLabels::Vrf::Vrf_::For_
+}; // Native::Mpls::Ldp::Enable2::AdvertiseLabels::Vrf::Vrf_::For
 
 
 class Native::Mpls::Ldp::Enable2::AdvertiseLabels::Vrf::Vrf_::Interface : public ydk::Entity

@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Controllers::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Controllers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(controllers != nullptr)
     {
         children["controllers"] = controllers;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> Controllers::Controllers_::get_child_by_name(const std::
 {
     if(child_yang_name == "controller")
     {
-        for(auto const & c : controller)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Controllers::Controllers_::Controller>();
         c->parent = this;
         controller.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> Controllers::Controllers_::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Controllers::Controllers_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : controller)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -283,6 +281,7 @@ std::shared_ptr<Entity> Controllers::Controllers_::Controller::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Controllers::Controllers_::Controller::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

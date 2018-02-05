@@ -61,14 +61,6 @@ std::shared_ptr<Entity> MplsForwardingTable::get_child_by_name(const std::string
 {
     if(child_yang_name == "local-label-entry")
     {
-        for(auto const & c : local_label_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsForwardingTable::LocalLabelEntry>();
         c->parent = this;
         local_label_entry.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> MplsForwardingTable::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> MplsForwardingTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : local_label_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -190,14 +187,6 @@ std::shared_ptr<Entity> MplsForwardingTable::LocalLabelEntry::get_child_by_name(
 {
     if(child_yang_name == "forwarding-info")
     {
-        for(auto const & c : forwarding_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo>();
         c->parent = this;
         forwarding_info.push_back(c);
@@ -210,9 +199,14 @@ std::shared_ptr<Entity> MplsForwardingTable::LocalLabelEntry::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> MplsForwardingTable::LocalLabelEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : forwarding_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -317,6 +311,7 @@ std::shared_ptr<Entity> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ge
 std::map<std::string, std::shared_ptr<Entity>> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(connection_info != nullptr)
     {
         children["connection-info"] = connection_info;
@@ -466,6 +461,7 @@ std::shared_ptr<Entity> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::Co
 std::map<std::string, std::shared_ptr<Entity>> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tunnel_tp != nullptr)
     {
         children["tunnel-tp"] = tunnel_tp;
@@ -634,6 +630,7 @@ std::shared_ptr<Entity> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::Co
 std::map<std::string, std::shared_ptr<Entity>> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(src_id != nullptr)
     {
         children["src-id"] = src_id;
@@ -724,6 +721,7 @@ std::shared_ptr<Entity> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::Co
 std::map<std::string, std::shared_ptr<Entity>> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -814,6 +812,7 @@ std::shared_ptr<Entity> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::Co
 std::map<std::string, std::shared_ptr<Entity>> MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

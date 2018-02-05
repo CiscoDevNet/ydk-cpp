@@ -64,6 +64,7 @@ std::shared_ptr<Entity> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistrib
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Ospf::RipMetricRouteMap::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -102,38 +103,38 @@ bool Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Ospf::RipMetri
     return false;
 }
 
-Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::Static_()
+Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::Static()
     :
-    rip_metric_route_map(std::make_shared<Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap>())
+    rip_metric_route_map(std::make_shared<Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
     yang_name = "static"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::~Static_()
+Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::~Static()
 {
 }
 
-bool Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::has_data() const
+bool Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::has_data() const
 {
     return (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
-bool Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::has_operation() const
+bool Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::has_operation() const
 {
     return is_set(yfilter)
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_operation());
 }
 
-std::string Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::get_segment_path() const
+std::string Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -142,13 +143,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rip-metric-route-map")
     {
         if(rip_metric_route_map == nullptr)
         {
-            rip_metric_route_map = std::make_shared<Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap>();
+            rip_metric_route_map = std::make_shared<Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap>();
         }
         return rip_metric_route_map;
     }
@@ -156,9 +157,10 @@ std::shared_ptr<Entity> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistrib
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rip_metric_route_map != nullptr)
     {
         children["rip-metric-route-map"] = rip_metric_route_map;
@@ -167,57 +169,57 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::AddressFamil
     return children;
 }
 
-void Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rip-metric-route-map")
         return true;
     return false;
 }
 
-Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::RipMetricRouteMap()
+Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
     	,
-    metric(std::make_shared<Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::Metric>())
+    metric(std::make_shared<Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
     yang_name = "rip-metric-route-map"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::~RipMetricRouteMap()
+Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::~RipMetricRouteMap()
 {
 }
 
-bool Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::has_data() const
+bool Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::has_data() const
 {
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
 
-bool Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::has_operation() const
+bool Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| (metric !=  nullptr && metric->has_operation());
 }
 
-std::string Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::get_segment_path() const
+std::string Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rip-metric-route-map";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -227,13 +229,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "metric")
     {
         if(metric == nullptr)
         {
-            metric = std::make_shared<Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::Metric>();
+            metric = std::make_shared<Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::Metric>();
         }
         return metric;
     }
@@ -241,9 +243,10 @@ std::shared_ptr<Entity> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistrib
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(metric != nullptr)
     {
         children["metric"] = metric;
@@ -252,7 +255,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::AddressFamil
     return children;
 }
 
-void Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -262,7 +265,7 @@ void Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMe
     }
 }
 
-void Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -270,14 +273,14 @@ void Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMe
     }
 }
 
-bool Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric" || name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::Metric::Metric()
+Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::Metric::Metric()
     :
     metric_value{YType::uint32, "metric-value"},
     transparent{YType::empty, "transparent"}
@@ -286,31 +289,31 @@ Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricR
     yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::Metric::~Metric()
+Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::Metric::~Metric()
 {
 }
 
-bool Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::Metric::has_data() const
+bool Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::Metric::has_data() const
 {
     return metric_value.is_set
 	|| transparent.is_set;
 }
 
-bool Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::Metric::has_operation() const
+bool Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::Metric::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(metric_value.yfilter)
 	|| ydk::is_set(transparent.yfilter);
 }
 
-std::string Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::Metric::get_segment_path() const
+std::string Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::Metric::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "metric";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::Metric::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::Metric::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -321,18 +324,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::AddressFamil
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::Metric::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "metric-value")
     {
@@ -348,7 +352,7 @@ void Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMe
     }
 }
 
-void Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "metric-value")
     {
@@ -360,7 +364,7 @@ void Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMe
     }
 }
 
-bool Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static_::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric-value" || name == "transparent")
         return true;
@@ -424,6 +428,7 @@ std::shared_ptr<Entity> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistrib
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Rip_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rip_metric_route_map != nullptr)
     {
         children["rip-metric-route-map"] = rip_metric_route_map;
@@ -509,6 +514,7 @@ std::shared_ptr<Entity> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistrib
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Rip_::RipMetricRouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(metric != nullptr)
     {
         children["metric"] = metric;
@@ -594,6 +600,7 @@ std::shared_ptr<Entity> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistrib
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Rip_::RipMetricRouteMap::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -689,6 +696,7 @@ std::shared_ptr<Entity> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Timers::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Timers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(basic != nullptr)
     {
         children["basic"] = basic;
@@ -776,6 +784,7 @@ std::shared_ptr<Entity> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Timers::B
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::AddressFamily::Ipv4::Vrf::Timers::Basic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -844,7 +853,7 @@ bool Native::Router::Rip::AddressFamily::Ipv4::Vrf::Timers::Basic::has_leaf_or_c
     return false;
 }
 
-Native::Router::Rip::Default_::Default_()
+Native::Router::Rip::Default::Default()
     :
     auto_summary{YType::empty, "auto-summary"},
     maximum_paths{YType::uint8, "maximum-paths"},
@@ -855,15 +864,15 @@ Native::Router::Rip::Default_::Default_()
     output_delay{YType::empty, "output-delay"},
     version{YType::empty, "version"}
     	,
-    address_family(std::make_shared<Native::Router::Rip::Default_::AddressFamily>())
-	,default_information(std::make_shared<Native::Router::Rip::Default_::DefaultInformation>())
-	,distance(std::make_shared<Native::Router::Rip::Default_::Distance>())
-	,distribute_list(std::make_shared<Native::Router::Rip::Default_::DistributeList>())
-	,passive_interface(std::make_shared<Native::Router::Rip::Default_::PassiveInterface>())
-	,disable(std::make_shared<Native::Router::Rip::Default_::Disable>())
-	,redistribute(std::make_shared<Native::Router::Rip::Default_::Redistribute>())
-	,timers(std::make_shared<Native::Router::Rip::Default_::Timers>())
-	,traffic_share(std::make_shared<Native::Router::Rip::Default_::TrafficShare>())
+    address_family(std::make_shared<Native::Router::Rip::Default::AddressFamily>())
+	,default_information(std::make_shared<Native::Router::Rip::Default::DefaultInformation>())
+	,distance(std::make_shared<Native::Router::Rip::Default::Distance>())
+	,distribute_list(std::make_shared<Native::Router::Rip::Default::DistributeList>())
+	,passive_interface(std::make_shared<Native::Router::Rip::Default::PassiveInterface>())
+	,disable(std::make_shared<Native::Router::Rip::Default::Disable>())
+	,redistribute(std::make_shared<Native::Router::Rip::Default::Redistribute>())
+	,timers(std::make_shared<Native::Router::Rip::Default::Timers>())
+	,traffic_share(std::make_shared<Native::Router::Rip::Default::TrafficShare>())
 {
     address_family->parent = this;
     default_information->parent = this;
@@ -878,11 +887,11 @@ Native::Router::Rip::Default_::Default_()
     yang_name = "default"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::~Default_()
+Native::Router::Rip::Default::~Default()
 {
 }
 
-bool Native::Router::Rip::Default_::has_data() const
+bool Native::Router::Rip::Default::has_data() const
 {
     for (std::size_t index=0; index<neighbor.size(); index++)
     {
@@ -918,7 +927,7 @@ bool Native::Router::Rip::Default_::has_data() const
 	|| (traffic_share !=  nullptr && traffic_share->has_data());
 }
 
-bool Native::Router::Rip::Default_::has_operation() const
+bool Native::Router::Rip::Default::has_operation() const
 {
     for (std::size_t index=0; index<neighbor.size(); index++)
     {
@@ -955,21 +964,21 @@ bool Native::Router::Rip::Default_::has_operation() const
 	|| (traffic_share !=  nullptr && traffic_share->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::get_absolute_path() const
+std::string Native::Router::Rip::Default::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::get_segment_path() const
+std::string Native::Router::Rip::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -986,28 +995,20 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::ge
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address-family")
     {
         if(address_family == nullptr)
         {
-            address_family = std::make_shared<Native::Router::Rip::Default_::AddressFamily>();
+            address_family = std::make_shared<Native::Router::Rip::Default::AddressFamily>();
         }
         return address_family;
     }
 
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Router::Rip::Default_::Neighbor>();
+        auto c = std::make_shared<Native::Router::Rip::Default::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
         return c;
@@ -1015,15 +1016,7 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::get_child_by_name(const s
 
     if(child_yang_name == "network")
     {
-        for(auto const & c : network)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Router::Rip::Default_::Network>();
+        auto c = std::make_shared<Native::Router::Rip::Default::Network>();
         c->parent = this;
         network.push_back(c);
         return c;
@@ -1033,7 +1026,7 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::get_child_by_name(const s
     {
         if(default_information == nullptr)
         {
-            default_information = std::make_shared<Native::Router::Rip::Default_::DefaultInformation>();
+            default_information = std::make_shared<Native::Router::Rip::Default::DefaultInformation>();
         }
         return default_information;
     }
@@ -1042,7 +1035,7 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::get_child_by_name(const s
     {
         if(distance == nullptr)
         {
-            distance = std::make_shared<Native::Router::Rip::Default_::Distance>();
+            distance = std::make_shared<Native::Router::Rip::Default::Distance>();
         }
         return distance;
     }
@@ -1051,22 +1044,14 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::get_child_by_name(const s
     {
         if(distribute_list == nullptr)
         {
-            distribute_list = std::make_shared<Native::Router::Rip::Default_::DistributeList>();
+            distribute_list = std::make_shared<Native::Router::Rip::Default::DistributeList>();
         }
         return distribute_list;
     }
 
     if(child_yang_name == "offset-list")
     {
-        for(auto const & c : offset_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Router::Rip::Default_::OffsetList>();
+        auto c = std::make_shared<Native::Router::Rip::Default::OffsetList>();
         c->parent = this;
         offset_list.push_back(c);
         return c;
@@ -1076,7 +1061,7 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::get_child_by_name(const s
     {
         if(passive_interface == nullptr)
         {
-            passive_interface = std::make_shared<Native::Router::Rip::Default_::PassiveInterface>();
+            passive_interface = std::make_shared<Native::Router::Rip::Default::PassiveInterface>();
         }
         return passive_interface;
     }
@@ -1085,7 +1070,7 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::get_child_by_name(const s
     {
         if(disable == nullptr)
         {
-            disable = std::make_shared<Native::Router::Rip::Default_::Disable>();
+            disable = std::make_shared<Native::Router::Rip::Default::Disable>();
         }
         return disable;
     }
@@ -1094,7 +1079,7 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::get_child_by_name(const s
     {
         if(redistribute == nullptr)
         {
-            redistribute = std::make_shared<Native::Router::Rip::Default_::Redistribute>();
+            redistribute = std::make_shared<Native::Router::Rip::Default::Redistribute>();
         }
         return redistribute;
     }
@@ -1103,7 +1088,7 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::get_child_by_name(const s
     {
         if(timers == nullptr)
         {
-            timers = std::make_shared<Native::Router::Rip::Default_::Timers>();
+            timers = std::make_shared<Native::Router::Rip::Default::Timers>();
         }
         return timers;
     }
@@ -1112,7 +1097,7 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::get_child_by_name(const s
     {
         if(traffic_share == nullptr)
         {
-            traffic_share = std::make_shared<Native::Router::Rip::Default_::TrafficShare>();
+            traffic_share = std::make_shared<Native::Router::Rip::Default::TrafficShare>();
         }
         return traffic_share;
     }
@@ -1120,22 +1105,31 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address_family != nullptr)
     {
         children["address-family"] = address_family;
     }
 
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : network)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(default_information != nullptr)
@@ -1153,9 +1147,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::ge
         children["distribute-list"] = distribute_list;
     }
 
+    count = 0;
     for (auto const & c : offset_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(passive_interface != nullptr)
@@ -1186,7 +1184,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::ge
     return children;
 }
 
-void Native::Router::Rip::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "auto-summary")
     {
@@ -1238,7 +1236,7 @@ void Native::Router::Rip::Default_::set_value(const std::string & value_path, co
     }
 }
 
-void Native::Router::Rip::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "auto-summary")
     {
@@ -1274,14 +1272,14 @@ void Native::Router::Rip::Default_::set_filter(const std::string & value_path, Y
     }
 }
 
-bool Native::Router::Rip::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address-family" || name == "neighbor" || name == "network" || name == "default-information" || name == "distance" || name == "distribute-list" || name == "offset-list" || name == "passive-interface" || name == "disable" || name == "redistribute" || name == "timers" || name == "traffic-share" || name == "auto-summary" || name == "maximum-paths" || name == "validate-update-source" || name == "default-metric" || name == "flash-update-threshold" || name == "input-queue" || name == "output-delay" || name == "version")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::AddressFamily::AddressFamily()
+Native::Router::Rip::Default::AddressFamily::AddressFamily()
     :
     ipv4(nullptr) // presence node
 {
@@ -1289,36 +1287,36 @@ Native::Router::Rip::Default_::AddressFamily::AddressFamily()
     yang_name = "address-family"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::AddressFamily::~AddressFamily()
+Native::Router::Rip::Default::AddressFamily::~AddressFamily()
 {
 }
 
-bool Native::Router::Rip::Default_::AddressFamily::has_data() const
+bool Native::Router::Rip::Default::AddressFamily::has_data() const
 {
     return (ipv4 !=  nullptr && ipv4->has_data());
 }
 
-bool Native::Router::Rip::Default_::AddressFamily::has_operation() const
+bool Native::Router::Rip::Default::AddressFamily::has_operation() const
 {
     return is_set(yfilter)
 	|| (ipv4 !=  nullptr && ipv4->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::AddressFamily::get_absolute_path() const
+std::string Native::Router::Rip::Default::AddressFamily::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::AddressFamily::get_segment_path() const
+std::string Native::Router::Rip::Default::AddressFamily::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "address-family";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::AddressFamily::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::AddressFamily::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1327,13 +1325,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Ad
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::AddressFamily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::AddressFamily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
         if(ipv4 == nullptr)
         {
-            ipv4 = std::make_shared<Native::Router::Rip::Default_::AddressFamily::Ipv4>();
+            ipv4 = std::make_shared<Native::Router::Rip::Default::AddressFamily::Ipv4>();
         }
         return ipv4;
     }
@@ -1341,9 +1339,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::AddressFamily::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::AddressFamily::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::AddressFamily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv4 != nullptr)
     {
         children["ipv4"] = ipv4;
@@ -1352,22 +1351,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Ad
     return children;
 }
 
-void Native::Router::Rip::Default_::AddressFamily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::AddressFamily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::Rip::Default_::AddressFamily::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::AddressFamily::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::Rip::Default_::AddressFamily::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::AddressFamily::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::AddressFamily::Ipv4::Ipv4()
+Native::Router::Rip::Default::AddressFamily::Ipv4::Ipv4()
     :
     unicast{YType::empty, "unicast"}
 {
@@ -1375,11 +1374,11 @@ Native::Router::Rip::Default_::AddressFamily::Ipv4::Ipv4()
     yang_name = "ipv4"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::AddressFamily::Ipv4::~Ipv4()
+Native::Router::Rip::Default::AddressFamily::Ipv4::~Ipv4()
 {
 }
 
-bool Native::Router::Rip::Default_::AddressFamily::Ipv4::has_data() const
+bool Native::Router::Rip::Default::AddressFamily::Ipv4::has_data() const
 {
     for (std::size_t index=0; index<vrf.size(); index++)
     {
@@ -1389,7 +1388,7 @@ bool Native::Router::Rip::Default_::AddressFamily::Ipv4::has_data() const
     return unicast.is_set;
 }
 
-bool Native::Router::Rip::Default_::AddressFamily::Ipv4::has_operation() const
+bool Native::Router::Rip::Default::AddressFamily::Ipv4::has_operation() const
 {
     for (std::size_t index=0; index<vrf.size(); index++)
     {
@@ -1400,21 +1399,21 @@ bool Native::Router::Rip::Default_::AddressFamily::Ipv4::has_operation() const
 	|| ydk::is_set(unicast.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::AddressFamily::Ipv4::get_absolute_path() const
+std::string Native::Router::Rip::Default::AddressFamily::Ipv4::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/address-family/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::AddressFamily::Ipv4::get_segment_path() const
+std::string Native::Router::Rip::Default::AddressFamily::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::AddressFamily::Ipv4::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::AddressFamily::Ipv4::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1424,19 +1423,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Ad
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::AddressFamily::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::AddressFamily::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Router::Rip::Default_::AddressFamily::Ipv4::Vrf>();
+        auto c = std::make_shared<Native::Router::Rip::Default::AddressFamily::Ipv4::Vrf>();
         c->parent = this;
         vrf.push_back(c);
         return c;
@@ -1445,18 +1436,23 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::AddressFamily::Ipv4::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::AddressFamily::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::AddressFamily::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::Router::Rip::Default_::AddressFamily::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::AddressFamily::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unicast")
     {
@@ -1466,7 +1462,7 @@ void Native::Router::Rip::Default_::AddressFamily::Ipv4::set_value(const std::st
     }
 }
 
-void Native::Router::Rip::Default_::AddressFamily::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::AddressFamily::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "unicast")
     {
@@ -1474,14 +1470,14 @@ void Native::Router::Rip::Default_::AddressFamily::Ipv4::set_filter(const std::s
     }
 }
 
-bool Native::Router::Rip::Default_::AddressFamily::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::AddressFamily::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vrf" || name == "unicast")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::AddressFamily::Ipv4::Vrf::Vrf()
+Native::Router::Rip::Default::AddressFamily::Ipv4::Vrf::Vrf()
     :
     name{YType::str, "name"}
 {
@@ -1489,36 +1485,36 @@ Native::Router::Rip::Default_::AddressFamily::Ipv4::Vrf::Vrf()
     yang_name = "vrf"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::AddressFamily::Ipv4::Vrf::~Vrf()
+Native::Router::Rip::Default::AddressFamily::Ipv4::Vrf::~Vrf()
 {
 }
 
-bool Native::Router::Rip::Default_::AddressFamily::Ipv4::Vrf::has_data() const
+bool Native::Router::Rip::Default::AddressFamily::Ipv4::Vrf::has_data() const
 {
     return name.is_set;
 }
 
-bool Native::Router::Rip::Default_::AddressFamily::Ipv4::Vrf::has_operation() const
+bool Native::Router::Rip::Default::AddressFamily::Ipv4::Vrf::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::AddressFamily::Ipv4::Vrf::get_absolute_path() const
+std::string Native::Router::Rip::Default::AddressFamily::Ipv4::Vrf::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/address-family/ipv4/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::AddressFamily::Ipv4::Vrf::get_segment_path() const
+std::string Native::Router::Rip::Default::AddressFamily::Ipv4::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrf" <<"[name='" <<name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::AddressFamily::Ipv4::Vrf::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::AddressFamily::Ipv4::Vrf::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1528,18 +1524,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Ad
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::AddressFamily::Ipv4::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::AddressFamily::Ipv4::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::AddressFamily::Ipv4::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::AddressFamily::Ipv4::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::AddressFamily::Ipv4::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::AddressFamily::Ipv4::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -1549,7 +1546,7 @@ void Native::Router::Rip::Default_::AddressFamily::Ipv4::Vrf::set_value(const st
     }
 }
 
-void Native::Router::Rip::Default_::AddressFamily::Ipv4::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::AddressFamily::Ipv4::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -1557,14 +1554,14 @@ void Native::Router::Rip::Default_::AddressFamily::Ipv4::Vrf::set_filter(const s
     }
 }
 
-bool Native::Router::Rip::Default_::AddressFamily::Ipv4::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::AddressFamily::Ipv4::Vrf::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Neighbor::Neighbor()
+Native::Router::Rip::Default::Neighbor::Neighbor()
     :
     ip{YType::str, "ip"}
 {
@@ -1572,36 +1569,36 @@ Native::Router::Rip::Default_::Neighbor::Neighbor()
     yang_name = "neighbor"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Neighbor::~Neighbor()
+Native::Router::Rip::Default::Neighbor::~Neighbor()
 {
 }
 
-bool Native::Router::Rip::Default_::Neighbor::has_data() const
+bool Native::Router::Rip::Default::Neighbor::has_data() const
 {
     return ip.is_set;
 }
 
-bool Native::Router::Rip::Default_::Neighbor::has_operation() const
+bool Native::Router::Rip::Default::Neighbor::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ip.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::Neighbor::get_absolute_path() const
+std::string Native::Router::Rip::Default::Neighbor::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Neighbor::get_segment_path() const
+std::string Native::Router::Rip::Default::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor" <<"[ip='" <<ip <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Neighbor::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Neighbor::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1611,18 +1608,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Ne
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Neighbor::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip")
     {
@@ -1632,7 +1630,7 @@ void Native::Router::Rip::Default_::Neighbor::set_value(const std::string & valu
     }
 }
 
-void Native::Router::Rip::Default_::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ip")
     {
@@ -1640,14 +1638,14 @@ void Native::Router::Rip::Default_::Neighbor::set_filter(const std::string & val
     }
 }
 
-bool Native::Router::Rip::Default_::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ip")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Network::Network()
+Native::Router::Rip::Default::Network::Network()
     :
     ip{YType::str, "ip"}
 {
@@ -1655,36 +1653,36 @@ Native::Router::Rip::Default_::Network::Network()
     yang_name = "network"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Network::~Network()
+Native::Router::Rip::Default::Network::~Network()
 {
 }
 
-bool Native::Router::Rip::Default_::Network::has_data() const
+bool Native::Router::Rip::Default::Network::has_data() const
 {
     return ip.is_set;
 }
 
-bool Native::Router::Rip::Default_::Network::has_operation() const
+bool Native::Router::Rip::Default::Network::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ip.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::Network::get_absolute_path() const
+std::string Native::Router::Rip::Default::Network::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Network::get_segment_path() const
+std::string Native::Router::Rip::Default::Network::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "network" <<"[ip='" <<ip <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Network::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Network::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1694,18 +1692,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Ne
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Network::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip")
     {
@@ -1715,7 +1714,7 @@ void Native::Router::Rip::Default_::Network::set_value(const std::string & value
     }
 }
 
-void Native::Router::Rip::Default_::Network::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Network::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ip")
     {
@@ -1723,14 +1722,14 @@ void Native::Router::Rip::Default_::Network::set_filter(const std::string & valu
     }
 }
 
-bool Native::Router::Rip::Default_::Network::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Network::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ip")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::DefaultInformation::DefaultInformation()
+Native::Router::Rip::Default::DefaultInformation::DefaultInformation()
     :
     originate{YType::empty, "originate"}
 {
@@ -1738,36 +1737,36 @@ Native::Router::Rip::Default_::DefaultInformation::DefaultInformation()
     yang_name = "default-information"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::DefaultInformation::~DefaultInformation()
+Native::Router::Rip::Default::DefaultInformation::~DefaultInformation()
 {
 }
 
-bool Native::Router::Rip::Default_::DefaultInformation::has_data() const
+bool Native::Router::Rip::Default::DefaultInformation::has_data() const
 {
     return originate.is_set;
 }
 
-bool Native::Router::Rip::Default_::DefaultInformation::has_operation() const
+bool Native::Router::Rip::Default::DefaultInformation::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(originate.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::DefaultInformation::get_absolute_path() const
+std::string Native::Router::Rip::Default::DefaultInformation::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::DefaultInformation::get_segment_path() const
+std::string Native::Router::Rip::Default::DefaultInformation::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default-information";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::DefaultInformation::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::DefaultInformation::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1777,18 +1776,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::De
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::DefaultInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::DefaultInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::DefaultInformation::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::DefaultInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::DefaultInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::DefaultInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "originate")
     {
@@ -1798,7 +1798,7 @@ void Native::Router::Rip::Default_::DefaultInformation::set_value(const std::str
     }
 }
 
-void Native::Router::Rip::Default_::DefaultInformation::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::DefaultInformation::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "originate")
     {
@@ -1806,14 +1806,14 @@ void Native::Router::Rip::Default_::DefaultInformation::set_filter(const std::st
     }
 }
 
-bool Native::Router::Rip::Default_::DefaultInformation::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::DefaultInformation::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "originate")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Distance::Distance()
+Native::Router::Rip::Default::Distance::Distance()
     :
     distance_leaf{YType::uint8, "distance-leaf"}
 {
@@ -1821,11 +1821,11 @@ Native::Router::Rip::Default_::Distance::Distance()
     yang_name = "distance"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Distance::~Distance()
+Native::Router::Rip::Default::Distance::~Distance()
 {
 }
 
-bool Native::Router::Rip::Default_::Distance::has_data() const
+bool Native::Router::Rip::Default::Distance::has_data() const
 {
     for (std::size_t index=0; index<distance_list.size(); index++)
     {
@@ -1835,7 +1835,7 @@ bool Native::Router::Rip::Default_::Distance::has_data() const
     return distance_leaf.is_set;
 }
 
-bool Native::Router::Rip::Default_::Distance::has_operation() const
+bool Native::Router::Rip::Default::Distance::has_operation() const
 {
     for (std::size_t index=0; index<distance_list.size(); index++)
     {
@@ -1846,21 +1846,21 @@ bool Native::Router::Rip::Default_::Distance::has_operation() const
 	|| ydk::is_set(distance_leaf.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::Distance::get_absolute_path() const
+std::string Native::Router::Rip::Default::Distance::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Distance::get_segment_path() const
+std::string Native::Router::Rip::Default::Distance::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "distance";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Distance::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Distance::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1870,19 +1870,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Di
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Distance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Distance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "distance-list")
     {
-        for(auto const & c : distance_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Router::Rip::Default_::Distance::DistanceList>();
+        auto c = std::make_shared<Native::Router::Rip::Default::Distance::DistanceList>();
         c->parent = this;
         distance_list.push_back(c);
         return c;
@@ -1891,18 +1883,23 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Distance::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Distance::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Distance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : distance_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::Router::Rip::Default_::Distance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Distance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "distance-leaf")
     {
@@ -1912,7 +1909,7 @@ void Native::Router::Rip::Default_::Distance::set_value(const std::string & valu
     }
 }
 
-void Native::Router::Rip::Default_::Distance::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Distance::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "distance-leaf")
     {
@@ -1920,14 +1917,14 @@ void Native::Router::Rip::Default_::Distance::set_filter(const std::string & val
     }
 }
 
-bool Native::Router::Rip::Default_::Distance::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Distance::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "distance-list" || name == "distance-leaf")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Distance::DistanceList::DistanceList()
+Native::Router::Rip::Default::Distance::DistanceList::DistanceList()
     :
     number{YType::uint8, "number"},
     ip{YType::str, "ip"},
@@ -1938,11 +1935,11 @@ Native::Router::Rip::Default_::Distance::DistanceList::DistanceList()
     yang_name = "distance-list"; yang_parent_name = "distance"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Distance::DistanceList::~DistanceList()
+Native::Router::Rip::Default::Distance::DistanceList::~DistanceList()
 {
 }
 
-bool Native::Router::Rip::Default_::Distance::DistanceList::has_data() const
+bool Native::Router::Rip::Default::Distance::DistanceList::has_data() const
 {
     return number.is_set
 	|| ip.is_set
@@ -1950,7 +1947,7 @@ bool Native::Router::Rip::Default_::Distance::DistanceList::has_data() const
 	|| access_list.is_set;
 }
 
-bool Native::Router::Rip::Default_::Distance::DistanceList::has_operation() const
+bool Native::Router::Rip::Default::Distance::DistanceList::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -1959,21 +1956,21 @@ bool Native::Router::Rip::Default_::Distance::DistanceList::has_operation() cons
 	|| ydk::is_set(access_list.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::Distance::DistanceList::get_absolute_path() const
+std::string Native::Router::Rip::Default::Distance::DistanceList::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/distance/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Distance::DistanceList::get_segment_path() const
+std::string Native::Router::Rip::Default::Distance::DistanceList::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "distance-list" <<"[number='" <<number <<"']" <<"[ip='" <<ip <<"']" <<"[mask='" <<mask <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Distance::DistanceList::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Distance::DistanceList::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1986,18 +1983,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Di
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Distance::DistanceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Distance::DistanceList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Distance::DistanceList::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Distance::DistanceList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::Distance::DistanceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Distance::DistanceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -2025,7 +2023,7 @@ void Native::Router::Rip::Default_::Distance::DistanceList::set_value(const std:
     }
 }
 
-void Native::Router::Rip::Default_::Distance::DistanceList::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Distance::DistanceList::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -2045,24 +2043,24 @@ void Native::Router::Rip::Default_::Distance::DistanceList::set_filter(const std
     }
 }
 
-bool Native::Router::Rip::Default_::Distance::DistanceList::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Distance::DistanceList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "number" || name == "ip" || name == "mask" || name == "access-list")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::DistributeList::DistributeList()
+Native::Router::Rip::Default::DistributeList::DistributeList()
 {
 
     yang_name = "distribute-list"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::DistributeList::~DistributeList()
+Native::Router::Rip::Default::DistributeList::~DistributeList()
 {
 }
 
-bool Native::Router::Rip::Default_::DistributeList::has_data() const
+bool Native::Router::Rip::Default::DistributeList::has_data() const
 {
     for (std::size_t index=0; index<accesslist.size(); index++)
     {
@@ -2087,7 +2085,7 @@ bool Native::Router::Rip::Default_::DistributeList::has_data() const
     return false;
 }
 
-bool Native::Router::Rip::Default_::DistributeList::has_operation() const
+bool Native::Router::Rip::Default::DistributeList::has_operation() const
 {
     for (std::size_t index=0; index<accesslist.size(); index++)
     {
@@ -2112,21 +2110,21 @@ bool Native::Router::Rip::Default_::DistributeList::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Native::Router::Rip::Default_::DistributeList::get_absolute_path() const
+std::string Native::Router::Rip::Default::DistributeList::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::DistributeList::get_segment_path() const
+std::string Native::Router::Rip::Default::DistributeList::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "distribute-list";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::DistributeList::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::DistributeList::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2135,19 +2133,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Di
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::DistributeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::DistributeList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "accesslist")
     {
-        for(auto const & c : accesslist)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Router::Rip::Default_::DistributeList::Accesslist>();
+        auto c = std::make_shared<Native::Router::Rip::Default::DistributeList::Accesslist>();
         c->parent = this;
         accesslist.push_back(c);
         return c;
@@ -2155,15 +2145,7 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::DistributeList::get_child
 
     if(child_yang_name == "accesslist-ifname")
     {
-        for(auto const & c : accesslist_ifname)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Router::Rip::Default_::DistributeList::AccesslistIfname>();
+        auto c = std::make_shared<Native::Router::Rip::Default::DistributeList::AccesslistIfname>();
         c->parent = this;
         accesslist_ifname.push_back(c);
         return c;
@@ -2171,15 +2153,7 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::DistributeList::get_child
 
     if(child_yang_name == "accesslist-prefix-gateway")
     {
-        for(auto const & c : accesslist_prefix_gateway)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway>();
+        auto c = std::make_shared<Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway>();
         c->parent = this;
         accesslist_prefix_gateway.push_back(c);
         return c;
@@ -2187,15 +2161,7 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::DistributeList::get_child
 
     if(child_yang_name == "accesslist-prefix-gateway-ifname")
     {
-        for(auto const & c : accesslist_prefix_gateway_ifname)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfname>();
+        auto c = std::make_shared<Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfname>();
         c->parent = this;
         accesslist_prefix_gateway_ifname.push_back(c);
         return c;
@@ -2204,48 +2170,65 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::DistributeList::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::DistributeList::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::DistributeList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : accesslist)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : accesslist_ifname)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : accesslist_prefix_gateway)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : accesslist_prefix_gateway_ifname)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::Router::Rip::Default_::DistributeList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::DistributeList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::Rip::Default_::DistributeList::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::DistributeList::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::Rip::Default_::DistributeList::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::DistributeList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "accesslist" || name == "accesslist-ifname" || name == "accesslist-prefix-gateway" || name == "accesslist-prefix-gateway-ifname")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::DistributeList::Accesslist::Accesslist()
+Native::Router::Rip::Default::DistributeList::Accesslist::Accesslist()
     :
     in_out{YType::enumeration, "in-out"},
     id{YType::str, "id"}
@@ -2254,38 +2237,38 @@ Native::Router::Rip::Default_::DistributeList::Accesslist::Accesslist()
     yang_name = "accesslist"; yang_parent_name = "distribute-list"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::DistributeList::Accesslist::~Accesslist()
+Native::Router::Rip::Default::DistributeList::Accesslist::~Accesslist()
 {
 }
 
-bool Native::Router::Rip::Default_::DistributeList::Accesslist::has_data() const
+bool Native::Router::Rip::Default::DistributeList::Accesslist::has_data() const
 {
     return in_out.is_set
 	|| id.is_set;
 }
 
-bool Native::Router::Rip::Default_::DistributeList::Accesslist::has_operation() const
+bool Native::Router::Rip::Default::DistributeList::Accesslist::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(in_out.yfilter)
 	|| ydk::is_set(id.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::DistributeList::Accesslist::get_absolute_path() const
+std::string Native::Router::Rip::Default::DistributeList::Accesslist::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/distribute-list/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::DistributeList::Accesslist::get_segment_path() const
+std::string Native::Router::Rip::Default::DistributeList::Accesslist::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "accesslist" <<"[in-out='" <<in_out <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::DistributeList::Accesslist::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::DistributeList::Accesslist::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2296,18 +2279,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Di
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::DistributeList::Accesslist::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::DistributeList::Accesslist::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::DistributeList::Accesslist::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::DistributeList::Accesslist::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::DistributeList::Accesslist::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::DistributeList::Accesslist::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "in-out")
     {
@@ -2323,7 +2307,7 @@ void Native::Router::Rip::Default_::DistributeList::Accesslist::set_value(const 
     }
 }
 
-void Native::Router::Rip::Default_::DistributeList::Accesslist::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::DistributeList::Accesslist::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "in-out")
     {
@@ -2335,14 +2319,14 @@ void Native::Router::Rip::Default_::DistributeList::Accesslist::set_filter(const
     }
 }
 
-bool Native::Router::Rip::Default_::DistributeList::Accesslist::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::DistributeList::Accesslist::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "in-out" || name == "id")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::DistributeList::AccesslistIfname::AccesslistIfname()
+Native::Router::Rip::Default::DistributeList::AccesslistIfname::AccesslistIfname()
     :
     in_out{YType::enumeration, "in-out"},
     interface{YType::str, "interface"},
@@ -2355,11 +2339,11 @@ Native::Router::Rip::Default_::DistributeList::AccesslistIfname::AccesslistIfnam
     yang_name = "accesslist-ifname"; yang_parent_name = "distribute-list"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::DistributeList::AccesslistIfname::~AccesslistIfname()
+Native::Router::Rip::Default::DistributeList::AccesslistIfname::~AccesslistIfname()
 {
 }
 
-bool Native::Router::Rip::Default_::DistributeList::AccesslistIfname::has_data() const
+bool Native::Router::Rip::Default::DistributeList::AccesslistIfname::has_data() const
 {
     return in_out.is_set
 	|| interface.is_set
@@ -2369,7 +2353,7 @@ bool Native::Router::Rip::Default_::DistributeList::AccesslistIfname::has_data()
 	|| id.is_set;
 }
 
-bool Native::Router::Rip::Default_::DistributeList::AccesslistIfname::has_operation() const
+bool Native::Router::Rip::Default::DistributeList::AccesslistIfname::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(in_out.yfilter)
@@ -2380,21 +2364,21 @@ bool Native::Router::Rip::Default_::DistributeList::AccesslistIfname::has_operat
 	|| ydk::is_set(id.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::DistributeList::AccesslistIfname::get_absolute_path() const
+std::string Native::Router::Rip::Default::DistributeList::AccesslistIfname::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/distribute-list/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::DistributeList::AccesslistIfname::get_segment_path() const
+std::string Native::Router::Rip::Default::DistributeList::AccesslistIfname::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "accesslist-ifname" <<"[in-out='" <<in_out <<"']" <<"[interface='" <<interface <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::DistributeList::AccesslistIfname::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::DistributeList::AccesslistIfname::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2409,18 +2393,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Di
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::DistributeList::AccesslistIfname::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::DistributeList::AccesslistIfname::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::DistributeList::AccesslistIfname::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::DistributeList::AccesslistIfname::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::DistributeList::AccesslistIfname::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::DistributeList::AccesslistIfname::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "in-out")
     {
@@ -2460,7 +2445,7 @@ void Native::Router::Rip::Default_::DistributeList::AccesslistIfname::set_value(
     }
 }
 
-void Native::Router::Rip::Default_::DistributeList::AccesslistIfname::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::DistributeList::AccesslistIfname::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "in-out")
     {
@@ -2488,14 +2473,14 @@ void Native::Router::Rip::Default_::DistributeList::AccesslistIfname::set_filter
     }
 }
 
-bool Native::Router::Rip::Default_::DistributeList::AccesslistIfname::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::DistributeList::AccesslistIfname::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "in-out" || name == "interface" || name == "interface-routing-id" || name == "isis-tag" || name == "vrf" || name == "id")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway::AccesslistPrefixGateway()
+Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway::AccesslistPrefixGateway()
     :
     in_out{YType::enumeration, "in-out"},
     prefix_gateway{YType::enumeration, "prefix-gateway"},
@@ -2505,18 +2490,18 @@ Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway::Accessli
     yang_name = "accesslist-prefix-gateway"; yang_parent_name = "distribute-list"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway::~AccesslistPrefixGateway()
+Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway::~AccesslistPrefixGateway()
 {
 }
 
-bool Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway::has_data() const
+bool Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway::has_data() const
 {
     return in_out.is_set
 	|| prefix_gateway.is_set
 	|| name.is_set;
 }
 
-bool Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway::has_operation() const
+bool Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(in_out.yfilter)
@@ -2524,21 +2509,21 @@ bool Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway::has
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway::get_absolute_path() const
+std::string Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/distribute-list/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway::get_segment_path() const
+std::string Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "accesslist-prefix-gateway" <<"[in-out='" <<in_out <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2550,18 +2535,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Di
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "in-out")
     {
@@ -2583,7 +2569,7 @@ void Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway::set
     }
 }
 
-void Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "in-out")
     {
@@ -2599,14 +2585,14 @@ void Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway::set
     }
 }
 
-bool Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "in-out" || name == "prefix-gateway" || name == "name")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfname::AccesslistPrefixGatewayIfname()
+Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfname::AccesslistPrefixGatewayIfname()
     :
     in_out{YType::enumeration, "in-out"},
     interface{YType::str, "interface"},
@@ -2620,11 +2606,11 @@ Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfname::Ac
     yang_name = "accesslist-prefix-gateway-ifname"; yang_parent_name = "distribute-list"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfname::~AccesslistPrefixGatewayIfname()
+Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfname::~AccesslistPrefixGatewayIfname()
 {
 }
 
-bool Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfname::has_data() const
+bool Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfname::has_data() const
 {
     return in_out.is_set
 	|| interface.is_set
@@ -2635,7 +2621,7 @@ bool Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfnam
 	|| vrf.is_set;
 }
 
-bool Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfname::has_operation() const
+bool Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfname::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(in_out.yfilter)
@@ -2647,21 +2633,21 @@ bool Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfnam
 	|| ydk::is_set(vrf.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfname::get_absolute_path() const
+std::string Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfname::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/distribute-list/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfname::get_segment_path() const
+std::string Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfname::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "accesslist-prefix-gateway-ifname" <<"[in-out='" <<in_out <<"']" <<"[interface='" <<interface <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfname::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfname::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2677,18 +2663,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Di
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfname::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfname::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfname::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfname::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfname::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfname::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "in-out")
     {
@@ -2734,7 +2721,7 @@ void Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfnam
     }
 }
 
-void Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfname::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfname::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "in-out")
     {
@@ -2766,14 +2753,14 @@ void Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfnam
     }
 }
 
-bool Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfname::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfname::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "in-out" || name == "interface" || name == "prefix-gateway" || name == "name" || name == "interface-routing-id" || name == "isis-tag" || name == "vrf")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::OffsetList::OffsetList()
+Native::Router::Rip::Default::OffsetList::OffsetList()
     :
     in_out{YType::enumeration, "in-out"},
     offset{YType::uint8, "offset"},
@@ -2783,18 +2770,18 @@ Native::Router::Rip::Default_::OffsetList::OffsetList()
     yang_name = "offset-list"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::OffsetList::~OffsetList()
+Native::Router::Rip::Default::OffsetList::~OffsetList()
 {
 }
 
-bool Native::Router::Rip::Default_::OffsetList::has_data() const
+bool Native::Router::Rip::Default::OffsetList::has_data() const
 {
     return in_out.is_set
 	|| offset.is_set
 	|| id.is_set;
 }
 
-bool Native::Router::Rip::Default_::OffsetList::has_operation() const
+bool Native::Router::Rip::Default::OffsetList::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(in_out.yfilter)
@@ -2802,21 +2789,21 @@ bool Native::Router::Rip::Default_::OffsetList::has_operation() const
 	|| ydk::is_set(id.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::OffsetList::get_absolute_path() const
+std::string Native::Router::Rip::Default::OffsetList::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::OffsetList::get_segment_path() const
+std::string Native::Router::Rip::Default::OffsetList::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "offset-list" <<"[in-out='" <<in_out <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::OffsetList::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::OffsetList::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2828,18 +2815,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Of
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::OffsetList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::OffsetList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::OffsetList::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::OffsetList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::OffsetList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::OffsetList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "in-out")
     {
@@ -2861,7 +2849,7 @@ void Native::Router::Rip::Default_::OffsetList::set_value(const std::string & va
     }
 }
 
-void Native::Router::Rip::Default_::OffsetList::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::OffsetList::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "in-out")
     {
@@ -2877,14 +2865,14 @@ void Native::Router::Rip::Default_::OffsetList::set_filter(const std::string & v
     }
 }
 
-bool Native::Router::Rip::Default_::OffsetList::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::OffsetList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "in-out" || name == "offset" || name == "id")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::PassiveInterface::PassiveInterface()
+Native::Router::Rip::Default::PassiveInterface::PassiveInterface()
     :
     default_{YType::empty, "default"},
     interface{YType::str, "interface"}
@@ -2893,38 +2881,38 @@ Native::Router::Rip::Default_::PassiveInterface::PassiveInterface()
     yang_name = "passive-interface"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::PassiveInterface::~PassiveInterface()
+Native::Router::Rip::Default::PassiveInterface::~PassiveInterface()
 {
 }
 
-bool Native::Router::Rip::Default_::PassiveInterface::has_data() const
+bool Native::Router::Rip::Default::PassiveInterface::has_data() const
 {
     return default_.is_set
 	|| interface.is_set;
 }
 
-bool Native::Router::Rip::Default_::PassiveInterface::has_operation() const
+bool Native::Router::Rip::Default::PassiveInterface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(default_.yfilter)
 	|| ydk::is_set(interface.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::PassiveInterface::get_absolute_path() const
+std::string Native::Router::Rip::Default::PassiveInterface::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::PassiveInterface::get_segment_path() const
+std::string Native::Router::Rip::Default::PassiveInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "passive-interface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::PassiveInterface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::PassiveInterface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2935,18 +2923,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Pa
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::PassiveInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::PassiveInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::PassiveInterface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::PassiveInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::PassiveInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::PassiveInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "default")
     {
@@ -2962,7 +2951,7 @@ void Native::Router::Rip::Default_::PassiveInterface::set_value(const std::strin
     }
 }
 
-void Native::Router::Rip::Default_::PassiveInterface::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::PassiveInterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "default")
     {
@@ -2974,24 +2963,24 @@ void Native::Router::Rip::Default_::PassiveInterface::set_filter(const std::stri
     }
 }
 
-bool Native::Router::Rip::Default_::PassiveInterface::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::PassiveInterface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "default" || name == "interface")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Disable::Disable()
+Native::Router::Rip::Default::Disable::Disable()
 {
 
     yang_name = "disable"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Disable::~Disable()
+Native::Router::Rip::Default::Disable::~Disable()
 {
 }
 
-bool Native::Router::Rip::Default_::Disable::has_data() const
+bool Native::Router::Rip::Default::Disable::has_data() const
 {
     for (std::size_t index=0; index<passive_interface.size(); index++)
     {
@@ -3001,7 +2990,7 @@ bool Native::Router::Rip::Default_::Disable::has_data() const
     return false;
 }
 
-bool Native::Router::Rip::Default_::Disable::has_operation() const
+bool Native::Router::Rip::Default::Disable::has_operation() const
 {
     for (std::size_t index=0; index<passive_interface.size(); index++)
     {
@@ -3011,21 +3000,21 @@ bool Native::Router::Rip::Default_::Disable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Native::Router::Rip::Default_::Disable::get_absolute_path() const
+std::string Native::Router::Rip::Default::Disable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Disable::get_segment_path() const
+std::string Native::Router::Rip::Default::Disable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "disable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Disable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Disable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3034,19 +3023,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Di
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Disable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Disable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "passive-interface")
     {
-        for(auto const & c : passive_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Router::Rip::Default_::Disable::PassiveInterface>();
+        auto c = std::make_shared<Native::Router::Rip::Default::Disable::PassiveInterface>();
         c->parent = this;
         passive_interface.push_back(c);
         return c;
@@ -3055,33 +3036,38 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Disable::get_child_by_nam
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Disable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Disable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : passive_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::Router::Rip::Default_::Disable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Disable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::Rip::Default_::Disable::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Disable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::Rip::Default_::Disable::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Disable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "passive-interface")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Disable::PassiveInterface::PassiveInterface()
+Native::Router::Rip::Default::Disable::PassiveInterface::PassiveInterface()
     :
     interface{YType::str, "interface"}
 {
@@ -3089,36 +3075,36 @@ Native::Router::Rip::Default_::Disable::PassiveInterface::PassiveInterface()
     yang_name = "passive-interface"; yang_parent_name = "disable"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Disable::PassiveInterface::~PassiveInterface()
+Native::Router::Rip::Default::Disable::PassiveInterface::~PassiveInterface()
 {
 }
 
-bool Native::Router::Rip::Default_::Disable::PassiveInterface::has_data() const
+bool Native::Router::Rip::Default::Disable::PassiveInterface::has_data() const
 {
     return interface.is_set;
 }
 
-bool Native::Router::Rip::Default_::Disable::PassiveInterface::has_operation() const
+bool Native::Router::Rip::Default::Disable::PassiveInterface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::Disable::PassiveInterface::get_absolute_path() const
+std::string Native::Router::Rip::Default::Disable::PassiveInterface::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/disable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Disable::PassiveInterface::get_segment_path() const
+std::string Native::Router::Rip::Default::Disable::PassiveInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "passive-interface" <<"[interface='" <<interface <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Disable::PassiveInterface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Disable::PassiveInterface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3128,18 +3114,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Di
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Disable::PassiveInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Disable::PassiveInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Disable::PassiveInterface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Disable::PassiveInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::Disable::PassiveInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Disable::PassiveInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface")
     {
@@ -3149,7 +3136,7 @@ void Native::Router::Rip::Default_::Disable::PassiveInterface::set_value(const s
     }
 }
 
-void Native::Router::Rip::Default_::Disable::PassiveInterface::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Disable::PassiveInterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface")
     {
@@ -3157,14 +3144,14 @@ void Native::Router::Rip::Default_::Disable::PassiveInterface::set_filter(const 
     }
 }
 
-bool Native::Router::Rip::Default_::Disable::PassiveInterface::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Disable::PassiveInterface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Redistribute()
+Native::Router::Rip::Default::Redistribute::Redistribute()
     :
     connected(nullptr) // presence node
 	,isis(nullptr) // presence node
@@ -3178,11 +3165,11 @@ Native::Router::Rip::Default_::Redistribute::Redistribute()
     yang_name = "redistribute"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::~Redistribute()
+Native::Router::Rip::Default::Redistribute::~Redistribute()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::has_data() const
+bool Native::Router::Rip::Default::Redistribute::has_data() const
 {
     for (std::size_t index=0; index<bgp.size(); index++)
     {
@@ -3208,7 +3195,7 @@ bool Native::Router::Rip::Default_::Redistribute::has_data() const
 	|| (rip !=  nullptr && rip->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::has_operation() const
 {
     for (std::size_t index=0; index<bgp.size(); index++)
     {
@@ -3235,21 +3222,21 @@ bool Native::Router::Rip::Default_::Redistribute::has_operation() const
 	|| (rip !=  nullptr && rip->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "redistribute";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3258,28 +3245,20 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "connected")
     {
         if(connected == nullptr)
         {
-            connected = std::make_shared<Native::Router::Rip::Default_::Redistribute::Connected>();
+            connected = std::make_shared<Native::Router::Rip::Default::Redistribute::Connected>();
         }
         return connected;
     }
 
     if(child_yang_name == "bgp")
     {
-        for(auto const & c : bgp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Router::Rip::Default_::Redistribute::Bgp>();
+        auto c = std::make_shared<Native::Router::Rip::Default::Redistribute::Bgp>();
         c->parent = this;
         bgp.push_back(c);
         return c;
@@ -3287,15 +3266,7 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::get_child_b
 
     if(child_yang_name == "eigrp")
     {
-        for(auto const & c : eigrp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Router::Rip::Default_::Redistribute::Eigrp>();
+        auto c = std::make_shared<Native::Router::Rip::Default::Redistribute::Eigrp>();
         c->parent = this;
         eigrp.push_back(c);
         return c;
@@ -3305,7 +3276,7 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::get_child_b
     {
         if(isis == nullptr)
         {
-            isis = std::make_shared<Native::Router::Rip::Default_::Redistribute::Isis>();
+            isis = std::make_shared<Native::Router::Rip::Default::Redistribute::Isis>();
         }
         return isis;
     }
@@ -3314,7 +3285,7 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::get_child_b
     {
         if(iso_igrp == nullptr)
         {
-            iso_igrp = std::make_shared<Native::Router::Rip::Default_::Redistribute::IsoIgrp>();
+            iso_igrp = std::make_shared<Native::Router::Rip::Default::Redistribute::IsoIgrp>();
         }
         return iso_igrp;
     }
@@ -3323,7 +3294,7 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::get_child_b
     {
         if(mobile == nullptr)
         {
-            mobile = std::make_shared<Native::Router::Rip::Default_::Redistribute::Mobile>();
+            mobile = std::make_shared<Native::Router::Rip::Default::Redistribute::Mobile>();
         }
         return mobile;
     }
@@ -3332,22 +3303,14 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::get_child_b
     {
         if(odr == nullptr)
         {
-            odr = std::make_shared<Native::Router::Rip::Default_::Redistribute::Odr>();
+            odr = std::make_shared<Native::Router::Rip::Default::Redistribute::Odr>();
         }
         return odr;
     }
 
     if(child_yang_name == "ospf")
     {
-        for(auto const & c : ospf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Router::Rip::Default_::Redistribute::Ospf>();
+        auto c = std::make_shared<Native::Router::Rip::Default::Redistribute::Ospf>();
         c->parent = this;
         ospf.push_back(c);
         return c;
@@ -3357,7 +3320,7 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::get_child_b
     {
         if(static_ == nullptr)
         {
-            static_ = std::make_shared<Native::Router::Rip::Default_::Redistribute::Static_>();
+            static_ = std::make_shared<Native::Router::Rip::Default::Redistribute::Static>();
         }
         return static_;
     }
@@ -3366,7 +3329,7 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::get_child_b
     {
         if(rip == nullptr)
         {
-            rip = std::make_shared<Native::Router::Rip::Default_::Redistribute::Rip_>();
+            rip = std::make_shared<Native::Router::Rip::Default::Redistribute::Rip_>();
         }
         return rip;
     }
@@ -3374,22 +3337,31 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(connected != nullptr)
     {
         children["connected"] = connected;
     }
 
+    count = 0;
     for (auto const & c : bgp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : eigrp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(isis != nullptr)
@@ -3412,9 +3384,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
         children["odr"] = odr;
     }
 
+    count = 0;
     for (auto const & c : ospf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(static_ != nullptr)
@@ -3430,60 +3406,60 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::Rip::Default_::Redistribute::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "connected" || name == "bgp" || name == "eigrp" || name == "isis" || name == "iso-igrp" || name == "mobile" || name == "odr" || name == "ospf" || name == "static" || name == "rip")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Connected::Connected()
+Native::Router::Rip::Default::Redistribute::Connected::Connected()
     :
-    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap>())
+    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
     yang_name = "connected"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Connected::~Connected()
+Native::Router::Rip::Default::Redistribute::Connected::~Connected()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Connected::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Connected::has_data() const
 {
     return (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Connected::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Connected::has_operation() const
 {
     return is_set(yfilter)
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Connected::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::Connected::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Connected::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Connected::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "connected";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Connected::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Connected::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3492,13 +3468,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Connected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Connected::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rip-metric-route-map")
     {
         if(rip_metric_route_map == nullptr)
         {
-            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap>();
+            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap>();
         }
         return rip_metric_route_map;
     }
@@ -3506,9 +3482,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Connected::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Connected::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Connected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rip_metric_route_map != nullptr)
     {
         children["rip-metric-route-map"] = rip_metric_route_map;
@@ -3517,64 +3494,64 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Connected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Connected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::Rip::Default_::Redistribute::Connected::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Connected::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Connected::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Connected::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rip-metric-route-map")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
     	,
-    metric(std::make_shared<Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::Metric>())
+    metric(std::make_shared<Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
     yang_name = "rip-metric-route-map"; yang_parent_name = "connected"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::~RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::~RipMetricRouteMap()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::has_data() const
 {
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| (metric !=  nullptr && metric->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/connected/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rip-metric-route-map";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3584,13 +3561,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "metric")
     {
         if(metric == nullptr)
         {
-            metric = std::make_shared<Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::Metric>();
+            metric = std::make_shared<Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::Metric>();
         }
         return metric;
     }
@@ -3598,9 +3575,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Connected::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(metric != nullptr)
     {
         children["metric"] = metric;
@@ -3609,7 +3587,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -3619,7 +3597,7 @@ void Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -3627,14 +3605,14 @@ void Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric" || name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::Metric::Metric()
+Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::Metric::Metric()
     :
     metric_value{YType::uint32, "metric-value"},
     transparent{YType::empty, "transparent"}
@@ -3643,38 +3621,38 @@ Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::Metri
     yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::Metric::~Metric()
+Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::Metric::~Metric()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::Metric::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::Metric::has_data() const
 {
     return metric_value.is_set
 	|| transparent.is_set;
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::Metric::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::Metric::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(metric_value.yfilter)
 	|| ydk::is_set(transparent.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::Metric::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::Metric::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/connected/rip-metric-route-map/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::Metric::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::Metric::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "metric";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::Metric::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::Metric::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3685,18 +3663,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::Metric::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "metric-value")
     {
@@ -3712,7 +3691,7 @@ void Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "metric-value")
     {
@@ -3724,56 +3703,56 @@ void Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Connected::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Connected::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric-value" || name == "transparent")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Bgp::Bgp()
+Native::Router::Rip::Default::Redistribute::Bgp::Bgp()
     :
     as_number{YType::str, "as-number"}
     	,
-    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap>())
+    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
     yang_name = "bgp"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Bgp::~Bgp()
+Native::Router::Rip::Default::Redistribute::Bgp::~Bgp()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Bgp::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Bgp::has_data() const
 {
     return as_number.is_set
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Bgp::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Bgp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(as_number.yfilter)
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Bgp::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::Bgp::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Bgp::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Bgp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp" <<"[as-number='" <<as_number <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Bgp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Bgp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3783,13 +3762,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Bgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rip-metric-route-map")
     {
         if(rip_metric_route_map == nullptr)
         {
-            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap>();
+            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap>();
         }
         return rip_metric_route_map;
     }
@@ -3797,9 +3776,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Bgp::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Bgp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rip_metric_route_map != nullptr)
     {
         children["rip-metric-route-map"] = rip_metric_route_map;
@@ -3808,7 +3788,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "as-number")
     {
@@ -3818,7 +3798,7 @@ void Native::Router::Rip::Default_::Redistribute::Bgp::set_value(const std::stri
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "as-number")
     {
@@ -3826,49 +3806,49 @@ void Native::Router::Rip::Default_::Redistribute::Bgp::set_filter(const std::str
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Bgp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rip-metric-route-map" || name == "as-number")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
     	,
-    metric(std::make_shared<Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::Metric>())
+    metric(std::make_shared<Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
     yang_name = "rip-metric-route-map"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::~RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::~RipMetricRouteMap()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::has_data() const
 {
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| (metric !=  nullptr && metric->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rip-metric-route-map";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3878,13 +3858,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "metric")
     {
         if(metric == nullptr)
         {
-            metric = std::make_shared<Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::Metric>();
+            metric = std::make_shared<Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::Metric>();
         }
         return metric;
     }
@@ -3892,9 +3872,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Bgp::RipMet
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(metric != nullptr)
     {
         children["metric"] = metric;
@@ -3903,7 +3884,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -3913,7 +3894,7 @@ void Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::set_va
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -3921,14 +3902,14 @@ void Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::set_fi
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric" || name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::Metric::Metric()
+Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::Metric::Metric()
     :
     metric_value{YType::uint32, "metric-value"},
     transparent{YType::empty, "transparent"}
@@ -3937,31 +3918,31 @@ Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::Metric::Met
     yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::Metric::~Metric()
+Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::Metric::~Metric()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::Metric::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::Metric::has_data() const
 {
     return metric_value.is_set
 	|| transparent.is_set;
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::Metric::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::Metric::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(metric_value.yfilter)
 	|| ydk::is_set(transparent.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::Metric::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::Metric::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "metric";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::Metric::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::Metric::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3972,18 +3953,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::Metric::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "metric-value")
     {
@@ -3999,7 +3981,7 @@ void Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::Metric
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "metric-value")
     {
@@ -4011,56 +3993,56 @@ void Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::Metric
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Bgp::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Bgp::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric-value" || name == "transparent")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Eigrp::Eigrp()
+Native::Router::Rip::Default::Redistribute::Eigrp::Eigrp()
     :
     as_number{YType::uint16, "as-number"}
     	,
-    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap>())
+    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
     yang_name = "eigrp"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Eigrp::~Eigrp()
+Native::Router::Rip::Default::Redistribute::Eigrp::~Eigrp()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Eigrp::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Eigrp::has_data() const
 {
     return as_number.is_set
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Eigrp::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Eigrp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(as_number.yfilter)
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Eigrp::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::Eigrp::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Eigrp::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Eigrp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "eigrp" <<"[as-number='" <<as_number <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Eigrp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Eigrp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4070,13 +4052,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rip-metric-route-map")
     {
         if(rip_metric_route_map == nullptr)
         {
-            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap>();
+            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap>();
         }
         return rip_metric_route_map;
     }
@@ -4084,9 +4066,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Eigrp::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Eigrp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Eigrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rip_metric_route_map != nullptr)
     {
         children["rip-metric-route-map"] = rip_metric_route_map;
@@ -4095,7 +4078,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Eigrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Eigrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "as-number")
     {
@@ -4105,7 +4088,7 @@ void Native::Router::Rip::Default_::Redistribute::Eigrp::set_value(const std::st
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Eigrp::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Eigrp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "as-number")
     {
@@ -4113,49 +4096,49 @@ void Native::Router::Rip::Default_::Redistribute::Eigrp::set_filter(const std::s
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Eigrp::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Eigrp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rip-metric-route-map" || name == "as-number")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
     	,
-    metric(std::make_shared<Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::Metric>())
+    metric(std::make_shared<Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
     yang_name = "rip-metric-route-map"; yang_parent_name = "eigrp"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::~RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::~RipMetricRouteMap()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::has_data() const
 {
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| (metric !=  nullptr && metric->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rip-metric-route-map";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4165,13 +4148,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "metric")
     {
         if(metric == nullptr)
         {
-            metric = std::make_shared<Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::Metric>();
+            metric = std::make_shared<Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::Metric>();
         }
         return metric;
     }
@@ -4179,9 +4162,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Eigrp::RipM
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(metric != nullptr)
     {
         children["metric"] = metric;
@@ -4190,7 +4174,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -4200,7 +4184,7 @@ void Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::set_
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -4208,14 +4192,14 @@ void Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::set_
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric" || name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::Metric::Metric()
+Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::Metric::Metric()
     :
     metric_value{YType::uint32, "metric-value"},
     transparent{YType::empty, "transparent"}
@@ -4224,31 +4208,31 @@ Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::Metric::M
     yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::Metric::~Metric()
+Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::Metric::~Metric()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::Metric::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::Metric::has_data() const
 {
     return metric_value.is_set
 	|| transparent.is_set;
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::Metric::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::Metric::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(metric_value.yfilter)
 	|| ydk::is_set(transparent.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::Metric::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::Metric::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "metric";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::Metric::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::Metric::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4259,18 +4243,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::Metric::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "metric-value")
     {
@@ -4286,7 +4271,7 @@ void Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::Metr
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "metric-value")
     {
@@ -4298,27 +4283,27 @@ void Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::Metr
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Eigrp::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Eigrp::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric-value" || name == "transparent")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Isis::Isis()
+Native::Router::Rip::Default::Redistribute::Isis::Isis()
     :
-    rip_isis_redist(std::make_shared<Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist>())
+    rip_isis_redist(std::make_shared<Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist>())
 {
     rip_isis_redist->parent = this;
 
     yang_name = "isis"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Isis::~Isis()
+Native::Router::Rip::Default::Redistribute::Isis::~Isis()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Isis::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Isis::has_data() const
 {
     for (std::size_t index=0; index<isis_area.size(); index++)
     {
@@ -4328,7 +4313,7 @@ bool Native::Router::Rip::Default_::Redistribute::Isis::has_data() const
     return (rip_isis_redist !=  nullptr && rip_isis_redist->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Isis::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Isis::has_operation() const
 {
     for (std::size_t index=0; index<isis_area.size(); index++)
     {
@@ -4339,21 +4324,21 @@ bool Native::Router::Rip::Default_::Redistribute::Isis::has_operation() const
 	|| (rip_isis_redist !=  nullptr && rip_isis_redist->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Isis::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::Isis::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Isis::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Isis::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "isis";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Isis::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Isis::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4362,19 +4347,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "isis-area")
     {
-        for(auto const & c : isis_area)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Router::Rip::Default_::Redistribute::Isis::IsisArea>();
+        auto c = std::make_shared<Native::Router::Rip::Default::Redistribute::Isis::IsisArea>();
         c->parent = this;
         isis_area.push_back(c);
         return c;
@@ -4384,7 +4361,7 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Isis::get_c
     {
         if(rip_isis_redist == nullptr)
         {
-            rip_isis_redist = std::make_shared<Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist>();
+            rip_isis_redist = std::make_shared<Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist>();
         }
         return rip_isis_redist;
     }
@@ -4392,12 +4369,17 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Isis::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Isis::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : isis_area)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(rip_isis_redist != nullptr)
@@ -4408,64 +4390,64 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::Rip::Default_::Redistribute::Isis::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Isis::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Isis::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Isis::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "isis-area" || name == "rip-isis-redist")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::IsisArea()
+Native::Router::Rip::Default::Redistribute::Isis::IsisArea::IsisArea()
     :
     name{YType::str, "name"}
     	,
-    rip_isis_redist(std::make_shared<Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist>())
+    rip_isis_redist(std::make_shared<Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist>())
 {
     rip_isis_redist->parent = this;
 
     yang_name = "isis-area"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::~IsisArea()
+Native::Router::Rip::Default::Redistribute::Isis::IsisArea::~IsisArea()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Isis::IsisArea::has_data() const
 {
     return name.is_set
 	|| (rip_isis_redist !=  nullptr && rip_isis_redist->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Isis::IsisArea::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
 	|| (rip_isis_redist !=  nullptr && rip_isis_redist->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::Isis::IsisArea::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/isis/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Isis::IsisArea::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "isis-area" <<"[name='" <<name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Isis::IsisArea::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4475,13 +4457,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Isis::IsisArea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rip-isis-redist")
     {
         if(rip_isis_redist == nullptr)
         {
-            rip_isis_redist = std::make_shared<Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist>();
+            rip_isis_redist = std::make_shared<Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist>();
         }
         return rip_isis_redist;
     }
@@ -4489,9 +4471,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Isis::IsisA
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Isis::IsisArea::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rip_isis_redist != nullptr)
     {
         children["rip-isis-redist"] = rip_isis_redist;
@@ -4500,7 +4483,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Isis::IsisArea::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -4510,7 +4493,7 @@ void Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::set_value(cons
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Isis::IsisArea::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -4518,49 +4501,49 @@ void Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::set_filter(con
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Isis::IsisArea::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rip-isis-redist" || name == "name")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipIsisRedist()
+Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipIsisRedist()
     :
     isis_level_routes{YType::enumeration, "isis-level-routes"}
     	,
-    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap>())
+    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
     yang_name = "rip-isis-redist"; yang_parent_name = "isis-area"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::~RipIsisRedist()
+Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::~RipIsisRedist()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::has_data() const
 {
     return isis_level_routes.is_set
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(isis_level_routes.yfilter)
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rip-isis-redist";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4570,13 +4553,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rip-metric-route-map")
     {
         if(rip_metric_route_map == nullptr)
         {
-            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap>();
+            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap>();
         }
         return rip_metric_route_map;
     }
@@ -4584,9 +4567,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Isis::IsisA
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rip_metric_route_map != nullptr)
     {
         children["rip-metric-route-map"] = rip_metric_route_map;
@@ -4595,7 +4579,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "isis-level-routes")
     {
@@ -4605,7 +4589,7 @@ void Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist:
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "isis-level-routes")
     {
@@ -4613,49 +4597,49 @@ void Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist:
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rip-metric-route-map" || name == "isis-level-routes")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
     	,
-    metric(std::make_shared<Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric>())
+    metric(std::make_shared<Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
     yang_name = "rip-metric-route-map"; yang_parent_name = "rip-isis-redist"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::~RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::~RipMetricRouteMap()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::has_data() const
 {
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| (metric !=  nullptr && metric->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rip-metric-route-map";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4665,13 +4649,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "metric")
     {
         if(metric == nullptr)
         {
-            metric = std::make_shared<Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric>();
+            metric = std::make_shared<Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric>();
         }
         return metric;
     }
@@ -4679,9 +4663,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Isis::IsisA
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(metric != nullptr)
     {
         children["metric"] = metric;
@@ -4690,7 +4675,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -4700,7 +4685,7 @@ void Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist:
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -4708,14 +4693,14 @@ void Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist:
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric" || name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::Metric()
+Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::Metric()
     :
     metric_value{YType::uint32, "metric-value"},
     transparent{YType::empty, "transparent"}
@@ -4724,31 +4709,31 @@ Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipM
     yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::~Metric()
+Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::~Metric()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::has_data() const
 {
     return metric_value.is_set
 	|| transparent.is_set;
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(metric_value.yfilter)
 	|| ydk::is_set(transparent.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "metric";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4759,18 +4744,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "metric-value")
     {
@@ -4786,7 +4772,7 @@ void Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist:
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "metric-value")
     {
@@ -4798,56 +4784,56 @@ void Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist:
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric-value" || name == "transparent")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipIsisRedist()
+Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipIsisRedist()
     :
     isis_level_routes{YType::enumeration, "isis-level-routes"}
     	,
-    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap>())
+    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
     yang_name = "rip-isis-redist"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::~RipIsisRedist()
+Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::~RipIsisRedist()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::has_data() const
 {
     return isis_level_routes.is_set
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(isis_level_routes.yfilter)
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/isis/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rip-isis-redist";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4857,13 +4843,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rip-metric-route-map")
     {
         if(rip_metric_route_map == nullptr)
         {
-            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap>();
+            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap>();
         }
         return rip_metric_route_map;
     }
@@ -4871,9 +4857,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Isis::RipIs
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rip_metric_route_map != nullptr)
     {
         children["rip-metric-route-map"] = rip_metric_route_map;
@@ -4882,7 +4869,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "isis-level-routes")
     {
@@ -4892,7 +4879,7 @@ void Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::set_value
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "isis-level-routes")
     {
@@ -4900,56 +4887,56 @@ void Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::set_filte
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rip-metric-route-map" || name == "isis-level-routes")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
     	,
-    metric(std::make_shared<Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric>())
+    metric(std::make_shared<Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
     yang_name = "rip-metric-route-map"; yang_parent_name = "rip-isis-redist"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::~RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::~RipMetricRouteMap()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::has_data() const
 {
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| (metric !=  nullptr && metric->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/isis/rip-isis-redist/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rip-metric-route-map";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4959,13 +4946,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "metric")
     {
         if(metric == nullptr)
         {
-            metric = std::make_shared<Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric>();
+            metric = std::make_shared<Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric>();
         }
         return metric;
     }
@@ -4973,9 +4960,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Isis::RipIs
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(metric != nullptr)
     {
         children["metric"] = metric;
@@ -4984,7 +4972,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -4994,7 +4982,7 @@ void Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetric
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -5002,14 +4990,14 @@ void Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetric
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric" || name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::Metric()
+Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::Metric()
     :
     metric_value{YType::uint32, "metric-value"},
     transparent{YType::empty, "transparent"}
@@ -5018,38 +5006,38 @@ Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRoute
     yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::~Metric()
+Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::~Metric()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::has_data() const
 {
     return metric_value.is_set
 	|| transparent.is_set;
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(metric_value.yfilter)
 	|| ydk::is_set(transparent.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/isis/rip-isis-redist/rip-metric-route-map/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "metric";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5060,18 +5048,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "metric-value")
     {
@@ -5087,7 +5076,7 @@ void Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetric
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "metric-value")
     {
@@ -5099,27 +5088,27 @@ void Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetric
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric-value" || name == "transparent")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoIgrp()
+Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoIgrp()
     :
-    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap>())
+    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
     yang_name = "iso-igrp"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::IsoIgrp::~IsoIgrp()
+Native::Router::Rip::Default::Redistribute::IsoIgrp::~IsoIgrp()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::IsoIgrp::has_data() const
+bool Native::Router::Rip::Default::Redistribute::IsoIgrp::has_data() const
 {
     for (std::size_t index=0; index<isoigrp_list.size(); index++)
     {
@@ -5129,7 +5118,7 @@ bool Native::Router::Rip::Default_::Redistribute::IsoIgrp::has_data() const
     return (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::IsoIgrp::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::IsoIgrp::has_operation() const
 {
     for (std::size_t index=0; index<isoigrp_list.size(); index++)
     {
@@ -5140,21 +5129,21 @@ bool Native::Router::Rip::Default_::Redistribute::IsoIgrp::has_operation() const
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::IsoIgrp::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::IsoIgrp::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::IsoIgrp::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::IsoIgrp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "iso-igrp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::IsoIgrp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::IsoIgrp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5163,19 +5152,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::IsoIgrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::IsoIgrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "isoigrp-list")
     {
-        for(auto const & c : isoigrp_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList>();
+        auto c = std::make_shared<Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList>();
         c->parent = this;
         isoigrp_list.push_back(c);
         return c;
@@ -5185,7 +5166,7 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::IsoIgrp::ge
     {
         if(rip_metric_route_map == nullptr)
         {
-            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap>();
+            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap>();
         }
         return rip_metric_route_map;
     }
@@ -5193,12 +5174,17 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::IsoIgrp::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::IsoIgrp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::IsoIgrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : isoigrp_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(rip_metric_route_map != nullptr)
@@ -5209,64 +5195,64 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::IsoIgrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::IsoIgrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::Rip::Default_::Redistribute::IsoIgrp::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::IsoIgrp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::IsoIgrp::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::IsoIgrp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "isoigrp-list" || name == "rip-metric-route-map")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::IsoigrpList()
+Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::IsoigrpList()
     :
     iso_area_tag{YType::str, "iso-area-tag"}
     	,
-    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap>())
+    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
     yang_name = "isoigrp-list"; yang_parent_name = "iso-igrp"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::~IsoigrpList()
+Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::~IsoigrpList()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::has_data() const
+bool Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::has_data() const
 {
     return iso_area_tag.is_set
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(iso_area_tag.yfilter)
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/iso-igrp/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "isoigrp-list" <<"[iso-area-tag='" <<iso_area_tag <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5276,13 +5262,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rip-metric-route-map")
     {
         if(rip_metric_route_map == nullptr)
         {
-            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap>();
+            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap>();
         }
         return rip_metric_route_map;
     }
@@ -5290,9 +5276,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::IsoIgrp::Is
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rip_metric_route_map != nullptr)
     {
         children["rip-metric-route-map"] = rip_metric_route_map;
@@ -5301,7 +5288,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "iso-area-tag")
     {
@@ -5311,7 +5298,7 @@ void Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::set_valu
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "iso-area-tag")
     {
@@ -5319,49 +5306,49 @@ void Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::set_filt
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rip-metric-route-map" || name == "iso-area-tag")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
     	,
-    metric(std::make_shared<Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric>())
+    metric(std::make_shared<Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
     yang_name = "rip-metric-route-map"; yang_parent_name = "isoigrp-list"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::~RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::~RipMetricRouteMap()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::has_data() const
+bool Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::has_data() const
 {
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| (metric !=  nullptr && metric->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rip-metric-route-map";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5371,13 +5358,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "metric")
     {
         if(metric == nullptr)
         {
-            metric = std::make_shared<Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric>();
+            metric = std::make_shared<Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric>();
         }
         return metric;
     }
@@ -5385,9 +5372,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::IsoIgrp::Is
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(metric != nullptr)
     {
         children["metric"] = metric;
@@ -5396,7 +5384,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -5406,7 +5394,7 @@ void Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetri
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -5414,14 +5402,14 @@ void Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetri
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric" || name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::Metric()
+Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::Metric()
     :
     metric_value{YType::uint32, "metric-value"},
     transparent{YType::empty, "transparent"}
@@ -5430,31 +5418,31 @@ Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRout
     yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::~Metric()
+Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::~Metric()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::has_data() const
+bool Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::has_data() const
 {
     return metric_value.is_set
 	|| transparent.is_set;
 }
 
-bool Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(metric_value.yfilter)
 	|| ydk::is_set(transparent.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "metric";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5465,18 +5453,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "metric-value")
     {
@@ -5492,7 +5481,7 @@ void Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetri
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "metric-value")
     {
@@ -5504,56 +5493,56 @@ void Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetri
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric-value" || name == "transparent")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
     	,
-    metric(std::make_shared<Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::Metric>())
+    metric(std::make_shared<Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
     yang_name = "rip-metric-route-map"; yang_parent_name = "iso-igrp"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::~RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::~RipMetricRouteMap()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::has_data() const
+bool Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::has_data() const
 {
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| (metric !=  nullptr && metric->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/iso-igrp/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rip-metric-route-map";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5563,13 +5552,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "metric")
     {
         if(metric == nullptr)
         {
-            metric = std::make_shared<Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::Metric>();
+            metric = std::make_shared<Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::Metric>();
         }
         return metric;
     }
@@ -5577,9 +5566,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::IsoIgrp::Ri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(metric != nullptr)
     {
         children["metric"] = metric;
@@ -5588,7 +5578,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -5598,7 +5588,7 @@ void Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::se
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -5606,14 +5596,14 @@ void Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::se
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric" || name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::Metric()
+Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::Metric()
     :
     metric_value{YType::uint32, "metric-value"},
     transparent{YType::empty, "transparent"}
@@ -5622,38 +5612,38 @@ Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::Metric:
     yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::~Metric()
+Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::~Metric()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::has_data() const
+bool Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::has_data() const
 {
     return metric_value.is_set
 	|| transparent.is_set;
 }
 
-bool Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(metric_value.yfilter)
 	|| ydk::is_set(transparent.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/iso-igrp/rip-metric-route-map/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "metric";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5664,18 +5654,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "metric-value")
     {
@@ -5691,7 +5682,7 @@ void Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::Me
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "metric-value")
     {
@@ -5703,52 +5694,52 @@ void Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::Me
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric-value" || name == "transparent")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Mobile::Mobile()
+Native::Router::Rip::Default::Redistribute::Mobile::Mobile()
     :
-    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap>())
+    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
     yang_name = "mobile"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Mobile::~Mobile()
+Native::Router::Rip::Default::Redistribute::Mobile::~Mobile()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Mobile::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Mobile::has_data() const
 {
     return (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Mobile::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Mobile::has_operation() const
 {
     return is_set(yfilter)
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Mobile::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::Mobile::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Mobile::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Mobile::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mobile";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Mobile::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Mobile::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5757,13 +5748,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Mobile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Mobile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rip-metric-route-map")
     {
         if(rip_metric_route_map == nullptr)
         {
-            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap>();
+            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap>();
         }
         return rip_metric_route_map;
     }
@@ -5771,9 +5762,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Mobile::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Mobile::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Mobile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rip_metric_route_map != nullptr)
     {
         children["rip-metric-route-map"] = rip_metric_route_map;
@@ -5782,64 +5774,64 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Mobile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Mobile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::Rip::Default_::Redistribute::Mobile::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Mobile::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Mobile::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Mobile::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rip-metric-route-map")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
     	,
-    metric(std::make_shared<Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::Metric>())
+    metric(std::make_shared<Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
     yang_name = "rip-metric-route-map"; yang_parent_name = "mobile"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::~RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::~RipMetricRouteMap()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::has_data() const
 {
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| (metric !=  nullptr && metric->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/mobile/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rip-metric-route-map";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5849,13 +5841,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "metric")
     {
         if(metric == nullptr)
         {
-            metric = std::make_shared<Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::Metric>();
+            metric = std::make_shared<Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::Metric>();
         }
         return metric;
     }
@@ -5863,9 +5855,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Mobile::Rip
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(metric != nullptr)
     {
         children["metric"] = metric;
@@ -5874,7 +5867,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -5884,7 +5877,7 @@ void Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::set
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -5892,14 +5885,14 @@ void Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::set
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric" || name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::Metric::Metric()
+Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::Metric::Metric()
     :
     metric_value{YType::uint32, "metric-value"},
     transparent{YType::empty, "transparent"}
@@ -5908,38 +5901,38 @@ Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::Metric::
     yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::Metric::~Metric()
+Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::Metric::~Metric()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::Metric::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::Metric::has_data() const
 {
     return metric_value.is_set
 	|| transparent.is_set;
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::Metric::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::Metric::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(metric_value.yfilter)
 	|| ydk::is_set(transparent.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::Metric::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::Metric::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/mobile/rip-metric-route-map/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::Metric::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::Metric::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "metric";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::Metric::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::Metric::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5950,18 +5943,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::Metric::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "metric-value")
     {
@@ -5977,7 +5971,7 @@ void Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::Met
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "metric-value")
     {
@@ -5989,52 +5983,52 @@ void Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::Met
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Mobile::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Mobile::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric-value" || name == "transparent")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Odr::Odr()
+Native::Router::Rip::Default::Redistribute::Odr::Odr()
     :
-    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap>())
+    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
     yang_name = "odr"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Odr::~Odr()
+Native::Router::Rip::Default::Redistribute::Odr::~Odr()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Odr::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Odr::has_data() const
 {
     return (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Odr::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Odr::has_operation() const
 {
     return is_set(yfilter)
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Odr::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::Odr::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Odr::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Odr::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "odr";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Odr::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Odr::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6043,13 +6037,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Odr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Odr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rip-metric-route-map")
     {
         if(rip_metric_route_map == nullptr)
         {
-            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap>();
+            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap>();
         }
         return rip_metric_route_map;
     }
@@ -6057,9 +6051,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Odr::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Odr::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Odr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rip_metric_route_map != nullptr)
     {
         children["rip-metric-route-map"] = rip_metric_route_map;
@@ -6068,64 +6063,64 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Odr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Odr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::Rip::Default_::Redistribute::Odr::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Odr::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Odr::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Odr::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rip-metric-route-map")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
     	,
-    metric(std::make_shared<Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::Metric>())
+    metric(std::make_shared<Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
     yang_name = "rip-metric-route-map"; yang_parent_name = "odr"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::~RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::~RipMetricRouteMap()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::has_data() const
 {
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| (metric !=  nullptr && metric->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/odr/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rip-metric-route-map";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6135,13 +6130,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "metric")
     {
         if(metric == nullptr)
         {
-            metric = std::make_shared<Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::Metric>();
+            metric = std::make_shared<Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::Metric>();
         }
         return metric;
     }
@@ -6149,9 +6144,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Odr::RipMet
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(metric != nullptr)
     {
         children["metric"] = metric;
@@ -6160,7 +6156,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -6170,7 +6166,7 @@ void Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::set_va
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -6178,14 +6174,14 @@ void Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::set_fi
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric" || name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::Metric::Metric()
+Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::Metric::Metric()
     :
     metric_value{YType::uint32, "metric-value"},
     transparent{YType::empty, "transparent"}
@@ -6194,38 +6190,38 @@ Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::Metric::Met
     yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::Metric::~Metric()
+Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::Metric::~Metric()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::Metric::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::Metric::has_data() const
 {
     return metric_value.is_set
 	|| transparent.is_set;
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::Metric::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::Metric::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(metric_value.yfilter)
 	|| ydk::is_set(transparent.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::Metric::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::Metric::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/odr/rip-metric-route-map/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::Metric::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::Metric::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "metric";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::Metric::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::Metric::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6236,18 +6232,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::Metric::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "metric-value")
     {
@@ -6263,7 +6260,7 @@ void Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::Metric
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "metric-value")
     {
@@ -6275,19 +6272,19 @@ void Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::Metric
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Odr::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Odr::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric-value" || name == "transparent")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::Ospf()
+Native::Router::Rip::Default::Redistribute::Ospf::Ospf()
     :
     process_id{YType::uint16, "process-id"}
     	,
-    match(std::make_shared<Native::Router::Rip::Default_::Redistribute::Ospf::Match>())
-	,rip_metric_route_map(std::make_shared<Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap>())
+    match(std::make_shared<Native::Router::Rip::Default::Redistribute::Ospf::Match>())
+	,rip_metric_route_map(std::make_shared<Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap>())
 {
     match->parent = this;
     rip_metric_route_map->parent = this;
@@ -6295,11 +6292,11 @@ Native::Router::Rip::Default_::Redistribute::Ospf::Ospf()
     yang_name = "ospf"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::~Ospf()
+Native::Router::Rip::Default::Redistribute::Ospf::~Ospf()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::has_data() const
 {
     for (std::size_t index=0; index<vrf.size(); index++)
     {
@@ -6311,7 +6308,7 @@ bool Native::Router::Rip::Default_::Redistribute::Ospf::has_data() const
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::has_operation() const
 {
     for (std::size_t index=0; index<vrf.size(); index++)
     {
@@ -6324,21 +6321,21 @@ bool Native::Router::Rip::Default_::Redistribute::Ospf::has_operation() const
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Ospf::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::Ospf::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Ospf::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Ospf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ospf" <<"[process-id='" <<process_id <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Ospf::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Ospf::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6348,19 +6345,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Ospf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Router::Rip::Default_::Redistribute::Ospf::Vrf>();
+        auto c = std::make_shared<Native::Router::Rip::Default::Redistribute::Ospf::Vrf>();
         c->parent = this;
         vrf.push_back(c);
         return c;
@@ -6370,7 +6359,7 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::get_c
     {
         if(match == nullptr)
         {
-            match = std::make_shared<Native::Router::Rip::Default_::Redistribute::Ospf::Match>();
+            match = std::make_shared<Native::Router::Rip::Default::Redistribute::Ospf::Match>();
         }
         return match;
     }
@@ -6379,7 +6368,7 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::get_c
     {
         if(rip_metric_route_map == nullptr)
         {
-            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap>();
+            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap>();
         }
         return rip_metric_route_map;
     }
@@ -6387,12 +6376,17 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Ospf::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(match != nullptr)
@@ -6408,7 +6402,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "process-id")
     {
@@ -6418,7 +6412,7 @@ void Native::Router::Rip::Default_::Redistribute::Ospf::set_value(const std::str
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Ospf::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "process-id")
     {
@@ -6426,14 +6420,14 @@ void Native::Router::Rip::Default_::Redistribute::Ospf::set_filter(const std::st
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Ospf::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vrf" || name == "match" || name == "rip-metric-route-map" || name == "process-id")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::Vrf::Vrf()
+Native::Router::Rip::Default::Redistribute::Ospf::Vrf::Vrf()
     :
     name{YType::str, "name"}
 {
@@ -6441,29 +6435,29 @@ Native::Router::Rip::Default_::Redistribute::Ospf::Vrf::Vrf()
     yang_name = "vrf"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::Vrf::~Vrf()
+Native::Router::Rip::Default::Redistribute::Ospf::Vrf::~Vrf()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Vrf::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Vrf::has_data() const
 {
     return name.is_set;
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Vrf::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Vrf::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Ospf::Vrf::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Ospf::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrf" <<"[name='" <<name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Ospf::Vrf::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Ospf::Vrf::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6473,18 +6467,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Ospf::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Ospf::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Ospf::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Ospf::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -6494,7 +6489,7 @@ void Native::Router::Rip::Default_::Redistribute::Ospf::Vrf::set_value(const std
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Ospf::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -6502,14 +6497,14 @@ void Native::Router::Rip::Default_::Redistribute::Ospf::Vrf::set_filter(const st
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Vrf::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::Match::Match()
+Native::Router::Rip::Default::Redistribute::Ospf::Match::Match()
     :
     internal(nullptr) // presence node
 	,external(nullptr) // presence node
@@ -6519,18 +6514,18 @@ Native::Router::Rip::Default_::Redistribute::Ospf::Match::Match()
     yang_name = "match"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::Match::~Match()
+Native::Router::Rip::Default::Redistribute::Ospf::Match::~Match()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::has_data() const
 {
     return (internal !=  nullptr && internal->has_data())
 	|| (external !=  nullptr && external->has_data())
 	|| (nssa_external !=  nullptr && nssa_external->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::has_operation() const
 {
     return is_set(yfilter)
 	|| (internal !=  nullptr && internal->has_operation())
@@ -6538,14 +6533,14 @@ bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::has_operation() c
 	|| (nssa_external !=  nullptr && nssa_external->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Ospf::Match::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Ospf::Match::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "match";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Ospf::Match::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Ospf::Match::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6554,13 +6549,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::Match::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Ospf::Match::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "internal")
     {
         if(internal == nullptr)
         {
-            internal = std::make_shared<Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal>();
+            internal = std::make_shared<Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal>();
         }
         return internal;
     }
@@ -6569,7 +6564,7 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::Match
     {
         if(external == nullptr)
         {
-            external = std::make_shared<Native::Router::Rip::Default_::Redistribute::Ospf::Match::External>();
+            external = std::make_shared<Native::Router::Rip::Default::Redistribute::Ospf::Match::External>();
         }
         return external;
     }
@@ -6578,7 +6573,7 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::Match
     {
         if(nssa_external == nullptr)
         {
-            nssa_external = std::make_shared<Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal>();
+            nssa_external = std::make_shared<Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal>();
         }
         return nssa_external;
     }
@@ -6586,9 +6581,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::Match
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Ospf::Match::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Ospf::Match::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(internal != nullptr)
     {
         children["internal"] = internal;
@@ -6607,53 +6603,53 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::Match::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Ospf::Match::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::Match::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Ospf::Match::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "internal" || name == "external" || name == "nssa-external")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::Internal()
+Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::Internal()
     :
-    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap>())
+    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
     yang_name = "internal"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::~Internal()
+Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::~Internal()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::has_data() const
 {
     return (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::has_operation() const
 {
     return is_set(yfilter)
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "internal";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6662,13 +6658,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rip-metric-route-map")
     {
         if(rip_metric_route_map == nullptr)
         {
-            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap>();
+            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap>();
         }
         return rip_metric_route_map;
     }
@@ -6676,9 +6672,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::Match
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rip_metric_route_map != nullptr)
     {
         children["rip-metric-route-map"] = rip_metric_route_map;
@@ -6687,57 +6684,57 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rip-metric-route-map")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
     	,
-    metric(std::make_shared<Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric>())
+    metric(std::make_shared<Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
     yang_name = "rip-metric-route-map"; yang_parent_name = "internal"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::~RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::~RipMetricRouteMap()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::has_data() const
 {
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| (metric !=  nullptr && metric->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rip-metric-route-map";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6747,13 +6744,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "metric")
     {
         if(metric == nullptr)
         {
-            metric = std::make_shared<Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric>();
+            metric = std::make_shared<Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric>();
         }
         return metric;
     }
@@ -6761,9 +6758,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::Match
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(metric != nullptr)
     {
         children["metric"] = metric;
@@ -6772,7 +6770,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -6782,7 +6780,7 @@ void Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetr
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -6790,14 +6788,14 @@ void Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetr
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric" || name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::Metric()
+Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::Metric()
     :
     metric_value{YType::uint32, "metric-value"},
     transparent{YType::empty, "transparent"}
@@ -6806,31 +6804,31 @@ Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRou
     yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::~Metric()
+Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::~Metric()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::has_data() const
 {
     return metric_value.is_set
 	|| transparent.is_set;
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(metric_value.yfilter)
 	|| ydk::is_set(transparent.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "metric";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6841,18 +6839,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "metric-value")
     {
@@ -6868,7 +6867,7 @@ void Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetr
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "metric-value")
     {
@@ -6880,49 +6879,49 @@ void Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetr
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::Internal::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric-value" || name == "transparent")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::External()
+Native::Router::Rip::Default::Redistribute::Ospf::Match::External::External()
     :
     external_routes{YType::enumeration, "external-routes"}
     	,
-    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap>())
+    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
     yang_name = "external"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::~External()
+Native::Router::Rip::Default::Redistribute::Ospf::Match::External::~External()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::External::has_data() const
 {
     return external_routes.is_set
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::External::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(external_routes.yfilter)
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Ospf::Match::External::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "external";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Ospf::Match::External::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6932,13 +6931,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Ospf::Match::External::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rip-metric-route-map")
     {
         if(rip_metric_route_map == nullptr)
         {
-            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap>();
+            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap>();
         }
         return rip_metric_route_map;
     }
@@ -6946,9 +6945,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::Match
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Ospf::Match::External::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rip_metric_route_map != nullptr)
     {
         children["rip-metric-route-map"] = rip_metric_route_map;
@@ -6957,7 +6957,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Ospf::Match::External::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "external-routes")
     {
@@ -6967,7 +6967,7 @@ void Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::set_val
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Ospf::Match::External::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "external-routes")
     {
@@ -6975,49 +6975,49 @@ void Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::set_fil
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::External::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rip-metric-route-map" || name == "external-routes")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
     	,
-    metric(std::make_shared<Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric>())
+    metric(std::make_shared<Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
     yang_name = "rip-metric-route-map"; yang_parent_name = "external"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::~RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::~RipMetricRouteMap()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::has_data() const
 {
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| (metric !=  nullptr && metric->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rip-metric-route-map";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7027,13 +7027,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "metric")
     {
         if(metric == nullptr)
         {
-            metric = std::make_shared<Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric>();
+            metric = std::make_shared<Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric>();
         }
         return metric;
     }
@@ -7041,9 +7041,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::Match
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(metric != nullptr)
     {
         children["metric"] = metric;
@@ -7052,7 +7053,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -7062,7 +7063,7 @@ void Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetr
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -7070,14 +7071,14 @@ void Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetr
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric" || name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::Metric()
+Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::Metric()
     :
     metric_value{YType::uint32, "metric-value"},
     transparent{YType::empty, "transparent"}
@@ -7086,31 +7087,31 @@ Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRou
     yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::~Metric()
+Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::~Metric()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::has_data() const
 {
     return metric_value.is_set
 	|| transparent.is_set;
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(metric_value.yfilter)
 	|| ydk::is_set(transparent.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "metric";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7121,18 +7122,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "metric-value")
     {
@@ -7148,7 +7150,7 @@ void Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetr
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "metric-value")
     {
@@ -7160,49 +7162,49 @@ void Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetr
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::External::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric-value" || name == "transparent")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::NssaExternal()
+Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::NssaExternal()
     :
     nssa_external_routes{YType::enumeration, "nssa-external-routes"}
     	,
-    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap>())
+    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
     yang_name = "nssa-external"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::~NssaExternal()
+Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::~NssaExternal()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::has_data() const
 {
     return nssa_external_routes.is_set
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(nssa_external_routes.yfilter)
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nssa-external";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7212,13 +7214,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rip-metric-route-map")
     {
         if(rip_metric_route_map == nullptr)
         {
-            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap>();
+            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap>();
         }
         return rip_metric_route_map;
     }
@@ -7226,9 +7228,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::Match
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rip_metric_route_map != nullptr)
     {
         children["rip-metric-route-map"] = rip_metric_route_map;
@@ -7237,7 +7240,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nssa-external-routes")
     {
@@ -7247,7 +7250,7 @@ void Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::set
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "nssa-external-routes")
     {
@@ -7255,49 +7258,49 @@ void Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::set
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rip-metric-route-map" || name == "nssa-external-routes")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
     	,
-    metric(std::make_shared<Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric>())
+    metric(std::make_shared<Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
     yang_name = "rip-metric-route-map"; yang_parent_name = "nssa-external"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::~RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::~RipMetricRouteMap()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::has_data() const
 {
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| (metric !=  nullptr && metric->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rip-metric-route-map";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7307,13 +7310,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "metric")
     {
         if(metric == nullptr)
         {
-            metric = std::make_shared<Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric>();
+            metric = std::make_shared<Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric>();
         }
         return metric;
     }
@@ -7321,9 +7324,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::Match
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(metric != nullptr)
     {
         children["metric"] = metric;
@@ -7332,7 +7336,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -7342,7 +7346,7 @@ void Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::Rip
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -7350,14 +7354,14 @@ void Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::Rip
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric" || name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::Metric()
+Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::Metric()
     :
     metric_value{YType::uint32, "metric-value"},
     transparent{YType::empty, "transparent"}
@@ -7366,31 +7370,31 @@ Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetri
     yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::~Metric()
+Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::~Metric()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::has_data() const
 {
     return metric_value.is_set
 	|| transparent.is_set;
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(metric_value.yfilter)
 	|| ydk::is_set(transparent.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "metric";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7401,18 +7405,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "metric-value")
     {
@@ -7428,7 +7433,7 @@ void Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::Rip
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "metric-value")
     {
@@ -7440,49 +7445,49 @@ void Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::Rip
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Ospf::Match::NssaExternal::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric-value" || name == "transparent")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
     	,
-    metric(std::make_shared<Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::Metric>())
+    metric(std::make_shared<Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
     yang_name = "rip-metric-route-map"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::~RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::~RipMetricRouteMap()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::has_data() const
 {
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| (metric !=  nullptr && metric->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rip-metric-route-map";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7492,13 +7497,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "metric")
     {
         if(metric == nullptr)
         {
-            metric = std::make_shared<Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::Metric>();
+            metric = std::make_shared<Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::Metric>();
         }
         return metric;
     }
@@ -7506,9 +7511,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::RipMe
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(metric != nullptr)
     {
         children["metric"] = metric;
@@ -7517,7 +7523,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -7527,7 +7533,7 @@ void Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::set_v
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -7535,14 +7541,14 @@ void Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::set_f
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric" || name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::Metric::Metric()
+Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::Metric::Metric()
     :
     metric_value{YType::uint32, "metric-value"},
     transparent{YType::empty, "transparent"}
@@ -7551,31 +7557,31 @@ Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::Metric::Me
     yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::Metric::~Metric()
+Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::Metric::~Metric()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::Metric::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::Metric::has_data() const
 {
     return metric_value.is_set
 	|| transparent.is_set;
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::Metric::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::Metric::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(metric_value.yfilter)
 	|| ydk::is_set(transparent.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::Metric::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::Metric::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "metric";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::Metric::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::Metric::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7586,18 +7592,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::Metric::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "metric-value")
     {
@@ -7613,7 +7620,7 @@ void Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::Metri
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "metric-value")
     {
@@ -7625,52 +7632,52 @@ void Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::Metri
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Ospf::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric-value" || name == "transparent")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Static_::Static_()
+Native::Router::Rip::Default::Redistribute::Static::Static()
     :
-    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap>())
+    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
     yang_name = "static"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Static_::~Static_()
+Native::Router::Rip::Default::Redistribute::Static::~Static()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Static_::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Static::has_data() const
 {
     return (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Static_::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Static::has_operation() const
 {
     return is_set(yfilter)
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Static_::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::Static::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Static_::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Static::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Static::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7679,13 +7686,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rip-metric-route-map")
     {
         if(rip_metric_route_map == nullptr)
         {
-            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap>();
+            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap>();
         }
         return rip_metric_route_map;
     }
@@ -7693,9 +7700,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Static_::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Static::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rip_metric_route_map != nullptr)
     {
         children["rip-metric-route-map"] = rip_metric_route_map;
@@ -7704,64 +7712,64 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::Rip::Default_::Redistribute::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Static::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Static::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rip-metric-route-map")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
     	,
-    metric(std::make_shared<Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::Metric>())
+    metric(std::make_shared<Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
     yang_name = "rip-metric-route-map"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::~RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::~RipMetricRouteMap()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::has_data() const
 {
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| (metric !=  nullptr && metric->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/static/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rip-metric-route-map";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7771,13 +7779,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "metric")
     {
         if(metric == nullptr)
         {
-            metric = std::make_shared<Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::Metric>();
+            metric = std::make_shared<Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::Metric>();
         }
         return metric;
     }
@@ -7785,9 +7793,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Static_::Ri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(metric != nullptr)
     {
         children["metric"] = metric;
@@ -7796,7 +7805,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -7806,7 +7815,7 @@ void Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::se
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -7814,14 +7823,14 @@ void Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::se
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric" || name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::Metric::Metric()
+Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::Metric::Metric()
     :
     metric_value{YType::uint32, "metric-value"},
     transparent{YType::empty, "transparent"}
@@ -7830,38 +7839,38 @@ Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::Metric:
     yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::Metric::~Metric()
+Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::Metric::~Metric()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::Metric::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::Metric::has_data() const
 {
     return metric_value.is_set
 	|| transparent.is_set;
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::Metric::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::Metric::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(metric_value.yfilter)
 	|| ydk::is_set(transparent.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::Metric::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::Metric::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/static/rip-metric-route-map/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::Metric::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::Metric::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "metric";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::Metric::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::Metric::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7872,18 +7881,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::Metric::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "metric-value")
     {
@@ -7899,7 +7909,7 @@ void Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::Me
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "metric-value")
     {
@@ -7911,52 +7921,52 @@ void Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::Me
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Static_::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Static::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric-value" || name == "transparent")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Rip_::Rip_()
+Native::Router::Rip::Default::Redistribute::Rip_::Rip_()
     :
-    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap>())
+    rip_metric_route_map(std::make_shared<Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap>())
 {
     rip_metric_route_map->parent = this;
 
     yang_name = "rip"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Rip_::~Rip_()
+Native::Router::Rip::Default::Redistribute::Rip_::~Rip_()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Rip_::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Rip_::has_data() const
 {
     return (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Rip_::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Rip_::has_operation() const
 {
     return is_set(yfilter)
 	|| (rip_metric_route_map !=  nullptr && rip_metric_route_map->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Rip_::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::Rip_::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Rip_::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Rip_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rip";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Rip_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Rip_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7965,13 +7975,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Rip_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Rip_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rip-metric-route-map")
     {
         if(rip_metric_route_map == nullptr)
         {
-            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap>();
+            rip_metric_route_map = std::make_shared<Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap>();
         }
         return rip_metric_route_map;
     }
@@ -7979,9 +7989,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Rip_::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Rip_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Rip_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rip_metric_route_map != nullptr)
     {
         children["rip-metric-route-map"] = rip_metric_route_map;
@@ -7990,64 +8001,64 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Rip_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Rip_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::Rip::Default_::Redistribute::Rip_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Rip_::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Rip_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Rip_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rip-metric-route-map")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::RipMetricRouteMap()
     :
     route_map{YType::str, "route-map"}
     	,
-    metric(std::make_shared<Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::Metric>())
+    metric(std::make_shared<Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::Metric>())
 {
     metric->parent = this;
 
     yang_name = "rip-metric-route-map"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::~RipMetricRouteMap()
+Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::~RipMetricRouteMap()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::has_data() const
 {
     return route_map.is_set
 	|| (metric !=  nullptr && metric->has_data());
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_map.yfilter)
 	|| (metric !=  nullptr && metric->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/rip/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rip-metric-route-map";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8057,13 +8068,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "metric")
     {
         if(metric == nullptr)
         {
-            metric = std::make_shared<Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::Metric>();
+            metric = std::make_shared<Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::Metric>();
         }
         return metric;
     }
@@ -8071,9 +8082,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Rip_::RipMe
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(metric != nullptr)
     {
         children["metric"] = metric;
@@ -8082,7 +8094,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Re
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-map")
     {
@@ -8092,7 +8104,7 @@ void Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::set_v
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-map")
     {
@@ -8100,14 +8112,14 @@ void Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::set_f
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric" || name == "route-map")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::Metric::Metric()
+Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::Metric::Metric()
     :
     metric_value{YType::uint32, "metric-value"},
     transparent{YType::empty, "transparent"}
@@ -8116,38 +8128,38 @@ Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::Metric::Me
     yang_name = "metric"; yang_parent_name = "rip-metric-route-map"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::Metric::~Metric()
+Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::Metric::~Metric()
 {
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::Metric::has_data() const
+bool Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::Metric::has_data() const
 {
     return metric_value.is_set
 	|| transparent.is_set;
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::Metric::has_operation() const
+bool Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::Metric::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(metric_value.yfilter)
 	|| ydk::is_set(transparent.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::Metric::get_absolute_path() const
+std::string Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::Metric::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/redistribute/rip/rip-metric-route-map/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::Metric::get_segment_path() const
+std::string Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::Metric::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "metric";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::Metric::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::Metric::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8158,18 +8170,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::Metric::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::Metric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "metric-value")
     {
@@ -8185,7 +8198,7 @@ void Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::Metri
     }
 }
 
-void Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::Metric::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "metric-value")
     {
@@ -8197,14 +8210,14 @@ void Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::Metri
     }
 }
 
-bool Native::Router::Rip::Default_::Redistribute::Rip_::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Redistribute::Rip_::RipMetricRouteMap::Metric::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric-value" || name == "transparent")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::Timers::Timers()
+Native::Router::Rip::Default::Timers::Timers()
     :
     basic{YType::empty, "basic"}
 {
@@ -8212,36 +8225,36 @@ Native::Router::Rip::Default_::Timers::Timers()
     yang_name = "timers"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::Timers::~Timers()
+Native::Router::Rip::Default::Timers::~Timers()
 {
 }
 
-bool Native::Router::Rip::Default_::Timers::has_data() const
+bool Native::Router::Rip::Default::Timers::has_data() const
 {
     return basic.is_set;
 }
 
-bool Native::Router::Rip::Default_::Timers::has_operation() const
+bool Native::Router::Rip::Default::Timers::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(basic.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::Timers::get_absolute_path() const
+std::string Native::Router::Rip::Default::Timers::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::Timers::get_segment_path() const
+std::string Native::Router::Rip::Default::Timers::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "timers";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Timers::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::Timers::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8251,18 +8264,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Ti
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::Timers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::Timers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Timers::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::Timers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::Timers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::Timers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "basic")
     {
@@ -8272,7 +8286,7 @@ void Native::Router::Rip::Default_::Timers::set_value(const std::string & value_
     }
 }
 
-void Native::Router::Rip::Default_::Timers::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::Timers::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "basic")
     {
@@ -8280,52 +8294,52 @@ void Native::Router::Rip::Default_::Timers::set_filter(const std::string & value
     }
 }
 
-bool Native::Router::Rip::Default_::Timers::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::Timers::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "basic")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::TrafficShare::TrafficShare()
+Native::Router::Rip::Default::TrafficShare::TrafficShare()
     :
-    min(std::make_shared<Native::Router::Rip::Default_::TrafficShare::Min>())
+    min(std::make_shared<Native::Router::Rip::Default::TrafficShare::Min>())
 {
     min->parent = this;
 
     yang_name = "traffic-share"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::TrafficShare::~TrafficShare()
+Native::Router::Rip::Default::TrafficShare::~TrafficShare()
 {
 }
 
-bool Native::Router::Rip::Default_::TrafficShare::has_data() const
+bool Native::Router::Rip::Default::TrafficShare::has_data() const
 {
     return (min !=  nullptr && min->has_data());
 }
 
-bool Native::Router::Rip::Default_::TrafficShare::has_operation() const
+bool Native::Router::Rip::Default::TrafficShare::has_operation() const
 {
     return is_set(yfilter)
 	|| (min !=  nullptr && min->has_operation());
 }
 
-std::string Native::Router::Rip::Default_::TrafficShare::get_absolute_path() const
+std::string Native::Router::Rip::Default::TrafficShare::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::TrafficShare::get_segment_path() const
+std::string Native::Router::Rip::Default::TrafficShare::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "traffic-share";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::TrafficShare::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::TrafficShare::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8334,13 +8348,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::TrafficShare::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::TrafficShare::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "min")
     {
         if(min == nullptr)
         {
-            min = std::make_shared<Native::Router::Rip::Default_::TrafficShare::Min>();
+            min = std::make_shared<Native::Router::Rip::Default::TrafficShare::Min>();
         }
         return min;
     }
@@ -8348,9 +8362,10 @@ std::shared_ptr<Entity> Native::Router::Rip::Default_::TrafficShare::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::TrafficShare::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::TrafficShare::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(min != nullptr)
     {
         children["min"] = min;
@@ -8359,22 +8374,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::Tr
     return children;
 }
 
-void Native::Router::Rip::Default_::TrafficShare::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::TrafficShare::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::Rip::Default_::TrafficShare::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::TrafficShare::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::Rip::Default_::TrafficShare::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::TrafficShare::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "min")
         return true;
     return false;
 }
 
-Native::Router::Rip::Default_::TrafficShare::Min::Min()
+Native::Router::Rip::Default::TrafficShare::Min::Min()
     :
     across_interfaces{YType::empty, "across-interfaces"}
 {
@@ -8382,36 +8397,36 @@ Native::Router::Rip::Default_::TrafficShare::Min::Min()
     yang_name = "min"; yang_parent_name = "traffic-share"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Router::Rip::Default_::TrafficShare::Min::~Min()
+Native::Router::Rip::Default::TrafficShare::Min::~Min()
 {
 }
 
-bool Native::Router::Rip::Default_::TrafficShare::Min::has_data() const
+bool Native::Router::Rip::Default::TrafficShare::Min::has_data() const
 {
     return across_interfaces.is_set;
 }
 
-bool Native::Router::Rip::Default_::TrafficShare::Min::has_operation() const
+bool Native::Router::Rip::Default::TrafficShare::Min::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(across_interfaces.yfilter);
 }
 
-std::string Native::Router::Rip::Default_::TrafficShare::Min::get_absolute_path() const
+std::string Native::Router::Rip::Default::TrafficShare::Min::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/router/Cisco-IOS-XE-rip:rip/default/traffic-share/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Router::Rip::Default_::TrafficShare::Min::get_segment_path() const
+std::string Native::Router::Rip::Default::TrafficShare::Min::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "min";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::TrafficShare::Min::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default::TrafficShare::Min::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8421,18 +8436,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Rip::Default_::Tr
 
 }
 
-std::shared_ptr<Entity> Native::Router::Rip::Default_::TrafficShare::Min::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Rip::Default::TrafficShare::Min::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default_::TrafficShare::Min::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Rip::Default::TrafficShare::Min::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Rip::Default_::TrafficShare::Min::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Rip::Default::TrafficShare::Min::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "across-interfaces")
     {
@@ -8442,7 +8458,7 @@ void Native::Router::Rip::Default_::TrafficShare::Min::set_value(const std::stri
     }
 }
 
-void Native::Router::Rip::Default_::TrafficShare::Min::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Rip::Default::TrafficShare::Min::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "across-interfaces")
     {
@@ -8450,7 +8466,7 @@ void Native::Router::Rip::Default_::TrafficShare::Min::set_filter(const std::str
     }
 }
 
-bool Native::Router::Rip::Default_::TrafficShare::Min::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Rip::Default::TrafficShare::Min::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "across-interfaces")
         return true;
@@ -8528,14 +8544,6 @@ std::shared_ptr<Entity> Native::ServiceChain::get_child_by_name(const std::strin
 {
     if(child_yang_name == "Cisco-IOS-XE-service-chain:service-function")
     {
-        for(auto const & c : service_function)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::ServiceChain::ServiceFunction>();
         c->parent = this;
         service_function.push_back(c);
@@ -8553,14 +8561,6 @@ std::shared_ptr<Entity> Native::ServiceChain::get_child_by_name(const std::strin
 
     if(child_yang_name == "Cisco-IOS-XE-service-chain:service-path")
     {
-        for(auto const & c : service_path)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::ServiceChain::ServicePath>();
         c->parent = this;
         service_path.push_back(c);
@@ -8573,9 +8573,14 @@ std::shared_ptr<Entity> Native::ServiceChain::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceChain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : service_function)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(service_function_forwarder != nullptr)
@@ -8583,9 +8588,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::ServiceChain::get_childre
         children["Cisco-IOS-XE-service-chain:service-function-forwarder"] = service_function_forwarder;
     }
 
+    count = 0;
     for (auto const & c : service_path)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8675,6 +8684,7 @@ std::shared_ptr<Entity> Native::ServiceChain::ServiceFunction::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceChain::ServiceFunction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config_service_chain_sf_mode != nullptr)
     {
         children["config-service-chain-sf-mode"] = config_service_chain_sf_mode;
@@ -8783,6 +8793,7 @@ std::shared_ptr<Entity> Native::ServiceChain::ServiceFunction::ConfigServiceChai
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceChain::ServiceFunction::ConfigServiceChainSfMode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(encapsulation != nullptr)
     {
         children["encapsulation"] = encapsulation;
@@ -8882,6 +8893,7 @@ std::shared_ptr<Entity> Native::ServiceChain::ServiceFunction::ConfigServiceChai
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceChain::ServiceFunction::ConfigServiceChainSfMode::Encapsulation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(gre != nullptr)
     {
         children["gre"] = gre;
@@ -8963,6 +8975,7 @@ std::shared_ptr<Entity> Native::ServiceChain::ServiceFunction::ConfigServiceChai
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceChain::ServiceFunction::ConfigServiceChainSfMode::Encapsulation::Gre::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9039,6 +9052,7 @@ std::shared_ptr<Entity> Native::ServiceChain::ServiceFunction::ConfigServiceChai
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceChain::ServiceFunction::ConfigServiceChainSfMode::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9127,14 +9141,6 @@ std::shared_ptr<Entity> Native::ServiceChain::ServiceFunctionForwarder::get_chil
 {
     if(child_yang_name == "service-ff-name")
     {
-        for(auto const & c : service_ff_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::ServiceChain::ServiceFunctionForwarder::ServiceFfName>();
         c->parent = this;
         service_ff_name.push_back(c);
@@ -9156,9 +9162,14 @@ std::shared_ptr<Entity> Native::ServiceChain::ServiceFunctionForwarder::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceChain::ServiceFunctionForwarder::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : service_ff_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(local != nullptr)
@@ -9257,6 +9268,7 @@ std::shared_ptr<Entity> Native::ServiceChain::ServiceFunctionForwarder::ServiceF
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceChain::ServiceFunctionForwarder::ServiceFfName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ip != nullptr)
     {
         children["ip"] = ip;
@@ -9348,6 +9360,7 @@ std::shared_ptr<Entity> Native::ServiceChain::ServiceFunctionForwarder::ServiceF
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceChain::ServiceFunctionForwarder::ServiceFfName::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9445,6 +9458,7 @@ std::shared_ptr<Entity> Native::ServiceChain::ServiceFunctionForwarder::Local::g
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceChain::ServiceFunctionForwarder::Local::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ip != nullptr)
     {
         children["ip"] = ip;
@@ -9533,6 +9547,7 @@ std::shared_ptr<Entity> Native::ServiceChain::ServiceFunctionForwarder::Local::I
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceChain::ServiceFunctionForwarder::Local::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9630,6 +9645,7 @@ std::shared_ptr<Entity> Native::ServiceChain::ServicePath::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceChain::ServicePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config_service_chain_path_mode != nullptr)
     {
         children["config-service-chain-path-mode"] = config_service_chain_path_mode;
@@ -9725,6 +9741,7 @@ std::shared_ptr<Entity> Native::ServiceChain::ServicePath::ConfigServiceChainPat
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceChain::ServicePath::ConfigServiceChainPathMode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(service_index != nullptr)
     {
         children["service-index"] = service_index;
@@ -9808,14 +9825,6 @@ std::shared_ptr<Entity> Native::ServiceChain::ServicePath::ConfigServiceChainPat
 {
     if(child_yang_name == "services")
     {
-        for(auto const & c : services)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::ServiceChain::ServicePath::ConfigServiceChainPathMode::ServiceIndex::Services>();
         c->parent = this;
         services.push_back(c);
@@ -9828,9 +9837,14 @@ std::shared_ptr<Entity> Native::ServiceChain::ServicePath::ConfigServiceChainPat
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceChain::ServicePath::ConfigServiceChainPathMode::ServiceIndex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : services)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9911,6 +9925,7 @@ std::shared_ptr<Entity> Native::ServiceChain::ServicePath::ConfigServiceChainPat
 std::map<std::string, std::shared_ptr<Entity>> Native::ServiceChain::ServicePath::ConfigServiceChainPathMode::ServiceIndex::Services::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10033,6 +10048,7 @@ std::shared_ptr<Entity> Native::Performance::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Native::Performance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(monitor != nullptr)
     {
         children["Cisco-IOS-XE-ezpm:monitor"] = monitor;
@@ -10117,14 +10133,6 @@ std::shared_ptr<Entity> Native::Performance::Monitor::get_child_by_name(const st
 {
     if(child_yang_name == "context")
     {
-        for(auto const & c : context)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Performance::Monitor::Context>();
         c->parent = this;
         context.push_back(c);
@@ -10146,9 +10154,14 @@ std::shared_ptr<Entity> Native::Performance::Monitor::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : context)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(observation_point != nullptr)
@@ -10180,7 +10193,7 @@ Native::Performance::Monitor::Context::Context()
     profile{YType::enumeration, "profile"},
     description{YType::str, "description"}
     	,
-    default_(std::make_shared<Native::Performance::Monitor::Context::Default_>())
+    default_(std::make_shared<Native::Performance::Monitor::Context::Default>())
 	,exporter(std::make_shared<Native::Performance::Monitor::Context::Exporter>())
 	,traffic_monitor(std::make_shared<Native::Performance::Monitor::Context::TrafficMonitor>())
 {
@@ -10248,7 +10261,7 @@ std::shared_ptr<Entity> Native::Performance::Monitor::Context::get_child_by_name
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Performance::Monitor::Context::Default_>();
+            default_ = std::make_shared<Native::Performance::Monitor::Context::Default>();
         }
         return default_;
     }
@@ -10277,6 +10290,7 @@ std::shared_ptr<Entity> Native::Performance::Monitor::Context::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_ != nullptr)
     {
         children["default"] = default_;
@@ -10340,12 +10354,12 @@ bool Native::Performance::Monitor::Context::has_leaf_or_child_of_name(const std:
     return false;
 }
 
-Native::Performance::Monitor::Context::Default_::Default_()
+Native::Performance::Monitor::Context::Default::Default()
     :
     description{YType::empty, "description"}
     	,
-    exporter(std::make_shared<Native::Performance::Monitor::Context::Default_::Exporter>())
-	,traffic_monitor(std::make_shared<Native::Performance::Monitor::Context::Default_::TrafficMonitor>())
+    exporter(std::make_shared<Native::Performance::Monitor::Context::Default::Exporter>())
+	,traffic_monitor(std::make_shared<Native::Performance::Monitor::Context::Default::TrafficMonitor>())
 {
     exporter->parent = this;
     traffic_monitor->parent = this;
@@ -10353,18 +10367,18 @@ Native::Performance::Monitor::Context::Default_::Default_()
     yang_name = "default"; yang_parent_name = "context"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Performance::Monitor::Context::Default_::~Default_()
+Native::Performance::Monitor::Context::Default::~Default()
 {
 }
 
-bool Native::Performance::Monitor::Context::Default_::has_data() const
+bool Native::Performance::Monitor::Context::Default::has_data() const
 {
     return description.is_set
 	|| (exporter !=  nullptr && exporter->has_data())
 	|| (traffic_monitor !=  nullptr && traffic_monitor->has_data());
 }
 
-bool Native::Performance::Monitor::Context::Default_::has_operation() const
+bool Native::Performance::Monitor::Context::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(description.yfilter)
@@ -10372,14 +10386,14 @@ bool Native::Performance::Monitor::Context::Default_::has_operation() const
 	|| (traffic_monitor !=  nullptr && traffic_monitor->has_operation());
 }
 
-std::string Native::Performance::Monitor::Context::Default_::get_segment_path() const
+std::string Native::Performance::Monitor::Context::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Context::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Context::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10389,13 +10403,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Con
 
 }
 
-std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "exporter")
     {
         if(exporter == nullptr)
         {
-            exporter = std::make_shared<Native::Performance::Monitor::Context::Default_::Exporter>();
+            exporter = std::make_shared<Native::Performance::Monitor::Context::Default::Exporter>();
         }
         return exporter;
     }
@@ -10404,7 +10418,7 @@ std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default_::get_chi
     {
         if(traffic_monitor == nullptr)
         {
-            traffic_monitor = std::make_shared<Native::Performance::Monitor::Context::Default_::TrafficMonitor>();
+            traffic_monitor = std::make_shared<Native::Performance::Monitor::Context::Default::TrafficMonitor>();
         }
         return traffic_monitor;
     }
@@ -10412,9 +10426,10 @@ std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default_::get_chi
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(exporter != nullptr)
     {
         children["exporter"] = exporter;
@@ -10428,7 +10443,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Con
     return children;
 }
 
-void Native::Performance::Monitor::Context::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Performance::Monitor::Context::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "description")
     {
@@ -10438,7 +10453,7 @@ void Native::Performance::Monitor::Context::Default_::set_value(const std::strin
     }
 }
 
-void Native::Performance::Monitor::Context::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Performance::Monitor::Context::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "description")
     {
@@ -10446,14 +10461,14 @@ void Native::Performance::Monitor::Context::Default_::set_filter(const std::stri
     }
 }
 
-bool Native::Performance::Monitor::Context::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Performance::Monitor::Context::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "exporter" || name == "traffic-monitor" || name == "description")
         return true;
     return false;
 }
 
-Native::Performance::Monitor::Context::Default_::Exporter::Exporter()
+Native::Performance::Monitor::Context::Default::Exporter::Exporter()
     :
     destination{YType::str, "destination"},
     source{YType::str, "source"},
@@ -10465,11 +10480,11 @@ Native::Performance::Monitor::Context::Default_::Exporter::Exporter()
     yang_name = "exporter"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Performance::Monitor::Context::Default_::Exporter::~Exporter()
+Native::Performance::Monitor::Context::Default::Exporter::~Exporter()
 {
 }
 
-bool Native::Performance::Monitor::Context::Default_::Exporter::has_data() const
+bool Native::Performance::Monitor::Context::Default::Exporter::has_data() const
 {
     return destination.is_set
 	|| source.is_set
@@ -10478,7 +10493,7 @@ bool Native::Performance::Monitor::Context::Default_::Exporter::has_data() const
 	|| vrf.is_set;
 }
 
-bool Native::Performance::Monitor::Context::Default_::Exporter::has_operation() const
+bool Native::Performance::Monitor::Context::Default::Exporter::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(destination.yfilter)
@@ -10488,14 +10503,14 @@ bool Native::Performance::Monitor::Context::Default_::Exporter::has_operation() 
 	|| ydk::is_set(vrf.yfilter);
 }
 
-std::string Native::Performance::Monitor::Context::Default_::Exporter::get_segment_path() const
+std::string Native::Performance::Monitor::Context::Default::Exporter::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "exporter";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Context::Default_::Exporter::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Context::Default::Exporter::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10509,18 +10524,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Con
 
 }
 
-std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default_::Exporter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default::Exporter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::Default_::Exporter::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::Default::Exporter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Performance::Monitor::Context::Default_::Exporter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Performance::Monitor::Context::Default::Exporter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination")
     {
@@ -10554,7 +10570,7 @@ void Native::Performance::Monitor::Context::Default_::Exporter::set_value(const 
     }
 }
 
-void Native::Performance::Monitor::Context::Default_::Exporter::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Performance::Monitor::Context::Default::Exporter::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "destination")
     {
@@ -10578,14 +10594,14 @@ void Native::Performance::Monitor::Context::Default_::Exporter::set_filter(const
     }
 }
 
-bool Native::Performance::Monitor::Context::Default_::Exporter::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Performance::Monitor::Context::Default::Exporter::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "destination" || name == "source" || name == "port" || name == "transport" || name == "vrf")
         return true;
     return false;
 }
 
-Native::Performance::Monitor::Context::Default_::TrafficMonitor::TrafficMonitor()
+Native::Performance::Monitor::Context::Default::TrafficMonitor::TrafficMonitor()
     :
     all(nullptr) // presence node
 	,application_response_time(nullptr) // presence node
@@ -10600,11 +10616,11 @@ Native::Performance::Monitor::Context::Default_::TrafficMonitor::TrafficMonitor(
     yang_name = "traffic-monitor"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Performance::Monitor::Context::Default_::TrafficMonitor::~TrafficMonitor()
+Native::Performance::Monitor::Context::Default::TrafficMonitor::~TrafficMonitor()
 {
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::has_data() const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::has_data() const
 {
     return (all !=  nullptr && all->has_data())
 	|| (application_response_time !=  nullptr && application_response_time->has_data())
@@ -10616,7 +10632,7 @@ bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::has_data()
 	|| (application_stats !=  nullptr && application_stats->has_data());
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::has_operation() const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::has_operation() const
 {
     return is_set(yfilter)
 	|| (all !=  nullptr && all->has_operation())
@@ -10629,14 +10645,14 @@ bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::has_operat
 	|| (application_stats !=  nullptr && application_stats->has_operation());
 }
 
-std::string Native::Performance::Monitor::Context::Default_::TrafficMonitor::get_segment_path() const
+std::string Native::Performance::Monitor::Context::Default::TrafficMonitor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "traffic-monitor";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Context::Default_::TrafficMonitor::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Context::Default::TrafficMonitor::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10645,13 +10661,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Con
 
 }
 
-std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default_::TrafficMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default::TrafficMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "all")
     {
         if(all == nullptr)
         {
-            all = std::make_shared<Native::Performance::Monitor::Context::Default_::TrafficMonitor::All>();
+            all = std::make_shared<Native::Performance::Monitor::Context::Default::TrafficMonitor::All>();
         }
         return all;
     }
@@ -10660,7 +10676,7 @@ std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default_::Traffic
     {
         if(application_response_time == nullptr)
         {
-            application_response_time = std::make_shared<Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationResponseTime>();
+            application_response_time = std::make_shared<Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationResponseTime>();
         }
         return application_response_time;
     }
@@ -10669,7 +10685,7 @@ std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default_::Traffic
     {
         if(application_traffic_stats == nullptr)
         {
-            application_traffic_stats = std::make_shared<Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationTrafficStats>();
+            application_traffic_stats = std::make_shared<Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationTrafficStats>();
         }
         return application_traffic_stats;
     }
@@ -10678,7 +10694,7 @@ std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default_::Traffic
     {
         if(conversation_traffic_stats == nullptr)
         {
-            conversation_traffic_stats = std::make_shared<Native::Performance::Monitor::Context::Default_::TrafficMonitor::ConversationTrafficStats>();
+            conversation_traffic_stats = std::make_shared<Native::Performance::Monitor::Context::Default::TrafficMonitor::ConversationTrafficStats>();
         }
         return conversation_traffic_stats;
     }
@@ -10687,7 +10703,7 @@ std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default_::Traffic
     {
         if(media == nullptr)
         {
-            media = std::make_shared<Native::Performance::Monitor::Context::Default_::TrafficMonitor::Media>();
+            media = std::make_shared<Native::Performance::Monitor::Context::Default::TrafficMonitor::Media>();
         }
         return media;
     }
@@ -10696,7 +10712,7 @@ std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default_::Traffic
     {
         if(url == nullptr)
         {
-            url = std::make_shared<Native::Performance::Monitor::Context::Default_::TrafficMonitor::Url>();
+            url = std::make_shared<Native::Performance::Monitor::Context::Default::TrafficMonitor::Url>();
         }
         return url;
     }
@@ -10705,7 +10721,7 @@ std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default_::Traffic
     {
         if(application_client_server_stats == nullptr)
         {
-            application_client_server_stats = std::make_shared<Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationClientServerStats>();
+            application_client_server_stats = std::make_shared<Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationClientServerStats>();
         }
         return application_client_server_stats;
     }
@@ -10714,7 +10730,7 @@ std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default_::Traffic
     {
         if(application_stats == nullptr)
         {
-            application_stats = std::make_shared<Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationStats>();
+            application_stats = std::make_shared<Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationStats>();
         }
         return application_stats;
     }
@@ -10722,9 +10738,10 @@ std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default_::Traffic
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::Default_::TrafficMonitor::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::Default::TrafficMonitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(all != nullptr)
     {
         children["all"] = all;
@@ -10768,22 +10785,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Con
     return children;
 }
 
-void Native::Performance::Monitor::Context::Default_::TrafficMonitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Performance::Monitor::Context::Default::TrafficMonitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Performance::Monitor::Context::Default_::TrafficMonitor::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Performance::Monitor::Context::Default::TrafficMonitor::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "all" || name == "application-response-time" || name == "application-traffic-stats" || name == "conversation-traffic-stats" || name == "media" || name == "url" || name == "application-client-server-stats" || name == "application-stats")
         return true;
     return false;
 }
 
-Native::Performance::Monitor::Context::Default_::TrafficMonitor::All::All()
+Native::Performance::Monitor::Context::Default::TrafficMonitor::All::All()
     :
     ipv4{YType::empty, "ipv4"},
     ipv6{YType::empty, "ipv6"}
@@ -10792,31 +10809,31 @@ Native::Performance::Monitor::Context::Default_::TrafficMonitor::All::All()
     yang_name = "all"; yang_parent_name = "traffic-monitor"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Performance::Monitor::Context::Default_::TrafficMonitor::All::~All()
+Native::Performance::Monitor::Context::Default::TrafficMonitor::All::~All()
 {
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::All::has_data() const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::All::has_data() const
 {
     return ipv4.is_set
 	|| ipv6.is_set;
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::All::has_operation() const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::All::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipv4.yfilter)
 	|| ydk::is_set(ipv6.yfilter);
 }
 
-std::string Native::Performance::Monitor::Context::Default_::TrafficMonitor::All::get_segment_path() const
+std::string Native::Performance::Monitor::Context::Default::TrafficMonitor::All::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "all";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Context::Default_::TrafficMonitor::All::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Context::Default::TrafficMonitor::All::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10827,18 +10844,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Con
 
 }
 
-std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default_::TrafficMonitor::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default::TrafficMonitor::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::Default_::TrafficMonitor::All::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::Default::TrafficMonitor::All::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Performance::Monitor::Context::Default_::TrafficMonitor::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Performance::Monitor::Context::Default::TrafficMonitor::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4")
     {
@@ -10854,7 +10872,7 @@ void Native::Performance::Monitor::Context::Default_::TrafficMonitor::All::set_v
     }
 }
 
-void Native::Performance::Monitor::Context::Default_::TrafficMonitor::All::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Performance::Monitor::Context::Default::TrafficMonitor::All::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipv4")
     {
@@ -10866,14 +10884,14 @@ void Native::Performance::Monitor::Context::Default_::TrafficMonitor::All::set_f
     }
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::All::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::All::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4" || name == "ipv6")
         return true;
     return false;
 }
 
-Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationResponseTime::ApplicationResponseTime()
+Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationResponseTime::ApplicationResponseTime()
     :
     cache_size{YType::uint32, "cache-size"},
     class_replace{YType::str, "class-replace"},
@@ -10887,11 +10905,11 @@ Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationResp
     yang_name = "application-response-time"; yang_parent_name = "traffic-monitor"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationResponseTime::~ApplicationResponseTime()
+Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationResponseTime::~ApplicationResponseTime()
 {
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationResponseTime::has_data() const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationResponseTime::has_data() const
 {
     return cache_size.is_set
 	|| class_replace.is_set
@@ -10902,7 +10920,7 @@ bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::Applicatio
 	|| ipv6.is_set;
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationResponseTime::has_operation() const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationResponseTime::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cache_size.yfilter)
@@ -10914,14 +10932,14 @@ bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::Applicatio
 	|| ydk::is_set(ipv6.yfilter);
 }
 
-std::string Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationResponseTime::get_segment_path() const
+std::string Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationResponseTime::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "application-response-time";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationResponseTime::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationResponseTime::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10937,18 +10955,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Con
 
 }
 
-std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationResponseTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationResponseTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationResponseTime::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationResponseTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationResponseTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationResponseTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cache-size")
     {
@@ -10994,7 +11013,7 @@ void Native::Performance::Monitor::Context::Default_::TrafficMonitor::Applicatio
     }
 }
 
-void Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationResponseTime::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationResponseTime::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cache-size")
     {
@@ -11026,14 +11045,14 @@ void Native::Performance::Monitor::Context::Default_::TrafficMonitor::Applicatio
     }
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationResponseTime::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationResponseTime::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cache-size" || name == "class-replace" || name == "interval-timeout" || name == "cache-type" || name == "class-and" || name == "ipv4" || name == "ipv6")
         return true;
     return false;
 }
 
-Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationTrafficStats::ApplicationTrafficStats()
+Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationTrafficStats::ApplicationTrafficStats()
     :
     cache_size{YType::uint32, "cache-size"},
     class_replace{YType::str, "class-replace"},
@@ -11043,18 +11062,18 @@ Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationTraf
     yang_name = "application-traffic-stats"; yang_parent_name = "traffic-monitor"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationTrafficStats::~ApplicationTrafficStats()
+Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationTrafficStats::~ApplicationTrafficStats()
 {
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationTrafficStats::has_data() const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationTrafficStats::has_data() const
 {
     return cache_size.is_set
 	|| class_replace.is_set
 	|| interval_timeout.is_set;
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationTrafficStats::has_operation() const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationTrafficStats::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cache_size.yfilter)
@@ -11062,14 +11081,14 @@ bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::Applicatio
 	|| ydk::is_set(interval_timeout.yfilter);
 }
 
-std::string Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationTrafficStats::get_segment_path() const
+std::string Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationTrafficStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "application-traffic-stats";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationTrafficStats::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationTrafficStats::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11081,18 +11100,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Con
 
 }
 
-std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationTrafficStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationTrafficStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationTrafficStats::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationTrafficStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationTrafficStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationTrafficStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cache-size")
     {
@@ -11114,7 +11134,7 @@ void Native::Performance::Monitor::Context::Default_::TrafficMonitor::Applicatio
     }
 }
 
-void Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationTrafficStats::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationTrafficStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cache-size")
     {
@@ -11130,14 +11150,14 @@ void Native::Performance::Monitor::Context::Default_::TrafficMonitor::Applicatio
     }
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationTrafficStats::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationTrafficStats::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cache-size" || name == "class-replace" || name == "interval-timeout")
         return true;
     return false;
 }
 
-Native::Performance::Monitor::Context::Default_::TrafficMonitor::ConversationTrafficStats::ConversationTrafficStats()
+Native::Performance::Monitor::Context::Default::TrafficMonitor::ConversationTrafficStats::ConversationTrafficStats()
     :
     cache_size{YType::uint32, "cache-size"},
     class_replace{YType::str, "class-replace"},
@@ -11150,11 +11170,11 @@ Native::Performance::Monitor::Context::Default_::TrafficMonitor::ConversationTra
     yang_name = "conversation-traffic-stats"; yang_parent_name = "traffic-monitor"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Performance::Monitor::Context::Default_::TrafficMonitor::ConversationTrafficStats::~ConversationTrafficStats()
+Native::Performance::Monitor::Context::Default::TrafficMonitor::ConversationTrafficStats::~ConversationTrafficStats()
 {
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::ConversationTrafficStats::has_data() const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::ConversationTrafficStats::has_data() const
 {
     return cache_size.is_set
 	|| class_replace.is_set
@@ -11164,7 +11184,7 @@ bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::Conversati
 	|| ipv6.is_set;
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::ConversationTrafficStats::has_operation() const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::ConversationTrafficStats::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cache_size.yfilter)
@@ -11175,14 +11195,14 @@ bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::Conversati
 	|| ydk::is_set(ipv6.yfilter);
 }
 
-std::string Native::Performance::Monitor::Context::Default_::TrafficMonitor::ConversationTrafficStats::get_segment_path() const
+std::string Native::Performance::Monitor::Context::Default::TrafficMonitor::ConversationTrafficStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "conversation-traffic-stats";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Context::Default_::TrafficMonitor::ConversationTrafficStats::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Context::Default::TrafficMonitor::ConversationTrafficStats::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11197,18 +11217,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Con
 
 }
 
-std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default_::TrafficMonitor::ConversationTrafficStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default::TrafficMonitor::ConversationTrafficStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::Default_::TrafficMonitor::ConversationTrafficStats::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::Default::TrafficMonitor::ConversationTrafficStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Performance::Monitor::Context::Default_::TrafficMonitor::ConversationTrafficStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Performance::Monitor::Context::Default::TrafficMonitor::ConversationTrafficStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cache-size")
     {
@@ -11248,7 +11269,7 @@ void Native::Performance::Monitor::Context::Default_::TrafficMonitor::Conversati
     }
 }
 
-void Native::Performance::Monitor::Context::Default_::TrafficMonitor::ConversationTrafficStats::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Performance::Monitor::Context::Default::TrafficMonitor::ConversationTrafficStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cache-size")
     {
@@ -11276,14 +11297,14 @@ void Native::Performance::Monitor::Context::Default_::TrafficMonitor::Conversati
     }
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::ConversationTrafficStats::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::ConversationTrafficStats::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cache-size" || name == "class-replace" || name == "interval-timeout" || name == "cache-type" || name == "ipv4" || name == "ipv6")
         return true;
     return false;
 }
 
-Native::Performance::Monitor::Context::Default_::TrafficMonitor::Media::Media()
+Native::Performance::Monitor::Context::Default::TrafficMonitor::Media::Media()
     :
     cache_size{YType::uint32, "cache-size"},
     class_replace{YType::str, "class-replace"},
@@ -11298,11 +11319,11 @@ Native::Performance::Monitor::Context::Default_::TrafficMonitor::Media::Media()
     yang_name = "media"; yang_parent_name = "traffic-monitor"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Performance::Monitor::Context::Default_::TrafficMonitor::Media::~Media()
+Native::Performance::Monitor::Context::Default::TrafficMonitor::Media::~Media()
 {
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::Media::has_data() const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::Media::has_data() const
 {
     return cache_size.is_set
 	|| class_replace.is_set
@@ -11314,7 +11335,7 @@ bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::Media::has
 	|| ipv6.is_set;
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::Media::has_operation() const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::Media::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cache_size.yfilter)
@@ -11327,14 +11348,14 @@ bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::Media::has
 	|| ydk::is_set(ipv6.yfilter);
 }
 
-std::string Native::Performance::Monitor::Context::Default_::TrafficMonitor::Media::get_segment_path() const
+std::string Native::Performance::Monitor::Context::Default::TrafficMonitor::Media::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "media";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Context::Default_::TrafficMonitor::Media::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Context::Default::TrafficMonitor::Media::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11351,18 +11372,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Con
 
 }
 
-std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default_::TrafficMonitor::Media::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default::TrafficMonitor::Media::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::Default_::TrafficMonitor::Media::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::Default::TrafficMonitor::Media::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Performance::Monitor::Context::Default_::TrafficMonitor::Media::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Performance::Monitor::Context::Default::TrafficMonitor::Media::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cache-size")
     {
@@ -11414,7 +11436,7 @@ void Native::Performance::Monitor::Context::Default_::TrafficMonitor::Media::set
     }
 }
 
-void Native::Performance::Monitor::Context::Default_::TrafficMonitor::Media::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Performance::Monitor::Context::Default::TrafficMonitor::Media::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cache-size")
     {
@@ -11450,14 +11472,14 @@ void Native::Performance::Monitor::Context::Default_::TrafficMonitor::Media::set
     }
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::Media::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::Media::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cache-size" || name == "class-replace" || name == "interval-timeout" || name == "class-and" || name == "egress" || name == "ingress" || name == "ipv4" || name == "ipv6")
         return true;
     return false;
 }
 
-Native::Performance::Monitor::Context::Default_::TrafficMonitor::Url::Url()
+Native::Performance::Monitor::Context::Default::TrafficMonitor::Url::Url()
     :
     cache_size{YType::uint32, "cache-size"},
     class_and{YType::str, "class-and"},
@@ -11470,11 +11492,11 @@ Native::Performance::Monitor::Context::Default_::TrafficMonitor::Url::Url()
     yang_name = "url"; yang_parent_name = "traffic-monitor"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Performance::Monitor::Context::Default_::TrafficMonitor::Url::~Url()
+Native::Performance::Monitor::Context::Default::TrafficMonitor::Url::~Url()
 {
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::Url::has_data() const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::Url::has_data() const
 {
     return cache_size.is_set
 	|| class_and.is_set
@@ -11484,7 +11506,7 @@ bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::Url::has_d
 	|| sampling_rate.is_set;
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::Url::has_operation() const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::Url::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cache_size.yfilter)
@@ -11495,14 +11517,14 @@ bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::Url::has_o
 	|| ydk::is_set(sampling_rate.yfilter);
 }
 
-std::string Native::Performance::Monitor::Context::Default_::TrafficMonitor::Url::get_segment_path() const
+std::string Native::Performance::Monitor::Context::Default::TrafficMonitor::Url::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "url";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Context::Default_::TrafficMonitor::Url::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Context::Default::TrafficMonitor::Url::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11517,18 +11539,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Con
 
 }
 
-std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default_::TrafficMonitor::Url::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default::TrafficMonitor::Url::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::Default_::TrafficMonitor::Url::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::Default::TrafficMonitor::Url::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Performance::Monitor::Context::Default_::TrafficMonitor::Url::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Performance::Monitor::Context::Default::TrafficMonitor::Url::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cache-size")
     {
@@ -11568,7 +11591,7 @@ void Native::Performance::Monitor::Context::Default_::TrafficMonitor::Url::set_v
     }
 }
 
-void Native::Performance::Monitor::Context::Default_::TrafficMonitor::Url::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Performance::Monitor::Context::Default::TrafficMonitor::Url::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cache-size")
     {
@@ -11596,14 +11619,14 @@ void Native::Performance::Monitor::Context::Default_::TrafficMonitor::Url::set_f
     }
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::Url::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::Url::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cache-size" || name == "class-and" || name == "class-replace" || name == "ipv4" || name == "ipv6" || name == "sampling-rate")
         return true;
     return false;
 }
 
-Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationClientServerStats::ApplicationClientServerStats()
+Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationClientServerStats::ApplicationClientServerStats()
     :
     cache_size{YType::uint32, "cache-size"},
     class_replace{YType::str, "class-replace"},
@@ -11616,11 +11639,11 @@ Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationClie
     yang_name = "application-client-server-stats"; yang_parent_name = "traffic-monitor"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationClientServerStats::~ApplicationClientServerStats()
+Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationClientServerStats::~ApplicationClientServerStats()
 {
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationClientServerStats::has_data() const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationClientServerStats::has_data() const
 {
     return cache_size.is_set
 	|| class_replace.is_set
@@ -11630,7 +11653,7 @@ bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::Applicatio
 	|| ipv6.is_set;
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationClientServerStats::has_operation() const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationClientServerStats::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cache_size.yfilter)
@@ -11641,14 +11664,14 @@ bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::Applicatio
 	|| ydk::is_set(ipv6.yfilter);
 }
 
-std::string Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationClientServerStats::get_segment_path() const
+std::string Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationClientServerStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "application-client-server-stats";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationClientServerStats::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationClientServerStats::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11663,18 +11686,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Con
 
 }
 
-std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationClientServerStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationClientServerStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationClientServerStats::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationClientServerStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationClientServerStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationClientServerStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cache-size")
     {
@@ -11714,7 +11738,7 @@ void Native::Performance::Monitor::Context::Default_::TrafficMonitor::Applicatio
     }
 }
 
-void Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationClientServerStats::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationClientServerStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cache-size")
     {
@@ -11742,14 +11766,14 @@ void Native::Performance::Monitor::Context::Default_::TrafficMonitor::Applicatio
     }
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationClientServerStats::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationClientServerStats::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cache-size" || name == "class-replace" || name == "interval-timeout" || name == "cache-type" || name == "ipv4" || name == "ipv6")
         return true;
     return false;
 }
 
-Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationStats::ApplicationStats()
+Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationStats::ApplicationStats()
     :
     cache_size{YType::uint32, "cache-size"},
     class_replace{YType::str, "class-replace"},
@@ -11759,18 +11783,18 @@ Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationStat
     yang_name = "application-stats"; yang_parent_name = "traffic-monitor"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationStats::~ApplicationStats()
+Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationStats::~ApplicationStats()
 {
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationStats::has_data() const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationStats::has_data() const
 {
     return cache_size.is_set
 	|| class_replace.is_set
 	|| interval_timeout.is_set;
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationStats::has_operation() const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationStats::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cache_size.yfilter)
@@ -11778,14 +11802,14 @@ bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::Applicatio
 	|| ydk::is_set(interval_timeout.yfilter);
 }
 
-std::string Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationStats::get_segment_path() const
+std::string Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "application-stats";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationStats::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationStats::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11797,18 +11821,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Performance::Monitor::Con
 
 }
 
-std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationStats::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cache-size")
     {
@@ -11830,7 +11855,7 @@ void Native::Performance::Monitor::Context::Default_::TrafficMonitor::Applicatio
     }
 }
 
-void Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationStats::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cache-size")
     {
@@ -11846,7 +11871,7 @@ void Native::Performance::Monitor::Context::Default_::TrafficMonitor::Applicatio
     }
 }
 
-bool Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationStats::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationStats::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cache-size" || name == "class-replace" || name == "interval-timeout")
         return true;
@@ -11917,6 +11942,7 @@ std::shared_ptr<Entity> Native::Performance::Monitor::Context::Exporter::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::Exporter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12125,6 +12151,7 @@ std::shared_ptr<Entity> Native::Performance::Monitor::Context::TrafficMonitor::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::TrafficMonitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(all != nullptr)
     {
         children["all"] = all;
@@ -12235,6 +12262,7 @@ std::shared_ptr<Entity> Native::Performance::Monitor::Context::TrafficMonitor::A
 std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::TrafficMonitor::All::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12345,6 +12373,7 @@ std::shared_ptr<Entity> Native::Performance::Monitor::Context::TrafficMonitor::A
 std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::TrafficMonitor::ApplicationResponseTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12489,6 +12518,7 @@ std::shared_ptr<Entity> Native::Performance::Monitor::Context::TrafficMonitor::A
 std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::TrafficMonitor::ApplicationTrafficStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12605,6 +12635,7 @@ std::shared_ptr<Entity> Native::Performance::Monitor::Context::TrafficMonitor::C
 std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::TrafficMonitor::ConversationTrafficStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12759,6 +12790,7 @@ std::shared_ptr<Entity> Native::Performance::Monitor::Context::TrafficMonitor::M
 std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::TrafficMonitor::Media::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12925,6 +12957,7 @@ std::shared_ptr<Entity> Native::Performance::Monitor::Context::TrafficMonitor::U
 std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::TrafficMonitor::Url::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13071,6 +13104,7 @@ std::shared_ptr<Entity> Native::Performance::Monitor::Context::TrafficMonitor::A
 std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::TrafficMonitor::ApplicationClientServerStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13205,6 +13239,7 @@ std::shared_ptr<Entity> Native::Performance::Monitor::Context::TrafficMonitor::A
 std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::Context::TrafficMonitor::ApplicationStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13308,6 +13343,7 @@ std::shared_ptr<Entity> Native::Performance::Monitor::ObservationPoint::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Performance::Monitor::ObservationPoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13424,14 +13460,6 @@ std::shared_ptr<Entity> Native::Otv::get_child_by_name(const std::string & child
 
     if(child_yang_name == "Cisco-IOS-XE-otv:site")
     {
-        for(auto const & c : site)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Otv::Site>();
         c->parent = this;
         site.push_back(c);
@@ -13444,6 +13472,7 @@ std::shared_ptr<Entity> Native::Otv::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fragmentation != nullptr)
     {
         children["Cisco-IOS-XE-otv:fragmentation"] = fragmentation;
@@ -13454,9 +13483,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Otv::get_children() const
         children["Cisco-IOS-XE-otv:isis"] = isis;
     }
 
+    count = 0;
     for (auto const & c : site)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13551,6 +13584,7 @@ std::shared_ptr<Entity> Native::Otv::Fragmentation::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Fragmentation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(join_interface != nullptr)
     {
         children["join-interface"] = join_interface;
@@ -13794,6 +13828,7 @@ std::shared_ptr<Entity> Native::Otv::Fragmentation::JoinInterface::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Fragmentation::JoinInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(atm_subinterface != nullptr)
     {
         children["ATM-subinterface"] = atm_subinterface;
@@ -14177,6 +14212,7 @@ std::shared_ptr<Entity> Native::Otv::Fragmentation::JoinInterface::ATMSubinterfa
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Fragmentation::JoinInterface::ATMSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14260,6 +14296,7 @@ std::shared_ptr<Entity> Native::Otv::Fragmentation::JoinInterface::ATMACRsubinte
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Fragmentation::JoinInterface::ATMACRsubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14343,6 +14380,7 @@ std::shared_ptr<Entity> Native::Otv::Fragmentation::JoinInterface::LISPSubinterf
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Fragmentation::JoinInterface::LISPSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14426,6 +14464,7 @@ std::shared_ptr<Entity> Native::Otv::Fragmentation::JoinInterface::PortChannelSu
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Fragmentation::JoinInterface::PortChannelSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14515,14 +14554,6 @@ std::shared_ptr<Entity> Native::Otv::Isis::get_child_by_name(const std::string &
 {
     if(child_yang_name == "Overlay")
     {
-        for(auto const & c : overlay)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Otv::Isis::Overlay>();
         c->parent = this;
         overlay.push_back(c);
@@ -14544,9 +14575,14 @@ std::shared_ptr<Entity> Native::Otv::Isis::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : overlay)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(site != nullptr)
@@ -14581,7 +14617,7 @@ Native::Otv::Isis::Overlay::Overlay()
     max_lsp_lifetime{YType::uint32, "max-lsp-lifetime"}
     	,
     authentication(std::make_shared<Native::Otv::Isis::Overlay::Authentication>())
-	,default_(std::make_shared<Native::Otv::Isis::Overlay::Default_>())
+	,default_(std::make_shared<Native::Otv::Isis::Overlay::Default>())
 	,hostname(std::make_shared<Native::Otv::Isis::Overlay::Hostname>())
 	,log_adjacency_changes(nullptr) // presence node
 	,lsp_gen_interval(std::make_shared<Native::Otv::Isis::Overlay::LspGenInterval>())
@@ -14686,7 +14722,7 @@ std::shared_ptr<Entity> Native::Otv::Isis::Overlay::get_child_by_name(const std:
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Otv::Isis::Overlay::Default_>();
+            default_ = std::make_shared<Native::Otv::Isis::Overlay::Default>();
         }
         return default_;
     }
@@ -14760,6 +14796,7 @@ std::shared_ptr<Entity> Native::Otv::Isis::Overlay::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Overlay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authentication != nullptr)
     {
         children["authentication"] = authentication;
@@ -14929,6 +14966,7 @@ std::shared_ptr<Entity> Native::Otv::Isis::Overlay::Authentication::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Overlay::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14977,7 +15015,7 @@ bool Native::Otv::Isis::Overlay::Authentication::has_leaf_or_child_of_name(const
     return false;
 }
 
-Native::Otv::Isis::Overlay::Default_::Default_()
+Native::Otv::Isis::Overlay::Default::Default()
     :
     delayed_deletion_interval{YType::empty, "delayed-deletion-interval"},
     log_adjacency_changes{YType::empty, "log-adjacency-changes"},
@@ -14988,10 +15026,10 @@ Native::Otv::Isis::Overlay::Default_::Default_()
     prc_interval{YType::empty, "prc-interval"},
     spf_interval{YType::empty, "spf-interval"}
     	,
-    authentication(std::make_shared<Native::Otv::Isis::Overlay::Default_::Authentication>())
-	,hostname(std::make_shared<Native::Otv::Isis::Overlay::Default_::Hostname>())
-	,nsf(std::make_shared<Native::Otv::Isis::Overlay::Default_::Nsf>())
-	,skeptical(std::make_shared<Native::Otv::Isis::Overlay::Default_::Skeptical>())
+    authentication(std::make_shared<Native::Otv::Isis::Overlay::Default::Authentication>())
+	,hostname(std::make_shared<Native::Otv::Isis::Overlay::Default::Hostname>())
+	,nsf(std::make_shared<Native::Otv::Isis::Overlay::Default::Nsf>())
+	,skeptical(std::make_shared<Native::Otv::Isis::Overlay::Default::Skeptical>())
 {
     authentication->parent = this;
     hostname->parent = this;
@@ -15001,11 +15039,11 @@ Native::Otv::Isis::Overlay::Default_::Default_()
     yang_name = "default"; yang_parent_name = "Overlay"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Otv::Isis::Overlay::Default_::~Default_()
+Native::Otv::Isis::Overlay::Default::~Default()
 {
 }
 
-bool Native::Otv::Isis::Overlay::Default_::has_data() const
+bool Native::Otv::Isis::Overlay::Default::has_data() const
 {
     return delayed_deletion_interval.is_set
 	|| log_adjacency_changes.is_set
@@ -15021,7 +15059,7 @@ bool Native::Otv::Isis::Overlay::Default_::has_data() const
 	|| (skeptical !=  nullptr && skeptical->has_data());
 }
 
-bool Native::Otv::Isis::Overlay::Default_::has_operation() const
+bool Native::Otv::Isis::Overlay::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(delayed_deletion_interval.yfilter)
@@ -15038,14 +15076,14 @@ bool Native::Otv::Isis::Overlay::Default_::has_operation() const
 	|| (skeptical !=  nullptr && skeptical->has_operation());
 }
 
-std::string Native::Otv::Isis::Overlay::Default_::get_segment_path() const
+std::string Native::Otv::Isis::Overlay::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Otv::Isis::Overlay::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Otv::Isis::Overlay::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15062,13 +15100,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Otv::Isis::Overlay::Defau
 
 }
 
-std::shared_ptr<Entity> Native::Otv::Isis::Overlay::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Otv::Isis::Overlay::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "authentication")
     {
         if(authentication == nullptr)
         {
-            authentication = std::make_shared<Native::Otv::Isis::Overlay::Default_::Authentication>();
+            authentication = std::make_shared<Native::Otv::Isis::Overlay::Default::Authentication>();
         }
         return authentication;
     }
@@ -15077,7 +15115,7 @@ std::shared_ptr<Entity> Native::Otv::Isis::Overlay::Default_::get_child_by_name(
     {
         if(hostname == nullptr)
         {
-            hostname = std::make_shared<Native::Otv::Isis::Overlay::Default_::Hostname>();
+            hostname = std::make_shared<Native::Otv::Isis::Overlay::Default::Hostname>();
         }
         return hostname;
     }
@@ -15086,7 +15124,7 @@ std::shared_ptr<Entity> Native::Otv::Isis::Overlay::Default_::get_child_by_name(
     {
         if(nsf == nullptr)
         {
-            nsf = std::make_shared<Native::Otv::Isis::Overlay::Default_::Nsf>();
+            nsf = std::make_shared<Native::Otv::Isis::Overlay::Default::Nsf>();
         }
         return nsf;
     }
@@ -15095,7 +15133,7 @@ std::shared_ptr<Entity> Native::Otv::Isis::Overlay::Default_::get_child_by_name(
     {
         if(skeptical == nullptr)
         {
-            skeptical = std::make_shared<Native::Otv::Isis::Overlay::Default_::Skeptical>();
+            skeptical = std::make_shared<Native::Otv::Isis::Overlay::Default::Skeptical>();
         }
         return skeptical;
     }
@@ -15103,9 +15141,10 @@ std::shared_ptr<Entity> Native::Otv::Isis::Overlay::Default_::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Overlay::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Overlay::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authentication != nullptr)
     {
         children["authentication"] = authentication;
@@ -15129,7 +15168,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Overlay::Defau
     return children;
 }
 
-void Native::Otv::Isis::Overlay::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Otv::Isis::Overlay::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "delayed-deletion-interval")
     {
@@ -15181,7 +15220,7 @@ void Native::Otv::Isis::Overlay::Default_::set_value(const std::string & value_p
     }
 }
 
-void Native::Otv::Isis::Overlay::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Otv::Isis::Overlay::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "delayed-deletion-interval")
     {
@@ -15217,14 +15256,14 @@ void Native::Otv::Isis::Overlay::Default_::set_filter(const std::string & value_
     }
 }
 
-bool Native::Otv::Isis::Overlay::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Otv::Isis::Overlay::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "authentication" || name == "hostname" || name == "nsf" || name == "skeptical" || name == "delayed-deletion-interval" || name == "log-adjacency-changes" || name == "lsp-gen-interval" || name == "lsp-mtu" || name == "lsp-refresh-interval" || name == "max-lsp-lifetime" || name == "prc-interval" || name == "spf-interval")
         return true;
     return false;
 }
 
-Native::Otv::Isis::Overlay::Default_::Authentication::Authentication()
+Native::Otv::Isis::Overlay::Default::Authentication::Authentication()
     :
     key_chain{YType::str, "key-chain"},
     mode{YType::enumeration, "mode"},
@@ -15234,18 +15273,18 @@ Native::Otv::Isis::Overlay::Default_::Authentication::Authentication()
     yang_name = "authentication"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Otv::Isis::Overlay::Default_::Authentication::~Authentication()
+Native::Otv::Isis::Overlay::Default::Authentication::~Authentication()
 {
 }
 
-bool Native::Otv::Isis::Overlay::Default_::Authentication::has_data() const
+bool Native::Otv::Isis::Overlay::Default::Authentication::has_data() const
 {
     return key_chain.is_set
 	|| mode.is_set
 	|| send_only.is_set;
 }
 
-bool Native::Otv::Isis::Overlay::Default_::Authentication::has_operation() const
+bool Native::Otv::Isis::Overlay::Default::Authentication::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(key_chain.yfilter)
@@ -15253,14 +15292,14 @@ bool Native::Otv::Isis::Overlay::Default_::Authentication::has_operation() const
 	|| ydk::is_set(send_only.yfilter);
 }
 
-std::string Native::Otv::Isis::Overlay::Default_::Authentication::get_segment_path() const
+std::string Native::Otv::Isis::Overlay::Default::Authentication::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "authentication";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Otv::Isis::Overlay::Default_::Authentication::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Otv::Isis::Overlay::Default::Authentication::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15272,18 +15311,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Otv::Isis::Overlay::Defau
 
 }
 
-std::shared_ptr<Entity> Native::Otv::Isis::Overlay::Default_::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Otv::Isis::Overlay::Default::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Overlay::Default_::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Overlay::Default::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Otv::Isis::Overlay::Default_::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Otv::Isis::Overlay::Default::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "key-chain")
     {
@@ -15305,7 +15345,7 @@ void Native::Otv::Isis::Overlay::Default_::Authentication::set_value(const std::
     }
 }
 
-void Native::Otv::Isis::Overlay::Default_::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Otv::Isis::Overlay::Default::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "key-chain")
     {
@@ -15321,14 +15361,14 @@ void Native::Otv::Isis::Overlay::Default_::Authentication::set_filter(const std:
     }
 }
 
-bool Native::Otv::Isis::Overlay::Default_::Authentication::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Otv::Isis::Overlay::Default::Authentication::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "key-chain" || name == "mode" || name == "send-only")
         return true;
     return false;
 }
 
-Native::Otv::Isis::Overlay::Default_::Hostname::Hostname()
+Native::Otv::Isis::Overlay::Default::Hostname::Hostname()
     :
     dynamic{YType::empty, "dynamic"}
 {
@@ -15336,29 +15376,29 @@ Native::Otv::Isis::Overlay::Default_::Hostname::Hostname()
     yang_name = "hostname"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Otv::Isis::Overlay::Default_::Hostname::~Hostname()
+Native::Otv::Isis::Overlay::Default::Hostname::~Hostname()
 {
 }
 
-bool Native::Otv::Isis::Overlay::Default_::Hostname::has_data() const
+bool Native::Otv::Isis::Overlay::Default::Hostname::has_data() const
 {
     return dynamic.is_set;
 }
 
-bool Native::Otv::Isis::Overlay::Default_::Hostname::has_operation() const
+bool Native::Otv::Isis::Overlay::Default::Hostname::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dynamic.yfilter);
 }
 
-std::string Native::Otv::Isis::Overlay::Default_::Hostname::get_segment_path() const
+std::string Native::Otv::Isis::Overlay::Default::Hostname::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "hostname";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Otv::Isis::Overlay::Default_::Hostname::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Otv::Isis::Overlay::Default::Hostname::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15368,18 +15408,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Otv::Isis::Overlay::Defau
 
 }
 
-std::shared_ptr<Entity> Native::Otv::Isis::Overlay::Default_::Hostname::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Otv::Isis::Overlay::Default::Hostname::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Overlay::Default_::Hostname::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Overlay::Default::Hostname::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Otv::Isis::Overlay::Default_::Hostname::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Otv::Isis::Overlay::Default::Hostname::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dynamic")
     {
@@ -15389,7 +15430,7 @@ void Native::Otv::Isis::Overlay::Default_::Hostname::set_value(const std::string
     }
 }
 
-void Native::Otv::Isis::Overlay::Default_::Hostname::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Otv::Isis::Overlay::Default::Hostname::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dynamic")
     {
@@ -15397,14 +15438,14 @@ void Native::Otv::Isis::Overlay::Default_::Hostname::set_filter(const std::strin
     }
 }
 
-bool Native::Otv::Isis::Overlay::Default_::Hostname::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Otv::Isis::Overlay::Default::Hostname::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dynamic")
         return true;
     return false;
 }
 
-Native::Otv::Isis::Overlay::Default_::Nsf::Nsf()
+Native::Otv::Isis::Overlay::Default::Nsf::Nsf()
     :
     cisco{YType::empty, "cisco"},
     interval{YType::empty, "interval"}
@@ -15413,31 +15454,31 @@ Native::Otv::Isis::Overlay::Default_::Nsf::Nsf()
     yang_name = "nsf"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Otv::Isis::Overlay::Default_::Nsf::~Nsf()
+Native::Otv::Isis::Overlay::Default::Nsf::~Nsf()
 {
 }
 
-bool Native::Otv::Isis::Overlay::Default_::Nsf::has_data() const
+bool Native::Otv::Isis::Overlay::Default::Nsf::has_data() const
 {
     return cisco.is_set
 	|| interval.is_set;
 }
 
-bool Native::Otv::Isis::Overlay::Default_::Nsf::has_operation() const
+bool Native::Otv::Isis::Overlay::Default::Nsf::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cisco.yfilter)
 	|| ydk::is_set(interval.yfilter);
 }
 
-std::string Native::Otv::Isis::Overlay::Default_::Nsf::get_segment_path() const
+std::string Native::Otv::Isis::Overlay::Default::Nsf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nsf";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Otv::Isis::Overlay::Default_::Nsf::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Otv::Isis::Overlay::Default::Nsf::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15448,18 +15489,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Otv::Isis::Overlay::Defau
 
 }
 
-std::shared_ptr<Entity> Native::Otv::Isis::Overlay::Default_::Nsf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Otv::Isis::Overlay::Default::Nsf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Overlay::Default_::Nsf::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Overlay::Default::Nsf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Otv::Isis::Overlay::Default_::Nsf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Otv::Isis::Overlay::Default::Nsf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cisco")
     {
@@ -15475,7 +15517,7 @@ void Native::Otv::Isis::Overlay::Default_::Nsf::set_value(const std::string & va
     }
 }
 
-void Native::Otv::Isis::Overlay::Default_::Nsf::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Otv::Isis::Overlay::Default::Nsf::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cisco")
     {
@@ -15487,14 +15529,14 @@ void Native::Otv::Isis::Overlay::Default_::Nsf::set_filter(const std::string & v
     }
 }
 
-bool Native::Otv::Isis::Overlay::Default_::Nsf::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Otv::Isis::Overlay::Default::Nsf::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cisco" || name == "interval")
         return true;
     return false;
 }
 
-Native::Otv::Isis::Overlay::Default_::Skeptical::Skeptical()
+Native::Otv::Isis::Overlay::Default::Skeptical::Skeptical()
     :
     interval{YType::empty, "interval"}
 {
@@ -15502,29 +15544,29 @@ Native::Otv::Isis::Overlay::Default_::Skeptical::Skeptical()
     yang_name = "skeptical"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Otv::Isis::Overlay::Default_::Skeptical::~Skeptical()
+Native::Otv::Isis::Overlay::Default::Skeptical::~Skeptical()
 {
 }
 
-bool Native::Otv::Isis::Overlay::Default_::Skeptical::has_data() const
+bool Native::Otv::Isis::Overlay::Default::Skeptical::has_data() const
 {
     return interval.is_set;
 }
 
-bool Native::Otv::Isis::Overlay::Default_::Skeptical::has_operation() const
+bool Native::Otv::Isis::Overlay::Default::Skeptical::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interval.yfilter);
 }
 
-std::string Native::Otv::Isis::Overlay::Default_::Skeptical::get_segment_path() const
+std::string Native::Otv::Isis::Overlay::Default::Skeptical::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "skeptical";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Otv::Isis::Overlay::Default_::Skeptical::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Otv::Isis::Overlay::Default::Skeptical::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15534,18 +15576,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Otv::Isis::Overlay::Defau
 
 }
 
-std::shared_ptr<Entity> Native::Otv::Isis::Overlay::Default_::Skeptical::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Otv::Isis::Overlay::Default::Skeptical::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Overlay::Default_::Skeptical::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Overlay::Default::Skeptical::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Otv::Isis::Overlay::Default_::Skeptical::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Otv::Isis::Overlay::Default::Skeptical::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interval")
     {
@@ -15555,7 +15598,7 @@ void Native::Otv::Isis::Overlay::Default_::Skeptical::set_value(const std::strin
     }
 }
 
-void Native::Otv::Isis::Overlay::Default_::Skeptical::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Otv::Isis::Overlay::Default::Skeptical::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interval")
     {
@@ -15563,7 +15606,7 @@ void Native::Otv::Isis::Overlay::Default_::Skeptical::set_filter(const std::stri
     }
 }
 
-bool Native::Otv::Isis::Overlay::Default_::Skeptical::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Otv::Isis::Overlay::Default::Skeptical::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interval")
         return true;
@@ -15618,6 +15661,7 @@ std::shared_ptr<Entity> Native::Otv::Isis::Overlay::Hostname::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Overlay::Hostname::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15694,6 +15738,7 @@ std::shared_ptr<Entity> Native::Otv::Isis::Overlay::LogAdjacencyChanges::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Overlay::LogAdjacencyChanges::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15778,6 +15823,7 @@ std::shared_ptr<Entity> Native::Otv::Isis::Overlay::LspGenInterval::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Overlay::LspGenInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15878,6 +15924,7 @@ std::shared_ptr<Entity> Native::Otv::Isis::Overlay::Nsf::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Overlay::Nsf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15972,6 +16019,7 @@ std::shared_ptr<Entity> Native::Otv::Isis::Overlay::PrcInterval::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Overlay::PrcInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16068,6 +16116,7 @@ std::shared_ptr<Entity> Native::Otv::Isis::Overlay::Skeptical::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Overlay::Skeptical::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16152,6 +16201,7 @@ std::shared_ptr<Entity> Native::Otv::Isis::Overlay::SpfInterval::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Overlay::SpfInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16204,7 +16254,7 @@ Native::Otv::Isis::Site::Site()
     :
     net{YType::str, "net"}
     	,
-    default_(std::make_shared<Native::Otv::Isis::Site::Default_>())
+    default_(std::make_shared<Native::Otv::Isis::Site::Default>())
 	,log_adjacency_changes(nullptr) // presence node
 	,skeptical(std::make_shared<Native::Otv::Isis::Site::Skeptical>())
 {
@@ -16265,7 +16315,7 @@ std::shared_ptr<Entity> Native::Otv::Isis::Site::get_child_by_name(const std::st
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Otv::Isis::Site::Default_>();
+            default_ = std::make_shared<Native::Otv::Isis::Site::Default>();
         }
         return default_;
     }
@@ -16294,6 +16344,7 @@ std::shared_ptr<Entity> Native::Otv::Isis::Site::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Site::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_ != nullptr)
     {
         children["default"] = default_;
@@ -16337,30 +16388,30 @@ bool Native::Otv::Isis::Site::has_leaf_or_child_of_name(const std::string & name
     return false;
 }
 
-Native::Otv::Isis::Site::Default_::Default_()
+Native::Otv::Isis::Site::Default::Default()
     :
     log_adjacency_changes{YType::empty, "log-adjacency-changes"},
     net{YType::empty, "net"}
     	,
-    skeptical(std::make_shared<Native::Otv::Isis::Site::Default_::Skeptical>())
+    skeptical(std::make_shared<Native::Otv::Isis::Site::Default::Skeptical>())
 {
     skeptical->parent = this;
 
     yang_name = "default"; yang_parent_name = "site"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Otv::Isis::Site::Default_::~Default_()
+Native::Otv::Isis::Site::Default::~Default()
 {
 }
 
-bool Native::Otv::Isis::Site::Default_::has_data() const
+bool Native::Otv::Isis::Site::Default::has_data() const
 {
     return log_adjacency_changes.is_set
 	|| net.is_set
 	|| (skeptical !=  nullptr && skeptical->has_data());
 }
 
-bool Native::Otv::Isis::Site::Default_::has_operation() const
+bool Native::Otv::Isis::Site::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(log_adjacency_changes.yfilter)
@@ -16368,21 +16419,21 @@ bool Native::Otv::Isis::Site::Default_::has_operation() const
 	|| (skeptical !=  nullptr && skeptical->has_operation());
 }
 
-std::string Native::Otv::Isis::Site::Default_::get_absolute_path() const
+std::string Native::Otv::Isis::Site::Default::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/otv/Cisco-IOS-XE-otv:isis/site/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Otv::Isis::Site::Default_::get_segment_path() const
+std::string Native::Otv::Isis::Site::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Otv::Isis::Site::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Otv::Isis::Site::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16393,13 +16444,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Otv::Isis::Site::Default_
 
 }
 
-std::shared_ptr<Entity> Native::Otv::Isis::Site::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Otv::Isis::Site::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "skeptical")
     {
         if(skeptical == nullptr)
         {
-            skeptical = std::make_shared<Native::Otv::Isis::Site::Default_::Skeptical>();
+            skeptical = std::make_shared<Native::Otv::Isis::Site::Default::Skeptical>();
         }
         return skeptical;
     }
@@ -16407,9 +16458,10 @@ std::shared_ptr<Entity> Native::Otv::Isis::Site::Default_::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Site::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Site::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(skeptical != nullptr)
     {
         children["skeptical"] = skeptical;
@@ -16418,7 +16470,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Site::Default_
     return children;
 }
 
-void Native::Otv::Isis::Site::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Otv::Isis::Site::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "log-adjacency-changes")
     {
@@ -16434,7 +16486,7 @@ void Native::Otv::Isis::Site::Default_::set_value(const std::string & value_path
     }
 }
 
-void Native::Otv::Isis::Site::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Otv::Isis::Site::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "log-adjacency-changes")
     {
@@ -16446,14 +16498,14 @@ void Native::Otv::Isis::Site::Default_::set_filter(const std::string & value_pat
     }
 }
 
-bool Native::Otv::Isis::Site::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Otv::Isis::Site::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "skeptical" || name == "log-adjacency-changes" || name == "net")
         return true;
     return false;
 }
 
-Native::Otv::Isis::Site::Default_::Skeptical::Skeptical()
+Native::Otv::Isis::Site::Default::Skeptical::Skeptical()
     :
     interval{YType::empty, "interval"}
 {
@@ -16461,36 +16513,36 @@ Native::Otv::Isis::Site::Default_::Skeptical::Skeptical()
     yang_name = "skeptical"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Otv::Isis::Site::Default_::Skeptical::~Skeptical()
+Native::Otv::Isis::Site::Default::Skeptical::~Skeptical()
 {
 }
 
-bool Native::Otv::Isis::Site::Default_::Skeptical::has_data() const
+bool Native::Otv::Isis::Site::Default::Skeptical::has_data() const
 {
     return interval.is_set;
 }
 
-bool Native::Otv::Isis::Site::Default_::Skeptical::has_operation() const
+bool Native::Otv::Isis::Site::Default::Skeptical::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interval.yfilter);
 }
 
-std::string Native::Otv::Isis::Site::Default_::Skeptical::get_absolute_path() const
+std::string Native::Otv::Isis::Site::Default::Skeptical::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/otv/Cisco-IOS-XE-otv:isis/site/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Otv::Isis::Site::Default_::Skeptical::get_segment_path() const
+std::string Native::Otv::Isis::Site::Default::Skeptical::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "skeptical";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Otv::Isis::Site::Default_::Skeptical::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Otv::Isis::Site::Default::Skeptical::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16500,18 +16552,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Otv::Isis::Site::Default_
 
 }
 
-std::shared_ptr<Entity> Native::Otv::Isis::Site::Default_::Skeptical::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Otv::Isis::Site::Default::Skeptical::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Site::Default_::Skeptical::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Site::Default::Skeptical::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Otv::Isis::Site::Default_::Skeptical::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Otv::Isis::Site::Default::Skeptical::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interval")
     {
@@ -16521,7 +16574,7 @@ void Native::Otv::Isis::Site::Default_::Skeptical::set_value(const std::string &
     }
 }
 
-void Native::Otv::Isis::Site::Default_::Skeptical::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Otv::Isis::Site::Default::Skeptical::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interval")
     {
@@ -16529,7 +16582,7 @@ void Native::Otv::Isis::Site::Default_::Skeptical::set_filter(const std::string 
     }
 }
 
-bool Native::Otv::Isis::Site::Default_::Skeptical::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Otv::Isis::Site::Default::Skeptical::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interval")
         return true;
@@ -16591,6 +16644,7 @@ std::shared_ptr<Entity> Native::Otv::Isis::Site::LogAdjacencyChanges::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Site::LogAdjacencyChanges::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16674,6 +16728,7 @@ std::shared_ptr<Entity> Native::Otv::Isis::Site::Skeptical::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Isis::Site::Skeptical::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16706,7 +16761,7 @@ Native::Otv::Site::Site()
     :
     bridge_domain{YType::uint16, "bridge-domain"}
     	,
-    default_(std::make_shared<Native::Otv::Site::Default_>())
+    default_(std::make_shared<Native::Otv::Site::Default>())
 	,otv(std::make_shared<Native::Otv::Site::Otv_>())
 {
     default_->parent = this;
@@ -16764,7 +16819,7 @@ std::shared_ptr<Entity> Native::Otv::Site::get_child_by_name(const std::string &
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Otv::Site::Default_>();
+            default_ = std::make_shared<Native::Otv::Site::Default>();
         }
         return default_;
     }
@@ -16784,6 +16839,7 @@ std::shared_ptr<Entity> Native::Otv::Site::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_ != nullptr)
     {
         children["default"] = default_;
@@ -16822,38 +16878,38 @@ bool Native::Otv::Site::has_leaf_or_child_of_name(const std::string & name) cons
     return false;
 }
 
-Native::Otv::Site::Default_::Default_()
+Native::Otv::Site::Default::Default()
     :
-    otv(std::make_shared<Native::Otv::Site::Default_::Otv_>())
+    otv(std::make_shared<Native::Otv::Site::Default::Otv_>())
 {
     otv->parent = this;
 
     yang_name = "default"; yang_parent_name = "site"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Otv::Site::Default_::~Default_()
+Native::Otv::Site::Default::~Default()
 {
 }
 
-bool Native::Otv::Site::Default_::has_data() const
+bool Native::Otv::Site::Default::has_data() const
 {
     return (otv !=  nullptr && otv->has_data());
 }
 
-bool Native::Otv::Site::Default_::has_operation() const
+bool Native::Otv::Site::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| (otv !=  nullptr && otv->has_operation());
 }
 
-std::string Native::Otv::Site::Default_::get_segment_path() const
+std::string Native::Otv::Site::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Otv::Site::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Otv::Site::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16862,13 +16918,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Otv::Site::Default_::get_
 
 }
 
-std::shared_ptr<Entity> Native::Otv::Site::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Otv::Site::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "otv")
     {
         if(otv == nullptr)
         {
-            otv = std::make_shared<Native::Otv::Site::Default_::Otv_>();
+            otv = std::make_shared<Native::Otv::Site::Default::Otv_>();
         }
         return otv;
     }
@@ -16876,9 +16932,10 @@ std::shared_ptr<Entity> Native::Otv::Site::Default_::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(otv != nullptr)
     {
         children["otv"] = otv;
@@ -16887,53 +16944,53 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::Default_::get_
     return children;
 }
 
-void Native::Otv::Site::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Otv::Site::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Otv::Site::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Otv::Site::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Otv::Site::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Otv::Site::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "otv")
         return true;
     return false;
 }
 
-Native::Otv::Site::Default_::Otv_::Otv_()
+Native::Otv::Site::Default::Otv_::Otv_()
     :
-    isis(std::make_shared<Native::Otv::Site::Default_::Otv_::Isis>())
+    isis(std::make_shared<Native::Otv::Site::Default::Otv_::Isis>())
 {
     isis->parent = this;
 
     yang_name = "otv"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Otv::Site::Default_::Otv_::~Otv_()
+Native::Otv::Site::Default::Otv_::~Otv_()
 {
 }
 
-bool Native::Otv::Site::Default_::Otv_::has_data() const
+bool Native::Otv::Site::Default::Otv_::has_data() const
 {
     return (isis !=  nullptr && isis->has_data());
 }
 
-bool Native::Otv::Site::Default_::Otv_::has_operation() const
+bool Native::Otv::Site::Default::Otv_::has_operation() const
 {
     return is_set(yfilter)
 	|| (isis !=  nullptr && isis->has_operation());
 }
 
-std::string Native::Otv::Site::Default_::Otv_::get_segment_path() const
+std::string Native::Otv::Site::Default::Otv_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "otv";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Otv::Site::Default_::Otv_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Otv::Site::Default::Otv_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16942,13 +16999,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Otv::Site::Default_::Otv_
 
 }
 
-std::shared_ptr<Entity> Native::Otv::Site::Default_::Otv_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Otv::Site::Default::Otv_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "isis")
     {
         if(isis == nullptr)
         {
-            isis = std::make_shared<Native::Otv::Site::Default_::Otv_::Isis>();
+            isis = std::make_shared<Native::Otv::Site::Default::Otv_::Isis>();
         }
         return isis;
     }
@@ -16956,9 +17013,10 @@ std::shared_ptr<Entity> Native::Otv::Site::Default_::Otv_::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::Default_::Otv_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::Default::Otv_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(isis != nullptr)
     {
         children["isis"] = isis;
@@ -16967,36 +17025,36 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::Default_::Otv_
     return children;
 }
 
-void Native::Otv::Site::Default_::Otv_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Otv::Site::Default::Otv_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Otv::Site::Default_::Otv_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Otv::Site::Default::Otv_::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Otv::Site::Default_::Otv_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Otv::Site::Default::Otv_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "isis")
         return true;
     return false;
 }
 
-const Enum::YLeaf Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway::PrefixGateway::prefix {0, "prefix"};
-const Enum::YLeaf Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway::PrefixGateway::gateway {1, "gateway"};
-const Enum::YLeaf Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGateway::PrefixGateway::route_map {2, "route-map"};
+const Enum::YLeaf Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway::PrefixGateway::prefix {0, "prefix"};
+const Enum::YLeaf Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway::PrefixGateway::gateway {1, "gateway"};
+const Enum::YLeaf Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway::PrefixGateway::route_map {2, "route-map"};
 
-const Enum::YLeaf Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfname::PrefixGateway::prefix {0, "prefix"};
-const Enum::YLeaf Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfname::PrefixGateway::gateway {1, "gateway"};
-const Enum::YLeaf Native::Router::Rip::Default_::DistributeList::AccesslistPrefixGatewayIfname::PrefixGateway::route_map {2, "route-map"};
+const Enum::YLeaf Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfname::PrefixGateway::prefix {0, "prefix"};
+const Enum::YLeaf Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfname::PrefixGateway::gateway {1, "gateway"};
+const Enum::YLeaf Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfname::PrefixGateway::route_map {2, "route-map"};
 
-const Enum::YLeaf Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::IsisLevelRoutes::level_1 {0, "level-1"};
-const Enum::YLeaf Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::IsisLevelRoutes::level_2 {1, "level-2"};
-const Enum::YLeaf Native::Router::Rip::Default_::Redistribute::Isis::IsisArea::RipIsisRedist::IsisLevelRoutes::level_1_2 {2, "level-1-2"};
+const Enum::YLeaf Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::IsisLevelRoutes::level_1 {0, "level-1"};
+const Enum::YLeaf Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::IsisLevelRoutes::level_2 {1, "level-2"};
+const Enum::YLeaf Native::Router::Rip::Default::Redistribute::Isis::IsisArea::RipIsisRedist::IsisLevelRoutes::level_1_2 {2, "level-1-2"};
 
-const Enum::YLeaf Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::IsisLevelRoutes::level_1 {0, "level-1"};
-const Enum::YLeaf Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::IsisLevelRoutes::level_2 {1, "level-2"};
-const Enum::YLeaf Native::Router::Rip::Default_::Redistribute::Isis::RipIsisRedist::IsisLevelRoutes::level_1_2 {2, "level-1-2"};
+const Enum::YLeaf Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::IsisLevelRoutes::level_1 {0, "level-1"};
+const Enum::YLeaf Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::IsisLevelRoutes::level_2 {1, "level-2"};
+const Enum::YLeaf Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist::IsisLevelRoutes::level_1_2 {2, "level-1-2"};
 
 const Enum::YLeaf Native::ServiceChain::ServiceFunction::ConfigServiceChainSfMode::Encapsulation::Gre::Enhanced::copy {0, "copy"};
 const Enum::YLeaf Native::ServiceChain::ServiceFunction::ConfigServiceChainSfMode::Encapsulation::Gre::Enhanced::divert {1, "divert"};
@@ -17005,16 +17063,16 @@ const Enum::YLeaf Native::Performance::Monitor::Context::Profile::application_ex
 const Enum::YLeaf Native::Performance::Monitor::Context::Profile::application_performance {1, "application-performance"};
 const Enum::YLeaf Native::Performance::Monitor::Context::Profile::application_statistics {2, "application-statistics"};
 
-const Enum::YLeaf Native::Performance::Monitor::Context::Default_::Exporter::Transport::udp {0, "udp"};
+const Enum::YLeaf Native::Performance::Monitor::Context::Default::Exporter::Transport::udp {0, "udp"};
 
-const Enum::YLeaf Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationResponseTime::CacheType::normal {0, "normal"};
-const Enum::YLeaf Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationResponseTime::CacheType::synchronized {1, "synchronized"};
+const Enum::YLeaf Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationResponseTime::CacheType::normal {0, "normal"};
+const Enum::YLeaf Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationResponseTime::CacheType::synchronized {1, "synchronized"};
 
-const Enum::YLeaf Native::Performance::Monitor::Context::Default_::TrafficMonitor::ConversationTrafficStats::CacheType::normal {0, "normal"};
-const Enum::YLeaf Native::Performance::Monitor::Context::Default_::TrafficMonitor::ConversationTrafficStats::CacheType::synchronized {1, "synchronized"};
+const Enum::YLeaf Native::Performance::Monitor::Context::Default::TrafficMonitor::ConversationTrafficStats::CacheType::normal {0, "normal"};
+const Enum::YLeaf Native::Performance::Monitor::Context::Default::TrafficMonitor::ConversationTrafficStats::CacheType::synchronized {1, "synchronized"};
 
-const Enum::YLeaf Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationClientServerStats::CacheType::normal {0, "normal"};
-const Enum::YLeaf Native::Performance::Monitor::Context::Default_::TrafficMonitor::ApplicationClientServerStats::CacheType::synchronized {1, "synchronized"};
+const Enum::YLeaf Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationClientServerStats::CacheType::normal {0, "normal"};
+const Enum::YLeaf Native::Performance::Monitor::Context::Default::TrafficMonitor::ApplicationClientServerStats::CacheType::synchronized {1, "synchronized"};
 
 const Enum::YLeaf Native::Performance::Monitor::Context::Exporter::Transport::udp {0, "udp"};
 
@@ -17030,8 +17088,8 @@ const Enum::YLeaf Native::Performance::Monitor::Context::TrafficMonitor::Applica
 const Enum::YLeaf Native::Otv::Isis::Overlay::Authentication::Mode::md5 {0, "md5"};
 const Enum::YLeaf Native::Otv::Isis::Overlay::Authentication::Mode::text {1, "text"};
 
-const Enum::YLeaf Native::Otv::Isis::Overlay::Default_::Authentication::Mode::md5 {0, "md5"};
-const Enum::YLeaf Native::Otv::Isis::Overlay::Default_::Authentication::Mode::text {1, "text"};
+const Enum::YLeaf Native::Otv::Isis::Overlay::Default::Authentication::Mode::md5 {0, "md5"};
+const Enum::YLeaf Native::Otv::Isis::Overlay::Default::Authentication::Mode::text {1, "text"};
 
 
 }

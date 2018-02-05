@@ -3562,18 +3562,18 @@ class Native::Interface::TwentyFiveGigabitEthernet::Power : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Inline_; //type: Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_
+        class Inline; //type: Native::Interface::TwentyFiveGigabitEthernet::Power::Inline
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_> inline_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigabitEthernet::Power::Inline> inline_;
         
 }; // Native::Interface::TwentyFiveGigabitEthernet::Power
 
 
-class Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_ : public ydk::Entity
+class Native::Interface::TwentyFiveGigabitEthernet::Power::Inline : public ydk::Entity
 {
     public:
-        Inline_();
-        ~Inline_();
+        Inline();
+        ~Inline();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3587,19 +3587,19 @@ class Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_ : public ydk:
 
         ydk::YLeaf consumption; //type: uint16
         ydk::YLeaf never; //type: empty
-        class Auto_; //type: Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Auto_
-        class FourPair; //type: Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::FourPair
-        class Police; //type: Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Police
-        class Port; //type: Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Port
-        class Static_; //type: Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Static_
+        class Auto; //type: Native::Interface::TwentyFiveGigabitEthernet::Power::Inline::Auto
+        class FourPair; //type: Native::Interface::TwentyFiveGigabitEthernet::Power::Inline::FourPair
+        class Police; //type: Native::Interface::TwentyFiveGigabitEthernet::Power::Inline::Police
+        class Port; //type: Native::Interface::TwentyFiveGigabitEthernet::Power::Inline::Port
+        class Static; //type: Native::Interface::TwentyFiveGigabitEthernet::Power::Inline::Static
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Auto_> auto_; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::FourPair> four_pair;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Police> police; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Port> port;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigabitEthernet::Power::Inline::Auto> auto_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigabitEthernet::Power::Inline::FourPair> four_pair;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigabitEthernet::Power::Inline::Police> police; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigabitEthernet::Power::Inline::Port> port;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigabitEthernet::Power::Inline::Static> static_; // presence node
         
-}; // Native::Interface::TwentyFiveGigabitEthernet::Power::Inline_
+}; // Native::Interface::TwentyFiveGigabitEthernet::Power::Inline
 
 class Native::Interface::TwentyFiveGigabitEthernet::Cts::RoleBased::SgtCache : public ydk::Enum
 {

@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Otu::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Otu::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(controllers != nullptr)
     {
         children["controllers"] = controllers;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> Otu::Controllers::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "controller")
     {
-        for(auto const & c : controller)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Otu::Controllers::Controller>();
         c->parent = this;
         controller.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> Otu::Controllers::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : controller)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -298,6 +296,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prbs != nullptr)
     {
         children["prbs"] = prbs;
@@ -396,6 +395,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Prbs::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Prbs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -694,6 +694,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(local != nullptr)
     {
         children["local"] = local;
@@ -1059,6 +1060,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::Local::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::Local::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1149,6 +1151,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::Remote::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::Remote::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1295,6 +1298,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tx != nullptr)
     {
         children["tx"] = tx;
@@ -1478,6 +1482,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Tx::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Tx::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1620,6 +1625,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Exp::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Exp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1762,6 +1768,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::TtiMode::Rec::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::TtiMode::Rec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1864,14 +1871,6 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::NetworkSrlg::get_chi
 {
     if(child_yang_name == "srlg-info")
     {
-        for(auto const & c : srlg_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo>();
         c->parent = this;
         srlg_info.push_back(c);
@@ -1884,9 +1883,14 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::NetworkSrlg::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::NetworkSrlg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : srlg_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1969,6 +1973,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInf
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2270,6 +2275,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(los != nullptr)
     {
         children["los"] = los;
@@ -2433,6 +2439,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::g
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2551,6 +2558,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::g
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2669,6 +2677,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::g
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2787,6 +2796,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::g
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2905,6 +2915,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::g
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3023,6 +3034,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::g
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3141,6 +3153,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::g
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3259,6 +3272,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3377,6 +3391,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::g
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3495,6 +3510,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::g
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3613,6 +3629,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::g
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3731,6 +3748,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMis
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3849,6 +3867,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer:
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3967,6 +3986,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer:
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4085,6 +4105,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::ge
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4203,6 +4224,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::ge
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4321,6 +4343,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4467,6 +4490,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::Proactive::get_child
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::Proactive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4647,6 +4671,7 @@ std::shared_ptr<Entity> Otu::Controllers::Controller::Info::OtuFecSatistics::get
 std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Info::OtuFecSatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -111,6 +111,7 @@ std::shared_ptr<Entity> OpticalAmplifier::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(amplifiers != nullptr)
     {
         children["amplifiers"] = amplifiers;
@@ -221,14 +222,6 @@ std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::get_child_by_name(const st
 {
     if(child_yang_name == "amplifier")
     {
-        for(auto const & c : amplifier)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<OpticalAmplifier::Amplifiers::Amplifier>();
         c->parent = this;
         amplifier.push_back(c);
@@ -241,9 +234,14 @@ std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : amplifier)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -346,6 +344,7 @@ std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -460,6 +459,7 @@ std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::Config::get_chi
 std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -773,6 +773,7 @@ std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::State::get_chil
 std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(actual_gain != nullptr)
     {
         children["actual-gain"] = actual_gain;
@@ -1001,6 +1002,7 @@ std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::State::ActualGa
 std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::ActualGain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1119,6 +1121,7 @@ std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::State::ActualGa
 std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::ActualGainTilt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1237,6 +1240,7 @@ std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::State::InputPow
 std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerTotal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1355,6 +1359,7 @@ std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::State::InputPow
 std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerCBand::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1473,6 +1478,7 @@ std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::State::InputPow
 std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerLBand::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1591,6 +1597,7 @@ std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::State::OutputPo
 std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerTotal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1709,6 +1716,7 @@ std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::State::OutputPo
 std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerCBand::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1827,6 +1835,7 @@ std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::State::OutputPo
 std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerLBand::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1945,6 +1954,7 @@ std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::State::LaserBia
 std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::LaserBiasCurrent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2063,6 +2073,7 @@ std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::Amplifier::State::OpticalR
 std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::Amplifier::State::OpticalReturnLoss::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2178,14 +2189,6 @@ std::shared_ptr<Entity> OpticalAmplifier::SupervisoryChannels::get_child_by_name
 {
     if(child_yang_name == "supervisory-channel")
     {
-        for(auto const & c : supervisory_channel)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<OpticalAmplifier::SupervisoryChannels::SupervisoryChannel>();
         c->parent = this;
         supervisory_channel.push_back(c);
@@ -2198,9 +2201,14 @@ std::shared_ptr<Entity> OpticalAmplifier::SupervisoryChannels::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::SupervisoryChannels::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : supervisory_channel)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2303,6 +2311,7 @@ std::shared_ptr<Entity> OpticalAmplifier::SupervisoryChannels::SupervisoryChanne
 std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -2400,6 +2409,7 @@ std::shared_ptr<Entity> OpticalAmplifier::SupervisoryChannels::SupervisoryChanne
 std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2524,6 +2534,7 @@ std::shared_ptr<Entity> OpticalAmplifier::SupervisoryChannels::SupervisoryChanne
 std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input_power != nullptr)
     {
         children["input-power"] = input_power;
@@ -2625,6 +2636,7 @@ std::shared_ptr<Entity> OpticalAmplifier::SupervisoryChannels::SupervisoryChanne
 std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::InputPower::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2743,6 +2755,7 @@ std::shared_ptr<Entity> OpticalAmplifier::SupervisoryChannels::SupervisoryChanne
 std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::OutputPower::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2861,6 +2874,7 @@ std::shared_ptr<Entity> OpticalAmplifier::SupervisoryChannels::SupervisoryChanne
 std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::LaserBiasCurrent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

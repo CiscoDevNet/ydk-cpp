@@ -107,6 +107,7 @@ std::shared_ptr<Entity> ETHERWIS::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(etherwisdevicetable != nullptr)
     {
         children["etherWisDeviceTable"] = etherwisdevicetable;
@@ -227,14 +228,6 @@ std::shared_ptr<Entity> ETHERWIS::Etherwisdevicetable::get_child_by_name(const s
 {
     if(child_yang_name == "etherWisDeviceEntry")
     {
-        for(auto const & c : etherwisdeviceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry>();
         c->parent = this;
         etherwisdeviceentry.push_back(c);
@@ -247,9 +240,14 @@ std::shared_ptr<Entity> ETHERWIS::Etherwisdevicetable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::Etherwisdevicetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : etherwisdeviceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -337,6 +335,7 @@ std::shared_ptr<Entity> ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::get_
 std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::Etherwisdevicetable::Etherwisdeviceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -452,14 +451,6 @@ std::shared_ptr<Entity> ETHERWIS::Etherwissectioncurrenttable::get_child_by_name
 {
     if(child_yang_name == "etherWisSectionCurrentEntry")
     {
-        for(auto const & c : etherwissectioncurrententry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry>();
         c->parent = this;
         etherwissectioncurrententry.push_back(c);
@@ -472,9 +463,14 @@ std::shared_ptr<Entity> ETHERWIS::Etherwissectioncurrenttable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::Etherwissectioncurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : etherwissectioncurrententry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -558,6 +554,7 @@ std::shared_ptr<Entity> ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncu
 std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::Etherwissectioncurrenttable::Etherwissectioncurrententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -663,14 +660,6 @@ std::shared_ptr<Entity> ETHERWIS::Etherwispathcurrenttable::get_child_by_name(co
 {
     if(child_yang_name == "etherWisPathCurrentEntry")
     {
-        for(auto const & c : etherwispathcurrententry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry>();
         c->parent = this;
         etherwispathcurrententry.push_back(c);
@@ -683,9 +672,14 @@ std::shared_ptr<Entity> ETHERWIS::Etherwispathcurrenttable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::Etherwispathcurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : etherwispathcurrententry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -773,6 +767,7 @@ std::shared_ptr<Entity> ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrente
 std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::Etherwispathcurrenttable::Etherwispathcurrententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -886,14 +881,6 @@ std::shared_ptr<Entity> ETHERWIS::Etherwisfarendpathcurrenttable::get_child_by_n
 {
     if(child_yang_name == "etherWisFarEndPathCurrentEntry")
     {
-        for(auto const & c : etherwisfarendpathcurrententry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry>();
         c->parent = this;
         etherwisfarendpathcurrententry.push_back(c);
@@ -906,9 +893,14 @@ std::shared_ptr<Entity> ETHERWIS::Etherwisfarendpathcurrenttable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::Etherwisfarendpathcurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : etherwisfarendpathcurrententry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -988,6 +980,7 @@ std::shared_ptr<Entity> ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarend
 std::map<std::string, std::shared_ptr<Entity>> ETHERWIS::Etherwisfarendpathcurrenttable::Etherwisfarendpathcurrententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

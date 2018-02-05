@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Statistics::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(period != nullptr)
     {
         children["period"] = period;
@@ -180,6 +181,7 @@ std::shared_ptr<Entity> Statistics::Period::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Statistics::Period::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(service_accounting != nullptr)
     {
         children["service-accounting"] = service_accounting;
@@ -262,6 +264,7 @@ std::shared_ptr<Entity> Statistics::Period::ServiceAccounting::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Statistics::Period::ServiceAccounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

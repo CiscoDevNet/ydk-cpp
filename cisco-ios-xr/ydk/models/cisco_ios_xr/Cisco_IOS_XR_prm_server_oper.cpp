@@ -68,6 +68,7 @@ std::shared_ptr<Entity> HardwareModule::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> HardwareModule::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> HardwareModule::Nodes::get_child_by_name(const std::stri
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HardwareModule::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> HardwareModule::Nodes::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -285,6 +283,7 @@ std::shared_ptr<Entity> HardwareModule::Nodes::Node::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(np != nullptr)
     {
         children["np"] = np;
@@ -388,6 +387,7 @@ std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cpu != nullptr)
     {
         children["cpu"] = cpu;
@@ -473,6 +473,7 @@ std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::Cpu::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::Cpu::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(indexes != nullptr)
     {
         children["indexes"] = indexes;
@@ -546,15 +547,7 @@ std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::Cpu::Indexes::get_child
 {
     if(child_yang_name == "index")
     {
-        for(auto const & c : index_)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_>();
+        auto c = std::make_shared<HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index>();
         c->parent = this;
         index_.push_back(c);
         return c;
@@ -566,9 +559,14 @@ std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::Cpu::Indexes::get_child
 std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::Cpu::Indexes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : index_)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -589,7 +587,7 @@ bool HardwareModule::Nodes::Node::Np::Cpu::Indexes::has_leaf_or_child_of_name(co
     return false;
 }
 
-HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::Index_()
+HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index::Index()
     :
     index_{YType::int32, "index"},
     cos_q_name{YType::str, "cos-q-name"},
@@ -604,11 +602,11 @@ HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::Index_()
     yang_name = "index"; yang_parent_name = "indexes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::~Index_()
+HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index::~Index()
 {
 }
 
-bool HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::has_data() const
+bool HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index::has_data() const
 {
     return index_.is_set
 	|| cos_q_name.is_set
@@ -620,7 +618,7 @@ bool HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::has_data() const
 	|| dropped.is_set;
 }
 
-bool HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::has_operation() const
+bool HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(index_.yfilter)
@@ -633,14 +631,14 @@ bool HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::has_operation() cons
 	|| ydk::is_set(dropped.yfilter);
 }
 
-std::string HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::get_segment_path() const
+std::string HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "index" <<"[index='" <<index_ <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -657,18 +655,19 @@ std::vector<std::pair<std::string, LeafData> > HardwareModule::Nodes::Node::Np::
 
 }
 
-std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "index")
     {
@@ -720,7 +719,7 @@ void HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::set_value(const std:
     }
 }
 
-void HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::set_filter(const std::string & value_path, YFilter yfilter)
+void HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "index")
     {
@@ -756,7 +755,7 @@ void HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::set_filter(const std
     }
 }
 
-bool HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index_::has_leaf_or_child_of_name(const std::string & name) const
+bool HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "index" || name == "cos-q-name" || name == "cos-q" || name == "rx-channel" || name == "flow-rate" || name == "burst" || name == "accepted" || name == "dropped")
         return true;
@@ -833,6 +832,7 @@ std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::get_child
 std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(indxes != nullptr)
     {
         children["indxes"] = indxes;
@@ -911,14 +911,6 @@ std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::g
 {
     if(child_yang_name == "indx")
     {
-        for(auto const & c : indx)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx>();
         c->parent = this;
         indx.push_back(c);
@@ -931,9 +923,14 @@ std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::g
 std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : indx)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1050,6 +1047,7 @@ std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::I
 std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1248,14 +1246,6 @@ std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::ge
 {
     if(child_yang_name == "idx")
     {
-        for(auto const & c : idx)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx>();
         c->parent = this;
         idx.push_back(c);
@@ -1268,9 +1258,14 @@ std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::ge
 std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : idx)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1347,6 +1342,7 @@ std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Id
 std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1452,6 +1448,7 @@ std::shared_ptr<Entity> Prm::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Prm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -1557,14 +1554,6 @@ std::shared_ptr<Entity> Prm::Nodes::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Prm::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -1577,9 +1566,14 @@ std::shared_ptr<Entity> Prm::Nodes::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Prm::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1669,6 +1663,7 @@ std::shared_ptr<Entity> Prm::Nodes::Node::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Prm::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(server != nullptr)
     {
         children["server"] = server;
@@ -1759,6 +1754,7 @@ std::shared_ptr<Entity> Prm::Nodes::Node::Server::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Prm::Nodes::Node::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(resource != nullptr)
     {
         children["resource"] = resource;
@@ -1839,6 +1835,7 @@ std::shared_ptr<Entity> Prm::Nodes::Node::Server::Resource::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Prm::Nodes::Node::Server::Resource::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(indexes != nullptr)
     {
         children["indexes"] = indexes;
@@ -1912,15 +1909,7 @@ std::shared_ptr<Entity> Prm::Nodes::Node::Server::Resource::Indexes::get_child_b
 {
     if(child_yang_name == "index")
     {
-        for(auto const & c : index_)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Prm::Nodes::Node::Server::Resource::Indexes::Index_>();
+        auto c = std::make_shared<Prm::Nodes::Node::Server::Resource::Indexes::Index>();
         c->parent = this;
         index_.push_back(c);
         return c;
@@ -1932,9 +1921,14 @@ std::shared_ptr<Entity> Prm::Nodes::Node::Server::Resource::Indexes::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Prm::Nodes::Node::Server::Resource::Indexes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : index_)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1955,7 +1949,7 @@ bool Prm::Nodes::Node::Server::Resource::Indexes::has_leaf_or_child_of_name(cons
     return false;
 }
 
-Prm::Nodes::Node::Server::Resource::Indexes::Index_::Index_()
+Prm::Nodes::Node::Server::Resource::Indexes::Index::Index()
     :
     index_{YType::int32, "index"},
     resource_name{YType::str, "resource-name"},
@@ -1972,11 +1966,11 @@ Prm::Nodes::Node::Server::Resource::Indexes::Index_::Index_()
     yang_name = "index"; yang_parent_name = "indexes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Prm::Nodes::Node::Server::Resource::Indexes::Index_::~Index_()
+Prm::Nodes::Node::Server::Resource::Indexes::Index::~Index()
 {
 }
 
-bool Prm::Nodes::Node::Server::Resource::Indexes::Index_::has_data() const
+bool Prm::Nodes::Node::Server::Resource::Indexes::Index::has_data() const
 {
     return index_.is_set
 	|| resource_name.is_set
@@ -1990,7 +1984,7 @@ bool Prm::Nodes::Node::Server::Resource::Indexes::Index_::has_data() const
 	|| inconsistent.is_set;
 }
 
-bool Prm::Nodes::Node::Server::Resource::Indexes::Index_::has_operation() const
+bool Prm::Nodes::Node::Server::Resource::Indexes::Index::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(index_.yfilter)
@@ -2005,14 +1999,14 @@ bool Prm::Nodes::Node::Server::Resource::Indexes::Index_::has_operation() const
 	|| ydk::is_set(inconsistent.yfilter);
 }
 
-std::string Prm::Nodes::Node::Server::Resource::Indexes::Index_::get_segment_path() const
+std::string Prm::Nodes::Node::Server::Resource::Indexes::Index::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "index" <<"[index='" <<index_ <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Prm::Nodes::Node::Server::Resource::Indexes::Index_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Prm::Nodes::Node::Server::Resource::Indexes::Index::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2031,18 +2025,19 @@ std::vector<std::pair<std::string, LeafData> > Prm::Nodes::Node::Server::Resourc
 
 }
 
-std::shared_ptr<Entity> Prm::Nodes::Node::Server::Resource::Indexes::Index_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Prm::Nodes::Node::Server::Resource::Indexes::Index::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Prm::Nodes::Node::Server::Resource::Indexes::Index_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Prm::Nodes::Node::Server::Resource::Indexes::Index::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Prm::Nodes::Node::Server::Resource::Indexes::Index_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Prm::Nodes::Node::Server::Resource::Indexes::Index::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "index")
     {
@@ -2106,7 +2101,7 @@ void Prm::Nodes::Node::Server::Resource::Indexes::Index_::set_value(const std::s
     }
 }
 
-void Prm::Nodes::Node::Server::Resource::Indexes::Index_::set_filter(const std::string & value_path, YFilter yfilter)
+void Prm::Nodes::Node::Server::Resource::Indexes::Index::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "index")
     {
@@ -2150,7 +2145,7 @@ void Prm::Nodes::Node::Server::Resource::Indexes::Index_::set_filter(const std::
     }
 }
 
-bool Prm::Nodes::Node::Server::Resource::Indexes::Index_::has_leaf_or_child_of_name(const std::string & name) const
+bool Prm::Nodes::Node::Server::Resource::Indexes::Index::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "index" || name == "resource-name" || name == "resource-type" || name == "total-num" || name == "free-num" || name == "first-available-index" || name == "start-index" || name == "availability-status" || name == "flags" || name == "inconsistent")
         return true;

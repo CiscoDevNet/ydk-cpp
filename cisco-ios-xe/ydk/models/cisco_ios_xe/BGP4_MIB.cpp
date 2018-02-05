@@ -107,6 +107,7 @@ std::shared_ptr<Entity> BGP4MIB::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bgp != nullptr)
     {
         children["bgp"] = bgp;
@@ -233,6 +234,7 @@ std::shared_ptr<Entity> BGP4MIB::Bgp::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -338,14 +340,6 @@ std::shared_ptr<Entity> BGP4MIB::Bgppeertable::get_child_by_name(const std::stri
 {
     if(child_yang_name == "bgpPeerEntry")
     {
-        for(auto const & c : bgppeerentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BGP4MIB::Bgppeertable::Bgppeerentry>();
         c->parent = this;
         bgppeerentry.push_back(c);
@@ -358,9 +352,14 @@ std::shared_ptr<Entity> BGP4MIB::Bgppeertable::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::Bgppeertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgppeerentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -560,6 +559,7 @@ std::shared_ptr<Entity> BGP4MIB::Bgppeertable::Bgppeerentry::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::Bgppeertable::Bgppeerentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -955,14 +955,6 @@ std::shared_ptr<Entity> BGP4MIB::Bgprcvdpathattrtable::get_child_by_name(const s
 {
     if(child_yang_name == "bgpPathAttrEntry")
     {
-        for(auto const & c : bgppathattrentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry>();
         c->parent = this;
         bgppathattrentry.push_back(c);
@@ -975,9 +967,14 @@ std::shared_ptr<Entity> BGP4MIB::Bgprcvdpathattrtable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::Bgprcvdpathattrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgppathattrentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1073,6 +1070,7 @@ std::shared_ptr<Entity> BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::get_chi
 std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1208,14 +1206,6 @@ std::shared_ptr<Entity> BGP4MIB::Bgp4Pathattrtable::get_child_by_name(const std:
 {
     if(child_yang_name == "bgp4PathAttrEntry")
     {
-        for(auto const & c : bgp4pathattrentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry>();
         c->parent = this;
         bgp4pathattrentry.push_back(c);
@@ -1228,9 +1218,14 @@ std::shared_ptr<Entity> BGP4MIB::Bgp4Pathattrtable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::Bgp4Pathattrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp4pathattrentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1358,6 +1353,7 @@ std::shared_ptr<Entity> BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::get_child
 std::map<std::string, std::shared_ptr<Entity>> BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

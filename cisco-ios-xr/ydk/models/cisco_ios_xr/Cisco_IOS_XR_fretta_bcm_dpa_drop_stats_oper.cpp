@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Drop::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Drop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> Drop::Nodes::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Drop::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> Drop::Nodes::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Drop::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -285,6 +283,7 @@ std::shared_ptr<Entity> Drop::Nodes::Node::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Drop::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(npu_number_for_drop_stats != nullptr)
     {
         children["npu-number-for-drop-stats"] = npu_number_for_drop_stats;
@@ -368,14 +367,6 @@ std::shared_ptr<Entity> Drop::Nodes::Node::NpuNumberForDropStats::get_child_by_n
 {
     if(child_yang_name == "npu-number-for-drop-stat")
     {
-        for(auto const & c : npu_number_for_drop_stat)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat>();
         c->parent = this;
         npu_number_for_drop_stat.push_back(c);
@@ -388,9 +379,14 @@ std::shared_ptr<Entity> Drop::Nodes::Node::NpuNumberForDropStats::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Drop::Nodes::Node::NpuNumberForDropStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : npu_number_for_drop_stat)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -465,14 +461,6 @@ std::shared_ptr<Entity> Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDr
 {
     if(child_yang_name == "drop-specific-stats-data")
     {
-        for(auto const & c : drop_specific_stats_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::DropSpecificStatsData>();
         c->parent = this;
         drop_specific_stats_data.push_back(c);
@@ -485,9 +473,14 @@ std::shared_ptr<Entity> Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDr
 std::map<std::string, std::shared_ptr<Entity>> Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : drop_specific_stats_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -578,6 +571,7 @@ std::shared_ptr<Entity> Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDr
 std::map<std::string, std::shared_ptr<Entity>> Drop::Nodes::Node::NpuNumberForDropStats::NpuNumberForDropStat::DropSpecificStatsData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

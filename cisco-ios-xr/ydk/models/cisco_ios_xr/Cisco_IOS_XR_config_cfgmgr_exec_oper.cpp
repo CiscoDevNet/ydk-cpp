@@ -61,14 +61,6 @@ std::shared_ptr<Entity> CfgHistGl::get_child_by_name(const std::string & child_y
 {
     if(child_yang_name == "record-type")
     {
-        for(auto const & c : record_type)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CfgHistGl::RecordType>();
         c->parent = this;
         record_type.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> CfgHistGl::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : record_type)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -190,14 +187,6 @@ std::shared_ptr<Entity> CfgHistGl::RecordType::get_child_by_name(const std::stri
 {
     if(child_yang_name == "record")
     {
-        for(auto const & c : record)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CfgHistGl::RecordType::Record>();
         c->parent = this;
         record.push_back(c);
@@ -210,9 +199,14 @@ std::shared_ptr<Entity> CfgHistGl::RecordType::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : record)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -313,6 +307,7 @@ std::shared_ptr<Entity> CfgHistGl::RecordType::Record::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(info != nullptr)
     {
         children["info"] = info;
@@ -510,6 +505,7 @@ std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(alarm_info != nullptr)
     {
         children["alarm-info"] = alarm_info;
@@ -635,6 +631,7 @@ std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::AlarmInfo::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::AlarmInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -725,6 +722,7 @@ std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::CfscheckInfo::get_c
 std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::CfscheckInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -831,6 +829,7 @@ std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::CommitInfo::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::CommitInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -965,6 +964,7 @@ std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::OirInfo::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::OirInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1061,6 +1061,7 @@ std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::ShutdownInfo::get_c
 std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::ShutdownInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1141,6 +1142,7 @@ std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::StartupInfo::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::StartupInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1227,6 +1229,7 @@ std::shared_ptr<Entity> CfgHistGl::RecordType::Record::Info::BackupInfo::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CfgHistGl::RecordType::Record::Info::BackupInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

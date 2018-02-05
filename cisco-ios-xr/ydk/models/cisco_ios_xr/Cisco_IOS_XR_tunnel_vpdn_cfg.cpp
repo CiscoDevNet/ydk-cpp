@@ -172,6 +172,7 @@ std::shared_ptr<Entity> Vpdn::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(history != nullptr)
     {
         children["history"] = history;
@@ -340,6 +341,7 @@ std::shared_ptr<Entity> Vpdn::History::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::History::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -437,6 +439,7 @@ std::shared_ptr<Entity> Vpdn::Redundancy::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::Redundancy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(process_failures != nullptr)
     {
         children["process-failures"] = process_failures;
@@ -525,6 +528,7 @@ std::shared_ptr<Entity> Vpdn::Redundancy::ProcessFailures::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::Redundancy::ProcessFailures::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -620,6 +624,7 @@ std::shared_ptr<Entity> Vpdn::Local::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::Local::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -735,15 +740,7 @@ std::shared_ptr<Entity> Vpdn::Templates::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "template")
     {
-        for(auto const & c : template_)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Vpdn::Templates::Template_>();
+        auto c = std::make_shared<Vpdn::Templates::Template>();
         c->parent = this;
         template_.push_back(c);
         return c;
@@ -755,9 +752,14 @@ std::shared_ptr<Entity> Vpdn::Templates::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : template_)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -778,7 +780,7 @@ bool Vpdn::Templates::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-Vpdn::Templates::Template_::Template_()
+Vpdn::Templates::Template::Template()
     :
     template_name{YType::str, "template-name"},
     cisco_avp100_format_e_enable{YType::empty, "cisco-avp100-format-e-enable"},
@@ -786,11 +788,11 @@ Vpdn::Templates::Template_::Template_()
     l2tp_class{YType::str, "l2tp-class"},
     dsl_line_forwarding{YType::empty, "dsl-line-forwarding"}
     	,
-    caller_id(std::make_shared<Vpdn::Templates::Template_::CallerId>())
-	,vpn(std::make_shared<Vpdn::Templates::Template_::Vpn>())
-	,tunnel(std::make_shared<Vpdn::Templates::Template_::Tunnel>())
-	,ip(std::make_shared<Vpdn::Templates::Template_::Ip>())
-	,ipv4(std::make_shared<Vpdn::Templates::Template_::Ipv4>())
+    caller_id(std::make_shared<Vpdn::Templates::Template::CallerId>())
+	,vpn(std::make_shared<Vpdn::Templates::Template::Vpn>())
+	,tunnel(std::make_shared<Vpdn::Templates::Template::Tunnel>())
+	,ip(std::make_shared<Vpdn::Templates::Template::Ip>())
+	,ipv4(std::make_shared<Vpdn::Templates::Template::Ipv4>())
 {
     caller_id->parent = this;
     vpn->parent = this;
@@ -801,11 +803,11 @@ Vpdn::Templates::Template_::Template_()
     yang_name = "template"; yang_parent_name = "templates"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Vpdn::Templates::Template_::~Template_()
+Vpdn::Templates::Template::~Template()
 {
 }
 
-bool Vpdn::Templates::Template_::has_data() const
+bool Vpdn::Templates::Template::has_data() const
 {
     return template_name.is_set
 	|| cisco_avp100_format_e_enable.is_set
@@ -819,7 +821,7 @@ bool Vpdn::Templates::Template_::has_data() const
 	|| (ipv4 !=  nullptr && ipv4->has_data());
 }
 
-bool Vpdn::Templates::Template_::has_operation() const
+bool Vpdn::Templates::Template::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(template_name.yfilter)
@@ -834,21 +836,21 @@ bool Vpdn::Templates::Template_::has_operation() const
 	|| (ipv4 !=  nullptr && ipv4->has_operation());
 }
 
-std::string Vpdn::Templates::Template_::get_absolute_path() const
+std::string Vpdn::Templates::Template::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-tunnel-vpdn-cfg:vpdn/templates/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Vpdn::Templates::Template_::get_segment_path() const
+std::string Vpdn::Templates::Template::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "template" <<"[template-name='" <<template_name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -862,13 +864,13 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template_::get_n
 
 }
 
-std::shared_ptr<Entity> Vpdn::Templates::Template_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Vpdn::Templates::Template::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "caller-id")
     {
         if(caller_id == nullptr)
         {
-            caller_id = std::make_shared<Vpdn::Templates::Template_::CallerId>();
+            caller_id = std::make_shared<Vpdn::Templates::Template::CallerId>();
         }
         return caller_id;
     }
@@ -877,7 +879,7 @@ std::shared_ptr<Entity> Vpdn::Templates::Template_::get_child_by_name(const std:
     {
         if(vpn == nullptr)
         {
-            vpn = std::make_shared<Vpdn::Templates::Template_::Vpn>();
+            vpn = std::make_shared<Vpdn::Templates::Template::Vpn>();
         }
         return vpn;
     }
@@ -886,7 +888,7 @@ std::shared_ptr<Entity> Vpdn::Templates::Template_::get_child_by_name(const std:
     {
         if(tunnel == nullptr)
         {
-            tunnel = std::make_shared<Vpdn::Templates::Template_::Tunnel>();
+            tunnel = std::make_shared<Vpdn::Templates::Template::Tunnel>();
         }
         return tunnel;
     }
@@ -895,7 +897,7 @@ std::shared_ptr<Entity> Vpdn::Templates::Template_::get_child_by_name(const std:
     {
         if(ip == nullptr)
         {
-            ip = std::make_shared<Vpdn::Templates::Template_::Ip>();
+            ip = std::make_shared<Vpdn::Templates::Template::Ip>();
         }
         return ip;
     }
@@ -904,7 +906,7 @@ std::shared_ptr<Entity> Vpdn::Templates::Template_::get_child_by_name(const std:
     {
         if(ipv4 == nullptr)
         {
-            ipv4 = std::make_shared<Vpdn::Templates::Template_::Ipv4>();
+            ipv4 = std::make_shared<Vpdn::Templates::Template::Ipv4>();
         }
         return ipv4;
     }
@@ -912,9 +914,10 @@ std::shared_ptr<Entity> Vpdn::Templates::Template_::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::Template_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::Template::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(caller_id != nullptr)
     {
         children["caller-id"] = caller_id;
@@ -943,7 +946,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::Template_::get_c
     return children;
 }
 
-void Vpdn::Templates::Template_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Vpdn::Templates::Template::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
@@ -977,7 +980,7 @@ void Vpdn::Templates::Template_::set_value(const std::string & value_path, const
     }
 }
 
-void Vpdn::Templates::Template_::set_filter(const std::string & value_path, YFilter yfilter)
+void Vpdn::Templates::Template::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "template-name")
     {
@@ -1001,14 +1004,14 @@ void Vpdn::Templates::Template_::set_filter(const std::string & value_path, YFil
     }
 }
 
-bool Vpdn::Templates::Template_::has_leaf_or_child_of_name(const std::string & name) const
+bool Vpdn::Templates::Template::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "caller-id" || name == "vpn" || name == "tunnel" || name == "ip" || name == "ipv4" || name == "template-name" || name == "cisco-avp100-format-e-enable" || name == "description" || name == "l2tp-class" || name == "dsl-line-forwarding")
         return true;
     return false;
 }
 
-Vpdn::Templates::Template_::CallerId::CallerId()
+Vpdn::Templates::Template::CallerId::CallerId()
     :
     mask{YType::str, "mask"}
 {
@@ -1016,29 +1019,29 @@ Vpdn::Templates::Template_::CallerId::CallerId()
     yang_name = "caller-id"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Vpdn::Templates::Template_::CallerId::~CallerId()
+Vpdn::Templates::Template::CallerId::~CallerId()
 {
 }
 
-bool Vpdn::Templates::Template_::CallerId::has_data() const
+bool Vpdn::Templates::Template::CallerId::has_data() const
 {
     return mask.is_set;
 }
 
-bool Vpdn::Templates::Template_::CallerId::has_operation() const
+bool Vpdn::Templates::Template::CallerId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mask.yfilter);
 }
 
-std::string Vpdn::Templates::Template_::CallerId::get_segment_path() const
+std::string Vpdn::Templates::Template::CallerId::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "caller-id";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template_::CallerId::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template::CallerId::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1048,18 +1051,19 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template_::Calle
 
 }
 
-std::shared_ptr<Entity> Vpdn::Templates::Template_::CallerId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Vpdn::Templates::Template::CallerId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::Template_::CallerId::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::Template::CallerId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Vpdn::Templates::Template_::CallerId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Vpdn::Templates::Template::CallerId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mask")
     {
@@ -1069,7 +1073,7 @@ void Vpdn::Templates::Template_::CallerId::set_value(const std::string & value_p
     }
 }
 
-void Vpdn::Templates::Template_::CallerId::set_filter(const std::string & value_path, YFilter yfilter)
+void Vpdn::Templates::Template::CallerId::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mask")
     {
@@ -1077,49 +1081,49 @@ void Vpdn::Templates::Template_::CallerId::set_filter(const std::string & value_
     }
 }
 
-bool Vpdn::Templates::Template_::CallerId::has_leaf_or_child_of_name(const std::string & name) const
+bool Vpdn::Templates::Template::CallerId::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mask")
         return true;
     return false;
 }
 
-Vpdn::Templates::Template_::Vpn::Vpn()
+Vpdn::Templates::Template::Vpn::Vpn()
     :
     vrf{YType::str, "vrf"}
     	,
-    id(std::make_shared<Vpdn::Templates::Template_::Vpn::Id>())
+    id(std::make_shared<Vpdn::Templates::Template::Vpn::Id>())
 {
     id->parent = this;
 
     yang_name = "vpn"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Vpdn::Templates::Template_::Vpn::~Vpn()
+Vpdn::Templates::Template::Vpn::~Vpn()
 {
 }
 
-bool Vpdn::Templates::Template_::Vpn::has_data() const
+bool Vpdn::Templates::Template::Vpn::has_data() const
 {
     return vrf.is_set
 	|| (id !=  nullptr && id->has_data());
 }
 
-bool Vpdn::Templates::Template_::Vpn::has_operation() const
+bool Vpdn::Templates::Template::Vpn::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vrf.yfilter)
 	|| (id !=  nullptr && id->has_operation());
 }
 
-std::string Vpdn::Templates::Template_::Vpn::get_segment_path() const
+std::string Vpdn::Templates::Template::Vpn::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vpn";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template_::Vpn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template::Vpn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1129,13 +1133,13 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template_::Vpn::
 
 }
 
-std::shared_ptr<Entity> Vpdn::Templates::Template_::Vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Vpdn::Templates::Template::Vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "id")
     {
         if(id == nullptr)
         {
-            id = std::make_shared<Vpdn::Templates::Template_::Vpn::Id>();
+            id = std::make_shared<Vpdn::Templates::Template::Vpn::Id>();
         }
         return id;
     }
@@ -1143,9 +1147,10 @@ std::shared_ptr<Entity> Vpdn::Templates::Template_::Vpn::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::Template_::Vpn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::Template::Vpn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(id != nullptr)
     {
         children["id"] = id;
@@ -1154,7 +1159,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::Template_::Vpn::
     return children;
 }
 
-void Vpdn::Templates::Template_::Vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Vpdn::Templates::Template::Vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf")
     {
@@ -1164,7 +1169,7 @@ void Vpdn::Templates::Template_::Vpn::set_value(const std::string & value_path, 
     }
 }
 
-void Vpdn::Templates::Template_::Vpn::set_filter(const std::string & value_path, YFilter yfilter)
+void Vpdn::Templates::Template::Vpn::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vrf")
     {
@@ -1172,14 +1177,14 @@ void Vpdn::Templates::Template_::Vpn::set_filter(const std::string & value_path,
     }
 }
 
-bool Vpdn::Templates::Template_::Vpn::has_leaf_or_child_of_name(const std::string & name) const
+bool Vpdn::Templates::Template::Vpn::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "id" || name == "vrf")
         return true;
     return false;
 }
 
-Vpdn::Templates::Template_::Vpn::Id::Id()
+Vpdn::Templates::Template::Vpn::Id::Id()
     :
     oui{YType::str, "oui"},
     index_{YType::str, "index"}
@@ -1188,31 +1193,31 @@ Vpdn::Templates::Template_::Vpn::Id::Id()
     yang_name = "id"; yang_parent_name = "vpn"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Vpdn::Templates::Template_::Vpn::Id::~Id()
+Vpdn::Templates::Template::Vpn::Id::~Id()
 {
 }
 
-bool Vpdn::Templates::Template_::Vpn::Id::has_data() const
+bool Vpdn::Templates::Template::Vpn::Id::has_data() const
 {
     return oui.is_set
 	|| index_.is_set;
 }
 
-bool Vpdn::Templates::Template_::Vpn::Id::has_operation() const
+bool Vpdn::Templates::Template::Vpn::Id::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(oui.yfilter)
 	|| ydk::is_set(index_.yfilter);
 }
 
-std::string Vpdn::Templates::Template_::Vpn::Id::get_segment_path() const
+std::string Vpdn::Templates::Template::Vpn::Id::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "id";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template_::Vpn::Id::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template::Vpn::Id::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1223,18 +1228,19 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template_::Vpn::
 
 }
 
-std::shared_ptr<Entity> Vpdn::Templates::Template_::Vpn::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Vpdn::Templates::Template::Vpn::Id::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::Template_::Vpn::Id::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::Template::Vpn::Id::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Vpdn::Templates::Template_::Vpn::Id::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Vpdn::Templates::Template::Vpn::Id::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "oui")
     {
@@ -1250,7 +1256,7 @@ void Vpdn::Templates::Template_::Vpn::Id::set_value(const std::string & value_pa
     }
 }
 
-void Vpdn::Templates::Template_::Vpn::Id::set_filter(const std::string & value_path, YFilter yfilter)
+void Vpdn::Templates::Template::Vpn::Id::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "oui")
     {
@@ -1262,14 +1268,14 @@ void Vpdn::Templates::Template_::Vpn::Id::set_filter(const std::string & value_p
     }
 }
 
-bool Vpdn::Templates::Template_::Vpn::Id::has_leaf_or_child_of_name(const std::string & name) const
+bool Vpdn::Templates::Template::Vpn::Id::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "oui" || name == "index")
         return true;
     return false;
 }
 
-Vpdn::Templates::Template_::Tunnel::Tunnel()
+Vpdn::Templates::Template::Tunnel::Tunnel()
     :
     busy_timeout{YType::uint32, "busy-timeout"}
 {
@@ -1277,29 +1283,29 @@ Vpdn::Templates::Template_::Tunnel::Tunnel()
     yang_name = "tunnel"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Vpdn::Templates::Template_::Tunnel::~Tunnel()
+Vpdn::Templates::Template::Tunnel::~Tunnel()
 {
 }
 
-bool Vpdn::Templates::Template_::Tunnel::has_data() const
+bool Vpdn::Templates::Template::Tunnel::has_data() const
 {
     return busy_timeout.is_set;
 }
 
-bool Vpdn::Templates::Template_::Tunnel::has_operation() const
+bool Vpdn::Templates::Template::Tunnel::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(busy_timeout.yfilter);
 }
 
-std::string Vpdn::Templates::Template_::Tunnel::get_segment_path() const
+std::string Vpdn::Templates::Template::Tunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template_::Tunnel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template::Tunnel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1309,18 +1315,19 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template_::Tunne
 
 }
 
-std::shared_ptr<Entity> Vpdn::Templates::Template_::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Vpdn::Templates::Template::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::Template_::Tunnel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::Template::Tunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Vpdn::Templates::Template_::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Vpdn::Templates::Template::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "busy-timeout")
     {
@@ -1330,7 +1337,7 @@ void Vpdn::Templates::Template_::Tunnel::set_value(const std::string & value_pat
     }
 }
 
-void Vpdn::Templates::Template_::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
+void Vpdn::Templates::Template::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "busy-timeout")
     {
@@ -1338,14 +1345,14 @@ void Vpdn::Templates::Template_::Tunnel::set_filter(const std::string & value_pa
     }
 }
 
-bool Vpdn::Templates::Template_::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
+bool Vpdn::Templates::Template::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "busy-timeout")
         return true;
     return false;
 }
 
-Vpdn::Templates::Template_::Ip::Ip()
+Vpdn::Templates::Template::Ip::Ip()
     :
     tos{YType::int32, "tos"}
 {
@@ -1353,29 +1360,29 @@ Vpdn::Templates::Template_::Ip::Ip()
     yang_name = "ip"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Vpdn::Templates::Template_::Ip::~Ip()
+Vpdn::Templates::Template::Ip::~Ip()
 {
 }
 
-bool Vpdn::Templates::Template_::Ip::has_data() const
+bool Vpdn::Templates::Template::Ip::has_data() const
 {
     return tos.is_set;
 }
 
-bool Vpdn::Templates::Template_::Ip::has_operation() const
+bool Vpdn::Templates::Template::Ip::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tos.yfilter);
 }
 
-std::string Vpdn::Templates::Template_::Ip::get_segment_path() const
+std::string Vpdn::Templates::Template::Ip::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ip";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template_::Ip::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template::Ip::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1385,18 +1392,19 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template_::Ip::g
 
 }
 
-std::shared_ptr<Entity> Vpdn::Templates::Template_::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Vpdn::Templates::Template::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::Template_::Ip::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::Template::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Vpdn::Templates::Template_::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Vpdn::Templates::Template::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tos")
     {
@@ -1406,7 +1414,7 @@ void Vpdn::Templates::Template_::Ip::set_value(const std::string & value_path, c
     }
 }
 
-void Vpdn::Templates::Template_::Ip::set_filter(const std::string & value_path, YFilter yfilter)
+void Vpdn::Templates::Template::Ip::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tos")
     {
@@ -1414,14 +1422,14 @@ void Vpdn::Templates::Template_::Ip::set_filter(const std::string & value_path, 
     }
 }
 
-bool Vpdn::Templates::Template_::Ip::has_leaf_or_child_of_name(const std::string & name) const
+bool Vpdn::Templates::Template::Ip::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tos")
         return true;
     return false;
 }
 
-Vpdn::Templates::Template_::Ipv4::Ipv4()
+Vpdn::Templates::Template::Ipv4::Ipv4()
     :
     df_bit{YType::enumeration, "df-bit"},
     source{YType::str, "source"}
@@ -1430,31 +1438,31 @@ Vpdn::Templates::Template_::Ipv4::Ipv4()
     yang_name = "ipv4"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Vpdn::Templates::Template_::Ipv4::~Ipv4()
+Vpdn::Templates::Template::Ipv4::~Ipv4()
 {
 }
 
-bool Vpdn::Templates::Template_::Ipv4::has_data() const
+bool Vpdn::Templates::Template::Ipv4::has_data() const
 {
     return df_bit.is_set
 	|| source.is_set;
 }
 
-bool Vpdn::Templates::Template_::Ipv4::has_operation() const
+bool Vpdn::Templates::Template::Ipv4::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(df_bit.yfilter)
 	|| ydk::is_set(source.yfilter);
 }
 
-std::string Vpdn::Templates::Template_::Ipv4::get_segment_path() const
+std::string Vpdn::Templates::Template::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template_::Ipv4::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template::Ipv4::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1465,18 +1473,19 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::Templates::Template_::Ipv4:
 
 }
 
-std::shared_ptr<Entity> Vpdn::Templates::Template_::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Vpdn::Templates::Template::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::Template_::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::Templates::Template::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Vpdn::Templates::Template_::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Vpdn::Templates::Template::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "df-bit")
     {
@@ -1492,7 +1501,7 @@ void Vpdn::Templates::Template_::Ipv4::set_value(const std::string & value_path,
     }
 }
 
-void Vpdn::Templates::Template_::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+void Vpdn::Templates::Template::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "df-bit")
     {
@@ -1504,7 +1513,7 @@ void Vpdn::Templates::Template_::Ipv4::set_filter(const std::string & value_path
     }
 }
 
-bool Vpdn::Templates::Template_::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+bool Vpdn::Templates::Template::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "df-bit" || name == "source")
         return true;
@@ -1566,6 +1575,7 @@ std::shared_ptr<Entity> Vpdn::CallerId::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::CallerId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1651,14 +1661,6 @@ std::shared_ptr<Entity> Vpdn::VpdNgroups::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "vpd-ngroup")
     {
-        for(auto const & c : vpd_ngroup)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vpdn::VpdNgroups::VpdNgroup>();
         c->parent = this;
         vpd_ngroup.push_back(c);
@@ -1671,9 +1673,14 @@ std::shared_ptr<Entity> Vpdn::VpdNgroups::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdNgroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vpd_ngroup)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1808,6 +1815,7 @@ std::shared_ptr<Entity> Vpdn::VpdNgroups::VpdNgroup::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdNgroups::VpdNgroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vpn_id != nullptr)
     {
         children["vpn-id"] = vpn_id;
@@ -1978,6 +1986,7 @@ std::shared_ptr<Entity> Vpdn::VpdNgroups::VpdNgroup::VpnId::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdNgroups::VpdNgroup::VpnId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2064,6 +2073,7 @@ std::shared_ptr<Entity> Vpdn::VpdNgroups::VpdNgroup::Ip::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::VpdNgroups::VpdNgroup::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2149,14 +2159,6 @@ std::shared_ptr<Entity> Vpdn::Loggings::get_child_by_name(const std::string & ch
 {
     if(child_yang_name == "logging")
     {
-        for(auto const & c : logging)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vpdn::Loggings::Logging>();
         c->parent = this;
         logging.push_back(c);
@@ -2169,9 +2171,14 @@ std::shared_ptr<Entity> Vpdn::Loggings::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::Loggings::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : logging)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2247,6 +2254,7 @@ std::shared_ptr<Entity> Vpdn::Loggings::Logging::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::Loggings::Logging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2348,6 +2356,7 @@ std::shared_ptr<Entity> Vpdn::L2Tp::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::L2Tp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(session_id != nullptr)
     {
         children["session-id"] = session_id;
@@ -2455,6 +2464,7 @@ std::shared_ptr<Entity> Vpdn::L2Tp::SessionId::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::L2Tp::SessionId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(space != nullptr)
     {
         children["space"] = space;
@@ -2533,6 +2543,7 @@ std::shared_ptr<Entity> Vpdn::L2Tp::SessionId::Space::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Vpdn::L2Tp::SessionId::Space::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

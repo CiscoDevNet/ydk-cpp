@@ -90,6 +90,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ip
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ipv4_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(multicast != nullptr)
     {
         children["multicast"] = multicast;
@@ -200,6 +201,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ip
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ipv4_::Multicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(priority != nullptr)
     {
         children["priority"] = priority;
@@ -283,14 +285,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ip
 {
     if(child_yang_name == "prior")
     {
-        for(auto const & c : prior)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ipv4_::Multicast::Priority::Prior>();
         c->parent = this;
         prior.push_back(c);
@@ -303,9 +297,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ip
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ipv4_::Multicast::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : prior)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -378,6 +377,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ip
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ipv4_::Multicast::Priority::Prior::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -466,14 +466,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ip
 {
     if(child_yang_name == "pri")
     {
-        for(auto const & c : pri)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ipv4_::Priority::Pri>();
         c->parent = this;
         pri.push_back(c);
@@ -486,9 +478,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ip
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ipv4_::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : pri)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -561,6 +558,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ip
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ipv4_::Priority::Pri::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -677,6 +675,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Nh
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::NhsFqdn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(multicast != nullptr)
     {
         children["multicast"] = multicast;
@@ -787,6 +786,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Nh
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::NhsFqdn::Multicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(priority != nullptr)
     {
         children["priority"] = priority;
@@ -870,14 +870,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Nh
 {
     if(child_yang_name == "mc-pri")
     {
-        for(auto const & c : mc_pri)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::NhsFqdn::Multicast::Priority::McPri>();
         c->parent = this;
         mc_pri.push_back(c);
@@ -890,9 +882,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Nh
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::NhsFqdn::Multicast::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mc_pri)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -965,6 +962,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Nh
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::NhsFqdn::Multicast::Priority::McPri::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1053,14 +1051,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Nh
 {
     if(child_yang_name == "nhs-pri")
     {
-        for(auto const & c : nhs_pri)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::NhsFqdn::Priority::NhsPri>();
         c->parent = this;
         nhs_pri.push_back(c);
@@ -1073,9 +1063,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Nh
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::NhsFqdn::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nhs_pri)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1148,6 +1143,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Nh
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::NhsFqdn::Priority::NhsPri::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1264,6 +1260,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ip
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(multicast != nullptr)
     {
         children["multicast"] = multicast;
@@ -1374,6 +1371,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ip
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ipv6::Multicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(priority != nullptr)
     {
         children["priority"] = priority;
@@ -1457,14 +1455,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ip
 {
     if(child_yang_name == "mc-pri")
     {
-        for(auto const & c : mc_pri)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ipv6::Multicast::Priority::McPri>();
         c->parent = this;
         mc_pri.push_back(c);
@@ -1477,9 +1467,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ip
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ipv6::Multicast::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mc_pri)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1552,6 +1547,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ip
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ipv6::Multicast::Priority::McPri::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1640,14 +1636,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ip
 {
     if(child_yang_name == "mc-prior")
     {
-        for(auto const & c : mc_prior)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ipv6::Priority::McPrior>();
         c->parent = this;
         mc_prior.push_back(c);
@@ -1660,9 +1648,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ip
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ipv6::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mc_prior)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1735,6 +1728,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ip
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Nbma::Ipv6::Priority::McPrior::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1823,14 +1817,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Priority
 {
     if(child_yang_name == "pri-range")
     {
-        for(auto const & c : pri_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Priority::PriRange>();
         c->parent = this;
         pri_range.push_back(c);
@@ -1843,9 +1829,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Priority
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : pri_range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1918,6 +1909,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Priority
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Ipv4::Priority::PriRange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2006,14 +1998,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Cluster::get_c
 {
     if(child_yang_name == "clus-num")
     {
-        for(auto const & c : clus_num)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ip::Nhrp::Nhs::Cluster::ClusNum>();
         c->parent = this;
         clus_num.push_back(c);
@@ -2026,9 +2010,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Cluster::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Cluster::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : clus_num)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2101,6 +2090,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Cluster::ClusN
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Cluster::ClusNum::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2196,6 +2186,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nbma != nullptr)
     {
         children["nbma"] = nbma;
@@ -2289,14 +2280,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 {
     if(child_yang_name == "ipv4")
     {
-        for(auto const & c : ipv4)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::Ipv4>();
         c->parent = this;
         ipv4.push_back(c);
@@ -2305,14 +2288,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 
     if(child_yang_name == "dyn-fqdn")
     {
-        for(auto const & c : dyn_fqdn)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::DynFqdn>();
         c->parent = this;
         dyn_fqdn.push_back(c);
@@ -2321,14 +2296,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 
     if(child_yang_name == "ipv6")
     {
-        for(auto const & c : ipv6)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::Ipv6>();
         c->parent = this;
         ipv6.push_back(c);
@@ -2341,19 +2308,32 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv4)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : dyn_fqdn)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ipv6)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2452,6 +2432,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(multicast != nullptr)
     {
         children["multicast"] = multicast;
@@ -2562,6 +2543,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::Ipv4::Multicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(priority != nullptr)
     {
         children["priority"] = priority;
@@ -2645,14 +2627,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 {
     if(child_yang_name == "dyn-pri")
     {
-        for(auto const & c : dyn_pri)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::Ipv4::Multicast::Priority::DynPri>();
         c->parent = this;
         dyn_pri.push_back(c);
@@ -2665,9 +2639,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::Ipv4::Multicast::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dyn_pri)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2740,6 +2719,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::Ipv4::Multicast::Priority::DynPri::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2828,14 +2808,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 {
     if(child_yang_name == "n-prior")
     {
-        for(auto const & c : n_prior)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::Ipv4::Priority::NPrior>();
         c->parent = this;
         n_prior.push_back(c);
@@ -2848,9 +2820,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::Ipv4::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : n_prior)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2923,6 +2900,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::Ipv4::Priority::NPrior::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3039,6 +3017,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::DynFqdn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(multicast != nullptr)
     {
         children["multicast"] = multicast;
@@ -3149,6 +3128,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::DynFqdn::Multicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(priority != nullptr)
     {
         children["priority"] = priority;
@@ -3232,14 +3212,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 {
     if(child_yang_name == "dyn-mc-pri")
     {
-        for(auto const & c : dyn_mc_pri)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::DynFqdn::Multicast::Priority::DynMcPri>();
         c->parent = this;
         dyn_mc_pri.push_back(c);
@@ -3252,9 +3224,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::DynFqdn::Multicast::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dyn_mc_pri)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3327,6 +3304,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::DynFqdn::Multicast::Priority::DynMcPri::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3415,14 +3393,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 {
     if(child_yang_name == "dp")
     {
-        for(auto const & c : dp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::DynFqdn::Priority::Dp>();
         c->parent = this;
         dp.push_back(c);
@@ -3435,9 +3405,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::DynFqdn::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3510,6 +3485,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::DynFqdn::Priority::Dp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3626,6 +3602,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(multicast != nullptr)
     {
         children["multicast"] = multicast;
@@ -3736,6 +3713,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::Ipv6::Multicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(priority != nullptr)
     {
         children["priority"] = priority;
@@ -3819,14 +3797,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 {
     if(child_yang_name == "v6-pri")
     {
-        for(auto const & c : v6_pri)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::Ipv6::Multicast::Priority::V6Pri>();
         c->parent = this;
         v6_pri.push_back(c);
@@ -3839,9 +3809,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::Ipv6::Multicast::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : v6_pri)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3914,6 +3889,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::Ipv6::Multicast::Priority::V6Pri::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4002,14 +3978,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 {
     if(child_yang_name == "v6-pri2")
     {
-        for(auto const & c : v6_pri2)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::Ipv6::Priority::V6Pri2>();
         c->parent = this;
         v6_pri2.push_back(c);
@@ -4022,9 +3990,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::Ipv6::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : v6_pri2)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4097,6 +4070,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Nhs::Dynamic::Nbma::Ipv6::Priority::V6Pri2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4183,6 +4157,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Redirect::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4263,6 +4238,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Registration::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Registration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4351,14 +4327,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Reject::get_child_b
 {
     if(child_yang_name == "reqid")
     {
-        for(auto const & c : reqid)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ip::Nhrp::Reject::Reqid>();
         c->parent = this;
         reqid.push_back(c);
@@ -4371,9 +4339,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Reject::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Reject::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : reqid)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4446,6 +4419,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Reject::Reqid::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Reject::Reqid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4592,6 +4566,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Responder::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Responder::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4818,6 +4793,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::ServerOnly::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::ServerOnly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4894,6 +4870,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::Shortcut::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::Shortcut::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4972,14 +4949,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::TriggerSvc::get_chi
 {
     if(child_yang_name == "kbps")
     {
-        for(auto const & c : kbps)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ip::Nhrp::TriggerSvc::Kbps>();
         c->parent = this;
         kbps.push_back(c);
@@ -4992,9 +4961,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::TriggerSvc::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::TriggerSvc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : kbps)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5067,6 +5041,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Nhrp::TriggerSvc::Kbps::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Nhrp::TriggerSvc::Kbps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5244,14 +5219,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Ospf::get_child_by_name(c
 {
     if(child_yang_name == "process-id")
     {
-        for(auto const & c : process_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ip::Ospf::ProcessId>();
         c->parent = this;
         process_id.push_back(c);
@@ -5332,14 +5299,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Ospf::get_child_by_name(c
 
     if(child_yang_name == "message-digest-key")
     {
-        for(auto const & c : message_digest_key)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ip::Ospf::MessageDigestKey>();
         c->parent = this;
         message_digest_key.push_back(c);
@@ -5379,9 +5338,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Ospf::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : process_id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(authentication != nullptr)
@@ -5424,9 +5388,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Os
         children["lls"] = lls;
     }
 
+    count = 0;
     for (auto const & c : message_digest_key)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(multi_area != nullptr)
@@ -5622,6 +5590,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Ospf::ProcessId::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Ospf::ProcessId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5746,6 +5715,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Ospf::Authentication::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Ospf::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_chain != nullptr)
     {
         children["key-chain"] = key_chain;
@@ -5837,6 +5807,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Ospf::Authentication::Key
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Ospf::Authentication::KeyChain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5917,6 +5888,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Ospf::AuthenticationKey::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Ospf::AuthenticationKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6003,6 +5975,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Ospf::Bfd::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Ospf::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6083,6 +6056,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Ospf::DatabaseFilter::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Ospf::DatabaseFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6183,6 +6157,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Ospf::DeadInterval::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Ospf::DeadInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(minimal != nullptr)
     {
         children["minimal"] = minimal;
@@ -6264,6 +6239,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Ospf::DeadInterval::Minim
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Ospf::DeadInterval::Minimal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6340,6 +6316,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Ospf::DemandCircuit::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Ospf::DemandCircuit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6425,6 +6402,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Ospf::FastReroute::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Ospf::FastReroute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(per_prefix != nullptr)
     {
         children["per-prefix"] = per_prefix;
@@ -6516,6 +6494,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Ospf::FastReroute::PerPre
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Ospf::FastReroute::PerPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(candidate != nullptr)
     {
         children["candidate"] = candidate;
@@ -6592,6 +6571,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Ospf::FastReroute::PerPre
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Ospf::FastReroute::PerPrefix::Candidate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6668,6 +6648,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Ospf::FastReroute::PerPre
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Ospf::FastReroute::PerPrefix::Protection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6744,6 +6725,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Ospf::Lls::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Ospf::Lls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6834,6 +6816,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Ospf::MessageDigestKey::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Ospf::MessageDigestKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(md5 != nullptr)
     {
         children["md5"] = md5;
@@ -6919,6 +6902,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Ospf::MessageDigestKey::M
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Ospf::MessageDigestKey::Md5::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7009,6 +6993,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Ospf::MultiArea::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Ospf::MultiArea::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7095,6 +7080,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Ospf::PrefixSuppression::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Ospf::PrefixSuppression::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7175,6 +7161,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Ospf::TtlSecurity::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Ospf::TtlSecurity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7332,6 +7319,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Rsvp::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Rsvp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authentication != nullptr)
     {
         children["authentication"] = authentication;
@@ -7458,6 +7446,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Rsvp::Authentication::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Rsvp::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lifetime != nullptr)
     {
         children["lifetime"] = lifetime;
@@ -7579,6 +7568,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Rsvp::Authentication::Lif
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Rsvp::Authentication::Lifetime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7611,7 +7601,7 @@ Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Bandwidth()
     :
     percent{YType::uint16, "percent"}
     	,
-    value_(std::make_shared<Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value_>())
+    value_(std::make_shared<Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value>())
 	,mam(std::make_shared<Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Mam>())
 {
     value_->parent = this;
@@ -7662,7 +7652,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::get_chil
     {
         if(value_ == nullptr)
         {
-            value_ = std::make_shared<Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value_>();
+            value_ = std::make_shared<Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value>();
         }
         return value_;
     }
@@ -7682,6 +7672,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(value_ != nullptr)
     {
         children["value"] = value_;
@@ -7720,7 +7711,7 @@ bool Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::has_leaf_or_child_of_name(c
     return false;
 }
 
-Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value_::Value_()
+Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value::Value()
     :
     value_{YType::uint32, "value"},
     sub_pool{YType::uint32, "sub-pool"}
@@ -7729,31 +7720,31 @@ Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value_::Value_()
     yang_name = "value"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value_::~Value_()
+Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value::~Value()
 {
 }
 
-bool Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value_::has_data() const
+bool Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value::has_data() const
 {
     return value_.is_set
 	|| sub_pool.is_set;
 }
 
-bool Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value_::has_operation() const
+bool Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter)
 	|| ydk::is_set(sub_pool.yfilter);
 }
 
-std::string Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value_::get_segment_path() const
+std::string Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7764,18 +7755,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Tunnel::Ip::Rs
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -7791,7 +7783,7 @@ void Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value_::set_value(const std
     }
 }
 
-void Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -7803,7 +7795,7 @@ void Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value_::set_filter(const st
     }
 }
 
-bool Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Value::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value" || name == "sub-pool")
         return true;
@@ -7866,6 +7858,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Mam::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Mam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(max_reservable_bw != nullptr)
     {
         children["max-reservable-bw"] = max_reservable_bw;
@@ -7945,6 +7938,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Mam::Max
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Rsvp::Bandwidth::Mam::MaxReservableBw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8041,6 +8035,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Rsvp::Neighbor::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Rsvp::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8121,6 +8116,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Rsvp::Precedence::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Rsvp::Precedence::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8233,6 +8229,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Rsvp::Signalling::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Rsvp::Signalling::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fast_local_repair != nullptr)
     {
         children["fast-local-repair"] = fast_local_repair;
@@ -8319,6 +8316,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Rsvp::Signalling::FastLoc
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Rsvp::Signalling::FastLocalRepair::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8430,6 +8428,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Rsvp::Signalling::Hello::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Rsvp::Signalling::Hello::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(refresh != nullptr)
     {
         children["refresh"] = refresh;
@@ -8540,6 +8539,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Rsvp::Signalling::Hello::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Rsvp::Signalling::Hello::Refresh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8640,6 +8640,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Rsvp::Signalling::Hello::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Rsvp::Signalling::Hello::Reroute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(refresh != nullptr)
     {
         children["refresh"] = refresh;
@@ -8725,6 +8726,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Rsvp::Signalling::Hello::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Rsvp::Signalling::Hello::Reroute::Refresh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8815,6 +8817,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Rsvp::Tos::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Rsvp::Tos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8921,14 +8924,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Wccp::get_child_by_name(c
 {
     if(child_yang_name == "wccp-list")
     {
-        for(auto const & c : wccp_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ip::Wccp::WccpList>();
         c->parent = this;
         wccp_list.push_back(c);
@@ -8955,14 +8950,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Wccp::get_child_by_name(c
 
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ip::Wccp::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -8975,9 +8962,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Wccp::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Wccp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : wccp_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(web_cache != nullptr)
@@ -8990,9 +8982,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Wc
         children["redirect"] = redirect;
     }
 
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9079,6 +9075,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Wccp::WccpList::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Wccp::WccpList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redirect != nullptr)
     {
         children["redirect"] = redirect;
@@ -9174,6 +9171,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Wccp::WccpList::Redirect:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Wccp::WccpList::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9274,6 +9272,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Wccp::WebCache::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Wccp::WebCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redirect != nullptr)
     {
         children["redirect"] = redirect;
@@ -9359,6 +9358,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Wccp::WebCache::Redirect:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Wccp::WebCache::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9454,6 +9454,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Wccp::Redirect::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Wccp::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(exclude != nullptr)
     {
         children["exclude"] = exclude;
@@ -9525,6 +9526,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Wccp::Redirect::Exclude::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Wccp::Redirect::Exclude::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9612,14 +9614,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Wccp::Vrf::get_child_by_n
 {
     if(child_yang_name == "wccp-list")
     {
-        for(auto const & c : wccp_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ip::Wccp::Vrf::WccpList>();
         c->parent = this;
         wccp_list.push_back(c);
@@ -9641,9 +9635,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Wccp::Vrf::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Wccp::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : wccp_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(web_cache != nullptr)
@@ -9745,6 +9744,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Wccp::Vrf::WccpList::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Wccp::Vrf::WccpList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redirect != nullptr)
     {
         children["redirect"] = redirect;
@@ -9840,6 +9840,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Wccp::Vrf::WccpList::Redi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Wccp::Vrf::WccpList::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9940,6 +9941,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Wccp::Vrf::WebCache::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Wccp::Vrf::WebCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redirect != nullptr)
     {
         children["redirect"] = redirect;
@@ -10025,6 +10027,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ip::Wccp::Vrf::WebCache::Redi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ip::Wccp::Vrf::WebCache::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10240,14 +10243,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::get_child_by_name(const
 
     if(child_yang_name == "traffic-filter")
     {
-        for(auto const & c : traffic_filter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ipv6::TrafficFilter>();
         c->parent = this;
         traffic_filter.push_back(c);
@@ -10301,14 +10296,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::get_child_by_name(const
 
     if(child_yang_name == "Cisco-IOS-XE-rip:rip")
     {
-        for(auto const & c : rip)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ipv6::Rip>();
         c->parent = this;
         rip.push_back(c);
@@ -10321,6 +10308,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination_guard != nullptr)
     {
         children["destination-guard"] = destination_guard;
@@ -10351,9 +10339,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::
         children["tcp"] = tcp;
     }
 
+    count = 0;
     for (auto const & c : traffic_filter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(crypto != nullptr)
@@ -10381,9 +10373,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::
         children["Cisco-IOS-XE-ospf:ospf"] = ospf;
     }
 
+    count = 0;
     for (auto const & c : rip)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10502,6 +10498,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::DestinationGuard::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::DestinationGuard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10578,6 +10575,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::SourceGuard::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::SourceGuard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10672,14 +10670,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Dhcp::get_child_by_name
 
     if(child_yang_name == "Cisco-IOS-XE-dhcp:server")
     {
-        for(auto const & c : server)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ipv6::Dhcp::Server>();
         c->parent = this;
         server.push_back(c);
@@ -10701,14 +10691,19 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Dhcp::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(client != nullptr)
     {
         children["Cisco-IOS-XE-dhcp:client"] = client;
     }
 
+    count = 0;
     for (auto const & c : server)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(guard != nullptr)
@@ -10791,6 +10786,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Dhcp::Client::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Dhcp::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(request != nullptr)
     {
         children["request"] = request;
@@ -10862,6 +10858,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Dhcp::Client::Request::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Dhcp::Client::Request::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10942,6 +10939,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Dhcp::Server::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Dhcp::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11028,6 +11026,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Dhcp::Guard::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Dhcp::Guard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11140,14 +11139,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Address::get_child_by_n
 
     if(child_yang_name == "prefix-list")
     {
-        for(auto const & c : prefix_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ipv6::Address::PrefixList>();
         c->parent = this;
         prefix_list.push_back(c);
@@ -11156,14 +11147,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Address::get_child_by_n
 
     if(child_yang_name == "link-local-address")
     {
-        for(auto const & c : link_local_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ipv6::Address::LinkLocalAddress>();
         c->parent = this;
         link_local_address.push_back(c);
@@ -11176,6 +11159,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Address::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dhcp != nullptr)
     {
         children["dhcp"] = dhcp;
@@ -11186,14 +11170,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::
         children["autoconfig"] = autoconfig;
     }
 
+    count = 0;
     for (auto const & c : prefix_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : link_local_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11262,6 +11254,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Address::Dhcp::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Address::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11338,6 +11331,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Address::Autoconfig::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Address::Autoconfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11422,6 +11416,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Address::PrefixList::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Address::PrefixList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11522,6 +11517,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Address::LinkLocalAddre
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Address::LinkLocalAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11648,6 +11644,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Nd::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Nd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(raguard != nullptr)
     {
         children["Cisco-IOS-XE-nd:raguard"] = raguard;
@@ -11739,6 +11736,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Nd::Raguard::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Nd::Raguard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11819,6 +11817,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Nd::Autoconfig::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Nd::Autoconfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11913,6 +11912,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Nd::Ra::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Nd::Ra::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(suppress != nullptr)
     {
         children["suppress"] = suppress;
@@ -11984,6 +11984,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Nd::Ra::Suppress::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Nd::Ra::Suppress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12060,6 +12061,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Tcp::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Tcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12140,6 +12142,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::TrafficFilter::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::TrafficFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12226,6 +12229,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Crypto::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Crypto::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12312,14 +12316,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Flow::get_child_by_name
 {
     if(child_yang_name == "monitor")
     {
-        for(auto const & c : monitor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ipv6::Flow::Monitor>();
         c->parent = this;
         monitor.push_back(c);
@@ -12332,9 +12328,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Flow::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Flow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : monitor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12445,14 +12446,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Flow::Monitor::get_chil
 {
     if(child_yang_name == "sampler")
     {
-        for(auto const & c : sampler)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ipv6::Flow::Monitor::Sampler>();
         c->parent = this;
         sampler.push_back(c);
@@ -12465,9 +12458,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Flow::Monitor::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Flow::Monitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sampler)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12590,6 +12588,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Flow::Monitor::Sampler:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Flow::Monitor::Sampler::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12676,6 +12675,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::NoPim::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::NoPim::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12770,6 +12770,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Pim::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Pim::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bsr != nullptr)
     {
         children["bsr"] = bsr;
@@ -12861,6 +12862,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Pim::Bsr::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Pim::Bsr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13005,14 +13007,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::get_child_by_name
 {
     if(child_yang_name == "process")
     {
-        for(auto const & c : process)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ipv6::Ospf::Process>();
         c->parent = this;
         process.push_back(c);
@@ -13084,14 +13078,6 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::get_child_by_name
 
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Tunnel::Ipv6::Ospf::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -13122,9 +13108,14 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : process)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(authentication != nullptr)
@@ -13162,9 +13153,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::
         children["mtu-ignore"] = mtu_ignore;
     }
 
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(network != nullptr)
@@ -13311,6 +13306,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::Process::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Ospf::Process::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13421,6 +13417,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::Authentication::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Ospf::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipsec != nullptr)
     {
         children["ipsec"] = ipsec;
@@ -13529,6 +13526,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::Authentication::I
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Ospf::Authentication::Ipsec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(md5 != nullptr)
     {
         children["md5"] = md5;
@@ -13624,6 +13622,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::Authentication::I
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Ospf::Authentication::Ipsec::Md5::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_string != nullptr)
     {
         children["key-string"] = key_string;
@@ -13699,6 +13698,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::Authentication::I
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Ospf::Authentication::Ipsec::Md5::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13794,6 +13794,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::Authentication::I
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Ospf::Authentication::Ipsec::Sha1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_string != nullptr)
     {
         children["key-string"] = key_string;
@@ -13869,6 +13870,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::Authentication::I
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Ospf::Authentication::Ipsec::Sha1::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13955,6 +13957,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::Bfd::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Ospf::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14035,6 +14038,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::DatabaseFilter::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Ospf::DatabaseFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14125,6 +14129,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::DemandCircuit::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Ospf::DemandCircuit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14225,6 +14230,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::Encryption::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Ospf::Encryption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipsec != nullptr)
     {
         children["ipsec"] = ipsec;
@@ -14337,6 +14343,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::Encryption::Ipsec
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Ospf::Encryption::Ipsec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipsec_3des != nullptr)
     {
         children["ipsec_3des"] = ipsec_3des;
@@ -14442,6 +14449,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::Encryption::Ipsec
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Ospf::Encryption::Ipsec::Ipsec3Des::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_string != nullptr)
     {
         children["key-string"] = key_string;
@@ -14517,6 +14525,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::Encryption::Ipsec
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Ospf::Encryption::Ipsec::Ipsec3Des::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14638,6 +14647,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::Encryption::Ipsec
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Ospf::Encryption::Ipsec::AesCbc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(aes_cbc_128 != nullptr)
     {
         children["aes-cbc-128"] = aes_cbc_128;
@@ -14728,6 +14738,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::Encryption::Ipsec
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Ospf::Encryption::Ipsec::AesCbc::AesCbc128::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_string != nullptr)
     {
         children["key-string"] = key_string;
@@ -14803,6 +14814,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::Encryption::Ipsec
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Ospf::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14898,6 +14910,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::Encryption::Ipsec
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Ospf::Encryption::Ipsec::AesCbc::Aes192::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_string != nullptr)
     {
         children["key-string"] = key_string;
@@ -14973,6 +14986,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::Encryption::Ipsec
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Ospf::Encryption::Ipsec::AesCbc::Aes192::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15068,6 +15082,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::Encryption::Ipsec
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Ospf::Encryption::Ipsec::AesCbc::Aes256::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_string != nullptr)
     {
         children["key-string"] = key_string;
@@ -15143,6 +15158,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::Encryption::Ipsec
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Ospf::Encryption::Ipsec::AesCbc::Aes256::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15229,6 +15245,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::FloodReduction::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Ospf::FloodReduction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15305,6 +15322,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::Ipv6::Ospf::MtuIgnore::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::Ipv6::Ospf::MtuIgnore::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

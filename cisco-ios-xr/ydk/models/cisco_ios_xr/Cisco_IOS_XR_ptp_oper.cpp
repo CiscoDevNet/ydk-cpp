@@ -224,6 +224,7 @@ std::shared_ptr<Entity> Ptp::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Ptp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -389,14 +390,6 @@ std::shared_ptr<Entity> Ptp::Nodes::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -409,9 +402,14 @@ std::shared_ptr<Entity> Ptp::Nodes::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -553,6 +551,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(node_interface_foreign_masters != nullptr)
     {
         children["node-interface-foreign-masters"] = node_interface_foreign_masters;
@@ -656,14 +655,6 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceForeignMasters::get_child
 {
     if(child_yang_name == "node-interface-foreign-master")
     {
-        for(auto const & c : node_interface_foreign_master)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster>();
         c->parent = this;
         node_interface_foreign_master.push_back(c);
@@ -676,9 +667,14 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceForeignMasters::get_child
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaceForeignMasters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node_interface_foreign_master)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -757,14 +753,6 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInter
 {
     if(child_yang_name == "foreign-clock")
     {
-        for(auto const & c : foreign_clock)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::ForeignClock>();
         c->parent = this;
         foreign_clock.push_back(c);
@@ -777,9 +765,14 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInter
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : foreign_clock)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -974,6 +967,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInter
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::ForeignClock::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(foreign_clock != nullptr)
     {
         children["foreign-clock"] = foreign_clock;
@@ -1271,6 +1265,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInter
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::ForeignClock::ForeignClock_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(utc_offset != nullptr)
     {
         children["utc-offset"] = utc_offset;
@@ -1506,6 +1501,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInter
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::ForeignClock::ForeignClock_::UtcOffset::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1596,6 +1592,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInter
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::ForeignClock::ForeignClock_::Receiver::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1686,6 +1683,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInter
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::ForeignClock::ForeignClock_::Sender::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1807,6 +1805,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInter
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::ForeignClock::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mac_address != nullptr)
     {
         children["mac-address"] = mac_address;
@@ -1913,6 +1912,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInter
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::ForeignClock::Address::MacAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1989,6 +1989,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInter
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::ForeignClock::Address::Ipv6Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2069,6 +2070,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInter
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::ForeignClock::AnnounceGrant::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2159,6 +2161,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInter
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::ForeignClock::SyncGrant::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2249,6 +2252,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInter
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::ForeignClock::DelayResponseGrant::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2371,6 +2375,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::Summary::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2539,14 +2544,6 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaces::get_child_by_name(cons
 {
     if(child_yang_name == "node-interface")
     {
-        for(auto const & c : node_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::Nodes::Node::NodeInterfaces::NodeInterface>();
         c->parent = this;
         node_interface.push_back(c);
@@ -2559,9 +2556,14 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaces::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2762,14 +2764,6 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::get_chi
 
     if(child_yang_name == "master-table")
     {
-        for(auto const & c : master_table)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::Nodes::Node::NodeInterfaces::NodeInterface::MasterTable>();
         c->parent = this;
         master_table.push_back(c);
@@ -2782,14 +2776,19 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mac_address != nullptr)
     {
         children["mac-address"] = mac_address;
     }
 
+    count = 0;
     for (auto const & c : master_table)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3148,6 +3147,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::MacAddr
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::MacAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3266,6 +3266,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::MasterT
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::MasterTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -3452,6 +3453,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::MasterT
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::MasterTable::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mac_address != nullptr)
     {
         children["mac-address"] = mac_address;
@@ -3558,6 +3560,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::MasterT
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::MasterTable::Address::MacAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3634,6 +3637,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::MasterT
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaces::NodeInterface::MasterTable::Address::Ipv6Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3712,14 +3716,6 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceUnicastPeers::get_child_b
 {
     if(child_yang_name == "node-interface-unicast-peer")
     {
-        for(auto const & c : node_interface_unicast_peer)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::Nodes::Node::NodeInterfaceUnicastPeers::NodeInterfaceUnicastPeer>();
         c->parent = this;
         node_interface_unicast_peer.push_back(c);
@@ -3732,9 +3728,14 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceUnicastPeers::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaceUnicastPeers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node_interface_unicast_peer)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3817,14 +3818,6 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceUnicastPeers::NodeInterfa
 {
     if(child_yang_name == "peers")
     {
-        for(auto const & c : peers)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::Nodes::Node::NodeInterfaceUnicastPeers::NodeInterfaceUnicastPeer::Peers>();
         c->parent = this;
         peers.push_back(c);
@@ -3837,9 +3830,14 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceUnicastPeers::NodeInterfa
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaceUnicastPeers::NodeInterfaceUnicastPeer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : peers)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3986,6 +3984,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceUnicastPeers::NodeInterfa
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaceUnicastPeers::NodeInterfaceUnicastPeer::Peers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -4107,6 +4106,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceUnicastPeers::NodeInterfa
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaceUnicastPeers::NodeInterfaceUnicastPeer::Peers::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mac_address != nullptr)
     {
         children["mac-address"] = mac_address;
@@ -4213,6 +4213,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceUnicastPeers::NodeInterfa
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaceUnicastPeers::NodeInterfaceUnicastPeer::Peers::Address::MacAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4289,6 +4290,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceUnicastPeers::NodeInterfa
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaceUnicastPeers::NodeInterfaceUnicastPeer::Peers::Address::Ipv6Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4369,6 +4371,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceUnicastPeers::NodeInterfa
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaceUnicastPeers::NodeInterfaceUnicastPeer::Peers::AnnounceGrant::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4459,6 +4462,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceUnicastPeers::NodeInterfa
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaceUnicastPeers::NodeInterfaceUnicastPeer::Peers::SyncGrant::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4549,6 +4553,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::NodeInterfaceUnicastPeers::NodeInterfa
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::NodeInterfaceUnicastPeers::NodeInterfaceUnicastPeer::Peers::DelayResponseGrant::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4657,6 +4662,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::PacketCounters::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::PacketCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(counters != nullptr)
     {
         children["counters"] = counters;
@@ -4873,6 +4879,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::PacketCounters::Counters::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::PacketCounters::Counters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5391,6 +5398,7 @@ std::shared_ptr<Entity> Ptp::Nodes::Node::PacketCounters::DropReasons::get_child
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Nodes::Node::PacketCounters::DropReasons::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5706,14 +5714,6 @@ std::shared_ptr<Entity> Ptp::InterfaceConfigurationErrors::get_child_by_name(con
 {
     if(child_yang_name == "interface-configuration-error")
     {
-        for(auto const & c : interface_configuration_error)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError>();
         c->parent = this;
         interface_configuration_error.push_back(c);
@@ -5726,9 +5726,14 @@ std::shared_ptr<Entity> Ptp::InterfaceConfigurationErrors::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceConfigurationErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_configuration_error)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5834,6 +5839,7 @@ std::shared_ptr<Entity> Ptp::InterfaceConfigurationErrors::InterfaceConfiguratio
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(configuration_errors != nullptr)
     {
         children["configuration-errors"] = configuration_errors;
@@ -6055,6 +6061,7 @@ std::shared_ptr<Entity> Ptp::InterfaceConfigurationErrors::InterfaceConfiguratio
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceConfigurationErrors::InterfaceConfigurationError::ConfigurationErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6390,14 +6397,6 @@ std::shared_ptr<Entity> Ptp::InterfaceForeignMasters::get_child_by_name(const st
 {
     if(child_yang_name == "interface-foreign-master")
     {
-        for(auto const & c : interface_foreign_master)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::InterfaceForeignMasters::InterfaceForeignMaster>();
         c->parent = this;
         interface_foreign_master.push_back(c);
@@ -6410,9 +6409,14 @@ std::shared_ptr<Entity> Ptp::InterfaceForeignMasters::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceForeignMasters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_foreign_master)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6498,14 +6502,6 @@ std::shared_ptr<Entity> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ge
 {
     if(child_yang_name == "foreign-clock")
     {
-        for(auto const & c : foreign_clock)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock>();
         c->parent = this;
         foreign_clock.push_back(c);
@@ -6518,9 +6514,14 @@ std::shared_ptr<Entity> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ge
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : foreign_clock)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6715,6 +6716,7 @@ std::shared_ptr<Entity> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::Fo
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(foreign_clock != nullptr)
     {
         children["foreign-clock"] = foreign_clock;
@@ -7012,6 +7014,7 @@ std::shared_ptr<Entity> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::Fo
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::ForeignClock_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(utc_offset != nullptr)
     {
         children["utc-offset"] = utc_offset;
@@ -7247,6 +7250,7 @@ std::shared_ptr<Entity> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::Fo
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::ForeignClock_::UtcOffset::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7337,6 +7341,7 @@ std::shared_ptr<Entity> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::Fo
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::ForeignClock_::Receiver::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7427,6 +7432,7 @@ std::shared_ptr<Entity> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::Fo
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::ForeignClock_::Sender::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7548,6 +7554,7 @@ std::shared_ptr<Entity> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::Fo
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mac_address != nullptr)
     {
         children["mac-address"] = mac_address;
@@ -7654,6 +7661,7 @@ std::shared_ptr<Entity> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::Fo
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::Address::MacAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7730,6 +7738,7 @@ std::shared_ptr<Entity> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::Fo
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::Address::Ipv6Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7810,6 +7819,7 @@ std::shared_ptr<Entity> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::Fo
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::AnnounceGrant::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7900,6 +7910,7 @@ std::shared_ptr<Entity> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::Fo
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::SyncGrant::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7990,6 +8001,7 @@ std::shared_ptr<Entity> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::Fo
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::DelayResponseGrant::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8097,6 +8109,7 @@ std::shared_ptr<Entity> Ptp::LocalClock::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Ptp::LocalClock::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(clock_properties != nullptr)
     {
         children["clock-properties"] = clock_properties;
@@ -8281,6 +8294,7 @@ std::shared_ptr<Entity> Ptp::LocalClock::ClockProperties::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Ptp::LocalClock::ClockProperties::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(utc_offset != nullptr)
     {
         children["utc-offset"] = utc_offset;
@@ -8523,6 +8537,7 @@ std::shared_ptr<Entity> Ptp::LocalClock::ClockProperties::UtcOffset::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Ptp::LocalClock::ClockProperties::UtcOffset::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8620,6 +8635,7 @@ std::shared_ptr<Entity> Ptp::LocalClock::ClockProperties::Receiver::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Ptp::LocalClock::ClockProperties::Receiver::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8717,6 +8733,7 @@ std::shared_ptr<Entity> Ptp::LocalClock::ClockProperties::Sender::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Ptp::LocalClock::ClockProperties::Sender::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8812,14 +8829,6 @@ std::shared_ptr<Entity> Ptp::InterfacePacketCounters::get_child_by_name(const st
 {
     if(child_yang_name == "interface-packet-counter")
     {
-        for(auto const & c : interface_packet_counter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::InterfacePacketCounters::InterfacePacketCounter>();
         c->parent = this;
         interface_packet_counter.push_back(c);
@@ -8832,9 +8841,14 @@ std::shared_ptr<Entity> Ptp::InterfacePacketCounters::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfacePacketCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_packet_counter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8930,14 +8944,6 @@ std::shared_ptr<Entity> Ptp::InterfacePacketCounters::InterfacePacketCounter::ge
 
     if(child_yang_name == "peer-counter")
     {
-        for(auto const & c : peer_counter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::InterfacePacketCounters::InterfacePacketCounter::PeerCounter>();
         c->parent = this;
         peer_counter.push_back(c);
@@ -8950,14 +8956,19 @@ std::shared_ptr<Entity> Ptp::InterfacePacketCounters::InterfacePacketCounter::ge
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfacePacketCounters::InterfacePacketCounter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(counters != nullptr)
     {
         children["counters"] = counters;
     }
 
+    count = 0;
     for (auto const & c : peer_counter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9176,6 +9187,7 @@ std::shared_ptr<Entity> Ptp::InterfacePacketCounters::InterfacePacketCounter::Co
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfacePacketCounters::InterfacePacketCounter::Counters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9624,6 +9636,7 @@ std::shared_ptr<Entity> Ptp::InterfacePacketCounters::InterfacePacketCounter::Pe
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfacePacketCounters::InterfacePacketCounter::PeerCounter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -9735,6 +9748,7 @@ std::shared_ptr<Entity> Ptp::InterfacePacketCounters::InterfacePacketCounter::Pe
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfacePacketCounters::InterfacePacketCounter::PeerCounter::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mac_address != nullptr)
     {
         children["mac-address"] = mac_address;
@@ -9841,6 +9855,7 @@ std::shared_ptr<Entity> Ptp::InterfacePacketCounters::InterfacePacketCounter::Pe
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfacePacketCounters::InterfacePacketCounter::PeerCounter::Address::MacAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9917,6 +9932,7 @@ std::shared_ptr<Entity> Ptp::InterfacePacketCounters::InterfacePacketCounter::Pe
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfacePacketCounters::InterfacePacketCounter::PeerCounter::Address::Ipv6Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10133,6 +10149,7 @@ std::shared_ptr<Entity> Ptp::InterfacePacketCounters::InterfacePacketCounter::Pe
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfacePacketCounters::InterfacePacketCounter::PeerCounter::Counters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10596,6 +10613,7 @@ std::shared_ptr<Entity> Ptp::AdvertisedClock::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Ptp::AdvertisedClock::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(clock_properties != nullptr)
     {
         children["clock-properties"] = clock_properties;
@@ -10820,6 +10838,7 @@ std::shared_ptr<Entity> Ptp::AdvertisedClock::ClockProperties::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Ptp::AdvertisedClock::ClockProperties::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(utc_offset != nullptr)
     {
         children["utc-offset"] = utc_offset;
@@ -11062,6 +11081,7 @@ std::shared_ptr<Entity> Ptp::AdvertisedClock::ClockProperties::UtcOffset::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Ptp::AdvertisedClock::ClockProperties::UtcOffset::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11159,6 +11179,7 @@ std::shared_ptr<Entity> Ptp::AdvertisedClock::ClockProperties::Receiver::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Ptp::AdvertisedClock::ClockProperties::Receiver::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11256,6 +11277,7 @@ std::shared_ptr<Entity> Ptp::AdvertisedClock::ClockProperties::Sender::get_child
 std::map<std::string, std::shared_ptr<Entity>> Ptp::AdvertisedClock::ClockProperties::Sender::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11371,14 +11393,6 @@ std::shared_ptr<Entity> Ptp::LeapSeconds::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "leap-second")
     {
-        for(auto const & c : leap_second)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::LeapSeconds::LeapSecond>();
         c->parent = this;
         leap_second.push_back(c);
@@ -11391,9 +11405,14 @@ std::shared_ptr<Entity> Ptp::LeapSeconds::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Ptp::LeapSeconds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : leap_second)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11527,6 +11546,7 @@ std::shared_ptr<Entity> Ptp::LeapSeconds::LeapSecond::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Ptp::LeapSeconds::LeapSecond::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11632,14 +11652,6 @@ std::shared_ptr<Entity> Ptp::Interfaces::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -11652,9 +11664,14 @@ std::shared_ptr<Entity> Ptp::Interfaces::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11862,14 +11879,6 @@ std::shared_ptr<Entity> Ptp::Interfaces::Interface::get_child_by_name(const std:
 
     if(child_yang_name == "master-table")
     {
-        for(auto const & c : master_table)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::Interfaces::Interface::MasterTable>();
         c->parent = this;
         master_table.push_back(c);
@@ -11882,14 +11891,19 @@ std::shared_ptr<Entity> Ptp::Interfaces::Interface::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mac_address != nullptr)
     {
         children["mac-address"] = mac_address;
     }
 
+    count = 0;
     for (auto const & c : master_table)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12248,6 +12262,7 @@ std::shared_ptr<Entity> Ptp::Interfaces::Interface::MacAddress::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Interfaces::Interface::MacAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12366,6 +12381,7 @@ std::shared_ptr<Entity> Ptp::Interfaces::Interface::MasterTable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Interfaces::Interface::MasterTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -12552,6 +12568,7 @@ std::shared_ptr<Entity> Ptp::Interfaces::Interface::MasterTable::Address::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Interfaces::Interface::MasterTable::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mac_address != nullptr)
     {
         children["mac-address"] = mac_address;
@@ -12658,6 +12675,7 @@ std::shared_ptr<Entity> Ptp::Interfaces::Interface::MasterTable::Address::MacAdd
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Interfaces::Interface::MasterTable::Address::MacAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12734,6 +12752,7 @@ std::shared_ptr<Entity> Ptp::Interfaces::Interface::MasterTable::Address::Ipv6Ad
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Interfaces::Interface::MasterTable::Address::Ipv6Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12878,6 +12897,7 @@ std::shared_ptr<Entity> Ptp::Dataset::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Dataset::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_ds != nullptr)
     {
         children["default-ds"] = default_ds;
@@ -13020,6 +13040,7 @@ std::shared_ptr<Entity> Ptp::Dataset::DefaultDs::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Dataset::DefaultDs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13221,6 +13242,7 @@ std::shared_ptr<Entity> Ptp::Dataset::CurrentDs::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Dataset::CurrentDs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13364,6 +13386,7 @@ std::shared_ptr<Entity> Ptp::Dataset::ParentDs::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Dataset::ParentDs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13549,14 +13572,6 @@ std::shared_ptr<Entity> Ptp::Dataset::PortDses::get_child_by_name(const std::str
 {
     if(child_yang_name == "port-ds")
     {
-        for(auto const & c : port_ds)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::Dataset::PortDses::PortDs>();
         c->parent = this;
         port_ds.push_back(c);
@@ -13569,9 +13584,14 @@ std::shared_ptr<Entity> Ptp::Dataset::PortDses::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Dataset::PortDses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : port_ds)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13703,6 +13723,7 @@ std::shared_ptr<Entity> Ptp::Dataset::PortDses::PortDs::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Dataset::PortDses::PortDs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13954,6 +13975,7 @@ std::shared_ptr<Entity> Ptp::Dataset::TimePropertiesDs::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Dataset::TimePropertiesDs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14137,6 +14159,7 @@ std::shared_ptr<Entity> Ptp::GlobalConfigurationError::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Ptp::GlobalConfigurationError::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(configuration_errors != nullptr)
     {
         children["configuration-errors"] = configuration_errors;
@@ -14273,6 +14296,7 @@ std::shared_ptr<Entity> Ptp::GlobalConfigurationError::ConfigurationErrors::get_
 std::map<std::string, std::shared_ptr<Entity>> Ptp::GlobalConfigurationError::ConfigurationErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14415,6 +14439,7 @@ std::shared_ptr<Entity> Ptp::Grandmaster::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Grandmaster::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(clock_properties != nullptr)
     {
         children["clock-properties"] = clock_properties;
@@ -14634,6 +14659,7 @@ std::shared_ptr<Entity> Ptp::Grandmaster::ClockProperties::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Grandmaster::ClockProperties::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(utc_offset != nullptr)
     {
         children["utc-offset"] = utc_offset;
@@ -14876,6 +14902,7 @@ std::shared_ptr<Entity> Ptp::Grandmaster::ClockProperties::UtcOffset::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Grandmaster::ClockProperties::UtcOffset::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14973,6 +15000,7 @@ std::shared_ptr<Entity> Ptp::Grandmaster::ClockProperties::Receiver::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Grandmaster::ClockProperties::Receiver::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15070,6 +15098,7 @@ std::shared_ptr<Entity> Ptp::Grandmaster::ClockProperties::Sender::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Grandmaster::ClockProperties::Sender::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15198,6 +15227,7 @@ std::shared_ptr<Entity> Ptp::Grandmaster::Address::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Grandmaster::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mac_address != nullptr)
     {
         children["mac-address"] = mac_address;
@@ -15311,6 +15341,7 @@ std::shared_ptr<Entity> Ptp::Grandmaster::Address::MacAddress::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Grandmaster::Address::MacAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15394,6 +15425,7 @@ std::shared_ptr<Entity> Ptp::Grandmaster::Address::Ipv6Address::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Grandmaster::Address::Ipv6Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15479,14 +15511,6 @@ std::shared_ptr<Entity> Ptp::InterfaceUnicastPeers::get_child_by_name(const std:
 {
     if(child_yang_name == "interface-unicast-peer")
     {
-        for(auto const & c : interface_unicast_peer)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer>();
         c->parent = this;
         interface_unicast_peer.push_back(c);
@@ -15499,9 +15523,14 @@ std::shared_ptr<Entity> Ptp::InterfaceUnicastPeers::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceUnicastPeers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface_unicast_peer)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15591,14 +15620,6 @@ std::shared_ptr<Entity> Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer::get_ch
 {
     if(child_yang_name == "peers")
     {
-        for(auto const & c : peers)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer::Peers>();
         c->parent = this;
         peers.push_back(c);
@@ -15611,9 +15632,14 @@ std::shared_ptr<Entity> Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : peers)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15760,6 +15786,7 @@ std::shared_ptr<Entity> Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer::Peers:
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer::Peers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -15881,6 +15908,7 @@ std::shared_ptr<Entity> Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer::Peers:
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer::Peers::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mac_address != nullptr)
     {
         children["mac-address"] = mac_address;
@@ -15987,6 +16015,7 @@ std::shared_ptr<Entity> Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer::Peers:
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer::Peers::Address::MacAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16063,6 +16092,7 @@ std::shared_ptr<Entity> Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer::Peers:
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer::Peers::Address::Ipv6Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16143,6 +16173,7 @@ std::shared_ptr<Entity> Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer::Peers:
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer::Peers::AnnounceGrant::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16233,6 +16264,7 @@ std::shared_ptr<Entity> Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer::Peers:
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer::Peers::SyncGrant::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16323,6 +16355,7 @@ std::shared_ptr<Entity> Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer::Peers:
 std::map<std::string, std::shared_ptr<Entity>> Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer::Peers::DelayResponseGrant::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16425,6 +16458,7 @@ std::shared_ptr<Entity> Ptp::Platform::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Platform::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(servo != nullptr)
     {
         children["servo"] = servo;
@@ -16689,6 +16723,7 @@ std::shared_ptr<Entity> Ptp::Platform::Servo::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Platform::Servo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_set_time != nullptr)
     {
         children["last-set-time"] = last_set_time;
@@ -16991,6 +17026,7 @@ std::shared_ptr<Entity> Ptp::Platform::Servo::LastSetTime::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Platform::Servo::LastSetTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17088,6 +17124,7 @@ std::shared_ptr<Entity> Ptp::Platform::Servo::LastReceivedT1::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Platform::Servo::LastReceivedT1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17185,6 +17222,7 @@ std::shared_ptr<Entity> Ptp::Platform::Servo::LastReceivedT2::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Platform::Servo::LastReceivedT2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17282,6 +17320,7 @@ std::shared_ptr<Entity> Ptp::Platform::Servo::LastReceivedT3::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Platform::Servo::LastReceivedT3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17379,6 +17418,7 @@ std::shared_ptr<Entity> Ptp::Platform::Servo::LastReceivedT4::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Platform::Servo::LastReceivedT4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17476,6 +17516,7 @@ std::shared_ptr<Entity> Ptp::Platform::Servo::PreReceivedT1::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Platform::Servo::PreReceivedT1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17573,6 +17614,7 @@ std::shared_ptr<Entity> Ptp::Platform::Servo::PreReceivedT2::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Platform::Servo::PreReceivedT2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17670,6 +17712,7 @@ std::shared_ptr<Entity> Ptp::Platform::Servo::PreReceivedT3::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Platform::Servo::PreReceivedT3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17767,6 +17810,7 @@ std::shared_ptr<Entity> Ptp::Platform::Servo::PreReceivedT4::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Platform::Servo::PreReceivedT4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

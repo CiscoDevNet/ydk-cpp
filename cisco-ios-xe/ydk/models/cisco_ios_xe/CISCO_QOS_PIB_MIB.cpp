@@ -289,6 +289,7 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(qosdevicepibincarnationtable != nullptr)
     {
         children["qosDevicePibIncarnationTable"] = qosdevicepibincarnationtable;
@@ -479,14 +480,6 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosdevicepibincarnationtable::get_child_
 {
     if(child_yang_name == "qosDevicePibIncarnationEntry")
     {
-        for(auto const & c : qosdevicepibincarnationentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOQOSPIBMIB::Qosdevicepibincarnationtable::Qosdevicepibincarnationentry>();
         c->parent = this;
         qosdevicepibincarnationentry.push_back(c);
@@ -499,9 +492,14 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosdevicepibincarnationtable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosdevicepibincarnationtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qosdevicepibincarnationentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -589,6 +587,7 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosdevicepibincarnationtable::Qosdevicep
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosdevicepibincarnationtable::Qosdevicepibincarnationentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -704,14 +703,6 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosdeviceattributetable::get_child_by_na
 {
     if(child_yang_name == "qosDeviceAttributeEntry")
     {
-        for(auto const & c : qosdeviceattributeentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOQOSPIBMIB::Qosdeviceattributetable::Qosdeviceattributeentry>();
         c->parent = this;
         qosdeviceattributeentry.push_back(c);
@@ -724,9 +715,14 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosdeviceattributetable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosdeviceattributetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qosdeviceattributeentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -822,6 +818,7 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosdeviceattributetable::Qosdeviceattrib
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosdeviceattributetable::Qosdeviceattributeentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -955,14 +952,6 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosinterfacetypetable::get_child_by_name
 {
     if(child_yang_name == "qosInterfaceTypeEntry")
     {
-        for(auto const & c : qosinterfacetypeentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOQOSPIBMIB::Qosinterfacetypetable::Qosinterfacetypeentry>();
         c->parent = this;
         qosinterfacetypeentry.push_back(c);
@@ -975,9 +964,14 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosinterfacetypetable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosinterfacetypetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qosinterfacetypeentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1065,6 +1059,7 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosinterfacetypetable::Qosinterfacetypee
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosinterfacetypetable::Qosinterfacetypeentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1178,14 +1173,6 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosdiffservmappingtable::get_child_by_na
 {
     if(child_yang_name == "qosDiffServMappingEntry")
     {
-        for(auto const & c : qosdiffservmappingentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOQOSPIBMIB::Qosdiffservmappingtable::Qosdiffservmappingentry>();
         c->parent = this;
         qosdiffservmappingentry.push_back(c);
@@ -1198,9 +1185,14 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosdiffservmappingtable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosdiffservmappingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qosdiffservmappingentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1284,6 +1276,7 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosdiffservmappingtable::Qosdiffservmapp
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosdiffservmappingtable::Qosdiffservmappingentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1389,14 +1382,6 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qoscostodscptable::get_child_by_name(con
 {
     if(child_yang_name == "qosCosToDscpEntry")
     {
-        for(auto const & c : qoscostodscpentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOQOSPIBMIB::Qoscostodscptable::Qoscostodscpentry>();
         c->parent = this;
         qoscostodscpentry.push_back(c);
@@ -1409,9 +1394,14 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qoscostodscptable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qoscostodscptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qoscostodscpentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1491,6 +1481,7 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qoscostodscptable::Qoscostodscpentry::ge
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qoscostodscptable::Qoscostodscpentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1586,14 +1577,6 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosunmatchedpolicytable::get_child_by_na
 {
     if(child_yang_name == "qosUnmatchedPolicyEntry")
     {
-        for(auto const & c : qosunmatchedpolicyentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOQOSPIBMIB::Qosunmatchedpolicytable::Qosunmatchedpolicyentry>();
         c->parent = this;
         qosunmatchedpolicyentry.push_back(c);
@@ -1606,9 +1589,14 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosunmatchedpolicytable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosunmatchedpolicytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qosunmatchedpolicyentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1708,6 +1696,7 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosunmatchedpolicytable::Qosunmatchedpol
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosunmatchedpolicytable::Qosunmatchedpolicyentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1853,14 +1842,6 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qospolicertable::get_child_by_name(const
 {
     if(child_yang_name == "qosPolicerEntry")
     {
-        for(auto const & c : qospolicerentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOQOSPIBMIB::Qospolicertable::Qospolicerentry>();
         c->parent = this;
         qospolicerentry.push_back(c);
@@ -1873,9 +1854,14 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qospolicertable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qospolicertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qospolicerentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1967,6 +1953,7 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qospolicertable::Qospolicerentry::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qospolicertable::Qospolicerentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2092,14 +2079,6 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosaggregatetable::get_child_by_name(con
 {
     if(child_yang_name == "qosAggregateEntry")
     {
-        for(auto const & c : qosaggregateentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOQOSPIBMIB::Qosaggregatetable::Qosaggregateentry>();
         c->parent = this;
         qosaggregateentry.push_back(c);
@@ -2112,9 +2091,14 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosaggregatetable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosaggregatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qosaggregateentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2194,6 +2178,7 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosaggregatetable::Qosaggregateentry::ge
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosaggregatetable::Qosaggregateentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2289,14 +2274,6 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosmacclassificationtable::get_child_by_
 {
     if(child_yang_name == "qosMacClassificationEntry")
     {
-        for(auto const & c : qosmacclassificationentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOQOSPIBMIB::Qosmacclassificationtable::Qosmacclassificationentry>();
         c->parent = this;
         qosmacclassificationentry.push_back(c);
@@ -2309,9 +2286,14 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosmacclassificationtable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosmacclassificationtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qosmacclassificationentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2399,6 +2381,7 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosmacclassificationtable::Qosmacclassif
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosmacclassificationtable::Qosmacclassificationentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2514,14 +2497,6 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosipacetable::get_child_by_name(const s
 {
     if(child_yang_name == "qosIpAceEntry")
     {
-        for(auto const & c : qosipaceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOQOSPIBMIB::Qosipacetable::Qosipaceentry>();
         c->parent = this;
         qosipaceentry.push_back(c);
@@ -2534,9 +2509,14 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosipacetable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosipacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qosipaceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2660,6 +2640,7 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosipacetable::Qosipaceentry::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosipacetable::Qosipaceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2865,14 +2846,6 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosipacldefinitiontable::get_child_by_na
 {
     if(child_yang_name == "qosIpAclDefinitionEntry")
     {
-        for(auto const & c : qosipacldefinitionentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOQOSPIBMIB::Qosipacldefinitiontable::Qosipacldefinitionentry>();
         c->parent = this;
         qosipacldefinitionentry.push_back(c);
@@ -2885,9 +2858,14 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosipacldefinitiontable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosipacldefinitiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qosipacldefinitionentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2975,6 +2953,7 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosipacldefinitiontable::Qosipacldefinit
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosipacldefinitiontable::Qosipacldefinitionentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3090,14 +3069,6 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosipaclactiontable::get_child_by_name(c
 {
     if(child_yang_name == "qosIpAclActionEntry")
     {
-        for(auto const & c : qosipaclactionentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOQOSPIBMIB::Qosipaclactiontable::Qosipaclactionentry>();
         c->parent = this;
         qosipaclactionentry.push_back(c);
@@ -3110,9 +3081,14 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosipaclactiontable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosipaclactiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qosipaclactionentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3220,6 +3196,7 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosipaclactiontable::Qosipaclactionentry
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosipaclactiontable::Qosipaclactionentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3385,14 +3362,6 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosifschedulingpreferencestable::get_chi
 {
     if(child_yang_name == "qosIfSchedulingPreferenceEntry")
     {
-        for(auto const & c : qosifschedulingpreferenceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOQOSPIBMIB::Qosifschedulingpreferencestable::Qosifschedulingpreferenceentry>();
         c->parent = this;
         qosifschedulingpreferenceentry.push_back(c);
@@ -3405,9 +3374,14 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosifschedulingpreferencestable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosifschedulingpreferencestable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qosifschedulingpreferenceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3499,6 +3473,7 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosifschedulingpreferencestable::Qosifsc
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosifschedulingpreferencestable::Qosifschedulingpreferenceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3624,14 +3599,6 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosifdroppreferencetable::get_child_by_n
 {
     if(child_yang_name == "qosIfDropPreferenceEntry")
     {
-        for(auto const & c : qosifdroppreferenceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOQOSPIBMIB::Qosifdroppreferencetable::Qosifdroppreferenceentry>();
         c->parent = this;
         qosifdroppreferenceentry.push_back(c);
@@ -3644,9 +3611,14 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosifdroppreferencetable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosifdroppreferencetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qosifdroppreferenceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3734,6 +3706,7 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosifdroppreferencetable::Qosifdropprefe
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosifdroppreferencetable::Qosifdroppreferenceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3849,14 +3822,6 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosifdscpassignmenttable::get_child_by_n
 {
     if(child_yang_name == "qosIfDscpAssignmentEntry")
     {
-        for(auto const & c : qosifdscpassignmententry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOQOSPIBMIB::Qosifdscpassignmenttable::Qosifdscpassignmententry>();
         c->parent = this;
         qosifdscpassignmententry.push_back(c);
@@ -3869,9 +3834,14 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosifdscpassignmenttable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosifdscpassignmenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qosifdscpassignmententry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3967,6 +3937,7 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosifdscpassignmenttable::Qosifdscpassig
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosifdscpassignmenttable::Qosifdscpassignmententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4102,14 +4073,6 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosifredtable::get_child_by_name(const s
 {
     if(child_yang_name == "qosIfRedEntry")
     {
-        for(auto const & c : qosifredentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOQOSPIBMIB::Qosifredtable::Qosifredentry>();
         c->parent = this;
         qosifredentry.push_back(c);
@@ -4122,9 +4085,14 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosifredtable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosifredtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qosifredentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4220,6 +4188,7 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosifredtable::Qosifredentry::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosifredtable::Qosifredentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4355,14 +4324,6 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosiftaildroptable::get_child_by_name(co
 {
     if(child_yang_name == "qosIfTailDropEntry")
     {
-        for(auto const & c : qosiftaildropentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOQOSPIBMIB::Qosiftaildroptable::Qosiftaildropentry>();
         c->parent = this;
         qosiftaildropentry.push_back(c);
@@ -4375,9 +4336,14 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosiftaildroptable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosiftaildroptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qosiftaildropentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4469,6 +4435,7 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosiftaildroptable::Qosiftaildropentry::
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosiftaildroptable::Qosiftaildropentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4594,14 +4561,6 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosifweightstable::get_child_by_name(con
 {
     if(child_yang_name == "qosIfWeightsEntry")
     {
-        for(auto const & c : qosifweightsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOQOSPIBMIB::Qosifweightstable::Qosifweightsentry>();
         c->parent = this;
         qosifweightsentry.push_back(c);
@@ -4614,9 +4573,14 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosifweightstable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosifweightstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : qosifweightsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4712,6 +4676,7 @@ std::shared_ptr<Entity> CISCOQOSPIBMIB::Qosifweightstable::Qosifweightsentry::ge
 std::map<std::string, std::shared_ptr<Entity>> CISCOQOSPIBMIB::Qosifweightstable::Qosifweightsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

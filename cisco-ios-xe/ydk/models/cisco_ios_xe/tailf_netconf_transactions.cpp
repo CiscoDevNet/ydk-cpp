@@ -68,6 +68,7 @@ std::shared_ptr<Entity> StartTransaction::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> StartTransaction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -185,6 +186,7 @@ std::shared_ptr<Entity> StartTransaction::Input::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> StartTransaction::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(target != nullptr)
     {
         children["target"] = target;
@@ -281,6 +283,7 @@ std::shared_ptr<Entity> StartTransaction::Input::Target::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> StartTransaction::Input::Target::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -373,6 +376,7 @@ std::shared_ptr<Entity> PrepareTransaction::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> PrepareTransaction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -458,6 +462,7 @@ std::shared_ptr<Entity> CommitTransaction::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> CommitTransaction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -543,6 +548,7 @@ std::shared_ptr<Entity> AbortTransaction::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> AbortTransaction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -12,7 +12,7 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
-Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static_::RedistOptions::RedistOptions()
+Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static::RedistOptions::RedistOptions()
     :
     metric{YType::uint32, "metric"},
     metric_type{YType::enumeration, "metric-type"},
@@ -25,11 +25,11 @@ Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::St
     yang_name = "redist-options"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static_::RedistOptions::~RedistOptions()
+Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static::RedistOptions::~RedistOptions()
 {
 }
 
-bool Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static_::RedistOptions::has_data() const
+bool Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static::RedistOptions::has_data() const
 {
     return metric.is_set
 	|| metric_type.is_set
@@ -39,7 +39,7 @@ bool Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Globa
 	|| nssa_only.is_set;
 }
 
-bool Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static_::RedistOptions::has_operation() const
+bool Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static::RedistOptions::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(metric.yfilter)
@@ -50,14 +50,14 @@ bool Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Globa
 	|| ydk::is_set(nssa_only.yfilter);
 }
 
-std::string Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static_::RedistOptions::get_segment_path() const
+std::string Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static::RedistOptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "redist-options";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static_::RedistOptions::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static::RedistOptions::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -72,18 +72,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Ospfv3::AddressFa
 
 }
 
-std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static_::RedistOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static::RedistOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static_::RedistOptions::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static::RedistOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static_::RedistOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static::RedistOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "metric")
     {
@@ -123,7 +124,7 @@ void Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Globa
     }
 }
 
-void Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static_::RedistOptions::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static::RedistOptions::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "metric")
     {
@@ -151,7 +152,7 @@ void Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Globa
     }
 }
 
-bool Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static_::RedistOptions::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static::RedistOptions::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric" || name == "metric-type" || name == "tag" || name == "subnets" || name == "route-map" || name == "nssa-only")
         return true;
@@ -206,6 +207,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Authen
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -299,6 +301,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Gracef
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::GracefulRestart::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(helper != nullptr)
     {
         children["helper"] = helper;
@@ -394,6 +397,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Gracef
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::GracefulRestart::Helper::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -511,6 +515,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Manet:
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Manet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cache != nullptr)
     {
         children["cache"] = cache;
@@ -611,6 +616,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Manet:
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Manet::Cache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -706,6 +712,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Manet:
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Manet::Peering::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(selective != nullptr)
     {
         children["selective"] = selective;
@@ -785,6 +792,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Manet:
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Manet::Peering::Selective::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -893,6 +901,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Summar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::SummaryPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1013,14 +1022,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::get_child_b
 
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -1033,14 +1034,19 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(unicast != nullptr)
     {
         children["unicast"] = unicast;
     }
 
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1221,14 +1227,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::ge
 {
     if(child_yang_name == "area")
     {
-        for(auto const & c : area)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area>();
         c->parent = this;
         area.push_back(c);
@@ -1435,14 +1433,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::ge
 
     if(child_yang_name == "summary-prefix")
     {
-        for(auto const & c : summary_prefix)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::SummaryPrefix>();
         c->parent = this;
         summary_prefix.push_back(c);
@@ -1455,9 +1445,14 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : area)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(auto_cost != nullptr)
@@ -1570,9 +1565,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFa
         children["manet"] = manet;
     }
 
+    count = 0;
     for (auto const & c : summary_prefix)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1751,14 +1750,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 
     if(child_yang_name == "filter-list")
     {
-        for(auto const & c : filter_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::FilterList>();
         c->parent = this;
         filter_list.push_back(c);
@@ -1794,14 +1785,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 
     if(child_yang_name == "sham-link")
     {
-        for(auto const & c : sham_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::ShamLink>();
         c->parent = this;
         sham_link.push_back(c);
@@ -1819,14 +1802,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 
     if(child_yang_name == "virtual-link")
     {
-        for(auto const & c : virtual_link)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink>();
         c->parent = this;
         virtual_link.push_back(c);
@@ -1839,6 +1814,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authentication != nullptr)
     {
         children["authentication"] = authentication;
@@ -1849,9 +1825,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFa
         children["capability"] = capability;
     }
 
+    count = 0;
     for (auto const & c : filter_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(nssa != nullptr)
@@ -1869,9 +1849,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFa
         children["ipv6-range"] = ipv6_range;
     }
 
+    count = 0;
     for (auto const & c : sham_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(stub != nullptr)
@@ -1879,9 +1863,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFa
         children["stub"] = stub;
     }
 
+    count = 0;
     for (auto const & c : virtual_link)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1970,6 +1958,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2046,6 +2035,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::Capability::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2126,6 +2116,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::FilterList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2250,6 +2241,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::Nssa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_information_originate != nullptr)
     {
         children["default-information-originate"] = default_information_originate;
@@ -2400,6 +2392,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::Nssa::DefaultInformationOriginate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(translate != nullptr)
     {
         children["translate"] = translate;
@@ -2540,6 +2533,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::Nssa::DefaultInformationOriginate::Translate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(type7 != nullptr)
     {
         children["type7"] = type7;
@@ -2615,6 +2609,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::Nssa::DefaultInformationOriginate::Translate::Type7::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2710,6 +2705,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::Nssa::Translate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(type7 != nullptr)
     {
         children["type7"] = type7;
@@ -2785,6 +2781,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::Nssa::Translate::Type7::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2873,14 +2870,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 {
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::Ipv4Range::Range>();
         c->parent = this;
         range.push_back(c);
@@ -2893,9 +2882,14 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::Ipv4Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2980,6 +2974,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::Ipv4Range::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3098,14 +3093,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 {
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::Ipv6Range::Range>();
         c->parent = this;
         range.push_back(c);
@@ -3118,9 +3105,14 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::Ipv6Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3201,6 +3193,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::Ipv6Range::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3329,6 +3322,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::ShamLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ttl_security != nullptr)
     {
         children["ttl-security"] = ttl_security;
@@ -3430,6 +3424,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::ShamLink::TtlSecurity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3510,6 +3505,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::Stub::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3707,14 +3703,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 
     if(child_yang_name == "message-digest-key")
     {
-        for(auto const & c : message_digest_key)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::MessageDigestKey>();
         c->parent = this;
         message_digest_key.push_back(c);
@@ -3727,6 +3715,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authentication != nullptr)
     {
         children["authentication"] = authentication;
@@ -3767,9 +3756,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFa
         children["authentication-key"] = authentication_key;
     }
 
+    count = 0;
     for (auto const & c : message_digest_key)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3876,14 +3869,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 
     if(child_yang_name == "message-digest-key")
     {
-        for(auto const & c : message_digest_key)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::Authentication::MessageDigestKey>();
         c->parent = this;
         message_digest_key.push_back(c);
@@ -3914,14 +3899,19 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authentication_key != nullptr)
     {
         children["authentication-key"] = authentication_key;
     }
 
+    count = 0;
     for (auto const & c : message_digest_key)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(key_chain != nullptr)
@@ -4014,6 +4004,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::Authentication::AuthenticationKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4114,6 +4105,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::Authentication::MessageDigestKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(md5 != nullptr)
     {
         children["md5"] = md5;
@@ -4199,6 +4191,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::Authentication::MessageDigestKey::Md5::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4305,14 +4298,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 
     if(child_yang_name == "message-digest-key")
     {
-        for(auto const & c : message_digest_key)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::Authentication::KeyChain::MessageDigestKey>();
         c->parent = this;
         message_digest_key.push_back(c);
@@ -4325,14 +4310,19 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::Authentication::KeyChain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authentication_key != nullptr)
     {
         children["authentication-key"] = authentication_key;
     }
 
+    count = 0;
     for (auto const & c : message_digest_key)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4415,6 +4405,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::Authentication::KeyChain::AuthenticationKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4515,6 +4506,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::Authentication::KeyChain::MessageDigestKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(md5 != nullptr)
     {
         children["md5"] = md5;
@@ -4600,6 +4592,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::Authentication::KeyChain::MessageDigestKey::Md5::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4701,14 +4694,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 
     if(child_yang_name == "message-digest-key")
     {
-        for(auto const & c : message_digest_key)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::Authentication::MessageDigest::MessageDigestKey>();
         c->parent = this;
         message_digest_key.push_back(c);
@@ -4721,14 +4706,19 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::Authentication::MessageDigest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authentication_key != nullptr)
     {
         children["authentication-key"] = authentication_key;
     }
 
+    count = 0;
     for (auto const & c : message_digest_key)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4801,6 +4791,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::Authentication::MessageDigest::AuthenticationKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4901,6 +4892,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::Authentication::MessageDigest::MessageDigestKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(md5 != nullptr)
     {
         children["md5"] = md5;
@@ -4986,6 +4978,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::Authentication::MessageDigest::MessageDigestKey::Md5::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5072,6 +5065,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::HelloInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5148,6 +5142,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::DeadInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5224,6 +5219,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::RetransmitInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5300,6 +5296,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::TransmitDelay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5376,6 +5373,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::Topology::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5452,6 +5450,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::TtlSecurity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5532,6 +5531,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::AuthenticationKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5632,6 +5632,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::MessageDigestKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(md5 != nullptr)
     {
         children["md5"] = md5;
@@ -5717,6 +5718,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ar
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Area::VirtualLink::MessageDigestKey::Md5::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5803,6 +5805,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Au
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::AutoCost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5887,6 +5890,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ev
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::EventLog::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5983,6 +5987,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Bf
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6059,6 +6064,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::In
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::InterfaceId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6135,6 +6141,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Lo
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::LogAdjacencyChanges::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6231,6 +6238,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ma
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::MaxLsa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6365,6 +6373,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ma
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::MaxMetric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(router_lsa != nullptr)
     {
         children["router-lsa"] = router_lsa;
@@ -6473,6 +6482,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ma
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::MaxMetric::RouterLsa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(external_lsa != nullptr)
     {
         children["external-lsa"] = external_lsa;
@@ -6564,6 +6574,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ma
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::MaxMetric::RouterLsa::ExternalLsa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6644,6 +6655,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ma
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::MaxMetric::RouterLsa::OnStartup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6730,6 +6742,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ma
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::MaxMetric::RouterLsa::SummaryLsa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6810,6 +6823,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Pa
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::PassiveInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6898,14 +6912,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Di
 {
     if(child_yang_name == "passive-interface")
     {
-        for(auto const & c : passive_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Disable::PassiveInterface>();
         c->parent = this;
         passive_interface.push_back(c);
@@ -6918,9 +6924,14 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Di
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Disable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : passive_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6989,6 +7000,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Di
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Disable::PassiveInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7087,6 +7099,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Qu
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::QueueDepth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hello != nullptr)
     {
         children["hello"] = hello;
@@ -7163,6 +7176,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Qu
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::QueueDepth::Hello::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7239,6 +7253,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Qu
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::QueueDepth::Update::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7350,6 +7365,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ti
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Timers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lsa != nullptr)
     {
         children["lsa"] = lsa;
@@ -7431,6 +7447,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ti
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Timers::Lsa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7515,6 +7532,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ti
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Timers::Pacing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7633,6 +7651,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ti
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Timers::Throttle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lsa != nullptr)
     {
         children["lsa"] = lsa;
@@ -7718,6 +7737,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ti
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Timers::Throttle::Lsa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(all != nullptr)
     {
         children["all"] = all;
@@ -7797,6 +7817,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ti
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Timers::Throttle::Lsa::All::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7901,6 +7922,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ti
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Timers::Throttle::Spf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8001,6 +8023,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Tr
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::TrafficShare::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8091,6 +8114,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Tt
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::TtlSecurity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8177,6 +8201,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Ca
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Capability::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8261,6 +8286,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Co
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Compatible::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8365,6 +8391,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::De
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::DefaultInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(originate != nullptr)
     {
         children["originate"] = originate;
@@ -8448,6 +8475,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::De
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::DefaultInformation::Originate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8562,6 +8590,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Di
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::DiscardRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8680,6 +8709,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Di
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Distance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ospf_distance != nullptr)
     {
         children["ospf-distance"] = ospf_distance;
@@ -8768,6 +8798,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Di
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Distance::OspfDistance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8882,6 +8913,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Di
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Distance::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9060,14 +9092,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 {
     if(child_yang_name == "application")
     {
-        for(auto const & c : application)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Application>();
         c->parent = this;
         application.push_back(c);
@@ -9076,14 +9100,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 
     if(child_yang_name == "bgp")
     {
-        for(auto const & c : bgp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Bgp>();
         c->parent = this;
         bgp.push_back(c);
@@ -9101,14 +9117,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 
     if(child_yang_name == "eigrp")
     {
-        for(auto const & c : eigrp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Eigrp>();
         c->parent = this;
         eigrp.push_back(c);
@@ -9162,14 +9170,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 
     if(child_yang_name == "ospf")
     {
-        for(auto const & c : ospf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Ospf>();
         c->parent = this;
         ospf.push_back(c);
@@ -9178,14 +9178,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 
     if(child_yang_name == "ospfv3")
     {
-        for(auto const & c : ospfv3)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Ospfv3_>();
         c->parent = this;
         ospfv3.push_back(c);
@@ -9194,14 +9186,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 
     if(child_yang_name == "rip")
     {
-        for(auto const & c : rip)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Rip>();
         c->parent = this;
         rip.push_back(c);
@@ -9212,7 +9196,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
     {
         if(static_ == nullptr)
         {
-            static_ = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_>();
+            static_ = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static>();
         }
         return static_;
     }
@@ -9241,14 +9225,23 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : application)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : bgp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(connected != nullptr)
@@ -9256,9 +9249,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFa
         children["connected"] = connected;
     }
 
+    count = 0;
     for (auto const & c : eigrp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(isis != nullptr)
@@ -9286,19 +9283,31 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFa
         children["odr"] = odr;
     }
 
+    count = 0;
     for (auto const & c : ospf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ospfv3)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : rip)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(static_ != nullptr)
@@ -9396,6 +9405,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Application::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redist_options != nullptr)
     {
         children["redist-options"] = redist_options;
@@ -9497,6 +9507,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Application::RedistOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9637,6 +9648,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redist_options != nullptr)
     {
         children["redist-options"] = redist_options;
@@ -9738,6 +9750,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Bgp::RedistOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9873,6 +9886,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Connected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redist_options != nullptr)
     {
         children["redist-options"] = redist_options;
@@ -9964,6 +9978,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Connected::RedistOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10104,6 +10119,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Eigrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redist_options != nullptr)
     {
         children["redist-options"] = redist_options;
@@ -10205,6 +10221,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Eigrp::RedistOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10342,14 +10359,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 {
     if(child_yang_name == "isis-area")
     {
-        for(auto const & c : isis_area)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Isis::IsisArea>();
         c->parent = this;
         isis_area.push_back(c);
@@ -10371,9 +10380,14 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : isis_area)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(redist_options != nullptr)
@@ -10475,6 +10489,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Isis::IsisArea::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redist_options != nullptr)
     {
         children["redist-options"] = redist_options;
@@ -10586,6 +10601,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Isis::IsisArea::RedistOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10732,6 +10748,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Isis::RedistOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10885,6 +10902,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::IsoIgrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(area_tag_route_map_container != nullptr)
     {
         children["area-tag-route-map-container"] = area_tag_route_map_container;
@@ -10975,6 +10993,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::IsoIgrp::AreaTagRouteMapContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11073,6 +11092,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::IsoIgrp::IsoIgrpContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11188,6 +11208,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Lisp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redist_options != nullptr)
     {
         children["redist-options"] = redist_options;
@@ -11279,6 +11300,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Lisp::RedistOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11414,6 +11436,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Mobile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redist_options != nullptr)
     {
         children["redist-options"] = redist_options;
@@ -11505,6 +11528,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Mobile::RedistOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11640,6 +11664,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Odr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redist_options != nullptr)
     {
         children["redist-options"] = redist_options;
@@ -11731,6 +11756,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Odr::RedistOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11899,6 +11925,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(match != nullptr)
     {
         children["match"] = match;
@@ -12082,6 +12109,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Ospf::Match::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(internal != nullptr)
     {
         children["internal"] = internal;
@@ -12183,6 +12211,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Ospf::Match::Internal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12333,6 +12362,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Ospf::Match::External::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12493,6 +12523,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Ospf::Match::NssaExternal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12667,6 +12698,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Ospfv3_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(match != nullptr)
     {
         children["match"] = match;
@@ -12840,6 +12872,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Ospfv3_::Match::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(internal != nullptr)
     {
         children["internal"] = internal;
@@ -12941,6 +12974,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Ospfv3_::Match::Internal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13091,6 +13125,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Ospfv3_::Match::External::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13251,6 +13286,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Ospfv3_::Match::NssaExternal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13401,6 +13437,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Rip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redist_options != nullptr)
     {
         children["redist-options"] = redist_options;
@@ -13502,6 +13539,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Rip::RedistOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13580,38 +13618,38 @@ bool Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Rip::Re
     return false;
 }
 
-Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::Static_()
+Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::Static()
     :
-    redist_options(std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::RedistOptions>())
+    redist_options(std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::RedistOptions>())
 {
     redist_options->parent = this;
 
     yang_name = "static"; yang_parent_name = "redistribute"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::~Static_()
+Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::~Static()
 {
 }
 
-bool Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::has_data() const
+bool Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::has_data() const
 {
     return (redist_options !=  nullptr && redist_options->has_data());
 }
 
-bool Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::has_operation() const
+bool Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::has_operation() const
 {
     return is_set(yfilter)
 	|| (redist_options !=  nullptr && redist_options->has_operation());
 }
 
-std::string Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::get_segment_path() const
+std::string Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13620,13 +13658,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Ospfv3::AddressFa
 
 }
 
-std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "redist-options")
     {
         if(redist_options == nullptr)
         {
-            redist_options = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::RedistOptions>();
+            redist_options = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::RedistOptions>();
         }
         return redist_options;
     }
@@ -13634,9 +13672,10 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redist_options != nullptr)
     {
         children["redist-options"] = redist_options;
@@ -13645,22 +13684,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFa
     return children;
 }
 
-void Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "redist-options")
         return true;
     return false;
 }
 
-Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::RedistOptions::RedistOptions()
+Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::RedistOptions::RedistOptions()
     :
     metric{YType::uint32, "metric"},
     metric_type{YType::enumeration, "metric-type"},
@@ -13673,11 +13712,11 @@ Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::Red
     yang_name = "redist-options"; yang_parent_name = "static"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::RedistOptions::~RedistOptions()
+Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::RedistOptions::~RedistOptions()
 {
 }
 
-bool Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::RedistOptions::has_data() const
+bool Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::RedistOptions::has_data() const
 {
     return metric.is_set
 	|| metric_type.is_set
@@ -13687,7 +13726,7 @@ bool Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_
 	|| nssa_only.is_set;
 }
 
-bool Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::RedistOptions::has_operation() const
+bool Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::RedistOptions::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(metric.yfilter)
@@ -13698,14 +13737,14 @@ bool Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_
 	|| ydk::is_set(nssa_only.yfilter);
 }
 
-std::string Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::RedistOptions::get_segment_path() const
+std::string Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::RedistOptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "redist-options";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::RedistOptions::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::RedistOptions::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13720,18 +13759,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Router::Ospfv3::AddressFa
 
 }
 
-std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::RedistOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::RedistOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::RedistOptions::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::RedistOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::RedistOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::RedistOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "metric")
     {
@@ -13771,7 +13811,7 @@ void Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_
     }
 }
 
-void Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::RedistOptions::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::RedistOptions::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "metric")
     {
@@ -13799,7 +13839,7 @@ void Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_
     }
 }
 
-bool Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::RedistOptions::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::RedistOptions::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "metric" || name == "metric-type" || name == "tag" || name == "subnets" || name == "route-map" || name == "nssa-only")
         return true;
@@ -13868,6 +13908,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::MaximumPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold_warning_only_container != nullptr)
     {
         children["threshold-warning-only-container"] = threshold_warning_only_container;
@@ -13953,6 +13994,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::MaximumPrefix::ThresholdWarningOnlyContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14045,14 +14087,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 {
     if(child_yang_name == "non-global-vrf")
     {
-        for(auto const & c : non_global_vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf>();
         c->parent = this;
         non_global_vrf.push_back(c);
@@ -14074,9 +14108,14 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : non_global_vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(global != nullptr)
@@ -14229,14 +14268,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 {
     if(child_yang_name == "application")
     {
-        for(auto const & c : application)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Application>();
         c->parent = this;
         application.push_back(c);
@@ -14245,14 +14276,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 
     if(child_yang_name == "bgp")
     {
-        for(auto const & c : bgp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Bgp>();
         c->parent = this;
         bgp.push_back(c);
@@ -14270,14 +14293,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 
     if(child_yang_name == "eigrp")
     {
-        for(auto const & c : eigrp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Eigrp>();
         c->parent = this;
         eigrp.push_back(c);
@@ -14331,14 +14346,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 
     if(child_yang_name == "ospf")
     {
-        for(auto const & c : ospf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Ospf>();
         c->parent = this;
         ospf.push_back(c);
@@ -14347,14 +14354,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 
     if(child_yang_name == "ospfv3")
     {
-        for(auto const & c : ospfv3)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Ospfv3_>();
         c->parent = this;
         ospfv3.push_back(c);
@@ -14363,14 +14362,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 
     if(child_yang_name == "rip")
     {
-        for(auto const & c : rip)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Rip>();
         c->parent = this;
         rip.push_back(c);
@@ -14381,7 +14372,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
     {
         if(static_ == nullptr)
         {
-            static_ = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Static_>();
+            static_ = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Static>();
         }
         return static_;
     }
@@ -14392,14 +14383,23 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : application)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : bgp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(connected != nullptr)
@@ -14407,9 +14407,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFa
         children["connected"] = connected;
     }
 
+    count = 0;
     for (auto const & c : eigrp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(isis != nullptr)
@@ -14437,19 +14441,31 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFa
         children["odr"] = odr;
     }
 
+    count = 0;
     for (auto const & c : ospf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ospfv3)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : rip)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(static_ != nullptr)
@@ -14547,6 +14563,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Application::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redist_options != nullptr)
     {
         children["redist-options"] = redist_options;
@@ -14648,6 +14665,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Application::RedistOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14788,6 +14806,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redist_options != nullptr)
     {
         children["redist-options"] = redist_options;
@@ -14889,6 +14908,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Bgp::RedistOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15024,6 +15044,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Connected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redist_options != nullptr)
     {
         children["redist-options"] = redist_options;
@@ -15115,6 +15136,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Connected::RedistOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15255,6 +15277,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Eigrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redist_options != nullptr)
     {
         children["redist-options"] = redist_options;
@@ -15356,6 +15379,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Eigrp::RedistOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15493,14 +15517,6 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 {
     if(child_yang_name == "isis-area")
     {
-        for(auto const & c : isis_area)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Isis::IsisArea>();
         c->parent = this;
         isis_area.push_back(c);
@@ -15522,9 +15538,14 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : isis_area)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(redist_options != nullptr)
@@ -15626,6 +15647,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Isis::IsisArea::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redist_options != nullptr)
     {
         children["redist-options"] = redist_options;
@@ -15737,6 +15759,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Isis::IsisArea::RedistOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15883,6 +15906,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Isis::RedistOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16036,6 +16060,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::IsoIgrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(area_tag_route_map_container != nullptr)
     {
         children["area-tag-route-map-container"] = area_tag_route_map_container;
@@ -16126,6 +16151,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::IsoIgrp::AreaTagRouteMapContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16224,6 +16250,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::IsoIgrp::IsoIgrpContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16339,6 +16366,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Lisp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redist_options != nullptr)
     {
         children["redist-options"] = redist_options;
@@ -16430,6 +16458,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Lisp::RedistOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16565,6 +16594,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Mobile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redist_options != nullptr)
     {
         children["redist-options"] = redist_options;
@@ -16656,6 +16686,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Mobile::RedistOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16791,6 +16822,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Odr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redist_options != nullptr)
     {
         children["redist-options"] = redist_options;
@@ -16882,6 +16914,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Odr::RedistOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17050,6 +17083,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(match != nullptr)
     {
         children["match"] = match;
@@ -17233,6 +17267,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Ospf::Match::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(internal != nullptr)
     {
         children["internal"] = internal;
@@ -17334,6 +17369,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Ospf::Match::Internal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17484,6 +17520,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Ospf::Match::External::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17644,6 +17681,7 @@ std::shared_ptr<Entity> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Ospf::Match::NssaExternal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17732,8 +17770,8 @@ bool Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::No
     return false;
 }
 
-const Enum::YLeaf Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static_::RedistOptions::MetricType::Y_1 {0, "1"};
-const Enum::YLeaf Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static_::RedistOptions::MetricType::Y_2 {1, "2"};
+const Enum::YLeaf Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static::RedistOptions::MetricType::Y_1 {0, "1"};
+const Enum::YLeaf Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Redistribute::Vrf_::Global::Static::RedistOptions::MetricType::Y_2 {1, "2"};
 
 const Enum::YLeaf Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Authentication::Mode::deployment {0, "deployment"};
 const Enum::YLeaf Native::Router::Ospfv3::AddressFamily::Ipv4::Vrf::Authentication::Mode::normal {1, "normal"};
@@ -17819,8 +17857,8 @@ const Enum::YLeaf Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistri
 const Enum::YLeaf Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Rip::RedistOptions::MetricType::Y_1 {0, "1"};
 const Enum::YLeaf Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Rip::RedistOptions::MetricType::Y_2 {1, "2"};
 
-const Enum::YLeaf Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::RedistOptions::MetricType::Y_1 {0, "1"};
-const Enum::YLeaf Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static_::RedistOptions::MetricType::Y_2 {1, "2"};
+const Enum::YLeaf Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::RedistOptions::MetricType::Y_1 {0, "1"};
+const Enum::YLeaf Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Static::RedistOptions::MetricType::Y_2 {1, "2"};
 
 const Enum::YLeaf Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Application::RedistOptions::MetricType::Y_1 {0, "1"};
 const Enum::YLeaf Native::Router::Ospfv3::AddressFamily::Ipv6::Unicast::Redistribute::Vrf::NonGlobalVrf::Application::RedistOptions::MetricType::Y_2 {1, "2"};

@@ -5,15 +5,15 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_invmgr_oper_2.hpp"
-#include "Cisco_IOS_XR_invmgr_oper_4.hpp"
 #include "Cisco_IOS_XR_invmgr_oper_3.hpp"
+#include "Cisco_IOS_XR_invmgr_oper_4.hpp"
 
 using namespace ydk;
 
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_invmgr_oper {
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvBasicBag::InvBasicBag()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvBasicBag::InvBasicBag()
     :
     description{YType::str, "description"},
     vendor_type{YType::str, "vendor-type"},
@@ -46,11 +46,11 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::Inv
     yang_name = "inv-basic-bag"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvBasicBag::~InvBasicBag()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvBasicBag::~InvBasicBag()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvBasicBag::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvBasicBag::has_data() const
 {
     return description.is_set
 	|| vendor_type.is_set
@@ -80,7 +80,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes
 	|| unique_id.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvBasicBag::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvBasicBag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(description.yfilter)
@@ -111,14 +111,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes
 	|| ydk::is_set(unique_id.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvBasicBag::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvBasicBag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "inv-basic-bag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvBasicBag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvBasicBag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -153,18 +153,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvBasicBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvBasicBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvBasicBag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvBasicBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvBasicBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvBasicBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "description")
     {
@@ -324,7 +325,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvBasicBag::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvBasicBag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "description")
     {
@@ -432,14 +433,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvBasicBag::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvBasicBag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::InvEepromInfo()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::InvEepromInfo()
     :
     inv_card_type{YType::uint8, "inv-card-type"},
     opaque_data{YType::str, "opaque-data"},
@@ -447,18 +448,18 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::Inv
     has_eeprom{YType::uint32, "has-eeprom"},
     description{YType::str, "description"}
     	,
-    eeprom(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom>())
+    eeprom(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom>())
 {
     eeprom->parent = this;
 
     yang_name = "inv-eeprom-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::~InvEepromInfo()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::~InvEepromInfo()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::has_data() const
 {
     return inv_card_type.is_set
 	|| opaque_data.is_set
@@ -468,7 +469,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes
 	|| (eeprom !=  nullptr && eeprom->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(inv_card_type.yfilter)
@@ -479,14 +480,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes
 	|| (eeprom !=  nullptr && eeprom->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "inv-eeprom-info";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -500,13 +501,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "eeprom")
     {
         if(eeprom == nullptr)
         {
-            eeprom = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom>();
+            eeprom = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom>();
         }
         return eeprom;
     }
@@ -514,9 +515,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(eeprom != nullptr)
     {
         children["eeprom"] = eeprom;
@@ -525,7 +527,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "inv-card-type")
     {
@@ -559,7 +561,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "inv-card-type")
     {
@@ -583,14 +585,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "eeprom" || name == "inv-card-type" || name == "opaque-data" || name == "opaque-data-size" || name == "has-eeprom" || name == "description")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Eeprom()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Eeprom()
     :
     description{YType::str, "description"},
     idprom_format_rev{YType::str, "idprom-format-rev"},
@@ -649,18 +651,18 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::Inv
     snmpoid{YType::str, "snmpoid"},
     rma_code{YType::str, "rma-code"}
     	,
-    rma(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma>())
+    rma(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma>())
 {
     rma->parent = this;
 
     yang_name = "eeprom"; yang_parent_name = "inv-eeprom-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::~Eeprom()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::~Eeprom()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::has_data() const
 {
     return description.is_set
 	|| idprom_format_rev.is_set
@@ -721,7 +723,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes
 	|| (rma !=  nullptr && rma->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(description.yfilter)
@@ -783,14 +785,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes
 	|| (rma !=  nullptr && rma->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "eeprom";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -855,13 +857,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rma")
     {
         if(rma == nullptr)
         {
-            rma = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma>();
+            rma = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma>();
         }
         return rma;
     }
@@ -869,9 +871,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rma != nullptr)
     {
         children["rma"] = rma;
@@ -880,7 +883,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "description")
     {
@@ -1220,7 +1223,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "description")
     {
@@ -1448,14 +1451,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rma" || name == "description" || name == "idprom-format-rev" || name == "controller-family" || name == "controller-type" || name == "vid" || name == "hwid" || name == "pid" || name == "udi-description" || name == "udi-name" || name == "clei" || name == "eci" || name == "top-assem-part-num" || name == "top-assem-vid" || name == "pca-num" || name == "pcavid" || name == "chassis-sid" || name == "dev-num1" || name == "dev-num2" || name == "dev-num3" || name == "dev-num4" || name == "dev-num5" || name == "dev-num6" || name == "dev-num7" || name == "manu-test-data" || name == "asset-id" || name == "asset-alias" || name == "base-mac-address1" || name == "mac-add-blk-size1" || name == "base-mac-address2" || name == "mac-add-blk-size2" || name == "base-mac-address3" || name == "mac-add-blk-size3" || name == "base-mac-address4" || name == "mac-add-blk-size4" || name == "pcb-serial-num" || name == "power-supply-type" || name == "power-consumption" || name == "block-signature" || name == "block-version" || name == "block-length" || name == "block-checksum" || name == "eeprom-size" || name == "block-count" || name == "fru-major-type" || name == "fru-minor-type" || name == "oem-string" || name == "product-id" || name == "serial-number" || name == "part-number" || name == "part-revision" || name == "mfg-deviation" || name == "hw-version" || name == "mfg-bits" || name == "engineer-use" || name == "snmpoid" || name == "rma-code")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma::Rma()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma::Rma()
     :
     test_history{YType::str, "test-history"},
     rma_number{YType::str, "rma-number"},
@@ -1465,18 +1468,18 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::Inv
     yang_name = "rma"; yang_parent_name = "eeprom"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma::~Rma()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma::~Rma()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma::has_data() const
 {
     return test_history.is_set
 	|| rma_number.is_set
 	|| rma_history.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(test_history.yfilter)
@@ -1484,14 +1487,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes
 	|| ydk::is_set(rma_history.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rma";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1503,18 +1506,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "test-history")
     {
@@ -1536,7 +1540,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "test-history")
     {
@@ -1552,28 +1556,28 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Attributes::InvEepromInfo::Eeprom::Rma::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "test-history" || name == "rma-number" || name == "rma-history")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Attributes()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Attributes()
     :
     module_done{YType::int32, "module-done"},
     vm_node_id{YType::uint32, "vm-node-id"},
     vm_done{YType::int32, "vm-done"},
     node_id{YType::uint32, "node-id"}
     	,
-    env_sensor_info(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo>())
-	,pwg_info(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::PwgInfo>())
-	,env_sensor_info_xml(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml>())
-	,inv_asset_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag>())
-	,threshold(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold>())
-	,fru_info(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo>())
-	,inv_basic_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag>())
-	,inv_eeprom_info(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo>())
+    env_sensor_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo>())
+	,pwg_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::PwgInfo>())
+	,env_sensor_info_xml(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml>())
+	,inv_asset_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag>())
+	,threshold(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold>())
+	,fru_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo>())
+	,inv_basic_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag>())
+	,inv_eeprom_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo>())
 {
     env_sensor_info->parent = this;
     pwg_info->parent = this;
@@ -1587,11 +1591,11 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Attributes()
     yang_name = "attributes"; yang_parent_name = "tsi1"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::~Attributes()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::~Attributes()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::has_data() const
 {
     return module_done.is_set
 	|| vm_node_id.is_set
@@ -1607,7 +1611,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::has_data() 
 	|| (inv_eeprom_info !=  nullptr && inv_eeprom_info->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(module_done.yfilter)
@@ -1624,14 +1628,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::has_operati
 	|| (inv_eeprom_info !=  nullptr && inv_eeprom_info->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "attributes";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1644,13 +1648,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "env-sensor-info")
     {
         if(env_sensor_info == nullptr)
         {
-            env_sensor_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo>();
+            env_sensor_info = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo>();
         }
         return env_sensor_info;
     }
@@ -1659,7 +1663,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     {
         if(pwg_info == nullptr)
         {
-            pwg_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::PwgInfo>();
+            pwg_info = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::PwgInfo>();
         }
         return pwg_info;
     }
@@ -1668,7 +1672,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     {
         if(env_sensor_info_xml == nullptr)
         {
-            env_sensor_info_xml = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml>();
+            env_sensor_info_xml = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml>();
         }
         return env_sensor_info_xml;
     }
@@ -1677,7 +1681,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     {
         if(inv_asset_bag == nullptr)
         {
-            inv_asset_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag>();
+            inv_asset_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag>();
         }
         return inv_asset_bag;
     }
@@ -1686,7 +1690,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     {
         if(threshold == nullptr)
         {
-            threshold = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold>();
+            threshold = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold>();
         }
         return threshold;
     }
@@ -1695,7 +1699,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     {
         if(fru_info == nullptr)
         {
-            fru_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo>();
+            fru_info = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo>();
         }
         return fru_info;
     }
@@ -1704,7 +1708,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     {
         if(inv_basic_bag == nullptr)
         {
-            inv_basic_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag>();
+            inv_basic_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag>();
         }
         return inv_basic_bag;
     }
@@ -1713,7 +1717,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     {
         if(inv_eeprom_info == nullptr)
         {
-            inv_eeprom_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo>();
+            inv_eeprom_info = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo>();
         }
         return inv_eeprom_info;
     }
@@ -1721,9 +1725,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(env_sensor_info != nullptr)
     {
         children["env-sensor-info"] = env_sensor_info;
@@ -1767,7 +1772,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "module-done")
     {
@@ -1795,7 +1800,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::set_value(c
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "module-done")
     {
@@ -1815,14 +1820,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::set_filter(
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "env-sensor-info" || name == "pwg-info" || name == "env-sensor-info-xml" || name == "inv-asset-bag" || name == "threshold" || name == "fru-info" || name == "inv-basic-bag" || name == "inv-eeprom-info" || name == "module-done" || name == "vm-node-id" || name == "vm-done" || name == "node-id")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo::EnvSensorInfo()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo::EnvSensorInfo()
     :
     field_validity_bitmap{YType::uint32, "field-validity-bitmap"},
     device_description{YType::str, "device-description"},
@@ -1841,11 +1846,11 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo::E
     yang_name = "env-sensor-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo::~EnvSensorInfo()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo::~EnvSensorInfo()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo::has_data() const
 {
     return field_validity_bitmap.is_set
 	|| device_description.is_set
@@ -1861,7 +1866,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorIn
 	|| update_rate.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(field_validity_bitmap.yfilter)
@@ -1878,14 +1883,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorIn
 	|| ydk::is_set(update_rate.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "env-sensor-info";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1906,18 +1911,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "field-validity-bitmap")
     {
@@ -1993,7 +1999,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorIn
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "field-validity-bitmap")
     {
@@ -2045,14 +2051,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorIn
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "field-validity-bitmap" || name == "device-description" || name == "units" || name == "device-id" || name == "value" || name == "alarm-type" || name == "data-type" || name == "scale" || name == "precision" || name == "status" || name == "age-time-stamp" || name == "update-rate")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::PwgInfo()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::PwgInfo()
     :
     power_group_redundancy_mode{YType::int32, "power-group-redundancy-mode"},
     power_group_power_units{YType::str, "power-group-power-units"},
@@ -2063,11 +2069,11 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::PwgInfo
     yang_name = "pwg-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::~PwgInfo()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::~PwgInfo()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::has_data() const
 {
     return power_group_redundancy_mode.is_set
 	|| power_group_power_units.is_set
@@ -2075,7 +2081,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::ha
 	|| power_group_drawn_current.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(power_group_redundancy_mode.yfilter)
@@ -2084,14 +2090,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::ha
 	|| ydk::is_set(power_group_drawn_current.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pwg-info";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2104,18 +2110,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "power-group-redundancy-mode")
     {
@@ -2143,7 +2150,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::se
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "power-group-redundancy-mode")
     {
@@ -2163,14 +2170,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::se
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::PwgInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "power-group-redundancy-mode" || name == "power-group-power-units" || name == "power-group-available-current" || name == "power-group-drawn-current")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::EnvSensorInfoXml()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::EnvSensorInfoXml()
     :
     description{YType::str, "description"},
     units{YType::enumeration, "units"},
@@ -2179,18 +2186,18 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml
     status{YType::enumeration, "status"},
     update_rate{YType::uint32, "update-rate"}
     	,
-    threshold(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold>())
+    threshold(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold>())
 {
     threshold->parent = this;
 
     yang_name = "env-sensor-info-xml"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::~EnvSensorInfoXml()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::~EnvSensorInfoXml()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::has_data() const
 {
     return description.is_set
 	|| units.is_set
@@ -2201,7 +2208,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorIn
 	|| (threshold !=  nullptr && threshold->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(description.yfilter)
@@ -2213,14 +2220,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorIn
 	|| (threshold !=  nullptr && threshold->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "env-sensor-info-xml";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2235,13 +2242,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold")
     {
         if(threshold == nullptr)
         {
-            threshold = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold>();
+            threshold = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold>();
         }
         return threshold;
     }
@@ -2249,9 +2256,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -2260,7 +2268,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "description")
     {
@@ -2300,7 +2308,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorIn
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "description")
     {
@@ -2328,24 +2336,24 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorIn
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "threshold" || name == "description" || name == "units" || name == "value" || name == "data-type" || name == "status" || name == "update-rate")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::Threshold()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::Threshold()
 {
 
     yang_name = "threshold"; yang_parent_name = "env-sensor-info-xml"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::~Threshold()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::~Threshold()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::has_data() const
 {
     for (std::size_t index=0; index<threshold_array.size(); index++)
     {
@@ -2355,7 +2363,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorIn
     return false;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::has_operation() const
 {
     for (std::size_t index=0; index<threshold_array.size(); index++)
     {
@@ -2365,14 +2373,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorIn
     return is_set(yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2381,19 +2389,11 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold-array")
     {
-        for(auto const & c : threshold_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray>();
+        auto c = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray>();
         c->parent = this;
         threshold_array.push_back(c);
         return c;
@@ -2402,33 +2402,38 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : threshold_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "threshold-array")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::ThresholdArray()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::ThresholdArray()
     :
     threshold_severity{YType::enumeration, "threshold-severity"},
     threshold_relation{YType::enumeration, "threshold-relation"},
@@ -2439,11 +2444,11 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml
     yang_name = "threshold-array"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::~ThresholdArray()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::~ThresholdArray()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::has_data() const
 {
     return threshold_severity.is_set
 	|| threshold_relation.is_set
@@ -2451,7 +2456,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorIn
 	|| threshold_name.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(threshold_severity.yfilter)
@@ -2460,14 +2465,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorIn
 	|| ydk::is_set(threshold_name.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold-array";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2480,18 +2485,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "threshold-severity")
     {
@@ -2519,7 +2525,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorIn
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "threshold-severity")
     {
@@ -2539,14 +2545,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorIn
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "threshold-severity" || name == "threshold-relation" || name == "threshold-value" || name == "threshold-name")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag::InvAssetBag()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag::InvAssetBag()
     :
     part_number{YType::str, "part-number"},
     manufacturer_assembly_number{YType::str, "manufacturer-assembly-number"},
@@ -2560,11 +2566,11 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag::Inv
     yang_name = "inv-asset-bag"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag::~InvAssetBag()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag::~InvAssetBag()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag::has_data() const
 {
     return part_number.is_set
 	|| manufacturer_assembly_number.is_set
@@ -2575,7 +2581,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag
 	|| original_equipment_manufacturer_string.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(part_number.yfilter)
@@ -2587,14 +2593,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag
 	|| ydk::is_set(original_equipment_manufacturer_string.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "inv-asset-bag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2610,18 +2616,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "part-number")
     {
@@ -2667,7 +2674,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "part-number")
     {
@@ -2699,21 +2706,21 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvAssetBag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "part-number" || name == "manufacturer-assembly-number" || name == "manufacturer-assembly-revision" || name == "manufacturer-firmware-identifier" || name == "manufacturer-software-identifier" || name == "manufacturer-common-language-equipment-identifier" || name == "original-equipment-manufacturer-string")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::Threshold()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::Threshold()
     :
-    major_lo(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo>())
-	,critical_hi(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi>())
-	,minor_hi(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi>())
-	,major_hi(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi>())
-	,critical_lo(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo>())
-	,minor_lo(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo>())
+    major_lo(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo>())
+	,critical_hi(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi>())
+	,minor_hi(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi>())
+	,major_hi(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi>())
+	,critical_lo(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo>())
+	,minor_lo(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo>())
 {
     major_lo->parent = this;
     critical_hi->parent = this;
@@ -2725,11 +2732,11 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::Thres
     yang_name = "threshold"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::~Threshold()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::~Threshold()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::has_data() const
 {
     return (major_lo !=  nullptr && major_lo->has_data())
 	|| (critical_hi !=  nullptr && critical_hi->has_data())
@@ -2739,7 +2746,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
 	|| (minor_lo !=  nullptr && minor_lo->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::has_operation() const
 {
     return is_set(yfilter)
 	|| (major_lo !=  nullptr && major_lo->has_operation())
@@ -2750,14 +2757,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
 	|| (minor_lo !=  nullptr && minor_lo->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2766,13 +2773,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "major-lo")
     {
         if(major_lo == nullptr)
         {
-            major_lo = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo>();
+            major_lo = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo>();
         }
         return major_lo;
     }
@@ -2781,7 +2788,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     {
         if(critical_hi == nullptr)
         {
-            critical_hi = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi>();
+            critical_hi = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi>();
         }
         return critical_hi;
     }
@@ -2790,7 +2797,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     {
         if(minor_hi == nullptr)
         {
-            minor_hi = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi>();
+            minor_hi = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi>();
         }
         return minor_hi;
     }
@@ -2799,7 +2806,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     {
         if(major_hi == nullptr)
         {
-            major_hi = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi>();
+            major_hi = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi>();
         }
         return major_hi;
     }
@@ -2808,7 +2815,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     {
         if(critical_lo == nullptr)
         {
-            critical_lo = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo>();
+            critical_lo = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo>();
         }
         return critical_lo;
     }
@@ -2817,7 +2824,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     {
         if(minor_lo == nullptr)
         {
-            minor_lo = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo>();
+            minor_lo = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo>();
         }
         return minor_lo;
     }
@@ -2825,9 +2832,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(major_lo != nullptr)
     {
         children["major-lo"] = major_lo;
@@ -2861,53 +2869,53 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "major-lo" || name == "critical-hi" || name == "minor-hi" || name == "major-hi" || name == "critical-lo" || name == "minor-lo")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::MajorLo()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::MajorLo()
     :
-    thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag>())
+    thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag>())
 {
     thresh_bag->parent = this;
 
     yang_name = "major-lo"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::~MajorLo()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::~MajorLo()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::has_data() const
 {
     return (thresh_bag !=  nullptr && thresh_bag->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::has_operation() const
 {
     return is_set(yfilter)
 	|| (thresh_bag !=  nullptr && thresh_bag->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "major-lo";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2916,13 +2924,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "thresh-bag")
     {
         if(thresh_bag == nullptr)
         {
-            thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag>();
+            thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag>();
         }
         return thresh_bag;
     }
@@ -2930,9 +2938,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -2941,22 +2950,22 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "thresh-bag")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag::ThreshBag()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag::ThreshBag()
     :
     threshold_severity{YType::uint32, "threshold-severity"},
     threshold_relation{YType::uint32, "threshold-relation"},
@@ -2968,11 +2977,11 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::Major
     yang_name = "thresh-bag"; yang_parent_name = "major-lo"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag::~ThreshBag()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag::~ThreshBag()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag::has_data() const
 {
     return threshold_severity.is_set
 	|| threshold_relation.is_set
@@ -2981,7 +2990,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
 	|| threshold_notification_enabled.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(threshold_severity.yfilter)
@@ -2991,14 +3000,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
 	|| ydk::is_set(threshold_notification_enabled.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "thresh-bag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3012,18 +3021,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "threshold-severity")
     {
@@ -3057,7 +3067,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "threshold-severity")
     {
@@ -3081,45 +3091,45 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorLo::ThreshBag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "threshold-severity" || name == "threshold-relation" || name == "threshold-value" || name == "threshold-evaluation" || name == "threshold-notification-enabled")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::CriticalHi()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::CriticalHi()
     :
-    thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag>())
+    thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag>())
 {
     thresh_bag->parent = this;
 
     yang_name = "critical-hi"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::~CriticalHi()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::~CriticalHi()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::has_data() const
 {
     return (thresh_bag !=  nullptr && thresh_bag->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::has_operation() const
 {
     return is_set(yfilter)
 	|| (thresh_bag !=  nullptr && thresh_bag->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "critical-hi";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3128,13 +3138,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "thresh-bag")
     {
         if(thresh_bag == nullptr)
         {
-            thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag>();
+            thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag>();
         }
         return thresh_bag;
     }
@@ -3142,9 +3152,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -3153,22 +3164,22 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "thresh-bag")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag::ThreshBag()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag::ThreshBag()
     :
     threshold_severity{YType::uint32, "threshold-severity"},
     threshold_relation{YType::uint32, "threshold-relation"},
@@ -3180,11 +3191,11 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::Criti
     yang_name = "thresh-bag"; yang_parent_name = "critical-hi"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag::~ThreshBag()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag::~ThreshBag()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag::has_data() const
 {
     return threshold_severity.is_set
 	|| threshold_relation.is_set
@@ -3193,7 +3204,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
 	|| threshold_notification_enabled.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(threshold_severity.yfilter)
@@ -3203,14 +3214,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
 	|| ydk::is_set(threshold_notification_enabled.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "thresh-bag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3224,18 +3235,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "threshold-severity")
     {
@@ -3269,7 +3281,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "threshold-severity")
     {
@@ -3293,45 +3305,45 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalHi::ThreshBag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "threshold-severity" || name == "threshold-relation" || name == "threshold-value" || name == "threshold-evaluation" || name == "threshold-notification-enabled")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::MinorHi()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::MinorHi()
     :
-    thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag>())
+    thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag>())
 {
     thresh_bag->parent = this;
 
     yang_name = "minor-hi"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::~MinorHi()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::~MinorHi()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::has_data() const
 {
     return (thresh_bag !=  nullptr && thresh_bag->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::has_operation() const
 {
     return is_set(yfilter)
 	|| (thresh_bag !=  nullptr && thresh_bag->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "minor-hi";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3340,13 +3352,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "thresh-bag")
     {
         if(thresh_bag == nullptr)
         {
-            thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag>();
+            thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag>();
         }
         return thresh_bag;
     }
@@ -3354,9 +3366,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -3365,22 +3378,22 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "thresh-bag")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag::ThreshBag()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag::ThreshBag()
     :
     threshold_severity{YType::uint32, "threshold-severity"},
     threshold_relation{YType::uint32, "threshold-relation"},
@@ -3392,11 +3405,11 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::Minor
     yang_name = "thresh-bag"; yang_parent_name = "minor-hi"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag::~ThreshBag()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag::~ThreshBag()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag::has_data() const
 {
     return threshold_severity.is_set
 	|| threshold_relation.is_set
@@ -3405,7 +3418,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
 	|| threshold_notification_enabled.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(threshold_severity.yfilter)
@@ -3415,14 +3428,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
 	|| ydk::is_set(threshold_notification_enabled.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "thresh-bag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3436,18 +3449,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "threshold-severity")
     {
@@ -3481,7 +3495,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "threshold-severity")
     {
@@ -3505,45 +3519,45 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorHi::ThreshBag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "threshold-severity" || name == "threshold-relation" || name == "threshold-value" || name == "threshold-evaluation" || name == "threshold-notification-enabled")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::MajorHi()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::MajorHi()
     :
-    thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag>())
+    thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag>())
 {
     thresh_bag->parent = this;
 
     yang_name = "major-hi"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::~MajorHi()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::~MajorHi()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::has_data() const
 {
     return (thresh_bag !=  nullptr && thresh_bag->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::has_operation() const
 {
     return is_set(yfilter)
 	|| (thresh_bag !=  nullptr && thresh_bag->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "major-hi";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3552,13 +3566,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "thresh-bag")
     {
         if(thresh_bag == nullptr)
         {
-            thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag>();
+            thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag>();
         }
         return thresh_bag;
     }
@@ -3566,9 +3580,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -3577,22 +3592,22 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "thresh-bag")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag::ThreshBag()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag::ThreshBag()
     :
     threshold_severity{YType::uint32, "threshold-severity"},
     threshold_relation{YType::uint32, "threshold-relation"},
@@ -3604,11 +3619,11 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::Major
     yang_name = "thresh-bag"; yang_parent_name = "major-hi"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag::~ThreshBag()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag::~ThreshBag()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag::has_data() const
 {
     return threshold_severity.is_set
 	|| threshold_relation.is_set
@@ -3617,7 +3632,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
 	|| threshold_notification_enabled.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(threshold_severity.yfilter)
@@ -3627,14 +3642,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
 	|| ydk::is_set(threshold_notification_enabled.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "thresh-bag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3648,18 +3663,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "threshold-severity")
     {
@@ -3693,7 +3709,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "threshold-severity")
     {
@@ -3717,45 +3733,45 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MajorHi::ThreshBag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "threshold-severity" || name == "threshold-relation" || name == "threshold-value" || name == "threshold-evaluation" || name == "threshold-notification-enabled")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::CriticalLo()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::CriticalLo()
     :
-    thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag>())
+    thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag>())
 {
     thresh_bag->parent = this;
 
     yang_name = "critical-lo"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::~CriticalLo()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::~CriticalLo()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::has_data() const
 {
     return (thresh_bag !=  nullptr && thresh_bag->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::has_operation() const
 {
     return is_set(yfilter)
 	|| (thresh_bag !=  nullptr && thresh_bag->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "critical-lo";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3764,13 +3780,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "thresh-bag")
     {
         if(thresh_bag == nullptr)
         {
-            thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag>();
+            thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag>();
         }
         return thresh_bag;
     }
@@ -3778,9 +3794,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -3789,22 +3806,22 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "thresh-bag")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag::ThreshBag()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag::ThreshBag()
     :
     threshold_severity{YType::uint32, "threshold-severity"},
     threshold_relation{YType::uint32, "threshold-relation"},
@@ -3816,11 +3833,11 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::Criti
     yang_name = "thresh-bag"; yang_parent_name = "critical-lo"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag::~ThreshBag()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag::~ThreshBag()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag::has_data() const
 {
     return threshold_severity.is_set
 	|| threshold_relation.is_set
@@ -3829,7 +3846,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
 	|| threshold_notification_enabled.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(threshold_severity.yfilter)
@@ -3839,14 +3856,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
 	|| ydk::is_set(threshold_notification_enabled.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "thresh-bag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3860,18 +3877,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "threshold-severity")
     {
@@ -3905,7 +3923,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "threshold-severity")
     {
@@ -3929,45 +3947,45 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::CriticalLo::ThreshBag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "threshold-severity" || name == "threshold-relation" || name == "threshold-value" || name == "threshold-evaluation" || name == "threshold-notification-enabled")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::MinorLo()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::MinorLo()
     :
-    thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag>())
+    thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag>())
 {
     thresh_bag->parent = this;
 
     yang_name = "minor-lo"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::~MinorLo()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::~MinorLo()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::has_data() const
 {
     return (thresh_bag !=  nullptr && thresh_bag->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::has_operation() const
 {
     return is_set(yfilter)
 	|| (thresh_bag !=  nullptr && thresh_bag->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "minor-lo";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3976,13 +3994,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "thresh-bag")
     {
         if(thresh_bag == nullptr)
         {
-            thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag>();
+            thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag>();
         }
         return thresh_bag;
     }
@@ -3990,9 +4008,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -4001,22 +4020,22 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "thresh-bag")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag::ThreshBag()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag::ThreshBag()
     :
     threshold_severity{YType::uint32, "threshold-severity"},
     threshold_relation{YType::uint32, "threshold-relation"},
@@ -4028,11 +4047,11 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::Minor
     yang_name = "thresh-bag"; yang_parent_name = "minor-lo"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag::~ThreshBag()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag::~ThreshBag()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag::has_data() const
 {
     return threshold_severity.is_set
 	|| threshold_relation.is_set
@@ -4041,7 +4060,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
 	|| threshold_notification_enabled.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(threshold_severity.yfilter)
@@ -4051,14 +4070,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
 	|| ydk::is_set(threshold_notification_enabled.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "thresh-bag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4072,18 +4091,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "threshold-severity")
     {
@@ -4117,7 +4137,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "threshold-severity")
     {
@@ -4141,14 +4161,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::Threshold::MinorLo::ThreshBag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "threshold-severity" || name == "threshold-relation" || name == "threshold-value" || name == "threshold-evaluation" || name == "threshold-notification-enabled")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::FruInfo()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::FruInfo()
     :
     card_administrative_state{YType::int32, "card-administrative-state"},
     power_administrative_state{YType::int32, "power-administrative-state"},
@@ -4158,8 +4178,8 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::FruInfo
     power_current_measurement{YType::int32, "power-current-measurement"},
     power_operational_state{YType::int32, "power-operational-state"}
     	,
-    last_operational_state_change(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange>())
-	,card_up_time(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime>())
+    last_operational_state_change(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange>())
+	,card_up_time(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime>())
 {
     last_operational_state_change->parent = this;
     card_up_time->parent = this;
@@ -4167,11 +4187,11 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::FruInfo
     yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::~FruInfo()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::~FruInfo()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::has_data() const
 {
     return card_administrative_state.is_set
 	|| power_administrative_state.is_set
@@ -4184,7 +4204,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::ha
 	|| (card_up_time !=  nullptr && card_up_time->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(card_administrative_state.yfilter)
@@ -4198,14 +4218,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::ha
 	|| (card_up_time !=  nullptr && card_up_time->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fru-info";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4221,13 +4241,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "last-operational-state-change")
     {
         if(last_operational_state_change == nullptr)
         {
-            last_operational_state_change = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange>();
+            last_operational_state_change = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange>();
         }
         return last_operational_state_change;
     }
@@ -4236,7 +4256,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     {
         if(card_up_time == nullptr)
         {
-            card_up_time = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime>();
+            card_up_time = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime>();
         }
         return card_up_time;
     }
@@ -4244,9 +4264,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_operational_state_change != nullptr)
     {
         children["last-operational-state-change"] = last_operational_state_change;
@@ -4260,7 +4281,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "card-administrative-state")
     {
@@ -4306,7 +4327,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::se
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "card-administrative-state")
     {
@@ -4338,14 +4359,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::se
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "last-operational-state-change" || name == "card-up-time" || name == "card-administrative-state" || name == "power-administrative-state" || name == "card-operational-state" || name == "card-monitor-state" || name == "card-reset-reason" || name == "power-current-measurement" || name == "power-operational-state")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange::LastOperationalStateChange()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange::LastOperationalStateChange()
     :
     time_in_seconds{YType::int32, "time-in-seconds"},
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
@@ -4354,31 +4375,31 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOpe
     yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange::has_data() const
 {
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(time_in_seconds.yfilter)
 	|| ydk::is_set(time_in_nano_seconds.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "last-operational-state-change";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4389,18 +4410,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "time-in-seconds")
     {
@@ -4416,7 +4438,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::La
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "time-in-seconds")
     {
@@ -4428,14 +4450,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::La
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::LastOperationalStateChange::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "time-in-seconds" || name == "time-in-nano-seconds")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime::CardUpTime()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime::CardUpTime()
     :
     time_in_seconds{YType::int32, "time-in-seconds"},
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
@@ -4444,31 +4466,31 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpT
     yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime::~CardUpTime()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime::~CardUpTime()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime::has_data() const
 {
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(time_in_seconds.yfilter)
 	|| ydk::is_set(time_in_nano_seconds.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "card-up-time";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4479,18 +4501,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "time-in-seconds")
     {
@@ -4506,7 +4529,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::Ca
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "time-in-seconds")
     {
@@ -4518,14 +4541,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::Ca
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::FruInfo::CardUpTime::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "time-in-seconds" || name == "time-in-nano-seconds")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag::InvBasicBag()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag::InvBasicBag()
     :
     description{YType::str, "description"},
     vendor_type{YType::str, "vendor-type"},
@@ -4558,11 +4581,11 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag::Inv
     yang_name = "inv-basic-bag"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag::~InvBasicBag()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag::~InvBasicBag()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag::has_data() const
 {
     return description.is_set
 	|| vendor_type.is_set
@@ -4592,7 +4615,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag
 	|| unique_id.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(description.yfilter)
@@ -4623,14 +4646,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag
 	|| ydk::is_set(unique_id.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "inv-basic-bag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4665,18 +4688,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "description")
     {
@@ -4836,7 +4860,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "description")
     {
@@ -4944,14 +4968,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvBasicBag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::InvEepromInfo()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::InvEepromInfo()
     :
     inv_card_type{YType::uint8, "inv-card-type"},
     opaque_data{YType::str, "opaque-data"},
@@ -4959,18 +4983,18 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::I
     has_eeprom{YType::uint32, "has-eeprom"},
     description{YType::str, "description"}
     	,
-    eeprom(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom>())
+    eeprom(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom>())
 {
     eeprom->parent = this;
 
     yang_name = "inv-eeprom-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::~InvEepromInfo()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::~InvEepromInfo()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::has_data() const
 {
     return inv_card_type.is_set
 	|| opaque_data.is_set
@@ -4980,7 +5004,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromIn
 	|| (eeprom !=  nullptr && eeprom->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(inv_card_type.yfilter)
@@ -4991,14 +5015,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromIn
 	|| (eeprom !=  nullptr && eeprom->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "inv-eeprom-info";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5012,13 +5036,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "eeprom")
     {
         if(eeprom == nullptr)
         {
-            eeprom = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom>();
+            eeprom = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom>();
         }
         return eeprom;
     }
@@ -5026,9 +5050,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(eeprom != nullptr)
     {
         children["eeprom"] = eeprom;
@@ -5037,7 +5062,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "inv-card-type")
     {
@@ -5071,7 +5096,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromIn
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "inv-card-type")
     {
@@ -5095,14 +5120,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromIn
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "eeprom" || name == "inv-card-type" || name == "opaque-data" || name == "opaque-data-size" || name == "has-eeprom" || name == "description")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Eeprom()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Eeprom()
     :
     description{YType::str, "description"},
     idprom_format_rev{YType::str, "idprom-format-rev"},
@@ -5161,18 +5186,18 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::E
     snmpoid{YType::str, "snmpoid"},
     rma_code{YType::str, "rma-code"}
     	,
-    rma(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma>())
+    rma(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma>())
 {
     rma->parent = this;
 
     yang_name = "eeprom"; yang_parent_name = "inv-eeprom-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::~Eeprom()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::~Eeprom()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::has_data() const
 {
     return description.is_set
 	|| idprom_format_rev.is_set
@@ -5233,7 +5258,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromIn
 	|| (rma !=  nullptr && rma->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(description.yfilter)
@@ -5295,14 +5320,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromIn
 	|| (rma !=  nullptr && rma->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "eeprom";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5367,13 +5392,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rma")
     {
         if(rma == nullptr)
         {
-            rma = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma>();
+            rma = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma>();
         }
         return rma;
     }
@@ -5381,9 +5406,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attr
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rma != nullptr)
     {
         children["rma"] = rma;
@@ -5392,7 +5418,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "description")
     {
@@ -5732,7 +5758,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromIn
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "description")
     {
@@ -5960,14 +5986,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromIn
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rma" || name == "description" || name == "idprom-format-rev" || name == "controller-family" || name == "controller-type" || name == "vid" || name == "hwid" || name == "pid" || name == "udi-description" || name == "udi-name" || name == "clei" || name == "eci" || name == "top-assem-part-num" || name == "top-assem-vid" || name == "pca-num" || name == "pcavid" || name == "chassis-sid" || name == "dev-num1" || name == "dev-num2" || name == "dev-num3" || name == "dev-num4" || name == "dev-num5" || name == "dev-num6" || name == "dev-num7" || name == "manu-test-data" || name == "asset-id" || name == "asset-alias" || name == "base-mac-address1" || name == "mac-add-blk-size1" || name == "base-mac-address2" || name == "mac-add-blk-size2" || name == "base-mac-address3" || name == "mac-add-blk-size3" || name == "base-mac-address4" || name == "mac-add-blk-size4" || name == "pcb-serial-num" || name == "power-supply-type" || name == "power-consumption" || name == "block-signature" || name == "block-version" || name == "block-length" || name == "block-checksum" || name == "eeprom-size" || name == "block-count" || name == "fru-major-type" || name == "fru-minor-type" || name == "oem-string" || name == "product-id" || name == "serial-number" || name == "part-number" || name == "part-revision" || name == "mfg-deviation" || name == "hw-version" || name == "mfg-bits" || name == "engineer-use" || name == "snmpoid" || name == "rma-code")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma::Rma()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma::Rma()
     :
     test_history{YType::str, "test-history"},
     rma_number{YType::str, "rma-number"},
@@ -5977,18 +6003,18 @@ Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::E
     yang_name = "rma"; yang_parent_name = "eeprom"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma::~Rma()
+Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma::~Rma()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma::has_data() const
 {
     return test_history.is_set
 	|| rma_number.is_set
 	|| rma_history.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(test_history.yfilter)
@@ -5996,14 +6022,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromIn
 	|| ydk::is_set(rma_history.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rma";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6015,18 +6041,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "test-history")
     {
@@ -6048,7 +6075,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromIn
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "test-history")
     {
@@ -6064,28 +6091,28 @@ void Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromIn
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Tsi1S::Tsi1::Attributes::InvEepromInfo::Eeprom::Rma::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "test-history" || name == "rma-number" || name == "rma-history")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Attributes()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Attributes()
     :
     module_done{YType::int32, "module-done"},
     vm_node_id{YType::uint32, "vm-node-id"},
     vm_done{YType::int32, "vm-done"},
     node_id{YType::uint32, "node-id"}
     	,
-    env_sensor_info(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfo>())
-	,pwg_info(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::PwgInfo>())
-	,env_sensor_info_xml(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml>())
-	,inv_asset_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::InvAssetBag>())
-	,threshold(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold>())
-	,fru_info(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo>())
-	,inv_basic_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::InvBasicBag>())
-	,inv_eeprom_info(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo>())
+    env_sensor_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfo>())
+	,pwg_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::PwgInfo>())
+	,env_sensor_info_xml(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml>())
+	,inv_asset_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::InvAssetBag>())
+	,threshold(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold>())
+	,fru_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo>())
+	,inv_basic_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::InvBasicBag>())
+	,inv_eeprom_info(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo>())
 {
     env_sensor_info->parent = this;
     pwg_info->parent = this;
@@ -6099,11 +6126,11 @@ Inventory::Racks::Rack::Entity_::Slot::Attributes::Attributes()
     yang_name = "attributes"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::~Attributes()
+Inventory::Racks::Rack::Entity::Slot::Attributes::~Attributes()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::has_data() const
 {
     return module_done.is_set
 	|| vm_node_id.is_set
@@ -6119,7 +6146,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::has_data() const
 	|| (inv_eeprom_info !=  nullptr && inv_eeprom_info->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(module_done.yfilter)
@@ -6136,14 +6163,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::has_operation() const
 	|| (inv_eeprom_info !=  nullptr && inv_eeprom_info->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "attributes";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6156,13 +6183,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "env-sensor-info")
     {
         if(env_sensor_info == nullptr)
         {
-            env_sensor_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfo>();
+            env_sensor_info = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfo>();
         }
         return env_sensor_info;
     }
@@ -6171,7 +6198,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::get_c
     {
         if(pwg_info == nullptr)
         {
-            pwg_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::PwgInfo>();
+            pwg_info = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::PwgInfo>();
         }
         return pwg_info;
     }
@@ -6180,7 +6207,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::get_c
     {
         if(env_sensor_info_xml == nullptr)
         {
-            env_sensor_info_xml = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml>();
+            env_sensor_info_xml = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml>();
         }
         return env_sensor_info_xml;
     }
@@ -6189,7 +6216,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::get_c
     {
         if(inv_asset_bag == nullptr)
         {
-            inv_asset_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::InvAssetBag>();
+            inv_asset_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::InvAssetBag>();
         }
         return inv_asset_bag;
     }
@@ -6198,7 +6225,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::get_c
     {
         if(threshold == nullptr)
         {
-            threshold = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold>();
+            threshold = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold>();
         }
         return threshold;
     }
@@ -6207,7 +6234,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::get_c
     {
         if(fru_info == nullptr)
         {
-            fru_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo>();
+            fru_info = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo>();
         }
         return fru_info;
     }
@@ -6216,7 +6243,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::get_c
     {
         if(inv_basic_bag == nullptr)
         {
-            inv_basic_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::InvBasicBag>();
+            inv_basic_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::InvBasicBag>();
         }
         return inv_basic_bag;
     }
@@ -6225,7 +6252,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::get_c
     {
         if(inv_eeprom_info == nullptr)
         {
-            inv_eeprom_info = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo>();
+            inv_eeprom_info = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo>();
         }
         return inv_eeprom_info;
     }
@@ -6233,9 +6260,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::get_c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(env_sensor_info != nullptr)
     {
         children["env-sensor-info"] = env_sensor_info;
@@ -6279,7 +6307,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "module-done")
     {
@@ -6307,7 +6335,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::set_value(const std::str
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "module-done")
     {
@@ -6327,14 +6355,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::set_filter(const std::st
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "env-sensor-info" || name == "pwg-info" || name == "env-sensor-info-xml" || name == "inv-asset-bag" || name == "threshold" || name == "fru-info" || name == "inv-basic-bag" || name == "inv-eeprom-info" || name == "module-done" || name == "vm-node-id" || name == "vm-done" || name == "node-id")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfo::EnvSensorInfo()
+Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfo::EnvSensorInfo()
     :
     field_validity_bitmap{YType::uint32, "field-validity-bitmap"},
     device_description{YType::str, "device-description"},
@@ -6353,11 +6381,11 @@ Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfo::EnvSensorInfo(
     yang_name = "env-sensor-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfo::~EnvSensorInfo()
+Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfo::~EnvSensorInfo()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfo::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfo::has_data() const
 {
     return field_validity_bitmap.is_set
 	|| device_description.is_set
@@ -6373,7 +6401,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfo::has_data(
 	|| update_rate.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfo::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(field_validity_bitmap.yfilter)
@@ -6390,14 +6418,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfo::has_opera
 	|| ydk::is_set(update_rate.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfo::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "env-sensor-info";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6418,18 +6446,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "field-validity-bitmap")
     {
@@ -6505,7 +6534,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfo::set_value
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "field-validity-bitmap")
     {
@@ -6557,14 +6586,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfo::set_filte
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "field-validity-bitmap" || name == "device-description" || name == "units" || name == "device-id" || name == "value" || name == "alarm-type" || name == "data-type" || name == "scale" || name == "precision" || name == "status" || name == "age-time-stamp" || name == "update-rate")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::PwgInfo::PwgInfo()
+Inventory::Racks::Rack::Entity::Slot::Attributes::PwgInfo::PwgInfo()
     :
     power_group_redundancy_mode{YType::int32, "power-group-redundancy-mode"},
     power_group_power_units{YType::str, "power-group-power-units"},
@@ -6575,11 +6604,11 @@ Inventory::Racks::Rack::Entity_::Slot::Attributes::PwgInfo::PwgInfo()
     yang_name = "pwg-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::PwgInfo::~PwgInfo()
+Inventory::Racks::Rack::Entity::Slot::Attributes::PwgInfo::~PwgInfo()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::PwgInfo::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::PwgInfo::has_data() const
 {
     return power_group_redundancy_mode.is_set
 	|| power_group_power_units.is_set
@@ -6587,7 +6616,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::PwgInfo::has_data() cons
 	|| power_group_drawn_current.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::PwgInfo::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::PwgInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(power_group_redundancy_mode.yfilter)
@@ -6596,14 +6625,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::PwgInfo::has_operation()
 	|| ydk::is_set(power_group_drawn_current.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::PwgInfo::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::PwgInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pwg-info";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::PwgInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::PwgInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6616,18 +6645,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::PwgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::PwgInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::PwgInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::PwgInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::PwgInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::PwgInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "power-group-redundancy-mode")
     {
@@ -6655,7 +6685,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::PwgInfo::set_value(const
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::PwgInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::PwgInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "power-group-redundancy-mode")
     {
@@ -6675,14 +6705,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::PwgInfo::set_filter(cons
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::PwgInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::PwgInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "power-group-redundancy-mode" || name == "power-group-power-units" || name == "power-group-available-current" || name == "power-group-drawn-current")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::EnvSensorInfoXml()
+Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::EnvSensorInfoXml()
     :
     description{YType::str, "description"},
     units{YType::enumeration, "units"},
@@ -6691,18 +6721,18 @@ Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::EnvSensorIn
     status{YType::enumeration, "status"},
     update_rate{YType::uint32, "update-rate"}
     	,
-    threshold(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold>())
+    threshold(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold>())
 {
     threshold->parent = this;
 
     yang_name = "env-sensor-info-xml"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::~EnvSensorInfoXml()
+Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::~EnvSensorInfoXml()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::has_data() const
 {
     return description.is_set
 	|| units.is_set
@@ -6713,7 +6743,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::has_da
 	|| (threshold !=  nullptr && threshold->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(description.yfilter)
@@ -6725,14 +6755,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::has_op
 	|| (threshold !=  nullptr && threshold->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "env-sensor-info-xml";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6747,13 +6777,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold")
     {
         if(threshold == nullptr)
         {
-            threshold = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold>();
+            threshold = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold>();
         }
         return threshold;
     }
@@ -6761,9 +6791,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSe
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -6772,7 +6803,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "description")
     {
@@ -6812,7 +6843,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::set_va
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "description")
     {
@@ -6840,24 +6871,24 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::set_fi
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "threshold" || name == "description" || name == "units" || name == "value" || name == "data-type" || name == "status" || name == "update-rate")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold::Threshold()
+Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold::Threshold()
 {
 
     yang_name = "threshold"; yang_parent_name = "env-sensor-info-xml"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold::~Threshold()
+Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold::~Threshold()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold::has_data() const
 {
     for (std::size_t index=0; index<threshold_array.size(); index++)
     {
@@ -6867,7 +6898,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Thresh
     return false;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold::has_operation() const
 {
     for (std::size_t index=0; index<threshold_array.size(); index++)
     {
@@ -6877,14 +6908,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Thresh
     return is_set(yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6893,19 +6924,11 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "threshold-array")
     {
-        for(auto const & c : threshold_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray>();
+        auto c = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray>();
         c->parent = this;
         threshold_array.push_back(c);
         return c;
@@ -6914,33 +6937,38 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSe
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : threshold_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "threshold-array")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::ThresholdArray()
+Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::ThresholdArray()
     :
     threshold_severity{YType::enumeration, "threshold-severity"},
     threshold_relation{YType::enumeration, "threshold-relation"},
@@ -6951,11 +6979,11 @@ Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold::
     yang_name = "threshold-array"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::~ThresholdArray()
+Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::~ThresholdArray()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::has_data() const
 {
     return threshold_severity.is_set
 	|| threshold_relation.is_set
@@ -6963,7 +6991,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Thresh
 	|| threshold_name.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(threshold_severity.yfilter)
@@ -6972,14 +7000,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Thresh
 	|| ydk::is_set(threshold_name.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold-array";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6992,18 +7020,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "threshold-severity")
     {
@@ -7031,7 +7060,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Thresh
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "threshold-severity")
     {
@@ -7051,14 +7080,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Thresh
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "threshold-severity" || name == "threshold-relation" || name == "threshold-value" || name == "threshold-name")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::InvAssetBag::InvAssetBag()
+Inventory::Racks::Rack::Entity::Slot::Attributes::InvAssetBag::InvAssetBag()
     :
     part_number{YType::str, "part-number"},
     manufacturer_assembly_number{YType::str, "manufacturer-assembly-number"},
@@ -7072,11 +7101,11 @@ Inventory::Racks::Rack::Entity_::Slot::Attributes::InvAssetBag::InvAssetBag()
     yang_name = "inv-asset-bag"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::InvAssetBag::~InvAssetBag()
+Inventory::Racks::Rack::Entity::Slot::Attributes::InvAssetBag::~InvAssetBag()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::InvAssetBag::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::InvAssetBag::has_data() const
 {
     return part_number.is_set
 	|| manufacturer_assembly_number.is_set
@@ -7087,7 +7116,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::InvAssetBag::has_data() 
 	|| original_equipment_manufacturer_string.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::InvAssetBag::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::InvAssetBag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(part_number.yfilter)
@@ -7099,14 +7128,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::InvAssetBag::has_operati
 	|| ydk::is_set(original_equipment_manufacturer_string.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::InvAssetBag::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::InvAssetBag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "inv-asset-bag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::InvAssetBag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::InvAssetBag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7122,18 +7151,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::InvAssetBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::InvAssetBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::InvAssetBag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::InvAssetBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::InvAssetBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::InvAssetBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "part-number")
     {
@@ -7179,7 +7209,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::InvAssetBag::set_value(c
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::InvAssetBag::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::InvAssetBag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "part-number")
     {
@@ -7211,21 +7241,21 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::InvAssetBag::set_filter(
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::InvAssetBag::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::InvAssetBag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "part-number" || name == "manufacturer-assembly-number" || name == "manufacturer-assembly-revision" || name == "manufacturer-firmware-identifier" || name == "manufacturer-software-identifier" || name == "manufacturer-common-language-equipment-identifier" || name == "original-equipment-manufacturer-string")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::Threshold()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::Threshold()
     :
-    major_lo(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo>())
-	,critical_hi(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi>())
-	,minor_hi(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi>())
-	,major_hi(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi>())
-	,critical_lo(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo>())
-	,minor_lo(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo>())
+    major_lo(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo>())
+	,critical_hi(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi>())
+	,minor_hi(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi>())
+	,major_hi(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi>())
+	,critical_lo(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo>())
+	,minor_lo(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo>())
 {
     major_lo->parent = this;
     critical_hi->parent = this;
@@ -7237,11 +7267,11 @@ Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::Threshold()
     yang_name = "threshold"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::~Threshold()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::~Threshold()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::has_data() const
 {
     return (major_lo !=  nullptr && major_lo->has_data())
 	|| (critical_hi !=  nullptr && critical_hi->has_data())
@@ -7251,7 +7281,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::has_data() co
 	|| (minor_lo !=  nullptr && minor_lo->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::has_operation() const
 {
     return is_set(yfilter)
 	|| (major_lo !=  nullptr && major_lo->has_operation())
@@ -7262,14 +7292,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::has_operation
 	|| (minor_lo !=  nullptr && minor_lo->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7278,13 +7308,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "major-lo")
     {
         if(major_lo == nullptr)
         {
-            major_lo = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo>();
+            major_lo = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo>();
         }
         return major_lo;
     }
@@ -7293,7 +7323,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Thres
     {
         if(critical_hi == nullptr)
         {
-            critical_hi = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi>();
+            critical_hi = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi>();
         }
         return critical_hi;
     }
@@ -7302,7 +7332,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Thres
     {
         if(minor_hi == nullptr)
         {
-            minor_hi = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi>();
+            minor_hi = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi>();
         }
         return minor_hi;
     }
@@ -7311,7 +7341,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Thres
     {
         if(major_hi == nullptr)
         {
-            major_hi = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi>();
+            major_hi = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi>();
         }
         return major_hi;
     }
@@ -7320,7 +7350,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Thres
     {
         if(critical_lo == nullptr)
         {
-            critical_lo = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo>();
+            critical_lo = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo>();
         }
         return critical_lo;
     }
@@ -7329,7 +7359,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Thres
     {
         if(minor_lo == nullptr)
         {
-            minor_lo = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo>();
+            minor_lo = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo>();
         }
         return minor_lo;
     }
@@ -7337,9 +7367,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Thres
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(major_lo != nullptr)
     {
         children["major-lo"] = major_lo;
@@ -7373,53 +7404,53 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "major-lo" || name == "critical-hi" || name == "minor-hi" || name == "major-hi" || name == "critical-lo" || name == "minor-lo")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::MajorLo()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo::MajorLo()
     :
-    thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::ThreshBag>())
+    thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo::ThreshBag>())
 {
     thresh_bag->parent = this;
 
     yang_name = "major-lo"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::~MajorLo()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo::~MajorLo()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo::has_data() const
 {
     return (thresh_bag !=  nullptr && thresh_bag->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo::has_operation() const
 {
     return is_set(yfilter)
 	|| (thresh_bag !=  nullptr && thresh_bag->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "major-lo";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7428,13 +7459,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "thresh-bag")
     {
         if(thresh_bag == nullptr)
         {
-            thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::ThreshBag>();
+            thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo::ThreshBag>();
         }
         return thresh_bag;
     }
@@ -7442,9 +7473,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Thres
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -7453,22 +7485,22 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "thresh-bag")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::ThreshBag::ThreshBag()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo::ThreshBag::ThreshBag()
     :
     threshold_severity{YType::uint32, "threshold-severity"},
     threshold_relation{YType::uint32, "threshold-relation"},
@@ -7480,11 +7512,11 @@ Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::ThreshBag
     yang_name = "thresh-bag"; yang_parent_name = "major-lo"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::ThreshBag::~ThreshBag()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo::ThreshBag::~ThreshBag()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::ThreshBag::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo::ThreshBag::has_data() const
 {
     return threshold_severity.is_set
 	|| threshold_relation.is_set
@@ -7493,7 +7525,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::Thre
 	|| threshold_notification_enabled.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::ThreshBag::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo::ThreshBag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(threshold_severity.yfilter)
@@ -7503,14 +7535,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::Thre
 	|| ydk::is_set(threshold_notification_enabled.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::ThreshBag::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo::ThreshBag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "thresh-bag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::ThreshBag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo::ThreshBag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7524,18 +7556,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::ThreshBag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::ThreshBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo::ThreshBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "threshold-severity")
     {
@@ -7569,7 +7602,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::Thre
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::ThreshBag::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo::ThreshBag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "threshold-severity")
     {
@@ -7593,45 +7626,45 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::Thre
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorLo::ThreshBag::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorLo::ThreshBag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "threshold-severity" || name == "threshold-relation" || name == "threshold-value" || name == "threshold-evaluation" || name == "threshold-notification-enabled")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::CriticalHi()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi::CriticalHi()
     :
-    thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::ThreshBag>())
+    thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi::ThreshBag>())
 {
     thresh_bag->parent = this;
 
     yang_name = "critical-hi"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::~CriticalHi()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi::~CriticalHi()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi::has_data() const
 {
     return (thresh_bag !=  nullptr && thresh_bag->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi::has_operation() const
 {
     return is_set(yfilter)
 	|| (thresh_bag !=  nullptr && thresh_bag->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "critical-hi";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7640,13 +7673,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "thresh-bag")
     {
         if(thresh_bag == nullptr)
         {
-            thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::ThreshBag>();
+            thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi::ThreshBag>();
         }
         return thresh_bag;
     }
@@ -7654,9 +7687,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Thres
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -7665,22 +7699,22 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "thresh-bag")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::ThreshBag::ThreshBag()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi::ThreshBag::ThreshBag()
     :
     threshold_severity{YType::uint32, "threshold-severity"},
     threshold_relation{YType::uint32, "threshold-relation"},
@@ -7692,11 +7726,11 @@ Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::Thresh
     yang_name = "thresh-bag"; yang_parent_name = "critical-hi"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::ThreshBag::~ThreshBag()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi::ThreshBag::~ThreshBag()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::ThreshBag::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi::ThreshBag::has_data() const
 {
     return threshold_severity.is_set
 	|| threshold_relation.is_set
@@ -7705,7 +7739,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::T
 	|| threshold_notification_enabled.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::ThreshBag::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi::ThreshBag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(threshold_severity.yfilter)
@@ -7715,14 +7749,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::T
 	|| ydk::is_set(threshold_notification_enabled.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::ThreshBag::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi::ThreshBag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "thresh-bag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::ThreshBag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi::ThreshBag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7736,18 +7770,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::ThreshBag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::ThreshBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi::ThreshBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "threshold-severity")
     {
@@ -7781,7 +7816,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::T
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::ThreshBag::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi::ThreshBag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "threshold-severity")
     {
@@ -7805,45 +7840,45 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::T
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalHi::ThreshBag::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalHi::ThreshBag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "threshold-severity" || name == "threshold-relation" || name == "threshold-value" || name == "threshold-evaluation" || name == "threshold-notification-enabled")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::MinorHi()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi::MinorHi()
     :
-    thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::ThreshBag>())
+    thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi::ThreshBag>())
 {
     thresh_bag->parent = this;
 
     yang_name = "minor-hi"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::~MinorHi()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi::~MinorHi()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi::has_data() const
 {
     return (thresh_bag !=  nullptr && thresh_bag->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi::has_operation() const
 {
     return is_set(yfilter)
 	|| (thresh_bag !=  nullptr && thresh_bag->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "minor-hi";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7852,13 +7887,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "thresh-bag")
     {
         if(thresh_bag == nullptr)
         {
-            thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::ThreshBag>();
+            thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi::ThreshBag>();
         }
         return thresh_bag;
     }
@@ -7866,9 +7901,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Thres
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -7877,22 +7913,22 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "thresh-bag")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::ThreshBag::ThreshBag()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi::ThreshBag::ThreshBag()
     :
     threshold_severity{YType::uint32, "threshold-severity"},
     threshold_relation{YType::uint32, "threshold-relation"},
@@ -7904,11 +7940,11 @@ Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::ThreshBag
     yang_name = "thresh-bag"; yang_parent_name = "minor-hi"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::ThreshBag::~ThreshBag()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi::ThreshBag::~ThreshBag()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::ThreshBag::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi::ThreshBag::has_data() const
 {
     return threshold_severity.is_set
 	|| threshold_relation.is_set
@@ -7917,7 +7953,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::Thre
 	|| threshold_notification_enabled.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::ThreshBag::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi::ThreshBag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(threshold_severity.yfilter)
@@ -7927,14 +7963,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::Thre
 	|| ydk::is_set(threshold_notification_enabled.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::ThreshBag::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi::ThreshBag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "thresh-bag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::ThreshBag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi::ThreshBag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7948,18 +7984,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::ThreshBag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::ThreshBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi::ThreshBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "threshold-severity")
     {
@@ -7993,7 +8030,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::Thre
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::ThreshBag::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi::ThreshBag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "threshold-severity")
     {
@@ -8017,45 +8054,45 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::Thre
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorHi::ThreshBag::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorHi::ThreshBag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "threshold-severity" || name == "threshold-relation" || name == "threshold-value" || name == "threshold-evaluation" || name == "threshold-notification-enabled")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::MajorHi()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi::MajorHi()
     :
-    thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::ThreshBag>())
+    thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi::ThreshBag>())
 {
     thresh_bag->parent = this;
 
     yang_name = "major-hi"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::~MajorHi()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi::~MajorHi()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi::has_data() const
 {
     return (thresh_bag !=  nullptr && thresh_bag->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi::has_operation() const
 {
     return is_set(yfilter)
 	|| (thresh_bag !=  nullptr && thresh_bag->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "major-hi";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8064,13 +8101,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "thresh-bag")
     {
         if(thresh_bag == nullptr)
         {
-            thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::ThreshBag>();
+            thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi::ThreshBag>();
         }
         return thresh_bag;
     }
@@ -8078,9 +8115,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Thres
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -8089,22 +8127,22 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "thresh-bag")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::ThreshBag::ThreshBag()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi::ThreshBag::ThreshBag()
     :
     threshold_severity{YType::uint32, "threshold-severity"},
     threshold_relation{YType::uint32, "threshold-relation"},
@@ -8116,11 +8154,11 @@ Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::ThreshBag
     yang_name = "thresh-bag"; yang_parent_name = "major-hi"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::ThreshBag::~ThreshBag()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi::ThreshBag::~ThreshBag()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::ThreshBag::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi::ThreshBag::has_data() const
 {
     return threshold_severity.is_set
 	|| threshold_relation.is_set
@@ -8129,7 +8167,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::Thre
 	|| threshold_notification_enabled.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::ThreshBag::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi::ThreshBag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(threshold_severity.yfilter)
@@ -8139,14 +8177,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::Thre
 	|| ydk::is_set(threshold_notification_enabled.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::ThreshBag::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi::ThreshBag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "thresh-bag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::ThreshBag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi::ThreshBag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8160,18 +8198,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::ThreshBag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::ThreshBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi::ThreshBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "threshold-severity")
     {
@@ -8205,7 +8244,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::Thre
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::ThreshBag::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi::ThreshBag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "threshold-severity")
     {
@@ -8229,45 +8268,45 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::Thre
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MajorHi::ThreshBag::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MajorHi::ThreshBag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "threshold-severity" || name == "threshold-relation" || name == "threshold-value" || name == "threshold-evaluation" || name == "threshold-notification-enabled")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::CriticalLo()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo::CriticalLo()
     :
-    thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::ThreshBag>())
+    thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo::ThreshBag>())
 {
     thresh_bag->parent = this;
 
     yang_name = "critical-lo"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::~CriticalLo()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo::~CriticalLo()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo::has_data() const
 {
     return (thresh_bag !=  nullptr && thresh_bag->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo::has_operation() const
 {
     return is_set(yfilter)
 	|| (thresh_bag !=  nullptr && thresh_bag->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "critical-lo";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8276,13 +8315,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "thresh-bag")
     {
         if(thresh_bag == nullptr)
         {
-            thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::ThreshBag>();
+            thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo::ThreshBag>();
         }
         return thresh_bag;
     }
@@ -8290,9 +8329,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Thres
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -8301,22 +8341,22 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "thresh-bag")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::ThreshBag::ThreshBag()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo::ThreshBag::ThreshBag()
     :
     threshold_severity{YType::uint32, "threshold-severity"},
     threshold_relation{YType::uint32, "threshold-relation"},
@@ -8328,11 +8368,11 @@ Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::Thresh
     yang_name = "thresh-bag"; yang_parent_name = "critical-lo"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::ThreshBag::~ThreshBag()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo::ThreshBag::~ThreshBag()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::ThreshBag::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo::ThreshBag::has_data() const
 {
     return threshold_severity.is_set
 	|| threshold_relation.is_set
@@ -8341,7 +8381,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::T
 	|| threshold_notification_enabled.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::ThreshBag::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo::ThreshBag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(threshold_severity.yfilter)
@@ -8351,14 +8391,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::T
 	|| ydk::is_set(threshold_notification_enabled.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::ThreshBag::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo::ThreshBag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "thresh-bag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::ThreshBag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo::ThreshBag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8372,18 +8412,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::ThreshBag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::ThreshBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo::ThreshBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "threshold-severity")
     {
@@ -8417,7 +8458,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::T
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::ThreshBag::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo::ThreshBag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "threshold-severity")
     {
@@ -8441,45 +8482,45 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::T
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::CriticalLo::ThreshBag::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::CriticalLo::ThreshBag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "threshold-severity" || name == "threshold-relation" || name == "threshold-value" || name == "threshold-evaluation" || name == "threshold-notification-enabled")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::MinorLo()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo::MinorLo()
     :
-    thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::ThreshBag>())
+    thresh_bag(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo::ThreshBag>())
 {
     thresh_bag->parent = this;
 
     yang_name = "minor-lo"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::~MinorLo()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo::~MinorLo()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo::has_data() const
 {
     return (thresh_bag !=  nullptr && thresh_bag->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo::has_operation() const
 {
     return is_set(yfilter)
 	|| (thresh_bag !=  nullptr && thresh_bag->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "minor-lo";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8488,13 +8529,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "thresh-bag")
     {
         if(thresh_bag == nullptr)
         {
-            thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::ThreshBag>();
+            thresh_bag = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo::ThreshBag>();
         }
         return thresh_bag;
     }
@@ -8502,9 +8543,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Thres
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -8513,22 +8555,22 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "thresh-bag")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::ThreshBag::ThreshBag()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo::ThreshBag::ThreshBag()
     :
     threshold_severity{YType::uint32, "threshold-severity"},
     threshold_relation{YType::uint32, "threshold-relation"},
@@ -8540,11 +8582,11 @@ Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::ThreshBag
     yang_name = "thresh-bag"; yang_parent_name = "minor-lo"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::ThreshBag::~ThreshBag()
+Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo::ThreshBag::~ThreshBag()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::ThreshBag::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo::ThreshBag::has_data() const
 {
     return threshold_severity.is_set
 	|| threshold_relation.is_set
@@ -8553,7 +8595,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::Thre
 	|| threshold_notification_enabled.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::ThreshBag::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo::ThreshBag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(threshold_severity.yfilter)
@@ -8563,14 +8605,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::Thre
 	|| ydk::is_set(threshold_notification_enabled.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::ThreshBag::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo::ThreshBag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "thresh-bag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::ThreshBag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo::ThreshBag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8584,18 +8626,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo::ThreshBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::ThreshBag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::ThreshBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo::ThreshBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "threshold-severity")
     {
@@ -8629,7 +8672,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::Thre
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::ThreshBag::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo::ThreshBag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "threshold-severity")
     {
@@ -8653,14 +8696,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::Thre
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::Threshold::MinorLo::ThreshBag::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::Threshold::MinorLo::ThreshBag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "threshold-severity" || name == "threshold-relation" || name == "threshold-value" || name == "threshold-evaluation" || name == "threshold-notification-enabled")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::FruInfo()
+Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::FruInfo()
     :
     card_administrative_state{YType::int32, "card-administrative-state"},
     power_administrative_state{YType::int32, "power-administrative-state"},
@@ -8670,8 +8713,8 @@ Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::FruInfo()
     power_current_measurement{YType::int32, "power-current-measurement"},
     power_operational_state{YType::int32, "power-operational-state"}
     	,
-    last_operational_state_change(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::LastOperationalStateChange>())
-	,card_up_time(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::CardUpTime>())
+    last_operational_state_change(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::LastOperationalStateChange>())
+	,card_up_time(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::CardUpTime>())
 {
     last_operational_state_change->parent = this;
     card_up_time->parent = this;
@@ -8679,11 +8722,11 @@ Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::FruInfo()
     yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::~FruInfo()
+Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::~FruInfo()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::has_data() const
 {
     return card_administrative_state.is_set
 	|| power_administrative_state.is_set
@@ -8696,7 +8739,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::has_data() cons
 	|| (card_up_time !=  nullptr && card_up_time->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(card_administrative_state.yfilter)
@@ -8710,14 +8753,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::has_operation()
 	|| (card_up_time !=  nullptr && card_up_time->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fru-info";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8733,13 +8776,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "last-operational-state-change")
     {
         if(last_operational_state_change == nullptr)
         {
-            last_operational_state_change = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::LastOperationalStateChange>();
+            last_operational_state_change = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::LastOperationalStateChange>();
         }
         return last_operational_state_change;
     }
@@ -8748,7 +8791,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::FruIn
     {
         if(card_up_time == nullptr)
         {
-            card_up_time = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::CardUpTime>();
+            card_up_time = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::CardUpTime>();
         }
         return card_up_time;
     }
@@ -8756,9 +8799,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::FruIn
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_operational_state_change != nullptr)
     {
         children["last-operational-state-change"] = last_operational_state_change;
@@ -8772,7 +8816,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "card-administrative-state")
     {
@@ -8818,7 +8862,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::set_value(const
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "card-administrative-state")
     {
@@ -8850,14 +8894,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::set_filter(cons
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "last-operational-state-change" || name == "card-up-time" || name == "card-administrative-state" || name == "power-administrative-state" || name == "card-operational-state" || name == "card-monitor-state" || name == "card-reset-reason" || name == "power-current-measurement" || name == "power-operational-state")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::LastOperationalStateChange::LastOperationalStateChange()
+Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::LastOperationalStateChange::LastOperationalStateChange()
     :
     time_in_seconds{YType::int32, "time-in-seconds"},
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
@@ -8866,31 +8910,31 @@ Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::LastOperationalState
     yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
+Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::LastOperationalStateChange::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::LastOperationalStateChange::has_data() const
 {
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::LastOperationalStateChange::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::LastOperationalStateChange::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(time_in_seconds.yfilter)
 	|| ydk::is_set(time_in_nano_seconds.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::LastOperationalStateChange::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::LastOperationalStateChange::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "last-operational-state-change";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::LastOperationalStateChange::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::LastOperationalStateChange::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8901,18 +8945,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::LastOperationalStateChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::LastOperationalStateChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::LastOperationalStateChange::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::LastOperationalStateChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::LastOperationalStateChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "time-in-seconds")
     {
@@ -8928,7 +8973,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::LastOperational
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::LastOperationalStateChange::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::LastOperationalStateChange::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "time-in-seconds")
     {
@@ -8940,14 +8985,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::LastOperational
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::LastOperationalStateChange::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::LastOperationalStateChange::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "time-in-seconds" || name == "time-in-nano-seconds")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::CardUpTime::CardUpTime()
+Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::CardUpTime::CardUpTime()
     :
     time_in_seconds{YType::int32, "time-in-seconds"},
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
@@ -8956,31 +9001,31 @@ Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::CardUpTime::CardUpTi
     yang_name = "card-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::CardUpTime::~CardUpTime()
+Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::CardUpTime::~CardUpTime()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::CardUpTime::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::CardUpTime::has_data() const
 {
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::CardUpTime::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::CardUpTime::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(time_in_seconds.yfilter)
 	|| ydk::is_set(time_in_nano_seconds.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::CardUpTime::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::CardUpTime::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "card-up-time";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::CardUpTime::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::CardUpTime::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8991,18 +9036,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::CardUpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::CardUpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::CardUpTime::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::CardUpTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::CardUpTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::CardUpTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "time-in-seconds")
     {
@@ -9018,7 +9064,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::CardUpTime::set
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::CardUpTime::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::CardUpTime::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "time-in-seconds")
     {
@@ -9030,14 +9076,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::CardUpTime::set
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::FruInfo::CardUpTime::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::FruInfo::CardUpTime::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "time-in-seconds" || name == "time-in-nano-seconds")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::InvBasicBag::InvBasicBag()
+Inventory::Racks::Rack::Entity::Slot::Attributes::InvBasicBag::InvBasicBag()
     :
     description{YType::str, "description"},
     vendor_type{YType::str, "vendor-type"},
@@ -9070,11 +9116,11 @@ Inventory::Racks::Rack::Entity_::Slot::Attributes::InvBasicBag::InvBasicBag()
     yang_name = "inv-basic-bag"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::InvBasicBag::~InvBasicBag()
+Inventory::Racks::Rack::Entity::Slot::Attributes::InvBasicBag::~InvBasicBag()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::InvBasicBag::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::InvBasicBag::has_data() const
 {
     return description.is_set
 	|| vendor_type.is_set
@@ -9104,7 +9150,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::InvBasicBag::has_data() 
 	|| unique_id.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::InvBasicBag::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::InvBasicBag::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(description.yfilter)
@@ -9135,14 +9181,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::InvBasicBag::has_operati
 	|| ydk::is_set(unique_id.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::InvBasicBag::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::InvBasicBag::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "inv-basic-bag";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::InvBasicBag::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::InvBasicBag::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9177,18 +9223,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::InvBasicBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::InvBasicBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::InvBasicBag::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::InvBasicBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::InvBasicBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::InvBasicBag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "description")
     {
@@ -9348,7 +9395,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::InvBasicBag::set_value(c
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::InvBasicBag::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::InvBasicBag::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "description")
     {
@@ -9456,14 +9503,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::InvBasicBag::set_filter(
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::InvBasicBag::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::InvBasicBag::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::InvEepromInfo()
+Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::InvEepromInfo()
     :
     inv_card_type{YType::uint8, "inv-card-type"},
     opaque_data{YType::str, "opaque-data"},
@@ -9471,18 +9518,18 @@ Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::InvEepromInfo(
     has_eeprom{YType::uint32, "has-eeprom"},
     description{YType::str, "description"}
     	,
-    eeprom(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom>())
+    eeprom(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom>())
 {
     eeprom->parent = this;
 
     yang_name = "inv-eeprom-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::~InvEepromInfo()
+Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::~InvEepromInfo()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::has_data() const
 {
     return inv_card_type.is_set
 	|| opaque_data.is_set
@@ -9492,7 +9539,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::has_data(
 	|| (eeprom !=  nullptr && eeprom->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(inv_card_type.yfilter)
@@ -9503,14 +9550,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::has_opera
 	|| (eeprom !=  nullptr && eeprom->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "inv-eeprom-info";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9524,13 +9571,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "eeprom")
     {
         if(eeprom == nullptr)
         {
-            eeprom = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom>();
+            eeprom = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom>();
         }
         return eeprom;
     }
@@ -9538,9 +9585,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEe
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(eeprom != nullptr)
     {
         children["eeprom"] = eeprom;
@@ -9549,7 +9597,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "inv-card-type")
     {
@@ -9583,7 +9631,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::set_value
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "inv-card-type")
     {
@@ -9607,14 +9655,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::set_filte
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "eeprom" || name == "inv-card-type" || name == "opaque-data" || name == "opaque-data-size" || name == "has-eeprom" || name == "description")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::Eeprom()
+Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom::Eeprom()
     :
     description{YType::str, "description"},
     idprom_format_rev{YType::str, "idprom-format-rev"},
@@ -9673,18 +9721,18 @@ Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::Eeprom
     snmpoid{YType::str, "snmpoid"},
     rma_code{YType::str, "rma-code"}
     	,
-    rma(std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::Rma>())
+    rma(std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom::Rma>())
 {
     rma->parent = this;
 
     yang_name = "eeprom"; yang_parent_name = "inv-eeprom-info"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::~Eeprom()
+Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom::~Eeprom()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom::has_data() const
 {
     return description.is_set
 	|| idprom_format_rev.is_set
@@ -9745,7 +9793,7 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::h
 	|| (rma !=  nullptr && rma->has_data());
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(description.yfilter)
@@ -9807,14 +9855,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::h
 	|| (rma !=  nullptr && rma->has_operation());
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "eeprom";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9879,13 +9927,13 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "rma")
     {
         if(rma == nullptr)
         {
-            rma = std::make_shared<Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::Rma>();
+            rma = std::make_shared<Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom::Rma>();
         }
         return rma;
     }
@@ -9893,9 +9941,10 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEe
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rma != nullptr)
     {
         children["rma"] = rma;
@@ -9904,7 +9953,7 @@ std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "description")
     {
@@ -10244,7 +10293,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::s
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "description")
     {
@@ -10472,14 +10521,14 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::s
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "rma" || name == "description" || name == "idprom-format-rev" || name == "controller-family" || name == "controller-type" || name == "vid" || name == "hwid" || name == "pid" || name == "udi-description" || name == "udi-name" || name == "clei" || name == "eci" || name == "top-assem-part-num" || name == "top-assem-vid" || name == "pca-num" || name == "pcavid" || name == "chassis-sid" || name == "dev-num1" || name == "dev-num2" || name == "dev-num3" || name == "dev-num4" || name == "dev-num5" || name == "dev-num6" || name == "dev-num7" || name == "manu-test-data" || name == "asset-id" || name == "asset-alias" || name == "base-mac-address1" || name == "mac-add-blk-size1" || name == "base-mac-address2" || name == "mac-add-blk-size2" || name == "base-mac-address3" || name == "mac-add-blk-size3" || name == "base-mac-address4" || name == "mac-add-blk-size4" || name == "pcb-serial-num" || name == "power-supply-type" || name == "power-consumption" || name == "block-signature" || name == "block-version" || name == "block-length" || name == "block-checksum" || name == "eeprom-size" || name == "block-count" || name == "fru-major-type" || name == "fru-minor-type" || name == "oem-string" || name == "product-id" || name == "serial-number" || name == "part-number" || name == "part-revision" || name == "mfg-deviation" || name == "hw-version" || name == "mfg-bits" || name == "engineer-use" || name == "snmpoid" || name == "rma-code")
         return true;
     return false;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::Rma::Rma()
+Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom::Rma::Rma()
     :
     test_history{YType::str, "test-history"},
     rma_number{YType::str, "rma-number"},
@@ -10489,18 +10538,18 @@ Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::Rma::R
     yang_name = "rma"; yang_parent_name = "eeprom"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::Rma::~Rma()
+Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom::Rma::~Rma()
 {
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::Rma::has_data() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom::Rma::has_data() const
 {
     return test_history.is_set
 	|| rma_number.is_set
 	|| rma_history.is_set;
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::Rma::has_operation() const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom::Rma::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(test_history.yfilter)
@@ -10508,14 +10557,14 @@ bool Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::R
 	|| ydk::is_set(rma_history.yfilter);
 }
 
-std::string Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::Rma::get_segment_path() const
+std::string Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom::Rma::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rma";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::Rma::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom::Rma::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10527,18 +10576,19 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Entity_::
 
 }
 
-std::shared_ptr<Entity> Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom::Rma::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::Rma::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom::Rma::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::Rma::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom::Rma::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "test-history")
     {
@@ -10560,7 +10610,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::R
     }
 }
 
-void Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::Rma::set_filter(const std::string & value_path, YFilter yfilter)
+void Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom::Rma::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "test-history")
     {
@@ -10576,7 +10626,7 @@ void Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::R
     }
 }
 
-bool Inventory::Racks::Rack::Entity_::Slot::Attributes::InvEepromInfo::Eeprom::Rma::has_leaf_or_child_of_name(const std::string & name) const
+bool Inventory::Racks::Rack::Entity::Slot::Attributes::InvEepromInfo::Eeprom::Rma::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "test-history" || name == "rma-number" || name == "rma-history")
         return true;
@@ -10633,14 +10683,6 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::get_child_by_name(co
 {
     if(child_yang_name == "slot")
     {
-        for(auto const & c : slot)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Inventory::Racks::Rack::Powershelf::Slot>();
         c->parent = this;
         slot.push_back(c);
@@ -10653,9 +10695,14 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : slot)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10751,6 +10798,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tsi1s != nullptr)
     {
         children["tsi1s"] = tsi1s;
@@ -10839,14 +10887,6 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::get_chi
 {
     if(child_yang_name == "tsi1")
     {
-        for(auto const & c : tsi1)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1>();
         c->parent = this;
         tsi1.push_back(c);
@@ -10859,9 +10899,14 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tsi1)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10957,6 +11002,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::g
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tsi2s != nullptr)
     {
         children["tsi2s"] = tsi2s;
@@ -11045,14 +11091,6 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 {
     if(child_yang_name == "tsi2")
     {
-        for(auto const & c : tsi2)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2>();
         c->parent = this;
         tsi2.push_back(c);
@@ -11065,9 +11103,14 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tsi2)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11163,6 +11206,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tsi3s != nullptr)
     {
         children["tsi3s"] = tsi3s;
@@ -11251,14 +11295,6 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 {
     if(child_yang_name == "tsi3")
     {
-        for(auto const & c : tsi3)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3>();
         c->parent = this;
         tsi3.push_back(c);
@@ -11271,9 +11307,14 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tsi3)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11369,6 +11410,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tsi4s != nullptr)
     {
         children["tsi4s"] = tsi4s;
@@ -11457,14 +11499,6 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 {
     if(child_yang_name == "tsi4")
     {
-        for(auto const & c : tsi4)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4>();
         c->parent = this;
         tsi4.push_back(c);
@@ -11477,9 +11511,14 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tsi4)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11575,6 +11614,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tsi5s != nullptr)
     {
         children["tsi5s"] = tsi5s;
@@ -11663,14 +11703,6 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 {
     if(child_yang_name == "tsi5")
     {
-        for(auto const & c : tsi5)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5>();
         c->parent = this;
         tsi5.push_back(c);
@@ -11683,9 +11715,14 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tsi5)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11781,6 +11818,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tsi6s != nullptr)
     {
         children["tsi6s"] = tsi6s;
@@ -11869,14 +11907,6 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 {
     if(child_yang_name == "tsi6")
     {
-        for(auto const & c : tsi6)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6>();
         c->parent = this;
         tsi6.push_back(c);
@@ -11889,9 +11919,14 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tsi6)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11987,6 +12022,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tsi7s != nullptr)
     {
         children["tsi7s"] = tsi7s;
@@ -12075,14 +12111,6 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 {
     if(child_yang_name == "tsi7")
     {
-        for(auto const & c : tsi7)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7>();
         c->parent = this;
         tsi7.push_back(c);
@@ -12095,9 +12123,14 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tsi7)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12193,6 +12226,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tsi8s != nullptr)
     {
         children["tsi8s"] = tsi8s;
@@ -12281,14 +12315,6 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 {
     if(child_yang_name == "tsi8")
     {
-        for(auto const & c : tsi8)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8>();
         c->parent = this;
         tsi8.push_back(c);
@@ -12301,9 +12327,14 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tsi8)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12399,6 +12430,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tsi9s != nullptr)
     {
         children["tsi9s"] = tsi9s;
@@ -12487,14 +12519,6 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 {
     if(child_yang_name == "tsi9")
     {
-        for(auto const & c : tsi9)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9>();
         c->parent = this;
         tsi9.push_back(c);
@@ -12507,9 +12531,14 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tsi9)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12605,6 +12634,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tsi10s != nullptr)
     {
         children["tsi10s"] = tsi10s;
@@ -12693,14 +12723,6 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 {
     if(child_yang_name == "tsi10")
     {
-        for(auto const & c : tsi10)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10>();
         c->parent = this;
         tsi10.push_back(c);
@@ -12713,9 +12735,14 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tsi10)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12811,6 +12838,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tsi11s != nullptr)
     {
         children["tsi11s"] = tsi11s;
@@ -12899,14 +12927,6 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 {
     if(child_yang_name == "tsi11")
     {
-        for(auto const & c : tsi11)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11>();
         c->parent = this;
         tsi11.push_back(c);
@@ -12919,9 +12939,14 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tsi11)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13004,6 +13029,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(attributes != nullptr)
     {
         children["attributes"] = attributes;
@@ -13202,6 +13228,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(env_sensor_info != nullptr)
     {
         children["env-sensor-info"] = env_sensor_info;
@@ -13392,6 +13419,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13590,6 +13618,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::PwgInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13730,6 +13759,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfoXml::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -13863,14 +13893,6 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 {
     if(child_yang_name == "threshold-array")
     {
-        for(auto const & c : threshold_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray>();
         c->parent = this;
         threshold_array.push_back(c);
@@ -13883,9 +13905,14 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfoXml::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : threshold_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13966,6 +13993,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14096,6 +14124,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvAssetBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14306,6 +14335,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(major_lo != nullptr)
     {
         children["major-lo"] = major_lo;
@@ -14411,6 +14441,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorLo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -14498,6 +14529,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorLo::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14623,6 +14655,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalHi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -14710,6 +14743,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalHi::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14835,6 +14869,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorHi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -14922,6 +14957,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorHi::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15047,6 +15083,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorHi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -15134,6 +15171,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MajorHi::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15259,6 +15297,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalLo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -15346,6 +15385,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::CriticalLo::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15471,6 +15511,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorLo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -15558,6 +15599,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::Threshold::MinorLo::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15725,6 +15767,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::FruInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_operational_state_change != nullptr)
     {
         children["last-operational-state-change"] = last_operational_state_change;
@@ -15875,6 +15918,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15965,6 +16009,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::FruInfo::CardUpTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16151,6 +16196,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvBasicBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16507,6 +16553,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(eeprom != nullptr)
     {
         children["eeprom"] = eeprom;
@@ -16862,6 +16909,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo::Eeprom::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rma != nullptr)
     {
         children["rma"] = rma;
@@ -17501,6 +17549,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Tsi11S::Tsi11::Attributes::InvEepromInfo::Eeprom::Rma::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17714,6 +17763,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(env_sensor_info != nullptr)
     {
         children["env-sensor-info"] = env_sensor_info;
@@ -17904,6 +17954,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18102,6 +18153,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::PwgInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18242,6 +18294,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfoXml::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -18375,14 +18428,6 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 {
     if(child_yang_name == "threshold-array")
     {
-        for(auto const & c : threshold_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray>();
         c->parent = this;
         threshold_array.push_back(c);
@@ -18395,9 +18440,14 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfoXml::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : threshold_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -18478,6 +18528,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18608,6 +18659,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvAssetBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18818,6 +18870,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(major_lo != nullptr)
     {
         children["major-lo"] = major_lo;
@@ -18923,6 +18976,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorLo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -19010,6 +19064,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorLo::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19135,6 +19190,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalHi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -19222,6 +19278,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalHi::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19347,6 +19404,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorHi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -19434,6 +19492,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorHi::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19559,6 +19618,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorHi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -19646,6 +19706,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MajorHi::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19771,6 +19832,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalLo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -19858,6 +19920,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::CriticalLo::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19983,6 +20046,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorLo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -20070,6 +20134,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::Threshold::MinorLo::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20237,6 +20302,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::FruInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_operational_state_change != nullptr)
     {
         children["last-operational-state-change"] = last_operational_state_change;
@@ -20387,6 +20453,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20477,6 +20544,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::FruInfo::CardUpTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20663,6 +20731,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvBasicBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -21019,6 +21088,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(eeprom != nullptr)
     {
         children["eeprom"] = eeprom;
@@ -21374,6 +21444,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo::Eeprom::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rma != nullptr)
     {
         children["rma"] = rma;
@@ -22013,6 +22084,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Tsi10S::Tsi10::Attributes::InvEepromInfo::Eeprom::Rma::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -22226,6 +22298,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(env_sensor_info != nullptr)
     {
         children["env-sensor-info"] = env_sensor_info;
@@ -22416,6 +22489,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -22614,6 +22688,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::PwgInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -22754,6 +22829,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfoXml::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -22887,14 +22963,6 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 {
     if(child_yang_name == "threshold-array")
     {
-        for(auto const & c : threshold_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray>();
         c->parent = this;
         threshold_array.push_back(c);
@@ -22907,9 +22975,14 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfoXml::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : threshold_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -22990,6 +23063,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -23120,6 +23194,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::InvAssetBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -23330,6 +23405,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(major_lo != nullptr)
     {
         children["major-lo"] = major_lo;
@@ -23435,6 +23511,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorLo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -23522,6 +23599,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MajorLo::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -23647,6 +23725,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalHi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -23734,6 +23813,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::CriticalHi::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -23859,6 +23939,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorHi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -23946,6 +24027,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::T
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Powershelf::Slot::Tsi1S::Tsi1::Tsi2S::Tsi2::Tsi3S::Tsi3::Tsi4S::Tsi4::Tsi5S::Tsi5::Tsi6S::Tsi6::Tsi7S::Tsi7::Tsi8S::Tsi8::Tsi9S::Tsi9::Attributes::Threshold::MinorHi::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

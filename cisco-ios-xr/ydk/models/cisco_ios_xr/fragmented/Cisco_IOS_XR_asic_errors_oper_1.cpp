@@ -119,14 +119,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "csrs-info")
     {
-        for(auto const & c : csrs_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::Error::CsrsInfo>();
         c->parent = this;
         csrs_info.push_back(c);
@@ -135,14 +127,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 
     if(child_yang_name == "last-err")
     {
-        for(auto const & c : last_err)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::Error::LastErr>();
         c->parent = this;
         last_err.push_back(c);
@@ -155,14 +139,23 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::Error::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csrs_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : last_err)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -359,6 +352,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::Error::CsrsInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -481,6 +475,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::Error::LastErr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -597,14 +592,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "error")
     {
-        for(auto const & c : error)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors::Error>();
         c->parent = this;
         error.push_back(c);
@@ -617,9 +604,14 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : error)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -748,14 +740,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "csrs-info")
     {
-        for(auto const & c : csrs_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors::Error::CsrsInfo>();
         c->parent = this;
         csrs_info.push_back(c);
@@ -764,14 +748,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 
     if(child_yang_name == "last-err")
     {
-        for(auto const & c : last_err)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors::Error::LastErr>();
         c->parent = this;
         last_err.push_back(c);
@@ -784,14 +760,23 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors::Error::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csrs_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : last_err)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -988,6 +973,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors::Error::CsrsInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1110,6 +1096,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors::Error::LastErr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1226,14 +1213,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "error")
     {
-        for(auto const & c : error)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors::Error>();
         c->parent = this;
         error.push_back(c);
@@ -1246,9 +1225,14 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : error)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1377,14 +1361,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "csrs-info")
     {
-        for(auto const & c : csrs_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors::Error::CsrsInfo>();
         c->parent = this;
         csrs_info.push_back(c);
@@ -1393,14 +1369,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 
     if(child_yang_name == "last-err")
     {
-        for(auto const & c : last_err)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors::Error::LastErr>();
         c->parent = this;
         last_err.push_back(c);
@@ -1413,14 +1381,23 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors::Error::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csrs_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : last_err)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1617,6 +1594,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors::Error::CsrsInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1739,6 +1717,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors::Error::LastErr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1855,14 +1834,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "error")
     {
-        for(auto const & c : error)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors::Error>();
         c->parent = this;
         error.push_back(c);
@@ -1875,9 +1846,14 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : error)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2006,14 +1982,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "csrs-info")
     {
-        for(auto const & c : csrs_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors::Error::CsrsInfo>();
         c->parent = this;
         csrs_info.push_back(c);
@@ -2022,14 +1990,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 
     if(child_yang_name == "last-err")
     {
-        for(auto const & c : last_err)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors::Error::LastErr>();
         c->parent = this;
         last_err.push_back(c);
@@ -2042,14 +2002,23 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors::Error::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csrs_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : last_err)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2246,6 +2215,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors::Error::CsrsInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2368,6 +2338,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors::Error::LastErr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2484,14 +2455,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "error")
     {
-        for(auto const & c : error)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors::Error>();
         c->parent = this;
         error.push_back(c);
@@ -2504,9 +2467,14 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : error)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2635,14 +2603,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "csrs-info")
     {
-        for(auto const & c : csrs_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors::Error::CsrsInfo>();
         c->parent = this;
         csrs_info.push_back(c);
@@ -2651,14 +2611,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 
     if(child_yang_name == "last-err")
     {
-        for(auto const & c : last_err)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors::Error::LastErr>();
         c->parent = this;
         last_err.push_back(c);
@@ -2671,14 +2623,23 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors::Error::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csrs_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : last_err)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2875,6 +2836,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors::Error::CsrsInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2997,6 +2959,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors::Error::LastErr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3113,14 +3076,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "error")
     {
-        for(auto const & c : error)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors::Error>();
         c->parent = this;
         error.push_back(c);
@@ -3133,9 +3088,14 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : error)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3264,14 +3224,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "csrs-info")
     {
-        for(auto const & c : csrs_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors::Error::CsrsInfo>();
         c->parent = this;
         csrs_info.push_back(c);
@@ -3280,14 +3232,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 
     if(child_yang_name == "last-err")
     {
-        for(auto const & c : last_err)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors::Error::LastErr>();
         c->parent = this;
         last_err.push_back(c);
@@ -3300,14 +3244,23 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors::Error::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csrs_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : last_err)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3504,6 +3457,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors::Error::CsrsInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3626,6 +3580,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors::Error::LastErr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3742,14 +3697,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "error")
     {
-        for(auto const & c : error)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors::Error>();
         c->parent = this;
         error.push_back(c);
@@ -3762,9 +3709,14 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : error)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3893,14 +3845,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "csrs-info")
     {
-        for(auto const & c : csrs_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors::Error::CsrsInfo>();
         c->parent = this;
         csrs_info.push_back(c);
@@ -3909,14 +3853,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 
     if(child_yang_name == "last-err")
     {
-        for(auto const & c : last_err)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors::Error::LastErr>();
         c->parent = this;
         last_err.push_back(c);
@@ -3929,14 +3865,23 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors::Error::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csrs_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : last_err)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4133,6 +4078,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors::Error::CsrsInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4255,6 +4201,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors::Error::LastErr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4371,14 +4318,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "error")
     {
-        for(auto const & c : error)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard::Error>();
         c->parent = this;
         error.push_back(c);
@@ -4391,9 +4330,14 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : error)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4522,14 +4466,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "csrs-info")
     {
-        for(auto const & c : csrs_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard::Error::CsrsInfo>();
         c->parent = this;
         csrs_info.push_back(c);
@@ -4538,14 +4474,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 
     if(child_yang_name == "last-err")
     {
-        for(auto const & c : last_err)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard::Error::LastErr>();
         c->parent = this;
         last_err.push_back(c);
@@ -4558,14 +4486,23 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard::Error::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csrs_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : last_err)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4762,6 +4699,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard::Error::CsrsInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4884,6 +4822,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard::Error::LastErr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5000,14 +4939,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "error")
     {
-        for(auto const & c : error)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors::Error>();
         c->parent = this;
         error.push_back(c);
@@ -5020,9 +4951,14 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : error)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5151,14 +5087,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "csrs-info")
     {
-        for(auto const & c : csrs_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors::Error::CsrsInfo>();
         c->parent = this;
         csrs_info.push_back(c);
@@ -5167,14 +5095,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 
     if(child_yang_name == "last-err")
     {
-        for(auto const & c : last_err)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors::Error::LastErr>();
         c->parent = this;
         last_err.push_back(c);
@@ -5187,14 +5107,23 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors::Error::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csrs_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : last_err)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5391,6 +5320,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors::Error::CsrsInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5513,6 +5443,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors::Error::LastErr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5629,14 +5560,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "error")
     {
-        for(auto const & c : error)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors::Error>();
         c->parent = this;
         error.push_back(c);
@@ -5649,9 +5572,14 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : error)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5780,14 +5708,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "csrs-info")
     {
-        for(auto const & c : csrs_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors::Error::CsrsInfo>();
         c->parent = this;
         csrs_info.push_back(c);
@@ -5796,14 +5716,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 
     if(child_yang_name == "last-err")
     {
-        for(auto const & c : last_err)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors::Error::LastErr>();
         c->parent = this;
         last_err.push_back(c);
@@ -5816,14 +5728,23 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors::Error::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csrs_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : last_err)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6020,6 +5941,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors::Error::CsrsInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6142,6 +6064,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors::Error::LastErr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6258,14 +6181,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "error")
     {
-        for(auto const & c : error)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors::Error>();
         c->parent = this;
         error.push_back(c);
@@ -6278,9 +6193,14 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : error)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6409,14 +6329,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "csrs-info")
     {
-        for(auto const & c : csrs_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors::Error::CsrsInfo>();
         c->parent = this;
         csrs_info.push_back(c);
@@ -6425,14 +6337,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 
     if(child_yang_name == "last-err")
     {
-        for(auto const & c : last_err)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors::Error::LastErr>();
         c->parent = this;
         last_err.push_back(c);
@@ -6445,14 +6349,23 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors::Error::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csrs_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : last_err)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6649,6 +6562,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors::Error::CsrsInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6771,6 +6685,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors::Error::LastErr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6887,14 +6802,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "error")
     {
-        for(auto const & c : error)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors::Error>();
         c->parent = this;
         error.push_back(c);
@@ -6907,9 +6814,14 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : error)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7038,14 +6950,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "csrs-info")
     {
-        for(auto const & c : csrs_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors::Error::CsrsInfo>();
         c->parent = this;
         csrs_info.push_back(c);
@@ -7054,14 +6958,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 
     if(child_yang_name == "last-err")
     {
-        for(auto const & c : last_err)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors::Error::LastErr>();
         c->parent = this;
         last_err.push_back(c);
@@ -7074,14 +6970,23 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors::Error::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csrs_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : last_err)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7278,6 +7183,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors::Error::CsrsInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7400,6 +7306,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors::Error::LastErr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7516,14 +7423,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "error")
     {
-        for(auto const & c : error)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors::Error>();
         c->parent = this;
         error.push_back(c);
@@ -7536,9 +7435,14 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : error)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7667,14 +7571,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "csrs-info")
     {
-        for(auto const & c : csrs_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors::Error::CsrsInfo>();
         c->parent = this;
         csrs_info.push_back(c);
@@ -7683,14 +7579,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 
     if(child_yang_name == "last-err")
     {
-        for(auto const & c : last_err)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors::Error::LastErr>();
         c->parent = this;
         last_err.push_back(c);
@@ -7703,14 +7591,23 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors::Error::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csrs_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : last_err)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7907,6 +7804,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors::Error::CsrsInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8029,6 +7927,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors::Error::LastErr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8145,14 +8044,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "error")
     {
-        for(auto const & c : error)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors::Error>();
         c->parent = this;
         error.push_back(c);
@@ -8165,9 +8056,14 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : error)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8296,14 +8192,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "csrs-info")
     {
-        for(auto const & c : csrs_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors::Error::CsrsInfo>();
         c->parent = this;
         csrs_info.push_back(c);
@@ -8312,14 +8200,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 
     if(child_yang_name == "last-err")
     {
-        for(auto const & c : last_err)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors::Error::LastErr>();
         c->parent = this;
         last_err.push_back(c);
@@ -8332,14 +8212,23 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors::Error::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csrs_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : last_err)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8536,6 +8425,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors::Error::CsrsInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8658,6 +8548,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors::Error::LastErr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8774,14 +8665,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "error")
     {
-        for(auto const & c : error)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors::Error>();
         c->parent = this;
         error.push_back(c);
@@ -8794,9 +8677,14 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : error)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8925,14 +8813,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "csrs-info")
     {
-        for(auto const & c : csrs_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors::Error::CsrsInfo>();
         c->parent = this;
         csrs_info.push_back(c);
@@ -8941,14 +8821,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 
     if(child_yang_name == "last-err")
     {
-        for(auto const & c : last_err)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors::Error::LastErr>();
         c->parent = this;
         last_err.push_back(c);
@@ -8961,14 +8833,23 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors::Error::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csrs_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : last_err)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9165,6 +9046,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors::Error::CsrsInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9287,6 +9169,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors::Error::LastErr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9403,14 +9286,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "error")
     {
-        for(auto const & c : error)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard::Error>();
         c->parent = this;
         error.push_back(c);
@@ -9423,9 +9298,14 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : error)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9554,14 +9434,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 {
     if(child_yang_name == "csrs-info")
     {
-        for(auto const & c : csrs_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard::Error::CsrsInfo>();
         c->parent = this;
         csrs_info.push_back(c);
@@ -9570,14 +9442,6 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 
     if(child_yang_name == "last-err")
     {
-        for(auto const & c : last_err)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard::Error::LastErr>();
         c->parent = this;
         last_err.push_back(c);
@@ -9590,14 +9454,23 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard::Error::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : csrs_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : last_err)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9794,6 +9667,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard::Error::CsrsInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9916,6 +9790,7 @@ std::shared_ptr<Entity> AsicErrors::Nodes::Node::AsicInformation::Instances::Ins
 std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard::Error::LastErr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

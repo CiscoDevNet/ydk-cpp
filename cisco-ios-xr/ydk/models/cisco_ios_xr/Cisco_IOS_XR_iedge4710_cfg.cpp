@@ -81,6 +81,7 @@ std::shared_ptr<Entity> SubscriberManager::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(accounting != nullptr)
     {
         children["accounting"] = accounting;
@@ -211,6 +212,7 @@ std::shared_ptr<Entity> SubscriberManager::Accounting::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::Accounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(send_stop != nullptr)
     {
         children["send-stop"] = send_stop;
@@ -303,6 +305,7 @@ std::shared_ptr<Entity> SubscriberManager::Accounting::SendStop::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::Accounting::SendStop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(setup_failure != nullptr)
     {
         children["setup-failure"] = setup_failure;
@@ -381,6 +384,7 @@ std::shared_ptr<Entity> SubscriberManager::Accounting::SendStop::SetupFailure::g
 std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::Accounting::SendStop::SetupFailure::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -473,6 +477,7 @@ std::shared_ptr<Entity> SubscriberManager::Accounting::Interim::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::Accounting::Interim::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(variation != nullptr)
     {
         children["variation"] = variation;
@@ -551,6 +556,7 @@ std::shared_ptr<Entity> SubscriberManager::Accounting::Interim::Variation::get_c
 std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::Accounting::Interim::Variation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -634,6 +640,7 @@ std::shared_ptr<Entity> SubscriberManager::Srg::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::Srg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -712,14 +719,6 @@ std::shared_ptr<Entity> SubscriberFeaturette::get_child_by_name(const std::strin
 {
     if(child_yang_name == "identity-change")
     {
-        for(auto const & c : identity_change)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SubscriberFeaturette::IdentityChange>();
         c->parent = this;
         identity_change.push_back(c);
@@ -732,9 +731,14 @@ std::shared_ptr<Entity> SubscriberFeaturette::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> SubscriberFeaturette::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : identity_change)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -839,6 +843,7 @@ std::shared_ptr<Entity> SubscriberFeaturette::IdentityChange::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> SubscriberFeaturette::IdentityChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -927,14 +932,6 @@ std::shared_ptr<Entity> IedgeLicenseManager::get_child_by_name(const std::string
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IedgeLicenseManager::Node>();
         c->parent = this;
         node.push_back(c);
@@ -947,9 +944,14 @@ std::shared_ptr<Entity> IedgeLicenseManager::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> IedgeLicenseManager::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1058,6 +1060,7 @@ std::shared_ptr<Entity> IedgeLicenseManager::Node::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> IedgeLicenseManager::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1156,14 +1159,6 @@ std::shared_ptr<Entity> SubManager::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "location")
     {
-        for(auto const & c : location)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SubManager::Location>();
         c->parent = this;
         location.push_back(c);
@@ -1176,9 +1171,14 @@ std::shared_ptr<Entity> SubManager::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> SubManager::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : location)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1297,6 +1297,7 @@ std::shared_ptr<Entity> SubManager::Location::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> SubManager::Location::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(trace != nullptr)
     {
         children["trace"] = trace;
@@ -1388,6 +1389,7 @@ std::shared_ptr<Entity> SubManager::Location::Trace::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> SubManager::Location::Trace::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -81,6 +81,7 @@ std::shared_ptr<Entity> StartQuery::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> StartQuery::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -221,14 +222,6 @@ std::shared_ptr<Entity> StartQuery::Input::get_child_by_name(const std::string &
 {
     if(child_yang_name == "select")
     {
-        for(auto const & c : select)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<StartQuery::Input::Select>();
         c->parent = this;
         select.push_back(c);
@@ -241,9 +234,14 @@ std::shared_ptr<Entity> StartQuery::Input::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> StartQuery::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : select)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -385,6 +383,7 @@ std::shared_ptr<Entity> StartQuery::Input::Select::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> StartQuery::Input::Select::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -486,6 +485,7 @@ std::shared_ptr<Entity> StartQuery::Output::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> StartQuery::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -584,6 +584,7 @@ std::shared_ptr<Entity> FetchQueryResult::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> FetchQueryResult::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -692,6 +693,7 @@ std::shared_ptr<Entity> FetchQueryResult::Input::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> FetchQueryResult::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -784,6 +786,7 @@ std::shared_ptr<Entity> FetchQueryResult::Output::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> FetchQueryResult::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(query_result != nullptr)
     {
         children["query-result"] = query_result;
@@ -864,14 +867,6 @@ std::shared_ptr<Entity> FetchQueryResult::Output::QueryResult::get_child_by_name
 {
     if(child_yang_name == "result")
     {
-        for(auto const & c : result)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<FetchQueryResult::Output::QueryResult::Result>();
         c->parent = this;
         result.push_back(c);
@@ -884,9 +879,14 @@ std::shared_ptr<Entity> FetchQueryResult::Output::QueryResult::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> FetchQueryResult::Output::QueryResult::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : result)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -964,14 +964,6 @@ std::shared_ptr<Entity> FetchQueryResult::Output::QueryResult::Result::get_child
 {
     if(child_yang_name == "select")
     {
-        for(auto const & c : select)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<FetchQueryResult::Output::QueryResult::Result::Select>();
         c->parent = this;
         select.push_back(c);
@@ -984,9 +976,14 @@ std::shared_ptr<Entity> FetchQueryResult::Output::QueryResult::Result::get_child
 std::map<std::string, std::shared_ptr<Entity>> FetchQueryResult::Output::QueryResult::Result::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : select)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1074,6 +1071,7 @@ std::shared_ptr<Entity> FetchQueryResult::Output::QueryResult::Result::Select::g
 std::map<std::string, std::shared_ptr<Entity>> FetchQueryResult::Output::QueryResult::Result::Select::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1189,6 +1187,7 @@ std::shared_ptr<Entity> ResetQuery::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> ResetQuery::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1300,6 +1299,7 @@ std::shared_ptr<Entity> ResetQuery::Input::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> ResetQuery::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1405,6 +1405,7 @@ std::shared_ptr<Entity> StopQuery::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> StopQuery::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1508,6 +1509,7 @@ std::shared_ptr<Entity> StopQuery::Input::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> StopQuery::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

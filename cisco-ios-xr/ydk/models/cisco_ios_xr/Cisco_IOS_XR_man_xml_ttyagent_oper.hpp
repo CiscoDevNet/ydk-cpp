@@ -188,11 +188,11 @@ class XrXml::Agent : public ydk::Entity
         std::string get_absolute_path() const override;
 
         class Tty; //type: XrXml::Agent::Tty
-        class Default_; //type: XrXml::Agent::Default_
+        class Default; //type: XrXml::Agent::Default
         class Ssl; //type: XrXml::Agent::Ssl
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_oper::XrXml::Agent::Tty> tty;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_oper::XrXml::Agent::Default_> default_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_oper::XrXml::Agent::Default> default_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_oper::XrXml::Agent::Ssl> ssl;
         
 }; // XrXml::Agent
@@ -279,11 +279,11 @@ class XrXml::Agent::Tty::Sessions::Session : public ydk::Entity
 }; // XrXml::Agent::Tty::Sessions::Session
 
 
-class XrXml::Agent::Default_ : public ydk::Entity
+class XrXml::Agent::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -296,14 +296,14 @@ class XrXml::Agent::Default_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Sessions; //type: XrXml::Agent::Default_::Sessions
+        class Sessions; //type: XrXml::Agent::Default::Sessions
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_oper::XrXml::Agent::Default_::Sessions> sessions;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_oper::XrXml::Agent::Default::Sessions> sessions;
         
-}; // XrXml::Agent::Default_
+}; // XrXml::Agent::Default
 
 
-class XrXml::Agent::Default_::Sessions : public ydk::Entity
+class XrXml::Agent::Default::Sessions : public ydk::Entity
 {
     public:
         Sessions();
@@ -320,14 +320,14 @@ class XrXml::Agent::Default_::Sessions : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Session; //type: XrXml::Agent::Default_::Sessions::Session
+        class Session; //type: XrXml::Agent::Default::Sessions::Session
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_oper::XrXml::Agent::Default_::Sessions::Session> > session;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_oper::XrXml::Agent::Default::Sessions::Session> > session;
         
-}; // XrXml::Agent::Default_::Sessions
+}; // XrXml::Agent::Default::Sessions
 
 
-class XrXml::Agent::Default_::Sessions::Session : public ydk::Entity
+class XrXml::Agent::Default::Sessions::Session : public ydk::Entity
 {
     public:
         Session();
@@ -357,7 +357,7 @@ class XrXml::Agent::Default_::Sessions::Session : public ydk::Entity
         ydk::YLeaf elapsed_time; //type: uint32
         ydk::YLeaf last_state_change; //type: uint32
 
-}; // XrXml::Agent::Default_::Sessions::Session
+}; // XrXml::Agent::Default::Sessions::Session
 
 
 class XrXml::Agent::Ssl : public ydk::Entity

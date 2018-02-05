@@ -68,6 +68,7 @@ std::shared_ptr<Entity> SubscriberAccounting::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prepaid_configurations != nullptr)
     {
         children["prepaid-configurations"] = prepaid_configurations;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> SubscriberAccounting::PrepaidConfigurations::get_child_b
 {
     if(child_yang_name == "prepaid-configuration")
     {
-        for(auto const & c : prepaid_configuration)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration>();
         c->parent = this;
         prepaid_configuration.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> SubscriberAccounting::PrepaidConfigurations::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::PrepaidConfigurations::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : prepaid_configuration)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -303,6 +301,7 @@ std::shared_ptr<Entity> SubscriberAccounting::PrepaidConfigurations::PrepaidConf
 std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

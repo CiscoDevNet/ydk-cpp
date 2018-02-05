@@ -101,12 +101,12 @@ class L2Vpnv2::Active::Pwr::Summary::RdConfigured : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf rd; //type: L2vpnAdRd
-        class Auto_; //type: L2Vpnv2::Active::Pwr::Summary::RdConfigured::Auto_
+        class Auto; //type: L2Vpnv2::Active::Pwr::Summary::RdConfigured::Auto
         class TwoByteAs; //type: L2Vpnv2::Active::Pwr::Summary::RdConfigured::TwoByteAs
         class FourByteAs; //type: L2Vpnv2::Active::Pwr::Summary::RdConfigured::FourByteAs
         class V4Addr; //type: L2Vpnv2::Active::Pwr::Summary::RdConfigured::V4Addr
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Pwr::Summary::RdConfigured::Auto_> auto_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Pwr::Summary::RdConfigured::Auto> auto_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Pwr::Summary::RdConfigured::TwoByteAs> two_byte_as;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Pwr::Summary::RdConfigured::FourByteAs> four_byte_as;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Pwr::Summary::RdConfigured::V4Addr> v4_addr;
@@ -114,11 +114,11 @@ class L2Vpnv2::Active::Pwr::Summary::RdConfigured : public ydk::Entity
 }; // L2Vpnv2::Active::Pwr::Summary::RdConfigured
 
 
-class L2Vpnv2::Active::Pwr::Summary::RdConfigured::Auto_ : public ydk::Entity
+class L2Vpnv2::Active::Pwr::Summary::RdConfigured::Auto : public ydk::Entity
 {
     public:
-        Auto_();
-        ~Auto_();
+        Auto();
+        ~Auto();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -134,7 +134,7 @@ class L2Vpnv2::Active::Pwr::Summary::RdConfigured::Auto_ : public ydk::Entity
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf auto_index; //type: uint16
 
-}; // L2Vpnv2::Active::Pwr::Summary::RdConfigured::Auto_
+}; // L2Vpnv2::Active::Pwr::Summary::RdConfigured::Auto
 
 
 class L2Vpnv2::Active::Pwr::Summary::RdConfigured::TwoByteAs : public ydk::Entity
@@ -1718,22 +1718,22 @@ class L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInf
         std::string get_absolute_path() const override;
 
         ydk::YLeaf vpls_id_type; //type: L2vpnAdVplsId
-        class Auto_; //type: L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto_
+        class Auto; //type: L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto
         class TwoByteAs; //type: L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs
         class V4Addr; //type: L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto_> auto_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto> auto_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs> two_byte_as;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr> v4_addr;
         
 }; // L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto_ : public ydk::Entity
+class L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto : public ydk::Entity
 {
     public:
-        Auto_();
-        ~Auto_();
+        Auto();
+        ~Auto();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1749,7 +1749,7 @@ class L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInf
         ydk::YLeaf asn; //type: uint16
         ydk::YLeaf vpn_id; //type: uint32
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto_
+}; // L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto
 
 
 class L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs : public ydk::Entity
@@ -1816,22 +1816,22 @@ class L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInf
         std::string get_absolute_path() const override;
 
         ydk::YLeaf vpls_id_type; //type: L2vpnAdVplsId
-        class Auto_; //type: L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto_
+        class Auto; //type: L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto
         class TwoByteAs; //type: L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs
         class V4Addr; //type: L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto_> auto_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto> auto_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs> two_byte_as;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr> v4_addr;
         
 }; // L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto_ : public ydk::Entity
+class L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto : public ydk::Entity
 {
     public:
-        Auto_();
-        ~Auto_();
+        Auto();
+        ~Auto();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1847,7 +1847,7 @@ class L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInf
         ydk::YLeaf asn; //type: uint16
         ydk::YLeaf vpn_id; //type: uint32
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto_
+}; // L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto
 
 
 class L2Vpnv2::Active::Xconnects::Xconnect::Backup::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs : public ydk::Entity

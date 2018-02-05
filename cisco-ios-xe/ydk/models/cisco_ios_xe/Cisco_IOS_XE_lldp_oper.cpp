@@ -61,14 +61,6 @@ std::shared_ptr<Entity> LldpEntries::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "lldp-entry")
     {
-        for(auto const & c : lldp_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<LldpEntries::LldpEntry>();
         c->parent = this;
         lldp_entry.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> LldpEntries::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> LldpEntries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldp_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -210,6 +207,7 @@ std::shared_ptr<Entity> LldpEntries::LldpEntry::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> LldpEntries::LldpEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(capabilities != nullptr)
     {
         children["capabilities"] = capabilities;
@@ -349,6 +347,7 @@ std::shared_ptr<Entity> LldpEntries::LldpEntry::Capabilities::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> LldpEntries::LldpEntry::Capabilities::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

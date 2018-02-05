@@ -158,6 +158,7 @@ std::shared_ptr<Entity> Bfd::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(flap_damp != nullptr)
     {
         children["flap-damp"] = flap_damp;
@@ -389,6 +390,7 @@ std::shared_ptr<Entity> Bfd::FlapDamp::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Bfd::FlapDamp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bundle_member != nullptr)
     {
         children["bundle-member"] = bundle_member;
@@ -534,6 +536,7 @@ std::shared_ptr<Entity> Bfd::FlapDamp::BundleMember::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Bfd::FlapDamp::BundleMember::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -647,6 +650,7 @@ std::shared_ptr<Entity> Bfd::FlapDamp::Extensions::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Bfd::FlapDamp::Extensions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -739,6 +743,7 @@ std::shared_ptr<Entity> Bfd::EchoLatency::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Bfd::EchoLatency::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(detect != nullptr)
     {
         children["detect"] = detect;
@@ -825,6 +830,7 @@ std::shared_ptr<Entity> Bfd::EchoLatency::Detect::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Bfd::EchoLatency::Detect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -928,6 +934,7 @@ std::shared_ptr<Entity> Bfd::EchoStartup::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Bfd::EchoStartup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1013,14 +1020,6 @@ std::shared_ptr<Entity> Bfd::Interfaces::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Bfd::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -1033,9 +1032,14 @@ std::shared_ptr<Entity> Bfd::Interfaces::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Bfd::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1123,6 +1127,7 @@ std::shared_ptr<Entity> Bfd::Interfaces::Interface::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Bfd::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1238,14 +1243,6 @@ std::shared_ptr<Entity> Bfd::MultiPathIncludes::get_child_by_name(const std::str
 {
     if(child_yang_name == "multi-path-include")
     {
-        for(auto const & c : multi_path_include)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Bfd::MultiPathIncludes::MultiPathInclude>();
         c->parent = this;
         multi_path_include.push_back(c);
@@ -1258,9 +1255,14 @@ std::shared_ptr<Entity> Bfd::MultiPathIncludes::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Bfd::MultiPathIncludes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : multi_path_include)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1336,6 +1338,7 @@ std::shared_ptr<Entity> Bfd::MultiPathIncludes::MultiPathInclude::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Bfd::MultiPathIncludes::MultiPathInclude::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1428,6 +1431,7 @@ std::shared_ptr<Entity> Bfd::Bundle::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Bfd::Bundle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(coexistence != nullptr)
     {
         children["coexistence"] = coexistence;
@@ -1506,6 +1510,7 @@ std::shared_ptr<Entity> Bfd::Bundle::Coexistence::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Bfd::Bundle::Coexistence::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

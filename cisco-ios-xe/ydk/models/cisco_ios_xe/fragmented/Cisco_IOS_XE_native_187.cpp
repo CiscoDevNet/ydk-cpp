@@ -12,15 +12,15 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
-Native::Otv::Site::Default_::Otv_::Isis::Isis()
+Native::Otv::Site::Default::Otv_::Isis::Isis()
     :
     bfd{YType::empty, "bfd"},
     hello_multiplier{YType::uint16, "hello-multiplier"},
     priority{YType::uint8, "priority"}
     	,
-    authentication(std::make_shared<Native::Otv::Site::Default_::Otv_::Isis::Authentication>())
-	,hello(std::make_shared<Native::Otv::Site::Default_::Otv_::Isis::Hello>())
-	,hello_interval(std::make_shared<Native::Otv::Site::Default_::Otv_::Isis::HelloInterval>())
+    authentication(std::make_shared<Native::Otv::Site::Default::Otv_::Isis::Authentication>())
+	,hello(std::make_shared<Native::Otv::Site::Default::Otv_::Isis::Hello>())
+	,hello_interval(std::make_shared<Native::Otv::Site::Default::Otv_::Isis::HelloInterval>())
 {
     authentication->parent = this;
     hello->parent = this;
@@ -29,11 +29,11 @@ Native::Otv::Site::Default_::Otv_::Isis::Isis()
     yang_name = "isis"; yang_parent_name = "otv"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Otv::Site::Default_::Otv_::Isis::~Isis()
+Native::Otv::Site::Default::Otv_::Isis::~Isis()
 {
 }
 
-bool Native::Otv::Site::Default_::Otv_::Isis::has_data() const
+bool Native::Otv::Site::Default::Otv_::Isis::has_data() const
 {
     return bfd.is_set
 	|| hello_multiplier.is_set
@@ -43,7 +43,7 @@ bool Native::Otv::Site::Default_::Otv_::Isis::has_data() const
 	|| (hello_interval !=  nullptr && hello_interval->has_data());
 }
 
-bool Native::Otv::Site::Default_::Otv_::Isis::has_operation() const
+bool Native::Otv::Site::Default::Otv_::Isis::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bfd.yfilter)
@@ -54,14 +54,14 @@ bool Native::Otv::Site::Default_::Otv_::Isis::has_operation() const
 	|| (hello_interval !=  nullptr && hello_interval->has_operation());
 }
 
-std::string Native::Otv::Site::Default_::Otv_::Isis::get_segment_path() const
+std::string Native::Otv::Site::Default::Otv_::Isis::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "isis";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Otv::Site::Default_::Otv_::Isis::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Otv::Site::Default::Otv_::Isis::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -73,13 +73,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Otv::Site::Default_::Otv_
 
 }
 
-std::shared_ptr<Entity> Native::Otv::Site::Default_::Otv_::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Otv::Site::Default::Otv_::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "authentication")
     {
         if(authentication == nullptr)
         {
-            authentication = std::make_shared<Native::Otv::Site::Default_::Otv_::Isis::Authentication>();
+            authentication = std::make_shared<Native::Otv::Site::Default::Otv_::Isis::Authentication>();
         }
         return authentication;
     }
@@ -88,7 +88,7 @@ std::shared_ptr<Entity> Native::Otv::Site::Default_::Otv_::Isis::get_child_by_na
     {
         if(hello == nullptr)
         {
-            hello = std::make_shared<Native::Otv::Site::Default_::Otv_::Isis::Hello>();
+            hello = std::make_shared<Native::Otv::Site::Default::Otv_::Isis::Hello>();
         }
         return hello;
     }
@@ -97,7 +97,7 @@ std::shared_ptr<Entity> Native::Otv::Site::Default_::Otv_::Isis::get_child_by_na
     {
         if(hello_interval == nullptr)
         {
-            hello_interval = std::make_shared<Native::Otv::Site::Default_::Otv_::Isis::HelloInterval>();
+            hello_interval = std::make_shared<Native::Otv::Site::Default::Otv_::Isis::HelloInterval>();
         }
         return hello_interval;
     }
@@ -105,9 +105,10 @@ std::shared_ptr<Entity> Native::Otv::Site::Default_::Otv_::Isis::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::Default_::Otv_::Isis::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::Default::Otv_::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authentication != nullptr)
     {
         children["authentication"] = authentication;
@@ -126,7 +127,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::Default_::Otv_
     return children;
 }
 
-void Native::Otv::Site::Default_::Otv_::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Otv::Site::Default::Otv_::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bfd")
     {
@@ -148,7 +149,7 @@ void Native::Otv::Site::Default_::Otv_::Isis::set_value(const std::string & valu
     }
 }
 
-void Native::Otv::Site::Default_::Otv_::Isis::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Otv::Site::Default::Otv_::Isis::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bfd")
     {
@@ -164,14 +165,14 @@ void Native::Otv::Site::Default_::Otv_::Isis::set_filter(const std::string & val
     }
 }
 
-bool Native::Otv::Site::Default_::Otv_::Isis::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Otv::Site::Default::Otv_::Isis::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "authentication" || name == "hello" || name == "hello-interval" || name == "bfd" || name == "hello-multiplier" || name == "priority")
         return true;
     return false;
 }
 
-Native::Otv::Site::Default_::Otv_::Isis::Authentication::Authentication()
+Native::Otv::Site::Default::Otv_::Isis::Authentication::Authentication()
     :
     key_chain{YType::str, "key-chain"},
     mode{YType::enumeration, "mode"},
@@ -181,18 +182,18 @@ Native::Otv::Site::Default_::Otv_::Isis::Authentication::Authentication()
     yang_name = "authentication"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Otv::Site::Default_::Otv_::Isis::Authentication::~Authentication()
+Native::Otv::Site::Default::Otv_::Isis::Authentication::~Authentication()
 {
 }
 
-bool Native::Otv::Site::Default_::Otv_::Isis::Authentication::has_data() const
+bool Native::Otv::Site::Default::Otv_::Isis::Authentication::has_data() const
 {
     return key_chain.is_set
 	|| mode.is_set
 	|| send_only.is_set;
 }
 
-bool Native::Otv::Site::Default_::Otv_::Isis::Authentication::has_operation() const
+bool Native::Otv::Site::Default::Otv_::Isis::Authentication::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(key_chain.yfilter)
@@ -200,14 +201,14 @@ bool Native::Otv::Site::Default_::Otv_::Isis::Authentication::has_operation() co
 	|| ydk::is_set(send_only.yfilter);
 }
 
-std::string Native::Otv::Site::Default_::Otv_::Isis::Authentication::get_segment_path() const
+std::string Native::Otv::Site::Default::Otv_::Isis::Authentication::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "authentication";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Otv::Site::Default_::Otv_::Isis::Authentication::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Otv::Site::Default::Otv_::Isis::Authentication::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -219,18 +220,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Otv::Site::Default_::Otv_
 
 }
 
-std::shared_ptr<Entity> Native::Otv::Site::Default_::Otv_::Isis::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Otv::Site::Default::Otv_::Isis::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::Default_::Otv_::Isis::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::Default::Otv_::Isis::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Otv::Site::Default_::Otv_::Isis::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Otv::Site::Default::Otv_::Isis::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "key-chain")
     {
@@ -252,7 +254,7 @@ void Native::Otv::Site::Default_::Otv_::Isis::Authentication::set_value(const st
     }
 }
 
-void Native::Otv::Site::Default_::Otv_::Isis::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Otv::Site::Default::Otv_::Isis::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "key-chain")
     {
@@ -268,14 +270,14 @@ void Native::Otv::Site::Default_::Otv_::Isis::Authentication::set_filter(const s
     }
 }
 
-bool Native::Otv::Site::Default_::Otv_::Isis::Authentication::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Otv::Site::Default::Otv_::Isis::Authentication::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "key-chain" || name == "mode" || name == "send-only")
         return true;
     return false;
 }
 
-Native::Otv::Site::Default_::Otv_::Isis::Hello::Hello()
+Native::Otv::Site::Default::Otv_::Isis::Hello::Hello()
     :
     padding(nullptr) // presence node
 {
@@ -283,29 +285,29 @@ Native::Otv::Site::Default_::Otv_::Isis::Hello::Hello()
     yang_name = "hello"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Otv::Site::Default_::Otv_::Isis::Hello::~Hello()
+Native::Otv::Site::Default::Otv_::Isis::Hello::~Hello()
 {
 }
 
-bool Native::Otv::Site::Default_::Otv_::Isis::Hello::has_data() const
+bool Native::Otv::Site::Default::Otv_::Isis::Hello::has_data() const
 {
     return (padding !=  nullptr && padding->has_data());
 }
 
-bool Native::Otv::Site::Default_::Otv_::Isis::Hello::has_operation() const
+bool Native::Otv::Site::Default::Otv_::Isis::Hello::has_operation() const
 {
     return is_set(yfilter)
 	|| (padding !=  nullptr && padding->has_operation());
 }
 
-std::string Native::Otv::Site::Default_::Otv_::Isis::Hello::get_segment_path() const
+std::string Native::Otv::Site::Default::Otv_::Isis::Hello::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "hello";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Otv::Site::Default_::Otv_::Isis::Hello::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Otv::Site::Default::Otv_::Isis::Hello::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -314,13 +316,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Otv::Site::Default_::Otv_
 
 }
 
-std::shared_ptr<Entity> Native::Otv::Site::Default_::Otv_::Isis::Hello::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Otv::Site::Default::Otv_::Isis::Hello::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "padding")
     {
         if(padding == nullptr)
         {
-            padding = std::make_shared<Native::Otv::Site::Default_::Otv_::Isis::Hello::Padding>();
+            padding = std::make_shared<Native::Otv::Site::Default::Otv_::Isis::Hello::Padding>();
         }
         return padding;
     }
@@ -328,9 +330,10 @@ std::shared_ptr<Entity> Native::Otv::Site::Default_::Otv_::Isis::Hello::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::Default_::Otv_::Isis::Hello::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::Default::Otv_::Isis::Hello::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(padding != nullptr)
     {
         children["padding"] = padding;
@@ -339,22 +342,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::Default_::Otv_
     return children;
 }
 
-void Native::Otv::Site::Default_::Otv_::Isis::Hello::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Otv::Site::Default::Otv_::Isis::Hello::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Otv::Site::Default_::Otv_::Isis::Hello::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Otv::Site::Default::Otv_::Isis::Hello::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Otv::Site::Default_::Otv_::Isis::Hello::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Otv::Site::Default::Otv_::Isis::Hello::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "padding")
         return true;
     return false;
 }
 
-Native::Otv::Site::Default_::Otv_::Isis::Hello::Padding::Padding()
+Native::Otv::Site::Default::Otv_::Isis::Hello::Padding::Padding()
     :
     always{YType::empty, "always"}
 {
@@ -362,29 +365,29 @@ Native::Otv::Site::Default_::Otv_::Isis::Hello::Padding::Padding()
     yang_name = "padding"; yang_parent_name = "hello"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Otv::Site::Default_::Otv_::Isis::Hello::Padding::~Padding()
+Native::Otv::Site::Default::Otv_::Isis::Hello::Padding::~Padding()
 {
 }
 
-bool Native::Otv::Site::Default_::Otv_::Isis::Hello::Padding::has_data() const
+bool Native::Otv::Site::Default::Otv_::Isis::Hello::Padding::has_data() const
 {
     return always.is_set;
 }
 
-bool Native::Otv::Site::Default_::Otv_::Isis::Hello::Padding::has_operation() const
+bool Native::Otv::Site::Default::Otv_::Isis::Hello::Padding::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(always.yfilter);
 }
 
-std::string Native::Otv::Site::Default_::Otv_::Isis::Hello::Padding::get_segment_path() const
+std::string Native::Otv::Site::Default::Otv_::Isis::Hello::Padding::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "padding";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Otv::Site::Default_::Otv_::Isis::Hello::Padding::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Otv::Site::Default::Otv_::Isis::Hello::Padding::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -394,18 +397,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Otv::Site::Default_::Otv_
 
 }
 
-std::shared_ptr<Entity> Native::Otv::Site::Default_::Otv_::Isis::Hello::Padding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Otv::Site::Default::Otv_::Isis::Hello::Padding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::Default_::Otv_::Isis::Hello::Padding::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::Default::Otv_::Isis::Hello::Padding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Otv::Site::Default_::Otv_::Isis::Hello::Padding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Otv::Site::Default::Otv_::Isis::Hello::Padding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "always")
     {
@@ -415,7 +419,7 @@ void Native::Otv::Site::Default_::Otv_::Isis::Hello::Padding::set_value(const st
     }
 }
 
-void Native::Otv::Site::Default_::Otv_::Isis::Hello::Padding::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Otv::Site::Default::Otv_::Isis::Hello::Padding::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "always")
     {
@@ -423,14 +427,14 @@ void Native::Otv::Site::Default_::Otv_::Isis::Hello::Padding::set_filter(const s
     }
 }
 
-bool Native::Otv::Site::Default_::Otv_::Isis::Hello::Padding::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Otv::Site::Default::Otv_::Isis::Hello::Padding::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "always")
         return true;
     return false;
 }
 
-Native::Otv::Site::Default_::Otv_::Isis::HelloInterval::HelloInterval()
+Native::Otv::Site::Default::Otv_::Isis::HelloInterval::HelloInterval()
     :
     value_{YType::uint16, "value"},
     minimal{YType::empty, "minimal"}
@@ -439,31 +443,31 @@ Native::Otv::Site::Default_::Otv_::Isis::HelloInterval::HelloInterval()
     yang_name = "hello-interval"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Otv::Site::Default_::Otv_::Isis::HelloInterval::~HelloInterval()
+Native::Otv::Site::Default::Otv_::Isis::HelloInterval::~HelloInterval()
 {
 }
 
-bool Native::Otv::Site::Default_::Otv_::Isis::HelloInterval::has_data() const
+bool Native::Otv::Site::Default::Otv_::Isis::HelloInterval::has_data() const
 {
     return value_.is_set
 	|| minimal.is_set;
 }
 
-bool Native::Otv::Site::Default_::Otv_::Isis::HelloInterval::has_operation() const
+bool Native::Otv::Site::Default::Otv_::Isis::HelloInterval::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter)
 	|| ydk::is_set(minimal.yfilter);
 }
 
-std::string Native::Otv::Site::Default_::Otv_::Isis::HelloInterval::get_segment_path() const
+std::string Native::Otv::Site::Default::Otv_::Isis::HelloInterval::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "hello-interval";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Otv::Site::Default_::Otv_::Isis::HelloInterval::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Otv::Site::Default::Otv_::Isis::HelloInterval::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -474,18 +478,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Otv::Site::Default_::Otv_
 
 }
 
-std::shared_ptr<Entity> Native::Otv::Site::Default_::Otv_::Isis::HelloInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Otv::Site::Default::Otv_::Isis::HelloInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::Default_::Otv_::Isis::HelloInterval::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::Default::Otv_::Isis::HelloInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Otv::Site::Default_::Otv_::Isis::HelloInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Otv::Site::Default::Otv_::Isis::HelloInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -501,7 +506,7 @@ void Native::Otv::Site::Default_::Otv_::Isis::HelloInterval::set_value(const std
     }
 }
 
-void Native::Otv::Site::Default_::Otv_::Isis::HelloInterval::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Otv::Site::Default::Otv_::Isis::HelloInterval::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -513,7 +518,7 @@ void Native::Otv::Site::Default_::Otv_::Isis::HelloInterval::set_filter(const st
     }
 }
 
-bool Native::Otv::Site::Default_::Otv_::Isis::HelloInterval::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Otv::Site::Default::Otv_::Isis::HelloInterval::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value" || name == "minimal")
         return true;
@@ -577,6 +582,7 @@ std::shared_ptr<Entity> Native::Otv::Site::Otv_::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::Otv_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(isis != nullptr)
     {
         children["isis"] = isis;
@@ -696,6 +702,7 @@ std::shared_ptr<Entity> Native::Otv::Site::Otv_::Isis::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::Otv_::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authentication != nullptr)
     {
         children["authentication"] = authentication;
@@ -815,6 +822,7 @@ std::shared_ptr<Entity> Native::Otv::Site::Otv_::Isis::Authentication::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::Otv_::Isis::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -919,6 +927,7 @@ std::shared_ptr<Entity> Native::Otv::Site::Otv_::Isis::Hello::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::Otv_::Isis::Hello::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(padding != nullptr)
     {
         children["padding"] = padding;
@@ -990,6 +999,7 @@ std::shared_ptr<Entity> Native::Otv::Site::Otv_::Isis::Hello::Padding::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::Otv_::Isis::Hello::Padding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1070,6 +1080,7 @@ std::shared_ptr<Entity> Native::Otv::Site::Otv_::Isis::HelloInterval::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Otv::Site::Otv_::Isis::HelloInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1167,6 +1178,7 @@ std::shared_ptr<Entity> Native::RemoteManagement::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Native::RemoteManagement::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1295,6 +1307,7 @@ std::shared_ptr<Entity> Native::VirtualService::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Native::VirtualService::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ip != nullptr)
     {
         children["Cisco-IOS-XE-vservice:ip"] = ip;
@@ -1410,6 +1423,7 @@ std::shared_ptr<Entity> Native::VirtualService::Ip::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::VirtualService::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(shared != nullptr)
     {
         children["shared"] = shared;
@@ -1490,6 +1504,7 @@ std::shared_ptr<Entity> Native::VirtualService::Ip::Shared::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::VirtualService::Ip::Shared::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(host_interface != nullptr)
     {
         children["host-interface"] = host_interface;
@@ -1585,6 +1600,7 @@ std::shared_ptr<Entity> Native::VirtualService::Ip::Shared::HostInterface::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::VirtualService::Ip::Shared::HostInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1743,6 +1759,7 @@ std::shared_ptr<Entity> Native::VirtualService::Vnic::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::VirtualService::Vnic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(gateway != nullptr)
     {
         children["gateway"] = gateway;
@@ -1821,14 +1838,6 @@ std::shared_ptr<Entity> Native::VirtualService::Vnic::Gateway::get_child_by_name
 {
     if(child_yang_name == "VirtualPortGroup")
     {
-        for(auto const & c : virtualportgroup)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::VirtualService::Vnic::Gateway::VirtualPortGroup>();
         c->parent = this;
         virtualportgroup.push_back(c);
@@ -1841,9 +1850,14 @@ std::shared_ptr<Entity> Native::VirtualService::Vnic::Gateway::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::VirtualService::Vnic::Gateway::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : virtualportgroup)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1926,6 +1940,7 @@ std::shared_ptr<Entity> Native::VirtualService::Vnic::Gateway::VirtualPortGroup:
 std::map<std::string, std::shared_ptr<Entity>> Native::VirtualService::Vnic::Gateway::VirtualPortGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(guest != nullptr)
     {
         children["guest"] = guest;
@@ -2029,6 +2044,7 @@ std::shared_ptr<Entity> Native::VirtualService::Vnic::Gateway::VirtualPortGroup:
 std::map<std::string, std::shared_ptr<Entity>> Native::VirtualService::Vnic::Gateway::VirtualPortGroup::Guest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ip != nullptr)
     {
         children["ip"] = ip;
@@ -2105,6 +2121,7 @@ std::shared_ptr<Entity> Native::VirtualService::Vnic::Gateway::VirtualPortGroup:
 std::map<std::string, std::shared_ptr<Entity>> Native::VirtualService::Vnic::Gateway::VirtualPortGroup::Guest::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2181,6 +2198,7 @@ std::shared_ptr<Entity> Native::VirtualService::Vnic::Gateway::VirtualPortGroup:
 std::map<std::string, std::shared_ptr<Entity>> Native::VirtualService::Vnic::Gateway::VirtualPortGroup::Guest::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2271,6 +2289,7 @@ std::shared_ptr<Entity> Native::VirtualService::Vnic::Management::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::VirtualService::Vnic::Management::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(guest != nullptr)
     {
         children["guest"] = guest;
@@ -2374,6 +2393,7 @@ std::shared_ptr<Entity> Native::VirtualService::Vnic::Management::Guest::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::VirtualService::Vnic::Management::Guest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ip != nullptr)
     {
         children["ip"] = ip;
@@ -2450,6 +2470,7 @@ std::shared_ptr<Entity> Native::VirtualService::Vnic::Management::Guest::Ip::get
 std::map<std::string, std::shared_ptr<Entity>> Native::VirtualService::Vnic::Management::Guest::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2526,6 +2547,7 @@ std::shared_ptr<Entity> Native::VirtualService::Vnic::Management::Guest::Ipv6::g
 std::map<std::string, std::shared_ptr<Entity>> Native::VirtualService::Vnic::Management::Guest::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2631,6 +2653,7 @@ std::shared_ptr<Entity> Native::Snmp::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Snmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ifmib != nullptr)
     {
         children["Cisco-IOS-XE-snmp:ifmib"] = ifmib;
@@ -2736,6 +2759,7 @@ std::shared_ptr<Entity> Native::Snmp::Ifmib::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Native::Snmp::Ifmib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ifindex != nullptr)
     {
         children["ifindex"] = ifindex;
@@ -2819,6 +2843,7 @@ std::shared_ptr<Entity> Native::Snmp::Ifmib::Ifindex::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Snmp::Ifmib::Ifindex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2902,6 +2927,7 @@ std::shared_ptr<Entity> Native::Snmp::Ifmib::Ifalias::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Snmp::Ifmib::Ifalias::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3019,6 +3045,7 @@ std::shared_ptr<Entity> Native::Snmp::Mib::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Native::Snmp::Mib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(community_map != nullptr)
     {
         children["community-map"] = community_map;
@@ -3109,14 +3136,6 @@ std::shared_ptr<Entity> Native::Snmp::Mib::CommunityMap::get_child_by_name(const
 {
     if(child_yang_name == "community-map-list")
     {
-        for(auto const & c : community_map_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Snmp::Mib::CommunityMap::CommunityMapList>();
         c->parent = this;
         community_map_list.push_back(c);
@@ -3129,9 +3148,14 @@ std::shared_ptr<Entity> Native::Snmp::Mib::CommunityMap::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Snmp::Mib::CommunityMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : community_map_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3211,6 +3235,7 @@ std::shared_ptr<Entity> Native::Snmp::Mib::CommunityMap::CommunityMapList::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Snmp::Mib::CommunityMap::CommunityMapList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3306,14 +3331,6 @@ std::shared_ptr<Entity> Native::Snmp::Mib::Bulkstat::get_child_by_name(const std
 {
     if(child_yang_name == "object-list")
     {
-        for(auto const & c : object_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Snmp::Mib::Bulkstat::ObjectList>();
         c->parent = this;
         object_list.push_back(c);
@@ -3326,9 +3343,14 @@ std::shared_ptr<Entity> Native::Snmp::Mib::Bulkstat::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::Snmp::Mib::Bulkstat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : object_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3404,6 +3426,7 @@ std::shared_ptr<Entity> Native::Snmp::Mib::Bulkstat::ObjectList::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Snmp::Mib::Bulkstat::ObjectList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3487,6 +3510,7 @@ std::shared_ptr<Entity> Native::Snmp::Mib::Persist::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Snmp::Mib::Persist::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3676,14 +3700,6 @@ std::shared_ptr<Entity> Native::SnmpServer::get_child_by_name(const std::string 
 {
     if(child_yang_name == "Cisco-IOS-XE-snmp:community")
     {
-        for(auto const & c : community)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::SnmpServer::Community>();
         c->parent = this;
         community.push_back(c);
@@ -3692,14 +3708,6 @@ std::shared_ptr<Entity> Native::SnmpServer::get_child_by_name(const std::string 
 
     if(child_yang_name == "Cisco-IOS-XE-snmp:context")
     {
-        for(auto const & c : context)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::SnmpServer::Context>();
         c->parent = this;
         context.push_back(c);
@@ -3726,14 +3734,6 @@ std::shared_ptr<Entity> Native::SnmpServer::get_child_by_name(const std::string 
 
     if(child_yang_name == "Cisco-IOS-XE-snmp:group")
     {
-        for(auto const & c : group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::SnmpServer::Group>();
         c->parent = this;
         group.push_back(c);
@@ -3742,14 +3742,6 @@ std::shared_ptr<Entity> Native::SnmpServer::get_child_by_name(const std::string 
 
     if(child_yang_name == "Cisco-IOS-XE-snmp:host")
     {
-        for(auto const & c : host)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::SnmpServer::Host>();
         c->parent = this;
         host.push_back(c);
@@ -3821,14 +3813,6 @@ std::shared_ptr<Entity> Native::SnmpServer::get_child_by_name(const std::string 
 
     if(child_yang_name == "Cisco-IOS-XE-snmp:view")
     {
-        for(auto const & c : view)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::SnmpServer::View>();
         c->parent = this;
         view.push_back(c);
@@ -3841,14 +3825,23 @@ std::shared_ptr<Entity> Native::SnmpServer::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : community)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : context)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(enable != nullptr)
@@ -3861,14 +3854,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::get_children(
         children["Cisco-IOS-XE-snmp:engineID"] = engineid;
     }
 
+    count = 0;
     for (auto const & c : group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : host)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(ip != nullptr)
@@ -3906,9 +3907,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::get_children(
         children["Cisco-IOS-XE-snmp:user"] = user;
     }
 
+    count = 0;
     for (auto const & c : view)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4074,6 +4079,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Community::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Community::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4207,6 +4213,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Context::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Context::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4299,6 +4306,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(enable_choice != nullptr)
     {
         children["enable-choice"] = enable_choice;
@@ -4390,6 +4398,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(traps != nullptr)
     {
         children["traps"] = traps;
@@ -5442,6 +5451,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(trustsec_sxp != nullptr)
     {
         children["trustsec-sxp"] = trustsec_sxp;
@@ -6527,6 +6537,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Trustse
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::TrustsecSxp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6698,6 +6709,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Vswitch
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Vswitch::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dual_active != nullptr)
     {
         children["dual-active"] = dual_active;
@@ -6776,6 +6788,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Vswitch
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Vswitch::DualActive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6867,6 +6880,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Trustse
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::TrustsecServer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(radius_server != nullptr)
     {
         children["radius-server"] = radius_server;
@@ -6945,6 +6959,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Trustse
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::TrustsecServer::RadiusServer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7036,6 +7051,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Trustse
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Trustsec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authz_file_error != nullptr)
     {
         children["authz-file-error"] = authz_file_error;
@@ -7122,6 +7138,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Trustse
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Trustsec::AuthzFileError::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cache_file_error != nullptr)
     {
         children["cache-file-error"] = cache_file_error;
@@ -7208,6 +7225,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Trustse
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Trustsec::AuthzFileError::CacheFileError::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(keystore_file_error != nullptr)
     {
         children["keystore-file-error"] = keystore_file_error;
@@ -7294,6 +7312,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Trustse
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Trustsec::AuthzFileError::CacheFileError::KeystoreFileError::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(keystore_sync_fail != nullptr)
     {
         children["keystore-sync-fail"] = keystore_sync_fail;
@@ -7380,6 +7399,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Trustse
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Trustsec::AuthzFileError::CacheFileError::KeystoreFileError::KeystoreSyncFail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(random_number_fail != nullptr)
     {
         children["random-number-fail"] = random_number_fail;
@@ -7458,6 +7478,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Trustse
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Trustsec::AuthzFileError::CacheFileError::KeystoreFileError::KeystoreSyncFail::RandomNumberFail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7549,6 +7570,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Trustse
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::TrustsecInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(unauthorized != nullptr)
     {
         children["unauthorized"] = unauthorized;
@@ -7635,6 +7657,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Trustse
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::TrustsecInterface::Unauthorized::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sap_fail != nullptr)
     {
         children["sap-fail"] = sap_fail;
@@ -7721,6 +7744,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Trustse
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::TrustsecInterface::Unauthorized::SapFail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authc_fail != nullptr)
     {
         children["authc-fail"] = authc_fail;
@@ -7807,6 +7831,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Trustse
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::TrustsecInterface::Unauthorized::SapFail::AuthcFail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(supplicant_fail != nullptr)
     {
         children["supplicant-fail"] = supplicant_fail;
@@ -7885,6 +7910,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Trustse
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::TrustsecInterface::Unauthorized::SapFail::AuthcFail::SupplicantFail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7976,6 +8002,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Trustse
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::TrustsecPolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(peer_policy_updated != nullptr)
     {
         children["peer-policy-updated"] = peer_policy_updated;
@@ -8054,6 +8081,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Trustse
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::TrustsecPolicy::PeerPolicyUpdated::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8141,6 +8169,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Ospfv3:
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Ospfv3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8256,6 +8285,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Ike::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Ike::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(policy != nullptr)
     {
         children["policy"] = policy;
@@ -8343,6 +8373,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Ike::Po
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Ike::Policy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8440,6 +8471,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Ike::Tu
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Ike::Tunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8533,6 +8565,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Alarms:
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Alarms::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8636,6 +8669,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Atm::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Atm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pvc != nullptr)
     {
         children["pvc"] = pvc;
@@ -8737,6 +8771,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Atm::Pv
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Atm::Pvc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(extension != nullptr)
     {
         children["extension"] = extension;
@@ -8857,6 +8892,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Atm::Pv
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Atm::Pvc::Extension::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(oam != nullptr)
     {
         children["oam"] = oam;
@@ -8974,6 +9010,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Atm::Pv
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Atm::Pvc::Extension::Oam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(failure != nullptr)
     {
         children["failure"] = failure;
@@ -9052,6 +9089,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Atm::Pv
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Atm::Pvc::Extension::Oam::Failure::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9139,6 +9177,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Atm::Su
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Atm::Subif::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9232,6 +9271,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::AuthFra
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::AuthFramework::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9315,6 +9355,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::BgpConf
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::BgpConf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9402,6 +9443,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Bridge:
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Bridge::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9499,6 +9541,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Bulksta
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Bulkstat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9596,6 +9639,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::CallHom
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::CallHome::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9697,6 +9741,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::C6Kxbar
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::C6Kxbar::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9812,6 +9857,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Cef::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Cef::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9925,6 +9971,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Cpu::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Cpu::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10016,6 +10063,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Csg::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Csg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10131,6 +10179,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Dot1X::
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Dot1X::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10248,6 +10297,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Dsp::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Dsp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10353,6 +10403,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Energyw
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Energywise::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10478,6 +10529,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::EntityD
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::EntityDiag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10607,6 +10659,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Envmon:
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Envmon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10730,6 +10783,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Errdisa
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Errdisable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10834,6 +10888,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Etherne
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cfm != nullptr)
     {
         children["cfm"] = cfm;
@@ -10942,6 +10997,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Etherne
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::Cfm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cc != nullptr)
     {
         children["cc"] = cc;
@@ -11051,6 +11107,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Etherne
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::Cfm::Cc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11182,6 +11239,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Etherne
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::Cfm::Crosscheck::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11293,6 +11351,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Etherne
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::Evc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11396,6 +11455,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Firewal
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Firewall::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11483,6 +11543,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Flash::
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Flash::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11576,6 +11637,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::FlexLin
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::FlexLinks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11680,6 +11742,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::FrameRe
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::FrameRelay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(multilink != nullptr)
     {
         children["multilink"] = multilink;
@@ -11763,6 +11826,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::FrameRe
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::FrameRelay::Multilink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11842,6 +11906,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::FrameRe
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::FrameRelay::Subif::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11940,6 +12005,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Ipsec::
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Ipsec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cryptomap != nullptr)
     {
         children["cryptomap"] = cryptomap;
@@ -12045,6 +12111,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Ipsec::
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Ipsec::Cryptomap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12162,6 +12229,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Ipsec::
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Ipsec::Tunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12277,6 +12345,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Isakmp:
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Isakmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(policy != nullptr)
     {
         children["policy"] = policy;
@@ -12364,6 +12433,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Isakmp:
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Isakmp::Policy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12461,6 +12531,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Isakmp:
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Isakmp::Tunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12566,6 +12637,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Isdn::g
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Isdn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12683,6 +12755,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::L2Tc::g
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::L2Tc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12790,6 +12863,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pseudowire != nullptr)
     {
         children["pseudowire"] = pseudowire;
@@ -12878,6 +12952,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::Pseudowire::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12969,6 +13044,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::License
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::License::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13080,6 +13156,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::MacNoti
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::MacNotification::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13191,6 +13268,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::MacNoti
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::MacNotification2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13294,6 +13372,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Memory:
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Memory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13426,6 +13505,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::g
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(traffic_eng != nullptr)
     {
         children["traffic-eng"] = traffic_eng;
@@ -13537,6 +13617,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::T
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::TrafficEng::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13640,6 +13721,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::F
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::FastReroute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13723,6 +13805,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::R
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::Rfc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13818,6 +13901,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::L
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::Ldp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13975,6 +14059,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::g
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nhs != nullptr)
     {
         children["nhs"] = nhs;
@@ -14064,6 +14149,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::N
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::Nhs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14131,6 +14217,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::N
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::Nhc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14198,6 +14285,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::N
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::Nhp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14265,6 +14353,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::Q
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::QuotaExceeded::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14392,6 +14481,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::g
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(state_change != nullptr)
     {
         children["state-change"] = state_change;
@@ -14502,6 +14592,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::S
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::StateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14611,6 +14702,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::E
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::Errors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14686,6 +14778,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::R
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::Retransmit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14783,6 +14876,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::L
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::Lsa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14932,6 +15026,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::C
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(state_change != nullptr)
     {
         children["state-change"] = state_change;
@@ -15043,6 +15138,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::C
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::StateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(shamlink != nullptr)
     {
         children["shamlink"] = shamlink;
@@ -15139,6 +15235,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::C
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::StateChange::Shamlink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15238,6 +15335,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::C
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::Errors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15309,6 +15407,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::C
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::Errdisable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15388,6 +15487,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::C
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::Retransmit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15463,6 +15563,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::C
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::Lsa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15564,6 +15665,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Pim::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Pim::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15663,6 +15765,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Plogd::
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Plogd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15734,6 +15837,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::PortSec
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::PortSecurity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15821,6 +15925,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::PowerEt
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::PowerEthernet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15914,6 +16019,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Pw::get
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Pw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16005,6 +16111,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Slb::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Slb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16124,6 +16231,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Snmp::g
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Snmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16331,6 +16439,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Stackwi
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Stackwise::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16632,6 +16741,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Stpx::g
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Stpx::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16735,6 +16845,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Transce
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Transceiver::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16822,6 +16933,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Udld::g
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Udld::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16927,6 +17039,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Vrfmib:
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Vrfmib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17052,6 +17165,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Vstack:
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Vstack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17173,6 +17287,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Wireles
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bsnmobilestation != nullptr)
     {
         children["bsnMobileStation"] = bsnmobilestation;
@@ -17259,6 +17374,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Wireles
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bsnaccesspoint != nullptr)
     {
         children["bsnAccessPoint"] = bsnaccesspoint;
@@ -17337,6 +17453,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Wireles
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::Bsnaccesspoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17434,6 +17551,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Engineid::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Engineid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(remote != nullptr)
     {
         children["remote"] = remote;
@@ -17467,8 +17585,8 @@ bool Native::SnmpServer::Engineid::has_leaf_or_child_of_name(const std::string &
     return false;
 }
 
-const Enum::YLeaf Native::Otv::Site::Default_::Otv_::Isis::Authentication::Mode::md5 {0, "md5"};
-const Enum::YLeaf Native::Otv::Site::Default_::Otv_::Isis::Authentication::Mode::text {1, "text"};
+const Enum::YLeaf Native::Otv::Site::Default::Otv_::Isis::Authentication::Mode::md5 {0, "md5"};
+const Enum::YLeaf Native::Otv::Site::Default::Otv_::Isis::Authentication::Mode::text {1, "text"};
 
 const Enum::YLeaf Native::Otv::Site::Otv_::Isis::Authentication::Mode::md5 {0, "md5"};
 const Enum::YLeaf Native::Otv::Site::Otv_::Isis::Authentication::Mode::text {1, "text"};

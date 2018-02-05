@@ -159,6 +159,7 @@ std::shared_ptr<Entity> CISCOENTITYALARMMIB::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cealarmmonitoring != nullptr)
     {
         children["ceAlarmMonitoring"] = cealarmmonitoring;
@@ -309,6 +310,7 @@ std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmmonitoring::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmmonitoring::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -426,6 +428,7 @@ std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmhistory::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmhistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -527,6 +530,7 @@ std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmfiltering::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmfiltering::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -632,14 +636,6 @@ std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmdescrmaptable::get_child_by_
 {
     if(child_yang_name == "ceAlarmDescrMapEntry")
     {
-        for(auto const & c : cealarmdescrmapentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOENTITYALARMMIB::Cealarmdescrmaptable::Cealarmdescrmapentry>();
         c->parent = this;
         cealarmdescrmapentry.push_back(c);
@@ -652,9 +648,14 @@ std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmdescrmaptable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmdescrmaptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cealarmdescrmapentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -734,6 +735,7 @@ std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmdescrmaptable::Cealarmdescrm
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmdescrmaptable::Cealarmdescrmapentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -829,14 +831,6 @@ std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmdescrtable::get_child_by_nam
 {
     if(child_yang_name == "ceAlarmDescrEntry")
     {
-        for(auto const & c : cealarmdescrentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOENTITYALARMMIB::Cealarmdescrtable::Cealarmdescrentry>();
         c->parent = this;
         cealarmdescrentry.push_back(c);
@@ -849,9 +843,14 @@ std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmdescrtable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmdescrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cealarmdescrentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -939,6 +938,7 @@ std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmdescrtable::Cealarmdescrentr
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmdescrtable::Cealarmdescrentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1054,14 +1054,6 @@ std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmtable::get_child_by_name(con
 {
     if(child_yang_name == "ceAlarmEntry")
     {
-        for(auto const & c : cealarmentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry>();
         c->parent = this;
         cealarmentry.push_back(c);
@@ -1074,9 +1066,14 @@ std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmtable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cealarmentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1164,6 +1161,7 @@ std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmtable::Cealarmentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1279,14 +1277,6 @@ std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmhisttable::get_child_by_name
 {
     if(child_yang_name == "ceAlarmHistEntry")
     {
-        for(auto const & c : cealarmhistentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOENTITYALARMMIB::Cealarmhisttable::Cealarmhistentry>();
         c->parent = this;
         cealarmhistentry.push_back(c);
@@ -1299,9 +1289,14 @@ std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmhisttable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmhisttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cealarmhistentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1397,6 +1392,7 @@ std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmhisttable::Cealarmhistentry:
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmhisttable::Cealarmhistentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1532,14 +1528,6 @@ std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmfilterprofiletable::get_chil
 {
     if(child_yang_name == "ceAlarmFilterProfileEntry")
     {
-        for(auto const & c : cealarmfilterprofileentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry>();
         c->parent = this;
         cealarmfilterprofileentry.push_back(c);
@@ -1552,9 +1540,14 @@ std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmfilterprofiletable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmfilterprofiletable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cealarmfilterprofileentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1650,6 +1643,7 @@ std::shared_ptr<Entity> CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmf
 std::map<std::string, std::shared_ptr<Entity>> CISCOENTITYALARMMIB::Cealarmfilterprofiletable::Cealarmfilterprofileentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -63,6 +63,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::FlowLabelLoadBalance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -149,6 +150,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpRoutePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -241,6 +243,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteDistinguisher::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -379,6 +382,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(flow_label_load_balance != nullptr)
     {
         children["flow-label-load-balance"] = flow_label_load_balance;
@@ -484,6 +488,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::BgpSignalingProtocol::FlowLabelLoadBalance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -572,14 +577,6 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 {
     if(child_yang_name == "route-target")
     {
-        for(auto const & c : route_target)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget>();
         c->parent = this;
         route_target.push_back(c);
@@ -592,9 +589,14 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : route_target)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -683,14 +685,6 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 {
     if(child_yang_name == "two-byte-as-or-four-byte-as")
     {
-        for(auto const & c : two_byte_as_or_four_byte_as)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs>();
         c->parent = this;
         two_byte_as_or_four_byte_as.push_back(c);
@@ -699,14 +693,6 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 
     if(child_yang_name == "ipv4-address")
     {
-        for(auto const & c : ipv4_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address>();
         c->parent = this;
         ipv4_address.push_back(c);
@@ -719,14 +705,23 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : two_byte_as_or_four_byte_as)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ipv4_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -819,6 +814,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::TwoByteAsOrFourByteAs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -909,6 +905,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::RouteTargets::RouteTarget::Ipv4Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -997,14 +994,6 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 {
     if(child_yang_name == "bd-attachment-circuit")
     {
-        for(auto const & c : bd_attachment_circuit)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit>();
         c->parent = this;
         bd_attachment_circuit.push_back(c);
@@ -1017,9 +1006,14 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bd_attachment_circuit)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1196,6 +1190,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_ip_source_guard != nullptr)
     {
         children["interface-ip-source-guard"] = interface_ip_source_guard;
@@ -1355,6 +1350,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceIpSourceGuard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1473,6 +1469,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_dai_address_validation != nullptr)
     {
         children["interface-dai-address-validation"] = interface_dai_address_validation;
@@ -1586,6 +1583,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceDai::InterfaceDaiAddressValidation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1696,6 +1694,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceProfile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1784,14 +1783,6 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 {
     if(child_yang_name == "bdac-storm-control-type")
     {
-        for(auto const & c : bdac_storm_control_type)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType>();
         c->parent = this;
         bdac_storm_control_type.push_back(c);
@@ -1804,9 +1795,14 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bdac_storm_control_type)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1889,6 +1885,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(storm_control_unit != nullptr)
     {
         children["storm-control-unit"] = storm_control_unit;
@@ -1974,6 +1971,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::BdacStormControlTypes::BdacStormControlType::StormControlUnit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2069,6 +2067,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(split_horizon_group_id != nullptr)
     {
         children["split-horizon-group-id"] = split_horizon_group_id;
@@ -2140,6 +2139,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::SplitHorizon::SplitHorizonGroupId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2218,14 +2218,6 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 {
     if(child_yang_name == "static-mac-address")
     {
-        for(auto const & c : static_mac_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress>();
         c->parent = this;
         static_mac_address.push_back(c);
@@ -2238,9 +2230,14 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : static_mac_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2309,6 +2306,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::StaticMacAddresses::StaticMacAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2429,6 +2427,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface_mac_aging != nullptr)
     {
         children["interface-mac-aging"] = interface_mac_aging;
@@ -2534,6 +2533,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacAging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2632,6 +2632,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2746,6 +2747,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacLimit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2844,14 +2846,6 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 {
     if(child_yang_name == "bd-pseudowire-evpn")
     {
-        for(auto const & c : bd_pseudowire_evpn)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn>();
         c->parent = this;
         bd_pseudowire_evpn.push_back(c);
@@ -2864,9 +2858,14 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bd_pseudowire_evpn)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2939,6 +2938,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowireEvpns::BdPseudowireEvpn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3029,6 +3029,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::IpSourceGuard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3133,6 +3134,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dai_address_validation != nullptr)
     {
         children["dai-address-validation"] = dai_address_validation;
@@ -3236,6 +3238,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Dai::DaiAddressValidation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3344,14 +3347,6 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 {
     if(child_yang_name == "routed-interface")
     {
-        for(auto const & c : routed_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface>();
         c->parent = this;
         routed_interface.push_back(c);
@@ -3364,9 +3359,14 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : routed_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3449,6 +3449,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(routed_interface_split_horizon_group != nullptr)
     {
         children["routed-interface-split-horizon-group"] = routed_interface_split_horizon_group;
@@ -3530,6 +3531,7 @@ std::shared_ptr<Entity> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::RoutedInterfaces::RoutedInterface::RoutedInterfaceSplitHorizonGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3615,14 +3617,6 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::get_child_by_name(co
 {
     if(child_yang_name == "pseudowire-class")
     {
-        for(auto const & c : pseudowire_class)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpn::Database::PseudowireClasses::PseudowireClass>();
         c->parent = this;
         pseudowire_class.push_back(c);
@@ -3635,9 +3629,14 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : pseudowire_class)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3761,6 +3760,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::get
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(l2tpv3_encapsulation != nullptr)
     {
         children["l2tpv3-encapsulation"] = l2tpv3_encapsulation;
@@ -3945,6 +3945,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::L2T
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sequencing != nullptr)
     {
         children["sequencing"] = sequencing;
@@ -4095,6 +4096,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::L2T
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::Sequencing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4185,6 +4187,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::L2T
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::TypeOfService::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4275,6 +4278,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::L2T
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::SignalingProtocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4365,6 +4369,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::L2T
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::L2Tpv3Encapsulation::PathMtu::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4455,6 +4460,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::Bac
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::BackupDisableDelay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4622,6 +4628,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::Mpl
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sequencing != nullptr)
     {
         children["sequencing"] = sequencing;
@@ -4792,6 +4799,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::Mpl
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Sequencing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4882,6 +4890,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::Mpl
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::MplsRedundancy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4980,6 +4989,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::Mpl
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5104,6 +5114,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::Mpl
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(flow_label_load_balance != nullptr)
     {
         children["flow-label-load-balance"] = flow_label_load_balance;
@@ -5199,6 +5210,7 @@ std::shared_ptr<Entity> L2Vpn::Database::PseudowireClasses::PseudowireClass::Mpl
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::LoadBalanceGroup::FlowLabelLoadBalance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5314,6 +5326,7 @@ std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::get_child
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnectServiceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vlan_unaware_flexible_xconnect_services != nullptr)
     {
         children["vlan-unaware-flexible-xconnect-services"] = vlan_unaware_flexible_xconnect_services;
@@ -5399,14 +5412,6 @@ std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawa
 {
     if(child_yang_name == "vlan-unaware-flexible-xconnect-service")
     {
-        for(auto const & c : vlan_unaware_flexible_xconnect_service)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService>();
         c->parent = this;
         vlan_unaware_flexible_xconnect_service.push_back(c);
@@ -5419,9 +5424,14 @@ std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawa
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vlan_unaware_flexible_xconnect_service)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5524,6 +5534,7 @@ std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawa
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vlan_unaware_fxc_attachment_circuits != nullptr)
     {
         children["vlan-unaware-fxc-attachment-circuits"] = vlan_unaware_fxc_attachment_circuits;
@@ -5612,14 +5623,6 @@ std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawa
 {
     if(child_yang_name == "vlan-unaware-fxc-attachment-circuit")
     {
-        for(auto const & c : vlan_unaware_fxc_attachment_circuit)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit>();
         c->parent = this;
         vlan_unaware_fxc_attachment_circuit.push_back(c);
@@ -5632,9 +5635,14 @@ std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawa
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vlan_unaware_fxc_attachment_circuit)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5703,6 +5711,7 @@ std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawa
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcAttachmentCircuits::VlanUnawareFxcAttachmentCircuit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5781,14 +5790,6 @@ std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawa
 {
     if(child_yang_name == "vlan-unaware-fxc-pseudowire-evpn")
     {
-        for(auto const & c : vlan_unaware_fxc_pseudowire_evpn)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn>();
         c->parent = this;
         vlan_unaware_fxc_pseudowire_evpn.push_back(c);
@@ -5801,9 +5802,14 @@ std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawa
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vlan_unaware_fxc_pseudowire_evpn)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5876,6 +5882,7 @@ std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawa
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnectServiceTable::VlanUnawareFlexibleXconnectServices::VlanUnawareFlexibleXconnectService::VlanUnawareFxcPseudowireEvpns::VlanUnawareFxcPseudowireEvpn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5971,14 +5978,6 @@ std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanAware
 {
     if(child_yang_name == "vlan-aware-flexible-xconnect-service")
     {
-        for(auto const & c : vlan_aware_flexible_xconnect_service)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService>();
         c->parent = this;
         vlan_aware_flexible_xconnect_service.push_back(c);
@@ -5991,9 +5990,14 @@ std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanAware
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vlan_aware_flexible_xconnect_service)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6083,6 +6087,7 @@ std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanAware
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vlan_aware_fxc_attachment_circuits != nullptr)
     {
         children["vlan-aware-fxc-attachment-circuits"] = vlan_aware_fxc_attachment_circuits;
@@ -6166,14 +6171,6 @@ std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanAware
 {
     if(child_yang_name == "vlan-aware-fxc-attachment-circuit")
     {
-        for(auto const & c : vlan_aware_fxc_attachment_circuit)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit>();
         c->parent = this;
         vlan_aware_fxc_attachment_circuit.push_back(c);
@@ -6186,9 +6183,14 @@ std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanAware
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vlan_aware_fxc_attachment_circuit)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6257,6 +6259,7 @@ std::shared_ptr<Entity> L2Vpn::Database::FlexibleXconnectServiceTable::VlanAware
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::FlexibleXconnectServiceTable::VlanAwareFlexibleXconnectServices::VlanAwareFlexibleXconnectService::VlanAwareFxcAttachmentCircuits::VlanAwareFxcAttachmentCircuit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6354,6 +6357,7 @@ std::shared_ptr<Entity> L2Vpn::Database::Redundancy::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::Redundancy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(iccp_redundancy_groups != nullptr)
     {
         children["iccp-redundancy-groups"] = iccp_redundancy_groups;
@@ -6444,14 +6448,6 @@ std::shared_ptr<Entity> L2Vpn::Database::Redundancy::IccpRedundancyGroups::get_c
 {
     if(child_yang_name == "iccp-redundancy-group")
     {
-        for(auto const & c : iccp_redundancy_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup>();
         c->parent = this;
         iccp_redundancy_group.push_back(c);
@@ -6464,9 +6460,14 @@ std::shared_ptr<Entity> L2Vpn::Database::Redundancy::IccpRedundancyGroups::get_c
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::Redundancy::IccpRedundancyGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : iccp_redundancy_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6560,6 +6561,7 @@ std::shared_ptr<Entity> L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpR
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(iccp_interfaces != nullptr)
     {
         children["iccp-interfaces"] = iccp_interfaces;
@@ -6653,14 +6655,6 @@ std::shared_ptr<Entity> L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpR
 {
     if(child_yang_name == "iccp-interface")
     {
-        for(auto const & c : iccp_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface>();
         c->parent = this;
         iccp_interface.push_back(c);
@@ -6673,9 +6667,14 @@ std::shared_ptr<Entity> L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpR
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : iccp_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6760,6 +6759,7 @@ std::shared_ptr<Entity> L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpR
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Database::Redundancy::IccpRedundancyGroups::IccpRedundancyGroup::IccpInterfaces::IccpInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6883,6 +6883,7 @@ std::shared_ptr<Entity> L2Vpn::Pbb::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Pbb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6975,6 +6976,7 @@ std::shared_ptr<Entity> L2Vpn::AutoDiscovery::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::AutoDiscovery::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bgp_signaling != nullptr)
     {
         children["bgp-signaling"] = bgp_signaling;
@@ -7053,6 +7055,7 @@ std::shared_ptr<Entity> L2Vpn::AutoDiscovery::BgpSignaling::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::AutoDiscovery::BgpSignaling::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7145,6 +7148,7 @@ std::shared_ptr<Entity> L2Vpn::Utility::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Utility::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(logging != nullptr)
     {
         children["logging"] = logging;
@@ -7239,6 +7243,7 @@ std::shared_ptr<Entity> L2Vpn::Utility::Logging::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Utility::Logging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7371,6 +7376,7 @@ std::shared_ptr<Entity> L2Vpn::Snmp::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Snmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mib != nullptr)
     {
         children["mib"] = mib;
@@ -7471,6 +7477,7 @@ std::shared_ptr<Entity> L2Vpn::Snmp::Mib::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Snmp::Mib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mib_interface != nullptr)
     {
         children["mib-interface"] = mib_interface;
@@ -7563,6 +7570,7 @@ std::shared_ptr<Entity> L2Vpn::Snmp::Mib::MibInterface::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Snmp::Mib::MibInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(format != nullptr)
     {
         children["format"] = format;
@@ -7641,6 +7649,7 @@ std::shared_ptr<Entity> L2Vpn::Snmp::Mib::MibInterface::Format::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Snmp::Mib::MibInterface::Format::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7724,6 +7733,7 @@ std::shared_ptr<Entity> L2Vpn::Snmp::Mib::MibPseudowire::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> L2Vpn::Snmp::Mib::MibPseudowire::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7802,14 +7812,6 @@ std::shared_ptr<Entity> GenericInterfaceLists::get_child_by_name(const std::stri
 {
     if(child_yang_name == "generic-interface")
     {
-        for(auto const & c : generic_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<GenericInterfaceLists::GenericInterface>();
         c->parent = this;
         generic_interface.push_back(c);
@@ -7822,9 +7824,14 @@ std::shared_ptr<Entity> GenericInterfaceLists::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> GenericInterfaceLists::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : generic_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7943,6 +7950,7 @@ std::shared_ptr<Entity> GenericInterfaceLists::GenericInterface::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> GenericInterfaceLists::GenericInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interfaces != nullptr)
     {
         children["interfaces"] = interfaces;
@@ -8036,14 +8044,6 @@ std::shared_ptr<Entity> GenericInterfaceLists::GenericInterface::Interfaces::get
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<GenericInterfaceLists::GenericInterface::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -8056,9 +8056,14 @@ std::shared_ptr<Entity> GenericInterfaceLists::GenericInterface::Interfaces::get
 std::map<std::string, std::shared_ptr<Entity>> GenericInterfaceLists::GenericInterface::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8131,6 +8136,7 @@ std::shared_ptr<Entity> GenericInterfaceLists::GenericInterface::Interfaces::Int
 std::map<std::string, std::shared_ptr<Entity>> GenericInterfaceLists::GenericInterface::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8231,6 +8237,7 @@ std::shared_ptr<Entity> Evpn::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Evpn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(evpn_tables != nullptr)
     {
         children["evpn-tables"] = evpn_tables;
@@ -8496,6 +8503,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(evpn_timers != nullptr)
     {
         children["evpn-timers"] = evpn_timers;
@@ -8662,6 +8670,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnTimers::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnTimers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8779,6 +8788,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::Evpnmac::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnmac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(evpnmac_secure != nullptr)
     {
         children["evpnmac-secure"] = evpnmac_secure;
@@ -8883,6 +8893,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::Evpnmac::EvpnmacSecure::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnmac::EvpnmacSecure::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9008,14 +9019,6 @@ std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::get_child_by_name(const std:
 {
     if(child_yang_name == "evpnevi")
     {
-        for(auto const & c : evpnevi)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Evpn::EvpnTables::Evpnevis::Evpnevi>();
         c->parent = this;
         evpnevi.push_back(c);
@@ -9028,9 +9031,14 @@ std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : evpnevi)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9166,6 +9174,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::Evpnevi::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::Evpnevi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(evi_load_balancing != nullptr)
     {
         children["evi-load-balancing"] = evi_load_balancing;
@@ -9311,6 +9320,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing::g
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::Evpnevi::EviLoadBalancing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9428,6 +9438,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDisco
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(evpn_route_distinguisher != nullptr)
     {
         children["evpn-route-distinguisher"] = evpn_route_distinguisher;
@@ -9540,6 +9551,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDisco
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteDistinguisher::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9678,14 +9690,6 @@ std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDisco
 {
     if(child_yang_name == "evpn-route-target-as")
     {
-        for(auto const & c : evpn_route_target_as)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs>();
         c->parent = this;
         evpn_route_target_as.push_back(c);
@@ -9694,14 +9698,6 @@ std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDisco
 
     if(child_yang_name == "evpn-route-target-none")
     {
-        for(auto const & c : evpn_route_target_none)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone>();
         c->parent = this;
         evpn_route_target_none.push_back(c);
@@ -9710,14 +9706,6 @@ std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDisco
 
     if(child_yang_name == "evpn-route-target-ipv4-address")
     {
-        for(auto const & c : evpn_route_target_ipv4_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address>();
         c->parent = this;
         evpn_route_target_ipv4_address.push_back(c);
@@ -9730,19 +9718,32 @@ std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDisco
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : evpn_route_target_as)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : evpn_route_target_none)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : evpn_route_target_ipv4_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9827,6 +9828,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDisco
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9951,6 +9953,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDisco
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10063,6 +10066,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDisco
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::Evpnevi::EvpnevIbgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10183,6 +10187,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::Evpnevis::Evpnevi::EviAdvertiseMac::ge
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::Evpnevis::Evpnevi::EviAdvertiseMac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10278,14 +10283,6 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnVirtualAccessVfis::get_child_by_na
 {
     if(child_yang_name == "evpn-virtual-access-vfi")
     {
-        for(auto const & c : evpn_virtual_access_vfi)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi>();
         c->parent = this;
         evpn_virtual_access_vfi.push_back(c);
@@ -10298,9 +10295,14 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnVirtualAccessVfis::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnVirtualAccessVfis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : evpn_virtual_access_vfi)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10403,6 +10405,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAcce
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(evpn_virtual_access_vfi_timers != nullptr)
     {
         children["evpn-virtual-access-vfi-timers"] = evpn_virtual_access_vfi_timers;
@@ -10497,6 +10500,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAcce
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualAccessVfiTimers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10623,6 +10627,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAcce
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthernetSegment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(identifier != nullptr)
     {
         children["identifier"] = identifier;
@@ -10739,6 +10744,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAcce
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthernetSegment::Identifier::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10879,6 +10885,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAcce
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthernetSegment::ManualServiceCarving::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(service_list != nullptr)
     {
         children["service-list"] = service_list;
@@ -10964,6 +10971,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAcce
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthernetSegment::ManualServiceCarving::ServiceList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11061,6 +11069,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnLoadBalancing::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnLoadBalancing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11168,6 +11177,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnBgpAutoDiscovery::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnBgpAutoDiscovery::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(evpn_route_distinguisher != nullptr)
     {
         children["evpn-route-distinguisher"] = evpn_route_distinguisher;
@@ -11272,6 +11282,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnBgpAutoDiscovery::EvpnRouteDisting
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnBgpAutoDiscovery::EvpnRouteDistinguisher::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11397,14 +11408,6 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInstances::get_child_by_name(const
 {
     if(child_yang_name == "evpn-instance")
     {
-        for(auto const & c : evpn_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Evpn::EvpnTables::EvpnInstances::EvpnInstance>();
         c->parent = this;
         evpn_instance.push_back(c);
@@ -11417,9 +11420,14 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInstances::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : evpn_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11563,6 +11571,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInstances::EvpnInstance::get_child
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnInstances::EvpnInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(evpn_instance_bgp_auto_discovery != nullptr)
     {
         children["evpn-instance-bgp-auto-discovery"] = evpn_instance_bgp_auto_discovery;
@@ -11755,6 +11764,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInsta
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(evpn_route_distinguisher != nullptr)
     {
         children["evpn-route-distinguisher"] = evpn_route_distinguisher;
@@ -11867,6 +11877,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInsta
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteDistinguisher::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12005,14 +12016,6 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInsta
 {
     if(child_yang_name == "evpn-route-target-as")
     {
-        for(auto const & c : evpn_route_target_as)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs>();
         c->parent = this;
         evpn_route_target_as.push_back(c);
@@ -12021,14 +12024,6 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInsta
 
     if(child_yang_name == "evpn-route-target-none")
     {
-        for(auto const & c : evpn_route_target_none)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone>();
         c->parent = this;
         evpn_route_target_none.push_back(c);
@@ -12037,14 +12032,6 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInsta
 
     if(child_yang_name == "evpn-route-target-ipv4-address")
     {
-        for(auto const & c : evpn_route_target_ipv4_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address>();
         c->parent = this;
         evpn_route_target_ipv4_address.push_back(c);
@@ -12057,19 +12044,32 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInsta
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : evpn_route_target_as)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : evpn_route_target_none)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : evpn_route_target_ipv4_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12154,6 +12154,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInsta
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetAs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12278,6 +12279,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInsta
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetNone::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12390,6 +12392,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInsta
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12510,6 +12513,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInsta
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceAdvertiseMac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12600,6 +12604,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInsta
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceLoadBalancing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12697,6 +12702,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnLogging::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnLogging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12792,14 +12798,6 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInterfaces::get_child_by_name(cons
 {
     if(child_yang_name == "evpn-interface")
     {
-        for(auto const & c : evpn_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Evpn::EvpnTables::EvpnInterfaces::EvpnInterface>();
         c->parent = this;
         evpn_interface.push_back(c);
@@ -12812,9 +12810,14 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInterfaces::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : evpn_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12921,6 +12924,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(evpnac_timers != nullptr)
     {
         children["evpnac-timers"] = evpnac_timers;
@@ -13025,6 +13029,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EvpnacT
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EvpnacTimers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13163,6 +13168,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::Etherne
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(identifier != nullptr)
     {
         children["identifier"] = identifier;
@@ -13309,6 +13315,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::Etherne
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::Identifier::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13449,6 +13456,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::Etherne
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::ManualServiceCarving::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(service_list != nullptr)
     {
         children["service-list"] = service_list;
@@ -13534,6 +13542,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::Etherne
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::ManualServiceCarving::ServiceList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13629,14 +13638,6 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnVirtualAccessPws::get_child_by_nam
 {
     if(child_yang_name == "evpn-virtual-access-pw")
     {
-        for(auto const & c : evpn_virtual_access_pw)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw>();
         c->parent = this;
         evpn_virtual_access_pw.push_back(c);
@@ -13649,9 +13650,14 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnVirtualAccessPws::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnVirtualAccessPws::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : evpn_virtual_access_pw)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13758,6 +13764,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAcces
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(evpn_virtual_access_pw_timers != nullptr)
     {
         children["evpn-virtual-access-pw-timers"] = evpn_virtual_access_pw_timers;
@@ -13862,6 +13869,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAcces
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualAccessPwTimers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13988,6 +13996,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAcces
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernetSegment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(identifier != nullptr)
     {
         children["identifier"] = identifier;
@@ -14104,6 +14113,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAcces
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernetSegment::Identifier::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14244,6 +14254,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAcces
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernetSegment::ManualServiceCarving::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(service_list != nullptr)
     {
         children["service-list"] = service_list;
@@ -14329,6 +14340,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAcces
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernetSegment::ManualServiceCarving::ServiceList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14436,6 +14448,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnEthernetSegment::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnEthernetSegment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(evpn_esi_types != nullptr)
     {
         children["evpn-esi-types"] = evpn_esi_types;
@@ -14526,14 +14539,6 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes::get
 {
     if(child_yang_name == "evpn-esi-type")
     {
-        for(auto const & c : evpn_esi_type)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes::EvpnEsiType>();
         c->parent = this;
         evpn_esi_type.push_back(c);
@@ -14546,9 +14551,14 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes::get
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : evpn_esi_type)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14628,6 +14638,7 @@ std::shared_ptr<Entity> Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes::Evp
 std::map<std::string, std::shared_ptr<Entity>> Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes::EvpnEsiType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

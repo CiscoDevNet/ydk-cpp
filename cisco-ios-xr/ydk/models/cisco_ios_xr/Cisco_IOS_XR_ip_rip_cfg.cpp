@@ -81,6 +81,7 @@ std::shared_ptr<Entity> Rip::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Rip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_vrf != nullptr)
     {
         children["default-vrf"] = default_vrf;
@@ -306,6 +307,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_information != nullptr)
     {
         children["default-information"] = default_information;
@@ -523,6 +525,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::DefaultInformation::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::DefaultInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -668,7 +671,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Redistribution::get_child_by_name(const
     {
         if(static_ == nullptr)
         {
-            static_ = std::make_shared<Rip::DefaultVrf::Redistribution::Static_>();
+            static_ = std::make_shared<Rip::DefaultVrf::Redistribution::Static>();
         }
         return static_;
     }
@@ -688,6 +691,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Redistribution::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(connected != nullptr)
     {
         children["connected"] = connected;
@@ -795,6 +799,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Redistribution::Connected::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::Connected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -890,14 +895,6 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Redistribution::Bgps::get_child_by_name
 {
     if(child_yang_name == "bgp")
     {
-        for(auto const & c : bgp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rip::DefaultVrf::Redistribution::Bgps::Bgp>();
         c->parent = this;
         bgp.push_back(c);
@@ -910,9 +907,14 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Redistribution::Bgps::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::Bgps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1000,6 +1002,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Redistribution::Bgps::Bgp::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::Bgps::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1115,14 +1118,6 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Redistribution::Isises::get_child_by_na
 {
     if(child_yang_name == "isis")
     {
-        for(auto const & c : isis)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rip::DefaultVrf::Redistribution::Isises::Isis>();
         c->parent = this;
         isis.push_back(c);
@@ -1135,9 +1130,14 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Redistribution::Isises::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::Isises::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : isis)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1221,6 +1221,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Redistribution::Isises::Isis::get_child
 std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::Isises::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1326,14 +1327,6 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Redistribution::EigrpS::get_child_by_na
 {
     if(child_yang_name == "eigrp")
     {
-        for(auto const & c : eigrp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rip::DefaultVrf::Redistribution::EigrpS::Eigrp>();
         c->parent = this;
         eigrp.push_back(c);
@@ -1346,9 +1339,14 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Redistribution::EigrpS::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::EigrpS::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : eigrp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1432,6 +1430,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Redistribution::EigrpS::Eigrp::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::EigrpS::Eigrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1480,7 +1479,7 @@ bool Rip::DefaultVrf::Redistribution::EigrpS::Eigrp::has_leaf_or_child_of_name(c
     return false;
 }
 
-Rip::DefaultVrf::Redistribution::Static_::Static_()
+Rip::DefaultVrf::Redistribution::Static::Static()
     :
     route_policy_name{YType::str, "route-policy-name"},
     route_type{YType::enumeration, "route-type"}
@@ -1489,38 +1488,38 @@ Rip::DefaultVrf::Redistribution::Static_::Static_()
     yang_name = "static"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Rip::DefaultVrf::Redistribution::Static_::~Static_()
+Rip::DefaultVrf::Redistribution::Static::~Static()
 {
 }
 
-bool Rip::DefaultVrf::Redistribution::Static_::has_data() const
+bool Rip::DefaultVrf::Redistribution::Static::has_data() const
 {
     return route_policy_name.is_set
 	|| route_type.is_set;
 }
 
-bool Rip::DefaultVrf::Redistribution::Static_::has_operation() const
+bool Rip::DefaultVrf::Redistribution::Static::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_policy_name.yfilter)
 	|| ydk::is_set(route_type.yfilter);
 }
 
-std::string Rip::DefaultVrf::Redistribution::Static_::get_absolute_path() const
+std::string Rip::DefaultVrf::Redistribution::Static::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-rip-cfg:rip/default-vrf/redistribution/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Rip::DefaultVrf::Redistribution::Static_::get_segment_path() const
+std::string Rip::DefaultVrf::Redistribution::Static::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Rip::DefaultVrf::Redistribution::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Rip::DefaultVrf::Redistribution::Static::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1531,18 +1530,19 @@ std::vector<std::pair<std::string, LeafData> > Rip::DefaultVrf::Redistribution::
 
 }
 
-std::shared_ptr<Entity> Rip::DefaultVrf::Redistribution::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Rip::DefaultVrf::Redistribution::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::Static::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Rip::DefaultVrf::Redistribution::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Rip::DefaultVrf::Redistribution::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy-name")
     {
@@ -1558,7 +1558,7 @@ void Rip::DefaultVrf::Redistribution::Static_::set_value(const std::string & val
     }
 }
 
-void Rip::DefaultVrf::Redistribution::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void Rip::DefaultVrf::Redistribution::Static::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-policy-name")
     {
@@ -1570,7 +1570,7 @@ void Rip::DefaultVrf::Redistribution::Static_::set_filter(const std::string & va
     }
 }
 
-bool Rip::DefaultVrf::Redistribution::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool Rip::DefaultVrf::Redistribution::Static::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-policy-name" || name == "route-type")
         return true;
@@ -1634,14 +1634,6 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Redistribution::Ospfs::get_child_by_nam
 {
     if(child_yang_name == "ospf")
     {
-        for(auto const & c : ospf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rip::DefaultVrf::Redistribution::Ospfs::Ospf>();
         c->parent = this;
         ospf.push_back(c);
@@ -1654,9 +1646,14 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Redistribution::Ospfs::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::Ospfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ospf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1756,6 +1753,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Redistribution::Ospfs::Ospf::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::Ospfs::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1901,14 +1899,6 @@ std::shared_ptr<Entity> Rip::DefaultVrf::IpDistances::get_child_by_name(const st
 {
     if(child_yang_name == "ip-distance")
     {
-        for(auto const & c : ip_distance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rip::DefaultVrf::IpDistances::IpDistance>();
         c->parent = this;
         ip_distance.push_back(c);
@@ -1921,9 +1911,14 @@ std::shared_ptr<Entity> Rip::DefaultVrf::IpDistances::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::IpDistances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ip_distance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2007,6 +2002,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::IpDistances::IpDistance::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::IpDistances::IpDistance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2112,14 +2108,6 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Interfaces::get_child_by_name(const std
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rip::DefaultVrf::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -2132,9 +2120,14 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Interfaces::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2294,6 +2287,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Interfaces::Interface::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authentication != nullptr)
     {
         children["authentication"] = authentication;
@@ -2474,6 +2468,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Interfaces::Interface::Authentication::
 std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Interfaces::Interface::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2580,6 +2575,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Interfaces::Interface::SiteOfOrigin::ge
 std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Interfaces::Interface::SiteOfOrigin::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2710,6 +2706,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Interfaces::Interface::ReceiveVersion::
 std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Interfaces::Interface::ReceiveVersion::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2800,6 +2797,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Interfaces::Interface::SendVersion::get
 std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Interfaces::Interface::SendVersion::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2895,14 +2893,6 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Neighbors::get_child_by_name(const std:
 {
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rip::DefaultVrf::Neighbors::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -2915,9 +2905,14 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Neighbors::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Neighbors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2993,6 +2988,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Neighbors::Neighbor::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Neighbors::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3088,6 +3084,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Timers::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Timers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3203,14 +3200,6 @@ std::shared_ptr<Entity> Rip::Vrfs::get_child_by_name(const std::string & child_y
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rip::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -3223,9 +3212,14 @@ std::shared_ptr<Entity> Rip::Vrfs::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3422,6 +3416,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_information != nullptr)
     {
         children["default-information"] = default_information;
@@ -3642,6 +3637,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::DefaultInformation::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::DefaultInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3780,7 +3776,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Redistribution::get_child_by_name(const 
     {
         if(static_ == nullptr)
         {
-            static_ = std::make_shared<Rip::Vrfs::Vrf::Redistribution::Static_>();
+            static_ = std::make_shared<Rip::Vrfs::Vrf::Redistribution::Static>();
         }
         return static_;
     }
@@ -3800,6 +3796,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Redistribution::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(connected != nullptr)
     {
         children["connected"] = connected;
@@ -3900,6 +3897,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Redistribution::Connected::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::Connected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3988,14 +3986,6 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Redistribution::Bgps::get_child_by_name(
 {
     if(child_yang_name == "bgp")
     {
-        for(auto const & c : bgp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rip::Vrfs::Vrf::Redistribution::Bgps::Bgp>();
         c->parent = this;
         bgp.push_back(c);
@@ -4008,9 +3998,14 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Redistribution::Bgps::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::Bgps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bgp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4091,6 +4086,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Redistribution::Bgps::Bgp::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::Bgps::Bgp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4199,14 +4195,6 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Redistribution::Isises::get_child_by_nam
 {
     if(child_yang_name == "isis")
     {
-        for(auto const & c : isis)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rip::Vrfs::Vrf::Redistribution::Isises::Isis>();
         c->parent = this;
         isis.push_back(c);
@@ -4219,9 +4207,14 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Redistribution::Isises::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::Isises::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : isis)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4298,6 +4291,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Redistribution::Isises::Isis::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::Isises::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4396,14 +4390,6 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Redistribution::EigrpS::get_child_by_nam
 {
     if(child_yang_name == "eigrp")
     {
-        for(auto const & c : eigrp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rip::Vrfs::Vrf::Redistribution::EigrpS::Eigrp>();
         c->parent = this;
         eigrp.push_back(c);
@@ -4416,9 +4402,14 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Redistribution::EigrpS::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::EigrpS::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : eigrp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4495,6 +4486,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Redistribution::EigrpS::Eigrp::get_child
 std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::EigrpS::Eigrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4543,7 +4535,7 @@ bool Rip::Vrfs::Vrf::Redistribution::EigrpS::Eigrp::has_leaf_or_child_of_name(co
     return false;
 }
 
-Rip::Vrfs::Vrf::Redistribution::Static_::Static_()
+Rip::Vrfs::Vrf::Redistribution::Static::Static()
     :
     route_policy_name{YType::str, "route-policy-name"},
     route_type{YType::enumeration, "route-type"}
@@ -4552,31 +4544,31 @@ Rip::Vrfs::Vrf::Redistribution::Static_::Static_()
     yang_name = "static"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Rip::Vrfs::Vrf::Redistribution::Static_::~Static_()
+Rip::Vrfs::Vrf::Redistribution::Static::~Static()
 {
 }
 
-bool Rip::Vrfs::Vrf::Redistribution::Static_::has_data() const
+bool Rip::Vrfs::Vrf::Redistribution::Static::has_data() const
 {
     return route_policy_name.is_set
 	|| route_type.is_set;
 }
 
-bool Rip::Vrfs::Vrf::Redistribution::Static_::has_operation() const
+bool Rip::Vrfs::Vrf::Redistribution::Static::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(route_policy_name.yfilter)
 	|| ydk::is_set(route_type.yfilter);
 }
 
-std::string Rip::Vrfs::Vrf::Redistribution::Static_::get_segment_path() const
+std::string Rip::Vrfs::Vrf::Redistribution::Static::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "static";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Rip::Vrfs::Vrf::Redistribution::Static_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Rip::Vrfs::Vrf::Redistribution::Static::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4587,18 +4579,19 @@ std::vector<std::pair<std::string, LeafData> > Rip::Vrfs::Vrf::Redistribution::S
 
 }
 
-std::shared_ptr<Entity> Rip::Vrfs::Vrf::Redistribution::Static_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Rip::Vrfs::Vrf::Redistribution::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::Static_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::Static::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Rip::Vrfs::Vrf::Redistribution::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Rip::Vrfs::Vrf::Redistribution::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy-name")
     {
@@ -4614,7 +4607,7 @@ void Rip::Vrfs::Vrf::Redistribution::Static_::set_value(const std::string & valu
     }
 }
 
-void Rip::Vrfs::Vrf::Redistribution::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+void Rip::Vrfs::Vrf::Redistribution::Static::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "route-policy-name")
     {
@@ -4626,7 +4619,7 @@ void Rip::Vrfs::Vrf::Redistribution::Static_::set_filter(const std::string & val
     }
 }
 
-bool Rip::Vrfs::Vrf::Redistribution::Static_::has_leaf_or_child_of_name(const std::string & name) const
+bool Rip::Vrfs::Vrf::Redistribution::Static::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "route-policy-name" || name == "route-type")
         return true;
@@ -4683,14 +4676,6 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Redistribution::Ospfs::get_child_by_name
 {
     if(child_yang_name == "ospf")
     {
-        for(auto const & c : ospf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rip::Vrfs::Vrf::Redistribution::Ospfs::Ospf>();
         c->parent = this;
         ospf.push_back(c);
@@ -4703,9 +4688,14 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Redistribution::Ospfs::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::Ospfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ospf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4798,6 +4788,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Redistribution::Ospfs::Ospf::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::Ospfs::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4936,14 +4927,6 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::IpDistances::get_child_by_name(const std
 {
     if(child_yang_name == "ip-distance")
     {
-        for(auto const & c : ip_distance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rip::Vrfs::Vrf::IpDistances::IpDistance>();
         c->parent = this;
         ip_distance.push_back(c);
@@ -4956,9 +4939,14 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::IpDistances::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::IpDistances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ip_distance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5035,6 +5023,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::IpDistances::IpDistance::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::IpDistances::IpDistance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5133,14 +5122,6 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Interfaces::get_child_by_name(const std:
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rip::Vrfs::Vrf::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -5153,9 +5134,14 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Interfaces::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5308,6 +5294,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Interfaces::Interface::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authentication != nullptr)
     {
         children["authentication"] = authentication;
@@ -5488,6 +5475,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Interfaces::Interface::Authentication::g
 std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Interfaces::Interface::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5594,6 +5582,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Interfaces::Interface::SiteOfOrigin::get
 std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Interfaces::Interface::SiteOfOrigin::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5724,6 +5713,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Interfaces::Interface::ReceiveVersion::g
 std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Interfaces::Interface::ReceiveVersion::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5814,6 +5804,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Interfaces::Interface::SendVersion::get_
 std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Interfaces::Interface::SendVersion::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5902,14 +5893,6 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Neighbors::get_child_by_name(const std::
 {
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Rip::Vrfs::Vrf::Neighbors::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -5922,9 +5905,14 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Neighbors::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Neighbors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5993,6 +5981,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Neighbors::Neighbor::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Neighbors::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6081,6 +6070,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Timers::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Timers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

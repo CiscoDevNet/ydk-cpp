@@ -68,6 +68,7 @@ std::shared_ptr<Entity> PlatformLptspIfibStatic::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfibStatic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(node_statics != nullptr)
     {
         children["node-statics"] = node_statics;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> PlatformLptspIfibStatic::NodeStatics::get_child_by_name(
 {
     if(child_yang_name == "node-static")
     {
-        for(auto const & c : node_static)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformLptspIfibStatic::NodeStatics::NodeStatic>();
         c->parent = this;
         node_static.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> PlatformLptspIfibStatic::NodeStatics::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfibStatic::NodeStatics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node_static)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -298,6 +296,7 @@ std::shared_ptr<Entity> PlatformLptspIfibStatic::NodeStatics::NodeStatic::get_ch
 std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfibStatic::NodeStatics::NodeStatic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(police != nullptr)
     {
         children["police"] = police;
@@ -386,14 +385,6 @@ std::shared_ptr<Entity> PlatformLptspIfibStatic::NodeStatics::NodeStatic::Police
 {
     if(child_yang_name == "static-info")
     {
-        for(auto const & c : static_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformLptspIfibStatic::NodeStatics::NodeStatic::Police::StaticInfo>();
         c->parent = this;
         static_info.push_back(c);
@@ -406,9 +397,14 @@ std::shared_ptr<Entity> PlatformLptspIfibStatic::NodeStatics::NodeStatic::Police
 std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfibStatic::NodeStatics::NodeStatic::Police::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : static_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -505,6 +501,7 @@ std::shared_ptr<Entity> PlatformLptspIfibStatic::NodeStatics::NodeStatic::Police
 std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfibStatic::NodeStatics::NodeStatic::Police::StaticInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -663,6 +660,7 @@ std::shared_ptr<Entity> PlatformLptspIfibStatic::NodeStatics::NodeStatic::Stats:
 std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfibStatic::NodeStatics::NodeStatic::Stats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -778,6 +776,7 @@ std::shared_ptr<Entity> PlatformLptspIfib::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -883,14 +882,6 @@ std::shared_ptr<Entity> PlatformLptspIfib::Nodes::get_child_by_name(const std::s
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformLptspIfib::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -903,9 +894,14 @@ std::shared_ptr<Entity> PlatformLptspIfib::Nodes::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfib::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1008,6 +1004,7 @@ std::shared_ptr<Entity> PlatformLptspIfib::Nodes::Node::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfib::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(police != nullptr)
     {
         children["police"] = police;
@@ -1096,14 +1093,6 @@ std::shared_ptr<Entity> PlatformLptspIfib::Nodes::Node::Police::get_child_by_nam
 {
     if(child_yang_name == "police-info")
     {
-        for(auto const & c : police_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformLptspIfib::Nodes::Node::Police::PoliceInfo>();
         c->parent = this;
         police_info.push_back(c);
@@ -1116,9 +1105,14 @@ std::shared_ptr<Entity> PlatformLptspIfib::Nodes::Node::Police::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfib::Nodes::Node::Police::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : police_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1231,6 +1225,7 @@ std::shared_ptr<Entity> PlatformLptspIfib::Nodes::Node::Police::PoliceInfo::get_
 std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfib::Nodes::Node::Police::PoliceInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1429,6 +1424,7 @@ std::shared_ptr<Entity> PlatformLptspIfib::Nodes::Node::Stats::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfib::Nodes::Node::Stats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1544,6 +1540,7 @@ std::shared_ptr<Entity> PlatformLptspIfibNpStats::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfibNpStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(node_np_stats != nullptr)
     {
         children["node-np-stats"] = node_np_stats;
@@ -1649,14 +1646,6 @@ std::shared_ptr<Entity> PlatformLptspIfibNpStats::NodeNpStats::get_child_by_name
 {
     if(child_yang_name == "node-np-stat")
     {
-        for(auto const & c : node_np_stat)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat>();
         c->parent = this;
         node_np_stat.push_back(c);
@@ -1669,9 +1658,14 @@ std::shared_ptr<Entity> PlatformLptspIfibNpStats::NodeNpStats::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfibNpStats::NodeNpStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node_np_stat)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1761,6 +1755,7 @@ std::shared_ptr<Entity> PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::get_c
 std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nps != nullptr)
     {
         children["nps"] = nps;
@@ -1844,14 +1839,6 @@ std::shared_ptr<Entity> PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::
 {
     if(child_yang_name == "np")
     {
-        for(auto const & c : np)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np>();
         c->parent = this;
         np.push_back(c);
@@ -1864,9 +1851,14 @@ std::shared_ptr<Entity> PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::
 std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : np)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1949,6 +1941,7 @@ std::shared_ptr<Entity> PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::
 std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(np_police != nullptr)
     {
         children["np-police"] = np_police;
@@ -2032,14 +2025,6 @@ std::shared_ptr<Entity> PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::
 {
     if(child_yang_name == "police-info")
     {
-        for(auto const & c : police_info)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::NpPolice::PoliceInfo>();
         c->parent = this;
         police_info.push_back(c);
@@ -2052,9 +2037,14 @@ std::shared_ptr<Entity> PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::
 std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::NpPolice::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : police_info)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2167,6 +2157,7 @@ std::shared_ptr<Entity> PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::
 std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::NpPolice::PoliceInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

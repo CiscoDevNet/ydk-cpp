@@ -445,20 +445,20 @@ class Native::ParameterMap::Log::FlowExport : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Template_; //type: Native::ParameterMap::Log::FlowExport::Template_
+        class Template; //type: Native::ParameterMap::Log::FlowExport::Template
         class V9; //type: Native::ParameterMap::Log::FlowExport::V9
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ParameterMap::Log::FlowExport::Template_> template_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ParameterMap::Log::FlowExport::Template> template_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ParameterMap::Log::FlowExport::V9> v9;
         
 }; // Native::ParameterMap::Log::FlowExport
 
 
-class Native::ParameterMap::Log::FlowExport::Template_ : public ydk::Entity
+class Native::ParameterMap::Log::FlowExport::Template : public ydk::Entity
 {
     public:
-        Template_();
-        ~Template_();
+        Template();
+        ~Template();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -472,7 +472,7 @@ class Native::ParameterMap::Log::FlowExport::Template_ : public ydk::Entity
 
         ydk::YLeaf timeout_rate; //type: uint32
 
-}; // Native::ParameterMap::Log::FlowExport::Template_
+}; // Native::ParameterMap::Log::FlowExport::Template
 
 
 class Native::ParameterMap::Log::FlowExport::V9 : public ydk::Entity
@@ -1146,12 +1146,12 @@ class Native::Mac::AddressTable : public ydk::Entity
         class AgingTime; //type: Native::Mac::AddressTable::AgingTime
         class Learning; //type: Native::Mac::AddressTable::Learning
         class Notification; //type: Native::Mac::AddressTable::Notification
-        class Static_; //type: Native::Mac::AddressTable::Static_
+        class Static; //type: Native::Mac::AddressTable::Static
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mac::AddressTable::AgingTime> aging_time;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mac::AddressTable::Learning> learning;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mac::AddressTable::Notification> notification;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mac::AddressTable::Static_> static_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mac::AddressTable::Static> static_;
         
 }; // Native::Mac::AddressTable
 
@@ -1300,11 +1300,11 @@ class Native::Mac::AddressTable::Notification::Threshold::Limit : public ydk::En
 }; // Native::Mac::AddressTable::Notification::Threshold::Limit
 
 
-class Native::Mac::AddressTable::Static_ : public ydk::Entity
+class Native::Mac::AddressTable::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1322,7 +1322,7 @@ class Native::Mac::AddressTable::Static_ : public ydk::Entity
         ydk::YLeaf drop; //type: empty
         ydk::YLeaf interface; //type: string
 
-}; // Native::Mac::AddressTable::Static_
+}; // Native::Mac::AddressTable::Static
 
 
 class Native::Mac::AccessList : public ydk::Entity
@@ -3457,11 +3457,11 @@ class Native::Monitor::EventTrace::Atom : public ydk::Entity
 
         class Error; //type: Native::Monitor::EventTrace::Atom::Error
         class Event; //type: Native::Monitor::EventTrace::Atom::Event
-        class Major_; //type: Native::Monitor::EventTrace::Atom::Major_
+        class Major; //type: Native::Monitor::EventTrace::Atom::Major
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Monitor::EventTrace::Atom::Error> error;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Monitor::EventTrace::Atom::Event> event;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Monitor::EventTrace::Atom::Major_> major_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Monitor::EventTrace::Atom::Major> major_;
         
 }; // Native::Monitor::EventTrace::Atom
 
@@ -3515,11 +3515,11 @@ class Native::Monitor::EventTrace::Atom::Event : public ydk::Entity
 }; // Native::Monitor::EventTrace::Atom::Event
 
 
-class Native::Monitor::EventTrace::Atom::Major_ : public ydk::Entity
+class Native::Monitor::EventTrace::Atom::Major : public ydk::Entity
 {
     public:
-        Major_();
-        ~Major_();
+        Major();
+        ~Major();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3536,7 +3536,7 @@ class Native::Monitor::EventTrace::Atom::Major_ : public ydk::Entity
         ydk::YLeaf disable; //type: empty
         ydk::YLeafList include; //type: list of  MonitorEventType
 
-}; // Native::Monitor::EventTrace::Atom::Major_
+}; // Native::Monitor::EventTrace::Atom::Major
 
 
 class Native::Monitor::Session : public ydk::Entity

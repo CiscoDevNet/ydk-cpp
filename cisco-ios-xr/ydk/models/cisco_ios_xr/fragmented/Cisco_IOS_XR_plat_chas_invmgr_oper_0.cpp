@@ -69,6 +69,7 @@ std::shared_ptr<Entity> Platform::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> Platform::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(racks != nullptr)
     {
         children["racks"] = racks;
@@ -174,14 +175,6 @@ std::shared_ptr<Entity> Platform::Racks::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "rack")
     {
-        for(auto const & c : rack)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Platform::Racks::Rack>();
         c->parent = this;
         rack.push_back(c);
@@ -194,9 +187,14 @@ std::shared_ptr<Entity> Platform::Racks::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Platform::Racks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rack)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -286,6 +284,7 @@ std::shared_ptr<Entity> Platform::Racks::Rack::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Platform::Racks::Rack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(slots != nullptr)
     {
         children["slots"] = slots;
@@ -369,14 +368,6 @@ std::shared_ptr<Entity> Platform::Racks::Rack::Slots::get_child_by_name(const st
 {
     if(child_yang_name == "slot")
     {
-        for(auto const & c : slot)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Platform::Racks::Rack::Slots::Slot>();
         c->parent = this;
         slot.push_back(c);
@@ -389,9 +380,14 @@ std::shared_ptr<Entity> Platform::Racks::Rack::Slots::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Platform::Racks::Rack::Slots::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : slot)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -500,6 +496,7 @@ std::shared_ptr<Entity> Platform::Racks::Rack::Slots::Slot::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Platform::Racks::Rack::Slots::Slot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(instances != nullptr)
     {
         children["instances"] = instances;
@@ -593,14 +590,6 @@ std::shared_ptr<Entity> Platform::Racks::Rack::Slots::Slot::Instances::get_child
 {
     if(child_yang_name == "instance")
     {
-        for(auto const & c : instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Platform::Racks::Rack::Slots::Slot::Instances::Instance>();
         c->parent = this;
         instance.push_back(c);
@@ -613,9 +602,14 @@ std::shared_ptr<Entity> Platform::Racks::Rack::Slots::Slot::Instances::get_child
 std::map<std::string, std::shared_ptr<Entity>> Platform::Racks::Rack::Slots::Slot::Instances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -698,6 +692,7 @@ std::shared_ptr<Entity> Platform::Racks::Rack::Slots::Slot::Instances::Instance:
 std::map<std::string, std::shared_ptr<Entity>> Platform::Racks::Rack::Slots::Slot::Instances::Instance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(state != nullptr)
     {
         children["state"] = state;
@@ -807,6 +802,7 @@ std::shared_ptr<Entity> Platform::Racks::Rack::Slots::Slot::Instances::Instance:
 std::map<std::string, std::shared_ptr<Entity>> Platform::Racks::Rack::Slots::Slot::Instances::Instance::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -969,6 +965,7 @@ std::shared_ptr<Entity> Platform::Racks::Rack::Slots::Slot::Vm::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Platform::Racks::Rack::Slots::Slot::Vm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1113,6 +1110,7 @@ std::shared_ptr<Entity> Platform::Racks::Rack::Slots::Slot::State::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Platform::Racks::Rack::Slots::Slot::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1268,6 +1266,7 @@ std::shared_ptr<Entity> PlatformInventory::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(racks != nullptr)
     {
         children["racks"] = racks;
@@ -1373,14 +1372,6 @@ std::shared_ptr<Entity> PlatformInventory::Racks::get_child_by_name(const std::s
 {
     if(child_yang_name == "rack")
     {
-        for(auto const & c : rack)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformInventory::Racks::Rack>();
         c->parent = this;
         rack.push_back(c);
@@ -1393,9 +1384,14 @@ std::shared_ptr<Entity> PlatformInventory::Racks::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rack)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1498,6 +1494,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(slots != nullptr)
     {
         children["slots"] = slots;
@@ -1586,14 +1583,6 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::get_child_by_name
 {
     if(child_yang_name == "slot")
     {
-        for(auto const & c : slot)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot>();
         c->parent = this;
         slot.push_back(c);
@@ -1606,9 +1595,14 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : slot)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1704,6 +1698,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cards != nullptr)
     {
         children["cards"] = cards;
@@ -1792,14 +1787,6 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::get_
 {
     if(child_yang_name == "card")
     {
-        for(auto const & c : card)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card>();
         c->parent = this;
         card.push_back(c);
@@ -1812,9 +1799,14 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::get_
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : card)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1962,6 +1954,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hardware_information != nullptr)
     {
         children["hardware-information"] = hardware_information;
@@ -2116,6 +2109,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(processor_information != nullptr)
     {
         children["processor-information"] = processor_information;
@@ -2210,6 +2204,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::ProcessorInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2350,6 +2345,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::MotherboardInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rom != nullptr)
     {
         children["rom"] = rom;
@@ -2471,6 +2467,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::MotherboardInformation::Rom::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2633,6 +2630,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::MotherboardInformation::Bootflash::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2807,6 +2805,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::MotherboardInformation::Processor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2939,6 +2938,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::BootflashInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3119,14 +3119,6 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 {
     if(child_yang_name == "disks")
     {
-        for(auto const & c : disks)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::DiskInformation::Disks>();
         c->parent = this;
         disks.push_back(c);
@@ -3139,9 +3131,14 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::DiskInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : disks)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3248,6 +3245,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::DiskInformation::Disks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3346,14 +3344,6 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 {
     if(child_yang_name == "sub-slot")
     {
-        for(auto const & c : sub_slot)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot>();
         c->parent = this;
         sub_slot.push_back(c);
@@ -3366,9 +3356,14 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sub_slot)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3464,6 +3459,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(module != nullptr)
     {
         children["module"] = module;
@@ -3585,6 +3581,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(port_slots != nullptr)
     {
         children["port-slots"] = port_slots;
@@ -3668,14 +3665,6 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 {
     if(child_yang_name == "port-slot")
     {
-        for(auto const & c : port_slot)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot>();
         c->parent = this;
         port_slot.push_back(c);
@@ -3688,9 +3677,14 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : port_slot)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3799,6 +3793,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(portses != nullptr)
     {
         children["portses"] = portses;
@@ -3892,14 +3887,6 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 {
     if(child_yang_name == "ports")
     {
-        for(auto const & c : ports)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports>();
         c->parent = this;
         ports.push_back(c);
@@ -3912,9 +3899,14 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ports)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4023,6 +4015,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hw_components != nullptr)
     {
         children["hw-components"] = hw_components;
@@ -4116,14 +4109,6 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 {
     if(child_yang_name == "hw-component")
     {
-        for(auto const & c : hw_component)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent>();
         c->parent = this;
         hw_component.push_back(c);
@@ -4136,9 +4121,14 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hw_component)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4234,6 +4224,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sensors != nullptr)
     {
         children["sensors"] = sensors;
@@ -4322,14 +4313,6 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 {
     if(child_yang_name == "sensor")
     {
-        for(auto const & c : sensor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor>();
         c->parent = this;
         sensor.push_back(c);
@@ -4342,9 +4325,14 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sensor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4427,6 +4415,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(attributes != nullptr)
     {
         children["attributes"] = attributes;
@@ -4530,6 +4519,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(basic_info != nullptr)
     {
         children["basic-info"] = basic_info;
@@ -4638,6 +4628,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4837,6 +4828,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_operational_state_change != nullptr)
     {
         children["last-operational-state-change"] = last_operational_state_change;
@@ -4967,6 +4959,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5057,6 +5050,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5165,6 +5159,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(basic_info != nullptr)
     {
         children["basic-info"] = basic_info;
@@ -5273,6 +5268,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5472,6 +5468,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_operational_state_change != nullptr)
     {
         children["last-operational-state-change"] = last_operational_state_change;
@@ -5602,6 +5599,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5692,6 +5690,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5780,14 +5779,6 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 {
     if(child_yang_name == "sensor")
     {
-        for(auto const & c : sensor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor>();
         c->parent = this;
         sensor.push_back(c);
@@ -5800,9 +5791,14 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sensor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5885,6 +5881,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(attributes != nullptr)
     {
         children["attributes"] = attributes;
@@ -5988,6 +5985,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(basic_info != nullptr)
     {
         children["basic-info"] = basic_info;
@@ -6096,6 +6094,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6295,6 +6294,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_operational_state_change != nullptr)
     {
         children["last-operational-state-change"] = last_operational_state_change;
@@ -6425,6 +6425,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6515,6 +6516,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6623,6 +6625,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(basic_info != nullptr)
     {
         children["basic-info"] = basic_info;
@@ -6731,6 +6734,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Attributes::BasicInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6930,6 +6934,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_operational_state_change != nullptr)
     {
         children["last-operational-state-change"] = last_operational_state_change;
@@ -7060,6 +7065,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7150,6 +7156,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo::ModuleUpTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7238,14 +7245,6 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 {
     if(child_yang_name == "sensor")
     {
-        for(auto const & c : sensor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor>();
         c->parent = this;
         sensor.push_back(c);
@@ -7258,9 +7257,14 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sensor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7343,6 +7347,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(attributes != nullptr)
     {
         children["attributes"] = attributes;
@@ -7446,6 +7451,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(basic_info != nullptr)
     {
         children["basic-info"] = basic_info;
@@ -7554,6 +7560,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::BasicInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7753,6 +7760,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_operational_state_change != nullptr)
     {
         children["last-operational-state-change"] = last_operational_state_change;
@@ -7883,6 +7891,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7973,6 +7982,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8081,6 +8091,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(basic_info != nullptr)
     {
         children["basic-info"] = basic_info;
@@ -8189,6 +8200,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::BasicInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8388,6 +8400,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::FruInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_operational_state_change != nullptr)
     {
         children["last-operational-state-change"] = last_operational_state_change;
@@ -8518,6 +8531,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8608,6 +8622,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::FruInfo::ModuleUpTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8696,14 +8711,6 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 {
     if(child_yang_name == "sensor")
     {
-        for(auto const & c : sensor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor>();
         c->parent = this;
         sensor.push_back(c);
@@ -8716,9 +8723,14 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sensor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8801,6 +8813,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(attributes != nullptr)
     {
         children["attributes"] = attributes;
@@ -8904,6 +8917,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(basic_info != nullptr)
     {
         children["basic-info"] = basic_info;
@@ -9012,6 +9026,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::BasicInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9211,6 +9226,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::FruInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_operational_state_change != nullptr)
     {
         children["last-operational-state-change"] = last_operational_state_change;
@@ -9341,6 +9357,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9431,6 +9448,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9539,6 +9557,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(basic_info != nullptr)
     {
         children["basic-info"] = basic_info;
@@ -9647,6 +9666,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::BasicInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9846,6 +9866,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::FruInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_operational_state_change != nullptr)
     {
         children["last-operational-state-change"] = last_operational_state_change;
@@ -9976,6 +9997,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10066,6 +10088,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::FruInfo::ModuleUpTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10174,6 +10197,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(basic_info != nullptr)
     {
         children["basic-info"] = basic_info;
@@ -10282,6 +10306,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::BasicInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10481,6 +10506,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::FruInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_operational_state_change != nullptr)
     {
         children["last-operational-state-change"] = last_operational_state_change;
@@ -10611,6 +10637,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10701,6 +10728,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::FruInfo::ModuleUpTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10789,14 +10817,6 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 {
     if(child_yang_name == "port-slot")
     {
-        for(auto const & c : port_slot)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot>();
         c->parent = this;
         port_slot.push_back(c);
@@ -10809,9 +10829,14 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : port_slot)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10920,6 +10945,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(portses != nullptr)
     {
         children["portses"] = portses;
@@ -11013,14 +11039,6 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 {
     if(child_yang_name == "ports")
     {
-        for(auto const & c : ports)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports>();
         c->parent = this;
         ports.push_back(c);
@@ -11033,9 +11051,14 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ports)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11144,6 +11167,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hw_components != nullptr)
     {
         children["hw-components"] = hw_components;
@@ -11237,14 +11261,6 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 {
     if(child_yang_name == "hw-component")
     {
-        for(auto const & c : hw_component)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent>();
         c->parent = this;
         hw_component.push_back(c);
@@ -11257,9 +11273,14 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hw_component)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11355,6 +11376,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sensors != nullptr)
     {
         children["sensors"] = sensors;
@@ -11443,14 +11465,6 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 {
     if(child_yang_name == "sensor")
     {
-        for(auto const & c : sensor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor>();
         c->parent = this;
         sensor.push_back(c);
@@ -11463,9 +11477,14 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sensor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11548,6 +11567,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(attributes != nullptr)
     {
         children["attributes"] = attributes;
@@ -11651,6 +11671,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(basic_info != nullptr)
     {
         children["basic-info"] = basic_info;
@@ -11759,6 +11780,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11958,6 +11980,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_operational_state_change != nullptr)
     {
         children["last-operational-state-change"] = last_operational_state_change;
@@ -12088,6 +12111,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12178,6 +12202,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12286,6 +12311,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(basic_info != nullptr)
     {
         children["basic-info"] = basic_info;
@@ -12394,6 +12420,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12593,6 +12620,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_operational_state_change != nullptr)
     {
         children["last-operational-state-change"] = last_operational_state_change;
@@ -12723,6 +12751,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12813,6 +12842,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12901,14 +12931,6 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 {
     if(child_yang_name == "sensor")
     {
-        for(auto const & c : sensor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor>();
         c->parent = this;
         sensor.push_back(c);
@@ -12921,9 +12943,14 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sensor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13006,6 +13033,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(attributes != nullptr)
     {
         children["attributes"] = attributes;
@@ -13109,6 +13137,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(basic_info != nullptr)
     {
         children["basic-info"] = basic_info;
@@ -13217,6 +13246,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13416,6 +13446,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_operational_state_change != nullptr)
     {
         children["last-operational-state-change"] = last_operational_state_change;
@@ -13546,6 +13577,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13636,6 +13668,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13744,6 +13777,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(basic_info != nullptr)
     {
         children["basic-info"] = basic_info;
@@ -13852,6 +13886,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Attributes::BasicInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14051,6 +14086,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_operational_state_change != nullptr)
     {
         children["last-operational-state-change"] = last_operational_state_change;
@@ -14181,6 +14217,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14271,6 +14308,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo::ModuleUpTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14359,14 +14397,6 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 {
     if(child_yang_name == "sensor")
     {
-        for(auto const & c : sensor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor>();
         c->parent = this;
         sensor.push_back(c);
@@ -14379,9 +14409,14 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sensor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14464,6 +14499,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(attributes != nullptr)
     {
         children["attributes"] = attributes;
@@ -14567,6 +14603,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(basic_info != nullptr)
     {
         children["basic-info"] = basic_info;
@@ -14675,6 +14712,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::BasicInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14874,6 +14912,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_operational_state_change != nullptr)
     {
         children["last-operational-state-change"] = last_operational_state_change;
@@ -15004,6 +15043,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15094,6 +15134,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15202,6 +15243,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(basic_info != nullptr)
     {
         children["basic-info"] = basic_info;
@@ -15310,6 +15352,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::BasicInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15509,6 +15552,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_operational_state_change != nullptr)
     {
         children["last-operational-state-change"] = last_operational_state_change;
@@ -15639,6 +15683,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15729,6 +15774,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::ModuleUpTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15817,14 +15863,6 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 {
     if(child_yang_name == "hw-component")
     {
-        for(auto const & c : hw_component)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent>();
         c->parent = this;
         hw_component.push_back(c);
@@ -15837,9 +15875,14 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hw_component)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15935,6 +15978,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(sensors != nullptr)
     {
         children["sensors"] = sensors;
@@ -16023,14 +16067,6 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 {
     if(child_yang_name == "sensor")
     {
-        for(auto const & c : sensor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor>();
         c->parent = this;
         sensor.push_back(c);
@@ -16043,9 +16079,14 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sensor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16128,6 +16169,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(attributes != nullptr)
     {
         children["attributes"] = attributes;
@@ -16231,6 +16273,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(basic_info != nullptr)
     {
         children["basic-info"] = basic_info;
@@ -16339,6 +16382,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16538,6 +16582,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_operational_state_change != nullptr)
     {
         children["last-operational-state-change"] = last_operational_state_change;
@@ -16668,6 +16713,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16758,6 +16804,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16866,6 +16913,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(basic_info != nullptr)
     {
         children["basic-info"] = basic_info;
@@ -16974,6 +17022,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::BasicInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17173,6 +17222,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_operational_state_change != nullptr)
     {
         children["last-operational-state-change"] = last_operational_state_change;
@@ -17303,6 +17353,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17393,6 +17444,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17481,14 +17533,6 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 {
     if(child_yang_name == "sensor")
     {
-        for(auto const & c : sensor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor>();
         c->parent = this;
         sensor.push_back(c);
@@ -17501,9 +17545,14 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sensor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17586,6 +17635,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(attributes != nullptr)
     {
         children["attributes"] = attributes;
@@ -17689,6 +17739,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(basic_info != nullptr)
     {
         children["basic-info"] = basic_info;
@@ -17797,6 +17848,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::BasicInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17996,6 +18048,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_operational_state_change != nullptr)
     {
         children["last-operational-state-change"] = last_operational_state_change;
@@ -18126,6 +18179,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
 std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

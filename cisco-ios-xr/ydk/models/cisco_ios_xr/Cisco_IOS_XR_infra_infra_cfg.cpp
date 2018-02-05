@@ -61,14 +61,6 @@ std::shared_ptr<Entity> Banners::get_child_by_name(const std::string & child_yan
 {
     if(child_yang_name == "banner")
     {
-        for(auto const & c : banner)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Banners::Banner>();
         c->parent = this;
         banner.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> Banners::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> Banners::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : banner)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -188,6 +185,7 @@ std::shared_ptr<Entity> Banners::Banner::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Banners::Banner::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

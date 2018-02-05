@@ -186,6 +186,7 @@ std::shared_ptr<Entity> ConfdState::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(smp != nullptr)
     {
         children["smp"] = smp;
@@ -379,6 +380,7 @@ std::shared_ptr<Entity> ConfdState::Smp::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Smp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -498,6 +500,7 @@ std::shared_ptr<Entity> ConfdState::Ha::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Ha::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -619,14 +622,6 @@ std::shared_ptr<Entity> ConfdState::LoadedDataModels::get_child_by_name(const st
 {
     if(child_yang_name == "data-model")
     {
-        for(auto const & c : data_model)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::LoadedDataModels::DataModel>();
         c->parent = this;
         data_model.push_back(c);
@@ -639,9 +634,14 @@ std::shared_ptr<Entity> ConfdState::LoadedDataModels::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::LoadedDataModels::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : data_model)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -747,6 +747,7 @@ std::shared_ptr<Entity> ConfdState::LoadedDataModels::DataModel::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::LoadedDataModels::DataModel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -887,6 +888,7 @@ std::shared_ptr<Entity> ConfdState::Netconf::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Netconf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(listen != nullptr)
     {
         children["listen"] = listen;
@@ -977,14 +979,6 @@ std::shared_ptr<Entity> ConfdState::Netconf::Listen::get_child_by_name(const std
 {
     if(child_yang_name == "tcp")
     {
-        for(auto const & c : tcp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Netconf::Listen::Tcp>();
         c->parent = this;
         tcp.push_back(c);
@@ -993,14 +987,6 @@ std::shared_ptr<Entity> ConfdState::Netconf::Listen::get_child_by_name(const std
 
     if(child_yang_name == "ssh")
     {
-        for(auto const & c : ssh)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Netconf::Listen::Ssh>();
         c->parent = this;
         ssh.push_back(c);
@@ -1013,14 +999,23 @@ std::shared_ptr<Entity> ConfdState::Netconf::Listen::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Netconf::Listen::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tcp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ssh)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1100,6 +1095,7 @@ std::shared_ptr<Entity> ConfdState::Netconf::Listen::Tcp::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Netconf::Listen::Tcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1197,6 +1193,7 @@ std::shared_ptr<Entity> ConfdState::Netconf::Listen::Ssh::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Netconf::Listen::Ssh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1299,6 +1296,7 @@ std::shared_ptr<Entity> ConfdState::Cli::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Cli::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(listen != nullptr)
     {
         children["listen"] = listen;
@@ -1379,14 +1377,6 @@ std::shared_ptr<Entity> ConfdState::Cli::Listen::get_child_by_name(const std::st
 {
     if(child_yang_name == "ssh")
     {
-        for(auto const & c : ssh)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Cli::Listen::Ssh>();
         c->parent = this;
         ssh.push_back(c);
@@ -1399,9 +1389,14 @@ std::shared_ptr<Entity> ConfdState::Cli::Listen::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Cli::Listen::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ssh)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1481,6 +1476,7 @@ std::shared_ptr<Entity> ConfdState::Cli::Listen::Ssh::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Cli::Listen::Ssh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1583,6 +1579,7 @@ std::shared_ptr<Entity> ConfdState::Webui::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Webui::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(listen != nullptr)
     {
         children["listen"] = listen;
@@ -1673,14 +1670,6 @@ std::shared_ptr<Entity> ConfdState::Webui::Listen::get_child_by_name(const std::
 {
     if(child_yang_name == "tcp")
     {
-        for(auto const & c : tcp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Webui::Listen::Tcp>();
         c->parent = this;
         tcp.push_back(c);
@@ -1689,14 +1678,6 @@ std::shared_ptr<Entity> ConfdState::Webui::Listen::get_child_by_name(const std::
 
     if(child_yang_name == "ssl")
     {
-        for(auto const & c : ssl)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Webui::Listen::Ssl>();
         c->parent = this;
         ssl.push_back(c);
@@ -1709,14 +1690,23 @@ std::shared_ptr<Entity> ConfdState::Webui::Listen::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Webui::Listen::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tcp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ssl)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1796,6 +1786,7 @@ std::shared_ptr<Entity> ConfdState::Webui::Listen::Tcp::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Webui::Listen::Tcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1893,6 +1884,7 @@ std::shared_ptr<Entity> ConfdState::Webui::Listen::Ssl::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Webui::Listen::Ssl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1995,6 +1987,7 @@ std::shared_ptr<Entity> ConfdState::Rest::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Rest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(listen != nullptr)
     {
         children["listen"] = listen;
@@ -2085,14 +2078,6 @@ std::shared_ptr<Entity> ConfdState::Rest::Listen::get_child_by_name(const std::s
 {
     if(child_yang_name == "tcp")
     {
-        for(auto const & c : tcp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Rest::Listen::Tcp>();
         c->parent = this;
         tcp.push_back(c);
@@ -2101,14 +2086,6 @@ std::shared_ptr<Entity> ConfdState::Rest::Listen::get_child_by_name(const std::s
 
     if(child_yang_name == "ssl")
     {
-        for(auto const & c : ssl)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Rest::Listen::Ssl>();
         c->parent = this;
         ssl.push_back(c);
@@ -2121,14 +2098,23 @@ std::shared_ptr<Entity> ConfdState::Rest::Listen::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Rest::Listen::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tcp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ssl)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2208,6 +2194,7 @@ std::shared_ptr<Entity> ConfdState::Rest::Listen::Tcp::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Rest::Listen::Tcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2305,6 +2292,7 @@ std::shared_ptr<Entity> ConfdState::Rest::Listen::Ssl::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Rest::Listen::Ssl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2439,6 +2427,7 @@ std::shared_ptr<Entity> ConfdState::Snmp::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Snmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(listen != nullptr)
     {
         children["listen"] = listen;
@@ -2542,14 +2531,6 @@ std::shared_ptr<Entity> ConfdState::Snmp::Listen::get_child_by_name(const std::s
 {
     if(child_yang_name == "udp")
     {
-        for(auto const & c : udp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Snmp::Listen::Udp>();
         c->parent = this;
         udp.push_back(c);
@@ -2562,9 +2543,14 @@ std::shared_ptr<Entity> ConfdState::Snmp::Listen::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Snmp::Listen::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : udp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2644,6 +2630,7 @@ std::shared_ptr<Entity> ConfdState::Snmp::Listen::Udp::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Snmp::Listen::Udp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2745,6 +2732,7 @@ std::shared_ptr<Entity> ConfdState::Snmp::Version::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Snmp::Version::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2870,6 +2858,7 @@ std::shared_ptr<Entity> ConfdState::Internal::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(callpoints != nullptr)
     {
         children["callpoints"] = callpoints;
@@ -3031,14 +3020,6 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::get_child_by_name(cons
 {
     if(child_yang_name == "callpoint")
     {
-        for(auto const & c : callpoint)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::Callpoint>();
         c->parent = this;
         callpoint.push_back(c);
@@ -3047,14 +3028,6 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::get_child_by_name(cons
 
     if(child_yang_name == "validationpoint")
     {
-        for(auto const & c : validationpoint)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::Validationpoint>();
         c->parent = this;
         validationpoint.push_back(c);
@@ -3063,14 +3036,6 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::get_child_by_name(cons
 
     if(child_yang_name == "actionpoint")
     {
-        for(auto const & c : actionpoint)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::Actionpoint>();
         c->parent = this;
         actionpoint.push_back(c);
@@ -3079,14 +3044,6 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::get_child_by_name(cons
 
     if(child_yang_name == "snmp-inform-callback")
     {
-        for(auto const & c : snmp_inform_callback)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback>();
         c->parent = this;
         snmp_inform_callback.push_back(c);
@@ -3095,14 +3052,6 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::get_child_by_name(cons
 
     if(child_yang_name == "snmp-notification-subscription")
     {
-        for(auto const & c : snmp_notification_subscription)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription>();
         c->parent = this;
         snmp_notification_subscription.push_back(c);
@@ -3111,14 +3060,6 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::get_child_by_name(cons
 
     if(child_yang_name == "error-formatting-callback")
     {
-        for(auto const & c : error_formatting_callback)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::ErrorFormattingCallback>();
         c->parent = this;
         error_formatting_callback.push_back(c);
@@ -3127,14 +3068,6 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::get_child_by_name(cons
 
     if(child_yang_name == "typepoint")
     {
-        for(auto const & c : typepoint)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::Typepoint>();
         c->parent = this;
         typepoint.push_back(c);
@@ -3143,14 +3076,6 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::get_child_by_name(cons
 
     if(child_yang_name == "notification-stream-replay")
     {
-        for(auto const & c : notification_stream_replay)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::NotificationStreamReplay>();
         c->parent = this;
         notification_stream_replay.push_back(c);
@@ -3181,44 +3106,77 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : callpoint)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : validationpoint)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : actionpoint)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : snmp_inform_callback)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : snmp_notification_subscription)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : error_formatting_callback)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : typepoint)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : notification_stream_replay)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(authentication_callback != nullptr)
@@ -3336,14 +3294,6 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Callpoint::get_child_b
 
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::Callpoint::Range>();
         c->parent = this;
         range.push_back(c);
@@ -3356,14 +3306,19 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Callpoint::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Callpoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daemon != nullptr)
     {
         children["daemon"] = daemon;
     }
 
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3480,6 +3435,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Callpoint::Daemon::get
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Callpoint::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3598,6 +3554,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Callpoint::Range::get_
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Callpoint::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daemon != nullptr)
     {
         children["daemon"] = daemon;
@@ -3707,6 +3664,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Callpoint::Range::Daem
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3842,14 +3800,6 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Validationpoint::get_c
 
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::Validationpoint::Range>();
         c->parent = this;
         range.push_back(c);
@@ -3862,14 +3812,19 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Validationpoint::get_c
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Validationpoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daemon != nullptr)
     {
         children["daemon"] = daemon;
     }
 
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3986,6 +3941,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Validationpoint::Daemo
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Validationpoint::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4104,6 +4060,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Validationpoint::Range
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Validationpoint::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daemon != nullptr)
     {
         children["daemon"] = daemon;
@@ -4213,6 +4170,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Validationpoint::Range
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4348,14 +4306,6 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Actionpoint::get_child
 
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::Actionpoint::Range>();
         c->parent = this;
         range.push_back(c);
@@ -4368,14 +4318,19 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Actionpoint::get_child
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Actionpoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daemon != nullptr)
     {
         children["daemon"] = daemon;
     }
 
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4492,6 +4447,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Actionpoint::Daemon::g
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Actionpoint::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4610,6 +4566,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Actionpoint::Range::ge
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Actionpoint::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daemon != nullptr)
     {
         children["daemon"] = daemon;
@@ -4719,6 +4676,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Actionpoint::Range::Da
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4854,14 +4812,6 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::ge
 
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::SnmpInformCallback::Range>();
         c->parent = this;
         range.push_back(c);
@@ -4874,14 +4824,19 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::ge
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpInformCallback::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daemon != nullptr)
     {
         children["daemon"] = daemon;
     }
 
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4998,6 +4953,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::Da
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5116,6 +5072,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::Ra
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpInformCallback::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daemon != nullptr)
     {
         children["daemon"] = daemon;
@@ -5225,6 +5182,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpInformCallback::Ra
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5360,14 +5318,6 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscr
 
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range>();
         c->parent = this;
         range.push_back(c);
@@ -5380,14 +5330,19 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscr
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daemon != nullptr)
     {
         children["daemon"] = daemon;
     }
 
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5504,6 +5459,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscr
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5622,6 +5578,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscr
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daemon != nullptr)
     {
         children["daemon"] = daemon;
@@ -5731,6 +5688,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::SnmpNotificationSubscr
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5866,14 +5824,6 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::ErrorFormattingCallbac
 
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range>();
         c->parent = this;
         range.push_back(c);
@@ -5886,14 +5836,19 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::ErrorFormattingCallbac
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::ErrorFormattingCallback::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daemon != nullptr)
     {
         children["daemon"] = daemon;
     }
 
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6010,6 +5965,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::ErrorFormattingCallbac
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6128,6 +6084,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::ErrorFormattingCallbac
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daemon != nullptr)
     {
         children["daemon"] = daemon;
@@ -6237,6 +6194,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::ErrorFormattingCallbac
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6372,14 +6330,6 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Typepoint::get_child_b
 
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::Typepoint::Range>();
         c->parent = this;
         range.push_back(c);
@@ -6392,14 +6342,19 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Typepoint::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Typepoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daemon != nullptr)
     {
         children["daemon"] = daemon;
     }
 
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6516,6 +6471,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Typepoint::Daemon::get
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Typepoint::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6634,6 +6590,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Typepoint::Range::get_
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Typepoint::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daemon != nullptr)
     {
         children["daemon"] = daemon;
@@ -6743,6 +6700,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::Typepoint::Range::Daem
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6882,14 +6840,6 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::NotificationStreamRepl
 
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::NotificationStreamReplay::Range>();
         c->parent = this;
         range.push_back(c);
@@ -6902,14 +6852,19 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::NotificationStreamRepl
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::NotificationStreamReplay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daemon != nullptr)
     {
         children["daemon"] = daemon;
     }
 
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7036,6 +6991,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::NotificationStreamRepl
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7154,6 +7110,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::NotificationStreamRepl
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daemon != nullptr)
     {
         children["daemon"] = daemon;
@@ -7263,6 +7220,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::NotificationStreamRepl
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7398,14 +7356,6 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback
 
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::AuthenticationCallback::Range>();
         c->parent = this;
         range.push_back(c);
@@ -7418,14 +7368,19 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthenticationCallback::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daemon != nullptr)
     {
         children["daemon"] = daemon;
     }
 
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7549,6 +7504,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7674,6 +7630,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthenticationCallback::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daemon != nullptr)
     {
         children["daemon"] = daemon;
@@ -7790,6 +7747,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthenticationCallback
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7925,14 +7883,6 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks
 
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range>();
         c->parent = this;
         range.push_back(c);
@@ -7945,14 +7895,19 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthorizationCallbacks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daemon != nullptr)
     {
         children["daemon"] = daemon;
     }
 
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8076,6 +8031,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8201,6 +8157,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(daemon != nullptr)
     {
         children["daemon"] = daemon;
@@ -8317,6 +8274,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Callpoints::AuthorizationCallbacks
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8432,14 +8390,6 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::get_child_by_name(const std::
 {
     if(child_yang_name == "datastore")
     {
-        for(auto const & c : datastore)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Internal::Cdb::Datastore>();
         c->parent = this;
         datastore.push_back(c);
@@ -8448,14 +8398,6 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::get_child_by_name(const std::
 
     if(child_yang_name == "client")
     {
-        for(auto const & c : client)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Internal::Cdb::Client>();
         c->parent = this;
         client.push_back(c);
@@ -8468,14 +8410,23 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : datastore)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : client)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8606,14 +8557,6 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::get_child_by_name(
 
     if(child_yang_name == "pending-notification-queue")
     {
-        for(auto const & c : pending_notification_queue)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue>();
         c->parent = this;
         pending_notification_queue.push_back(c);
@@ -8626,14 +8569,19 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Datastore::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pending_subscription_sync != nullptr)
     {
         children["pending-subscription-sync"] = pending_subscription_sync;
     }
 
+    count = 0;
     for (auto const & c : pending_notification_queue)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8812,14 +8760,6 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::PendingSubscriptio
 {
     if(child_yang_name == "notification")
     {
-        for(auto const & c : notification)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification>();
         c->parent = this;
         notification.push_back(c);
@@ -8832,9 +8772,14 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::PendingSubscriptio
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : notification)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8937,6 +8882,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::PendingSubscriptio
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9023,14 +8969,6 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::PendingNotificatio
 {
     if(child_yang_name == "notification")
     {
-        for(auto const & c : notification)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification>();
         c->parent = this;
         notification.push_back(c);
@@ -9043,9 +8981,14 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::PendingNotificatio
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : notification)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9132,6 +9075,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Datastore::PendingNotificatio
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9255,14 +9199,6 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Client::get_child_by_name(con
 {
     if(child_yang_name == "subscription")
     {
-        for(auto const & c : subscription)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ConfdState::Internal::Cdb::Client::Subscription>();
         c->parent = this;
         subscription.push_back(c);
@@ -9275,9 +9211,14 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Client::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : subscription)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9423,6 +9364,7 @@ std::shared_ptr<Entity> ConfdState::Internal::Cdb::Client::Subscription::get_chi
 std::map<std::string, std::shared_ptr<Entity>> ConfdState::Internal::Cdb::Client::Subscription::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

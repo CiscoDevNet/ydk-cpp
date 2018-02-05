@@ -81,6 +81,7 @@ std::shared_ptr<Entity> Redundancy::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Redundancy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -191,14 +192,6 @@ std::shared_ptr<Entity> Redundancy::Nodes::get_child_by_name(const std::string &
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Redundancy::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -211,9 +204,14 @@ std::shared_ptr<Entity> Redundancy::Nodes::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Redundancy::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -319,6 +317,7 @@ std::shared_ptr<Entity> Redundancy::Nodes::Node::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> Redundancy::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redundancy != nullptr)
     {
         children["redundancy"] = redundancy;
@@ -458,14 +457,6 @@ std::shared_ptr<Entity> Redundancy::Nodes::Node::Redundancy_::get_child_by_name(
 {
     if(child_yang_name == "groupinfo")
     {
-        for(auto const & c : groupinfo)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Redundancy::Nodes::Node::Redundancy_::Groupinfo>();
         c->parent = this;
         groupinfo.push_back(c);
@@ -478,9 +469,14 @@ std::shared_ptr<Entity> Redundancy::Nodes::Node::Redundancy_::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Redundancy::Nodes::Node::Redundancy_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : groupinfo)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -601,6 +597,7 @@ std::shared_ptr<Entity> Redundancy::Nodes::Node::Redundancy_::Groupinfo::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Redundancy::Nodes::Node::Redundancy_::Groupinfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -720,14 +717,6 @@ std::shared_ptr<Entity> Redundancy::Summary::get_child_by_name(const std::string
 {
     if(child_yang_name == "red-pair")
     {
-        for(auto const & c : red_pair)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Redundancy::Summary::RedPair>();
         c->parent = this;
         red_pair.push_back(c);
@@ -740,9 +729,14 @@ std::shared_ptr<Entity> Redundancy::Summary::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Redundancy::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : red_pair)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -846,14 +840,6 @@ std::shared_ptr<Entity> Redundancy::Summary::RedPair::get_child_by_name(const st
 {
     if(child_yang_name == "groupinfo")
     {
-        for(auto const & c : groupinfo)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Redundancy::Summary::RedPair::Groupinfo>();
         c->parent = this;
         groupinfo.push_back(c);
@@ -866,9 +852,14 @@ std::shared_ptr<Entity> Redundancy::Summary::RedPair::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Redundancy::Summary::RedPair::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : groupinfo)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -996,6 +987,7 @@ std::shared_ptr<Entity> Redundancy::Summary::RedPair::Groupinfo::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Redundancy::Summary::RedPair::Groupinfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

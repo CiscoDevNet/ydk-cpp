@@ -81,6 +81,7 @@ std::shared_ptr<Entity> CISCOVOICEDNISMIB::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDNISMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cvdnismappingtable != nullptr)
     {
         children["cvDnisMappingTable"] = cvdnismappingtable;
@@ -191,14 +192,6 @@ std::shared_ptr<Entity> CISCOVOICEDNISMIB::Cvdnismappingtable::get_child_by_name
 {
     if(child_yang_name == "cvDnisMappingEntry")
     {
-        for(auto const & c : cvdnismappingentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry>();
         c->parent = this;
         cvdnismappingentry.push_back(c);
@@ -211,9 +204,14 @@ std::shared_ptr<Entity> CISCOVOICEDNISMIB::Cvdnismappingtable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDNISMIB::Cvdnismappingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cvdnismappingentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -305,6 +303,7 @@ std::shared_ptr<Entity> CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentr
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDNISMIB::Cvdnismappingtable::Cvdnismappingentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -430,14 +429,6 @@ std::shared_ptr<Entity> CISCOVOICEDNISMIB::Cvdnisnodetable::get_child_by_name(co
 {
     if(child_yang_name == "cvDnisNodeEntry")
     {
-        for(auto const & c : cvdnisnodeentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry>();
         c->parent = this;
         cvdnisnodeentry.push_back(c);
@@ -450,9 +441,14 @@ std::shared_ptr<Entity> CISCOVOICEDNISMIB::Cvdnisnodetable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDNISMIB::Cvdnisnodetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cvdnisnodeentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -544,6 +540,7 @@ std::shared_ptr<Entity> CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::get
 std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDNISMIB::Cvdnisnodetable::Cvdnisnodeentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Diag::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Diag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(racks != nullptr)
     {
         children["racks"] = racks;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> Diag::Racks::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "rack")
     {
-        for(auto const & c : rack)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Diag::Racks::Rack>();
         c->parent = this;
         rack.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> Diag::Racks::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rack)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -298,6 +296,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(slots != nullptr)
     {
         children["slots"] = slots;
@@ -386,14 +385,6 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::get_child_by_name(const std::s
 {
     if(child_yang_name == "slot")
     {
-        for(auto const & c : slot)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot>();
         c->parent = this;
         slot.push_back(c);
@@ -406,9 +397,14 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : slot)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -504,6 +500,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(detail != nullptr)
     {
         children["detail"] = detail;
@@ -602,14 +599,6 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::get_child_by_nam
 {
     if(child_yang_name == "node-detail")
     {
-        for(auto const & c : node_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail>();
         c->parent = this;
         node_detail.push_back(c);
@@ -618,14 +607,6 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::get_child_by_nam
 
     if(child_yang_name == "spa-detail")
     {
-        for(auto const & c : spa_detail)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail>();
         c->parent = this;
         spa_detail.push_back(c);
@@ -638,14 +619,23 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : spa_detail)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -819,6 +809,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::get_
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pld != nullptr)
     {
         children["pld"] = pld;
@@ -1053,6 +1044,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld:
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Pld::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1151,14 +1143,6 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Hard
 {
     if(child_yang_name == "hardware-revision")
     {
-        for(auto const & c : hardware_revision)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_>();
         c->parent = this;
         hardware_revision.push_back(c);
@@ -1171,9 +1155,14 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Hard
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hardware_revision)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1312,6 +1301,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Hard
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hw_rev != nullptr)
     {
         children["hw-rev"] = hw_rev;
@@ -1427,6 +1417,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Hard
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::HwRev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1517,6 +1508,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Hard
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::FwRev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1607,6 +1599,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Hard
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SwRev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1705,6 +1698,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Hard
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::DimmRev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1819,6 +1813,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::Hard
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::HardwareRevision::HardwareRevision_::SsdRev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1919,6 +1914,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::CbcA
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::CbcActivePartition::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2009,6 +2005,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::CbcI
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::NodeDetail::CbcInactivePartition::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2150,6 +2147,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::get_c
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(main != nullptr)
     {
         children["main"] = main;
@@ -2322,6 +2320,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main:
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Main::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2440,14 +2439,6 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Hardw
 {
     if(child_yang_name == "hardware-revision")
     {
-        for(auto const & c : hardware_revision)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_>();
         c->parent = this;
         hardware_revision.push_back(c);
@@ -2460,9 +2451,14 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Hardw
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hardware_revision)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2601,6 +2597,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Hardw
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hw_rev != nullptr)
     {
         children["hw-rev"] = hw_rev;
@@ -2716,6 +2713,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Hardw
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::HwRev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2806,6 +2804,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Hardw
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::FwRev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2896,6 +2895,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Hardw
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SwRev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2994,6 +2994,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Hardw
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::DimmRev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3108,6 +3109,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::Hardw
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Detail::SpaDetail::HardwareRevision::HardwareRevision_::SsdRev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3206,14 +3208,6 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::get_child_by_
 {
     if(child_yang_name == "instance")
     {
-        for(auto const & c : instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance>();
         c->parent = this;
         instance.push_back(c);
@@ -3226,9 +3220,14 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3311,6 +3310,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::get
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(detail != nullptr)
     {
         children["detail"] = detail;
@@ -3414,6 +3414,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(node != nullptr)
     {
         children["node"] = node;
@@ -3595,6 +3596,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pld != nullptr)
     {
         children["pld"] = pld;
@@ -3829,6 +3831,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::Pld::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3927,14 +3930,6 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
 {
     if(child_yang_name == "hardware-revision")
     {
-        for(auto const & c : hardware_revision)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_>();
         c->parent = this;
         hardware_revision.push_back(c);
@@ -3947,9 +3942,14 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hardware_revision)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4088,6 +4088,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hw_rev != nullptr)
     {
         children["hw-rev"] = hw_rev;
@@ -4203,6 +4204,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::HwRev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4293,6 +4295,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::FwRev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4383,6 +4386,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SwRev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4481,6 +4485,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::DimmRev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4595,6 +4600,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::HardwareRevision::HardwareRevision_::SsdRev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4695,6 +4701,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::CbcActivePartition::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4785,6 +4792,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Node::CbcInactivePartition::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4926,6 +4934,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(main != nullptr)
     {
         children["main"] = main;
@@ -5098,6 +5107,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::Main::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5216,14 +5226,6 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
 {
     if(child_yang_name == "hardware-revision")
     {
-        for(auto const & c : hardware_revision)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_>();
         c->parent = this;
         hardware_revision.push_back(c);
@@ -5236,9 +5238,14 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : hardware_revision)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5377,6 +5384,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hw_rev != nullptr)
     {
         children["hw-rev"] = hw_rev;
@@ -5492,6 +5500,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::HwRev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5582,6 +5591,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::FwRev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5672,6 +5682,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SwRev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5770,6 +5781,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::DimmRev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5884,6 +5896,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Det
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Spa::HardwareRevision::HardwareRevision_::SsdRev::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5982,14 +5995,6 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Summary::get_child_by_name(const std:
 {
     if(child_yang_name == "summary")
     {
-        for(auto const & c : summary)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Diag::Racks::Rack::Summary::Summary_>();
         c->parent = this;
         summary.push_back(c);
@@ -6002,9 +6007,14 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Summary::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : summary)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6085,6 +6095,7 @@ std::shared_ptr<Entity> Diag::Racks::Rack::Summary::Summary_::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Summary::Summary_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

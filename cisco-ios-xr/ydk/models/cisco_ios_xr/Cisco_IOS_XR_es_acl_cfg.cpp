@@ -68,6 +68,7 @@ std::shared_ptr<Entity> EsAcl::get_child_by_name(const std::string & child_yang_
 std::map<std::string, std::shared_ptr<Entity>> EsAcl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(accesses != nullptr)
     {
         children["accesses"] = accesses;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> EsAcl::Accesses::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "access")
     {
-        for(auto const & c : access)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EsAcl::Accesses::Access>();
         c->parent = this;
         access.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> EsAcl::Accesses::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> EsAcl::Accesses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : access)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -285,6 +283,7 @@ std::shared_ptr<Entity> EsAcl::Accesses::Access::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> EsAcl::Accesses::Access::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(access_list_entries != nullptr)
     {
         children["access-list-entries"] = access_list_entries;
@@ -368,14 +367,6 @@ std::shared_ptr<Entity> EsAcl::Accesses::Access::AccessListEntries::get_child_by
 {
     if(child_yang_name == "access-list-entry")
     {
-        for(auto const & c : access_list_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<EsAcl::Accesses::Access::AccessListEntries::AccessListEntry>();
         c->parent = this;
         access_list_entry.push_back(c);
@@ -388,9 +379,14 @@ std::shared_ptr<Entity> EsAcl::Accesses::Access::AccessListEntries::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> EsAcl::Accesses::Access::AccessListEntries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : access_list_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -542,6 +538,7 @@ std::shared_ptr<Entity> EsAcl::Accesses::Access::AccessListEntries::AccessListEn
 std::map<std::string, std::shared_ptr<Entity>> EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(source_network != nullptr)
     {
         children["source-network"] = source_network;
@@ -772,6 +769,7 @@ std::shared_ptr<Entity> EsAcl::Accesses::Access::AccessListEntries::AccessListEn
 std::map<std::string, std::shared_ptr<Entity>> EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -862,6 +860,7 @@ std::shared_ptr<Entity> EsAcl::Accesses::Access::AccessListEntries::AccessListEn
 std::map<std::string, std::shared_ptr<Entity>> EsAcl::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

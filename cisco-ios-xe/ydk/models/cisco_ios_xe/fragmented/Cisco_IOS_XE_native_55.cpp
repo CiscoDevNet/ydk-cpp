@@ -67,6 +67,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Router::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Router::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(isis != nullptr)
     {
         children["isis"] = isis;
@@ -138,6 +139,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Router::Isis::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Router::Isis::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -214,6 +216,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Tcp::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Tcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -306,6 +309,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::VirtualReassembly::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::VirtualReassembly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -457,6 +461,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Dhcp::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(client != nullptr)
     {
         children["Cisco-IOS-XE-dhcp:client"] = client;
@@ -538,6 +543,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Dhcp::Client::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Dhcp::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -628,6 +634,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Dhcp::Relay::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Dhcp::Relay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(information != nullptr)
     {
         children["information"] = information;
@@ -751,6 +758,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Dhcp::Relay::Informatio
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Dhcp::Relay::Information::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(check_reply != nullptr)
     {
         children["check-reply"] = check_reply;
@@ -852,6 +860,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Dhcp::Relay::Informatio
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Dhcp::Relay::Information::CheckReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -928,6 +937,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Dhcp::Relay::Informatio
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Dhcp::Relay::Information::Option::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1004,6 +1014,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Dhcp::Relay::Informatio
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Dhcp::Relay::Information::OptionInsert::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1100,14 +1111,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Dhcp::Snooping::get_chi
 
     if(child_yang_name == "vlan")
     {
-        for(auto const & c : vlan)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan>();
         c->parent = this;
         vlan.push_back(c);
@@ -1120,14 +1123,19 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Dhcp::Snooping::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Dhcp::Snooping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(limit != nullptr)
     {
         children["limit"] = limit;
     }
 
+    count = 0;
     for (auto const & c : vlan)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1206,6 +1214,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Dhcp::Snooping::Limit::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Dhcp::Snooping::Limit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1296,6 +1305,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(information != nullptr)
     {
         children["information"] = information;
@@ -1386,6 +1396,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::I
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::Information::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(option != nullptr)
     {
         children["option"] = option;
@@ -1466,6 +1477,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::I
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::Information::Option::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(format_type != nullptr)
     {
         children["format-type"] = format_type;
@@ -1546,6 +1558,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::I
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::Information::Option::FormatType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(circuit_id != nullptr)
     {
         children["circuit-id"] = circuit_id;
@@ -1617,6 +1630,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::I
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Dhcp::Snooping::Vlan::Information::Option::FormatType::CircuitId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1695,14 +1709,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::SummaryAddress::get_chi
 {
     if(child_yang_name == "eigrp")
     {
-        for(auto const & c : eigrp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Loopback::Ip::SummaryAddress::Eigrp>();
         c->parent = this;
         eigrp.push_back(c);
@@ -1715,9 +1721,14 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::SummaryAddress::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::SummaryAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : eigrp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1798,6 +1809,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::SummaryAddress::Eigrp::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::SummaryAddress::Eigrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1925,6 +1937,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Verify::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Verify::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(source != nullptr)
     {
         children["source"] = source;
@@ -2010,6 +2023,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Verify::Source::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Verify::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vlan != nullptr)
     {
         children["vlan"] = vlan;
@@ -2089,6 +2103,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Verify::Source::Vlan::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Verify::Source::Vlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dhcp_snooping != nullptr)
     {
         children["dhcp-snooping"] = dhcp_snooping;
@@ -2160,6 +2175,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Verify::Source::Vlan::D
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Verify::Source::Vlan::DhcpSnooping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2257,6 +2273,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Verify::Unicast::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Verify::Unicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(reverse_path != nullptr)
     {
         children["reverse-path"] = reverse_path;
@@ -2329,6 +2346,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Verify::Unicast::Revers
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Verify::Unicast::ReversePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2401,6 +2419,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Verify::Unicast::Source
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Verify::Unicast::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2507,14 +2526,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Flow::get_child_by_name
 {
     if(child_yang_name == "monitor")
     {
-        for(auto const & c : monitor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Loopback::Ip::Flow::Monitor>();
         c->parent = this;
         monitor.push_back(c);
@@ -2527,9 +2538,14 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Flow::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Flow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : monitor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2640,14 +2656,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Flow::Monitor::get_chil
 {
     if(child_yang_name == "sampler")
     {
-        for(auto const & c : sampler)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Loopback::Ip::Flow::Monitor::Sampler>();
         c->parent = this;
         sampler.push_back(c);
@@ -2660,9 +2668,14 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Flow::Monitor::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Flow::Monitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sampler)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2785,6 +2798,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Flow::Monitor::Sampler:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Flow::Monitor::Sampler::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2891,14 +2905,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Igmp::get_child_by_name
 
     if(child_yang_name == "join-group")
     {
-        for(auto const & c : join_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Loopback::Ip::Igmp::JoinGroup>();
         c->parent = this;
         join_group.push_back(c);
@@ -2911,14 +2917,19 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Igmp::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Igmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(static_group != nullptr)
     {
         children["static-group"] = static_group;
     }
 
+    count = 0;
     for (auto const & c : join_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3009,14 +3020,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Igmp::StaticGroup::get_
 {
     if(child_yang_name == "groups")
     {
-        for(auto const & c : groups)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Loopback::Ip::Igmp::StaticGroup::Groups>();
         c->parent = this;
         groups.push_back(c);
@@ -3025,14 +3028,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Igmp::StaticGroup::get_
 
     if(child_yang_name == "class-map")
     {
-        for(auto const & c : class_map)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Loopback::Ip::Igmp::StaticGroup::ClassMap>();
         c->parent = this;
         class_map.push_back(c);
@@ -3045,14 +3040,23 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Igmp::StaticGroup::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Igmp::StaticGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : groups)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : class_map)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3135,6 +3139,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Igmp::StaticGroup::Grou
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Igmp::StaticGroup::Groups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3219,6 +3224,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Igmp::StaticGroup::Clas
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Igmp::StaticGroup::ClassMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3299,6 +3305,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Igmp::JoinGroup::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Igmp::JoinGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3385,6 +3392,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Lisp::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Lisp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3473,6 +3481,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Nat::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Nat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3587,6 +3596,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Nbar::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Nbar::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(protocol_discovery != nullptr)
     {
         children["protocol-discovery"] = protocol_discovery;
@@ -3658,6 +3668,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Nbar::ProtocolDiscovery
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Nbar::ProtocolDiscovery::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3825,14 +3836,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Ospf::get_child_by_name
 {
     if(child_yang_name == "process-id")
     {
-        for(auto const & c : process_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Loopback::Ip::Ospf::ProcessId>();
         c->parent = this;
         process_id.push_back(c);
@@ -3913,14 +3916,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Ospf::get_child_by_name
 
     if(child_yang_name == "message-digest-key")
     {
-        for(auto const & c : message_digest_key)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Loopback::Ip::Ospf::MessageDigestKey>();
         c->parent = this;
         message_digest_key.push_back(c);
@@ -3960,9 +3955,14 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Ospf::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : process_id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(authentication != nullptr)
@@ -4005,9 +4005,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::
         children["lls"] = lls;
     }
 
+    count = 0;
     for (auto const & c : message_digest_key)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(multi_area != nullptr)
@@ -4203,6 +4207,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Ospf::ProcessId::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Ospf::ProcessId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4327,6 +4332,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Ospf::Authentication::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Ospf::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_chain != nullptr)
     {
         children["key-chain"] = key_chain;
@@ -4418,6 +4424,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Ospf::Authentication::K
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Ospf::Authentication::KeyChain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4498,6 +4505,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Ospf::AuthenticationKey
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Ospf::AuthenticationKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4584,6 +4592,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Ospf::Bfd::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Ospf::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4664,6 +4673,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Ospf::DatabaseFilter::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Ospf::DatabaseFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4764,6 +4774,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Ospf::DeadInterval::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Ospf::DeadInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(minimal != nullptr)
     {
         children["minimal"] = minimal;
@@ -4845,6 +4856,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Ospf::DeadInterval::Min
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Ospf::DeadInterval::Minimal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4921,6 +4933,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Ospf::DemandCircuit::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Ospf::DemandCircuit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5006,6 +5019,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Ospf::FastReroute::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Ospf::FastReroute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(per_prefix != nullptr)
     {
         children["per-prefix"] = per_prefix;
@@ -5097,6 +5111,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Ospf::FastReroute::PerP
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Ospf::FastReroute::PerPrefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(candidate != nullptr)
     {
         children["candidate"] = candidate;
@@ -5173,6 +5188,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Ospf::FastReroute::PerP
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Ospf::FastReroute::PerPrefix::Candidate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5249,6 +5265,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Ospf::FastReroute::PerP
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Ospf::FastReroute::PerPrefix::Protection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5325,6 +5342,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Ospf::Lls::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Ospf::Lls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5415,6 +5433,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Ospf::MessageDigestKey:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Ospf::MessageDigestKey::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(md5 != nullptr)
     {
         children["md5"] = md5;
@@ -5500,6 +5519,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Ospf::MessageDigestKey:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Ospf::MessageDigestKey::Md5::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5590,6 +5610,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Ospf::MultiArea::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Ospf::MultiArea::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5676,6 +5697,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Ospf::PrefixSuppression
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Ospf::PrefixSuppression::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5756,6 +5778,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Ospf::TtlSecurity::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Ospf::TtlSecurity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5913,6 +5936,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Rsvp::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Rsvp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authentication != nullptr)
     {
         children["authentication"] = authentication;
@@ -6039,6 +6063,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Rsvp::Authentication::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Rsvp::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lifetime != nullptr)
     {
         children["lifetime"] = lifetime;
@@ -6160,6 +6185,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Rsvp::Authentication::L
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Rsvp::Authentication::Lifetime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6192,7 +6218,7 @@ Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Bandwidth()
     :
     percent{YType::uint16, "percent"}
     	,
-    value_(std::make_shared<Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value_>())
+    value_(std::make_shared<Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value>())
 	,mam(std::make_shared<Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Mam>())
 {
     value_->parent = this;
@@ -6243,7 +6269,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Rsvp::Bandwidth::get_ch
     {
         if(value_ == nullptr)
         {
-            value_ = std::make_shared<Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value_>();
+            value_ = std::make_shared<Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value>();
         }
         return value_;
     }
@@ -6263,6 +6289,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Rsvp::Bandwidth::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Rsvp::Bandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(value_ != nullptr)
     {
         children["value"] = value_;
@@ -6301,7 +6328,7 @@ bool Native::Interface::Loopback::Ip::Rsvp::Bandwidth::has_leaf_or_child_of_name
     return false;
 }
 
-Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value_::Value_()
+Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value::Value()
     :
     value_{YType::uint32, "value"},
     sub_pool{YType::uint32, "sub-pool"}
@@ -6310,31 +6337,31 @@ Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value_::Value_()
     yang_name = "value"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value_::~Value_()
+Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value::~Value()
 {
 }
 
-bool Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value_::has_data() const
+bool Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value::has_data() const
 {
     return value_.is_set
 	|| sub_pool.is_set;
 }
 
-bool Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value_::has_operation() const
+bool Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(value_.yfilter)
 	|| ydk::is_set(sub_pool.yfilter);
 }
 
-std::string Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value_::get_segment_path() const
+std::string Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6345,18 +6372,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ip::
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
@@ -6372,7 +6400,7 @@ void Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value_::set_value(const s
     }
 }
 
-void Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "value")
     {
@@ -6384,7 +6412,7 @@ void Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value_::set_filter(const 
     }
 }
 
-bool Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Value::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value" || name == "sub-pool")
         return true;
@@ -6447,6 +6475,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Mam::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Mam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(max_reservable_bw != nullptr)
     {
         children["max-reservable-bw"] = max_reservable_bw;
@@ -6526,6 +6555,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Mam::M
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Rsvp::Bandwidth::Mam::MaxReservableBw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6622,6 +6652,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Rsvp::Neighbor::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Rsvp::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6702,6 +6733,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Rsvp::Precedence::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Rsvp::Precedence::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6814,6 +6846,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Rsvp::Signalling::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Rsvp::Signalling::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(fast_local_repair != nullptr)
     {
         children["fast-local-repair"] = fast_local_repair;
@@ -6900,6 +6933,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Rsvp::Signalling::FastL
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Rsvp::Signalling::FastLocalRepair::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7011,6 +7045,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Rsvp::Signalling::Hello
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Rsvp::Signalling::Hello::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(refresh != nullptr)
     {
         children["refresh"] = refresh;
@@ -7121,6 +7156,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Rsvp::Signalling::Hello
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Rsvp::Signalling::Hello::Refresh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7221,6 +7257,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Rsvp::Signalling::Hello
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Rsvp::Signalling::Hello::Reroute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(refresh != nullptr)
     {
         children["refresh"] = refresh;
@@ -7306,6 +7343,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Rsvp::Signalling::Hello
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Rsvp::Signalling::Hello::Reroute::Refresh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7396,6 +7434,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Rsvp::Tos::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Rsvp::Tos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7502,14 +7541,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Wccp::get_child_by_name
 {
     if(child_yang_name == "wccp-list")
     {
-        for(auto const & c : wccp_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Loopback::Ip::Wccp::WccpList>();
         c->parent = this;
         wccp_list.push_back(c);
@@ -7536,14 +7567,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Wccp::get_child_by_name
 
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Loopback::Ip::Wccp::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -7556,9 +7579,14 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Wccp::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Wccp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : wccp_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(web_cache != nullptr)
@@ -7571,9 +7599,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::
         children["redirect"] = redirect;
     }
 
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7660,6 +7692,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Wccp::WccpList::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Wccp::WccpList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redirect != nullptr)
     {
         children["redirect"] = redirect;
@@ -7755,6 +7788,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Wccp::WccpList::Redirec
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Wccp::WccpList::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7855,6 +7889,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Wccp::WebCache::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Wccp::WebCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redirect != nullptr)
     {
         children["redirect"] = redirect;
@@ -7940,6 +7975,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Wccp::WebCache::Redirec
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Wccp::WebCache::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8035,6 +8071,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Wccp::Redirect::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Wccp::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(exclude != nullptr)
     {
         children["exclude"] = exclude;
@@ -8106,6 +8143,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Wccp::Redirect::Exclude
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Wccp::Redirect::Exclude::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8193,14 +8231,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Wccp::Vrf::get_child_by
 {
     if(child_yang_name == "wccp-list")
     {
-        for(auto const & c : wccp_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Loopback::Ip::Wccp::Vrf::WccpList>();
         c->parent = this;
         wccp_list.push_back(c);
@@ -8222,9 +8252,14 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Wccp::Vrf::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Wccp::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : wccp_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(web_cache != nullptr)
@@ -8326,6 +8361,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Wccp::Vrf::WccpList::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Wccp::Vrf::WccpList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redirect != nullptr)
     {
         children["redirect"] = redirect;
@@ -8421,6 +8457,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Wccp::Vrf::WccpList::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Wccp::Vrf::WccpList::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8521,6 +8558,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Wccp::Vrf::WebCache::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Wccp::Vrf::WebCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redirect != nullptr)
     {
         children["redirect"] = redirect;
@@ -8606,6 +8644,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ip::Wccp::Vrf::WebCache::Re
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ip::Wccp::Vrf::WebCache::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8817,14 +8856,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::get_child_by_name(con
 
     if(child_yang_name == "traffic-filter")
     {
-        for(auto const & c : traffic_filter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Loopback::Ipv6::TrafficFilter>();
         c->parent = this;
         traffic_filter.push_back(c);
@@ -8878,14 +8909,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::get_child_by_name(con
 
     if(child_yang_name == "Cisco-IOS-XE-rip:rip")
     {
-        for(auto const & c : rip)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Loopback::Ipv6::Rip>();
         c->parent = this;
         rip.push_back(c);
@@ -8898,6 +8921,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination_guard != nullptr)
     {
         children["destination-guard"] = destination_guard;
@@ -8928,9 +8952,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6
         children["tcp"] = tcp;
     }
 
+    count = 0;
     for (auto const & c : traffic_filter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(crypto != nullptr)
@@ -8958,9 +8986,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6
         children["Cisco-IOS-XE-ospf:ospf"] = ospf;
     }
 
+    count = 0;
     for (auto const & c : rip)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9069,6 +9101,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::DestinationGuard::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::DestinationGuard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9145,6 +9178,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::SourceGuard::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::SourceGuard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9239,14 +9273,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Dhcp::get_child_by_na
 
     if(child_yang_name == "Cisco-IOS-XE-dhcp:server")
     {
-        for(auto const & c : server)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Loopback::Ipv6::Dhcp::Server>();
         c->parent = this;
         server.push_back(c);
@@ -9268,14 +9294,19 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Dhcp::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(client != nullptr)
     {
         children["Cisco-IOS-XE-dhcp:client"] = client;
     }
 
+    count = 0;
     for (auto const & c : server)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(guard != nullptr)
@@ -9358,6 +9389,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Dhcp::Client::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Dhcp::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(request != nullptr)
     {
         children["request"] = request;
@@ -9429,6 +9461,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Dhcp::Client::Request
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Dhcp::Client::Request::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9509,6 +9542,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Dhcp::Server::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Dhcp::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9595,6 +9629,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Dhcp::Guard::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Dhcp::Guard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9707,14 +9742,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Address::get_child_by
 
     if(child_yang_name == "prefix-list")
     {
-        for(auto const & c : prefix_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Loopback::Ipv6::Address::PrefixList>();
         c->parent = this;
         prefix_list.push_back(c);
@@ -9723,14 +9750,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Address::get_child_by
 
     if(child_yang_name == "link-local-address")
     {
-        for(auto const & c : link_local_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Loopback::Ipv6::Address::LinkLocalAddress>();
         c->parent = this;
         link_local_address.push_back(c);
@@ -9743,6 +9762,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Address::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dhcp != nullptr)
     {
         children["dhcp"] = dhcp;
@@ -9753,14 +9773,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6
         children["autoconfig"] = autoconfig;
     }
 
+    count = 0;
     for (auto const & c : prefix_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : link_local_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9829,6 +9857,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Address::Dhcp::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Address::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9905,6 +9934,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Address::Autoconfig::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Address::Autoconfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9989,6 +10019,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Address::PrefixList::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Address::PrefixList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10089,6 +10120,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Address::LinkLocalAdd
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Address::LinkLocalAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10215,6 +10247,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Nd::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Nd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(raguard != nullptr)
     {
         children["Cisco-IOS-XE-nd:raguard"] = raguard;
@@ -10306,6 +10339,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Nd::Raguard::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Nd::Raguard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10386,6 +10420,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Nd::Autoconfig::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Nd::Autoconfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10480,6 +10515,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Nd::Ra::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Nd::Ra::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(suppress != nullptr)
     {
         children["suppress"] = suppress;
@@ -10551,6 +10587,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Nd::Ra::Suppress::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Nd::Ra::Suppress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10627,6 +10664,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Tcp::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Tcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10707,6 +10745,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::TrafficFilter::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::TrafficFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10793,6 +10832,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Crypto::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Crypto::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10879,14 +10919,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Flow::get_child_by_na
 {
     if(child_yang_name == "monitor")
     {
-        for(auto const & c : monitor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Loopback::Ipv6::Flow::Monitor>();
         c->parent = this;
         monitor.push_back(c);
@@ -10899,9 +10931,14 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Flow::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Flow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : monitor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11012,14 +11049,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Flow::Monitor::get_ch
 {
     if(child_yang_name == "sampler")
     {
-        for(auto const & c : sampler)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Loopback::Ipv6::Flow::Monitor::Sampler>();
         c->parent = this;
         sampler.push_back(c);
@@ -11032,9 +11061,14 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Flow::Monitor::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Flow::Monitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sampler)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11157,6 +11191,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Flow::Monitor::Sample
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Flow::Monitor::Sampler::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11243,6 +11278,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::NoPim::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::NoPim::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11337,6 +11373,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Pim::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Pim::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bsr != nullptr)
     {
         children["bsr"] = bsr;
@@ -11428,6 +11465,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Pim::Bsr::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Pim::Bsr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11572,14 +11610,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::get_child_by_na
 {
     if(child_yang_name == "process")
     {
-        for(auto const & c : process)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Loopback::Ipv6::Ospf::Process>();
         c->parent = this;
         process.push_back(c);
@@ -11651,14 +11681,6 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::get_child_by_na
 
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Loopback::Ipv6::Ospf::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -11689,9 +11711,14 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : process)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(authentication != nullptr)
@@ -11729,9 +11756,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6
         children["mtu-ignore"] = mtu_ignore;
     }
 
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(network != nullptr)
@@ -11878,6 +11909,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::Process::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::Process::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11988,6 +12020,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::Authentication:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipsec != nullptr)
     {
         children["ipsec"] = ipsec;
@@ -12096,6 +12129,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::Authentication:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::Authentication::Ipsec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(md5 != nullptr)
     {
         children["md5"] = md5;
@@ -12191,6 +12225,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::Authentication:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::Authentication::Ipsec::Md5::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_string != nullptr)
     {
         children["key-string"] = key_string;
@@ -12266,6 +12301,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::Authentication:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::Authentication::Ipsec::Md5::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12361,6 +12397,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::Authentication:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::Authentication::Ipsec::Sha1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_string != nullptr)
     {
         children["key-string"] = key_string;
@@ -12436,6 +12473,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::Authentication:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::Authentication::Ipsec::Sha1::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12522,6 +12560,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::Bfd::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::Bfd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12602,6 +12641,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::DatabaseFilter:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::DatabaseFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12692,6 +12732,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::DemandCircuit::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::DemandCircuit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12792,6 +12833,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::Encryption::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::Encryption::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipsec != nullptr)
     {
         children["ipsec"] = ipsec;
@@ -12904,6 +12946,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::Encryption::Ips
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::Encryption::Ipsec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipsec_3des != nullptr)
     {
         children["ipsec_3des"] = ipsec_3des;
@@ -13009,6 +13052,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::Encryption::Ips
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::Encryption::Ipsec::Ipsec3Des::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_string != nullptr)
     {
         children["key-string"] = key_string;
@@ -13084,6 +13128,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::Encryption::Ips
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::Encryption::Ipsec::Ipsec3Des::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13205,6 +13250,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::Encryption::Ips
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::Encryption::Ipsec::AesCbc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(aes_cbc_128 != nullptr)
     {
         children["aes-cbc-128"] = aes_cbc_128;
@@ -13295,6 +13341,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::Encryption::Ips
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::Encryption::Ipsec::AesCbc::AesCbc128::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_string != nullptr)
     {
         children["key-string"] = key_string;
@@ -13370,6 +13417,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::Encryption::Ips
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::Encryption::Ipsec::AesCbc::AesCbc128::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13465,6 +13513,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::Encryption::Ips
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::Encryption::Ipsec::AesCbc::Aes192::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_string != nullptr)
     {
         children["key-string"] = key_string;
@@ -13540,6 +13589,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::Encryption::Ips
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::Encryption::Ipsec::AesCbc::Aes192::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13635,6 +13685,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::Encryption::Ips
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::Encryption::Ipsec::AesCbc::Aes256::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_string != nullptr)
     {
         children["key-string"] = key_string;
@@ -13710,6 +13761,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::Encryption::Ips
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::Encryption::Ipsec::AesCbc::Aes256::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13796,6 +13848,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::FloodReduction:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::FloodReduction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13872,6 +13925,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::MtuIgnore::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::MtuIgnore::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13974,6 +14028,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::Neighbor::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(database_filter != nullptr)
     {
         children["database-filter"] = database_filter;
@@ -14085,6 +14140,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::Neighbor::Datab
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::Neighbor::DatabaseFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14186,6 +14242,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::Network::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(point_to_multipoint != nullptr)
     {
         children["point-to-multipoint"] = point_to_multipoint;
@@ -14297,6 +14354,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::Network::PointT
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::Network::PointToMultipoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14373,6 +14431,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Ospf::Shutdown::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Ospf::Shutdown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14467,6 +14526,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Rip::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Rip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_information != nullptr)
     {
         children["default-information"] = default_information;
@@ -14562,6 +14622,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Ipv6::Rip::DefaultInformati
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Ipv6::Rip::DefaultInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14657,6 +14718,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Logging::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Logging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(event != nullptr)
     {
         children["event"] = event;
@@ -14773,6 +14835,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Logging::Event::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Logging::Event::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(spanning_tree != nullptr)
     {
         children["spanning-tree"] = spanning_tree;
@@ -14909,6 +14972,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Logging::Event::SpanningTre
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Logging::Event::SpanningTree::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14985,6 +15049,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Logging::Event::SubifLinkSt
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Logging::Event::SubifLinkStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15061,6 +15126,7 @@ std::shared_ptr<Entity> Native::Interface::Loopback::Mdix::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Loopback::Mdix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -107,6 +107,7 @@ std::shared_ptr<Entity> TerminalDevice::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -221,6 +222,7 @@ std::shared_ptr<Entity> TerminalDevice::Config::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -288,6 +290,7 @@ std::shared_ptr<Entity> TerminalDevice::State::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -361,14 +364,6 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::get_child_by_name(const
 {
     if(child_yang_name == "channel")
     {
-        for(auto const & c : channel)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<TerminalDevice::LogicalChannels::Channel>();
         c->parent = this;
         channel.push_back(c);
@@ -381,9 +376,14 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : channel)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -538,6 +538,7 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -668,6 +669,7 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Config::get_ch
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -832,6 +834,7 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::State::get_chi
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1000,6 +1003,7 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Otn::get_child
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Otn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -1084,6 +1088,7 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Otn::Config::g
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Otn::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1281,6 +1286,7 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Otn::State::ge
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Otn::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pre_fec_ber != nullptr)
     {
         children["pre-fec-ber"] = pre_fec_ber;
@@ -1509,6 +1515,7 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Otn::State::Pr
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Otn::State::PreFecBer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1627,6 +1634,7 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Otn::State::Po
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Otn::State::PostFecBer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1745,6 +1753,7 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Otn::State::QV
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Otn::State::QValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1863,6 +1872,7 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Otn::State::Es
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Otn::State::Esnr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1991,6 +2001,7 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Ethernet::get_
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Ethernet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -2063,6 +2074,7 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Ethernet::Conf
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Ethernet::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2163,6 +2175,7 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Ethernet::Stat
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Ethernet::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2351,6 +2364,7 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Ingress::get_c
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Ingress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -2441,6 +2455,7 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Ingress::Confi
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Ingress::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2539,6 +2554,7 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::Ingress::State
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::Ingress::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2625,14 +2641,6 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::LogicalChannel
 {
     if(child_yang_name == "assignment")
     {
-        for(auto const & c : assignment)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment>();
         c->parent = this;
         assignment.push_back(c);
@@ -2645,9 +2653,14 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::LogicalChannel
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : assignment)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2743,6 +2756,7 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::LogicalChannel
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -2849,6 +2863,7 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::LogicalChannel
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2995,6 +3010,7 @@ std::shared_ptr<Entity> TerminalDevice::LogicalChannels::Channel::LogicalChannel
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::LogicalChannels::Channel::LogicalChannelAssignments::Assignment::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3130,14 +3146,6 @@ std::shared_ptr<Entity> TerminalDevice::OperationalModes::get_child_by_name(cons
 {
     if(child_yang_name == "mode")
     {
-        for(auto const & c : mode)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<TerminalDevice::OperationalModes::Mode>();
         c->parent = this;
         mode.push_back(c);
@@ -3150,9 +3158,14 @@ std::shared_ptr<Entity> TerminalDevice::OperationalModes::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::OperationalModes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mode)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3255,6 +3268,7 @@ std::shared_ptr<Entity> TerminalDevice::OperationalModes::Mode::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::OperationalModes::Mode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -3337,6 +3351,7 @@ std::shared_ptr<Entity> TerminalDevice::OperationalModes::Mode::Config::get_chil
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::OperationalModes::Mode::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3409,6 +3424,7 @@ std::shared_ptr<Entity> TerminalDevice::OperationalModes::Mode::State::get_child
 std::map<std::string, std::shared_ptr<Entity>> TerminalDevice::OperationalModes::Mode::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -185,6 +185,7 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cdttemplatetable != nullptr)
     {
         children["cdtTemplateTable"] = cdttemplatetable;
@@ -335,14 +336,6 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::get_child_by_
 {
     if(child_yang_name == "cdtTemplateEntry")
     {
-        for(auto const & c : cdttemplateentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry>();
         c->parent = this;
         cdttemplateentry.push_back(c);
@@ -355,9 +348,14 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdttemplateentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -453,6 +451,7 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateen
 std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdttemplatetable::Cdttemplateentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -588,14 +587,6 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::get_chi
 {
     if(child_yang_name == "cdtTemplateTargetEntry")
     {
-        for(auto const & c : cdttemplatetargetentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::Cdttemplatetargetentry>();
         c->parent = this;
         cdttemplatetargetentry.push_back(c);
@@ -608,9 +599,14 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdttemplatetargetentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -698,6 +694,7 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::Cdttemp
 std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdttemplatetargettable::Cdttemplatetargetentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -813,14 +810,6 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::ge
 {
     if(child_yang_name == "cdtTemplateAssociationEntry")
     {
-        for(auto const & c : cdttemplateassociationentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::Cdttemplateassociationentry>();
         c->parent = this;
         cdttemplateassociationentry.push_back(c);
@@ -833,9 +822,14 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::ge
 std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdttemplateassociationentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -923,6 +917,7 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::Cd
 std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdttemplateassociationtable::Cdttemplateassociationentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1038,14 +1033,6 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::get_chil
 {
     if(child_yang_name == "cdtTemplateUsageEntry")
     {
-        for(auto const & c : cdttemplateusageentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::Cdttemplateusageentry>();
         c->parent = this;
         cdttemplateusageentry.push_back(c);
@@ -1058,9 +1045,14 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdttemplateusageentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1144,6 +1136,7 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::Cdttempl
 std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdttemplateusagetable::Cdttemplateusageentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1249,14 +1242,6 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::get_chi
 {
     if(child_yang_name == "cdtTemplateCommonEntry")
     {
-        for(auto const & c : cdttemplatecommonentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::Cdttemplatecommonentry>();
         c->parent = this;
         cdttemplatecommonentry.push_back(c);
@@ -1269,9 +1254,14 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdttemplatecommonentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1407,6 +1397,7 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::Cdttemp
 std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdttemplatecommontable::Cdttemplatecommonentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1640,14 +1631,6 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::get_child_b
 {
     if(child_yang_name == "cdtIfTemplateEntry")
     {
-        for(auto const & c : cdtiftemplateentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry>();
         c->parent = this;
         cdtiftemplateentry.push_back(c);
@@ -1660,9 +1643,14 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdtiftemplateentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1858,6 +1846,7 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftempla
 std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdtiftemplatetable::Cdtiftemplateentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2235,14 +2224,6 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::get_child_
 {
     if(child_yang_name == "cdtPppTemplateEntry")
     {
-        for(auto const & c : cdtppptemplateentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry>();
         c->parent = this;
         cdtppptemplateentry.push_back(c);
@@ -2255,9 +2236,14 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdtppptemplateentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2489,6 +2475,7 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemp
 std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdtppptemplatetable::Cdtppptemplateentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2948,14 +2935,6 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::get_
 {
     if(child_yang_name == "cdtPppPeerIpAddrPoolEntry")
     {
-        for(auto const & c : cdtppppeeripaddrpoolentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry>();
         c->parent = this;
         cdtppppeeripaddrpoolentry.push_back(c);
@@ -2968,9 +2947,14 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::get_
 std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdtppppeeripaddrpoolentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3062,6 +3046,7 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::Cdtp
 std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdtppppeeripaddrpooltable::Cdtppppeeripaddrpoolentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3187,14 +3172,6 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::get_c
 {
     if(child_yang_name == "cdtEthernetTemplateEntry")
     {
-        for(auto const & c : cdtethernettemplateentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::Cdtethernettemplateentry>();
         c->parent = this;
         cdtethernettemplateentry.push_back(c);
@@ -3207,9 +3184,14 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::get_c
 std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdtethernettemplateentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3305,6 +3287,7 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::Cdtet
 std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdtethernettemplatetable::Cdtethernettemplateentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3438,14 +3421,6 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::get_child_
 {
     if(child_yang_name == "cdtSrvTemplateEntry")
     {
-        for(auto const & c : cdtsrvtemplateentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry>();
         c->parent = this;
         cdtsrvtemplateentry.push_back(c);
@@ -3458,9 +3433,14 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cdtsrvtemplateentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3560,6 +3540,7 @@ std::shared_ptr<Entity> CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemp
 std::map<std::string, std::shared_ptr<Entity>> CISCODYNAMICTEMPLATEMIB::Cdtsrvtemplatetable::Cdtsrvtemplateentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

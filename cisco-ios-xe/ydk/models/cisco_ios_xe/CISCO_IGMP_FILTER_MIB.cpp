@@ -107,6 +107,7 @@ std::shared_ptr<Entity> CISCOIGMPFILTERMIB::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> CISCOIGMPFILTERMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cigmpfiltergeneral != nullptr)
     {
         children["cIgmpFilterGeneral"] = cigmpfiltergeneral;
@@ -229,6 +230,7 @@ std::shared_ptr<Entity> CISCOIGMPFILTERMIB::Cigmpfiltergeneral::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOIGMPFILTERMIB::Cigmpfiltergeneral::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -354,6 +356,7 @@ std::shared_ptr<Entity> CISCOIGMPFILTERMIB::Cigmpfiltereditor::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CISCOIGMPFILTERMIB::Cigmpfiltereditor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -519,14 +522,6 @@ std::shared_ptr<Entity> CISCOIGMPFILTERMIB::Cigmpfiltertable::get_child_by_name(
 {
     if(child_yang_name == "cIgmpFilterEntry")
     {
-        for(auto const & c : cigmpfilterentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIGMPFILTERMIB::Cigmpfiltertable::Cigmpfilterentry>();
         c->parent = this;
         cigmpfilterentry.push_back(c);
@@ -539,9 +534,14 @@ std::shared_ptr<Entity> CISCOIGMPFILTERMIB::Cigmpfiltertable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CISCOIGMPFILTERMIB::Cigmpfiltertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cigmpfilterentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -637,6 +637,7 @@ std::shared_ptr<Entity> CISCOIGMPFILTERMIB::Cigmpfiltertable::Cigmpfilterentry::
 std::map<std::string, std::shared_ptr<Entity>> CISCOIGMPFILTERMIB::Cigmpfiltertable::Cigmpfilterentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -772,14 +773,6 @@ std::shared_ptr<Entity> CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable::get_child
 {
     if(child_yang_name == "cIgmpFilterInterfaceEntry")
     {
-        for(auto const & c : cigmpfilterinterfaceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry>();
         c->parent = this;
         cigmpfilterinterfaceentry.push_back(c);
@@ -792,9 +785,14 @@ std::shared_ptr<Entity> CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cigmpfilterinterfaceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -874,6 +872,7 @@ std::shared_ptr<Entity> CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable::Cigmpfilt
 std::map<std::string, std::shared_ptr<Entity>> CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

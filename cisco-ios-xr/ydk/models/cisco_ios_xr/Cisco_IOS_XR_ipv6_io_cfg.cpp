@@ -97,6 +97,7 @@ std::shared_ptr<Entity> Ipv6Configuration::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Configuration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipv6_assembler != nullptr)
     {
         children["ipv6-assembler"] = ipv6_assembler;
@@ -249,6 +250,7 @@ std::shared_ptr<Entity> Ipv6Configuration::Ipv6Assembler::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Configuration::Ipv6Assembler::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -346,6 +348,7 @@ std::shared_ptr<Entity> Ipv6Configuration::Ipv6Icmp::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Ipv6Configuration::Ipv6Icmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

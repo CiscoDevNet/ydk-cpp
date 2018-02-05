@@ -61,14 +61,6 @@ std::shared_ptr<Entity> ActiveNodes::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "active-node")
     {
-        for(auto const & c : active_node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ActiveNodes::ActiveNode>();
         c->parent = this;
         active_node.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> ActiveNodes::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : active_node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -263,6 +260,7 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(clock_interface != nullptr)
     {
         children["Cisco-IOS-XR-freqsync-cfg:clock-interface"] = clock_interface;
@@ -378,6 +376,7 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(clocks != nullptr)
     {
         children["clocks"] = clocks;
@@ -451,15 +450,7 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::get_chi
 {
     if(child_yang_name == "clock")
     {
-        for(auto const & c : clock_)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_>();
+        auto c = std::make_shared<ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock>();
         c->parent = this;
         clock_.push_back(c);
         return c;
@@ -471,9 +462,14 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::get_chi
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : clock_)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -494,30 +490,30 @@ bool ActiveNodes::ActiveNode::ClockInterface::Clocks::has_leaf_or_child_of_name(
     return false;
 }
 
-ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::Clock_()
+ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::Clock()
     :
     clock_type{YType::enumeration, "clock-type"},
     port{YType::int32, "port"}
     	,
-    frequency_synchronization(std::make_shared<ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization>())
+    frequency_synchronization(std::make_shared<ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization>())
 {
     frequency_synchronization->parent = this;
 
     yang_name = "clock"; yang_parent_name = "clocks"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::~Clock_()
+ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::~Clock()
 {
 }
 
-bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::has_data() const
+bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::has_data() const
 {
     return clock_type.is_set
 	|| port.is_set
 	|| (frequency_synchronization !=  nullptr && frequency_synchronization->has_data());
 }
 
-bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::has_operation() const
+bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(clock_type.yfilter)
@@ -525,14 +521,14 @@ bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::has_operation() co
 	|| (frequency_synchronization !=  nullptr && frequency_synchronization->has_operation());
 }
 
-std::string ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::get_segment_path() const
+std::string ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clock" <<"[clock-type='" <<clock_type <<"']" <<"[port='" <<port <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -543,13 +539,13 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInt
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frequency-synchronization")
     {
         if(frequency_synchronization == nullptr)
         {
-            frequency_synchronization = std::make_shared<ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization>();
+            frequency_synchronization = std::make_shared<ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization>();
         }
         return frequency_synchronization;
     }
@@ -557,9 +553,10 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(frequency_synchronization != nullptr)
     {
         children["frequency-synchronization"] = frequency_synchronization;
@@ -568,7 +565,7 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInt
     return children;
 }
 
-void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "clock-type")
     {
@@ -584,7 +581,7 @@ void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::set_value(const st
     }
 }
 
-void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::set_filter(const std::string & value_path, YFilter yfilter)
+void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "clock-type")
     {
@@ -596,14 +593,14 @@ void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::set_filter(const s
     }
 }
 
-bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::has_leaf_or_child_of_name(const std::string & name) const
+bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "frequency-synchronization" || name == "clock-type" || name == "port")
         return true;
     return false;
 }
 
-ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::FrequencySynchronization()
+ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::FrequencySynchronization()
     :
     wait_to_restore_time{YType::uint32, "wait-to-restore-time"},
     priority{YType::uint32, "priority"},
@@ -611,8 +608,8 @@ ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronizatio
     time_of_day_priority{YType::uint32, "time-of-day-priority"},
     ssm_disable{YType::empty, "ssm-disable"}
     	,
-    output_quality_level(std::make_shared<ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel>())
-	,input_quality_level(std::make_shared<ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel>())
+    output_quality_level(std::make_shared<ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel>())
+	,input_quality_level(std::make_shared<ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel>())
 {
     output_quality_level->parent = this;
     input_quality_level->parent = this;
@@ -620,11 +617,11 @@ ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronizatio
     yang_name = "frequency-synchronization"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::~FrequencySynchronization()
+ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::~FrequencySynchronization()
 {
 }
 
-bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::has_data() const
+bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::has_data() const
 {
     return wait_to_restore_time.is_set
 	|| priority.is_set
@@ -635,7 +632,7 @@ bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchroni
 	|| (input_quality_level !=  nullptr && input_quality_level->has_data());
 }
 
-bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::has_operation() const
+bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(wait_to_restore_time.yfilter)
@@ -647,14 +644,14 @@ bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchroni
 	|| (input_quality_level !=  nullptr && input_quality_level->has_operation());
 }
 
-std::string ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::get_segment_path() const
+std::string ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "frequency-synchronization";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -668,13 +665,13 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInt
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "output-quality-level")
     {
         if(output_quality_level == nullptr)
         {
-            output_quality_level = std::make_shared<ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel>();
+            output_quality_level = std::make_shared<ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel>();
         }
         return output_quality_level;
     }
@@ -683,7 +680,7 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_:
     {
         if(input_quality_level == nullptr)
         {
-            input_quality_level = std::make_shared<ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel>();
+            input_quality_level = std::make_shared<ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel>();
         }
         return input_quality_level;
     }
@@ -691,9 +688,10 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(output_quality_level != nullptr)
     {
         children["output-quality-level"] = output_quality_level;
@@ -707,7 +705,7 @@ std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInt
     return children;
 }
 
-void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "wait-to-restore-time")
     {
@@ -741,7 +739,7 @@ void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchroni
     }
 }
 
-void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::set_filter(const std::string & value_path, YFilter yfilter)
+void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "wait-to-restore-time")
     {
@@ -765,14 +763,14 @@ void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchroni
     }
 }
 
-bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::has_leaf_or_child_of_name(const std::string & name) const
+bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "output-quality-level" || name == "input-quality-level" || name == "wait-to-restore-time" || name == "priority" || name == "selection-input" || name == "time-of-day-priority" || name == "ssm-disable")
         return true;
     return false;
 }
 
-ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::OutputQualityLevel()
+ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::OutputQualityLevel()
     :
     quality_level_option{YType::enumeration, "quality-level-option"},
     exact_quality_level_value{YType::enumeration, "exact-quality-level-value"},
@@ -783,11 +781,11 @@ ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronizatio
     yang_name = "output-quality-level"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::~OutputQualityLevel()
+ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::~OutputQualityLevel()
 {
 }
 
-bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::has_data() const
+bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::has_data() const
 {
     return quality_level_option.is_set
 	|| exact_quality_level_value.is_set
@@ -795,7 +793,7 @@ bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchroni
 	|| max_quality_level_value.is_set;
 }
 
-bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::has_operation() const
+bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(quality_level_option.yfilter)
@@ -804,14 +802,14 @@ bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchroni
 	|| ydk::is_set(max_quality_level_value.yfilter);
 }
 
-std::string ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::get_segment_path() const
+std::string ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "output-quality-level";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -824,18 +822,19 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInt
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "quality-level-option")
     {
@@ -863,7 +862,7 @@ void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchroni
     }
 }
 
-void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::set_filter(const std::string & value_path, YFilter yfilter)
+void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "quality-level-option")
     {
@@ -883,14 +882,14 @@ void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchroni
     }
 }
 
-bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::has_leaf_or_child_of_name(const std::string & name) const
+bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "quality-level-option" || name == "exact-quality-level-value" || name == "min-quality-level-value" || name == "max-quality-level-value")
         return true;
     return false;
 }
 
-ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::InputQualityLevel()
+ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::InputQualityLevel()
     :
     quality_level_option{YType::enumeration, "quality-level-option"},
     exact_quality_level_value{YType::enumeration, "exact-quality-level-value"},
@@ -901,11 +900,11 @@ ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronizatio
     yang_name = "input-quality-level"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::~InputQualityLevel()
+ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::~InputQualityLevel()
 {
 }
 
-bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::has_data() const
+bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::has_data() const
 {
     return quality_level_option.is_set
 	|| exact_quality_level_value.is_set
@@ -913,7 +912,7 @@ bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchroni
 	|| max_quality_level_value.is_set;
 }
 
-bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::has_operation() const
+bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(quality_level_option.yfilter)
@@ -922,14 +921,14 @@ bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchroni
 	|| ydk::is_set(max_quality_level_value.yfilter);
 }
 
-std::string ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::get_segment_path() const
+std::string ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input-quality-level";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -942,18 +941,19 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::ClockInt
 
 }
 
-std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "quality-level-option")
     {
@@ -981,7 +981,7 @@ void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchroni
     }
 }
 
-void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::set_filter(const std::string & value_path, YFilter yfilter)
+void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "quality-level-option")
     {
@@ -1001,7 +1001,7 @@ void ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchroni
     }
 }
 
-bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::has_leaf_or_child_of_name(const std::string & name) const
+bool ActiveNodes::ActiveNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "quality-level-option" || name == "exact-quality-level-value" || name == "min-quality-level-value" || name == "max-quality-level-value")
         return true;
@@ -1065,6 +1065,7 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::Ltrace::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::Ltrace::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(allocation_params != nullptr)
     {
         children["allocation-params"] = allocation_params;
@@ -1140,6 +1141,7 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::Ltrace::AllocationParams::get_c
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::Ltrace::AllocationParams::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1260,6 +1262,7 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipolicer_local_tables != nullptr)
     {
         children["ipolicer-local-tables"] = ipolicer_local_tables;
@@ -1343,14 +1346,6 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables:
 {
     if(child_yang_name == "ipolicer-local-table")
     {
-        for(auto const & c : ipolicer_local_table)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable>();
         c->parent = this;
         ipolicer_local_table.push_back(c);
@@ -1363,9 +1358,14 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables:
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipolicer_local_table)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1448,6 +1448,7 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables:
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nps != nullptr)
     {
         children["nps"] = nps;
@@ -1531,14 +1532,6 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables:
 {
     if(child_yang_name == "np")
     {
-        for(auto const & c : np)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np>();
         c->parent = this;
         np.push_back(c);
@@ -1551,9 +1544,14 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables:
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : np)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1626,6 +1624,7 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables:
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1714,14 +1713,6 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::
 {
     if(child_yang_name == "dynamic-flows-table")
     {
-        for(auto const & c : dynamic_flows_table)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable>();
         c->parent = this;
         dynamic_flows_table.push_back(c);
@@ -1734,9 +1725,14 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dynamic_flows_table)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1811,14 +1807,6 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::
 {
     if(child_yang_name == "flow-type")
     {
-        for(auto const & c : flow_type)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::FlowType>();
         c->parent = this;
         flow_type.push_back(c);
@@ -1831,9 +1819,14 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : flow_type)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1916,6 +1909,7 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::FlowType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2016,6 +2010,7 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::get_c
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(flows != nullptr)
     {
         children["flows"] = flows;
@@ -2099,14 +2094,6 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows
 {
     if(child_yang_name == "flow")
     {
-        for(auto const & c : flow)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow>();
         c->parent = this;
         flow.push_back(c);
@@ -2119,9 +2106,14 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : flow)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2208,6 +2200,7 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(precedences != nullptr)
     {
         children["precedences"] = precedences;
@@ -2310,6 +2303,7 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2393,6 +2387,7 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::SsrpGroup::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::SsrpGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(groups != nullptr)
     {
         children["groups"] = groups;
@@ -2466,14 +2461,6 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::SsrpGroup::Groups::get_child_by
 {
     if(child_yang_name == "group")
     {
-        for(auto const & c : group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ActiveNodes::ActiveNode::SsrpGroup::Groups::Group>();
         c->parent = this;
         group.push_back(c);
@@ -2486,9 +2473,14 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::SsrpGroup::Groups::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::SsrpGroup::Groups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2561,6 +2553,7 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::get_c
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2656,6 +2649,7 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNode
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(memory_threshold != nullptr)
     {
         children["memory-threshold"] = memory_threshold;
@@ -2735,6 +2729,7 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNode
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::MemoryThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2840,6 +2835,7 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::CiscoIOSXRWdCfgWatchdogNodeThre
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::CiscoIOSXRWdCfgWatchdogNodeThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(memory_threshold != nullptr)
     {
         children["memory-threshold"] = memory_threshold;
@@ -2919,6 +2915,7 @@ std::shared_ptr<Entity> ActiveNodes::ActiveNode::CiscoIOSXRWdCfgWatchdogNodeThre
 std::map<std::string, std::shared_ptr<Entity>> ActiveNodes::ActiveNode::CiscoIOSXRWdCfgWatchdogNodeThreshold::MemoryThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3017,14 +3014,6 @@ std::shared_ptr<Entity> PreconfiguredNodes::get_child_by_name(const std::string 
 {
     if(child_yang_name == "preconfigured-node")
     {
-        for(auto const & c : preconfigured_node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PreconfiguredNodes::PreconfiguredNode>();
         c->parent = this;
         preconfigured_node.push_back(c);
@@ -3037,9 +3026,14 @@ std::shared_ptr<Entity> PreconfiguredNodes::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : preconfigured_node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3206,6 +3200,7 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(clock_interface != nullptr)
     {
         children["Cisco-IOS-XR-freqsync-cfg:clock-interface"] = clock_interface;
@@ -3316,6 +3311,7 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::g
 std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(clocks != nullptr)
     {
         children["clocks"] = clocks;
@@ -3389,15 +3385,7 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::C
 {
     if(child_yang_name == "clock")
     {
-        for(auto const & c : clock_)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_>();
+        auto c = std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock>();
         c->parent = this;
         clock_.push_back(c);
         return c;
@@ -3409,9 +3397,14 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::C
 std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : clock_)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3432,30 +3425,30 @@ bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::has_leaf_or_
     return false;
 }
 
-PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::Clock_()
+PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::Clock()
     :
     clock_type{YType::enumeration, "clock-type"},
     port{YType::int32, "port"}
     	,
-    frequency_synchronization(std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization>())
+    frequency_synchronization(std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization>())
 {
     frequency_synchronization->parent = this;
 
     yang_name = "clock"; yang_parent_name = "clocks"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::~Clock_()
+PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::~Clock()
 {
 }
 
-bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::has_data() const
+bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::has_data() const
 {
     return clock_type.is_set
 	|| port.is_set
 	|| (frequency_synchronization !=  nullptr && frequency_synchronization->has_data());
 }
 
-bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::has_operation() const
+bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(clock_type.yfilter)
@@ -3463,14 +3456,14 @@ bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::has_
 	|| (frequency_synchronization !=  nullptr && frequency_synchronization->has_operation());
 }
 
-std::string PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::get_segment_path() const
+std::string PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clock" <<"[clock-type='" <<clock_type <<"']" <<"[port='" <<port <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3481,13 +3474,13 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "frequency-synchronization")
     {
         if(frequency_synchronization == nullptr)
         {
-            frequency_synchronization = std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization>();
+            frequency_synchronization = std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization>();
         }
         return frequency_synchronization;
     }
@@ -3495,9 +3488,10 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::C
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(frequency_synchronization != nullptr)
     {
         children["frequency-synchronization"] = frequency_synchronization;
@@ -3506,7 +3500,7 @@ std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::Preconfigured
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "clock-type")
     {
@@ -3522,7 +3516,7 @@ void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::set_
     }
 }
 
-void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::set_filter(const std::string & value_path, YFilter yfilter)
+void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "clock-type")
     {
@@ -3534,14 +3528,14 @@ void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::set_
     }
 }
 
-bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::has_leaf_or_child_of_name(const std::string & name) const
+bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "frequency-synchronization" || name == "clock-type" || name == "port")
         return true;
     return false;
 }
 
-PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::FrequencySynchronization()
+PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::FrequencySynchronization()
     :
     wait_to_restore_time{YType::uint32, "wait-to-restore-time"},
     priority{YType::uint32, "priority"},
@@ -3549,8 +3543,8 @@ PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::Frequency
     time_of_day_priority{YType::uint32, "time-of-day-priority"},
     ssm_disable{YType::empty, "ssm-disable"}
     	,
-    output_quality_level(std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel>())
-	,input_quality_level(std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel>())
+    output_quality_level(std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel>())
+	,input_quality_level(std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel>())
 {
     output_quality_level->parent = this;
     input_quality_level->parent = this;
@@ -3558,11 +3552,11 @@ PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::Frequency
     yang_name = "frequency-synchronization"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::~FrequencySynchronization()
+PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::~FrequencySynchronization()
 {
 }
 
-bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::has_data() const
+bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::has_data() const
 {
     return wait_to_restore_time.is_set
 	|| priority.is_set
@@ -3573,7 +3567,7 @@ bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::Freq
 	|| (input_quality_level !=  nullptr && input_quality_level->has_data());
 }
 
-bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::has_operation() const
+bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(wait_to_restore_time.yfilter)
@@ -3585,14 +3579,14 @@ bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::Freq
 	|| (input_quality_level !=  nullptr && input_quality_level->has_operation());
 }
 
-std::string PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::get_segment_path() const
+std::string PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "frequency-synchronization";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3606,13 +3600,13 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "output-quality-level")
     {
         if(output_quality_level == nullptr)
         {
-            output_quality_level = std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel>();
+            output_quality_level = std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel>();
         }
         return output_quality_level;
     }
@@ -3621,7 +3615,7 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::C
     {
         if(input_quality_level == nullptr)
         {
-            input_quality_level = std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel>();
+            input_quality_level = std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel>();
         }
         return input_quality_level;
     }
@@ -3629,9 +3623,10 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::C
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(output_quality_level != nullptr)
     {
         children["output-quality-level"] = output_quality_level;
@@ -3645,7 +3640,7 @@ std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::Preconfigured
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "wait-to-restore-time")
     {
@@ -3679,7 +3674,7 @@ void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::Freq
     }
 }
 
-void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::set_filter(const std::string & value_path, YFilter yfilter)
+void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "wait-to-restore-time")
     {
@@ -3703,14 +3698,14 @@ void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::Freq
     }
 }
 
-bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::has_leaf_or_child_of_name(const std::string & name) const
+bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "output-quality-level" || name == "input-quality-level" || name == "wait-to-restore-time" || name == "priority" || name == "selection-input" || name == "time-of-day-priority" || name == "ssm-disable")
         return true;
     return false;
 }
 
-PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::OutputQualityLevel()
+PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::OutputQualityLevel()
     :
     quality_level_option{YType::enumeration, "quality-level-option"},
     exact_quality_level_value{YType::enumeration, "exact-quality-level-value"},
@@ -3721,11 +3716,11 @@ PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::Frequency
     yang_name = "output-quality-level"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::~OutputQualityLevel()
+PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::~OutputQualityLevel()
 {
 }
 
-bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::has_data() const
+bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::has_data() const
 {
     return quality_level_option.is_set
 	|| exact_quality_level_value.is_set
@@ -3733,7 +3728,7 @@ bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::Freq
 	|| max_quality_level_value.is_set;
 }
 
-bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::has_operation() const
+bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(quality_level_option.yfilter)
@@ -3742,14 +3737,14 @@ bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::Freq
 	|| ydk::is_set(max_quality_level_value.yfilter);
 }
 
-std::string PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::get_segment_path() const
+std::string PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "output-quality-level";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3762,18 +3757,19 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "quality-level-option")
     {
@@ -3801,7 +3797,7 @@ void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::Freq
     }
 }
 
-void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::set_filter(const std::string & value_path, YFilter yfilter)
+void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "quality-level-option")
     {
@@ -3821,14 +3817,14 @@ void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::Freq
     }
 }
 
-bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::OutputQualityLevel::has_leaf_or_child_of_name(const std::string & name) const
+bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::OutputQualityLevel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "quality-level-option" || name == "exact-quality-level-value" || name == "min-quality-level-value" || name == "max-quality-level-value")
         return true;
     return false;
 }
 
-PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::InputQualityLevel()
+PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::InputQualityLevel()
     :
     quality_level_option{YType::enumeration, "quality-level-option"},
     exact_quality_level_value{YType::enumeration, "exact-quality-level-value"},
@@ -3839,11 +3835,11 @@ PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::Frequency
     yang_name = "input-quality-level"; yang_parent_name = "frequency-synchronization"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::~InputQualityLevel()
+PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::~InputQualityLevel()
 {
 }
 
-bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::has_data() const
+bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::has_data() const
 {
     return quality_level_option.is_set
 	|| exact_quality_level_value.is_set
@@ -3851,7 +3847,7 @@ bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::Freq
 	|| max_quality_level_value.is_set;
 }
 
-bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::has_operation() const
+bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(quality_level_option.yfilter)
@@ -3860,14 +3856,14 @@ bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::Freq
 	|| ydk::is_set(max_quality_level_value.yfilter);
 }
 
-std::string PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::get_segment_path() const
+std::string PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input-quality-level";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3880,18 +3876,19 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 }
 
-std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "quality-level-option")
     {
@@ -3919,7 +3916,7 @@ void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::Freq
     }
 }
 
-void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::set_filter(const std::string & value_path, YFilter yfilter)
+void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "quality-level-option")
     {
@@ -3939,7 +3936,7 @@ void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::Freq
     }
 }
 
-bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock_::FrequencySynchronization::InputQualityLevel::has_leaf_or_child_of_name(const std::string & name) const
+bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::FrequencySynchronization::InputQualityLevel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "quality-level-option" || name == "exact-quality-level-value" || name == "min-quality-level-value" || name == "max-quality-level-value")
         return true;
@@ -4003,6 +4000,7 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::Ltrace::get_child
 std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::Ltrace::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(allocation_params != nullptr)
     {
         children["allocation-params"] = allocation_params;
@@ -4078,6 +4076,7 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::Ltrace::Allocatio
 std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::Ltrace::AllocationParams::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4198,6 +4197,7 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::get_ch
 std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipolicer_local_tables != nullptr)
     {
         children["ipolicer-local-tables"] = ipolicer_local_tables;
@@ -4281,14 +4281,6 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::Ipolic
 {
     if(child_yang_name == "ipolicer-local-table")
     {
-        for(auto const & c : ipolicer_local_table)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable>();
         c->parent = this;
         ipolicer_local_table.push_back(c);
@@ -4301,9 +4293,14 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::Ipolic
 std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipolicer_local_table)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4386,6 +4383,7 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::Ipolic
 std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nps != nullptr)
     {
         children["nps"] = nps;
@@ -4469,14 +4467,6 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::Ipolic
 {
     if(child_yang_name == "np")
     {
-        for(auto const & c : np)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np>();
         c->parent = this;
         np.push_back(c);
@@ -4489,9 +4479,14 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::Ipolic
 std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : np)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4564,6 +4559,7 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::Ipolic
 std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocalTables::IpolicerLocalTable::Nps::Np::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4652,14 +4648,6 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::Dynami
 {
     if(child_yang_name == "dynamic-flows-table")
     {
-        for(auto const & c : dynamic_flows_table)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable>();
         c->parent = this;
         dynamic_flows_table.push_back(c);
@@ -4672,9 +4660,14 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::Dynami
 std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::DynamicFlowsTables::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dynamic_flows_table)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4749,14 +4742,6 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::Dynami
 {
     if(child_yang_name == "flow-type")
     {
-        for(auto const & c : flow_type)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::FlowType>();
         c->parent = this;
         flow_type.push_back(c);
@@ -4769,9 +4754,14 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::Dynami
 std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : flow_type)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4854,6 +4844,7 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::Dynami
 std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::DynamicFlowsTables::DynamicFlowsTable::FlowType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4954,6 +4945,7 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::Ipolic
 std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(flows != nullptr)
     {
         children["flows"] = flows;
@@ -5037,14 +5029,6 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::Ipolic
 {
     if(child_yang_name == "flow")
     {
-        for(auto const & c : flow)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow>();
         c->parent = this;
         flow.push_back(c);
@@ -5057,9 +5041,14 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::Ipolic
 std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : flow)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5146,6 +5135,7 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::Ipolic
 std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(precedences != nullptr)
     {
         children["precedences"] = precedences;
@@ -5248,6 +5238,7 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::LptsLocal::Ipolic
 std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::LptsLocal::IpolicerLocal::Flows::Flow::Precedences::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5331,6 +5322,7 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdC
 std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(memory_threshold != nullptr)
     {
         children["memory-threshold"] = memory_threshold;
@@ -5410,6 +5402,7 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdC
 std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWatchdCfgWatchdogNodeThreshold::MemoryThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5515,6 +5508,7 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWdCfgWa
 std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWdCfgWatchdogNodeThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(memory_threshold != nullptr)
     {
         children["memory-threshold"] = memory_threshold;
@@ -5594,6 +5588,7 @@ std::shared_ptr<Entity> PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWdCfgWa
 std::map<std::string, std::shared_ptr<Entity>> PreconfiguredNodes::PreconfiguredNode::CiscoIOSXRWdCfgWatchdogNodeThreshold::MemoryThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

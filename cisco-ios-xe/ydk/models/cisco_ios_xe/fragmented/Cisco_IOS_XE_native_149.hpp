@@ -16,7 +16,7 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
-class Native::Router::Lisp::Service::Ipv4::Default_::UsePetr : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv4::Default::UsePetr : public ydk::Entity
 {
     public:
         UsePetr();
@@ -34,14 +34,14 @@ class Native::Router::Lisp::Service::Ipv4::Default_::UsePetr : public ydk::Entit
         std::string get_absolute_path() const override;
 
         ydk::YLeaf locator_address; //type: string
-        class Priority; //type: Native::Router::Lisp::Service::Ipv4::Default_::UsePetr::Priority
+        class Priority; //type: Native::Router::Lisp::Service::Ipv4::Default::UsePetr::Priority
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv4::Default_::UsePetr::Priority> priority;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv4::Default::UsePetr::Priority> priority;
         
-}; // Native::Router::Lisp::Service::Ipv4::Default_::UsePetr
+}; // Native::Router::Lisp::Service::Ipv4::Default::UsePetr
 
 
-class Native::Router::Lisp::Service::Ipv4::Default_::UsePetr::Priority : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv4::Default::UsePetr::Priority : public ydk::Entity
 {
     public:
         Priority();
@@ -60,7 +60,7 @@ class Native::Router::Lisp::Service::Ipv4::Default_::UsePetr::Priority : public 
         ydk::YLeaf priority_value; //type: uint8
         ydk::YLeaf weight; //type: uint8
 
-}; // Native::Router::Lisp::Service::Ipv4::Default_::UsePetr::Priority
+}; // Native::Router::Lisp::Service::Ipv4::Default::UsePetr::Priority
 
 
 class Native::Router::Lisp::Service::Ipv4::DatabaseMapping : public ydk::Entity
@@ -938,7 +938,7 @@ class Native::Router::Lisp::Service::Ipv6 : public ydk::Entity
         ydk::YLeaf proxy_etr; //type: empty
         ydk::YLeaf sgt; //type: empty
         ydk::YLeaf map_request_source; //type: string
-        class Default_; //type: Native::Router::Lisp::Service::Ipv6::Default_
+        class Default; //type: Native::Router::Lisp::Service::Ipv6::Default
         class DatabaseMapping; //type: Native::Router::Lisp::Service::Ipv6::DatabaseMapping
         class Itr; //type: Native::Router::Lisp::Service::Ipv6::Itr
         class ItrEnable; //type: Native::Router::Lisp::Service::Ipv6::ItrEnable
@@ -956,7 +956,7 @@ class Native::Router::Lisp::Service::Ipv6 : public ydk::Entity
         class RouteExport; //type: Native::Router::Lisp::Service::Ipv6::RouteExport
         class UsePetr; //type: Native::Router::Lisp::Service::Ipv6::UsePetr
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::DatabaseMapping> database_mapping;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Itr> itr;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::ItrEnable> itr_enable;
@@ -978,11 +978,11 @@ class Native::Router::Lisp::Service::Ipv6 : public ydk::Entity
 }; // Native::Router::Lisp::Service::Ipv6
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_ : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -999,45 +999,45 @@ class Native::Router::Lisp::Service::Ipv6::Default_ : public ydk::Entity
         ydk::YLeaf proxy_etr; //type: empty
         ydk::YLeaf sgt; //type: empty
         ydk::YLeaf map_request_source; //type: string
-        class DatabaseMapping; //type: Native::Router::Lisp::Service::Ipv6::Default_::DatabaseMapping
-        class Itr; //type: Native::Router::Lisp::Service::Ipv6::Default_::Itr
-        class ItrEnable; //type: Native::Router::Lisp::Service::Ipv6::Default_::ItrEnable
-        class EtrEnable; //type: Native::Router::Lisp::Service::Ipv6::Default_::EtrEnable
-        class Etr; //type: Native::Router::Lisp::Service::Ipv6::Default_::Etr
-        class MapCacheLimit; //type: Native::Router::Lisp::Service::Ipv6::Default_::MapCacheLimit
-        class MapResolver; //type: Native::Router::Lisp::Service::Ipv6::Default_::MapResolver
-        class MapServer; //type: Native::Router::Lisp::Service::Ipv6::Default_::MapServer
-        class SiteRegistration; //type: Native::Router::Lisp::Service::Ipv6::Default_::SiteRegistration
-        class SolicitMapRequest; //type: Native::Router::Lisp::Service::Ipv6::Default_::SolicitMapRequest
-        class Distance; //type: Native::Router::Lisp::Service::Ipv6::Default_::Distance
-        class MapCache; //type: Native::Router::Lisp::Service::Ipv6::Default_::MapCache
-        class MapCachePersistent; //type: Native::Router::Lisp::Service::Ipv6::Default_::MapCachePersistent
-        class ProxyItr; //type: Native::Router::Lisp::Service::Ipv6::Default_::ProxyItr
-        class RouteExport; //type: Native::Router::Lisp::Service::Ipv6::Default_::RouteExport
-        class UsePetr; //type: Native::Router::Lisp::Service::Ipv6::Default_::UsePetr
+        class DatabaseMapping; //type: Native::Router::Lisp::Service::Ipv6::Default::DatabaseMapping
+        class Itr; //type: Native::Router::Lisp::Service::Ipv6::Default::Itr
+        class ItrEnable; //type: Native::Router::Lisp::Service::Ipv6::Default::ItrEnable
+        class EtrEnable; //type: Native::Router::Lisp::Service::Ipv6::Default::EtrEnable
+        class Etr; //type: Native::Router::Lisp::Service::Ipv6::Default::Etr
+        class MapCacheLimit; //type: Native::Router::Lisp::Service::Ipv6::Default::MapCacheLimit
+        class MapResolver; //type: Native::Router::Lisp::Service::Ipv6::Default::MapResolver
+        class MapServer; //type: Native::Router::Lisp::Service::Ipv6::Default::MapServer
+        class SiteRegistration; //type: Native::Router::Lisp::Service::Ipv6::Default::SiteRegistration
+        class SolicitMapRequest; //type: Native::Router::Lisp::Service::Ipv6::Default::SolicitMapRequest
+        class Distance; //type: Native::Router::Lisp::Service::Ipv6::Default::Distance
+        class MapCache; //type: Native::Router::Lisp::Service::Ipv6::Default::MapCache
+        class MapCachePersistent; //type: Native::Router::Lisp::Service::Ipv6::Default::MapCachePersistent
+        class ProxyItr; //type: Native::Router::Lisp::Service::Ipv6::Default::ProxyItr
+        class RouteExport; //type: Native::Router::Lisp::Service::Ipv6::Default::RouteExport
+        class UsePetr; //type: Native::Router::Lisp::Service::Ipv6::Default::UsePetr
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::DatabaseMapping> database_mapping;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::Itr> itr;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::ItrEnable> itr_enable;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::EtrEnable> etr_enable;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::Etr> etr;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::MapCacheLimit> map_cache_limit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::MapResolver> map_resolver; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::MapServer> map_server; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::SiteRegistration> site_registration;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::SolicitMapRequest> solicit_map_request;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::Distance> distance;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::MapCache> map_cache;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::MapCachePersistent> map_cache_persistent;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::ProxyItr> proxy_itr;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::RouteExport> route_export;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::UsePetr> > use_petr;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::DatabaseMapping> database_mapping;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::Itr> itr;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::ItrEnable> itr_enable;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::EtrEnable> etr_enable;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::Etr> etr;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::MapCacheLimit> map_cache_limit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::MapResolver> map_resolver; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::MapServer> map_server; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::SiteRegistration> site_registration;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::SolicitMapRequest> solicit_map_request;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::Distance> distance;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::MapCache> map_cache;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::MapCachePersistent> map_cache_persistent;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::ProxyItr> proxy_itr;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::RouteExport> route_export;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::UsePetr> > use_petr;
                 class Encapsulation;
 
-}; // Native::Router::Lisp::Service::Ipv6::Default_
+}; // Native::Router::Lisp::Service::Ipv6::Default
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::DatabaseMapping : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::DatabaseMapping : public ydk::Entity
 {
     public:
         DatabaseMapping();
@@ -1054,14 +1054,14 @@ class Native::Router::Lisp::Service::Ipv6::Default_::DatabaseMapping : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Limit; //type: Native::Router::Lisp::Service::Ipv6::Default_::DatabaseMapping::Limit
+        class Limit; //type: Native::Router::Lisp::Service::Ipv6::Default::DatabaseMapping::Limit
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::DatabaseMapping::Limit> limit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::DatabaseMapping::Limit> limit;
         
-}; // Native::Router::Lisp::Service::Ipv6::Default_::DatabaseMapping
+}; // Native::Router::Lisp::Service::Ipv6::Default::DatabaseMapping
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::DatabaseMapping::Limit : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::DatabaseMapping::Limit : public ydk::Entity
 {
     public:
         Limit();
@@ -1081,10 +1081,10 @@ class Native::Router::Lisp::Service::Ipv6::Default_::DatabaseMapping::Limit : pu
         ydk::YLeaf dynamic; //type: uint32
         ydk::YLeaf warning_threshold; //type: uint8
 
-}; // Native::Router::Lisp::Service::Ipv6::Default_::DatabaseMapping::Limit
+}; // Native::Router::Lisp::Service::Ipv6::Default::DatabaseMapping::Limit
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::Itr : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::Itr : public ydk::Entity
 {
     public:
         Itr();
@@ -1101,14 +1101,14 @@ class Native::Router::Lisp::Service::Ipv6::Default_::Itr : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class MapResolver; //type: Native::Router::Lisp::Service::Ipv6::Default_::Itr::MapResolver
+        class MapResolver; //type: Native::Router::Lisp::Service::Ipv6::Default::Itr::MapResolver
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::Itr::MapResolver> > map_resolver;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::Itr::MapResolver> > map_resolver;
         
-}; // Native::Router::Lisp::Service::Ipv6::Default_::Itr
+}; // Native::Router::Lisp::Service::Ipv6::Default::Itr
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::Itr::MapResolver : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::Itr::MapResolver : public ydk::Entity
 {
     public:
         MapResolver();
@@ -1127,10 +1127,10 @@ class Native::Router::Lisp::Service::Ipv6::Default_::Itr::MapResolver : public y
 
         ydk::YLeaf ip_addr; //type: string
 
-}; // Native::Router::Lisp::Service::Ipv6::Default_::Itr::MapResolver
+}; // Native::Router::Lisp::Service::Ipv6::Default::Itr::MapResolver
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::ItrEnable : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::ItrEnable : public ydk::Entity
 {
     public:
         ItrEnable();
@@ -1149,10 +1149,10 @@ class Native::Router::Lisp::Service::Ipv6::Default_::ItrEnable : public ydk::Ent
 
         ydk::YLeaf itr; //type: empty
 
-}; // Native::Router::Lisp::Service::Ipv6::Default_::ItrEnable
+}; // Native::Router::Lisp::Service::Ipv6::Default::ItrEnable
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::EtrEnable : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::EtrEnable : public ydk::Entity
 {
     public:
         EtrEnable();
@@ -1171,10 +1171,10 @@ class Native::Router::Lisp::Service::Ipv6::Default_::EtrEnable : public ydk::Ent
 
         ydk::YLeaf etr; //type: empty
 
-}; // Native::Router::Lisp::Service::Ipv6::Default_::EtrEnable
+}; // Native::Router::Lisp::Service::Ipv6::Default::EtrEnable
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::Etr : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::Etr : public ydk::Entity
 {
     public:
         Etr();
@@ -1192,16 +1192,16 @@ class Native::Router::Lisp::Service::Ipv6::Default_::Etr : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf map_cache_ttl; //type: uint16
-        class MapServer; //type: Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer
-        class AcceptMapRequestMapping; //type: Native::Router::Lisp::Service::Ipv6::Default_::Etr::AcceptMapRequestMapping
+        class MapServer; //type: Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer
+        class AcceptMapRequestMapping; //type: Native::Router::Lisp::Service::Ipv6::Default::Etr::AcceptMapRequestMapping
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer> > map_server;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::Etr::AcceptMapRequestMapping> accept_map_request_mapping;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer> > map_server;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::Etr::AcceptMapRequestMapping> accept_map_request_mapping;
         
-}; // Native::Router::Lisp::Service::Ipv6::Default_::Etr
+}; // Native::Router::Lisp::Service::Ipv6::Default::Etr
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer : public ydk::Entity
 {
     public:
         MapServer();
@@ -1220,14 +1220,14 @@ class Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer : public ydk
 
         ydk::YLeaf ip_addr; //type: string
         ydk::YLeaf proxy_reply; //type: empty
-        class Key; //type: Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key
+        class Key; //type: Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer::Key
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key> key;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer::Key> key;
         
-}; // Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer
+}; // Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer::Key : public ydk::Entity
 {
     public:
         Key();
@@ -1243,20 +1243,20 @@ class Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key : publi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class KeyPwd; //type: Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::KeyPwd
-        class Key0; //type: Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::Key0
-        class Key6; //type: Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::Key6
-        class Key7; //type: Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::Key7
+        class KeyPwd; //type: Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer::Key::KeyPwd
+        class Key0; //type: Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer::Key::Key0
+        class Key6; //type: Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer::Key::Key6
+        class Key7; //type: Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer::Key::Key7
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::KeyPwd> key_pwd;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::Key0> key_0;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::Key6> key_6;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::Key7> key_7;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer::Key::KeyPwd> key_pwd;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer::Key::Key0> key_0;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer::Key::Key6> key_6;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer::Key::Key7> key_7;
         
-}; // Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key
+}; // Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer::Key
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::KeyPwd : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer::Key::KeyPwd : public ydk::Entity
 {
     public:
         KeyPwd();
@@ -1276,10 +1276,10 @@ class Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::KeyPwd
         ydk::YLeaf hash_function; //type: HashFunction
         class HashFunction;
 
-}; // Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::KeyPwd
+}; // Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer::Key::KeyPwd
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::Key0 : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer::Key::Key0 : public ydk::Entity
 {
     public:
         Key0();
@@ -1299,10 +1299,10 @@ class Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::Key0 :
         ydk::YLeaf hash_function; //type: HashFunction
         class HashFunction;
 
-}; // Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::Key0
+}; // Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer::Key::Key0
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::Key6 : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer::Key::Key6 : public ydk::Entity
 {
     public:
         Key6();
@@ -1322,10 +1322,10 @@ class Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::Key6 :
         ydk::YLeaf hash_function; //type: HashFunction
         class HashFunction;
 
-}; // Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::Key6
+}; // Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer::Key::Key6
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::Key7 : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer::Key::Key7 : public ydk::Entity
 {
     public:
         Key7();
@@ -1345,10 +1345,10 @@ class Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::Key7 :
         ydk::YLeaf hash_function; //type: HashFunction
         class HashFunction;
 
-}; // Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::Key7
+}; // Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer::Key::Key7
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::Etr::AcceptMapRequestMapping : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::Etr::AcceptMapRequestMapping : public ydk::Entity
 {
     public:
         AcceptMapRequestMapping();
@@ -1368,10 +1368,10 @@ class Native::Router::Lisp::Service::Ipv6::Default_::Etr::AcceptMapRequestMappin
         ydk::YLeaf accept_mappping; //type: empty
         ydk::YLeaf verify; //type: empty
 
-}; // Native::Router::Lisp::Service::Ipv6::Default_::Etr::AcceptMapRequestMapping
+}; // Native::Router::Lisp::Service::Ipv6::Default::Etr::AcceptMapRequestMapping
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::MapCacheLimit : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::MapCacheLimit : public ydk::Entity
 {
     public:
         MapCacheLimit();
@@ -1392,10 +1392,10 @@ class Native::Router::Lisp::Service::Ipv6::Default_::MapCacheLimit : public ydk:
         ydk::YLeaf reserve_list; //type: string
         ydk::YLeaf warning_threshold; //type: uint8
 
-}; // Native::Router::Lisp::Service::Ipv6::Default_::MapCacheLimit
+}; // Native::Router::Lisp::Service::Ipv6::Default::MapCacheLimit
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::MapResolver : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::MapResolver : public ydk::Entity
 {
     public:
         MapResolver();
@@ -1412,14 +1412,14 @@ class Native::Router::Lisp::Service::Ipv6::Default_::MapResolver : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class MapRequest; //type: Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest
+        class MapRequest; //type: Native::Router::Lisp::Service::Ipv6::Default::MapResolver::MapRequest
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest> map_request;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::MapResolver::MapRequest> map_request;
         
-}; // Native::Router::Lisp::Service::Ipv6::Default_::MapResolver
+}; // Native::Router::Lisp::Service::Ipv6::Default::MapResolver
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::MapResolver::MapRequest : public ydk::Entity
 {
     public:
         MapRequest();
@@ -1436,14 +1436,14 @@ class Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest : p
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Validate; //type: Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Validate
+        class Validate; //type: Native::Router::Lisp::Service::Ipv6::Default::MapResolver::MapRequest::Validate
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Validate> validate;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::MapResolver::MapRequest::Validate> validate;
         
-}; // Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest
+}; // Native::Router::Lisp::Service::Ipv6::Default::MapResolver::MapRequest
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Validate : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::MapResolver::MapRequest::Validate : public ydk::Entity
 {
     public:
         Validate();
@@ -1460,14 +1460,14 @@ class Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Va
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Source; //type: Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Validate::Source
+        class Source; //type: Native::Router::Lisp::Service::Ipv6::Default::MapResolver::MapRequest::Validate::Source
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Validate::Source> source;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::MapResolver::MapRequest::Validate::Source> source;
         
-}; // Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Validate
+}; // Native::Router::Lisp::Service::Ipv6::Default::MapResolver::MapRequest::Validate
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Validate::Source : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::MapResolver::MapRequest::Validate::Source : public ydk::Entity
 {
     public:
         Source();
@@ -1484,16 +1484,16 @@ class Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Va
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class List; //type: Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Validate::Source::List
-        class Registered; //type: Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Validate::Source::Registered
+        class List; //type: Native::Router::Lisp::Service::Ipv6::Default::MapResolver::MapRequest::Validate::Source::List
+        class Registered; //type: Native::Router::Lisp::Service::Ipv6::Default::MapResolver::MapRequest::Validate::Source::Registered
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Validate::Source::List> list;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Validate::Source::Registered> registered;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::MapResolver::MapRequest::Validate::Source::List> list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::MapResolver::MapRequest::Validate::Source::Registered> registered;
         
-}; // Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Validate::Source
+}; // Native::Router::Lisp::Service::Ipv6::Default::MapResolver::MapRequest::Validate::Source
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Validate::Source::List : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::MapResolver::MapRequest::Validate::Source::List : public ydk::Entity
 {
     public:
         List();
@@ -1513,10 +1513,10 @@ class Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Va
         ydk::YLeaf ipv4; //type: string
         ydk::YLeaf ipv6; //type: string
 
-}; // Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Validate::Source::List
+}; // Native::Router::Lisp::Service::Ipv6::Default::MapResolver::MapRequest::Validate::Source::List
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Validate::Source::Registered : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::MapResolver::MapRequest::Validate::Source::Registered : public ydk::Entity
 {
     public:
         Registered();
@@ -1533,14 +1533,14 @@ class Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Va
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class List; //type: Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Validate::Source::Registered::List
+        class List; //type: Native::Router::Lisp::Service::Ipv6::Default::MapResolver::MapRequest::Validate::Source::Registered::List
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Validate::Source::Registered::List> list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::MapResolver::MapRequest::Validate::Source::Registered::List> list;
         
-}; // Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Validate::Source::Registered
+}; // Native::Router::Lisp::Service::Ipv6::Default::MapResolver::MapRequest::Validate::Source::Registered
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Validate::Source::Registered::List : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::MapResolver::MapRequest::Validate::Source::Registered::List : public ydk::Entity
 {
     public:
         List();
@@ -1560,10 +1560,10 @@ class Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Va
         ydk::YLeaf ipv4; //type: string
         ydk::YLeaf ipv6; //type: string
 
-}; // Native::Router::Lisp::Service::Ipv6::Default_::MapResolver::MapRequest::Validate::Source::Registered::List
+}; // Native::Router::Lisp::Service::Ipv6::Default::MapResolver::MapRequest::Validate::Source::Registered::List
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::MapServer : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::MapServer : public ydk::Entity
 {
     public:
         MapServer();
@@ -1580,14 +1580,14 @@ class Native::Router::Lisp::Service::Ipv6::Default_::MapServer : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class MapRegister; //type: Native::Router::Lisp::Service::Ipv6::Default_::MapServer::MapRegister
+        class MapRegister; //type: Native::Router::Lisp::Service::Ipv6::Default::MapServer::MapRegister
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::MapServer::MapRegister> map_register;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::MapServer::MapRegister> map_register;
         
-}; // Native::Router::Lisp::Service::Ipv6::Default_::MapServer
+}; // Native::Router::Lisp::Service::Ipv6::Default::MapServer
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::MapServer::MapRegister : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::MapServer::MapRegister : public ydk::Entity
 {
     public:
         MapRegister();
@@ -1604,14 +1604,14 @@ class Native::Router::Lisp::Service::Ipv6::Default_::MapServer::MapRegister : pu
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Validate; //type: Native::Router::Lisp::Service::Ipv6::Default_::MapServer::MapRegister::Validate
+        class Validate; //type: Native::Router::Lisp::Service::Ipv6::Default::MapServer::MapRegister::Validate
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::MapServer::MapRegister::Validate> validate;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::MapServer::MapRegister::Validate> validate;
         
-}; // Native::Router::Lisp::Service::Ipv6::Default_::MapServer::MapRegister
+}; // Native::Router::Lisp::Service::Ipv6::Default::MapServer::MapRegister
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::MapServer::MapRegister::Validate : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::MapServer::MapRegister::Validate : public ydk::Entity
 {
     public:
         Validate();
@@ -1628,14 +1628,14 @@ class Native::Router::Lisp::Service::Ipv6::Default_::MapServer::MapRegister::Val
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Source; //type: Native::Router::Lisp::Service::Ipv6::Default_::MapServer::MapRegister::Validate::Source
+        class Source; //type: Native::Router::Lisp::Service::Ipv6::Default::MapServer::MapRegister::Validate::Source
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::MapServer::MapRegister::Validate::Source> source;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::MapServer::MapRegister::Validate::Source> source;
         
-}; // Native::Router::Lisp::Service::Ipv6::Default_::MapServer::MapRegister::Validate
+}; // Native::Router::Lisp::Service::Ipv6::Default::MapServer::MapRegister::Validate
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::MapServer::MapRegister::Validate::Source : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::MapServer::MapRegister::Validate::Source : public ydk::Entity
 {
     public:
         Source();
@@ -1654,10 +1654,10 @@ class Native::Router::Lisp::Service::Ipv6::Default_::MapServer::MapRegister::Val
 
         ydk::YLeaf allowed_locator; //type: empty
 
-}; // Native::Router::Lisp::Service::Ipv6::Default_::MapServer::MapRegister::Validate::Source
+}; // Native::Router::Lisp::Service::Ipv6::Default::MapServer::MapRegister::Validate::Source
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::SiteRegistration : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::SiteRegistration : public ydk::Entity
 {
     public:
         SiteRegistration();
@@ -1677,10 +1677,10 @@ class Native::Router::Lisp::Service::Ipv6::Default_::SiteRegistration : public y
         ydk::YLeaf limit; //type: uint32
         ydk::YLeaf warning_threshold; //type: uint8
 
-}; // Native::Router::Lisp::Service::Ipv6::Default_::SiteRegistration
+}; // Native::Router::Lisp::Service::Ipv6::Default::SiteRegistration
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::SolicitMapRequest : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::SolicitMapRequest : public ydk::Entity
 {
     public:
         SolicitMapRequest();
@@ -1701,10 +1701,10 @@ class Native::Router::Lisp::Service::Ipv6::Default_::SolicitMapRequest : public 
         ydk::YLeaf max_per_entry; //type: uint8
         ydk::YLeaf suppression_time; //type: uint16
 
-}; // Native::Router::Lisp::Service::Ipv6::Default_::SolicitMapRequest
+}; // Native::Router::Lisp::Service::Ipv6::Default::SolicitMapRequest
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::Distance : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::Distance : public ydk::Entity
 {
     public:
         Distance();
@@ -1726,10 +1726,10 @@ class Native::Router::Lisp::Service::Ipv6::Default_::Distance : public ydk::Enti
         ydk::YLeaf dyn_eid; //type: uint8
         ydk::YLeaf site_registrations; //type: uint8
 
-}; // Native::Router::Lisp::Service::Ipv6::Default_::Distance
+}; // Native::Router::Lisp::Service::Ipv6::Default::Distance
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::MapCache : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::MapCache : public ydk::Entity
 {
     public:
         MapCache();
@@ -1747,14 +1747,14 @@ class Native::Router::Lisp::Service::Ipv6::Default_::MapCache : public ydk::Enti
         std::string get_absolute_path() const override;
 
         ydk::YLeaf site_registration; //type: empty
-        class AwayEids; //type: Native::Router::Lisp::Service::Ipv6::Default_::MapCache::AwayEids
+        class AwayEids; //type: Native::Router::Lisp::Service::Ipv6::Default::MapCache::AwayEids
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::MapCache::AwayEids> away_eids;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::MapCache::AwayEids> away_eids;
         
-}; // Native::Router::Lisp::Service::Ipv6::Default_::MapCache
+}; // Native::Router::Lisp::Service::Ipv6::Default::MapCache
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::MapCache::AwayEids : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::MapCache::AwayEids : public ydk::Entity
 {
     public:
         AwayEids();
@@ -1773,10 +1773,10 @@ class Native::Router::Lisp::Service::Ipv6::Default_::MapCache::AwayEids : public
 
         ydk::YLeaf send_map_request; //type: empty
 
-}; // Native::Router::Lisp::Service::Ipv6::Default_::MapCache::AwayEids
+}; // Native::Router::Lisp::Service::Ipv6::Default::MapCache::AwayEids
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::MapCachePersistent : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::MapCachePersistent : public ydk::Entity
 {
     public:
         MapCachePersistent();
@@ -1795,10 +1795,10 @@ class Native::Router::Lisp::Service::Ipv6::Default_::MapCachePersistent : public
 
         ydk::YLeaf interval; //type: uint16
 
-}; // Native::Router::Lisp::Service::Ipv6::Default_::MapCachePersistent
+}; // Native::Router::Lisp::Service::Ipv6::Default::MapCachePersistent
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::ProxyItr : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::ProxyItr : public ydk::Entity
 {
     public:
         ProxyItr();
@@ -1818,10 +1818,10 @@ class Native::Router::Lisp::Service::Ipv6::Default_::ProxyItr : public ydk::Enti
         ydk::YLeaf ipv4_addr; //type: string
         ydk::YLeaf ipv6_addr; //type: string
 
-}; // Native::Router::Lisp::Service::Ipv6::Default_::ProxyItr
+}; // Native::Router::Lisp::Service::Ipv6::Default::ProxyItr
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::RouteExport : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::RouteExport : public ydk::Entity
 {
     public:
         RouteExport();
@@ -1841,10 +1841,10 @@ class Native::Router::Lisp::Service::Ipv6::Default_::RouteExport : public ydk::E
         ydk::YLeaf site_registrations; //type: empty
         ydk::YLeaf away_eids; //type: empty
 
-}; // Native::Router::Lisp::Service::Ipv6::Default_::RouteExport
+}; // Native::Router::Lisp::Service::Ipv6::Default::RouteExport
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::UsePetr : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::UsePetr : public ydk::Entity
 {
     public:
         UsePetr();
@@ -1862,14 +1862,14 @@ class Native::Router::Lisp::Service::Ipv6::Default_::UsePetr : public ydk::Entit
         std::string get_absolute_path() const override;
 
         ydk::YLeaf locator_address; //type: string
-        class Priority; //type: Native::Router::Lisp::Service::Ipv6::Default_::UsePetr::Priority
+        class Priority; //type: Native::Router::Lisp::Service::Ipv6::Default::UsePetr::Priority
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default_::UsePetr::Priority> priority;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ipv6::Default::UsePetr::Priority> priority;
         
-}; // Native::Router::Lisp::Service::Ipv6::Default_::UsePetr
+}; // Native::Router::Lisp::Service::Ipv6::Default::UsePetr
 
 
-class Native::Router::Lisp::Service::Ipv6::Default_::UsePetr::Priority : public ydk::Entity
+class Native::Router::Lisp::Service::Ipv6::Default::UsePetr::Priority : public ydk::Entity
 {
     public:
         Priority();
@@ -1888,7 +1888,7 @@ class Native::Router::Lisp::Service::Ipv6::Default_::UsePetr::Priority : public 
         ydk::YLeaf priority_value; //type: uint8
         ydk::YLeaf weight; //type: uint8
 
-}; // Native::Router::Lisp::Service::Ipv6::Default_::UsePetr::Priority
+}; // Native::Router::Lisp::Service::Ipv6::Default::UsePetr::Priority
 
 
 class Native::Router::Lisp::Service::Ipv6::DatabaseMapping : public ydk::Entity
@@ -2763,7 +2763,7 @@ class Native::Router::Lisp::Service::Ethernet : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf map_request_source; //type: string
-        class Default_; //type: Native::Router::Lisp::Service::Ethernet::Default_
+        class Default; //type: Native::Router::Lisp::Service::Ethernet::Default
         class Encapsulation; //type: Native::Router::Lisp::Service::Ethernet::Encapsulation
         class DatabaseMapping; //type: Native::Router::Lisp::Service::Ethernet::DatabaseMapping
         class Itr; //type: Native::Router::Lisp::Service::Ethernet::Itr
@@ -2776,7 +2776,7 @@ class Native::Router::Lisp::Service::Ethernet : public ydk::Entity
         class SiteRegistration; //type: Native::Router::Lisp::Service::Ethernet::SiteRegistration
         class SolicitMapRequest; //type: Native::Router::Lisp::Service::Ethernet::SolicitMapRequest
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Encapsulation> encapsulation;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::DatabaseMapping> database_mapping;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Itr> itr;
@@ -2792,11 +2792,11 @@ class Native::Router::Lisp::Service::Ethernet : public ydk::Entity
 }; // Native::Router::Lisp::Service::Ethernet
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_ : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2810,34 +2810,34 @@ class Native::Router::Lisp::Service::Ethernet::Default_ : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf map_request_source; //type: string
-        class Encapsulation; //type: Native::Router::Lisp::Service::Ethernet::Default_::Encapsulation
-        class DatabaseMapping; //type: Native::Router::Lisp::Service::Ethernet::Default_::DatabaseMapping
-        class Itr; //type: Native::Router::Lisp::Service::Ethernet::Default_::Itr
-        class ItrEnable; //type: Native::Router::Lisp::Service::Ethernet::Default_::ItrEnable
-        class EtrEnable; //type: Native::Router::Lisp::Service::Ethernet::Default_::EtrEnable
-        class Etr; //type: Native::Router::Lisp::Service::Ethernet::Default_::Etr
-        class MapCacheLimit; //type: Native::Router::Lisp::Service::Ethernet::Default_::MapCacheLimit
-        class MapResolver; //type: Native::Router::Lisp::Service::Ethernet::Default_::MapResolver
-        class MapServer; //type: Native::Router::Lisp::Service::Ethernet::Default_::MapServer
-        class SiteRegistration; //type: Native::Router::Lisp::Service::Ethernet::Default_::SiteRegistration
-        class SolicitMapRequest; //type: Native::Router::Lisp::Service::Ethernet::Default_::SolicitMapRequest
+        class Encapsulation; //type: Native::Router::Lisp::Service::Ethernet::Default::Encapsulation
+        class DatabaseMapping; //type: Native::Router::Lisp::Service::Ethernet::Default::DatabaseMapping
+        class Itr; //type: Native::Router::Lisp::Service::Ethernet::Default::Itr
+        class ItrEnable; //type: Native::Router::Lisp::Service::Ethernet::Default::ItrEnable
+        class EtrEnable; //type: Native::Router::Lisp::Service::Ethernet::Default::EtrEnable
+        class Etr; //type: Native::Router::Lisp::Service::Ethernet::Default::Etr
+        class MapCacheLimit; //type: Native::Router::Lisp::Service::Ethernet::Default::MapCacheLimit
+        class MapResolver; //type: Native::Router::Lisp::Service::Ethernet::Default::MapResolver
+        class MapServer; //type: Native::Router::Lisp::Service::Ethernet::Default::MapServer
+        class SiteRegistration; //type: Native::Router::Lisp::Service::Ethernet::Default::SiteRegistration
+        class SolicitMapRequest; //type: Native::Router::Lisp::Service::Ethernet::Default::SolicitMapRequest
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::Encapsulation> encapsulation;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::DatabaseMapping> database_mapping;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::Itr> itr;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::ItrEnable> itr_enable;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::EtrEnable> etr_enable;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::Etr> etr;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::MapCacheLimit> map_cache_limit;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::MapResolver> map_resolver; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::MapServer> map_server; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::SiteRegistration> site_registration;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::SolicitMapRequest> solicit_map_request;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::Encapsulation> encapsulation;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::DatabaseMapping> database_mapping;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::Itr> itr;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::ItrEnable> itr_enable;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::EtrEnable> etr_enable;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::Etr> etr;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::MapCacheLimit> map_cache_limit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::MapResolver> map_resolver; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::MapServer> map_server; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::SiteRegistration> site_registration;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::SolicitMapRequest> solicit_map_request;
         
-}; // Native::Router::Lisp::Service::Ethernet::Default_
+}; // Native::Router::Lisp::Service::Ethernet::Default
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::Encapsulation : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::Encapsulation : public ydk::Entity
 {
     public:
         Encapsulation();
@@ -2856,10 +2856,10 @@ class Native::Router::Lisp::Service::Ethernet::Default_::Encapsulation : public 
 
         ydk::YLeaf vxlan; //type: empty
 
-}; // Native::Router::Lisp::Service::Ethernet::Default_::Encapsulation
+}; // Native::Router::Lisp::Service::Ethernet::Default::Encapsulation
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::DatabaseMapping : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::DatabaseMapping : public ydk::Entity
 {
     public:
         DatabaseMapping();
@@ -2876,14 +2876,14 @@ class Native::Router::Lisp::Service::Ethernet::Default_::DatabaseMapping : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Limit; //type: Native::Router::Lisp::Service::Ethernet::Default_::DatabaseMapping::Limit
+        class Limit; //type: Native::Router::Lisp::Service::Ethernet::Default::DatabaseMapping::Limit
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::DatabaseMapping::Limit> limit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::DatabaseMapping::Limit> limit;
         
-}; // Native::Router::Lisp::Service::Ethernet::Default_::DatabaseMapping
+}; // Native::Router::Lisp::Service::Ethernet::Default::DatabaseMapping
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::DatabaseMapping::Limit : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::DatabaseMapping::Limit : public ydk::Entity
 {
     public:
         Limit();
@@ -2903,10 +2903,10 @@ class Native::Router::Lisp::Service::Ethernet::Default_::DatabaseMapping::Limit 
         ydk::YLeaf dynamic; //type: uint32
         ydk::YLeaf warning_threshold; //type: uint8
 
-}; // Native::Router::Lisp::Service::Ethernet::Default_::DatabaseMapping::Limit
+}; // Native::Router::Lisp::Service::Ethernet::Default::DatabaseMapping::Limit
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::Itr : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::Itr : public ydk::Entity
 {
     public:
         Itr();
@@ -2923,14 +2923,14 @@ class Native::Router::Lisp::Service::Ethernet::Default_::Itr : public ydk::Entit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class MapResolver; //type: Native::Router::Lisp::Service::Ethernet::Default_::Itr::MapResolver
+        class MapResolver; //type: Native::Router::Lisp::Service::Ethernet::Default::Itr::MapResolver
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::Itr::MapResolver> > map_resolver;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::Itr::MapResolver> > map_resolver;
         
-}; // Native::Router::Lisp::Service::Ethernet::Default_::Itr
+}; // Native::Router::Lisp::Service::Ethernet::Default::Itr
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::Itr::MapResolver : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::Itr::MapResolver : public ydk::Entity
 {
     public:
         MapResolver();
@@ -2949,10 +2949,10 @@ class Native::Router::Lisp::Service::Ethernet::Default_::Itr::MapResolver : publ
 
         ydk::YLeaf ip_addr; //type: string
 
-}; // Native::Router::Lisp::Service::Ethernet::Default_::Itr::MapResolver
+}; // Native::Router::Lisp::Service::Ethernet::Default::Itr::MapResolver
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::ItrEnable : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::ItrEnable : public ydk::Entity
 {
     public:
         ItrEnable();
@@ -2971,10 +2971,10 @@ class Native::Router::Lisp::Service::Ethernet::Default_::ItrEnable : public ydk:
 
         ydk::YLeaf itr; //type: empty
 
-}; // Native::Router::Lisp::Service::Ethernet::Default_::ItrEnable
+}; // Native::Router::Lisp::Service::Ethernet::Default::ItrEnable
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::EtrEnable : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::EtrEnable : public ydk::Entity
 {
     public:
         EtrEnable();
@@ -2993,10 +2993,10 @@ class Native::Router::Lisp::Service::Ethernet::Default_::EtrEnable : public ydk:
 
         ydk::YLeaf etr; //type: empty
 
-}; // Native::Router::Lisp::Service::Ethernet::Default_::EtrEnable
+}; // Native::Router::Lisp::Service::Ethernet::Default::EtrEnable
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::Etr : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::Etr : public ydk::Entity
 {
     public:
         Etr();
@@ -3014,16 +3014,16 @@ class Native::Router::Lisp::Service::Ethernet::Default_::Etr : public ydk::Entit
         std::string get_absolute_path() const override;
 
         ydk::YLeaf map_cache_ttl; //type: uint16
-        class MapServer; //type: Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer
-        class AcceptMapRequestMapping; //type: Native::Router::Lisp::Service::Ethernet::Default_::Etr::AcceptMapRequestMapping
+        class MapServer; //type: Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer
+        class AcceptMapRequestMapping; //type: Native::Router::Lisp::Service::Ethernet::Default::Etr::AcceptMapRequestMapping
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer> > map_server;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::Etr::AcceptMapRequestMapping> accept_map_request_mapping;
+        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer> > map_server;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::Etr::AcceptMapRequestMapping> accept_map_request_mapping;
         
-}; // Native::Router::Lisp::Service::Ethernet::Default_::Etr
+}; // Native::Router::Lisp::Service::Ethernet::Default::Etr
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer : public ydk::Entity
 {
     public:
         MapServer();
@@ -3042,14 +3042,14 @@ class Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer : public
 
         ydk::YLeaf ip_addr; //type: string
         ydk::YLeaf proxy_reply; //type: empty
-        class Key; //type: Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key
+        class Key; //type: Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer::Key
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key> key;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer::Key> key;
         
-}; // Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer
+}; // Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer::Key : public ydk::Entity
 {
     public:
         Key();
@@ -3065,20 +3065,20 @@ class Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class KeyPwd; //type: Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::KeyPwd
-        class Key0; //type: Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::Key0
-        class Key6; //type: Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::Key6
-        class Key7; //type: Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::Key7
+        class KeyPwd; //type: Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer::Key::KeyPwd
+        class Key0; //type: Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer::Key::Key0
+        class Key6; //type: Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer::Key::Key6
+        class Key7; //type: Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer::Key::Key7
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::KeyPwd> key_pwd;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::Key0> key_0;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::Key6> key_6;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::Key7> key_7;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer::Key::KeyPwd> key_pwd;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer::Key::Key0> key_0;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer::Key::Key6> key_6;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer::Key::Key7> key_7;
         
-}; // Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key
+}; // Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer::Key
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::KeyPwd : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer::Key::KeyPwd : public ydk::Entity
 {
     public:
         KeyPwd();
@@ -3098,10 +3098,10 @@ class Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::Ke
         ydk::YLeaf hash_function; //type: HashFunction
         class HashFunction;
 
-}; // Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::KeyPwd
+}; // Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer::Key::KeyPwd
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::Key0 : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer::Key::Key0 : public ydk::Entity
 {
     public:
         Key0();
@@ -3121,10 +3121,10 @@ class Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::Ke
         ydk::YLeaf hash_function; //type: HashFunction
         class HashFunction;
 
-}; // Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::Key0
+}; // Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer::Key::Key0
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::Key6 : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer::Key::Key6 : public ydk::Entity
 {
     public:
         Key6();
@@ -3144,10 +3144,10 @@ class Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::Ke
         ydk::YLeaf hash_function; //type: HashFunction
         class HashFunction;
 
-}; // Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::Key6
+}; // Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer::Key::Key6
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::Key7 : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer::Key::Key7 : public ydk::Entity
 {
     public:
         Key7();
@@ -3167,10 +3167,10 @@ class Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::Ke
         ydk::YLeaf hash_function; //type: HashFunction
         class HashFunction;
 
-}; // Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::Key7
+}; // Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer::Key::Key7
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::Etr::AcceptMapRequestMapping : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::Etr::AcceptMapRequestMapping : public ydk::Entity
 {
     public:
         AcceptMapRequestMapping();
@@ -3190,10 +3190,10 @@ class Native::Router::Lisp::Service::Ethernet::Default_::Etr::AcceptMapRequestMa
         ydk::YLeaf accept_mappping; //type: empty
         ydk::YLeaf verify; //type: empty
 
-}; // Native::Router::Lisp::Service::Ethernet::Default_::Etr::AcceptMapRequestMapping
+}; // Native::Router::Lisp::Service::Ethernet::Default::Etr::AcceptMapRequestMapping
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::MapCacheLimit : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::MapCacheLimit : public ydk::Entity
 {
     public:
         MapCacheLimit();
@@ -3214,10 +3214,10 @@ class Native::Router::Lisp::Service::Ethernet::Default_::MapCacheLimit : public 
         ydk::YLeaf reserve_list; //type: string
         ydk::YLeaf warning_threshold; //type: uint8
 
-}; // Native::Router::Lisp::Service::Ethernet::Default_::MapCacheLimit
+}; // Native::Router::Lisp::Service::Ethernet::Default::MapCacheLimit
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::MapResolver : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::MapResolver : public ydk::Entity
 {
     public:
         MapResolver();
@@ -3234,14 +3234,14 @@ class Native::Router::Lisp::Service::Ethernet::Default_::MapResolver : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class MapRequest; //type: Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest
+        class MapRequest; //type: Native::Router::Lisp::Service::Ethernet::Default::MapResolver::MapRequest
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest> map_request;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::MapResolver::MapRequest> map_request;
         
-}; // Native::Router::Lisp::Service::Ethernet::Default_::MapResolver
+}; // Native::Router::Lisp::Service::Ethernet::Default::MapResolver
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::MapResolver::MapRequest : public ydk::Entity
 {
     public:
         MapRequest();
@@ -3258,14 +3258,14 @@ class Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Validate; //type: Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest::Validate
+        class Validate; //type: Native::Router::Lisp::Service::Ethernet::Default::MapResolver::MapRequest::Validate
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest::Validate> validate;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::MapResolver::MapRequest::Validate> validate;
         
-}; // Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest
+}; // Native::Router::Lisp::Service::Ethernet::Default::MapResolver::MapRequest
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest::Validate : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::MapResolver::MapRequest::Validate : public ydk::Entity
 {
     public:
         Validate();
@@ -3282,14 +3282,14 @@ class Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Source; //type: Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest::Validate::Source
+        class Source; //type: Native::Router::Lisp::Service::Ethernet::Default::MapResolver::MapRequest::Validate::Source
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest::Validate::Source> source;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::MapResolver::MapRequest::Validate::Source> source;
         
-}; // Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest::Validate
+}; // Native::Router::Lisp::Service::Ethernet::Default::MapResolver::MapRequest::Validate
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest::Validate::Source : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::MapResolver::MapRequest::Validate::Source : public ydk::Entity
 {
     public:
         Source();
@@ -3306,16 +3306,16 @@ class Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class List; //type: Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest::Validate::Source::List
-        class Registered; //type: Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest::Validate::Source::Registered
+        class List; //type: Native::Router::Lisp::Service::Ethernet::Default::MapResolver::MapRequest::Validate::Source::List
+        class Registered; //type: Native::Router::Lisp::Service::Ethernet::Default::MapResolver::MapRequest::Validate::Source::Registered
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest::Validate::Source::List> list;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest::Validate::Source::Registered> registered;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::MapResolver::MapRequest::Validate::Source::List> list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::MapResolver::MapRequest::Validate::Source::Registered> registered;
         
-}; // Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest::Validate::Source
+}; // Native::Router::Lisp::Service::Ethernet::Default::MapResolver::MapRequest::Validate::Source
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest::Validate::Source::List : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::MapResolver::MapRequest::Validate::Source::List : public ydk::Entity
 {
     public:
         List();
@@ -3335,10 +3335,10 @@ class Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest
         ydk::YLeaf ipv4; //type: string
         ydk::YLeaf ipv6; //type: string
 
-}; // Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest::Validate::Source::List
+}; // Native::Router::Lisp::Service::Ethernet::Default::MapResolver::MapRequest::Validate::Source::List
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest::Validate::Source::Registered : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::MapResolver::MapRequest::Validate::Source::Registered : public ydk::Entity
 {
     public:
         Registered();
@@ -3355,14 +3355,14 @@ class Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class List; //type: Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest::Validate::Source::Registered::List
+        class List; //type: Native::Router::Lisp::Service::Ethernet::Default::MapResolver::MapRequest::Validate::Source::Registered::List
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest::Validate::Source::Registered::List> list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::MapResolver::MapRequest::Validate::Source::Registered::List> list;
         
-}; // Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest::Validate::Source::Registered
+}; // Native::Router::Lisp::Service::Ethernet::Default::MapResolver::MapRequest::Validate::Source::Registered
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest::Validate::Source::Registered::List : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::MapResolver::MapRequest::Validate::Source::Registered::List : public ydk::Entity
 {
     public:
         List();
@@ -3382,10 +3382,10 @@ class Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest
         ydk::YLeaf ipv4; //type: string
         ydk::YLeaf ipv6; //type: string
 
-}; // Native::Router::Lisp::Service::Ethernet::Default_::MapResolver::MapRequest::Validate::Source::Registered::List
+}; // Native::Router::Lisp::Service::Ethernet::Default::MapResolver::MapRequest::Validate::Source::Registered::List
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::MapServer : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::MapServer : public ydk::Entity
 {
     public:
         MapServer();
@@ -3402,14 +3402,14 @@ class Native::Router::Lisp::Service::Ethernet::Default_::MapServer : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class MapRegister; //type: Native::Router::Lisp::Service::Ethernet::Default_::MapServer::MapRegister
+        class MapRegister; //type: Native::Router::Lisp::Service::Ethernet::Default::MapServer::MapRegister
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::MapServer::MapRegister> map_register;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::MapServer::MapRegister> map_register;
         
-}; // Native::Router::Lisp::Service::Ethernet::Default_::MapServer
+}; // Native::Router::Lisp::Service::Ethernet::Default::MapServer
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::MapServer::MapRegister : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::MapServer::MapRegister : public ydk::Entity
 {
     public:
         MapRegister();
@@ -3426,14 +3426,14 @@ class Native::Router::Lisp::Service::Ethernet::Default_::MapServer::MapRegister 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Validate; //type: Native::Router::Lisp::Service::Ethernet::Default_::MapServer::MapRegister::Validate
+        class Validate; //type: Native::Router::Lisp::Service::Ethernet::Default::MapServer::MapRegister::Validate
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::MapServer::MapRegister::Validate> validate;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::MapServer::MapRegister::Validate> validate;
         
-}; // Native::Router::Lisp::Service::Ethernet::Default_::MapServer::MapRegister
+}; // Native::Router::Lisp::Service::Ethernet::Default::MapServer::MapRegister
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::MapServer::MapRegister::Validate : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::MapServer::MapRegister::Validate : public ydk::Entity
 {
     public:
         Validate();
@@ -3450,14 +3450,14 @@ class Native::Router::Lisp::Service::Ethernet::Default_::MapServer::MapRegister:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Source; //type: Native::Router::Lisp::Service::Ethernet::Default_::MapServer::MapRegister::Validate::Source
+        class Source; //type: Native::Router::Lisp::Service::Ethernet::Default::MapServer::MapRegister::Validate::Source
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default_::MapServer::MapRegister::Validate::Source> source;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp::Service::Ethernet::Default::MapServer::MapRegister::Validate::Source> source;
         
-}; // Native::Router::Lisp::Service::Ethernet::Default_::MapServer::MapRegister::Validate
+}; // Native::Router::Lisp::Service::Ethernet::Default::MapServer::MapRegister::Validate
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::MapServer::MapRegister::Validate::Source : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::MapServer::MapRegister::Validate::Source : public ydk::Entity
 {
     public:
         Source();
@@ -3476,10 +3476,10 @@ class Native::Router::Lisp::Service::Ethernet::Default_::MapServer::MapRegister:
 
         ydk::YLeaf allowed_locator; //type: empty
 
-}; // Native::Router::Lisp::Service::Ethernet::Default_::MapServer::MapRegister::Validate::Source
+}; // Native::Router::Lisp::Service::Ethernet::Default::MapServer::MapRegister::Validate::Source
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::SiteRegistration : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::SiteRegistration : public ydk::Entity
 {
     public:
         SiteRegistration();
@@ -3499,10 +3499,10 @@ class Native::Router::Lisp::Service::Ethernet::Default_::SiteRegistration : publ
         ydk::YLeaf limit; //type: uint32
         ydk::YLeaf warning_threshold; //type: uint8
 
-}; // Native::Router::Lisp::Service::Ethernet::Default_::SiteRegistration
+}; // Native::Router::Lisp::Service::Ethernet::Default::SiteRegistration
 
 
-class Native::Router::Lisp::Service::Ethernet::Default_::SolicitMapRequest : public ydk::Entity
+class Native::Router::Lisp::Service::Ethernet::Default::SolicitMapRequest : public ydk::Entity
 {
     public:
         SolicitMapRequest();
@@ -3523,7 +3523,7 @@ class Native::Router::Lisp::Service::Ethernet::Default_::SolicitMapRequest : pub
         ydk::YLeaf max_per_entry; //type: uint8
         ydk::YLeaf suppression_time; //type: uint16
 
-}; // Native::Router::Lisp::Service::Ethernet::Default_::SolicitMapRequest
+}; // Native::Router::Lisp::Service::Ethernet::Default::SolicitMapRequest
 
 
 class Native::Router::Lisp::Service::Ethernet::Encapsulation : public ydk::Entity
@@ -3724,7 +3724,7 @@ class Native::Router::Lisp::Service::Ipv6::Encapsulation : public ydk::Enum
 
 };
 
-class Native::Router::Lisp::Service::Ipv6::Default_::Encapsulation : public ydk::Enum
+class Native::Router::Lisp::Service::Ipv6::Default::Encapsulation : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf lisp;
@@ -3732,7 +3732,7 @@ class Native::Router::Lisp::Service::Ipv6::Default_::Encapsulation : public ydk:
 
 };
 
-class Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::KeyPwd::HashFunction : public ydk::Enum
+class Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer::Key::KeyPwd::HashFunction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf sha1;
@@ -3740,7 +3740,7 @@ class Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::KeyPwd
 
 };
 
-class Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::Key0::HashFunction : public ydk::Enum
+class Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer::Key::Key0::HashFunction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf sha1;
@@ -3748,7 +3748,7 @@ class Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::Key0::
 
 };
 
-class Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::Key6::HashFunction : public ydk::Enum
+class Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer::Key::Key6::HashFunction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf sha1;
@@ -3756,7 +3756,7 @@ class Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::Key6::
 
 };
 
-class Native::Router::Lisp::Service::Ipv6::Default_::Etr::MapServer::Key::Key7::HashFunction : public ydk::Enum
+class Native::Router::Lisp::Service::Ipv6::Default::Etr::MapServer::Key::Key7::HashFunction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf sha1;
@@ -3796,7 +3796,7 @@ class Native::Router::Lisp::Service::Ipv6::Etr::MapServer::Key::Key7::HashFuncti
 
 };
 
-class Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::KeyPwd::HashFunction : public ydk::Enum
+class Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer::Key::KeyPwd::HashFunction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf sha1;
@@ -3804,7 +3804,7 @@ class Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::Ke
 
 };
 
-class Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::Key0::HashFunction : public ydk::Enum
+class Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer::Key::Key0::HashFunction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf sha1;
@@ -3812,7 +3812,7 @@ class Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::Ke
 
 };
 
-class Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::Key6::HashFunction : public ydk::Enum
+class Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer::Key::Key6::HashFunction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf sha1;
@@ -3820,7 +3820,7 @@ class Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::Ke
 
 };
 
-class Native::Router::Lisp::Service::Ethernet::Default_::Etr::MapServer::Key::Key7::HashFunction : public ydk::Enum
+class Native::Router::Lisp::Service::Ethernet::Default::Etr::MapServer::Key::Key7::HashFunction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf sha1;

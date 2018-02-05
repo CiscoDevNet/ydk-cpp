@@ -94,6 +94,7 @@ std::shared_ptr<Entity> CISCOIETFPWENETMIB::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWENETMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cpwvcenettable != nullptr)
     {
         children["cpwVcEnetTable"] = cpwvcenettable;
@@ -209,14 +210,6 @@ std::shared_ptr<Entity> CISCOIETFPWENETMIB::Cpwvcenettable::get_child_by_name(co
 {
     if(child_yang_name == "cpwVcEnetEntry")
     {
-        for(auto const & c : cpwvcenetentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFPWENETMIB::Cpwvcenettable::Cpwvcenetentry>();
         c->parent = this;
         cpwvcenetentry.push_back(c);
@@ -229,9 +222,14 @@ std::shared_ptr<Entity> CISCOIETFPWENETMIB::Cpwvcenettable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWENETMIB::Cpwvcenettable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpwvcenetentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -335,6 +333,7 @@ std::shared_ptr<Entity> CISCOIETFPWENETMIB::Cpwvcenettable::Cpwvcenetentry::get_
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWENETMIB::Cpwvcenettable::Cpwvcenetentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -490,14 +489,6 @@ std::shared_ptr<Entity> CISCOIETFPWENETMIB::Cpwvcenetmplsprimappingtable::get_ch
 {
     if(child_yang_name == "cpwVcEnetMplsPriMappingTableEntry")
     {
-        for(auto const & c : cpwvcenetmplsprimappingtableentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFPWENETMIB::Cpwvcenetmplsprimappingtable::Cpwvcenetmplsprimappingtableentry>();
         c->parent = this;
         cpwvcenetmplsprimappingtableentry.push_back(c);
@@ -510,9 +501,14 @@ std::shared_ptr<Entity> CISCOIETFPWENETMIB::Cpwvcenetmplsprimappingtable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWENETMIB::Cpwvcenetmplsprimappingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpwvcenetmplsprimappingtableentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -600,6 +596,7 @@ std::shared_ptr<Entity> CISCOIETFPWENETMIB::Cpwvcenetmplsprimappingtable::Cpwvce
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWENETMIB::Cpwvcenetmplsprimappingtable::Cpwvcenetmplsprimappingtableentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -713,14 +710,6 @@ std::shared_ptr<Entity> CISCOIETFPWENETMIB::Cpwvcenetstatstable::get_child_by_na
 {
     if(child_yang_name == "cpwVcEnetStatsEntry")
     {
-        for(auto const & c : cpwvcenetstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFPWENETMIB::Cpwvcenetstatstable::Cpwvcenetstatsentry>();
         c->parent = this;
         cpwvcenetstatsentry.push_back(c);
@@ -733,9 +722,14 @@ std::shared_ptr<Entity> CISCOIETFPWENETMIB::Cpwvcenetstatstable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWENETMIB::Cpwvcenetstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cpwvcenetstatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -819,6 +813,7 @@ std::shared_ptr<Entity> CISCOIETFPWENETMIB::Cpwvcenetstatstable::Cpwvcenetstatse
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFPWENETMIB::Cpwvcenetstatstable::Cpwvcenetstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

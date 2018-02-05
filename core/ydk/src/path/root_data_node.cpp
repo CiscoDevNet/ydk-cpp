@@ -70,20 +70,20 @@ ydk::path::RootDataImpl::create_datanode(const std::string& path, const std::str
     if(path.empty())
     {
         YLOG_ERROR("Path is empty");
-        throw(YCPPInvalidArgumentError{"Path is empty"});
+        throw(YInvalidArgumentError{"Path is empty"});
     }
 
     //path should not start with /
     if(path.at(0) == '/')
     {
         YLOG_ERROR("Path '{}' should not start with /", path);
-        throw(YCPPInvalidArgumentError{"Path should not start with /"});
+        throw(YInvalidArgumentError{"Path should not start with /"});
     }
     std::vector<std::string> segments = segmentalize(path);
     if(segments.size()<=0)
     {
         YLOG_ERROR("Could not segmentalize path");
-        throw(YCPPInvalidArgumentError{"Could not segmentalize path"});
+        throw(YInvalidArgumentError{"Could not segmentalize path"});
     }
 
     std::string start_seg = m_path + segments[0];
@@ -94,7 +94,7 @@ ydk::path::RootDataImpl::create_datanode(const std::string& path, const std::str
     if( dnode == nullptr)
     {
         YLOG_ERROR("Path '{}' is invalid", path);
-        throw(YCPPInvalidArgumentError{"Path is invalid: " + path});
+        throw(YInvalidArgumentError{"Path is invalid: " + path});
     }
 
     DataNodeImpl* dn = nullptr;
@@ -154,7 +154,7 @@ ydk::path::RootDataImpl::set_value(const std::string& value)
 {
     if(!value.empty()) {
         YLOG_ERROR("Invalid value being assigned to root");
-        throw(YCPPInvalidArgumentError{"Invalid value being assigned to root."});
+        throw(YInvalidArgumentError{"Invalid value being assigned to root."});
     }
 }
 

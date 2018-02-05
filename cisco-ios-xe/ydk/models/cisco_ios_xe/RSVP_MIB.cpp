@@ -159,6 +159,7 @@ std::shared_ptr<Entity> RSVPMIB::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rsvpgenobjects != nullptr)
     {
         children["rsvpGenObjects"] = rsvpgenobjects;
@@ -313,6 +314,7 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpgenobjects::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpgenobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -438,14 +440,6 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpsessiontable::get_child_by_name(const std::
 {
     if(child_yang_name == "rsvpSessionEntry")
     {
-        for(auto const & c : rsvpsessionentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RSVPMIB::Rsvpsessiontable::Rsvpsessionentry>();
         c->parent = this;
         rsvpsessionentry.push_back(c);
@@ -458,9 +452,14 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpsessiontable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsessiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rsvpsessionentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -568,6 +567,7 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -733,14 +733,6 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpsendertable::get_child_by_name(const std::s
 {
     if(child_yang_name == "rsvpSenderEntry")
     {
-        for(auto const & c : rsvpsenderentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RSVPMIB::Rsvpsendertable::Rsvpsenderentry>();
         c->parent = this;
         rsvpsenderentry.push_back(c);
@@ -753,9 +745,14 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpsendertable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsendertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rsvpsenderentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1011,6 +1008,7 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpsendertable::Rsvpsenderentry::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsendertable::Rsvpsenderentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1546,14 +1544,6 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpsenderoutinterfacetable::get_child_by_name(
 {
     if(child_yang_name == "rsvpSenderOutInterfaceEntry")
     {
-        for(auto const & c : rsvpsenderoutinterfaceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry>();
         c->parent = this;
         rsvpsenderoutinterfaceentry.push_back(c);
@@ -1566,9 +1556,14 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpsenderoutinterfacetable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsenderoutinterfacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rsvpsenderoutinterfaceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1656,6 +1651,7 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinter
 std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1771,14 +1767,6 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpresvtable::get_child_by_name(const std::str
 {
     if(child_yang_name == "rsvpResvEntry")
     {
-        for(auto const & c : rsvpresventry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RSVPMIB::Rsvpresvtable::Rsvpresventry>();
         c->parent = this;
         rsvpresventry.push_back(c);
@@ -1791,9 +1779,14 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpresvtable::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpresvtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rsvpresventry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1989,6 +1982,7 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpresvtable::Rsvpresventry::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpresvtable::Rsvpresventry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2374,14 +2368,6 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpresvfwdtable::get_child_by_name(const std::
 {
     if(child_yang_name == "rsvpResvFwdEntry")
     {
-        for(auto const & c : rsvpresvfwdentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry>();
         c->parent = this;
         rsvpresvfwdentry.push_back(c);
@@ -2394,9 +2380,14 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpresvfwdtable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpresvfwdtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rsvpresvfwdentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2592,6 +2583,7 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2977,14 +2969,6 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpiftable::get_child_by_name(const std::strin
 {
     if(child_yang_name == "rsvpIfEntry")
     {
-        for(auto const & c : rsvpifentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RSVPMIB::Rsvpiftable::Rsvpifentry>();
         c->parent = this;
         rsvpifentry.push_back(c);
@@ -2997,9 +2981,14 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpiftable::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpiftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rsvpifentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3119,6 +3108,7 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpiftable::Rsvpifentry::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpiftable::Rsvpifentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3314,14 +3304,6 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpnbrtable::get_child_by_name(const std::stri
 {
     if(child_yang_name == "rsvpNbrEntry")
     {
-        for(auto const & c : rsvpnbrentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<RSVPMIB::Rsvpnbrtable::Rsvpnbrentry>();
         c->parent = this;
         rsvpnbrentry.push_back(c);
@@ -3334,9 +3316,14 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpnbrtable::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpnbrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : rsvpnbrentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3424,6 +3411,7 @@ std::shared_ptr<Entity> RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> RSVPMIB::Rsvpnbrtable::Rsvpnbrentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

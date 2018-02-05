@@ -2524,7 +2524,7 @@ class Native::Router::Ospf::QueueDepth::Hello : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf options; //type: one of uint32, enumeration
+        ydk::YLeaf options; //type: one of enumeration, uint32
         class Options;
 
 }; // Native::Router::Ospf::QueueDepth::Hello
@@ -2546,7 +2546,7 @@ class Native::Router::Ospf::QueueDepth::Update : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf options; //type: one of uint32, enumeration
+        ydk::YLeaf options; //type: one of enumeration, uint32
         class Options;
 
 }; // Native::Router::Ospf::QueueDepth::Update
@@ -2976,7 +2976,7 @@ class Native::Router::Ospf::Redistribute : public ydk::Entity
         class Ospf_; //type: Native::Router::Ospf::Redistribute::Ospf_
         class Ospfv3; //type: Native::Router::Ospf::Redistribute::Ospfv3
         class Rip; //type: Native::Router::Ospf::Redistribute::Rip
-        class Static_; //type: Native::Router::Ospf::Redistribute::Static_
+        class Static; //type: Native::Router::Ospf::Redistribute::Static
         class MaximumPrefix; //type: Native::Router::Ospf::Redistribute::MaximumPrefix
         class Vrf; //type: Native::Router::Ospf::Redistribute::Vrf
 
@@ -2992,7 +2992,7 @@ class Native::Router::Ospf::Redistribute : public ydk::Entity
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Ospf_> > ospf;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Ospfv3> > ospfv3;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Rip> > rip;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Static_> static_; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Static> static_; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::MaximumPrefix> maximum_prefix;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::Redistribute::Vrf> vrf;
         

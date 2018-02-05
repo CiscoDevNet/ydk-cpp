@@ -133,6 +133,7 @@ std::shared_ptr<Entity> ENTITYMIB::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> ENTITYMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(entitygeneral != nullptr)
     {
         children["entityGeneral"] = entitygeneral;
@@ -261,6 +262,7 @@ std::shared_ptr<Entity> ENTITYMIB::Entitygeneral::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> ENTITYMIB::Entitygeneral::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -346,14 +348,6 @@ std::shared_ptr<Entity> ENTITYMIB::Entphysicaltable::get_child_by_name(const std
 {
     if(child_yang_name == "entPhysicalEntry")
     {
-        for(auto const & c : entphysicalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ENTITYMIB::Entphysicaltable::Entphysicalentry>();
         c->parent = this;
         entphysicalentry.push_back(c);
@@ -366,9 +360,14 @@ std::shared_ptr<Entity> ENTITYMIB::Entphysicaltable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> ENTITYMIB::Entphysicaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : entphysicalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -516,6 +515,7 @@ std::shared_ptr<Entity> ENTITYMIB::Entphysicaltable::Entphysicalentry::get_child
 std::map<std::string, std::shared_ptr<Entity>> ENTITYMIB::Entphysicaltable::Entphysicalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -781,14 +781,6 @@ std::shared_ptr<Entity> ENTITYMIB::Entlogicaltable::get_child_by_name(const std:
 {
     if(child_yang_name == "entLogicalEntry")
     {
-        for(auto const & c : entlogicalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ENTITYMIB::Entlogicaltable::Entlogicalentry>();
         c->parent = this;
         entlogicalentry.push_back(c);
@@ -801,9 +793,14 @@ std::shared_ptr<Entity> ENTITYMIB::Entlogicaltable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> ENTITYMIB::Entlogicaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : entlogicalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -907,6 +904,7 @@ std::shared_ptr<Entity> ENTITYMIB::Entlogicaltable::Entlogicalentry::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> ENTITYMIB::Entlogicaltable::Entlogicalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1062,14 +1060,6 @@ std::shared_ptr<Entity> ENTITYMIB::Entlpmappingtable::get_child_by_name(const st
 {
     if(child_yang_name == "entLPMappingEntry")
     {
-        for(auto const & c : entlpmappingentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ENTITYMIB::Entlpmappingtable::Entlpmappingentry>();
         c->parent = this;
         entlpmappingentry.push_back(c);
@@ -1082,9 +1072,14 @@ std::shared_ptr<Entity> ENTITYMIB::Entlpmappingtable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> ENTITYMIB::Entlpmappingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : entlpmappingentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1164,6 +1159,7 @@ std::shared_ptr<Entity> ENTITYMIB::Entlpmappingtable::Entlpmappingentry::get_chi
 std::map<std::string, std::shared_ptr<Entity>> ENTITYMIB::Entlpmappingtable::Entlpmappingentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1259,14 +1255,6 @@ std::shared_ptr<Entity> ENTITYMIB::Entaliasmappingtable::get_child_by_name(const
 {
     if(child_yang_name == "entAliasMappingEntry")
     {
-        for(auto const & c : entaliasmappingentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ENTITYMIB::Entaliasmappingtable::Entaliasmappingentry>();
         c->parent = this;
         entaliasmappingentry.push_back(c);
@@ -1279,9 +1267,14 @@ std::shared_ptr<Entity> ENTITYMIB::Entaliasmappingtable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> ENTITYMIB::Entaliasmappingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : entaliasmappingentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1365,6 +1358,7 @@ std::shared_ptr<Entity> ENTITYMIB::Entaliasmappingtable::Entaliasmappingentry::g
 std::map<std::string, std::shared_ptr<Entity>> ENTITYMIB::Entaliasmappingtable::Entaliasmappingentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1470,14 +1464,6 @@ std::shared_ptr<Entity> ENTITYMIB::Entphysicalcontainstable::get_child_by_name(c
 {
     if(child_yang_name == "entPhysicalContainsEntry")
     {
-        for(auto const & c : entphysicalcontainsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<ENTITYMIB::Entphysicalcontainstable::Entphysicalcontainsentry>();
         c->parent = this;
         entphysicalcontainsentry.push_back(c);
@@ -1490,9 +1476,14 @@ std::shared_ptr<Entity> ENTITYMIB::Entphysicalcontainstable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> ENTITYMIB::Entphysicalcontainstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : entphysicalcontainsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1572,6 +1563,7 @@ std::shared_ptr<Entity> ENTITYMIB::Entphysicalcontainstable::Entphysicalcontains
 std::map<std::string, std::shared_ptr<Entity>> ENTITYMIB::Entphysicalcontainstable::Entphysicalcontainsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

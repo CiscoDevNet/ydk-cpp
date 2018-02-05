@@ -276,6 +276,7 @@ std::shared_ptr<Entity> IPMIB::get_child_by_name(const std::string & child_yang_
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ip != nullptr)
     {
         children["ip"] = ip;
@@ -559,6 +560,7 @@ std::shared_ptr<Entity> IPMIB::Ip::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -892,6 +894,7 @@ std::shared_ptr<Entity> IPMIB::Iptrafficstats::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Iptrafficstats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1075,6 +1078,7 @@ std::shared_ptr<Entity> IPMIB::Icmp::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Icmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1410,14 +1414,6 @@ std::shared_ptr<Entity> IPMIB::Ipaddrtable::get_child_by_name(const std::string 
 {
     if(child_yang_name == "ipAddrEntry")
     {
-        for(auto const & c : ipaddrentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IPMIB::Ipaddrtable::Ipaddrentry>();
         c->parent = this;
         ipaddrentry.push_back(c);
@@ -1430,9 +1426,14 @@ std::shared_ptr<Entity> IPMIB::Ipaddrtable::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipaddrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipaddrentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1524,6 +1525,7 @@ std::shared_ptr<Entity> IPMIB::Ipaddrtable::Ipaddrentry::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipaddrtable::Ipaddrentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1649,14 +1651,6 @@ std::shared_ptr<Entity> IPMIB::Ipnettomediatable::get_child_by_name(const std::s
 {
     if(child_yang_name == "ipNetToMediaEntry")
     {
-        for(auto const & c : ipnettomediaentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IPMIB::Ipnettomediatable::Ipnettomediaentry>();
         c->parent = this;
         ipnettomediaentry.push_back(c);
@@ -1669,9 +1663,14 @@ std::shared_ptr<Entity> IPMIB::Ipnettomediatable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipnettomediatable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipnettomediaentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1759,6 +1758,7 @@ std::shared_ptr<Entity> IPMIB::Ipnettomediatable::Ipnettomediaentry::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipnettomediatable::Ipnettomediaentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1874,14 +1874,6 @@ std::shared_ptr<Entity> IPMIB::Ipv4Interfacetable::get_child_by_name(const std::
 {
     if(child_yang_name == "ipv4InterfaceEntry")
     {
-        for(auto const & c : ipv4interfaceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry>();
         c->parent = this;
         ipv4interfaceentry.push_back(c);
@@ -1894,9 +1886,14 @@ std::shared_ptr<Entity> IPMIB::Ipv4Interfacetable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv4Interfacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv4interfaceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1984,6 +1981,7 @@ std::shared_ptr<Entity> IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry::get_child
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv4Interfacetable::Ipv4Interfaceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2099,14 +2097,6 @@ std::shared_ptr<Entity> IPMIB::Ipv6Interfacetable::get_child_by_name(const std::
 {
     if(child_yang_name == "ipv6InterfaceEntry")
     {
-        for(auto const & c : ipv6interfaceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry>();
         c->parent = this;
         ipv6interfaceentry.push_back(c);
@@ -2119,9 +2109,14 @@ std::shared_ptr<Entity> IPMIB::Ipv6Interfacetable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6Interfacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6interfaceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2221,6 +2216,7 @@ std::shared_ptr<Entity> IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::get_child
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6Interfacetable::Ipv6Interfaceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2366,14 +2362,6 @@ std::shared_ptr<Entity> IPMIB::Ipsystemstatstable::get_child_by_name(const std::
 {
     if(child_yang_name == "ipSystemStatsEntry")
     {
-        for(auto const & c : ipsystemstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IPMIB::Ipsystemstatstable::Ipsystemstatsentry>();
         c->parent = this;
         ipsystemstatsentry.push_back(c);
@@ -2386,9 +2374,14 @@ std::shared_ptr<Entity> IPMIB::Ipsystemstatstable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipsystemstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipsystemstatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2644,6 +2637,7 @@ std::shared_ptr<Entity> IPMIB::Ipsystemstatstable::Ipsystemstatsentry::get_child
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipsystemstatstable::Ipsystemstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3179,14 +3173,6 @@ std::shared_ptr<Entity> IPMIB::Ipifstatstable::get_child_by_name(const std::stri
 {
     if(child_yang_name == "ipIfStatsEntry")
     {
-        for(auto const & c : ipifstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IPMIB::Ipifstatstable::Ipifstatsentry>();
         c->parent = this;
         ipifstatsentry.push_back(c);
@@ -3199,9 +3185,14 @@ std::shared_ptr<Entity> IPMIB::Ipifstatstable::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipifstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipifstatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3457,6 +3448,7 @@ std::shared_ptr<Entity> IPMIB::Ipifstatstable::Ipifstatsentry::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipifstatstable::Ipifstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3992,14 +3984,6 @@ std::shared_ptr<Entity> IPMIB::Ipaddressprefixtable::get_child_by_name(const std
 {
     if(child_yang_name == "ipAddressPrefixEntry")
     {
-        for(auto const & c : ipaddressprefixentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IPMIB::Ipaddressprefixtable::Ipaddressprefixentry>();
         c->parent = this;
         ipaddressprefixentry.push_back(c);
@@ -4012,9 +3996,14 @@ std::shared_ptr<Entity> IPMIB::Ipaddressprefixtable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipaddressprefixtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipaddressprefixentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4122,6 +4111,7 @@ std::shared_ptr<Entity> IPMIB::Ipaddressprefixtable::Ipaddressprefixentry::get_c
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipaddressprefixtable::Ipaddressprefixentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4287,14 +4277,6 @@ std::shared_ptr<Entity> IPMIB::Ipaddresstable::get_child_by_name(const std::stri
 {
     if(child_yang_name == "ipAddressEntry")
     {
-        for(auto const & c : ipaddressentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IPMIB::Ipaddresstable::Ipaddressentry>();
         c->parent = this;
         ipaddressentry.push_back(c);
@@ -4307,9 +4289,14 @@ std::shared_ptr<Entity> IPMIB::Ipaddresstable::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipaddresstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipaddressentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4425,6 +4412,7 @@ std::shared_ptr<Entity> IPMIB::Ipaddresstable::Ipaddressentry::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipaddresstable::Ipaddressentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4610,14 +4598,6 @@ std::shared_ptr<Entity> IPMIB::Ipnettophysicaltable::get_child_by_name(const std
 {
     if(child_yang_name == "ipNetToPhysicalEntry")
     {
-        for(auto const & c : ipnettophysicalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IPMIB::Ipnettophysicaltable::Ipnettophysicalentry>();
         c->parent = this;
         ipnettophysicalentry.push_back(c);
@@ -4630,9 +4610,14 @@ std::shared_ptr<Entity> IPMIB::Ipnettophysicaltable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipnettophysicaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipnettophysicalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4736,6 +4721,7 @@ std::shared_ptr<Entity> IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::get_c
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipnettophysicaltable::Ipnettophysicalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4891,14 +4877,6 @@ std::shared_ptr<Entity> IPMIB::Ipv6Scopezoneindextable::get_child_by_name(const 
 {
     if(child_yang_name == "ipv6ScopeZoneIndexEntry")
     {
-        for(auto const & c : ipv6scopezoneindexentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry>();
         c->parent = this;
         ipv6scopezoneindexentry.push_back(c);
@@ -4911,9 +4889,14 @@ std::shared_ptr<Entity> IPMIB::Ipv6Scopezoneindextable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6Scopezoneindextable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6scopezoneindexentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5037,6 +5020,7 @@ std::shared_ptr<Entity> IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry:
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6Scopezoneindextable::Ipv6Scopezoneindexentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5242,14 +5226,6 @@ std::shared_ptr<Entity> IPMIB::Ipdefaultroutertable::get_child_by_name(const std
 {
     if(child_yang_name == "ipDefaultRouterEntry")
     {
-        for(auto const & c : ipdefaultrouterentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry>();
         c->parent = this;
         ipdefaultrouterentry.push_back(c);
@@ -5262,9 +5238,14 @@ std::shared_ptr<Entity> IPMIB::Ipdefaultroutertable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipdefaultroutertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipdefaultrouterentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5356,6 +5337,7 @@ std::shared_ptr<Entity> IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry::get_c
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipdefaultroutertable::Ipdefaultrouterentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5481,14 +5463,6 @@ std::shared_ptr<Entity> IPMIB::Ipv6Routeradverttable::get_child_by_name(const st
 {
     if(child_yang_name == "ipv6RouterAdvertEntry")
     {
-        for(auto const & c : ipv6routeradvertentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry>();
         c->parent = this;
         ipv6routeradvertentry.push_back(c);
@@ -5501,9 +5475,14 @@ std::shared_ptr<Entity> IPMIB::Ipv6Routeradverttable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6Routeradverttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv6routeradvertentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5623,6 +5602,7 @@ std::shared_ptr<Entity> IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry::get
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Ipv6Routeradverttable::Ipv6Routeradvertentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5818,14 +5798,6 @@ std::shared_ptr<Entity> IPMIB::Icmpstatstable::get_child_by_name(const std::stri
 {
     if(child_yang_name == "icmpStatsEntry")
     {
-        for(auto const & c : icmpstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IPMIB::Icmpstatstable::Icmpstatsentry>();
         c->parent = this;
         icmpstatsentry.push_back(c);
@@ -5838,9 +5810,14 @@ std::shared_ptr<Entity> IPMIB::Icmpstatstable::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Icmpstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : icmpstatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5932,6 +5909,7 @@ std::shared_ptr<Entity> IPMIB::Icmpstatstable::Icmpstatsentry::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Icmpstatstable::Icmpstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6057,14 +6035,6 @@ std::shared_ptr<Entity> IPMIB::Icmpmsgstatstable::get_child_by_name(const std::s
 {
     if(child_yang_name == "icmpMsgStatsEntry")
     {
-        for(auto const & c : icmpmsgstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry>();
         c->parent = this;
         icmpmsgstatsentry.push_back(c);
@@ -6077,9 +6047,14 @@ std::shared_ptr<Entity> IPMIB::Icmpmsgstatstable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Icmpmsgstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : icmpmsgstatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6167,6 +6142,7 @@ std::shared_ptr<Entity> IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> IPMIB::Icmpmsgstatstable::Icmpmsgstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

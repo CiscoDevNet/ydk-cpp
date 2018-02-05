@@ -81,6 +81,7 @@ std::shared_ptr<Entity> SyncFrom::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> SyncFrom::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -193,6 +194,7 @@ std::shared_ptr<Entity> SyncFrom::Input::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> SyncFrom::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -286,6 +288,7 @@ std::shared_ptr<Entity> SyncFrom::Output::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> SyncFrom::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -371,6 +374,7 @@ std::shared_ptr<Entity> SaveConfig::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> SaveConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(output != nullptr)
     {
         children["output"] = output;
@@ -474,6 +478,7 @@ std::shared_ptr<Entity> SaveConfig::Output::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> SaveConfig::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -559,6 +564,7 @@ std::shared_ptr<Entity> IsSyncing::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> IsSyncing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(output != nullptr)
     {
         children["output"] = output;
@@ -662,6 +668,7 @@ std::shared_ptr<Entity> IsSyncing::Output::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> IsSyncing::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -747,6 +754,7 @@ std::shared_ptr<Entity> Checkpoint::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Checkpoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(output != nullptr)
     {
         children["output"] = output;
@@ -850,6 +858,7 @@ std::shared_ptr<Entity> Checkpoint::Output::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Checkpoint::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -948,6 +957,7 @@ std::shared_ptr<Entity> Revert::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> Revert::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1064,6 +1074,7 @@ std::shared_ptr<Entity> Revert::Input::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Revert::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1167,6 +1178,7 @@ std::shared_ptr<Entity> Revert::Output::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> Revert::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1265,6 +1277,7 @@ std::shared_ptr<Entity> Rollback::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> Rollback::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -1389,6 +1402,7 @@ std::shared_ptr<Entity> Rollback::Input::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Rollback::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1512,6 +1526,7 @@ std::shared_ptr<Entity> Rollback::Output::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Rollback::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

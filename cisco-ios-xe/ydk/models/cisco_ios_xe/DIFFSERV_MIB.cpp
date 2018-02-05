@@ -441,6 +441,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(diffservclassifier != nullptr)
     {
         children["diffServClassifier"] = diffservclassifier;
@@ -657,6 +658,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservclassifier::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservclassifier::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -760,6 +762,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservmeter::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservmeter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -843,6 +846,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservtbparam::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservtbparam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -930,6 +934,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservaction::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservaction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1027,6 +1032,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservalgdrop::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservalgdrop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1120,6 +1126,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservqueue::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservqueue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1211,6 +1218,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservscheduler::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservscheduler::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1316,14 +1324,6 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservdatapathtable::get_child_by_name(co
 {
     if(child_yang_name == "diffServDataPathEntry")
     {
-        for(auto const & c : diffservdatapathentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry>();
         c->parent = this;
         diffservdatapathentry.push_back(c);
@@ -1336,9 +1336,14 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservdatapathtable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservdatapathtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : diffservdatapathentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1430,6 +1435,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentr
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1555,14 +1561,6 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservclfrtable::get_child_by_name(const 
 {
     if(child_yang_name == "diffServClfrEntry")
     {
-        for(auto const & c : diffservclfrentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry>();
         c->parent = this;
         diffservclfrentry.push_back(c);
@@ -1575,9 +1573,14 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservclfrtable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservclfrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : diffservclfrentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1661,6 +1664,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry::get_c
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1766,14 +1770,6 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservclfrelementtable::get_child_by_name
 {
     if(child_yang_name == "diffServClfrElementEntry")
     {
-        for(auto const & c : diffservclfrelemententry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry>();
         c->parent = this;
         diffservclfrelemententry.push_back(c);
@@ -1786,9 +1782,14 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservclfrelementtable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservclfrelementtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : diffservclfrelemententry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1888,6 +1889,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservclfrelementtable::Diffservclfreleme
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2033,14 +2035,6 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservmultifieldclfrtable::get_child_by_n
 {
     if(child_yang_name == "diffServMultiFieldClfrEntry")
     {
-        for(auto const & c : diffservmultifieldclfrentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry>();
         c->parent = this;
         diffservmultifieldclfrentry.push_back(c);
@@ -2053,9 +2047,14 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservmultifieldclfrtable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservmultifieldclfrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : diffservmultifieldclfrentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2187,6 +2186,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultif
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2412,14 +2412,6 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservmetertable::get_child_by_name(const
 {
     if(child_yang_name == "diffServMeterEntry")
     {
-        for(auto const & c : diffservmeterentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DIFFSERVMIB::Diffservmetertable::Diffservmeterentry>();
         c->parent = this;
         diffservmeterentry.push_back(c);
@@ -2432,9 +2424,14 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservmetertable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservmetertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : diffservmeterentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2530,6 +2527,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservmetertable::Diffservmeterentry::get
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservmetertable::Diffservmeterentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2665,14 +2663,6 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservtbparamtable::get_child_by_name(con
 {
     if(child_yang_name == "diffServTBParamEntry")
     {
-        for(auto const & c : diffservtbparamentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry>();
         c->parent = this;
         diffservtbparamentry.push_back(c);
@@ -2685,9 +2675,14 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservtbparamtable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservtbparamtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : diffservtbparamentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2787,6 +2782,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry:
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2932,14 +2928,6 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservactiontable::get_child_by_name(cons
 {
     if(child_yang_name == "diffServActionEntry")
     {
-        for(auto const & c : diffservactionentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DIFFSERVMIB::Diffservactiontable::Diffservactionentry>();
         c->parent = this;
         diffservactionentry.push_back(c);
@@ -2952,9 +2940,14 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservactiontable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservactiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : diffservactionentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3050,6 +3043,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservactiontable::Diffservactionentry::g
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservactiontable::Diffservactionentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3185,14 +3179,6 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservdscpmarkacttable::get_child_by_name
 {
     if(child_yang_name == "diffServDscpMarkActEntry")
     {
-        for(auto const & c : diffservdscpmarkactentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DIFFSERVMIB::Diffservdscpmarkacttable::Diffservdscpmarkactentry>();
         c->parent = this;
         diffservdscpmarkactentry.push_back(c);
@@ -3205,9 +3191,14 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservdscpmarkacttable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservdscpmarkacttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : diffservdscpmarkactentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3283,6 +3274,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservdscpmarkacttable::Diffservdscpmarka
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservdscpmarkacttable::Diffservdscpmarkactentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3368,14 +3360,6 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservcountacttable::get_child_by_name(co
 {
     if(child_yang_name == "diffServCountActEntry")
     {
-        for(auto const & c : diffservcountactentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry>();
         c->parent = this;
         diffservcountactentry.push_back(c);
@@ -3388,9 +3372,14 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservcountacttable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservcountacttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : diffservcountactentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3482,6 +3471,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservcountacttable::Diffservcountactentr
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3607,14 +3597,6 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservalgdroptable::get_child_by_name(con
 {
     if(child_yang_name == "diffServAlgDropEntry")
     {
-        for(auto const & c : diffservalgdropentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry>();
         c->parent = this;
         diffservalgdropentry.push_back(c);
@@ -3627,9 +3609,14 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservalgdroptable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservalgdroptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : diffservalgdropentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3749,6 +3736,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry:
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3944,14 +3932,6 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservrandomdroptable::get_child_by_name(
 {
     if(child_yang_name == "diffServRandomDropEntry")
     {
-        for(auto const & c : diffservrandomdropentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry>();
         c->parent = this;
         diffservrandomdropentry.push_back(c);
@@ -3964,9 +3944,14 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservrandomdroptable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservrandomdroptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : diffservrandomdropentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4078,6 +4063,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdrop
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4253,14 +4239,6 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservqtable::get_child_by_name(const std
 {
     if(child_yang_name == "diffServQEntry")
     {
-        for(auto const & c : diffservqentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DIFFSERVMIB::Diffservqtable::Diffservqentry>();
         c->parent = this;
         diffservqentry.push_back(c);
@@ -4273,9 +4251,14 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservqtable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservqtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : diffservqentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4371,6 +4354,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservqtable::Diffservqentry::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservqtable::Diffservqentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4506,14 +4490,6 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservschedulertable::get_child_by_name(c
 {
     if(child_yang_name == "diffServSchedulerEntry")
     {
-        for(auto const & c : diffservschedulerentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry>();
         c->parent = this;
         diffservschedulerentry.push_back(c);
@@ -4526,9 +4502,14 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservschedulertable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservschedulertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : diffservschedulerentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4628,6 +4609,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservschedulertable::Diffservscheduleren
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4773,14 +4755,6 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservminratetable::get_child_by_name(con
 {
     if(child_yang_name == "diffServMinRateEntry")
     {
-        for(auto const & c : diffservminrateentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DIFFSERVMIB::Diffservminratetable::Diffservminrateentry>();
         c->parent = this;
         diffservminrateentry.push_back(c);
@@ -4793,9 +4767,14 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservminratetable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservminratetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : diffservminrateentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4891,6 +4870,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservminratetable::Diffservminrateentry:
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservminratetable::Diffservminrateentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5026,14 +5006,6 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservmaxratetable::get_child_by_name(con
 {
     if(child_yang_name == "diffServMaxRateEntry")
     {
-        for(auto const & c : diffservmaxrateentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry>();
         c->parent = this;
         diffservmaxrateentry.push_back(c);
@@ -5046,9 +5018,14 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservmaxratetable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservmaxratetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : diffservmaxrateentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5148,6 +5125,7 @@ std::shared_ptr<Entity> DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry:
 std::map<std::string, std::shared_ptr<Entity>> DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

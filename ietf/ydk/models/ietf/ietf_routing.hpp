@@ -4907,14 +4907,14 @@ class Direct : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 
 }; // Direct
 
-class Static_ : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
+class Static : public ietf::ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
 
-}; // Static_
+}; // Static
 
 class RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::NetworkType : public ydk::Enum
 {

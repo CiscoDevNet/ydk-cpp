@@ -61,14 +61,6 @@ std::shared_ptr<Entity> AccessLists::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "access-list")
     {
-        for(auto const & c : access_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AccessLists::AccessList>();
         c->parent = this;
         access_list.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> AccessLists::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> AccessLists::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : access_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -198,6 +195,7 @@ std::shared_ptr<Entity> AccessLists::AccessList::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> AccessLists::AccessList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(access_list_entries != nullptr)
     {
         children["access-list-entries"] = access_list_entries;
@@ -281,14 +279,6 @@ std::shared_ptr<Entity> AccessLists::AccessList::AccessListEntries::get_child_by
 {
     if(child_yang_name == "access-list-entry")
     {
-        for(auto const & c : access_list_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<AccessLists::AccessList::AccessListEntries::AccessListEntry>();
         c->parent = this;
         access_list_entry.push_back(c);
@@ -301,9 +291,14 @@ std::shared_ptr<Entity> AccessLists::AccessList::AccessListEntries::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> AccessLists::AccessList::AccessListEntries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : access_list_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -386,6 +381,7 @@ std::shared_ptr<Entity> AccessLists::AccessList::AccessListEntries::AccessListEn
 std::map<std::string, std::shared_ptr<Entity>> AccessLists::AccessList::AccessListEntries::AccessListEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(access_list_entries_oper_data != nullptr)
     {
         children["access-list-entries-oper-data"] = access_list_entries_oper_data;
@@ -467,6 +463,7 @@ std::shared_ptr<Entity> AccessLists::AccessList::AccessListEntries::AccessListEn
 std::map<std::string, std::shared_ptr<Entity>> AccessLists::AccessList::AccessListEntries::AccessListEntry::AccessListEntriesOperData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

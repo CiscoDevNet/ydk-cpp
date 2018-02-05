@@ -19,7 +19,7 @@ Ptp::Ptp()
     min_clock_class{YType::uint32, "min-clock-class"},
     uncalibrated_clock_class{YType::uint32, "uncalibrated-clock-class"}
     	,
-    clock_(std::make_shared<Ptp::Clock_>())
+    clock_(std::make_shared<Ptp::Clock>())
 	,profiles(std::make_shared<Ptp::Profiles>())
 	,logging(std::make_shared<Ptp::Logging>())
 	,transparent_clock(std::make_shared<Ptp::TransparentClock>())
@@ -90,7 +90,7 @@ std::shared_ptr<Entity> Ptp::get_child_by_name(const std::string & child_yang_na
     {
         if(clock_ == nullptr)
         {
-            clock_ = std::make_shared<Ptp::Clock_>();
+            clock_ = std::make_shared<Ptp::Clock>();
         }
         return clock_;
     }
@@ -128,6 +128,7 @@ std::shared_ptr<Entity> Ptp::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Ptp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(clock_ != nullptr)
     {
         children["clock"] = clock_;
@@ -241,7 +242,7 @@ bool Ptp::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-Ptp::Clock_::Clock_()
+Ptp::Clock::Clock()
     :
     timescale{YType::enumeration, "timescale"},
     domain{YType::uint32, "domain"},
@@ -250,8 +251,8 @@ Ptp::Clock_::Clock_()
     priority1{YType::uint32, "priority1"},
     clock_class{YType::uint32, "clock-class"}
     	,
-    profile(std::make_shared<Ptp::Clock_::Profile>())
-	,identity(std::make_shared<Ptp::Clock_::Identity>())
+    profile(std::make_shared<Ptp::Clock::Profile>())
+	,identity(std::make_shared<Ptp::Clock::Identity>())
 {
     profile->parent = this;
     identity->parent = this;
@@ -259,11 +260,11 @@ Ptp::Clock_::Clock_()
     yang_name = "clock"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Ptp::Clock_::~Clock_()
+Ptp::Clock::~Clock()
 {
 }
 
-bool Ptp::Clock_::has_data() const
+bool Ptp::Clock::has_data() const
 {
     return timescale.is_set
 	|| domain.is_set
@@ -275,7 +276,7 @@ bool Ptp::Clock_::has_data() const
 	|| (identity !=  nullptr && identity->has_data());
 }
 
-bool Ptp::Clock_::has_operation() const
+bool Ptp::Clock::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(timescale.yfilter)
@@ -288,21 +289,21 @@ bool Ptp::Clock_::has_operation() const
 	|| (identity !=  nullptr && identity->has_operation());
 }
 
-std::string Ptp::Clock_::get_absolute_path() const
+std::string Ptp::Clock::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ptp-cfg:ptp/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Ptp::Clock_::get_segment_path() const
+std::string Ptp::Clock::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clock";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ptp::Clock_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ptp::Clock::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -317,13 +318,13 @@ std::vector<std::pair<std::string, LeafData> > Ptp::Clock_::get_name_leaf_data()
 
 }
 
-std::shared_ptr<Entity> Ptp::Clock_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ptp::Clock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "profile")
     {
         if(profile == nullptr)
         {
-            profile = std::make_shared<Ptp::Clock_::Profile>();
+            profile = std::make_shared<Ptp::Clock::Profile>();
         }
         return profile;
     }
@@ -332,7 +333,7 @@ std::shared_ptr<Entity> Ptp::Clock_::get_child_by_name(const std::string & child
     {
         if(identity == nullptr)
         {
-            identity = std::make_shared<Ptp::Clock_::Identity>();
+            identity = std::make_shared<Ptp::Clock::Identity>();
         }
         return identity;
     }
@@ -340,9 +341,10 @@ std::shared_ptr<Entity> Ptp::Clock_::get_child_by_name(const std::string & child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ptp::Clock_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Clock::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(profile != nullptr)
     {
         children["profile"] = profile;
@@ -356,7 +358,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ptp::Clock_::get_children() const
     return children;
 }
 
-void Ptp::Clock_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ptp::Clock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "timescale")
     {
@@ -396,7 +398,7 @@ void Ptp::Clock_::set_value(const std::string & value_path, const std::string & 
     }
 }
 
-void Ptp::Clock_::set_filter(const std::string & value_path, YFilter yfilter)
+void Ptp::Clock::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "timescale")
     {
@@ -424,14 +426,14 @@ void Ptp::Clock_::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-bool Ptp::Clock_::has_leaf_or_child_of_name(const std::string & name) const
+bool Ptp::Clock::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "profile" || name == "identity" || name == "timescale" || name == "domain" || name == "priority2" || name == "time-source" || name == "priority1" || name == "clock-class")
         return true;
     return false;
 }
 
-Ptp::Clock_::Profile::Profile()
+Ptp::Clock::Profile::Profile()
     :
     clock_profile{YType::enumeration, "clock-profile"},
     telecom_clock_type{YType::enumeration, "telecom-clock-type"}
@@ -440,38 +442,38 @@ Ptp::Clock_::Profile::Profile()
     yang_name = "profile"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Ptp::Clock_::Profile::~Profile()
+Ptp::Clock::Profile::~Profile()
 {
 }
 
-bool Ptp::Clock_::Profile::has_data() const
+bool Ptp::Clock::Profile::has_data() const
 {
     return clock_profile.is_set
 	|| telecom_clock_type.is_set;
 }
 
-bool Ptp::Clock_::Profile::has_operation() const
+bool Ptp::Clock::Profile::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(clock_profile.yfilter)
 	|| ydk::is_set(telecom_clock_type.yfilter);
 }
 
-std::string Ptp::Clock_::Profile::get_absolute_path() const
+std::string Ptp::Clock::Profile::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ptp-cfg:ptp/clock/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Ptp::Clock_::Profile::get_segment_path() const
+std::string Ptp::Clock::Profile::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "profile";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ptp::Clock_::Profile::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ptp::Clock::Profile::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -482,18 +484,19 @@ std::vector<std::pair<std::string, LeafData> > Ptp::Clock_::Profile::get_name_le
 
 }
 
-std::shared_ptr<Entity> Ptp::Clock_::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ptp::Clock::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ptp::Clock_::Profile::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Clock::Profile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Ptp::Clock_::Profile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ptp::Clock::Profile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "clock-profile")
     {
@@ -509,7 +512,7 @@ void Ptp::Clock_::Profile::set_value(const std::string & value_path, const std::
     }
 }
 
-void Ptp::Clock_::Profile::set_filter(const std::string & value_path, YFilter yfilter)
+void Ptp::Clock::Profile::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "clock-profile")
     {
@@ -521,14 +524,14 @@ void Ptp::Clock_::Profile::set_filter(const std::string & value_path, YFilter yf
     }
 }
 
-bool Ptp::Clock_::Profile::has_leaf_or_child_of_name(const std::string & name) const
+bool Ptp::Clock::Profile::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clock-profile" || name == "telecom-clock-type")
         return true;
     return false;
 }
 
-Ptp::Clock_::Identity::Identity()
+Ptp::Clock::Identity::Identity()
     :
     clock_id_type{YType::enumeration, "clock-id-type"},
     mac_address{YType::str, "mac-address"},
@@ -538,18 +541,18 @@ Ptp::Clock_::Identity::Identity()
     yang_name = "identity"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Ptp::Clock_::Identity::~Identity()
+Ptp::Clock::Identity::~Identity()
 {
 }
 
-bool Ptp::Clock_::Identity::has_data() const
+bool Ptp::Clock::Identity::has_data() const
 {
     return clock_id_type.is_set
 	|| mac_address.is_set
 	|| eui.is_set;
 }
 
-bool Ptp::Clock_::Identity::has_operation() const
+bool Ptp::Clock::Identity::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(clock_id_type.yfilter)
@@ -557,21 +560,21 @@ bool Ptp::Clock_::Identity::has_operation() const
 	|| ydk::is_set(eui.yfilter);
 }
 
-std::string Ptp::Clock_::Identity::get_absolute_path() const
+std::string Ptp::Clock::Identity::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ptp-cfg:ptp/clock/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Ptp::Clock_::Identity::get_segment_path() const
+std::string Ptp::Clock::Identity::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "identity";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ptp::Clock_::Identity::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ptp::Clock::Identity::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -583,18 +586,19 @@ std::vector<std::pair<std::string, LeafData> > Ptp::Clock_::Identity::get_name_l
 
 }
 
-std::shared_ptr<Entity> Ptp::Clock_::Identity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ptp::Clock::Identity::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ptp::Clock_::Identity::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ptp::Clock::Identity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Ptp::Clock_::Identity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ptp::Clock::Identity::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "clock-id-type")
     {
@@ -616,7 +620,7 @@ void Ptp::Clock_::Identity::set_value(const std::string & value_path, const std:
     }
 }
 
-void Ptp::Clock_::Identity::set_filter(const std::string & value_path, YFilter yfilter)
+void Ptp::Clock::Identity::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "clock-id-type")
     {
@@ -632,7 +636,7 @@ void Ptp::Clock_::Identity::set_filter(const std::string & value_path, YFilter y
     }
 }
 
-bool Ptp::Clock_::Identity::has_leaf_or_child_of_name(const std::string & name) const
+bool Ptp::Clock::Identity::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clock-id-type" || name == "mac-address" || name == "eui")
         return true;
@@ -696,14 +700,6 @@ std::shared_ptr<Entity> Ptp::Profiles::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "profile")
     {
-        for(auto const & c : profile)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::Profiles::Profile>();
         c->parent = this;
         profile.push_back(c);
@@ -716,9 +712,14 @@ std::shared_ptr<Entity> Ptp::Profiles::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : profile)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -963,6 +964,7 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(announce_interval != nullptr)
     {
         children["announce-interval"] = announce_interval;
@@ -1243,6 +1245,7 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::AnnounceInterval::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::AnnounceInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1333,6 +1336,7 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::SourceIpv4Address::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::SourceIpv4Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1421,14 +1425,6 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::Slaves::get_child_by_name(const 
 {
     if(child_yang_name == "slave")
     {
-        for(auto const & c : slave)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::Profiles::Profile::Slaves::Slave>();
         c->parent = this;
         slave.push_back(c);
@@ -1441,9 +1437,14 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::Slaves::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::Slaves::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : slave)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1528,14 +1529,6 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::Slaves::Slave::get_child_by_name
 {
     if(child_yang_name == "ethernet")
     {
-        for(auto const & c : ethernet)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::Profiles::Profile::Slaves::Slave::Ethernet>();
         c->parent = this;
         ethernet.push_back(c);
@@ -1544,14 +1537,6 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::Slaves::Slave::get_child_by_name
 
     if(child_yang_name == "ipv4-or-ipv6")
     {
-        for(auto const & c : ipv4_or_ipv6)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::Profiles::Profile::Slaves::Slave::Ipv4OrIpv6>();
         c->parent = this;
         ipv4_or_ipv6.push_back(c);
@@ -1564,14 +1549,23 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::Slaves::Slave::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::Slaves::Slave::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ethernet)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ipv4_or_ipv6)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1654,6 +1648,7 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::Slaves::Slave::Ethernet::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::Slaves::Slave::Ethernet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1744,6 +1739,7 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::Slaves::Slave::Ipv4OrIpv6::get_c
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::Slaves::Slave::Ipv4OrIpv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1834,6 +1830,7 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::SyncInterval::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::SyncInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1922,14 +1919,6 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::Masters::get_child_by_name(const
 {
     if(child_yang_name == "master")
     {
-        for(auto const & c : master)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::Profiles::Profile::Masters::Master>();
         c->parent = this;
         master.push_back(c);
@@ -1942,9 +1931,14 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::Masters::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::Masters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : master)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2029,14 +2023,6 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::Masters::Master::get_child_by_na
 {
     if(child_yang_name == "ethernet")
     {
-        for(auto const & c : ethernet)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::Profiles::Profile::Masters::Master::Ethernet>();
         c->parent = this;
         ethernet.push_back(c);
@@ -2045,14 +2031,6 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::Masters::Master::get_child_by_na
 
     if(child_yang_name == "ipv4-or-ipv6")
     {
-        for(auto const & c : ipv4_or_ipv6)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::Profiles::Profile::Masters::Master::Ipv4OrIpv6>();
         c->parent = this;
         ipv4_or_ipv6.push_back(c);
@@ -2065,14 +2043,23 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::Masters::Master::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::Masters::Master::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ethernet)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ipv4_or_ipv6)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2180,6 +2167,7 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::Masters::Master::Ethernet::get_c
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::Masters::Master::Ethernet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(delay_asymmetry != nullptr)
     {
         children["delay-asymmetry"] = delay_asymmetry;
@@ -2305,6 +2293,7 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::Masters::Master::Ethernet::Delay
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::Masters::Master::Ethernet::DelayAsymmetry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2420,6 +2409,7 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::Masters::Master::Ipv4OrIpv6::get
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::Masters::Master::Ipv4OrIpv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(delay_asymmetry != nullptr)
     {
         children["delay-asymmetry"] = delay_asymmetry;
@@ -2545,6 +2535,7 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::Masters::Master::Ipv4OrIpv6::Del
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::Masters::Master::Ipv4OrIpv6::DelayAsymmetry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2639,6 +2630,7 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::Communication::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::Communication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2739,6 +2731,7 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::DelayRequestMinimumInterval::get
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::DelayRequestMinimumInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2829,6 +2822,7 @@ std::shared_ptr<Entity> Ptp::Profiles::Profile::SourceIpv6Address::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Profiles::Profile::SourceIpv6Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2944,6 +2938,7 @@ std::shared_ptr<Entity> Ptp::Logging::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Logging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(best_master_clock != nullptr)
     {
         children["best-master-clock"] = best_master_clock;
@@ -3027,6 +3022,7 @@ std::shared_ptr<Entity> Ptp::Logging::BestMasterClock::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Logging::BestMasterClock::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3110,6 +3106,7 @@ std::shared_ptr<Entity> Ptp::Logging::Servo::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Ptp::Logging::Servo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3202,6 +3199,7 @@ std::shared_ptr<Entity> Ptp::TransparentClock::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Ptp::TransparentClock::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(domains != nullptr)
     {
         children["domains"] = domains;
@@ -3282,14 +3280,6 @@ std::shared_ptr<Entity> Ptp::TransparentClock::Domains::get_child_by_name(const 
 {
     if(child_yang_name == "domain")
     {
-        for(auto const & c : domain)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Ptp::TransparentClock::Domains::Domain>();
         c->parent = this;
         domain.push_back(c);
@@ -3302,9 +3292,14 @@ std::shared_ptr<Entity> Ptp::TransparentClock::Domains::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Ptp::TransparentClock::Domains::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : domain)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3380,6 +3375,7 @@ std::shared_ptr<Entity> Ptp::TransparentClock::Domains::Domain::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Ptp::TransparentClock::Domains::Domain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

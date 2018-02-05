@@ -68,6 +68,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(control_processes != nullptr)
     {
         children["control-processes"] = control_processes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::get_child_by_na
 {
     if(child_yang_name == "control-process")
     {
-        for(auto const & c : control_process)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess>();
         c->parent = this;
         control_process.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : control_process)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -344,6 +342,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess:
 std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(load_average_stats != nullptr)
     {
         children["load-average-stats"] = load_average_stats;
@@ -490,6 +489,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess:
 std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAverageStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -568,14 +568,6 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess:
 {
     if(child_yang_name == "load-avg-minute")
     {
-        for(auto const & c : load_avg_minute)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute>();
         c->parent = this;
         load_avg_minute.push_back(c);
@@ -588,9 +580,14 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess:
 std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : load_avg_minute)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -677,6 +674,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess:
 std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(status != nullptr)
     {
         children["status"] = status;
@@ -776,6 +774,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess:
 std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute::Status::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -922,6 +921,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess:
 std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(status != nullptr)
     {
         children["status"] = status;
@@ -1097,6 +1097,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess:
 std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::MemoryStats::Status::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1185,14 +1186,6 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess:
 {
     if(child_yang_name == "per-core-stat")
     {
-        for(auto const & c : per_core_stat)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat>();
         c->parent = this;
         per_core_stat.push_back(c);
@@ -1205,9 +1198,14 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess:
 std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : per_core_stat)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1304,6 +1302,7 @@ std::shared_ptr<Entity> CiscoPlatformSoftware::ControlProcesses::ControlProcess:
 std::map<std::string, std::shared_ptr<Entity>> CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

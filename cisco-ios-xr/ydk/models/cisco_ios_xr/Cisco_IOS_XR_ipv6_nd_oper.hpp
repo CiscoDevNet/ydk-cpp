@@ -241,11 +241,11 @@ class Ipv6NodeDiscovery::Nodes::Node::NeighborSummary : public ydk::Entity
 
         ydk::YLeaf total_neighbor_entries; //type: uint32
         class Multicast; //type: Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Multicast
-        class Static_; //type: Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Static_
+        class Static; //type: Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Static
         class Dynamic; //type: Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Dynamic
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Multicast> multicast;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Static_> static_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Static> static_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Dynamic> dynamic;
         
 }; // Ipv6NodeDiscovery::Nodes::Node::NeighborSummary
@@ -278,11 +278,11 @@ class Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Multicast : public ydk::E
 }; // Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Multicast
 
 
-class Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Static_ : public ydk::Entity
+class Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -302,7 +302,7 @@ class Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Static_ : public ydk::Ent
         ydk::YLeaf deleted_entries; //type: uint32
         ydk::YLeaf subtotal_neighbor_entries; //type: uint32
 
-}; // Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Static_
+}; // Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Static
 
 
 class Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Dynamic : public ydk::Entity

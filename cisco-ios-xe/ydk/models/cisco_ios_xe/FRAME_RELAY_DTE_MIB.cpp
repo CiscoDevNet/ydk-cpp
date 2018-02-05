@@ -107,6 +107,7 @@ std::shared_ptr<Entity> FRAMERELAYDTEMIB::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> FRAMERELAYDTEMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(framerelaytrapcontrol != nullptr)
     {
         children["frameRelayTrapControl"] = framerelaytrapcontrol;
@@ -229,6 +230,7 @@ std::shared_ptr<Entity> FRAMERELAYDTEMIB::Framerelaytrapcontrol::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> FRAMERELAYDTEMIB::Framerelaytrapcontrol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -324,14 +326,6 @@ std::shared_ptr<Entity> FRAMERELAYDTEMIB::Frdlcmitable::get_child_by_name(const 
 {
     if(child_yang_name == "frDlcmiEntry")
     {
-        for(auto const & c : frdlcmientry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry>();
         c->parent = this;
         frdlcmientry.push_back(c);
@@ -344,9 +338,14 @@ std::shared_ptr<Entity> FRAMERELAYDTEMIB::Frdlcmitable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> FRAMERELAYDTEMIB::Frdlcmitable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : frdlcmientry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -466,6 +465,7 @@ std::shared_ptr<Entity> FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry::get_child_
 std::map<std::string, std::shared_ptr<Entity>> FRAMERELAYDTEMIB::Frdlcmitable::Frdlcmientry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -661,14 +661,6 @@ std::shared_ptr<Entity> FRAMERELAYDTEMIB::Frcircuittable::get_child_by_name(cons
 {
     if(child_yang_name == "frCircuitEntry")
     {
-        for(auto const & c : frcircuitentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<FRAMERELAYDTEMIB::Frcircuittable::Frcircuitentry>();
         c->parent = this;
         frcircuitentry.push_back(c);
@@ -681,9 +673,14 @@ std::shared_ptr<Entity> FRAMERELAYDTEMIB::Frcircuittable::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> FRAMERELAYDTEMIB::Frcircuittable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : frcircuitentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -839,6 +836,7 @@ std::shared_ptr<Entity> FRAMERELAYDTEMIB::Frcircuittable::Frcircuitentry::get_ch
 std::map<std::string, std::shared_ptr<Entity>> FRAMERELAYDTEMIB::Frcircuittable::Frcircuitentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1124,14 +1122,6 @@ std::shared_ptr<Entity> FRAMERELAYDTEMIB::Frerrtable::get_child_by_name(const st
 {
     if(child_yang_name == "frErrEntry")
     {
-        for(auto const & c : frerrentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<FRAMERELAYDTEMIB::Frerrtable::Frerrentry>();
         c->parent = this;
         frerrentry.push_back(c);
@@ -1144,9 +1134,14 @@ std::shared_ptr<Entity> FRAMERELAYDTEMIB::Frerrtable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> FRAMERELAYDTEMIB::Frerrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : frerrentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1242,6 +1237,7 @@ std::shared_ptr<Entity> FRAMERELAYDTEMIB::Frerrtable::Frerrentry::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> FRAMERELAYDTEMIB::Frerrtable::Frerrentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

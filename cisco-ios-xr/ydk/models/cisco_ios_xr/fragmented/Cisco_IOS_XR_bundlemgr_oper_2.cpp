@@ -81,6 +81,7 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGrou
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mlacp_iccp_group_item != nullptr)
     {
         children["mlacp-iccp-group-item"] = mlacp_iccp_group_item;
@@ -177,14 +178,6 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGrou
 
     if(child_yang_name == "bundle-data")
     {
-        for(auto const & c : bundle_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData>();
         c->parent = this;
         bundle_data.push_back(c);
@@ -197,14 +190,19 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGrou
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(iccp_group_data != nullptr)
     {
         children["iccp-group-data"] = iccp_group_data;
     }
 
+    count = 0;
     for (auto const & c : bundle_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -287,14 +285,6 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGrou
 {
     if(child_yang_name == "node-data")
     {
-        for(auto const & c : node_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::IccpGroupData::NodeData>();
         c->parent = this;
         node_data.push_back(c);
@@ -307,9 +297,14 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGrou
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::IccpGroupData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -438,6 +433,7 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGrou
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::IccpGroupData::NodeData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(system_id != nullptr)
     {
         children["system-id"] = system_id;
@@ -573,6 +569,7 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGrou
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::IccpGroupData::NodeData::SystemId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(system_mac_addr != nullptr)
     {
         children["system-mac-addr"] = system_mac_addr;
@@ -654,6 +651,7 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGrou
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::IccpGroupData::NodeData::SystemId::SystemMacAddr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -754,14 +752,6 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGrou
 {
     if(child_yang_name == "mlacp-bundle-data")
     {
-        for(auto const & c : mlacp_bundle_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData::MlacpBundleData>();
         c->parent = this;
         mlacp_bundle_data.push_back(c);
@@ -770,14 +760,6 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGrou
 
     if(child_yang_name == "mlacp-member-data")
     {
-        for(auto const & c : mlacp_member_data)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData::MlacpMemberData>();
         c->parent = this;
         mlacp_member_data.push_back(c);
@@ -790,14 +772,23 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGrou
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mlacp_bundle_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : mlacp_member_data)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -926,6 +917,7 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGrou
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData::MlacpBundleData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mac_address != nullptr)
     {
         children["mac-address"] = mac_address;
@@ -1047,6 +1039,7 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGrou
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData::MlacpBundleData::MacAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1147,6 +1140,7 @@ std::shared_ptr<Entity> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGrou
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Mlacp::MlacpIccpGroups::MlacpIccpGroup::MlacpIccpGroupItem::BundleData::MlacpMemberData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1299,6 +1293,7 @@ std::shared_ptr<Entity> BundleInformation::MacAllocation::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MacAllocation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mac_allocation_global != nullptr)
     {
         children["mac-allocation-global"] = mac_allocation_global;
@@ -1386,6 +1381,7 @@ std::shared_ptr<Entity> BundleInformation::MacAllocation::MacAllocationGlobal::g
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MacAllocation::MacAllocationGlobal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mac_allocation_global_item != nullptr)
     {
         children["mac-allocation-global-item"] = mac_allocation_global_item;
@@ -1466,14 +1462,6 @@ std::shared_ptr<Entity> BundleInformation::MacAllocation::MacAllocationGlobal::M
 {
     if(child_yang_name == "mac-address")
     {
-        for(auto const & c : mac_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::MacAllocation::MacAllocationGlobal::MacAllocationGlobalItem::MacAddress>();
         c->parent = this;
         mac_address.push_back(c);
@@ -1486,9 +1474,14 @@ std::shared_ptr<Entity> BundleInformation::MacAllocation::MacAllocationGlobal::M
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MacAllocation::MacAllocationGlobal::MacAllocationGlobalItem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mac_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1564,6 +1557,7 @@ std::shared_ptr<Entity> BundleInformation::MacAllocation::MacAllocationGlobal::M
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::MacAllocation::MacAllocationGlobal::MacAllocationGlobalItem::MacAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1669,6 +1663,7 @@ std::shared_ptr<Entity> BundleInformation::Events::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(events_members != nullptr)
     {
         children["events-members"] = events_members;
@@ -1754,14 +1749,6 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsMembers::get_child_by_n
 {
     if(child_yang_name == "events-member")
     {
-        for(auto const & c : events_member)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::Events::EventsMembers::EventsMember>();
         c->parent = this;
         events_member.push_back(c);
@@ -1774,9 +1761,14 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsMembers::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsMembers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : events_member)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1879,6 +1871,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsMembers::EventsMember::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsMembers::EventsMember::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(events_member_item != nullptr)
     {
         children["events-member-item"] = events_member_item;
@@ -1971,14 +1964,6 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsMembers::EventsMember::
 {
     if(child_yang_name == "items")
     {
-        for(auto const & c : items)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items>();
         c->parent = this;
         items.push_back(c);
@@ -1991,9 +1976,14 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsMembers::EventsMember::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : items)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2112,6 +2102,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsMembers::EventsMember::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(member_evt_info != nullptr)
     {
         children["member-evt-info"] = member_evt_info;
@@ -2221,6 +2212,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsMembers::EventsMember::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::MemberEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -2324,6 +2316,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsMembers::EventsMember::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::MemberEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2448,6 +2441,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsMembers::EventsMember::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::BundleEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -2551,6 +2545,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsMembers::EventsMember::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::BundleEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2675,6 +2670,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsMembers::EventsMember::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::RgEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -2778,6 +2774,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsMembers::EventsMember::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsMembers::EventsMember::EventsMemberItem::Items::RgEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2890,14 +2887,6 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsMembers::EventsMember::
 {
     if(child_yang_name == "items")
     {
-        for(auto const & c : items)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items>();
         c->parent = this;
         items.push_back(c);
@@ -2910,9 +2899,14 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsMembers::EventsMember::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : items)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3031,6 +3025,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsMembers::EventsMember::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(member_evt_info != nullptr)
     {
         children["member-evt-info"] = member_evt_info;
@@ -3140,6 +3135,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsMembers::EventsMember::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::MemberEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -3243,6 +3239,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsMembers::EventsMember::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::MemberEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3367,6 +3364,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsMembers::EventsMember::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::BundleEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -3470,6 +3468,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsMembers::EventsMember::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::BundleEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3594,6 +3593,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsMembers::EventsMember::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::RgEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -3697,6 +3697,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsMembers::EventsMember::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsMembers::EventsMember::EventsMemberAncestor::Items::RgEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3812,14 +3813,6 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::get_child_by_n
 {
     if(child_yang_name == "events-bundle")
     {
-        for(auto const & c : events_bundle)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle>();
         c->parent = this;
         events_bundle.push_back(c);
@@ -3832,9 +3825,14 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : events_bundle)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3963,6 +3961,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(events_bundle_ancestor != nullptr)
     {
         children["events-bundle-ancestor"] = events_bundle_ancestor;
@@ -4065,14 +4064,6 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 {
     if(child_yang_name == "items")
     {
-        for(auto const & c : items)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items>();
         c->parent = this;
         items.push_back(c);
@@ -4085,9 +4076,14 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : items)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4206,6 +4202,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(member_evt_info != nullptr)
     {
         children["member-evt-info"] = member_evt_info;
@@ -4315,6 +4312,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::MemberEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -4418,6 +4416,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::MemberEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4542,6 +4541,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::BundleEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -4645,6 +4645,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::BundleEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4769,6 +4770,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::RgEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -4872,6 +4874,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleAncestor::Items::RgEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4984,14 +4987,6 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 {
     if(child_yang_name == "items")
     {
-        for(auto const & c : items)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items>();
         c->parent = this;
         items.push_back(c);
@@ -5004,9 +4999,14 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : items)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5125,6 +5125,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(member_evt_info != nullptr)
     {
         children["member-evt-info"] = member_evt_info;
@@ -5234,6 +5235,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::MemberEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -5337,6 +5339,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::MemberEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5461,6 +5464,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::BundleEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -5564,6 +5568,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::BundleEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5688,6 +5693,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::RgEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -5791,6 +5797,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleItem::Items::RgEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5899,14 +5906,6 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 {
     if(child_yang_name == "events-item")
     {
-        for(auto const & c : events_item)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem>();
         c->parent = this;
         events_item.push_back(c);
@@ -5919,9 +5918,14 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : events_item)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5996,14 +6000,6 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 {
     if(child_yang_name == "items")
     {
-        for(auto const & c : items)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items>();
         c->parent = this;
         items.push_back(c);
@@ -6016,9 +6012,14 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : items)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6137,6 +6138,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(member_evt_info != nullptr)
     {
         children["member-evt-info"] = member_evt_info;
@@ -6246,6 +6248,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::MemberEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -6349,6 +6352,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::MemberEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6473,6 +6477,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::BundleEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -6576,6 +6581,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::BundleEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6700,6 +6706,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::RgEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -6803,6 +6810,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleDescendant::EventsItem::Items::RgEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6911,14 +6919,6 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 {
     if(child_yang_name == "events-bundle-children-member")
     {
-        for(auto const & c : events_bundle_children_member)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember>();
         c->parent = this;
         events_bundle_children_member.push_back(c);
@@ -6931,9 +6931,14 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : events_bundle_children_member)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7012,14 +7017,6 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 {
     if(child_yang_name == "items")
     {
-        for(auto const & c : items)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items>();
         c->parent = this;
         items.push_back(c);
@@ -7032,9 +7029,14 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : items)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7163,6 +7165,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(member_evt_info != nullptr)
     {
         children["member-evt-info"] = member_evt_info;
@@ -7272,6 +7275,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::MemberEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -7375,6 +7379,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::MemberEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7499,6 +7504,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::BundleEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -7602,6 +7608,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::BundleEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7726,6 +7733,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::RgEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -7829,6 +7837,7 @@ std::shared_ptr<Entity> BundleInformation::Events::EventsBundles::EventsBundle::
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::Events::EventsBundles::EventsBundle::EventsBundleChildrenMembers::EventsBundleChildrenMember::Items::RgEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7977,6 +7986,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(events_bdl_members != nullptr)
     {
         children["events-bdl-members"] = events_bdl_members;
@@ -8067,14 +8077,6 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlMembers::get_chil
 {
     if(child_yang_name == "events-bdl-member")
     {
-        for(auto const & c : events_bdl_member)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember>();
         c->parent = this;
         events_bdl_member.push_back(c);
@@ -8087,9 +8089,14 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlMembers::get_chil
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlMembers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : events_bdl_member)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8179,6 +8186,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlMembers::EventsBd
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(events_bdl_member_ancestor != nullptr)
     {
         children["events-bdl-member-ancestor"] = events_bdl_member_ancestor;
@@ -8266,14 +8274,6 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlMembers::EventsBd
 {
     if(child_yang_name == "items")
     {
-        for(auto const & c : items)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items>();
         c->parent = this;
         items.push_back(c);
@@ -8286,9 +8286,14 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlMembers::EventsBd
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : items)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8407,6 +8412,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlMembers::EventsBd
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(member_evt_info != nullptr)
     {
         children["member-evt-info"] = member_evt_info;
@@ -8516,6 +8522,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlMembers::EventsBd
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::MemberEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -8619,6 +8626,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlMembers::EventsBd
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::MemberEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8743,6 +8751,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlMembers::EventsBd
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::BundleEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -8846,6 +8855,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlMembers::EventsBd
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::BundleEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8970,6 +8980,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlMembers::EventsBd
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::RgEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -9073,6 +9084,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlMembers::EventsBd
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlMembers::EventsBdlMember::EventsBdlMemberAncestor::Items::RgEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9188,14 +9200,6 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlBundles::get_chil
 {
     if(child_yang_name == "events-bdl-bundle")
     {
-        for(auto const & c : events_bdl_bundle)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle>();
         c->parent = this;
         events_bdl_bundle.push_back(c);
@@ -9208,9 +9212,14 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlBundles::get_chil
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlBundles::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : events_bdl_bundle)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9300,6 +9309,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlBundles::EventsBd
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(events_bdl_bundle_item != nullptr)
     {
         children["events-bdl-bundle-item"] = events_bdl_bundle_item;
@@ -9387,14 +9397,6 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlBundles::EventsBd
 {
     if(child_yang_name == "items")
     {
-        for(auto const & c : items)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items>();
         c->parent = this;
         items.push_back(c);
@@ -9407,9 +9409,14 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlBundles::EventsBd
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : items)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9528,6 +9535,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlBundles::EventsBd
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(member_evt_info != nullptr)
     {
         children["member-evt-info"] = member_evt_info;
@@ -9637,6 +9645,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlBundles::EventsBd
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::MemberEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -9740,6 +9749,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlBundles::EventsBd
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::MemberEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9864,6 +9874,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlBundles::EventsBd
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::BundleEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -9967,6 +9978,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlBundles::EventsBd
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::BundleEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10091,6 +10103,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlBundles::EventsBd
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::RgEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -10194,6 +10207,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlBundles::EventsBd
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlBundles::EventsBdlBundle::EventsBdlBundleItem::Items::RgEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10309,14 +10323,6 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlIccpGroups::get_c
 {
     if(child_yang_name == "events-bdl-iccp-group")
     {
-        for(auto const & c : events_bdl_iccp_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup>();
         c->parent = this;
         events_bdl_iccp_group.push_back(c);
@@ -10329,9 +10335,14 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlIccpGroups::get_c
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlIccpGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : events_bdl_iccp_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10421,6 +10432,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(events_bdl_bundle_descendant_iccp_group != nullptr)
     {
         children["events-bdl-bundle-descendant-iccp-group"] = events_bdl_bundle_descendant_iccp_group;
@@ -10504,14 +10516,6 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlIccpGroups::Event
 {
     if(child_yang_name == "events-item")
     {
-        for(auto const & c : events_item)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem>();
         c->parent = this;
         events_item.push_back(c);
@@ -10524,9 +10528,14 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : events_item)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10601,14 +10610,6 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlIccpGroups::Event
 {
     if(child_yang_name == "items")
     {
-        for(auto const & c : items)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items>();
         c->parent = this;
         items.push_back(c);
@@ -10621,9 +10622,14 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : items)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10742,6 +10748,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(member_evt_info != nullptr)
     {
         children["member-evt-info"] = member_evt_info;
@@ -10851,6 +10858,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::MemberEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -10954,6 +10962,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::MemberEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11078,6 +11087,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::BundleEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -11181,6 +11191,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::BundleEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11305,6 +11316,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::RgEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -11408,6 +11420,7 @@ std::shared_ptr<Entity> BundleInformation::EventsBdl::EventsBdlIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsBdl::EventsBdlIccpGroups::EventsBdlIccpGroup::EventsBdlBundleDescendantIccpGroup::EventsItem::Items::RgEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11523,14 +11536,6 @@ std::shared_ptr<Entity> BundleInformation::BundleBriefs::get_child_by_name(const
 {
     if(child_yang_name == "bundle-brief")
     {
-        for(auto const & c : bundle_brief)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::BundleBriefs::BundleBrief>();
         c->parent = this;
         bundle_brief.push_back(c);
@@ -11543,9 +11548,14 @@ std::shared_ptr<Entity> BundleInformation::BundleBriefs::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BundleBriefs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : bundle_brief)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11635,6 +11645,7 @@ std::shared_ptr<Entity> BundleInformation::BundleBriefs::BundleBrief::get_child_
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BundleBriefs::BundleBrief::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bundle_brief_item != nullptr)
     {
         children["bundle-brief-item"] = bundle_brief_item;
@@ -11884,14 +11895,6 @@ std::shared_ptr<Entity> BundleInformation::BundleBriefs::BundleBrief::BundleBrie
 
     if(child_yang_name == "bfd-config")
     {
-        for(auto const & c : bfd_config)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::BfdConfig>();
         c->parent = this;
         bfd_config.push_back(c);
@@ -11904,14 +11907,19 @@ std::shared_ptr<Entity> BundleInformation::BundleBriefs::BundleBrief::BundleBrie
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mac_address != nullptr)
     {
         children["mac-address"] = mac_address;
     }
 
+    count = 0;
     for (auto const & c : bfd_config)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12360,6 +12368,7 @@ std::shared_ptr<Entity> BundleInformation::BundleBriefs::BundleBrief::BundleBrie
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::MacAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12478,6 +12487,7 @@ std::shared_ptr<Entity> BundleInformation::BundleBriefs::BundleBrief::BundleBrie
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::BfdConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination_address != nullptr)
     {
         children["destination-address"] = destination_address;
@@ -12637,6 +12647,7 @@ std::shared_ptr<Entity> BundleInformation::BundleBriefs::BundleBrief::BundleBrie
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::BundleBriefs::BundleBrief::BundleBriefItem::BfdConfig::DestinationAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12775,6 +12786,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(events_mbr_bundles != nullptr)
     {
         children["events-mbr-bundles"] = events_mbr_bundles;
@@ -12865,14 +12877,6 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::get_chil
 {
     if(child_yang_name == "events-mbr-bundle")
     {
-        for(auto const & c : events_mbr_bundle)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle>();
         c->parent = this;
         events_mbr_bundle.push_back(c);
@@ -12885,9 +12889,14 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::get_chil
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrBundles::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : events_mbr_bundle)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12990,6 +12999,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(events_mbr_bundle_children_members != nullptr)
     {
         children["events-mbr-bundle-children-members"] = events_mbr_bundle_children_members;
@@ -13078,14 +13088,6 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
 {
     if(child_yang_name == "events-mbr-bundle-children-member")
     {
-        for(auto const & c : events_mbr_bundle_children_member)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember>();
         c->parent = this;
         events_mbr_bundle_children_member.push_back(c);
@@ -13098,9 +13100,14 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : events_mbr_bundle_children_member)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13179,14 +13186,6 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
 {
     if(child_yang_name == "items")
     {
-        for(auto const & c : items)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items>();
         c->parent = this;
         items.push_back(c);
@@ -13199,9 +13198,14 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : items)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13330,6 +13334,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(member_evt_info != nullptr)
     {
         children["member-evt-info"] = member_evt_info;
@@ -13439,6 +13444,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::MemberEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -13542,6 +13548,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::MemberEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13666,6 +13673,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::BundleEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -13769,6 +13777,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::BundleEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13893,6 +13902,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::RgEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -13996,6 +14006,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleChildrenMembers::EventsMbrBundleChildrenMember::Items::RgEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14104,14 +14115,6 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
 {
     if(child_yang_name == "events-item")
     {
-        for(auto const & c : events_item)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem>();
         c->parent = this;
         events_item.push_back(c);
@@ -14124,9 +14127,14 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : events_item)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14201,14 +14209,6 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
 {
     if(child_yang_name == "items")
     {
-        for(auto const & c : items)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items>();
         c->parent = this;
         items.push_back(c);
@@ -14221,9 +14221,14 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : items)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14342,6 +14347,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(member_evt_info != nullptr)
     {
         children["member-evt-info"] = member_evt_info;
@@ -14451,6 +14457,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::MemberEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -14554,6 +14561,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::MemberEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14678,6 +14686,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::BundleEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -14781,6 +14790,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::BundleEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14905,6 +14915,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::RgEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -15008,6 +15019,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrBundles::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrBundles::EventsMbrBundle::EventsMbrBundleDescendant::EventsItem::Items::RgEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15123,14 +15135,6 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrMembers::get_chil
 {
     if(child_yang_name == "events-mbr-member")
     {
-        for(auto const & c : events_mbr_member)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember>();
         c->parent = this;
         events_mbr_member.push_back(c);
@@ -15143,9 +15147,14 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrMembers::get_chil
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrMembers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : events_mbr_member)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15235,6 +15244,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrMembers::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(events_mbr_member_item != nullptr)
     {
         children["events-mbr-member-item"] = events_mbr_member_item;
@@ -15322,14 +15332,6 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrMembers::EventsMb
 {
     if(child_yang_name == "items")
     {
-        for(auto const & c : items)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items>();
         c->parent = this;
         items.push_back(c);
@@ -15342,9 +15344,14 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrMembers::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : items)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15463,6 +15470,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrMembers::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(member_evt_info != nullptr)
     {
         children["member-evt-info"] = member_evt_info;
@@ -15572,6 +15580,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrMembers::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::MemberEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -15675,6 +15684,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrMembers::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::MemberEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15799,6 +15809,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrMembers::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::BundleEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -15902,6 +15913,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrMembers::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::BundleEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16026,6 +16038,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrMembers::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::RgEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -16129,6 +16142,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrMembers::EventsMb
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrMembers::EventsMbrMember::EventsMbrMemberItem::Items::RgEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16244,14 +16258,6 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::get_c
 {
     if(child_yang_name == "events-mbr-iccp-group")
     {
-        for(auto const & c : events_mbr_iccp_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup>();
         c->parent = this;
         events_mbr_iccp_group.push_back(c);
@@ -16264,9 +16270,14 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::get_c
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrIccpGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : events_mbr_iccp_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16369,6 +16380,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(events_mbr_bundle_children_member_iccp_groups != nullptr)
     {
         children["events-mbr-bundle-children-member-iccp-groups"] = events_mbr_bundle_children_member_iccp_groups;
@@ -16457,14 +16469,6 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
 {
     if(child_yang_name == "events-mbr-bundle-children-member-iccp-group")
     {
-        for(auto const & c : events_mbr_bundle_children_member_iccp_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup>();
         c->parent = this;
         events_mbr_bundle_children_member_iccp_group.push_back(c);
@@ -16477,9 +16481,14 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : events_mbr_bundle_children_member_iccp_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16558,14 +16567,6 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
 {
     if(child_yang_name == "items")
     {
-        for(auto const & c : items)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items>();
         c->parent = this;
         items.push_back(c);
@@ -16578,9 +16579,14 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : items)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16709,6 +16715,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(member_evt_info != nullptr)
     {
         children["member-evt-info"] = member_evt_info;
@@ -16818,6 +16825,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::MemberEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -16921,6 +16929,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::MemberEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17045,6 +17054,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::BundleEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -17148,6 +17158,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::BundleEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17272,6 +17283,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::RgEvtInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(data != nullptr)
     {
         children["data"] = data;
@@ -17375,6 +17387,7 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleChildrenMemberIccpGroups::EventsMbrBundleChildrenMemberIccpGroup::Items::RgEvtInfo::Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17483,14 +17496,6 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
 {
     if(child_yang_name == "events-item")
     {
-        for(auto const & c : events_item)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem>();
         c->parent = this;
         events_item.push_back(c);
@@ -17503,9 +17508,14 @@ std::shared_ptr<Entity> BundleInformation::EventsMbr::EventsMbrIccpGroups::Event
 std::map<std::string, std::shared_ptr<Entity>> BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : events_item)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;

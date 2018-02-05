@@ -1410,7 +1410,7 @@ class Install::SoftwareInventory::Committed::Inventories::Inventory : public ydk
         std::string get_absolute_path() const override;
 
         ydk::YLeaf node_name; //type: string
-        ydk::YLeaf major; //type: uint32
+        ydk::YLeaf major_; //type: uint32
         ydk::YLeaf minor; //type: uint32
         ydk::YLeaf boot_image_name; //type: string
         ydk::YLeaf node_type; //type: uint64
@@ -2072,7 +2072,7 @@ class Install::SoftwareInventory::Inactive::Inventories::Inventory : public ydk:
         std::string get_absolute_path() const override;
 
         ydk::YLeaf node_name; //type: string
-        ydk::YLeaf major; //type: uint32
+        ydk::YLeaf major_; //type: uint32
         ydk::YLeaf minor; //type: uint32
         ydk::YLeaf boot_image_name; //type: string
         ydk::YLeaf node_type; //type: uint64
@@ -2244,7 +2244,7 @@ class Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inv
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf node_name; //type: string
-        ydk::YLeaf major; //type: uint32
+        ydk::YLeaf major_; //type: uint32
         ydk::YLeaf minor; //type: uint32
         ydk::YLeaf boot_image_name; //type: string
         ydk::YLeaf node_type; //type: uint64
@@ -2906,7 +2906,7 @@ class Install::SoftwareInventory::Active::Inventories::Inventory : public ydk::E
         std::string get_absolute_path() const override;
 
         ydk::YLeaf node_name; //type: string
-        ydk::YLeaf major; //type: uint32
+        ydk::YLeaf major_; //type: uint32
         ydk::YLeaf minor; //type: uint32
         ydk::YLeaf boot_image_name; //type: string
         ydk::YLeaf node_type; //type: uint64

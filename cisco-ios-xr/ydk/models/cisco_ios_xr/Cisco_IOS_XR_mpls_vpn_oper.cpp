@@ -81,6 +81,7 @@ std::shared_ptr<Entity> L3Vpn::get_child_by_name(const std::string & child_yang_
 std::map<std::string, std::shared_ptr<Entity>> L3Vpn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(invalid_vrfs != nullptr)
     {
         children["invalid-vrfs"] = invalid_vrfs;
@@ -191,14 +192,6 @@ std::shared_ptr<Entity> L3Vpn::InvalidVrfs::get_child_by_name(const std::string 
 {
     if(child_yang_name == "invalid-vrf")
     {
-        for(auto const & c : invalid_vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L3Vpn::InvalidVrfs::InvalidVrf>();
         c->parent = this;
         invalid_vrf.push_back(c);
@@ -211,9 +204,14 @@ std::shared_ptr<Entity> L3Vpn::InvalidVrfs::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> L3Vpn::InvalidVrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : invalid_vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -321,14 +319,6 @@ std::shared_ptr<Entity> L3Vpn::InvalidVrfs::InvalidVrf::get_child_by_name(const 
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L3Vpn::InvalidVrfs::InvalidVrf::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -337,14 +327,6 @@ std::shared_ptr<Entity> L3Vpn::InvalidVrfs::InvalidVrf::get_child_by_name(const 
 
     if(child_yang_name == "af")
     {
-        for(auto const & c : af)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L3Vpn::InvalidVrfs::InvalidVrf::Af>();
         c->parent = this;
         af.push_back(c);
@@ -357,14 +339,23 @@ std::shared_ptr<Entity> L3Vpn::InvalidVrfs::InvalidVrf::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> L3Vpn::InvalidVrfs::InvalidVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : af)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -483,6 +474,7 @@ std::shared_ptr<Entity> L3Vpn::InvalidVrfs::InvalidVrf::Interface::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> L3Vpn::InvalidVrfs::InvalidVrf::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -577,14 +569,6 @@ std::shared_ptr<Entity> L3Vpn::InvalidVrfs::InvalidVrf::Af::get_child_by_name(co
 {
     if(child_yang_name == "route-target")
     {
-        for(auto const & c : route_target)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget>();
         c->parent = this;
         route_target.push_back(c);
@@ -597,9 +581,14 @@ std::shared_ptr<Entity> L3Vpn::InvalidVrfs::InvalidVrf::Af::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> L3Vpn::InvalidVrfs::InvalidVrf::Af::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : route_target)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -720,6 +709,7 @@ std::shared_ptr<Entity> L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_chi
 std::map<std::string, std::shared_ptr<Entity>> L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -835,14 +825,6 @@ std::shared_ptr<Entity> L3Vpn::Vrfs::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L3Vpn::Vrfs::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -855,9 +837,14 @@ std::shared_ptr<Entity> L3Vpn::Vrfs::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> L3Vpn::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -965,14 +952,6 @@ std::shared_ptr<Entity> L3Vpn::Vrfs::Vrf::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L3Vpn::Vrfs::Vrf::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -981,14 +960,6 @@ std::shared_ptr<Entity> L3Vpn::Vrfs::Vrf::get_child_by_name(const std::string & 
 
     if(child_yang_name == "af")
     {
-        for(auto const & c : af)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L3Vpn::Vrfs::Vrf::Af>();
         c->parent = this;
         af.push_back(c);
@@ -1001,14 +972,23 @@ std::shared_ptr<Entity> L3Vpn::Vrfs::Vrf::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> L3Vpn::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : af)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1127,6 +1107,7 @@ std::shared_ptr<Entity> L3Vpn::Vrfs::Vrf::Interface::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> L3Vpn::Vrfs::Vrf::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1221,14 +1202,6 @@ std::shared_ptr<Entity> L3Vpn::Vrfs::Vrf::Af::get_child_by_name(const std::strin
 {
     if(child_yang_name == "route-target")
     {
-        for(auto const & c : route_target)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<L3Vpn::Vrfs::Vrf::Af::RouteTarget>();
         c->parent = this;
         route_target.push_back(c);
@@ -1241,9 +1214,14 @@ std::shared_ptr<Entity> L3Vpn::Vrfs::Vrf::Af::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> L3Vpn::Vrfs::Vrf::Af::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : route_target)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1364,6 +1342,7 @@ std::shared_ptr<Entity> L3Vpn::Vrfs::Vrf::Af::RouteTarget::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> L3Vpn::Vrfs::Vrf::Af::RouteTarget::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

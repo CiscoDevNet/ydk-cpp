@@ -225,6 +225,7 @@ std::shared_ptr<Entity> CallHome::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> CallHome::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mail_servers != nullptr)
     {
         children["mail-servers"] = mail_servers;
@@ -500,14 +501,6 @@ std::shared_ptr<Entity> CallHome::MailServers::get_child_by_name(const std::stri
 {
     if(child_yang_name == "mail-server")
     {
-        for(auto const & c : mail_server)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CallHome::MailServers::MailServer>();
         c->parent = this;
         mail_server.push_back(c);
@@ -520,9 +513,14 @@ std::shared_ptr<Entity> CallHome::MailServers::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> CallHome::MailServers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mail_server)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -602,6 +600,7 @@ std::shared_ptr<Entity> CallHome::MailServers::MailServer::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CallHome::MailServers::MailServer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -695,6 +694,7 @@ std::shared_ptr<Entity> CallHome::SyslogThrottling::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> CallHome::SyslogThrottling::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -782,6 +782,7 @@ std::shared_ptr<Entity> CallHome::SmartLicensing::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> CallHome::SmartLicensing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -879,6 +880,7 @@ std::shared_ptr<Entity> CallHome::HttpProxy::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> CallHome::HttpProxy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -974,14 +976,6 @@ std::shared_ptr<Entity> CallHome::Profiles::get_child_by_name(const std::string 
 {
     if(child_yang_name == "profile")
     {
-        for(auto const & c : profile)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CallHome::Profiles::Profile>();
         c->parent = this;
         profile.push_back(c);
@@ -994,9 +988,14 @@ std::shared_ptr<Entity> CallHome::Profiles::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : profile)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1145,6 +1144,7 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(report_type != nullptr)
     {
         children["report-type"] = report_type;
@@ -1313,6 +1313,7 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::ReportType::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::ReportType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(reporting_callhome_data != nullptr)
     {
         children["reporting-callhome-data"] = reporting_callhome_data;
@@ -1389,6 +1390,7 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::ReportType::ReportingCallho
 std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::ReportType::ReportingCallhomeData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1465,6 +1467,7 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::ReportType::ReportingLicens
 std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::ReportType::ReportingLicensingData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1543,14 +1546,6 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::Methods::get_child_by_name(
 {
     if(child_yang_name == "method")
     {
-        for(auto const & c : method)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CallHome::Profiles::Profile::Methods::Method>();
         c->parent = this;
         method.push_back(c);
@@ -1563,9 +1558,14 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::Methods::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::Methods::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : method)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1638,6 +1638,7 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::Methods::Method::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::Methods::Method::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1726,14 +1727,6 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::Addresses::get_child_by_nam
 {
     if(child_yang_name == "address")
     {
-        for(auto const & c : address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CallHome::Profiles::Profile::Addresses::Address>();
         c->parent = this;
         address.push_back(c);
@@ -1746,9 +1739,14 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::Addresses::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::Addresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1825,6 +1823,7 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::Addresses::Address::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::Addresses::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1995,6 +1994,7 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(environment != nullptr)
     {
         children["environment"] = environment;
@@ -2091,6 +2091,7 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Enviro
 std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Environment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2181,6 +2182,7 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Config
 std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Configuration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(periodic != nullptr)
     {
         children["periodic"] = periodic;
@@ -2278,6 +2280,7 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Config
 std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Configuration::Periodic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2403,6 +2406,7 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Snapsh
 std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Snapshot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(periodic != nullptr)
     {
         children["periodic"] = periodic;
@@ -2490,6 +2494,7 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Snapsh
 std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Snapshot::Periodic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2620,6 +2625,7 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Invent
 std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Inventory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(periodic != nullptr)
     {
         children["periodic"] = periodic;
@@ -2717,6 +2723,7 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Invent
 std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Inventory::Periodic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2833,6 +2840,7 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Crash:
 std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Crash::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2911,14 +2919,6 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Syslog
 {
     if(child_yang_name == "syslog")
     {
-        for(auto const & c : syslog)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::Syslog>();
         c->parent = this;
         syslog.push_back(c);
@@ -2931,9 +2931,14 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Syslog
 std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : syslog)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3006,6 +3011,7 @@ std::shared_ptr<Entity> CallHome::Profiles::Profile::SubscribeAlertGroup::Syslog
 std::map<std::string, std::shared_ptr<Entity>> CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::Syslog::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3101,14 +3107,6 @@ std::shared_ptr<Entity> CallHome::AlertGroups::get_child_by_name(const std::stri
 {
     if(child_yang_name == "alert-group")
     {
-        for(auto const & c : alert_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CallHome::AlertGroups::AlertGroup>();
         c->parent = this;
         alert_group.push_back(c);
@@ -3121,9 +3119,14 @@ std::shared_ptr<Entity> CallHome::AlertGroups::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> CallHome::AlertGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : alert_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3207,6 +3210,7 @@ std::shared_ptr<Entity> CallHome::AlertGroups::AlertGroup::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CallHome::AlertGroups::AlertGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3312,14 +3316,6 @@ std::shared_ptr<Entity> CallHome::DataPrivacies::get_child_by_name(const std::st
 {
     if(child_yang_name == "data-privacy")
     {
-        for(auto const & c : data_privacy)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CallHome::DataPrivacies::DataPrivacy>();
         c->parent = this;
         data_privacy.push_back(c);
@@ -3332,9 +3328,14 @@ std::shared_ptr<Entity> CallHome::DataPrivacies::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> CallHome::DataPrivacies::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : data_privacy)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3414,6 +3415,7 @@ std::shared_ptr<Entity> CallHome::DataPrivacies::DataPrivacy::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CallHome::DataPrivacies::DataPrivacy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3516,6 +3518,7 @@ std::shared_ptr<Entity> CallHome::AlertGroupConfig::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> CallHome::AlertGroupConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(snapshot_commands != nullptr)
     {
         children["snapshot-commands"] = snapshot_commands;
@@ -3596,14 +3599,6 @@ std::shared_ptr<Entity> CallHome::AlertGroupConfig::SnapshotCommands::get_child_
 {
     if(child_yang_name == "snapshot-command")
     {
-        for(auto const & c : snapshot_command)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CallHome::AlertGroupConfig::SnapshotCommands::SnapshotCommand>();
         c->parent = this;
         snapshot_command.push_back(c);
@@ -3616,9 +3611,14 @@ std::shared_ptr<Entity> CallHome::AlertGroupConfig::SnapshotCommands::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CallHome::AlertGroupConfig::SnapshotCommands::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : snapshot_command)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3698,6 +3698,7 @@ std::shared_ptr<Entity> CallHome::AlertGroupConfig::SnapshotCommands::SnapshotCo
 std::map<std::string, std::shared_ptr<Entity>> CallHome::AlertGroupConfig::SnapshotCommands::SnapshotCommand::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3795,6 +3796,7 @@ std::shared_ptr<Entity> CallHome::Authorization::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> CallHome::Authorization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3850,7 +3852,7 @@ const Enum::YLeaf CallHomeEventSeverity::normal {1, "normal"};
 const Enum::YLeaf CallHomeEventSeverity::notification {2, "notification"};
 const Enum::YLeaf CallHomeEventSeverity::warning {3, "warning"};
 const Enum::YLeaf CallHomeEventSeverity::minor {4, "minor"};
-const Enum::YLeaf CallHomeEventSeverity::major {5, "major"};
+const Enum::YLeaf CallHomeEventSeverity::major_ {5, "major"};
 const Enum::YLeaf CallHomeEventSeverity::critical {6, "critical"};
 const Enum::YLeaf CallHomeEventSeverity::fatal {7, "fatal"};
 const Enum::YLeaf CallHomeEventSeverity::disaster {8, "disaster"};

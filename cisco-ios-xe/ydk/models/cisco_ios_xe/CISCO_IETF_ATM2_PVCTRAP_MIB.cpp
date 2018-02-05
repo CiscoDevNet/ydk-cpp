@@ -68,6 +68,7 @@ std::shared_ptr<Entity> CISCOIETFATM2PVCTRAPMIB::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFATM2PVCTRAPMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(atmcurrentlyfailingpvcltable != nullptr)
     {
         children["atmCurrentlyFailingPVclTable"] = atmcurrentlyfailingpvcltable;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::g
 {
     if(child_yang_name == "atmCurrentlyFailingPVclEntry")
     {
-        for(auto const & c : atmcurrentlyfailingpvclentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvclentry>();
         c->parent = this;
         atmcurrentlyfailingpvclentry.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::g
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : atmcurrentlyfailingpvclentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -287,6 +285,7 @@ std::shared_ptr<Entity> CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::A
 std::map<std::string, std::shared_ptr<Entity>> CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvclentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

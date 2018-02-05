@@ -72,6 +72,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyrxHistories::MacsecMinute15SecyrxHistory::MacsecMinute15SecyrxTimeLineInstances::MacsecMinute15SecyrxTimeLineInstance::InPktsLate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -190,6 +191,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyrxHistories::MacsecMinute15SecyrxHistory::MacsecMinute15SecyrxTimeLineInstances::MacsecMinute15SecyrxTimeLineInstance::InPktsOk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -308,6 +310,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyrxHistories::MacsecMinute15SecyrxHistory::MacsecMinute15SecyrxTimeLineInstances::MacsecMinute15SecyrxTimeLineInstance::InPktsInvalid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -426,6 +429,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyrxHistories::MacsecMinute15SecyrxHistory::MacsecMinute15SecyrxTimeLineInstances::MacsecMinute15SecyrxTimeLineInstance::InPktsNotValid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -544,6 +548,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyrxHistories::MacsecMinute15SecyrxHistory::MacsecMinute15SecyrxTimeLineInstances::MacsecMinute15SecyrxTimeLineInstance::InPktsNotUsingSa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -662,6 +667,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyrxHistories::MacsecMinute15SecyrxHistory::MacsecMinute15SecyrxTimeLineInstances::MacsecMinute15SecyrxTimeLineInstance::InPktsUnusedSa::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -780,6 +786,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyrxHistories::MacsecMinute15SecyrxHistory::MacsecMinute15SecyrxTimeLineInstances::MacsecMinute15SecyrxTimeLineInstance::InPktsUntaggedHit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -898,6 +905,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyrxHistories::MacsecMinute15SecyrxHistory::MacsecMinute15SecyrxTimeLineInstances::MacsecMinute15SecyrxTimeLineInstance::InOctetsValidated::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1016,6 +1024,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyrxHistories::MacsecMinute15SecyrxHistory::MacsecMinute15SecyrxTimeLineInstances::MacsecMinute15SecyrxTimeLineInstance::InOctetsDecrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1124,14 +1133,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 {
     if(child_yang_name == "macsec-minute15-ether-history")
     {
-        for(auto const & c : macsec_minute15_ether_history)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory>();
         c->parent = this;
         macsec_minute15_ether_history.push_back(c);
@@ -1144,9 +1145,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : macsec_minute15_ether_history)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1229,6 +1235,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(macsec_minute15_ether_time_line_instances != nullptr)
     {
         children["macsec-minute15-ether-time-line-instances"] = macsec_minute15_ether_time_line_instances;
@@ -1312,14 +1319,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 {
     if(child_yang_name == "macsec-minute15-ether-time-line-instance")
     {
-        for(auto const & c : macsec_minute15_ether_time_line_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance>();
         c->parent = this;
         macsec_minute15_ether_time_line_instance.push_back(c);
@@ -1332,9 +1331,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : macsec_minute15_ether_time_line_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2411,6 +2415,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rx_pkt != nullptr)
     {
         children["rx-pkt"] = rx_pkt;
@@ -2954,6 +2959,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::RxPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3072,6 +3078,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::StatPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3190,6 +3197,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OctetStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3308,6 +3316,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OversizePktStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3426,6 +3435,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::FcsErrorsStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3544,6 +3554,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::LongFramesStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3662,6 +3673,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::JabberStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3780,6 +3792,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether64Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3898,6 +3911,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether65127Octet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4016,6 +4030,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether128255Octet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4134,6 +4149,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether256511Octet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4252,6 +4268,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether5121023Octet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4370,6 +4387,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Ether10241518Octet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4488,6 +4506,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InUcastPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4606,6 +4625,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InMcastPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4724,6 +4744,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InBcastPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4842,6 +4863,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutUcastPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4960,6 +4982,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutBcastPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5078,6 +5101,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutMcastPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5196,6 +5220,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::TxPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5314,6 +5339,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::IfInErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5432,6 +5458,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::IfInOctets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5550,6 +5577,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::EtherStatMulticastPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5668,6 +5696,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::EtherStatBroadcastPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5786,6 +5815,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::EtherStatUndersizedPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5904,6 +5934,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutOctets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6022,6 +6053,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InPauseFrame::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6140,6 +6172,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InGoodBytes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6258,6 +6291,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::In8021QFrames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6376,6 +6410,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InPkts1519MaxOctets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6494,6 +6529,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InGoodPkts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6612,6 +6648,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropOverrun::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6730,6 +6767,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropAbort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6848,6 +6886,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropInvalidVlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6966,6 +7005,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropInvalidDmac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7084,6 +7124,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropInvalidEncap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7202,6 +7243,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InDropOther::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7320,6 +7362,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InMibGiant::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7438,6 +7481,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InMibJabber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7556,6 +7600,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InMibcrc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7674,6 +7719,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InErrorCollisions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7792,6 +7838,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InErrorSymbol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7910,6 +7957,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutGoodBytes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8028,6 +8076,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Out8021QFrames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8146,6 +8195,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutPauseFrames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8264,6 +8314,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutPkts1519MaxOctets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8382,6 +8433,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutGoodPkts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8500,6 +8552,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutDropUnderrun::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8618,6 +8671,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutDropAbort::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8736,6 +8790,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutDropOther::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8854,6 +8909,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutErrorOther::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8972,6 +9028,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InErrorGiant::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9090,6 +9147,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InErrorRunt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9208,6 +9266,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InErrorJabbers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9326,6 +9385,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InErrorFragments::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9444,6 +9504,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InErrorOther::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9562,6 +9623,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InPkt64Octet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9680,6 +9742,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InPkts65To127Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9798,6 +9861,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InPkts128To255Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9916,6 +9980,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InPkts256To511Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10034,6 +10099,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InPkts512To1023Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10152,6 +10218,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::InPkts1024To1518Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10270,6 +10337,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::Outpkt64Octet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10388,6 +10456,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutPkts65127Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10506,6 +10575,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutPkts128255Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10624,6 +10694,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutPkts256511Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10742,6 +10813,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutPkts5121023Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10860,6 +10932,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::OutPkts10241518Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10978,6 +11051,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::RxUtil::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11096,6 +11170,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::TxUtil::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11214,6 +11289,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::TxUndersizedPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11332,6 +11408,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::TxOversizedPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11450,6 +11527,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::TxFragments::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11568,6 +11646,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::TxJabber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11686,6 +11765,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15EtherHistories::MacsecMinute15EtherHistory::MacsecMinute15EtherTimeLineInstances::MacsecMinute15EtherTimeLineInstance::TxBadFcs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11794,14 +11874,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 {
     if(child_yang_name == "macsec-minute15secytx-history")
     {
-        for(auto const & c : macsec_minute15secytx_history)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecytxHistories::MacsecMinute15SecytxHistory>();
         c->parent = this;
         macsec_minute15secytx_history.push_back(c);
@@ -11814,9 +11886,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecytxHistories::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : macsec_minute15secytx_history)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11899,6 +11976,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecytxHistories::MacsecMinute15SecytxHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(macsec_minute15secytx_time_line_instances != nullptr)
     {
         children["macsec-minute15secytx-time-line-instances"] = macsec_minute15secytx_time_line_instances;
@@ -11982,14 +12060,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 {
     if(child_yang_name == "macsec-minute15secytx-time-line-instance")
     {
-        for(auto const & c : macsec_minute15secytx_time_line_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecytxHistories::MacsecMinute15SecytxHistory::MacsecMinute15SecytxTimeLineInstances::MacsecMinute15SecytxTimeLineInstance>();
         c->parent = this;
         macsec_minute15secytx_time_line_instance.push_back(c);
@@ -12002,9 +12072,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecytxHistories::MacsecMinute15SecytxHistory::MacsecMinute15SecytxTimeLineInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : macsec_minute15secytx_time_line_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12175,6 +12250,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecytxHistories::MacsecMinute15SecytxHistory::MacsecMinute15SecytxTimeLineInstances::MacsecMinute15SecytxTimeLineInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(out_pkts_protected != nullptr)
     {
         children["out-pkts-protected"] = out_pkts_protected;
@@ -12378,6 +12454,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecytxHistories::MacsecMinute15SecytxHistory::MacsecMinute15SecytxTimeLineInstances::MacsecMinute15SecytxTimeLineInstance::OutPktsProtected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12496,6 +12573,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecytxHistories::MacsecMinute15SecytxHistory::MacsecMinute15SecytxTimeLineInstances::MacsecMinute15SecytxTimeLineInstance::OutPktsEncrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12614,6 +12692,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecytxHistories::MacsecMinute15SecytxHistory::MacsecMinute15SecytxTimeLineInstances::MacsecMinute15SecytxTimeLineInstance::OutOctetsProtected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12732,6 +12811,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecytxHistories::MacsecMinute15SecytxHistory::MacsecMinute15SecytxTimeLineInstances::MacsecMinute15SecytxTimeLineInstance::OutOctetsEncrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12850,6 +12930,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecytxHistories::MacsecMinute15SecytxHistory::MacsecMinute15SecytxTimeLineInstances::MacsecMinute15SecytxTimeLineInstance::OutPktsTooLong::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12958,14 +13039,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 {
     if(child_yang_name == "macsec-minute15secyif-history")
     {
-        for(auto const & c : macsec_minute15secyif_history)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyifHistories::MacsecMinute15SecyifHistory>();
         c->parent = this;
         macsec_minute15secyif_history.push_back(c);
@@ -12978,9 +13051,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyifHistories::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : macsec_minute15secyif_history)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13063,6 +13141,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyifHistories::MacsecMinute15SecyifHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(macsec_minute15secyif_time_line_instances != nullptr)
     {
         children["macsec-minute15secyif-time-line-instances"] = macsec_minute15secyif_time_line_instances;
@@ -13146,14 +13225,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 {
     if(child_yang_name == "macsec-minute15secyif-time-line-instance")
     {
-        for(auto const & c : macsec_minute15secyif_time_line_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyifHistories::MacsecMinute15SecyifHistory::MacsecMinute15SecyifTimeLineInstances::MacsecMinute15SecyifTimeLineInstance>();
         c->parent = this;
         macsec_minute15secyif_time_line_instance.push_back(c);
@@ -13166,9 +13237,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyifHistories::MacsecMinute15SecyifHistory::MacsecMinute15SecyifTimeLineInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : macsec_minute15secyif_time_line_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13430,6 +13506,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyifHistories::MacsecMinute15SecyifHistory::MacsecMinute15SecyifTimeLineInstances::MacsecMinute15SecyifTimeLineInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(in_pkts_untagged != nullptr)
     {
         children["in-pkts-untagged"] = in_pkts_untagged;
@@ -13668,6 +13745,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyifHistories::MacsecMinute15SecyifHistory::MacsecMinute15SecyifTimeLineInstances::MacsecMinute15SecyifTimeLineInstance::InPktsUntagged::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13786,6 +13864,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyifHistories::MacsecMinute15SecyifHistory::MacsecMinute15SecyifTimeLineInstances::MacsecMinute15SecyifTimeLineInstance::InPktsNoTag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13904,6 +13983,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyifHistories::MacsecMinute15SecyifHistory::MacsecMinute15SecyifTimeLineInstances::MacsecMinute15SecyifTimeLineInstance::InPktsBadTag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14022,6 +14102,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyifHistories::MacsecMinute15SecyifHistory::MacsecMinute15SecyifTimeLineInstances::MacsecMinute15SecyifTimeLineInstance::InPktsUnknownSci::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14140,6 +14221,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyifHistories::MacsecMinute15SecyifHistory::MacsecMinute15SecyifTimeLineInstances::MacsecMinute15SecyifTimeLineInstance::InPktsNoSci::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14258,6 +14340,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyifHistories::MacsecMinute15SecyifHistory::MacsecMinute15SecyifTimeLineInstances::MacsecMinute15SecyifTimeLineInstance::InPktsOverrun::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14376,6 +14459,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyifHistories::MacsecMinute15SecyifHistory::MacsecMinute15SecyifTimeLineInstances::MacsecMinute15SecyifTimeLineInstance::InOctetsValidated::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14494,6 +14578,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyifHistories::MacsecMinute15SecyifHistory::MacsecMinute15SecyifTimeLineInstances::MacsecMinute15SecyifTimeLineInstance::InOctetsDecrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14612,6 +14697,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyifHistories::MacsecMinute15SecyifHistory::MacsecMinute15SecyifTimeLineInstances::MacsecMinute15SecyifTimeLineInstance::OutPktsUntagged::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14730,6 +14816,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyifHistories::MacsecMinute15SecyifHistory::MacsecMinute15SecyifTimeLineInstances::MacsecMinute15SecyifTimeLineInstance::OutPktsTooLong::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14848,6 +14935,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyifHistories::MacsecMinute15SecyifHistory::MacsecMinute15SecyifTimeLineInstances::MacsecMinute15SecyifTimeLineInstance::OutOctetsProtected::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14966,6 +15054,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecMinute15History::MacsecMinute15SecyifHistories::MacsecMinute15SecyifHistory::MacsecMinute15SecyifTimeLineInstances::MacsecMinute15SecyifTimeLineInstance::OutOctetsEncrypted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15120,6 +15209,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(macsec_hour24_ether_histories != nullptr)
     {
         children["macsec-hour24-ether-histories"] = macsec_hour24_ether_histories;
@@ -15208,14 +15298,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 {
     if(child_yang_name == "macsec-hour24-ether-history")
     {
-        for(auto const & c : macsec_hour24_ether_history)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory>();
         c->parent = this;
         macsec_hour24_ether_history.push_back(c);
@@ -15228,9 +15310,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : macsec_hour24_ether_history)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15313,6 +15400,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(macsec_hour24_ether_time_line_instances != nullptr)
     {
         children["macsec-hour24-ether-time-line-instances"] = macsec_hour24_ether_time_line_instances;
@@ -15396,14 +15484,6 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 {
     if(child_yang_name == "macsec-hour24-ether-time-line-instance")
     {
-        for(auto const & c : macsec_hour24_ether_time_line_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance>();
         c->parent = this;
         macsec_hour24_ether_time_line_instance.push_back(c);
@@ -15416,9 +15496,14 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : macsec_hour24_ether_time_line_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16495,6 +16580,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rx_pkt != nullptr)
     {
         children["rx-pkt"] = rx_pkt;
@@ -17038,6 +17124,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::RxPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17156,6 +17243,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::StatPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17274,6 +17362,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::OctetStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17392,6 +17481,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::OversizePktStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17510,6 +17600,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::FcsErrorsStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17628,6 +17719,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::LongFramesStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17746,6 +17838,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::JabberStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17864,6 +17957,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::Ether64Octets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17982,6 +18076,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::Ether65127Octet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18100,6 +18195,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::Ether128255Octet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18218,6 +18314,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::Ether256511Octet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18336,6 +18433,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::Ether5121023Octet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18454,6 +18552,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::Ether10241518Octet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18572,6 +18671,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::InUcastPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18690,6 +18790,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::InMcastPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18808,6 +18909,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::InBcastPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18926,6 +19028,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::OutUcastPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19044,6 +19147,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::OutBcastPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19162,6 +19266,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::OutMcastPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19280,6 +19385,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::TxPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19398,6 +19504,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::IfInErrors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19516,6 +19623,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::IfInOctets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19634,6 +19742,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::EtherStatMulticastPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19752,6 +19861,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::EtherStatBroadcastPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19870,6 +19980,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::EtherStatUndersizedPkt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19988,6 +20099,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::OutOctets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20106,6 +20218,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::InPauseFrame::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20224,6 +20337,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::InGoodBytes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20342,6 +20456,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::In8021QFrames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20460,6 +20575,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::InPkts1519MaxOctets::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20578,6 +20694,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::InGoodPkts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20696,6 +20813,7 @@ std::shared_ptr<Entity> PerformanceManagementHistory::Global::Periodic::MacsecHi
 std::map<std::string, std::shared_ptr<Entity>> PerformanceManagementHistory::Global::Periodic::MacsecHistory::MacsecPortHistories::MacsecPortHistory::MacsecHour24History::MacsecHour24EtherHistories::MacsecHour24EtherHistory::MacsecHour24EtherTimeLineInstances::MacsecHour24EtherTimeLineInstance::InDropOverrun::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

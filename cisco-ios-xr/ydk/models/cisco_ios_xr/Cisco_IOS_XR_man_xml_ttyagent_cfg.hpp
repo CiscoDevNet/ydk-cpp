@@ -55,22 +55,22 @@ class XrXml::Agent : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Default_; //type: XrXml::Agent::Default_
+        class Default; //type: XrXml::Agent::Default
         class Tty; //type: XrXml::Agent::Tty
         class Ssl; //type: XrXml::Agent::Ssl
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_cfg::XrXml::Agent::Default_> default_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_cfg::XrXml::Agent::Default> default_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_cfg::XrXml::Agent::Tty> tty;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_cfg::XrXml::Agent::Ssl> ssl;
         
 }; // XrXml::Agent
 
 
-class XrXml::Agent::Default_ : public ydk::Entity
+class XrXml::Agent::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -88,18 +88,18 @@ class XrXml::Agent::Default_ : public ydk::Entity
         ydk::YLeaf iteration_size; //type: uint32
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf streaming_size; //type: uint32
-        class Session; //type: XrXml::Agent::Default_::Session
-        class Throttle; //type: XrXml::Agent::Default_::Throttle
-        class Vrfs; //type: XrXml::Agent::Default_::Vrfs
+        class Session; //type: XrXml::Agent::Default::Session
+        class Throttle; //type: XrXml::Agent::Default::Throttle
+        class Vrfs; //type: XrXml::Agent::Default::Vrfs
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_cfg::XrXml::Agent::Default_::Session> session;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_cfg::XrXml::Agent::Default_::Throttle> throttle;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_cfg::XrXml::Agent::Default_::Vrfs> vrfs;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_cfg::XrXml::Agent::Default::Session> session;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_cfg::XrXml::Agent::Default::Throttle> throttle;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_cfg::XrXml::Agent::Default::Vrfs> vrfs;
         
-}; // XrXml::Agent::Default_
+}; // XrXml::Agent::Default
 
 
-class XrXml::Agent::Default_::Session : public ydk::Entity
+class XrXml::Agent::Default::Session : public ydk::Entity
 {
     public:
         Session();
@@ -118,10 +118,10 @@ class XrXml::Agent::Default_::Session : public ydk::Entity
 
         ydk::YLeaf timeout; //type: uint32
 
-}; // XrXml::Agent::Default_::Session
+}; // XrXml::Agent::Default::Session
 
 
-class XrXml::Agent::Default_::Throttle : public ydk::Entity
+class XrXml::Agent::Default::Throttle : public ydk::Entity
 {
     public:
         Throttle();
@@ -141,10 +141,10 @@ class XrXml::Agent::Default_::Throttle : public ydk::Entity
         ydk::YLeaf process_rate; //type: uint32
         ydk::YLeaf memory; //type: uint32
 
-}; // XrXml::Agent::Default_::Throttle
+}; // XrXml::Agent::Default::Throttle
 
 
-class XrXml::Agent::Default_::Vrfs : public ydk::Entity
+class XrXml::Agent::Default::Vrfs : public ydk::Entity
 {
     public:
         Vrfs();
@@ -161,14 +161,14 @@ class XrXml::Agent::Default_::Vrfs : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Vrf; //type: XrXml::Agent::Default_::Vrfs::Vrf
+        class Vrf; //type: XrXml::Agent::Default::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_cfg::XrXml::Agent::Default_::Vrfs::Vrf> > vrf;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_xml_ttyagent_cfg::XrXml::Agent::Default::Vrfs::Vrf> > vrf;
         
-}; // XrXml::Agent::Default_::Vrfs
+}; // XrXml::Agent::Default::Vrfs
 
 
-class XrXml::Agent::Default_::Vrfs::Vrf : public ydk::Entity
+class XrXml::Agent::Default::Vrfs::Vrf : public ydk::Entity
 {
     public:
         Vrf();
@@ -191,7 +191,7 @@ class XrXml::Agent::Default_::Vrfs::Vrf : public ydk::Entity
         ydk::YLeaf access_list; //type: string
         ydk::YLeaf shutdown; //type: empty
 
-}; // XrXml::Agent::Default_::Vrfs::Vrf
+}; // XrXml::Agent::Default::Vrfs::Vrf
 
 
 class XrXml::Agent::Tty : public ydk::Entity

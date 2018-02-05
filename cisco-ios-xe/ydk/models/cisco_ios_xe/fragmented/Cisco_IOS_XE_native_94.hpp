@@ -2031,7 +2031,7 @@ class Native::SpanningTree::Mst::InstanceRange : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf id; //type: one of string, uint16
+        ydk::YLeaf id; //type: one of uint16, string
         ydk::YLeaf priority; //type: uint16
         ydk::YLeaf root; //type: Root
         class Root;
@@ -2085,7 +2085,7 @@ class Native::SpanningTree::Mst::Configuration::Instance : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf id; //type: uint16
-        ydk::YLeafList vlan; //type: list of  one of string, uint16
+        ydk::YLeafList vlan; //type: list of  one of uint16, string
 
 }; // Native::SpanningTree::Mst::Configuration::Instance
 
@@ -2492,7 +2492,7 @@ class Native::Track::TrackedObject : public ydk::Entity
         class Ip; //type: Native::Track::TrackedObject::Ip
         class Ipv6; //type: Native::Track::TrackedObject::Ipv6
         class List; //type: Native::Track::TrackedObject::List
-        class Default_; //type: Native::Track::TrackedObject::Default_
+        class Default; //type: Native::Track::TrackedObject::Default
         class Delay; //type: Native::Track::TrackedObject::Delay
         class Object; //type: Native::Track::TrackedObject::Object
         class Ipv6Object; //type: Native::Track::TrackedObject::Ipv6Object
@@ -2502,7 +2502,7 @@ class Native::Track::TrackedObject : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Track::TrackedObject::Ip> ip;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Track::TrackedObject::Ipv6> ipv6;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Track::TrackedObject::List> list;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Track::TrackedObject::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Track::TrackedObject::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Track::TrackedObject::Delay> delay;
         std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Track::TrackedObject::Object> > object;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Track::TrackedObject::Ipv6Object> ipv6_object;
@@ -2680,11 +2680,11 @@ class Native::Track::TrackedObject::List : public ydk::Entity
 }; // Native::Track::TrackedObject::List
 
 
-class Native::Track::TrackedObject::Default_ : public ydk::Entity
+class Native::Track::TrackedObject::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2697,19 +2697,19 @@ class Native::Track::TrackedObject::Default_ : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf default_state; //type: DefaultState
-        class Delay; //type: Native::Track::TrackedObject::Default_::Delay
-        class Ip; //type: Native::Track::TrackedObject::Default_::Ip
-        class Ipv6; //type: Native::Track::TrackedObject::Default_::Ipv6
+        class Delay; //type: Native::Track::TrackedObject::Default::Delay
+        class Ip; //type: Native::Track::TrackedObject::Default::Ip
+        class Ipv6; //type: Native::Track::TrackedObject::Default::Ipv6
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Track::TrackedObject::Default_::Delay> delay; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Track::TrackedObject::Default_::Ip> ip;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Track::TrackedObject::Default_::Ipv6> ipv6;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Track::TrackedObject::Default::Delay> delay; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Track::TrackedObject::Default::Ip> ip;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Track::TrackedObject::Default::Ipv6> ipv6;
                 class DefaultState;
 
-}; // Native::Track::TrackedObject::Default_
+}; // Native::Track::TrackedObject::Default
 
 
-class Native::Track::TrackedObject::Default_::Delay : public ydk::Entity
+class Native::Track::TrackedObject::Default::Delay : public ydk::Entity
 {
     public:
         Delay();
@@ -2726,10 +2726,10 @@ class Native::Track::TrackedObject::Default_::Delay : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Track::TrackedObject::Default_::Delay
+}; // Native::Track::TrackedObject::Default::Delay
 
 
-class Native::Track::TrackedObject::Default_::Ip : public ydk::Entity
+class Native::Track::TrackedObject::Default::Ip : public ydk::Entity
 {
     public:
         Ip();
@@ -2747,10 +2747,10 @@ class Native::Track::TrackedObject::Default_::Ip : public ydk::Entity
 
         ydk::YLeaf vrf; //type: empty
 
-}; // Native::Track::TrackedObject::Default_::Ip
+}; // Native::Track::TrackedObject::Default::Ip
 
 
-class Native::Track::TrackedObject::Default_::Ipv6 : public ydk::Entity
+class Native::Track::TrackedObject::Default::Ipv6 : public ydk::Entity
 {
     public:
         Ipv6();
@@ -2768,7 +2768,7 @@ class Native::Track::TrackedObject::Default_::Ipv6 : public ydk::Entity
 
         ydk::YLeaf vrf; //type: empty
 
-}; // Native::Track::TrackedObject::Default_::Ipv6
+}; // Native::Track::TrackedObject::Default::Ipv6
 
 
 class Native::Track::TrackedObject::Delay : public ydk::Entity
@@ -3437,7 +3437,7 @@ class Native::Fallback::Profile::FallbackList::Ip::AccessGroup : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf name; //type: one of string, uint16
+        ydk::YLeaf name; //type: one of uint16, string
         ydk::YLeaf in; //type: empty
 
 }; // Native::Fallback::Profile::FallbackList::Ip::AccessGroup
@@ -3840,7 +3840,7 @@ class Native::Track::TrackedObject::List::Threshold : public ydk::Enum
 
 };
 
-class Native::Track::TrackedObject::Default_::DefaultState : public ydk::Enum
+class Native::Track::TrackedObject::Default::DefaultState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf down;

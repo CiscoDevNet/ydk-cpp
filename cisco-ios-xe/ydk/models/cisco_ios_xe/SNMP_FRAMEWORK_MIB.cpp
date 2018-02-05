@@ -88,6 +88,7 @@ std::shared_ptr<Entity> SNMPFRAMEWORKMIB::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> SNMPFRAMEWORKMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(snmpengine != nullptr)
     {
         children["snmpEngine"] = snmpengine;
@@ -203,6 +204,7 @@ std::shared_ptr<Entity> SNMPFRAMEWORKMIB::Snmpengine::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> SNMPFRAMEWORKMIB::Snmpengine::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -185,6 +185,7 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ciscoifextsystemconfig != nullptr)
     {
         children["ciscoIfExtSystemConfig"] = ciscoifextsystemconfig;
@@ -361,6 +362,7 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -512,14 +514,6 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifpacketstatstable::get_child_by
 {
     if(child_yang_name == "cieIfPacketStatsEntry")
     {
-        for(auto const & c : cieifpacketstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry>();
         c->parent = this;
         cieifpacketstatsentry.push_back(c);
@@ -532,9 +526,14 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifpacketstatstable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifpacketstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cieifpacketstatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -658,6 +657,7 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpackets
 std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -863,14 +863,6 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifinterfacetable::get_child_by_n
 {
     if(child_yang_name == "cieIfInterfaceEntry")
     {
-        for(auto const & c : cieifinterfaceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry>();
         c->parent = this;
         cieifinterfaceentry.push_back(c);
@@ -883,9 +875,14 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifinterfacetable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifinterfacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cieifinterfaceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1037,6 +1034,7 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterface
 std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1312,14 +1310,6 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifstatuslisttable::get_child_by_
 {
     if(child_yang_name == "cieIfStatusListEntry")
     {
-        for(auto const & c : cieifstatuslistentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry>();
         c->parent = this;
         cieifstatuslistentry.push_back(c);
@@ -1332,9 +1322,14 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifstatuslisttable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifstatuslisttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cieifstatuslistentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1430,6 +1425,7 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatusli
 std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1565,14 +1561,6 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifvlstatstable::get_child_by_nam
 {
     if(child_yang_name == "cieIfVlStatsEntry")
     {
-        for(auto const & c : cieifvlstatsentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry>();
         c->parent = this;
         cieifvlstatsentry.push_back(c);
@@ -1585,9 +1573,14 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifvlstatstable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifvlstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cieifvlstatsentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1695,6 +1688,7 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentr
 std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1860,14 +1854,6 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::get_chi
 {
     if(child_yang_name == "cieIfIndexPersistenceEntry")
     {
-        for(auto const & c : cieifindexpersistenceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry>();
         c->parent = this;
         cieifindexpersistenceentry.push_back(c);
@@ -1880,9 +1866,14 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cieifindexpersistenceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1966,6 +1957,7 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifin
 std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2071,14 +2063,6 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::get
 {
     if(child_yang_name == "cieIfDot1qCustomEtherTypeEntry")
     {
-        for(auto const & c : cieifdot1qcustomethertypeentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry>();
         c->parent = this;
         cieifdot1qcustomethertypeentry.push_back(c);
@@ -2091,9 +2075,14 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::get
 std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cieifdot1qcustomethertypeentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2177,6 +2166,7 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cie
 std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2282,14 +2272,6 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifutiltable::get_child_by_name(c
 {
     if(child_yang_name == "cieIfUtilEntry")
     {
-        for(auto const & c : cieifutilentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry>();
         c->parent = this;
         cieifutilentry.push_back(c);
@@ -2302,9 +2284,14 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifutiltable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifutiltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cieifutilentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2400,6 +2387,7 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry::get
 std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2535,14 +2523,6 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::get_chi
 {
     if(child_yang_name == "cieIfDot1dBaseMappingEntry")
     {
-        for(auto const & c : cieifdot1dbasemappingentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry>();
         c->parent = this;
         cieifdot1dbasemappingentry.push_back(c);
@@ -2555,9 +2535,14 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::get_chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cieifdot1dbasemappingentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2637,6 +2622,7 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdo
 std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2732,14 +2718,6 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifnamemappingtable::get_child_by
 {
     if(child_yang_name == "cieIfNameMappingEntry")
     {
-        for(auto const & c : cieifnamemappingentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry>();
         c->parent = this;
         cieifnamemappingentry.push_back(c);
@@ -2752,9 +2730,14 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifnamemappingtable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifnamemappingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cieifnamemappingentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2834,6 +2817,7 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemap
 std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

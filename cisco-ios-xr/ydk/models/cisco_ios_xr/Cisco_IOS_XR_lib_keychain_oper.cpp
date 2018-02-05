@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Keychain::get_child_by_name(const std::string & child_ya
 std::map<std::string, std::shared_ptr<Entity>> Keychain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(keies != nullptr)
     {
         children["keies"] = keies;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> Keychain::Keies::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "key")
     {
-        for(auto const & c : key)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Keychain::Keies::Key>();
         c->parent = this;
         key.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> Keychain::Keies::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Keychain::Keies::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : key)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -289,6 +287,7 @@ std::shared_ptr<Entity> Keychain::Keies::Key::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> Keychain::Keies::Key::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key != nullptr)
     {
         children["key"] = key;
@@ -382,14 +381,6 @@ std::shared_ptr<Entity> Keychain::Keies::Key::Key_::get_child_by_name(const std:
 {
     if(child_yang_name == "key-id")
     {
-        for(auto const & c : key_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Keychain::Keies::Key::Key_::KeyId>();
         c->parent = this;
         key_id.push_back(c);
@@ -402,9 +393,14 @@ std::shared_ptr<Entity> Keychain::Keies::Key::Key_::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Keychain::Keies::Key::Key_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : key_id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -525,6 +521,7 @@ std::shared_ptr<Entity> Keychain::Keies::Key::Key_::KeyId::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Keychain::Keies::Key::Key_::KeyId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(macsec != nullptr)
     {
         children["macsec"] = macsec;
@@ -646,6 +643,7 @@ std::shared_ptr<Entity> Keychain::Keies::Key::Key_::KeyId::Macsec::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Keychain::Keies::Key::Key_::KeyId::Macsec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -738,6 +736,7 @@ std::shared_ptr<Entity> Keychain::Keies::Key::Key_::KeyId::SendLifetime::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Keychain::Keies::Key::Key_::KeyId::SendLifetime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -870,6 +869,7 @@ std::shared_ptr<Entity> Keychain::Keies::Key::Key_::KeyId::AcceptLifetime::get_c
 std::map<std::string, std::shared_ptr<Entity>> Keychain::Keies::Key::Key_::KeyId::AcceptLifetime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

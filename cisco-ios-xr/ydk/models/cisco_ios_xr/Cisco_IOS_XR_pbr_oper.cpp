@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Pbr::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Pbr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nodes != nullptr)
     {
         children["nodes"] = nodes;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> Pbr::Nodes::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pbr::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> Pbr::Nodes::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -285,6 +283,7 @@ std::shared_ptr<Entity> Pbr::Nodes::Node::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(policy_map != nullptr)
     {
         children["policy-map"] = policy_map;
@@ -375,6 +374,7 @@ std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interfaces != nullptr)
     {
         children["interfaces"] = interfaces;
@@ -448,14 +448,6 @@ std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::get_child_by_na
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -468,9 +460,14 @@ std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -553,6 +550,7 @@ std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::get_
 std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(direction != nullptr)
     {
         children["direction"] = direction;
@@ -643,6 +641,7 @@ std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Dire
 std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -732,14 +731,6 @@ std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Dire
 {
     if(child_yang_name == "class-stat")
     {
-        for(auto const & c : class_stat)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat>();
         c->parent = this;
         class_stat.push_back(c);
@@ -752,9 +743,14 @@ std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Dire
 std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : class_stat)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -898,6 +894,7 @@ std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Dire
 std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(general_stats != nullptr)
     {
         children["general-stats"] = general_stats;
@@ -1036,6 +1033,7 @@ std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Dire
 std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::GeneralStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1212,6 +1210,7 @@ std::shared_ptr<Entity> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Dire
 std::map<std::string, std::shared_ptr<Entity>> Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat::HttprStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

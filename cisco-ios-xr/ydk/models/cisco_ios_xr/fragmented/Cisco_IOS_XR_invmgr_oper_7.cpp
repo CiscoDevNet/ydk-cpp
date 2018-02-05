@@ -159,6 +159,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Fantray::Slot::Attributes::InvBa
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Fantray::Slot::Attributes::InvBasicBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -515,6 +516,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEe
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(eeprom != nullptr)
     {
         children["eeprom"] = eeprom;
@@ -870,6 +872,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEe
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rma != nullptr)
     {
         children["rma"] = rma;
@@ -1509,6 +1512,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEe
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Fantray::Slot::Attributes::InvEepromInfo::Eeprom::Rma::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1722,6 +1726,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(env_sensor_info != nullptr)
     {
         children["env-sensor-info"] = env_sensor_info;
@@ -1912,6 +1917,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::EnvSensorInfo::get_c
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::EnvSensorInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2110,6 +2116,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::PwgInfo::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::PwgInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2250,6 +2257,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::ge
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -2383,14 +2391,6 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Th
 {
     if(child_yang_name == "threshold-array")
     {
-        for(auto const & c : threshold_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray>();
         c->parent = this;
         threshold_array.push_back(c);
@@ -2403,9 +2403,14 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Th
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : threshold_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2486,6 +2491,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Th
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2616,6 +2622,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::InvAssetBag::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::InvAssetBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2826,6 +2833,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::get_child
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(major_lo != nullptr)
     {
         children["major-lo"] = major_lo;
@@ -2931,6 +2939,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::MajorLo::
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::MajorLo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -3018,6 +3027,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::MajorLo::
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::MajorLo::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3143,6 +3153,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::CriticalH
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -3230,6 +3241,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::CriticalH
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::CriticalHi::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3355,6 +3367,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::MinorHi::
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::MinorHi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -3442,6 +3455,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::MinorHi::
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::MinorHi::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3567,6 +3581,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::MajorHi::
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::MajorHi::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -3654,6 +3669,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::MajorHi::
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::MajorHi::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3779,6 +3795,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::CriticalL
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -3866,6 +3883,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::CriticalL
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::CriticalLo::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3991,6 +4009,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::MinorLo::
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::MinorLo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(thresh_bag != nullptr)
     {
         children["thresh-bag"] = thresh_bag;
@@ -4078,6 +4097,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::Threshold::MinorLo::
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::Threshold::MinorLo::ThreshBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4245,6 +4265,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::FruInfo::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::FruInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(last_operational_state_change != nullptr)
     {
         children["last-operational-state-change"] = last_operational_state_change;
@@ -4395,6 +4416,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::FruInfo::LastOperati
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4485,6 +4507,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime:
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::FruInfo::CardUpTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4671,6 +4694,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::InvBasicBag::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::InvBasicBag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5027,6 +5051,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::InvEepromInfo::get_c
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::InvEepromInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(eeprom != nullptr)
     {
         children["eeprom"] = eeprom;
@@ -5382,6 +5407,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::InvEepromInfo::Eepro
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(rma != nullptr)
     {
         children["rma"] = rma;
@@ -6021,6 +6047,7 @@ std::shared_ptr<Entity> Inventory::Racks::Rack::Attributes::InvEepromInfo::Eepro
 std::map<std::string, std::shared_ptr<Entity>> Inventory::Racks::Rack::Attributes::InvEepromInfo::Eeprom::Rma::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

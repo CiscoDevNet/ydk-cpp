@@ -61,14 +61,6 @@ std::shared_ptr<Entity> HardwareModulePortMode::get_child_by_name(const std::str
 {
     if(child_yang_name == "config-mode")
     {
-        for(auto const & c : config_mode)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HardwareModulePortMode::ConfigMode>();
         c->parent = this;
         config_mode.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> HardwareModulePortMode::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> HardwareModulePortMode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : config_mode)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -190,14 +187,6 @@ std::shared_ptr<Entity> HardwareModulePortMode::ConfigMode::get_child_by_name(co
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<HardwareModulePortMode::ConfigMode::Node>();
         c->parent = this;
         node.push_back(c);
@@ -210,9 +199,14 @@ std::shared_ptr<Entity> HardwareModulePortMode::ConfigMode::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> HardwareModulePortMode::ConfigMode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -305,6 +299,7 @@ std::shared_ptr<Entity> HardwareModulePortMode::ConfigMode::Node::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> HardwareModulePortMode::ConfigMode::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(port_mode != nullptr)
     {
         children["port-mode"] = port_mode;
@@ -386,6 +381,7 @@ std::shared_ptr<Entity> HardwareModulePortMode::ConfigMode::Node::PortMode::get_
 std::map<std::string, std::shared_ptr<Entity>> HardwareModulePortMode::ConfigMode::Node::PortMode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

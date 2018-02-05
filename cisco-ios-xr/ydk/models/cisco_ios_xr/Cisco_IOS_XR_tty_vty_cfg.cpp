@@ -68,6 +68,7 @@ std::shared_ptr<Entity> Vty::get_child_by_name(const std::string & child_yang_na
 std::map<std::string, std::shared_ptr<Entity>> Vty::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vty_pools != nullptr)
     {
         children["vty-pools"] = vty_pools;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> Vty::VtyPools::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "vty-pool")
     {
-        for(auto const & c : vty_pool)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Vty::VtyPools::VtyPool>();
         c->parent = this;
         vty_pool.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> Vty::VtyPools::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> Vty::VtyPools::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vty_pool)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -287,6 +285,7 @@ std::shared_ptr<Entity> Vty::VtyPools::VtyPool::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Vty::VtyPools::VtyPool::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

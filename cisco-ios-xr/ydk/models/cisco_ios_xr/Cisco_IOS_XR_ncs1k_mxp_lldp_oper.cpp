@@ -81,6 +81,7 @@ std::shared_ptr<Entity> LldpSnoopData::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(lldp_neighbor_brief != nullptr)
     {
         children["lldp-neighbor-brief"] = lldp_neighbor_brief;
@@ -203,6 +204,7 @@ std::shared_ptr<Entity> LldpSnoopData::LldpNeighborBrief::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::LldpNeighborBrief::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(neighbours != nullptr)
     {
         children["neighbours"] = neighbours;
@@ -293,14 +295,6 @@ std::shared_ptr<Entity> LldpSnoopData::LldpNeighborBrief::Neighbours::get_child_
 {
     if(child_yang_name == "lldp-neighbor-brief-entry")
     {
-        for(auto const & c : lldp_neighbor_brief_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry>();
         c->parent = this;
         lldp_neighbor_brief_entry.push_back(c);
@@ -313,9 +307,14 @@ std::shared_ptr<Entity> LldpSnoopData::LldpNeighborBrief::Neighbours::get_child_
 std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::LldpNeighborBrief::Neighbours::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldp_neighbor_brief_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -411,6 +410,7 @@ std::shared_ptr<Entity> LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighb
 std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -546,14 +546,6 @@ std::shared_ptr<Entity> LldpSnoopData::EthernetControllerNames::get_child_by_nam
 {
     if(child_yang_name == "ethernet-controller-name")
     {
-        for(auto const & c : ethernet_controller_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<LldpSnoopData::EthernetControllerNames::EthernetControllerName>();
         c->parent = this;
         ethernet_controller_name.push_back(c);
@@ -566,9 +558,14 @@ std::shared_ptr<Entity> LldpSnoopData::EthernetControllerNames::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::EthernetControllerNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ethernet_controller_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -706,6 +703,7 @@ std::shared_ptr<Entity> LldpSnoopData::EthernetControllerNames::EthernetControll
 std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::EthernetControllerNames::EthernetControllerName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(network_addresses != nullptr)
     {
         children["network-addresses"] = network_addresses;
@@ -909,14 +907,6 @@ std::shared_ptr<Entity> LldpSnoopData::EthernetControllerNames::EthernetControll
 {
     if(child_yang_name == "lldp-addr-entry")
     {
-        for(auto const & c : lldp_addr_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry>();
         c->parent = this;
         lldp_addr_entry.push_back(c);
@@ -929,9 +919,14 @@ std::shared_ptr<Entity> LldpSnoopData::EthernetControllerNames::EthernetControll
 std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : lldp_addr_entry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1018,6 +1013,7 @@ std::shared_ptr<Entity> LldpSnoopData::EthernetControllerNames::EthernetControll
 std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -1117,6 +1113,7 @@ std::shared_ptr<Entity> LldpSnoopData::EthernetControllerNames::EthernetControll
 std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

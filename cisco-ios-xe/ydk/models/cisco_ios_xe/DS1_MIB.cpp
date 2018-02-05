@@ -172,6 +172,7 @@ std::shared_ptr<Entity> DS1MIB::get_child_by_name(const std::string & child_yang
 std::map<std::string, std::shared_ptr<Entity>> DS1MIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dsx1configtable != nullptr)
     {
         children["dsx1ConfigTable"] = dsx1configtable;
@@ -317,14 +318,6 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Configtable::get_child_by_name(const std::st
 {
     if(child_yang_name == "dsx1ConfigEntry")
     {
-        for(auto const & c : dsx1configentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DS1MIB::Dsx1Configtable::Dsx1Configentry>();
         c->parent = this;
         dsx1configentry.push_back(c);
@@ -337,9 +330,14 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Configtable::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1Configtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dsx1configentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -491,6 +489,7 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Configtable::Dsx1Configentry::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1Configtable::Dsx1Configentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -766,14 +765,6 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Currenttable::get_child_by_name(const std::s
 {
     if(child_yang_name == "dsx1CurrentEntry")
     {
-        for(auto const & c : dsx1currententry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DS1MIB::Dsx1Currenttable::Dsx1Currententry>();
         c->parent = this;
         dsx1currententry.push_back(c);
@@ -786,9 +777,14 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Currenttable::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1Currenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dsx1currententry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -904,6 +900,7 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Currenttable::Dsx1Currententry::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1Currenttable::Dsx1Currententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1089,14 +1086,6 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Intervaltable::get_child_by_name(const std::
 {
     if(child_yang_name == "dsx1IntervalEntry")
     {
-        for(auto const & c : dsx1intervalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DS1MIB::Dsx1Intervaltable::Dsx1Intervalentry>();
         c->parent = this;
         dsx1intervalentry.push_back(c);
@@ -1109,9 +1098,14 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Intervaltable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1Intervaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dsx1intervalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1235,6 +1229,7 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Intervaltable::Dsx1Intervalentry::get_child_
 std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1Intervaltable::Dsx1Intervalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1440,14 +1435,6 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Totaltable::get_child_by_name(const std::str
 {
     if(child_yang_name == "dsx1TotalEntry")
     {
-        for(auto const & c : dsx1totalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DS1MIB::Dsx1Totaltable::Dsx1Totalentry>();
         c->parent = this;
         dsx1totalentry.push_back(c);
@@ -1460,9 +1447,14 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Totaltable::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1Totaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dsx1totalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1578,6 +1570,7 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Totaltable::Dsx1Totalentry::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1Totaltable::Dsx1Totalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1763,14 +1756,6 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Farendcurrenttable::get_child_by_name(const 
 {
     if(child_yang_name == "dsx1FarEndCurrentEntry")
     {
-        for(auto const & c : dsx1farendcurrententry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DS1MIB::Dsx1Farendcurrenttable::Dsx1Farendcurrententry>();
         c->parent = this;
         dsx1farendcurrententry.push_back(c);
@@ -1783,9 +1768,14 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Farendcurrenttable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1Farendcurrenttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dsx1farendcurrententry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1909,6 +1899,7 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Farendcurrenttable::Dsx1Farendcurrententry::
 std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1Farendcurrenttable::Dsx1Farendcurrententry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2114,14 +2105,6 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Farendintervaltable::get_child_by_name(const
 {
     if(child_yang_name == "dsx1FarEndIntervalEntry")
     {
-        for(auto const & c : dsx1farendintervalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DS1MIB::Dsx1Farendintervaltable::Dsx1Farendintervalentry>();
         c->parent = this;
         dsx1farendintervalentry.push_back(c);
@@ -2134,9 +2117,14 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Farendintervaltable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1Farendintervaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dsx1farendintervalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2256,6 +2244,7 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Farendintervaltable::Dsx1Farendintervalentry
 std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1Farendintervaltable::Dsx1Farendintervalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2451,14 +2440,6 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Farendtotaltable::get_child_by_name(const st
 {
     if(child_yang_name == "dsx1FarEndTotalEntry")
     {
-        for(auto const & c : dsx1farendtotalentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DS1MIB::Dsx1Farendtotaltable::Dsx1Farendtotalentry>();
         c->parent = this;
         dsx1farendtotalentry.push_back(c);
@@ -2471,9 +2452,14 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Farendtotaltable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1Farendtotaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dsx1farendtotalentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2585,6 +2571,7 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Farendtotaltable::Dsx1Farendtotalentry::get_
 std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1Farendtotaltable::Dsx1Farendtotalentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2760,14 +2747,6 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Fractable::get_child_by_name(const std::stri
 {
     if(child_yang_name == "dsx1FracEntry")
     {
-        for(auto const & c : dsx1fracentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DS1MIB::Dsx1Fractable::Dsx1Fracentry>();
         c->parent = this;
         dsx1fracentry.push_back(c);
@@ -2780,9 +2759,14 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Fractable::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1Fractable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dsx1fracentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2866,6 +2850,7 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Fractable::Dsx1Fracentry::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1Fractable::Dsx1Fracentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2971,14 +2956,6 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Chanmappingtable::get_child_by_name(const st
 {
     if(child_yang_name == "dsx1ChanMappingEntry")
     {
-        for(auto const & c : dsx1chanmappingentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<DS1MIB::Dsx1Chanmappingtable::Dsx1Chanmappingentry>();
         c->parent = this;
         dsx1chanmappingentry.push_back(c);
@@ -2991,9 +2968,14 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Chanmappingtable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1Chanmappingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dsx1chanmappingentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3077,6 +3059,7 @@ std::shared_ptr<Entity> DS1MIB::Dsx1Chanmappingtable::Dsx1Chanmappingentry::get_
 std::map<std::string, std::shared_ptr<Entity>> DS1MIB::Dsx1Chanmappingtable::Dsx1Chanmappingentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

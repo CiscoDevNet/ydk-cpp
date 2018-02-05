@@ -68,6 +68,7 @@ std::shared_ptr<Entity> NetFlow::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(statistics != nullptr)
     {
         children["statistics"] = statistics;
@@ -173,14 +174,6 @@ std::shared_ptr<Entity> NetFlow::Statistics::get_child_by_name(const std::string
 {
     if(child_yang_name == "statistic")
     {
-        for(auto const & c : statistic)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NetFlow::Statistics::Statistic>();
         c->parent = this;
         statistic.push_back(c);
@@ -193,9 +186,14 @@ std::shared_ptr<Entity> NetFlow::Statistics::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : statistic)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -298,6 +296,7 @@ std::shared_ptr<Entity> NetFlow::Statistics::Statistic::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::Statistics::Statistic::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(producer != nullptr)
     {
         children["producer"] = producer;
@@ -393,6 +392,7 @@ std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Producer::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::Statistics::Statistic::Producer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(statistics != nullptr)
     {
         children["statistics"] = statistics;
@@ -508,6 +508,7 @@ std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Producer::Statistics_::g
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::Statistics::Statistic::Producer::Statistics_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -703,6 +704,7 @@ std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Server::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::Statistics::Statistic::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(flow_exporters != nullptr)
     {
         children["flow-exporters"] = flow_exporters;
@@ -776,14 +778,6 @@ std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Server::FlowExporters::g
 {
     if(child_yang_name == "flow-exporter")
     {
-        for(auto const & c : flow_exporter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter>();
         c->parent = this;
         flow_exporter.push_back(c);
@@ -796,9 +790,14 @@ std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Server::FlowExporters::g
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::Statistics::Statistic::Server::FlowExporters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : flow_exporter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -881,6 +880,7 @@ std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Server::FlowExporters::F
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(exporter != nullptr)
     {
         children["exporter"] = exporter;
@@ -964,14 +964,6 @@ std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Server::FlowExporters::F
 {
     if(child_yang_name == "statistic")
     {
-        for(auto const & c : statistic)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_>();
         c->parent = this;
         statistic.push_back(c);
@@ -984,9 +976,14 @@ std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Server::FlowExporters::F
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : statistic)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1079,14 +1076,6 @@ std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Server::FlowExporters::F
 {
     if(child_yang_name == "collector")
     {
-        for(auto const & c : collector)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::Collector>();
         c->parent = this;
         collector.push_back(c);
@@ -1099,9 +1088,14 @@ std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Server::FlowExporters::F
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : collector)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1338,6 +1332,7 @@ std::shared_ptr<Entity> NetFlow::Statistics::Statistic::Server::FlowExporters::F
 std::map<std::string, std::shared_ptr<Entity>> NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::Collector::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

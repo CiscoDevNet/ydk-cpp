@@ -60,6 +60,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Dhcp::Relay::Informati
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Dhcp::Relay::Information::CheckReply::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -136,6 +137,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Dhcp::Relay::Informati
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Dhcp::Relay::Information::Option::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -212,6 +214,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Dhcp::Relay::Informati
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Dhcp::Relay::Information::OptionInsert::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -308,14 +311,6 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Dhcp::Snooping::get_ch
 
     if(child_yang_name == "vlan")
     {
-        for(auto const & c : vlan)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vasiright::Ip::Dhcp::Snooping::Vlan>();
         c->parent = this;
         vlan.push_back(c);
@@ -328,14 +323,19 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Dhcp::Snooping::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Dhcp::Snooping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(limit != nullptr)
     {
         children["limit"] = limit;
     }
 
+    count = 0;
     for (auto const & c : vlan)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -414,6 +414,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Dhcp::Snooping::Limit:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Dhcp::Snooping::Limit::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -504,6 +505,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Dhcp::Snooping::Vlan::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Dhcp::Snooping::Vlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(information != nullptr)
     {
         children["information"] = information;
@@ -594,6 +596,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Dhcp::Snooping::Vlan::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Dhcp::Snooping::Vlan::Information::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(option != nullptr)
     {
         children["option"] = option;
@@ -674,6 +677,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Dhcp::Snooping::Vlan::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Dhcp::Snooping::Vlan::Information::Option::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(format_type != nullptr)
     {
         children["format-type"] = format_type;
@@ -754,6 +758,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Dhcp::Snooping::Vlan::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Dhcp::Snooping::Vlan::Information::Option::FormatType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(circuit_id != nullptr)
     {
         children["circuit-id"] = circuit_id;
@@ -825,6 +830,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Dhcp::Snooping::Vlan::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Dhcp::Snooping::Vlan::Information::Option::FormatType::CircuitId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -903,14 +909,6 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::SummaryAddress::get_ch
 {
     if(child_yang_name == "eigrp")
     {
-        for(auto const & c : eigrp)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vasiright::Ip::SummaryAddress::Eigrp>();
         c->parent = this;
         eigrp.push_back(c);
@@ -923,9 +921,14 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::SummaryAddress::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::SummaryAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : eigrp)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1006,6 +1009,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::SummaryAddress::Eigrp:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::SummaryAddress::Eigrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1133,6 +1137,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Verify::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Verify::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(source != nullptr)
     {
         children["source"] = source;
@@ -1218,6 +1223,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Verify::Source::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Verify::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(vlan != nullptr)
     {
         children["vlan"] = vlan;
@@ -1297,6 +1303,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Verify::Source::Vlan::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Verify::Source::Vlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dhcp_snooping != nullptr)
     {
         children["dhcp-snooping"] = dhcp_snooping;
@@ -1368,6 +1375,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Verify::Source::Vlan::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Verify::Source::Vlan::DhcpSnooping::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1465,6 +1473,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Verify::Unicast::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Verify::Unicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(reverse_path != nullptr)
     {
         children["reverse-path"] = reverse_path;
@@ -1537,6 +1546,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Verify::Unicast::Rever
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Verify::Unicast::ReversePath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1609,6 +1619,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Verify::Unicast::Sourc
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Verify::Unicast::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1725,14 +1736,6 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Wccp::get_child_by_nam
 {
     if(child_yang_name == "wccp-list")
     {
-        for(auto const & c : wccp_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vasiright::Ip::Wccp::WccpList>();
         c->parent = this;
         wccp_list.push_back(c);
@@ -1759,14 +1762,6 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Wccp::get_child_by_nam
 
     if(child_yang_name == "vrf")
     {
-        for(auto const & c : vrf)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vasiright::Ip::Wccp::Vrf>();
         c->parent = this;
         vrf.push_back(c);
@@ -1779,9 +1774,14 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Wccp::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Wccp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : wccp_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(web_cache != nullptr)
@@ -1794,9 +1794,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip:
         children["redirect"] = redirect;
     }
 
+    count = 0;
     for (auto const & c : vrf)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1883,6 +1887,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Wccp::WccpList::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Wccp::WccpList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redirect != nullptr)
     {
         children["redirect"] = redirect;
@@ -1978,6 +1983,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Wccp::WccpList::Redire
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Wccp::WccpList::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2078,6 +2084,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Wccp::WebCache::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Wccp::WebCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redirect != nullptr)
     {
         children["redirect"] = redirect;
@@ -2163,6 +2170,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Wccp::WebCache::Redire
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Wccp::WebCache::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2258,6 +2266,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Wccp::Redirect::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Wccp::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(exclude != nullptr)
     {
         children["exclude"] = exclude;
@@ -2329,6 +2338,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Wccp::Redirect::Exclud
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Wccp::Redirect::Exclude::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2416,14 +2426,6 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Wccp::Vrf::get_child_b
 {
     if(child_yang_name == "wccp-list")
     {
-        for(auto const & c : wccp_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vasiright::Ip::Wccp::Vrf::WccpList>();
         c->parent = this;
         wccp_list.push_back(c);
@@ -2445,9 +2447,14 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Wccp::Vrf::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Wccp::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : wccp_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(web_cache != nullptr)
@@ -2549,6 +2556,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Wccp::Vrf::WccpList::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Wccp::Vrf::WccpList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redirect != nullptr)
     {
         children["redirect"] = redirect;
@@ -2644,6 +2652,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Wccp::Vrf::WccpList::R
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Wccp::Vrf::WccpList::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2744,6 +2753,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Wccp::Vrf::WebCache::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Wccp::Vrf::WebCache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(redirect != nullptr)
     {
         children["redirect"] = redirect;
@@ -2829,6 +2839,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ip::Wccp::Vrf::WebCache::R
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ip::Wccp::Vrf::WebCache::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3010,14 +3021,6 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ipv6::get_child_by_name(co
 
     if(child_yang_name == "traffic-filter")
     {
-        for(auto const & c : traffic_filter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vasiright::Ipv6::TrafficFilter>();
         c->parent = this;
         traffic_filter.push_back(c);
@@ -3030,6 +3033,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ipv6::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(destination_guard != nullptr)
     {
         children["destination-guard"] = destination_guard;
@@ -3060,9 +3064,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ipv
         children["tcp"] = tcp;
     }
 
+    count = 0;
     for (auto const & c : traffic_filter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3171,6 +3179,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ipv6::DestinationGuard::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ipv6::DestinationGuard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3247,6 +3256,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ipv6::SourceGuard::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ipv6::SourceGuard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3341,14 +3351,6 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ipv6::Dhcp::get_child_by_n
 
     if(child_yang_name == "Cisco-IOS-XE-dhcp:server")
     {
-        for(auto const & c : server)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vasiright::Ipv6::Dhcp::Server>();
         c->parent = this;
         server.push_back(c);
@@ -3370,14 +3372,19 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ipv6::Dhcp::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ipv6::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(client != nullptr)
     {
         children["Cisco-IOS-XE-dhcp:client"] = client;
     }
 
+    count = 0;
     for (auto const & c : server)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(guard != nullptr)
@@ -3460,6 +3467,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ipv6::Dhcp::Client::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ipv6::Dhcp::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(request != nullptr)
     {
         children["request"] = request;
@@ -3531,6 +3539,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ipv6::Dhcp::Client::Reques
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ipv6::Dhcp::Client::Request::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3611,6 +3620,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ipv6::Dhcp::Server::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ipv6::Dhcp::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3697,6 +3707,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ipv6::Dhcp::Guard::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ipv6::Dhcp::Guard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3809,14 +3820,6 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ipv6::Address::get_child_b
 
     if(child_yang_name == "prefix-list")
     {
-        for(auto const & c : prefix_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vasiright::Ipv6::Address::PrefixList>();
         c->parent = this;
         prefix_list.push_back(c);
@@ -3825,14 +3828,6 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ipv6::Address::get_child_b
 
     if(child_yang_name == "link-local-address")
     {
-        for(auto const & c : link_local_address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vasiright::Ipv6::Address::LinkLocalAddress>();
         c->parent = this;
         link_local_address.push_back(c);
@@ -3845,6 +3840,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ipv6::Address::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ipv6::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dhcp != nullptr)
     {
         children["dhcp"] = dhcp;
@@ -3855,14 +3851,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ipv
         children["autoconfig"] = autoconfig;
     }
 
+    count = 0;
     for (auto const & c : prefix_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : link_local_address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3931,6 +3935,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ipv6::Address::Dhcp::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ipv6::Address::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4007,6 +4012,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ipv6::Address::Autoconfig:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ipv6::Address::Autoconfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4091,6 +4097,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ipv6::Address::PrefixList:
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ipv6::Address::PrefixList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4191,6 +4198,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ipv6::Address::LinkLocalAd
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ipv6::Address::LinkLocalAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4317,6 +4325,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ipv6::Nd::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ipv6::Nd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(raguard != nullptr)
     {
         children["Cisco-IOS-XE-nd:raguard"] = raguard;
@@ -4408,6 +4417,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ipv6::Nd::Raguard::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ipv6::Nd::Raguard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4488,6 +4498,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ipv6::Nd::Autoconfig::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ipv6::Nd::Autoconfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4582,6 +4593,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ipv6::Nd::Ra::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ipv6::Nd::Ra::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(suppress != nullptr)
     {
         children["suppress"] = suppress;
@@ -4653,6 +4665,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ipv6::Nd::Ra::Suppress::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ipv6::Nd::Ra::Suppress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4729,6 +4742,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ipv6::Tcp::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ipv6::Tcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4809,6 +4823,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Ipv6::TrafficFilter::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Ipv6::TrafficFilter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4904,6 +4919,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Logging::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Logging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(event != nullptr)
     {
         children["event"] = event;
@@ -5020,6 +5036,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Logging::Event::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Logging::Event::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(spanning_tree != nullptr)
     {
         children["spanning-tree"] = spanning_tree;
@@ -5156,6 +5173,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Logging::Event::SpanningTr
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Logging::Event::SpanningTree::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5232,6 +5250,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Logging::Event::SubifLinkS
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Logging::Event::SubifLinkStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5308,6 +5327,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Mdix::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Mdix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5388,6 +5408,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Mop::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Mop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5483,6 +5504,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::InterfaceQos::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::InterfaceQos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(trust != nullptr)
     {
         children["trust"] = trust;
@@ -5554,6 +5576,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::InterfaceQos::Trust::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::InterfaceQos::Trust::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5670,14 +5693,6 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Standby::get_child_by_name
 
     if(child_yang_name == "standby-list")
     {
-        for(auto const & c : standby_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vasiright::Standby::StandbyList>();
         c->parent = this;
         standby_list.push_back(c);
@@ -5690,6 +5705,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Standby::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Standby::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(delay != nullptr)
     {
         children["delay"] = delay;
@@ -5700,9 +5716,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Sta
         children["use-bia"] = use_bia;
     }
 
+    count = 0;
     for (auto const & c : standby_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5805,6 +5825,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Standby::Delay::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Standby::Delay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5900,6 +5921,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Standby::UseBia::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Standby::UseBia::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(scope != nullptr)
     {
         children["scope"] = scope;
@@ -5971,6 +5993,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Standby::UseBia::Scope::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Standby::UseBia::Scope::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6137,14 +6160,6 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Standby::StandbyList::get_
 
     if(child_yang_name == "track")
     {
-        for(auto const & c : track)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vasiright::Standby::StandbyList::Track>();
         c->parent = this;
         track.push_back(c);
@@ -6157,6 +6172,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Standby::StandbyList::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Standby::StandbyList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authentication != nullptr)
     {
         children["authentication"] = authentication;
@@ -6182,9 +6198,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Sta
         children["timers"] = timers;
     }
 
+    count = 0;
     for (auto const & c : track)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6331,6 +6351,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Standby::StandbyList::Auth
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Standby::StandbyList::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(md5 != nullptr)
     {
         children["md5"] = md5;
@@ -6436,6 +6457,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Standby::StandbyList::Auth
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Standby::StandbyList::Authentication::Md5::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_string != nullptr)
     {
         children["key-string"] = key_string;
@@ -6525,6 +6547,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Standby::StandbyList::Auth
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Standby::StandbyList::Authentication::Md5::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6625,6 +6648,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Standby::StandbyList::Ip::
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Standby::StandbyList::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6720,6 +6744,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Standby::StandbyList::Pree
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Standby::StandbyList::Preempt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(delay != nullptr)
     {
         children["delay"] = delay;
@@ -6799,6 +6824,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Standby::StandbyList::Pree
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Standby::StandbyList::Preempt::Delay::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6922,6 +6948,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Standby::StandbyList::Redi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Standby::StandbyList::Redirect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(advertisement != nullptr)
     {
         children["advertisement"] = advertisement;
@@ -7017,6 +7044,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Standby::StandbyList::Redi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Standby::StandbyList::Redirect::Advertisement::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authentication != nullptr)
     {
         children["authentication"] = authentication;
@@ -7097,6 +7125,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Standby::StandbyList::Redi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Standby::StandbyList::Redirect::Advertisement::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(md5 != nullptr)
     {
         children["md5"] = md5;
@@ -7182,6 +7211,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Standby::StandbyList::Redi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_string != nullptr)
     {
         children["key-string"] = key_string;
@@ -7271,6 +7301,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Standby::StandbyList::Redi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7371,6 +7402,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Standby::StandbyList::Redi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Standby::StandbyList::Redirect::Timers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7479,6 +7511,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Standby::StandbyList::Time
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Standby::StandbyList::Timers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(hello_interval != nullptr)
     {
         children["hello-interval"] = hello_interval;
@@ -7559,6 +7592,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Standby::StandbyList::Time
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Standby::StandbyList::Timers::HelloInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7649,6 +7683,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Standby::StandbyList::Time
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Standby::StandbyList::Timers::HoldTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7743,6 +7778,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Standby::StandbyList::Trac
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Standby::StandbyList::Track::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7857,6 +7893,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::AccessSession::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::AccessSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(port_control != nullptr)
     {
         children["port-control"] = port_control;
@@ -7948,6 +7985,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::AccessSession::PortControl
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::AccessSession::PortControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8072,6 +8110,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::StormControl::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::StormControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(action != nullptr)
     {
         children["action"] = action;
@@ -8166,6 +8205,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::StormControl::Action::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::StormControl::Action::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8284,6 +8324,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::StormControl::Broadcast::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::StormControl::Broadcast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(include != nullptr)
     {
         children["include"] = include;
@@ -8360,6 +8401,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::StormControl::Broadcast::I
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::StormControl::Broadcast::Include::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8471,6 +8513,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::StormControl::Broadcast::L
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::StormControl::Broadcast::Level::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -8556,6 +8599,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::StormControl::Broadcast::L
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::StormControl::Broadcast::Level::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8646,6 +8690,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::StormControl::Broadcast::L
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::StormControl::Broadcast::Level::Bps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8736,6 +8781,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::StormControl::Broadcast::L
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::StormControl::Broadcast::Level::Pps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8831,6 +8877,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::StormControl::Multicast::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::StormControl::Multicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(level != nullptr)
     {
         children["level"] = level;
@@ -8937,6 +8984,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::StormControl::Multicast::L
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::StormControl::Multicast::Level::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -9022,6 +9070,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::StormControl::Multicast::L
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::StormControl::Multicast::Level::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9112,6 +9161,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::StormControl::Multicast::L
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::StormControl::Multicast::Level::Bps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9202,6 +9252,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::StormControl::Multicast::L
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::StormControl::Multicast::Level::Pps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9297,6 +9348,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::StormControl::Unicast::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::StormControl::Unicast::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(level != nullptr)
     {
         children["level"] = level;
@@ -9403,6 +9455,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::StormControl::Unicast::Lev
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::StormControl::Unicast::Level::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(threshold != nullptr)
     {
         children["threshold"] = threshold;
@@ -9488,6 +9541,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::StormControl::Unicast::Lev
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::StormControl::Unicast::Level::Threshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9578,6 +9632,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::StormControl::Unicast::Lev
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::StormControl::Unicast::Level::Bps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9668,6 +9723,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::StormControl::Unicast::Lev
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::StormControl::Unicast::Level::Pps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9754,6 +9810,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Trust::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Trust::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9844,6 +9901,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::PriorityQueue::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::PriorityQueue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cos_map != nullptr)
     {
         children["cos-map"] = cos_map;
@@ -9939,6 +9997,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::PriorityQueue::CosMap::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::PriorityQueue::CosMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10025,14 +10084,6 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::RcvQueue::get_child_by_nam
 {
     if(child_yang_name == "cos-map")
     {
-        for(auto const & c : cos_map)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Interface::Vasiright::RcvQueue::CosMap>();
         c->parent = this;
         cos_map.push_back(c);
@@ -10045,9 +10096,14 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::RcvQueue::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::RcvQueue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : cos_map)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10134,6 +10190,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::RcvQueue::CosMap::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::RcvQueue::CosMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10182,7 +10239,7 @@ bool Native::Interface::Vasiright::RcvQueue::CosMap::has_leaf_or_child_of_name(c
 
 Native::Interface::Vasiright::Peer::Peer()
     :
-    default_(std::make_shared<Native::Interface::Vasiright::Peer::Default_>())
+    default_(std::make_shared<Native::Interface::Vasiright::Peer::Default>())
 {
     default_->parent = this;
 
@@ -10226,7 +10283,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Peer::get_child_by_name(co
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Interface::Vasiright::Peer::Default_>();
+            default_ = std::make_shared<Native::Interface::Vasiright::Peer::Default>();
         }
         return default_;
     }
@@ -10237,6 +10294,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Peer::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_ != nullptr)
     {
         children["default"] = default_;
@@ -10260,38 +10318,38 @@ bool Native::Interface::Vasiright::Peer::has_leaf_or_child_of_name(const std::st
     return false;
 }
 
-Native::Interface::Vasiright::Peer::Default_::Default_()
+Native::Interface::Vasiright::Peer::Default::Default()
     :
-    ip(std::make_shared<Native::Interface::Vasiright::Peer::Default_::Ip>())
+    ip(std::make_shared<Native::Interface::Vasiright::Peer::Default::Ip>())
 {
     ip->parent = this;
 
     yang_name = "default"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::Vasiright::Peer::Default_::~Default_()
+Native::Interface::Vasiright::Peer::Default::~Default()
 {
 }
 
-bool Native::Interface::Vasiright::Peer::Default_::has_data() const
+bool Native::Interface::Vasiright::Peer::Default::has_data() const
 {
     return (ip !=  nullptr && ip->has_data());
 }
 
-bool Native::Interface::Vasiright::Peer::Default_::has_operation() const
+bool Native::Interface::Vasiright::Peer::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| (ip !=  nullptr && ip->has_operation());
 }
 
-std::string Native::Interface::Vasiright::Peer::Default_::get_segment_path() const
+std::string Native::Interface::Vasiright::Peer::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vasiright::Peer::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vasiright::Peer::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10300,13 +10358,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Vasiright::Pee
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Vasiright::Peer::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Vasiright::Peer::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip")
     {
         if(ip == nullptr)
         {
-            ip = std::make_shared<Native::Interface::Vasiright::Peer::Default_::Ip>();
+            ip = std::make_shared<Native::Interface::Vasiright::Peer::Default::Ip>();
         }
         return ip;
     }
@@ -10314,9 +10372,10 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Peer::Default_::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Peer::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Peer::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ip != nullptr)
     {
         children["ip"] = ip;
@@ -10325,53 +10384,53 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Pee
     return children;
 }
 
-void Native::Interface::Vasiright::Peer::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Vasiright::Peer::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::Vasiright::Peer::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Vasiright::Peer::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::Vasiright::Peer::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Vasiright::Peer::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ip")
         return true;
     return false;
 }
 
-Native::Interface::Vasiright::Peer::Default_::Ip::Ip()
+Native::Interface::Vasiright::Peer::Default::Ip::Ip()
     :
-    address(std::make_shared<Native::Interface::Vasiright::Peer::Default_::Ip::Address>())
+    address(std::make_shared<Native::Interface::Vasiright::Peer::Default::Ip::Address>())
 {
     address->parent = this;
 
     yang_name = "ip"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::Vasiright::Peer::Default_::Ip::~Ip()
+Native::Interface::Vasiright::Peer::Default::Ip::~Ip()
 {
 }
 
-bool Native::Interface::Vasiright::Peer::Default_::Ip::has_data() const
+bool Native::Interface::Vasiright::Peer::Default::Ip::has_data() const
 {
     return (address !=  nullptr && address->has_data());
 }
 
-bool Native::Interface::Vasiright::Peer::Default_::Ip::has_operation() const
+bool Native::Interface::Vasiright::Peer::Default::Ip::has_operation() const
 {
     return is_set(yfilter)
 	|| (address !=  nullptr && address->has_operation());
 }
 
-std::string Native::Interface::Vasiright::Peer::Default_::Ip::get_segment_path() const
+std::string Native::Interface::Vasiright::Peer::Default::Ip::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ip";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vasiright::Peer::Default_::Ip::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vasiright::Peer::Default::Ip::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10380,13 +10439,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Vasiright::Pee
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Vasiright::Peer::Default_::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Vasiright::Peer::Default::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
         if(address == nullptr)
         {
-            address = std::make_shared<Native::Interface::Vasiright::Peer::Default_::Ip::Address>();
+            address = std::make_shared<Native::Interface::Vasiright::Peer::Default::Ip::Address>();
         }
         return address;
     }
@@ -10394,9 +10453,10 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Peer::Default_::Ip::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Peer::Default_::Ip::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Peer::Default::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(address != nullptr)
     {
         children["address"] = address;
@@ -10405,22 +10465,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Pee
     return children;
 }
 
-void Native::Interface::Vasiright::Peer::Default_::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Vasiright::Peer::Default::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::Vasiright::Peer::Default_::Ip::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Vasiright::Peer::Default::Ip::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::Vasiright::Peer::Default_::Ip::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Vasiright::Peer::Default::Ip::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address")
         return true;
     return false;
 }
 
-Native::Interface::Vasiright::Peer::Default_::Ip::Address::Address()
+Native::Interface::Vasiright::Peer::Default::Ip::Address::Address()
     :
     dhcp{YType::empty, "dhcp"}
     	,
@@ -10431,18 +10491,18 @@ Native::Interface::Vasiright::Peer::Default_::Ip::Address::Address()
     yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::Vasiright::Peer::Default_::Ip::Address::~Address()
+Native::Interface::Vasiright::Peer::Default::Ip::Address::~Address()
 {
 }
 
-bool Native::Interface::Vasiright::Peer::Default_::Ip::Address::has_data() const
+bool Native::Interface::Vasiright::Peer::Default::Ip::Address::has_data() const
 {
     return dhcp.is_set
 	|| (dhcp_pool !=  nullptr && dhcp_pool->has_data())
 	|| (pool !=  nullptr && pool->has_data());
 }
 
-bool Native::Interface::Vasiright::Peer::Default_::Ip::Address::has_operation() const
+bool Native::Interface::Vasiright::Peer::Default::Ip::Address::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dhcp.yfilter)
@@ -10450,14 +10510,14 @@ bool Native::Interface::Vasiright::Peer::Default_::Ip::Address::has_operation() 
 	|| (pool !=  nullptr && pool->has_operation());
 }
 
-std::string Native::Interface::Vasiright::Peer::Default_::Ip::Address::get_segment_path() const
+std::string Native::Interface::Vasiright::Peer::Default::Ip::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vasiright::Peer::Default_::Ip::Address::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vasiright::Peer::Default::Ip::Address::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10467,13 +10527,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Vasiright::Pee
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Vasiright::Peer::Default_::Ip::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Vasiright::Peer::Default::Ip::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dhcp-pool")
     {
         if(dhcp_pool == nullptr)
         {
-            dhcp_pool = std::make_shared<Native::Interface::Vasiright::Peer::Default_::Ip::Address::DhcpPool>();
+            dhcp_pool = std::make_shared<Native::Interface::Vasiright::Peer::Default::Ip::Address::DhcpPool>();
         }
         return dhcp_pool;
     }
@@ -10482,7 +10542,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Peer::Default_::Ip::Addres
     {
         if(pool == nullptr)
         {
-            pool = std::make_shared<Native::Interface::Vasiright::Peer::Default_::Ip::Address::Pool>();
+            pool = std::make_shared<Native::Interface::Vasiright::Peer::Default::Ip::Address::Pool>();
         }
         return pool;
     }
@@ -10490,9 +10550,10 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Peer::Default_::Ip::Addres
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Peer::Default_::Ip::Address::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Peer::Default::Ip::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(dhcp_pool != nullptr)
     {
         children["dhcp-pool"] = dhcp_pool;
@@ -10506,7 +10567,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Pee
     return children;
 }
 
-void Native::Interface::Vasiright::Peer::Default_::Ip::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Vasiright::Peer::Default::Ip::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dhcp")
     {
@@ -10516,7 +10577,7 @@ void Native::Interface::Vasiright::Peer::Default_::Ip::Address::set_value(const 
     }
 }
 
-void Native::Interface::Vasiright::Peer::Default_::Ip::Address::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Vasiright::Peer::Default::Ip::Address::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dhcp")
     {
@@ -10524,14 +10585,14 @@ void Native::Interface::Vasiright::Peer::Default_::Ip::Address::set_filter(const
     }
 }
 
-bool Native::Interface::Vasiright::Peer::Default_::Ip::Address::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Vasiright::Peer::Default::Ip::Address::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dhcp-pool" || name == "pool" || name == "dhcp")
         return true;
     return false;
 }
 
-Native::Interface::Vasiright::Peer::Default_::Ip::Address::DhcpPool::DhcpPool()
+Native::Interface::Vasiright::Peer::Default::Ip::Address::DhcpPool::DhcpPool()
     :
     pools{YType::str, "pools"}
 {
@@ -10539,29 +10600,29 @@ Native::Interface::Vasiright::Peer::Default_::Ip::Address::DhcpPool::DhcpPool()
     yang_name = "dhcp-pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::Vasiright::Peer::Default_::Ip::Address::DhcpPool::~DhcpPool()
+Native::Interface::Vasiright::Peer::Default::Ip::Address::DhcpPool::~DhcpPool()
 {
 }
 
-bool Native::Interface::Vasiright::Peer::Default_::Ip::Address::DhcpPool::has_data() const
+bool Native::Interface::Vasiright::Peer::Default::Ip::Address::DhcpPool::has_data() const
 {
     return pools.is_set;
 }
 
-bool Native::Interface::Vasiright::Peer::Default_::Ip::Address::DhcpPool::has_operation() const
+bool Native::Interface::Vasiright::Peer::Default::Ip::Address::DhcpPool::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pools.yfilter);
 }
 
-std::string Native::Interface::Vasiright::Peer::Default_::Ip::Address::DhcpPool::get_segment_path() const
+std::string Native::Interface::Vasiright::Peer::Default::Ip::Address::DhcpPool::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dhcp-pool";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vasiright::Peer::Default_::Ip::Address::DhcpPool::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vasiright::Peer::Default::Ip::Address::DhcpPool::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10571,18 +10632,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Vasiright::Pee
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Vasiright::Peer::Default_::Ip::Address::DhcpPool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Vasiright::Peer::Default::Ip::Address::DhcpPool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Peer::Default_::Ip::Address::DhcpPool::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Peer::Default::Ip::Address::DhcpPool::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Interface::Vasiright::Peer::Default_::Ip::Address::DhcpPool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Vasiright::Peer::Default::Ip::Address::DhcpPool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pools")
     {
@@ -10592,7 +10654,7 @@ void Native::Interface::Vasiright::Peer::Default_::Ip::Address::DhcpPool::set_va
     }
 }
 
-void Native::Interface::Vasiright::Peer::Default_::Ip::Address::DhcpPool::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Vasiright::Peer::Default::Ip::Address::DhcpPool::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pools")
     {
@@ -10600,14 +10662,14 @@ void Native::Interface::Vasiright::Peer::Default_::Ip::Address::DhcpPool::set_fi
     }
 }
 
-bool Native::Interface::Vasiright::Peer::Default_::Ip::Address::DhcpPool::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Vasiright::Peer::Default::Ip::Address::DhcpPool::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pools")
         return true;
     return false;
 }
 
-Native::Interface::Vasiright::Peer::Default_::Ip::Address::Pool::Pool()
+Native::Interface::Vasiright::Peer::Default::Ip::Address::Pool::Pool()
     :
     pools{YType::str, "pools"}
 {
@@ -10615,29 +10677,29 @@ Native::Interface::Vasiright::Peer::Default_::Ip::Address::Pool::Pool()
     yang_name = "pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Interface::Vasiright::Peer::Default_::Ip::Address::Pool::~Pool()
+Native::Interface::Vasiright::Peer::Default::Ip::Address::Pool::~Pool()
 {
 }
 
-bool Native::Interface::Vasiright::Peer::Default_::Ip::Address::Pool::has_data() const
+bool Native::Interface::Vasiright::Peer::Default::Ip::Address::Pool::has_data() const
 {
     return pools.is_set;
 }
 
-bool Native::Interface::Vasiright::Peer::Default_::Ip::Address::Pool::has_operation() const
+bool Native::Interface::Vasiright::Peer::Default::Ip::Address::Pool::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pools.yfilter);
 }
 
-std::string Native::Interface::Vasiright::Peer::Default_::Ip::Address::Pool::get_segment_path() const
+std::string Native::Interface::Vasiright::Peer::Default::Ip::Address::Pool::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pool";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vasiright::Peer::Default_::Ip::Address::Pool::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vasiright::Peer::Default::Ip::Address::Pool::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10647,18 +10709,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Vasiright::Pee
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Vasiright::Peer::Default_::Ip::Address::Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Vasiright::Peer::Default::Ip::Address::Pool::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Peer::Default_::Ip::Address::Pool::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Peer::Default::Ip::Address::Pool::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Interface::Vasiright::Peer::Default_::Ip::Address::Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Vasiright::Peer::Default::Ip::Address::Pool::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pools")
     {
@@ -10668,7 +10731,7 @@ void Native::Interface::Vasiright::Peer::Default_::Ip::Address::Pool::set_value(
     }
 }
 
-void Native::Interface::Vasiright::Peer::Default_::Ip::Address::Pool::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Vasiright::Peer::Default::Ip::Address::Pool::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pools")
     {
@@ -10676,7 +10739,7 @@ void Native::Interface::Vasiright::Peer::Default_::Ip::Address::Pool::set_filter
     }
 }
 
-bool Native::Interface::Vasiright::Peer::Default_::Ip::Address::Pool::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Vasiright::Peer::Default::Ip::Address::Pool::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pools")
         return true;
@@ -10735,6 +10798,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::PmPath::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::PmPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10843,6 +10907,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::ServicePolicy::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::ServicePolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(type != nullptr)
     {
         children["type"] = type;
@@ -10979,6 +11044,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::ServicePolicy::Type::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::ServicePolicy::Type::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(control != nullptr)
     {
         children["control"] = control;
@@ -11060,6 +11126,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::ServicePolicy::Type::Contr
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::ServicePolicy::Type::Control::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11140,6 +11207,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::ServicePolicy::Type::Perfo
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::ServicePolicy::Type::PerformanceMonitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11248,6 +11316,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::ServicePolicy::Type::Servi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::ServicePolicy::Type::ServiceChain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -11324,6 +11393,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::ServicePolicy::Type::Servi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::ServicePolicy::Type::ServiceChain::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11400,6 +11470,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::ServicePolicy::Type::Servi
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::ServicePolicy::Type::ServiceChain::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11480,6 +11551,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Umbrella::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Umbrella::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11566,6 +11638,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::Utd::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::Utd::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11642,6 +11715,7 @@ std::shared_ptr<Entity> Native::Interface::Vasiright::ZoneMember::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Vasiright::ZoneMember::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11731,14 +11805,6 @@ std::shared_ptr<Entity> Native::RouteMap::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "Cisco-IOS-XE-route-map:route-map-seq")
     {
-        for(auto const & c : route_map_seq)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::RouteMap::RouteMapSeq>();
         c->parent = this;
         route_map_seq.push_back(c);
@@ -11751,9 +11817,14 @@ std::shared_ptr<Entity> Native::RouteMap::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : route_map_seq)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11871,6 +11942,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(set != nullptr)
     {
         children["set"] = set;
@@ -11957,7 +12029,7 @@ Native::RouteMap::RouteMapSeq::Set::Set()
 	,community(std::make_shared<Native::RouteMap::RouteMapSeq::Set::Community>())
 	,comm_list(std::make_shared<Native::RouteMap::RouteMapSeq::Set::CommList>())
 	,dampening(std::make_shared<Native::RouteMap::RouteMapSeq::Set::Dampening>())
-	,default_(std::make_shared<Native::RouteMap::RouteMapSeq::Set::Default_>())
+	,default_(std::make_shared<Native::RouteMap::RouteMapSeq::Set::Default>())
 	,extcomm_list(std::make_shared<Native::RouteMap::RouteMapSeq::Set::ExtcommList>())
 	,extcommunity(std::make_shared<Native::RouteMap::RouteMapSeq::Set::Extcommunity>())
 	,interface(std::make_shared<Native::RouteMap::RouteMapSeq::Set::Interface>())
@@ -12136,7 +12208,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::get_child_by_name(co
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::RouteMap::RouteMapSeq::Set::Default_>();
+            default_ = std::make_shared<Native::RouteMap::RouteMapSeq::Set::Default>();
         }
         return default_;
     }
@@ -12228,6 +12300,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(aigp_metric != nullptr)
     {
         children["aigp-metric"] = aigp_metric;
@@ -12468,6 +12541,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::AigpMetric::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::AigpMetric::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12575,6 +12649,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::AsPath::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::AsPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(prepend != nullptr)
     {
         children["prepend"] = prepend;
@@ -12673,6 +12748,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::AsPath::Prepend::get
 std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::AsPath::Prepend::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(as_container != nullptr)
     {
         children["as-container"] = as_container;
@@ -12749,6 +12825,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::AsPath::Prepend::AsC
 std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::AsPath::Prepend::AsContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12825,6 +12902,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::AsPath::Prepend::Las
 std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::AsPath::Prepend::LastAsCont::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12897,6 +12975,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::AsPath::Tag::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::AsPath::Tag::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12970,6 +13049,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Clns::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::Clns::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(next_hop != nullptr)
     {
         children["next-hop"] = next_hop;
@@ -13052,6 +13132,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Clns::NextHop::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::Clns::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13140,6 +13221,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Community::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::Community::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(community_well_known != nullptr)
     {
         children["community-well-known"] = community_well_known;
@@ -13232,6 +13314,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Community::Community
 std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::Community::CommunityWellKnown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13318,6 +13401,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::CommList::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::CommList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13426,14 +13510,6 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Dampening::get_child
 {
     if(child_yang_name == "dampening-list")
     {
-        for(auto const & c : dampening_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::RouteMap::RouteMapSeq::Set::Dampening::DampeningList>();
         c->parent = this;
         dampening_list.push_back(c);
@@ -13446,9 +13522,14 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Dampening::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::Dampening::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : dampening_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13529,6 +13610,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Dampening::Dampening
 std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::Dampening::DampeningList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13587,38 +13669,38 @@ bool Native::RouteMap::RouteMapSeq::Set::Dampening::DampeningList::has_leaf_or_c
     return false;
 }
 
-Native::RouteMap::RouteMapSeq::Set::Default_::Default_()
+Native::RouteMap::RouteMapSeq::Set::Default::Default()
     :
-    interface(std::make_shared<Native::RouteMap::RouteMapSeq::Set::Default_::Interface>())
+    interface(std::make_shared<Native::RouteMap::RouteMapSeq::Set::Default::Interface>())
 {
     interface->parent = this;
 
     yang_name = "default"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::RouteMap::RouteMapSeq::Set::Default_::~Default_()
+Native::RouteMap::RouteMapSeq::Set::Default::~Default()
 {
 }
 
-bool Native::RouteMap::RouteMapSeq::Set::Default_::has_data() const
+bool Native::RouteMap::RouteMapSeq::Set::Default::has_data() const
 {
     return (interface !=  nullptr && interface->has_data());
 }
 
-bool Native::RouteMap::RouteMapSeq::Set::Default_::has_operation() const
+bool Native::RouteMap::RouteMapSeq::Set::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| (interface !=  nullptr && interface->has_operation());
 }
 
-std::string Native::RouteMap::RouteMapSeq::Set::Default_::get_segment_path() const
+std::string Native::RouteMap::RouteMapSeq::Set::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapSeq::Set::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapSeq::Set::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13627,13 +13709,13 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapSeq::Se
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
         if(interface == nullptr)
         {
-            interface = std::make_shared<Native::RouteMap::RouteMapSeq::Set::Default_::Interface>();
+            interface = std::make_shared<Native::RouteMap::RouteMapSeq::Set::Default::Interface>();
         }
         return interface;
     }
@@ -13641,9 +13723,10 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Default_::get_child_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(interface != nullptr)
     {
         children["interface"] = interface;
@@ -13652,22 +13735,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Se
     return children;
 }
 
-void Native::RouteMap::RouteMapSeq::Set::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::RouteMap::RouteMapSeq::Set::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::RouteMap::RouteMapSeq::Set::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::RouteMap::RouteMapSeq::Set::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::RouteMap::RouteMapSeq::Set::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::RouteMap::RouteMapSeq::Set::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface")
         return true;
     return false;
 }
 
-Native::RouteMap::RouteMapSeq::Set::Default_::Interface::Interface()
+Native::RouteMap::RouteMapSeq::Set::Default::Interface::Interface()
     :
     appnav_compress{YType::uint16, "AppNav-Compress"},
     appnav_uncompress{YType::uint16, "AppNav-UnCompress"},
@@ -13699,10 +13782,10 @@ Native::RouteMap::RouteMapSeq::Set::Default_::Interface::Interface()
     vasileft{YType::uint16, "vasileft"},
     vasiright{YType::uint16, "vasiright"}
     	,
-    atm_subinterface(std::make_shared<Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMSubinterface>())
-	,atm_acrsubinterface(std::make_shared<Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMACRsubinterface>())
-	,lisp_subinterface(std::make_shared<Native::RouteMap::RouteMapSeq::Set::Default_::Interface::LISPSubinterface>())
-	,port_channel_subinterface(std::make_shared<Native::RouteMap::RouteMapSeq::Set::Default_::Interface::PortChannelSubinterface>())
+    atm_subinterface(std::make_shared<Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMSubinterface>())
+	,atm_acrsubinterface(std::make_shared<Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMACRsubinterface>())
+	,lisp_subinterface(std::make_shared<Native::RouteMap::RouteMapSeq::Set::Default::Interface::LISPSubinterface>())
+	,port_channel_subinterface(std::make_shared<Native::RouteMap::RouteMapSeq::Set::Default::Interface::PortChannelSubinterface>())
 {
     atm_subinterface->parent = this;
     atm_acrsubinterface->parent = this;
@@ -13712,11 +13795,11 @@ Native::RouteMap::RouteMapSeq::Set::Default_::Interface::Interface()
     yang_name = "interface"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::RouteMap::RouteMapSeq::Set::Default_::Interface::~Interface()
+Native::RouteMap::RouteMapSeq::Set::Default::Interface::~Interface()
 {
 }
 
-bool Native::RouteMap::RouteMapSeq::Set::Default_::Interface::has_data() const
+bool Native::RouteMap::RouteMapSeq::Set::Default::Interface::has_data() const
 {
     return appnav_compress.is_set
 	|| appnav_uncompress.is_set
@@ -13753,7 +13836,7 @@ bool Native::RouteMap::RouteMapSeq::Set::Default_::Interface::has_data() const
 	|| (port_channel_subinterface !=  nullptr && port_channel_subinterface->has_data());
 }
 
-bool Native::RouteMap::RouteMapSeq::Set::Default_::Interface::has_operation() const
+bool Native::RouteMap::RouteMapSeq::Set::Default::Interface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(appnav_compress.yfilter)
@@ -13791,14 +13874,14 @@ bool Native::RouteMap::RouteMapSeq::Set::Default_::Interface::has_operation() co
 	|| (port_channel_subinterface !=  nullptr && port_channel_subinterface->has_operation());
 }
 
-std::string Native::RouteMap::RouteMapSeq::Set::Default_::Interface::get_segment_path() const
+std::string Native::RouteMap::RouteMapSeq::Set::Default::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapSeq::Set::Default_::Interface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapSeq::Set::Default::Interface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13836,13 +13919,13 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapSeq::Se
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Default_::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Default::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ATM-subinterface")
     {
         if(atm_subinterface == nullptr)
         {
-            atm_subinterface = std::make_shared<Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMSubinterface>();
+            atm_subinterface = std::make_shared<Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMSubinterface>();
         }
         return atm_subinterface;
     }
@@ -13851,7 +13934,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Default_::Interface:
     {
         if(atm_acrsubinterface == nullptr)
         {
-            atm_acrsubinterface = std::make_shared<Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMACRsubinterface>();
+            atm_acrsubinterface = std::make_shared<Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMACRsubinterface>();
         }
         return atm_acrsubinterface;
     }
@@ -13860,7 +13943,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Default_::Interface:
     {
         if(lisp_subinterface == nullptr)
         {
-            lisp_subinterface = std::make_shared<Native::RouteMap::RouteMapSeq::Set::Default_::Interface::LISPSubinterface>();
+            lisp_subinterface = std::make_shared<Native::RouteMap::RouteMapSeq::Set::Default::Interface::LISPSubinterface>();
         }
         return lisp_subinterface;
     }
@@ -13869,7 +13952,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Default_::Interface:
     {
         if(port_channel_subinterface == nullptr)
         {
-            port_channel_subinterface = std::make_shared<Native::RouteMap::RouteMapSeq::Set::Default_::Interface::PortChannelSubinterface>();
+            port_channel_subinterface = std::make_shared<Native::RouteMap::RouteMapSeq::Set::Default::Interface::PortChannelSubinterface>();
         }
         return port_channel_subinterface;
     }
@@ -13877,9 +13960,10 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Default_::Interface:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::Default_::Interface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::Default::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(atm_subinterface != nullptr)
     {
         children["ATM-subinterface"] = atm_subinterface;
@@ -13903,7 +13987,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Se
     return children;
 }
 
-void Native::RouteMap::RouteMapSeq::Set::Default_::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::RouteMap::RouteMapSeq::Set::Default::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "AppNav-Compress")
     {
@@ -14081,7 +14165,7 @@ void Native::RouteMap::RouteMapSeq::Set::Default_::Interface::set_value(const st
     }
 }
 
-void Native::RouteMap::RouteMapSeq::Set::Default_::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::RouteMap::RouteMapSeq::Set::Default::Interface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "AppNav-Compress")
     {
@@ -14201,14 +14285,14 @@ void Native::RouteMap::RouteMapSeq::Set::Default_::Interface::set_filter(const s
     }
 }
 
-bool Native::RouteMap::RouteMapSeq::Set::Default_::Interface::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::RouteMap::RouteMapSeq::Set::Default::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ATM-subinterface" || name == "ATM-ACRsubinterface" || name == "LISP-subinterface" || name == "Port-channel-subinterface" || name == "AppNav-Compress" || name == "AppNav-UnCompress" || name == "ATM" || name == "ATM-ACR" || name == "BDI" || name == "CEM" || name == "CEM-ACR" || name == "Embedded-Service-Engine" || name == "FastEthernet" || name == "GigabitEthernet" || name == "FiveGigabitEthernet" || name == "TwentyFiveGigabitEthernet" || name == "LISP" || name == "Loopback" || name == "Multilink" || name == "nve" || name == "overlay" || name == "Port-channel" || name == "pseudowire" || name == "SM" || name == "Cellular" || name == "Serial" || name == "TenGigabitEthernet" || name == "Tunnel" || name == "Virtual-Template" || name == "Vlan" || name == "VirtualPortGroup" || name == "vasileft" || name == "vasiright")
         return true;
     return false;
 }
 
-Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMSubinterface::ATMSubinterface()
+Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMSubinterface::ATMSubinterface()
     :
     atm{YType::str, "ATM"}
 {
@@ -14216,29 +14300,29 @@ Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMSubinterface::ATMSub
     yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMSubinterface::~ATMSubinterface()
+Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMSubinterface::~ATMSubinterface()
 {
 }
 
-bool Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMSubinterface::has_data() const
+bool Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMSubinterface::has_data() const
 {
     return atm.is_set;
 }
 
-bool Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMSubinterface::has_operation() const
+bool Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMSubinterface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(atm.yfilter);
 }
 
-std::string Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMSubinterface::get_segment_path() const
+std::string Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMSubinterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-subinterface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMSubinterface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMSubinterface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14248,18 +14332,19 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapSeq::Se
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMSubinterface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ATM")
     {
@@ -14269,7 +14354,7 @@ void Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMSubinterface::s
     }
 }
 
-void Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMSubinterface::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMSubinterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ATM")
     {
@@ -14277,14 +14362,14 @@ void Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMSubinterface::s
     }
 }
 
-bool Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMSubinterface::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMSubinterface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ATM")
         return true;
     return false;
 }
 
-Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMACRsubinterface::ATMACRsubinterface()
+Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMACRsubinterface::ATMACRsubinterface()
     :
     atm_acr{YType::str, "ATM-ACR"}
 {
@@ -14292,29 +14377,29 @@ Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMACRsubinterface::ATM
     yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMACRsubinterface::~ATMACRsubinterface()
+Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMACRsubinterface::~ATMACRsubinterface()
 {
 }
 
-bool Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMACRsubinterface::has_data() const
+bool Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMACRsubinterface::has_data() const
 {
     return atm_acr.is_set;
 }
 
-bool Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMACRsubinterface::has_operation() const
+bool Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMACRsubinterface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(atm_acr.yfilter);
 }
 
-std::string Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMACRsubinterface::get_segment_path() const
+std::string Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMACRsubinterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-ACRsubinterface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMACRsubinterface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMACRsubinterface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14324,18 +14409,19 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapSeq::Se
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMACRsubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMACRsubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMACRsubinterface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMACRsubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMACRsubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMACRsubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ATM-ACR")
     {
@@ -14345,7 +14431,7 @@ void Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMACRsubinterface
     }
 }
 
-void Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMACRsubinterface::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMACRsubinterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ATM-ACR")
     {
@@ -14353,14 +14439,14 @@ void Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMACRsubinterface
     }
 }
 
-bool Native::RouteMap::RouteMapSeq::Set::Default_::Interface::ATMACRsubinterface::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::RouteMap::RouteMapSeq::Set::Default::Interface::ATMACRsubinterface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ATM-ACR")
         return true;
     return false;
 }
 
-Native::RouteMap::RouteMapSeq::Set::Default_::Interface::LISPSubinterface::LISPSubinterface()
+Native::RouteMap::RouteMapSeq::Set::Default::Interface::LISPSubinterface::LISPSubinterface()
     :
     lisp{YType::str, "LISP"}
 {
@@ -14368,29 +14454,29 @@ Native::RouteMap::RouteMapSeq::Set::Default_::Interface::LISPSubinterface::LISPS
     yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::RouteMap::RouteMapSeq::Set::Default_::Interface::LISPSubinterface::~LISPSubinterface()
+Native::RouteMap::RouteMapSeq::Set::Default::Interface::LISPSubinterface::~LISPSubinterface()
 {
 }
 
-bool Native::RouteMap::RouteMapSeq::Set::Default_::Interface::LISPSubinterface::has_data() const
+bool Native::RouteMap::RouteMapSeq::Set::Default::Interface::LISPSubinterface::has_data() const
 {
     return lisp.is_set;
 }
 
-bool Native::RouteMap::RouteMapSeq::Set::Default_::Interface::LISPSubinterface::has_operation() const
+bool Native::RouteMap::RouteMapSeq::Set::Default::Interface::LISPSubinterface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(lisp.yfilter);
 }
 
-std::string Native::RouteMap::RouteMapSeq::Set::Default_::Interface::LISPSubinterface::get_segment_path() const
+std::string Native::RouteMap::RouteMapSeq::Set::Default::Interface::LISPSubinterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LISP-subinterface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapSeq::Set::Default_::Interface::LISPSubinterface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapSeq::Set::Default::Interface::LISPSubinterface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14400,18 +14486,19 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapSeq::Se
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Default_::Interface::LISPSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Default::Interface::LISPSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::Default_::Interface::LISPSubinterface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::Default::Interface::LISPSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::RouteMap::RouteMapSeq::Set::Default_::Interface::LISPSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::RouteMap::RouteMapSeq::Set::Default::Interface::LISPSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "LISP")
     {
@@ -14421,7 +14508,7 @@ void Native::RouteMap::RouteMapSeq::Set::Default_::Interface::LISPSubinterface::
     }
 }
 
-void Native::RouteMap::RouteMapSeq::Set::Default_::Interface::LISPSubinterface::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::RouteMap::RouteMapSeq::Set::Default::Interface::LISPSubinterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "LISP")
     {
@@ -14429,14 +14516,14 @@ void Native::RouteMap::RouteMapSeq::Set::Default_::Interface::LISPSubinterface::
     }
 }
 
-bool Native::RouteMap::RouteMapSeq::Set::Default_::Interface::LISPSubinterface::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::RouteMap::RouteMapSeq::Set::Default::Interface::LISPSubinterface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "LISP")
         return true;
     return false;
 }
 
-Native::RouteMap::RouteMapSeq::Set::Default_::Interface::PortChannelSubinterface::PortChannelSubinterface()
+Native::RouteMap::RouteMapSeq::Set::Default::Interface::PortChannelSubinterface::PortChannelSubinterface()
     :
     port_channel{YType::str, "Port-channel"}
 {
@@ -14444,29 +14531,29 @@ Native::RouteMap::RouteMapSeq::Set::Default_::Interface::PortChannelSubinterface
     yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::RouteMap::RouteMapSeq::Set::Default_::Interface::PortChannelSubinterface::~PortChannelSubinterface()
+Native::RouteMap::RouteMapSeq::Set::Default::Interface::PortChannelSubinterface::~PortChannelSubinterface()
 {
 }
 
-bool Native::RouteMap::RouteMapSeq::Set::Default_::Interface::PortChannelSubinterface::has_data() const
+bool Native::RouteMap::RouteMapSeq::Set::Default::Interface::PortChannelSubinterface::has_data() const
 {
     return port_channel.is_set;
 }
 
-bool Native::RouteMap::RouteMapSeq::Set::Default_::Interface::PortChannelSubinterface::has_operation() const
+bool Native::RouteMap::RouteMapSeq::Set::Default::Interface::PortChannelSubinterface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(port_channel.yfilter);
 }
 
-std::string Native::RouteMap::RouteMapSeq::Set::Default_::Interface::PortChannelSubinterface::get_segment_path() const
+std::string Native::RouteMap::RouteMapSeq::Set::Default::Interface::PortChannelSubinterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Port-channel-subinterface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapSeq::Set::Default_::Interface::PortChannelSubinterface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapSeq::Set::Default::Interface::PortChannelSubinterface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14476,18 +14563,19 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapSeq::Se
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Default_::Interface::PortChannelSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Default::Interface::PortChannelSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::Default_::Interface::PortChannelSubinterface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::Default::Interface::PortChannelSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::RouteMap::RouteMapSeq::Set::Default_::Interface::PortChannelSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::RouteMap::RouteMapSeq::Set::Default::Interface::PortChannelSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "Port-channel")
     {
@@ -14497,7 +14585,7 @@ void Native::RouteMap::RouteMapSeq::Set::Default_::Interface::PortChannelSubinte
     }
 }
 
-void Native::RouteMap::RouteMapSeq::Set::Default_::Interface::PortChannelSubinterface::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::RouteMap::RouteMapSeq::Set::Default::Interface::PortChannelSubinterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "Port-channel")
     {
@@ -14505,7 +14593,7 @@ void Native::RouteMap::RouteMapSeq::Set::Default_::Interface::PortChannelSubinte
     }
 }
 
-bool Native::RouteMap::RouteMapSeq::Set::Default_::Interface::PortChannelSubinterface::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::RouteMap::RouteMapSeq::Set::Default::Interface::PortChannelSubinterface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "Port-channel")
         return true;
@@ -14572,14 +14660,6 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::ExtcommList::get_chi
 {
     if(child_yang_name == "ext-range")
     {
-        for(auto const & c : ext_range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::RouteMap::RouteMapSeq::Set::ExtcommList::ExtRange>();
         c->parent = this;
         ext_range.push_back(c);
@@ -14588,14 +14668,6 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::ExtcommList::get_chi
 
     if(child_yang_name == "excomm-list-name")
     {
-        for(auto const & c : excomm_list_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::RouteMap::RouteMapSeq::Set::ExtcommList::ExcommListName>();
         c->parent = this;
         excomm_list_name.push_back(c);
@@ -14608,14 +14680,23 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::ExtcommList::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::ExtcommList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ext_range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : excomm_list_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14688,6 +14769,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::ExtcommList::ExtRang
 std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::ExtcommList::ExtRange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14778,6 +14860,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::ExtcommList::ExcommL
 std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::ExtcommList::ExcommListName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14912,6 +14995,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Extcommunity::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::Extcommunity::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cost != nullptr)
     {
         children["cost"] = cost;
@@ -15008,14 +15092,6 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Extcommunity::Cost::
 {
     if(child_yang_name == "community-id")
     {
-        for(auto const & c : community_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::RouteMap::RouteMapSeq::Set::Extcommunity::Cost::CommunityId>();
         c->parent = this;
         community_id.push_back(c);
@@ -15046,9 +15122,14 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Extcommunity::Cost::
 std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::Extcommunity::Cost::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : community_id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(igp != nullptr)
@@ -15131,6 +15212,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapSeq::Set::Extcommunity::Cost::
 std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapSeq::Set::Extcommunity::Cost::CommunityId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

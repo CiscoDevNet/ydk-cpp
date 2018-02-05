@@ -185,6 +185,7 @@ std::shared_ptr<Entity> CISCOFLASHMIB::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ciscoflashdevice != nullptr)
     {
         children["ciscoFlashDevice"] = ciscoflashdevice;
@@ -333,6 +334,7 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashdevice::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::Ciscoflashdevice::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -424,6 +426,7 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashcfg::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::Ciscoflashcfg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -529,14 +532,6 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashdevicetable::get_child_by_name(
 {
     if(child_yang_name == "ciscoFlashDeviceEntry")
     {
-        for(auto const & c : ciscoflashdeviceentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOFLASHMIB::Ciscoflashdevicetable::Ciscoflashdeviceentry>();
         c->parent = this;
         ciscoflashdeviceentry.push_back(c);
@@ -549,9 +544,14 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashdevicetable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::Ciscoflashdevicetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ciscoflashdeviceentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -691,6 +691,7 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashdevicetable::Ciscoflashdeviceen
 std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::Ciscoflashdevicetable::Ciscoflashdeviceentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -936,14 +937,6 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashchiptable::get_child_by_name(co
 {
     if(child_yang_name == "ciscoFlashChipEntry")
     {
-        for(auto const & c : ciscoflashchipentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOFLASHMIB::Ciscoflashchiptable::Ciscoflashchipentry>();
         c->parent = this;
         ciscoflashchipentry.push_back(c);
@@ -956,9 +949,14 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashchiptable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::Ciscoflashchiptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ciscoflashchipentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1062,6 +1060,7 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashchiptable::Ciscoflashchipentry:
 std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::Ciscoflashchiptable::Ciscoflashchipentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1217,14 +1216,6 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashpartitiontable::get_child_by_na
 {
     if(child_yang_name == "ciscoFlashPartitionEntry")
     {
-        for(auto const & c : ciscoflashpartitionentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry>();
         c->parent = this;
         ciscoflashpartitionentry.push_back(c);
@@ -1237,9 +1228,14 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashpartitiontable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::Ciscoflashpartitiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ciscoflashpartitionentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1375,6 +1371,7 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashparti
 std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::Ciscoflashpartitiontable::Ciscoflashpartitionentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1610,14 +1607,6 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashfiletable::get_child_by_name(co
 {
     if(child_yang_name == "ciscoFlashFileEntry")
     {
-        for(auto const & c : ciscoflashfileentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOFLASHMIB::Ciscoflashfiletable::Ciscoflashfileentry>();
         c->parent = this;
         ciscoflashfileentry.push_back(c);
@@ -1630,9 +1619,14 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashfiletable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::Ciscoflashfiletable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ciscoflashfileentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1740,6 +1734,7 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashfiletable::Ciscoflashfileentry:
 std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::Ciscoflashfiletable::Ciscoflashfileentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1905,14 +1900,6 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashfilebytypetable::get_child_by_n
 {
     if(child_yang_name == "ciscoFlashFileByTypeEntry")
     {
-        for(auto const & c : ciscoflashfilebytypeentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOFLASHMIB::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry>();
         c->parent = this;
         ciscoflashfilebytypeentry.push_back(c);
@@ -1925,9 +1912,14 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashfilebytypetable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::Ciscoflashfilebytypetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ciscoflashfilebytypeentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2035,6 +2027,7 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashfilebytypetable::Ciscoflashfile
 std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::Ciscoflashfilebytypetable::Ciscoflashfilebytypeentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2200,14 +2193,6 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashcopytable::get_child_by_name(co
 {
     if(child_yang_name == "ciscoFlashCopyEntry")
     {
-        for(auto const & c : ciscoflashcopyentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOFLASHMIB::Ciscoflashcopytable::Ciscoflashcopyentry>();
         c->parent = this;
         ciscoflashcopyentry.push_back(c);
@@ -2220,9 +2205,14 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashcopytable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::Ciscoflashcopytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ciscoflashcopyentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2354,6 +2344,7 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashcopytable::Ciscoflashcopyentry:
 std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::Ciscoflashcopytable::Ciscoflashcopyentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2579,14 +2570,6 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashpartitioningtable::get_child_by
 {
     if(child_yang_name == "ciscoFlashPartitioningEntry")
     {
-        for(auto const & c : ciscoflashpartitioningentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOFLASHMIB::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry>();
         c->parent = this;
         ciscoflashpartitioningentry.push_back(c);
@@ -2599,9 +2582,14 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashpartitioningtable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::Ciscoflashpartitioningtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ciscoflashpartitioningentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2709,6 +2697,7 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashpartitioningtable::Ciscoflashpa
 std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::Ciscoflashpartitioningtable::Ciscoflashpartitioningentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2874,14 +2863,6 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashmiscoptable::get_child_by_name(
 {
     if(child_yang_name == "ciscoFlashMiscOpEntry")
     {
-        for(auto const & c : ciscoflashmiscopentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCOFLASHMIB::Ciscoflashmiscoptable::Ciscoflashmiscopentry>();
         c->parent = this;
         ciscoflashmiscopentry.push_back(c);
@@ -2894,9 +2875,14 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashmiscoptable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::Ciscoflashmiscoptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ciscoflashmiscopentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2996,6 +2982,7 @@ std::shared_ptr<Entity> CISCOFLASHMIB::Ciscoflashmiscoptable::Ciscoflashmiscopen
 std::map<std::string, std::shared_ptr<Entity>> CISCOFLASHMIB::Ciscoflashmiscoptable::Ciscoflashmiscopentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

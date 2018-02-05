@@ -92,6 +92,7 @@ std::shared_ptr<Entity> Lldp::get_child_by_name(const std::string & child_yang_n
 std::map<std::string, std::shared_ptr<Entity>> Lldp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(tlv_select != nullptr)
     {
         children["tlv-select"] = tlv_select;
@@ -321,6 +322,7 @@ std::shared_ptr<Entity> Lldp::TlvSelect::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(system_name != nullptr)
     {
         children["system-name"] = system_name;
@@ -429,6 +431,7 @@ std::shared_ptr<Entity> Lldp::TlvSelect::SystemName::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::SystemName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -512,6 +515,7 @@ std::shared_ptr<Entity> Lldp::TlvSelect::PortDescription::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::PortDescription::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -595,6 +599,7 @@ std::shared_ptr<Entity> Lldp::TlvSelect::SystemDescription::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::SystemDescription::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -678,6 +683,7 @@ std::shared_ptr<Entity> Lldp::TlvSelect::SystemCapabilities::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::SystemCapabilities::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -761,6 +767,7 @@ std::shared_ptr<Entity> Lldp::TlvSelect::ManagementAddress::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Lldp::TlvSelect::ManagementAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -1817,18 +1817,18 @@ class FrequencySynchronization::Nodes::Node::Clocks : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Clock_; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock_
+        class Clock; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock_> > clock_;
+        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock> > clock_;
         
 }; // FrequencySynchronization::Nodes::Node::Clocks
 
 
-class FrequencySynchronization::Nodes::Node::Clocks::Clock_ : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::Clocks::Clock : public ydk::Entity
 {
     public:
-        Clock_();
-        ~Clock_();
+        Clock();
+        ~Clock();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1864,26 +1864,26 @@ class FrequencySynchronization::Nodes::Node::Clocks::Clock_ : public ydk::Entity
         ydk::YLeafList spa_selection_points_description; //type: list of  string
         ydk::YLeafList node_selection_point; //type: list of  uint8
         ydk::YLeafList node_selection_points_description; //type: list of  string
-        class Source; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock_::Source
-        class SelectedSource; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock_::SelectedSource
-        class QualityLevelReceived; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelReceived
-        class QualityLevelDamped; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelDamped
-        class QualityLevelEffectiveInput; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelEffectiveInput
-        class QualityLevelEffectiveOutput; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelEffectiveOutput
-        class QualityLevelSelectedSource; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelSelectedSource
+        class Source; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock::Source
+        class SelectedSource; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource
+        class QualityLevelReceived; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelReceived
+        class QualityLevelDamped; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelDamped
+        class QualityLevelEffectiveInput; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveInput
+        class QualityLevelEffectiveOutput; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveOutput
+        class QualityLevelSelectedSource; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelSelectedSource
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock_::Source> source;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock_::SelectedSource> selected_source;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelReceived> quality_level_received;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelDamped> quality_level_damped;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelEffectiveInput> quality_level_effective_input;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelEffectiveOutput> quality_level_effective_output;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelSelectedSource> quality_level_selected_source;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock::Source> source;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource> selected_source;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelReceived> quality_level_received;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelDamped> quality_level_damped;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveInput> quality_level_effective_input;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveOutput> quality_level_effective_output;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelSelectedSource> quality_level_selected_source;
         
-}; // FrequencySynchronization::Nodes::Node::Clocks::Clock_
+}; // FrequencySynchronization::Nodes::Node::Clocks::Clock
 
 
-class FrequencySynchronization::Nodes::Node::Clocks::Clock_::Source : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::Clocks::Clock::Source : public ydk::Entity
 {
     public:
         Source();
@@ -1906,14 +1906,14 @@ class FrequencySynchronization::Nodes::Node::Clocks::Clock_::Source : public ydk
         ydk::YLeaf ptp_node; //type: string
         ydk::YLeaf satellite_access_interface; //type: string
         ydk::YLeaf ntp_node; //type: string
-        class ClockId; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock_::Source::ClockId
+        class ClockId; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::ClockId
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock_::Source::ClockId> clock_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::ClockId> clock_id;
         
-}; // FrequencySynchronization::Nodes::Node::Clocks::Clock_::Source
+}; // FrequencySynchronization::Nodes::Node::Clocks::Clock::Source
 
 
-class FrequencySynchronization::Nodes::Node::Clocks::Clock_::Source::ClockId : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::ClockId : public ydk::Entity
 {
     public:
         ClockId();
@@ -1932,10 +1932,10 @@ class FrequencySynchronization::Nodes::Node::Clocks::Clock_::Source::ClockId : p
         ydk::YLeaf node; //type: string
         ydk::YLeaf port; //type: uint32
 
-}; // FrequencySynchronization::Nodes::Node::Clocks::Clock_::Source::ClockId
+}; // FrequencySynchronization::Nodes::Node::Clocks::Clock::Source::ClockId
 
 
-class FrequencySynchronization::Nodes::Node::Clocks::Clock_::SelectedSource : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource : public ydk::Entity
 {
     public:
         SelectedSource();
@@ -1958,14 +1958,14 @@ class FrequencySynchronization::Nodes::Node::Clocks::Clock_::SelectedSource : pu
         ydk::YLeaf ptp_node; //type: string
         ydk::YLeaf satellite_access_interface; //type: string
         ydk::YLeaf ntp_node; //type: string
-        class ClockId; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock_::SelectedSource::ClockId
+        class ClockId; //type: FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::ClockId
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock_::SelectedSource::ClockId> clock_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_freqsync_oper::FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::ClockId> clock_id;
         
-}; // FrequencySynchronization::Nodes::Node::Clocks::Clock_::SelectedSource
+}; // FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource
 
 
-class FrequencySynchronization::Nodes::Node::Clocks::Clock_::SelectedSource::ClockId : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::ClockId : public ydk::Entity
 {
     public:
         ClockId();
@@ -1984,10 +1984,10 @@ class FrequencySynchronization::Nodes::Node::Clocks::Clock_::SelectedSource::Clo
         ydk::YLeaf node; //type: string
         ydk::YLeaf port; //type: uint32
 
-}; // FrequencySynchronization::Nodes::Node::Clocks::Clock_::SelectedSource::ClockId
+}; // FrequencySynchronization::Nodes::Node::Clocks::Clock::SelectedSource::ClockId
 
 
-class FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelReceived : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelReceived : public ydk::Entity
 {
     public:
         QualityLevelReceived();
@@ -2008,10 +2008,10 @@ class FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelReceive
         ydk::YLeaf option2_generation1_value; //type: FsyncBagQlO2G1Value
         ydk::YLeaf option2_generation2_value; //type: FsyncBagQlO2G2Value
 
-}; // FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelReceived
+}; // FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelReceived
 
 
-class FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelDamped : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelDamped : public ydk::Entity
 {
     public:
         QualityLevelDamped();
@@ -2032,10 +2032,10 @@ class FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelDamped 
         ydk::YLeaf option2_generation1_value; //type: FsyncBagQlO2G1Value
         ydk::YLeaf option2_generation2_value; //type: FsyncBagQlO2G2Value
 
-}; // FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelDamped
+}; // FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelDamped
 
 
-class FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelEffectiveInput : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveInput : public ydk::Entity
 {
     public:
         QualityLevelEffectiveInput();
@@ -2056,10 +2056,10 @@ class FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelEffecti
         ydk::YLeaf option2_generation1_value; //type: FsyncBagQlO2G1Value
         ydk::YLeaf option2_generation2_value; //type: FsyncBagQlO2G2Value
 
-}; // FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelEffectiveInput
+}; // FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveInput
 
 
-class FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelEffectiveOutput : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveOutput : public ydk::Entity
 {
     public:
         QualityLevelEffectiveOutput();
@@ -2080,10 +2080,10 @@ class FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelEffecti
         ydk::YLeaf option2_generation1_value; //type: FsyncBagQlO2G1Value
         ydk::YLeaf option2_generation2_value; //type: FsyncBagQlO2G2Value
 
-}; // FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelEffectiveOutput
+}; // FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelEffectiveOutput
 
 
-class FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelSelectedSource : public ydk::Entity
+class FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelSelectedSource : public ydk::Entity
 {
     public:
         QualityLevelSelectedSource();
@@ -2104,7 +2104,7 @@ class FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelSelecte
         ydk::YLeaf option2_generation1_value; //type: FsyncBagQlO2G1Value
         ydk::YLeaf option2_generation2_value; //type: FsyncBagQlO2G2Value
 
-}; // FrequencySynchronization::Nodes::Node::Clocks::Clock_::QualityLevelSelectedSource
+}; // FrequencySynchronization::Nodes::Node::Clocks::Clock::QualityLevelSelectedSource
 
 
 class FrequencySynchronization::Nodes::Node::ConfigurationErrors : public ydk::Entity

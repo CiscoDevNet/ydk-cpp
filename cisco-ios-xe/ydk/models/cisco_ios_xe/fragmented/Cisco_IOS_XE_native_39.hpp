@@ -918,18 +918,18 @@ class Native::Interface::FiveGigabitEthernet::Peer : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Default_; //type: Native::Interface::FiveGigabitEthernet::Peer::Default_
+        class Default; //type: Native::Interface::FiveGigabitEthernet::Peer::Default
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Peer::Default_> default_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Peer::Default> default_;
         
 }; // Native::Interface::FiveGigabitEthernet::Peer
 
 
-class Native::Interface::FiveGigabitEthernet::Peer::Default_ : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Peer::Default : public ydk::Entity
 {
     public:
-        Default_();
-        ~Default_();
+        Default();
+        ~Default();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -941,14 +941,14 @@ class Native::Interface::FiveGigabitEthernet::Peer::Default_ : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Ip; //type: Native::Interface::FiveGigabitEthernet::Peer::Default_::Ip
+        class Ip; //type: Native::Interface::FiveGigabitEthernet::Peer::Default::Ip
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Peer::Default_::Ip> ip;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Peer::Default::Ip> ip;
         
-}; // Native::Interface::FiveGigabitEthernet::Peer::Default_
+}; // Native::Interface::FiveGigabitEthernet::Peer::Default
 
 
-class Native::Interface::FiveGigabitEthernet::Peer::Default_::Ip : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Peer::Default::Ip : public ydk::Entity
 {
     public:
         Ip();
@@ -964,14 +964,14 @@ class Native::Interface::FiveGigabitEthernet::Peer::Default_::Ip : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Address; //type: Native::Interface::FiveGigabitEthernet::Peer::Default_::Ip::Address
+        class Address; //type: Native::Interface::FiveGigabitEthernet::Peer::Default::Ip::Address
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Peer::Default_::Ip::Address> address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Peer::Default::Ip::Address> address;
         
-}; // Native::Interface::FiveGigabitEthernet::Peer::Default_::Ip
+}; // Native::Interface::FiveGigabitEthernet::Peer::Default::Ip
 
 
-class Native::Interface::FiveGigabitEthernet::Peer::Default_::Ip::Address : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Peer::Default::Ip::Address : public ydk::Entity
 {
     public:
         Address();
@@ -988,16 +988,16 @@ class Native::Interface::FiveGigabitEthernet::Peer::Default_::Ip::Address : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf dhcp; //type: empty
-        class DhcpPool; //type: Native::Interface::FiveGigabitEthernet::Peer::Default_::Ip::Address::DhcpPool
-        class Pool; //type: Native::Interface::FiveGigabitEthernet::Peer::Default_::Ip::Address::Pool
+        class DhcpPool; //type: Native::Interface::FiveGigabitEthernet::Peer::Default::Ip::Address::DhcpPool
+        class Pool; //type: Native::Interface::FiveGigabitEthernet::Peer::Default::Ip::Address::Pool
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Peer::Default_::Ip::Address::DhcpPool> dhcp_pool; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Peer::Default_::Ip::Address::Pool> pool; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Peer::Default::Ip::Address::DhcpPool> dhcp_pool; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Peer::Default::Ip::Address::Pool> pool; // presence node
         
-}; // Native::Interface::FiveGigabitEthernet::Peer::Default_::Ip::Address
+}; // Native::Interface::FiveGigabitEthernet::Peer::Default::Ip::Address
 
 
-class Native::Interface::FiveGigabitEthernet::Peer::Default_::Ip::Address::DhcpPool : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Peer::Default::Ip::Address::DhcpPool : public ydk::Entity
 {
     public:
         DhcpPool();
@@ -1015,10 +1015,10 @@ class Native::Interface::FiveGigabitEthernet::Peer::Default_::Ip::Address::DhcpP
 
         ydk::YLeaf pools; //type: string
 
-}; // Native::Interface::FiveGigabitEthernet::Peer::Default_::Ip::Address::DhcpPool
+}; // Native::Interface::FiveGigabitEthernet::Peer::Default::Ip::Address::DhcpPool
 
 
-class Native::Interface::FiveGigabitEthernet::Peer::Default_::Ip::Address::Pool : public ydk::Entity
+class Native::Interface::FiveGigabitEthernet::Peer::Default::Ip::Address::Pool : public ydk::Entity
 {
     public:
         Pool();
@@ -1036,7 +1036,7 @@ class Native::Interface::FiveGigabitEthernet::Peer::Default_::Ip::Address::Pool 
 
         ydk::YLeaf pools; //type: string
 
-}; // Native::Interface::FiveGigabitEthernet::Peer::Default_::Ip::Address::Pool
+}; // Native::Interface::FiveGigabitEthernet::Peer::Default::Ip::Address::Pool
 
 
 class Native::Interface::FiveGigabitEthernet::PmPath : public ydk::Entity
@@ -2362,9 +2362,9 @@ class Native::Interface::FiveGigabitEthernet::Service::Instance::Encapsulation::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf exact; //type: empty
-        ydk::YLeafList id; //type: list of  one of string, uint16, enumeration
+        ydk::YLeafList id; //type: list of  one of uint16, enumeration, string
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList dot1q; //type: list of  one of string, uint16, enumeration
+        ydk::YLeafList dot1q; //type: list of  one of uint16, enumeration, string
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::FiveGigabitEthernet::Service::Instance::Encapsulation::Dot1Ad::Cos2
 
@@ -2415,9 +2415,9 @@ class Native::Interface::FiveGigabitEthernet::Service::Instance::Encapsulation::
 
         ydk::YLeaf exact; //type: empty
         ydk::YLeaf vlan_type; //type: VlanType
-        ydk::YLeafList id; //type: list of  one of string, uint16, enumeration
+        ydk::YLeafList id; //type: list of  one of uint16, enumeration, string
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList second_dot1q; //type: list of  one of string, uint16, enumeration
+        ydk::YLeafList second_dot1q; //type: list of  one of uint16, enumeration, string
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::FiveGigabitEthernet::Service::Instance::Encapsulation::Dot1Q::Cos2
 
@@ -2560,7 +2560,7 @@ class Native::Interface::FiveGigabitEthernet::Service::Instance::Ip::Acl : publi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf access_group; //type: one of string, uint16
+        ydk::YLeaf access_group; //type: one of uint16, string
         ydk::YLeaf in; //type: empty
         ydk::YLeaf out; //type: empty
 

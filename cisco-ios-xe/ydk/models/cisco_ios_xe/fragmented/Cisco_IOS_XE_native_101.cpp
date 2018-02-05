@@ -69,6 +69,7 @@ std::shared_ptr<Entity> Native::Crypto::MapClient::Map::Redundancy::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::MapClient::Map::Redundancy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(replay_interval != nullptr)
     {
         children["replay-interval"] = replay_interval;
@@ -144,6 +145,7 @@ std::shared_ptr<Entity> Native::Crypto::MapClient::Map::Redundancy::ReplayInterv
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::MapClient::Map::Redundancy::ReplayInterval::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -246,6 +248,7 @@ std::shared_ptr<Entity> Native::Crypto::Mib::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Mib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ipsec != nullptr)
     {
         children["ipsec"] = ipsec;
@@ -333,6 +336,7 @@ std::shared_ptr<Entity> Native::Crypto::Mib::Ipsec::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Mib::Ipsec::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(flowmib != nullptr)
     {
         children["flowmib"] = flowmib;
@@ -420,6 +424,7 @@ std::shared_ptr<Entity> Native::Crypto::Mib::Ipsec::Flowmib::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Mib::Ipsec::Flowmib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(history != nullptr)
     {
         children["history"] = history;
@@ -520,6 +525,7 @@ std::shared_ptr<Entity> Native::Crypto::Mib::Ipsec::Flowmib::History::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Mib::Ipsec::Flowmib::History::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(failure != nullptr)
     {
         children["failure"] = failure;
@@ -603,6 +609,7 @@ std::shared_ptr<Entity> Native::Crypto::Mib::Ipsec::Flowmib::History::Failure::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Mib::Ipsec::Flowmib::History::Failure::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -686,6 +693,7 @@ std::shared_ptr<Entity> Native::Crypto::Mib::Ipsec::Flowmib::History::Tunnel::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Mib::Ipsec::Flowmib::History::Tunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -725,7 +733,7 @@ Native::Crypto::Pki::Pki()
 	,server(std::make_shared<Native::Crypto::Pki::Server>())
 	,token(std::make_shared<Native::Crypto::Pki::Token>())
 	,trustpool(std::make_shared<Native::Crypto::Pki::Trustpool>())
-	,default_(std::make_shared<Native::Crypto::Pki::Default_>())
+	,default_(std::make_shared<Native::Crypto::Pki::Default>())
 {
     certificate->parent = this;
     crl->parent = this;
@@ -846,15 +854,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::get_child_by_name(const std::string
 
     if(child_yang_name == "export")
     {
-        for(auto const & c : export_)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Crypto::Pki::Export_>();
+        auto c = std::make_shared<Native::Crypto::Pki::Export>();
         c->parent = this;
         export_.push_back(c);
         return c;
@@ -862,14 +862,6 @@ std::shared_ptr<Entity> Native::Crypto::Pki::get_child_by_name(const std::string
 
     if(child_yang_name == "import")
     {
-        for(auto const & c : import)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::Pki::Import>();
         c->parent = this;
         import.push_back(c);
@@ -896,14 +888,6 @@ std::shared_ptr<Entity> Native::Crypto::Pki::get_child_by_name(const std::string
 
     if(child_yang_name == "trustpoint")
     {
-        for(auto const & c : trustpoint)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::Pki::Trustpoint>();
         c->parent = this;
         trustpoint.push_back(c);
@@ -932,7 +916,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::get_child_by_name(const std::string
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Crypto::Pki::Default_>();
+            default_ = std::make_shared<Native::Crypto::Pki::Default>();
         }
         return default_;
     }
@@ -943,6 +927,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(certificate != nullptr)
     {
         children["certificate"] = certificate;
@@ -953,14 +938,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::get_children
         children["crl"] = crl;
     }
 
+    count = 0;
     for (auto const & c : export_)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : import)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(profile != nullptr)
@@ -973,9 +966,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::get_children
         children["server"] = server;
     }
 
+    count = 0;
     for (auto const & c : trustpoint)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(token != nullptr)
@@ -1115,14 +1112,6 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::get_child_by_name(cons
 {
     if(child_yang_name == "chain")
     {
-        for(auto const & c : chain)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::Pki::Certificate::Chain>();
         c->parent = this;
         chain.push_back(c);
@@ -1131,14 +1120,6 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::get_child_by_name(cons
 
     if(child_yang_name == "map")
     {
-        for(auto const & c : map)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::Pki::Certificate::Map>();
         c->parent = this;
         map.push_back(c);
@@ -1160,14 +1141,23 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : chain)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : map)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(storage != nullptr)
@@ -1284,14 +1274,6 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Chain::get_child_by_na
 {
     if(child_yang_name == "certificate")
     {
-        for(auto const & c : certificate)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::Pki::Certificate::Chain::Certificate_>();
         c->parent = this;
         certificate.push_back(c);
@@ -1304,9 +1286,14 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Chain::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Chain::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : certificate)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1389,6 +1376,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Chain::Certificate_::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Chain::Certificate_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1591,6 +1579,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(alt_subject_name != nullptr)
     {
         children["alt-subject-name"] = alt_subject_name;
@@ -1729,6 +1718,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::AltSubjectName::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::AltSubjectName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1883,6 +1873,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::ExpiresOn::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::ExpiresOn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(eq != nullptr)
     {
         children["eq"] = eq;
@@ -1978,6 +1969,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::ExpiresOn::Eq::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::ExpiresOn::Eq::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(time != nullptr)
     {
         children["time"] = time;
@@ -2073,6 +2065,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::ExpiresOn::Eq::Ti
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::ExpiresOn::Eq::Time::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2218,6 +2211,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ge::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ge::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(time != nullptr)
     {
         children["time"] = time;
@@ -2313,6 +2307,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ge::Ti
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ge::Time::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2458,6 +2453,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::ExpiresOn::Lt::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::ExpiresOn::Lt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(time != nullptr)
     {
         children["time"] = time;
@@ -2553,6 +2549,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::ExpiresOn::Lt::Ti
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::ExpiresOn::Lt::Time::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2698,6 +2695,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ne::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ne::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(time != nullptr)
     {
         children["time"] = time;
@@ -2793,6 +2791,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ne::Ti
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::ExpiresOn::Ne::Time::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2941,6 +2940,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::IssuerName::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::IssuerName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3059,6 +3059,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::Name::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::Name::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3177,6 +3178,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::SerialNumber::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::SerialNumber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3295,6 +3297,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::SubjectName::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::SubjectName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3413,6 +3416,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::UnstructuredSubje
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::UnstructuredSubjectName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3567,6 +3571,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::ValidStart::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::ValidStart::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(eq != nullptr)
     {
         children["eq"] = eq;
@@ -3662,6 +3667,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::ValidStart::Eq::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::ValidStart::Eq::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(time != nullptr)
     {
         children["time"] = time;
@@ -3757,6 +3763,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::ValidStart::Eq::T
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::ValidStart::Eq::Time::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3902,6 +3909,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::ValidStart::Ge::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::ValidStart::Ge::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(time != nullptr)
     {
         children["time"] = time;
@@ -3997,6 +4005,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::ValidStart::Ge::T
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::ValidStart::Ge::Time::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4142,6 +4151,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::ValidStart::Lt::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::ValidStart::Lt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(time != nullptr)
     {
         children["time"] = time;
@@ -4237,6 +4247,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::ValidStart::Lt::T
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::ValidStart::Lt::Time::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4382,6 +4393,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::ValidStart::Ne::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::ValidStart::Ne::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(time != nullptr)
     {
         children["time"] = time;
@@ -4477,6 +4489,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Map::ValidStart::Ne::T
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Map::ValidStart::Ne::Time::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4628,6 +4641,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Certificate::Storage::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Certificate::Storage::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4758,6 +4772,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Crl::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Crl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cache != nullptr)
     {
         children["cache"] = cache;
@@ -4851,6 +4866,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Crl::Cache::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Crl::Cache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4961,6 +4977,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Crl::Download::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Crl::Download::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(schedule != nullptr)
     {
         children["schedule"] = schedule;
@@ -5081,6 +5098,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Crl::Download::Schedule::get_child_
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Crl::Download::Schedule::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(retries != nullptr)
     {
         children["retries"] = retries;
@@ -5178,6 +5196,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Crl::Download::Schedule::Retries::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Crl::Download::Schedule::Retries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5275,6 +5294,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Crl::Download::Schedule::Time::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Crl::Download::Schedule::Time::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5376,6 +5396,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Crl::Download::Url::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Crl::Download::Url::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5424,12 +5445,12 @@ bool Native::Crypto::Pki::Crl::Download::Url::has_leaf_or_child_of_name(const st
     return false;
 }
 
-Native::Crypto::Pki::Export_::Export_()
+Native::Crypto::Pki::Export::Export()
     :
     name{YType::str, "name"}
     	,
-    pem(std::make_shared<Native::Crypto::Pki::Export_::Pem>())
-	,pkcs12(std::make_shared<Native::Crypto::Pki::Export_::Pkcs12>())
+    pem(std::make_shared<Native::Crypto::Pki::Export::Pem>())
+	,pkcs12(std::make_shared<Native::Crypto::Pki::Export::Pkcs12>())
 {
     pem->parent = this;
     pkcs12->parent = this;
@@ -5437,18 +5458,18 @@ Native::Crypto::Pki::Export_::Export_()
     yang_name = "export"; yang_parent_name = "pki"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Crypto::Pki::Export_::~Export_()
+Native::Crypto::Pki::Export::~Export()
 {
 }
 
-bool Native::Crypto::Pki::Export_::has_data() const
+bool Native::Crypto::Pki::Export::has_data() const
 {
     return name.is_set
 	|| (pem !=  nullptr && pem->has_data())
 	|| (pkcs12 !=  nullptr && pkcs12->has_data());
 }
 
-bool Native::Crypto::Pki::Export_::has_operation() const
+bool Native::Crypto::Pki::Export::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
@@ -5456,21 +5477,21 @@ bool Native::Crypto::Pki::Export_::has_operation() const
 	|| (pkcs12 !=  nullptr && pkcs12->has_operation());
 }
 
-std::string Native::Crypto::Pki::Export_::get_absolute_path() const
+std::string Native::Crypto::Pki::Export::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/crypto/Cisco-IOS-XE-crypto:pki/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Crypto::Pki::Export_::get_segment_path() const
+std::string Native::Crypto::Pki::Export::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "export" <<"[name='" <<name <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Export_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Export::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5480,13 +5501,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Export_::get
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Pki::Export_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Pki::Export::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pem")
     {
         if(pem == nullptr)
         {
-            pem = std::make_shared<Native::Crypto::Pki::Export_::Pem>();
+            pem = std::make_shared<Native::Crypto::Pki::Export::Pem>();
         }
         return pem;
     }
@@ -5495,7 +5516,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Export_::get_child_by_name(const st
     {
         if(pkcs12 == nullptr)
         {
-            pkcs12 = std::make_shared<Native::Crypto::Pki::Export_::Pkcs12>();
+            pkcs12 = std::make_shared<Native::Crypto::Pki::Export::Pkcs12>();
         }
         return pkcs12;
     }
@@ -5503,9 +5524,10 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Export_::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Export_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Export::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pem != nullptr)
     {
         children["pem"] = pem;
@@ -5519,7 +5541,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Export_::get
     return children;
 }
 
-void Native::Crypto::Pki::Export_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Pki::Export::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -5529,7 +5551,7 @@ void Native::Crypto::Pki::Export_::set_value(const std::string & value_path, con
     }
 }
 
-void Native::Crypto::Pki::Export_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Pki::Export::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -5537,48 +5559,48 @@ void Native::Crypto::Pki::Export_::set_filter(const std::string & value_path, YF
     }
 }
 
-bool Native::Crypto::Pki::Export_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Pki::Export::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pem" || name == "pkcs12" || name == "name")
         return true;
     return false;
 }
 
-Native::Crypto::Pki::Export_::Pem::Pem()
+Native::Crypto::Pki::Export::Pem::Pem()
     :
     terminal(nullptr) // presence node
-	,url(std::make_shared<Native::Crypto::Pki::Export_::Pem::Url>())
+	,url(std::make_shared<Native::Crypto::Pki::Export::Pem::Url>())
 {
     url->parent = this;
 
     yang_name = "pem"; yang_parent_name = "export"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Crypto::Pki::Export_::Pem::~Pem()
+Native::Crypto::Pki::Export::Pem::~Pem()
 {
 }
 
-bool Native::Crypto::Pki::Export_::Pem::has_data() const
+bool Native::Crypto::Pki::Export::Pem::has_data() const
 {
     return (terminal !=  nullptr && terminal->has_data())
 	|| (url !=  nullptr && url->has_data());
 }
 
-bool Native::Crypto::Pki::Export_::Pem::has_operation() const
+bool Native::Crypto::Pki::Export::Pem::has_operation() const
 {
     return is_set(yfilter)
 	|| (terminal !=  nullptr && terminal->has_operation())
 	|| (url !=  nullptr && url->has_operation());
 }
 
-std::string Native::Crypto::Pki::Export_::Pem::get_segment_path() const
+std::string Native::Crypto::Pki::Export::Pem::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pem";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Export_::Pem::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Export::Pem::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5587,13 +5609,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Export_::Pem
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Pki::Export_::Pem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Pki::Export::Pem::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "terminal")
     {
         if(terminal == nullptr)
         {
-            terminal = std::make_shared<Native::Crypto::Pki::Export_::Pem::Terminal>();
+            terminal = std::make_shared<Native::Crypto::Pki::Export::Pem::Terminal>();
         }
         return terminal;
     }
@@ -5602,7 +5624,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Export_::Pem::get_child_by_name(con
     {
         if(url == nullptr)
         {
-            url = std::make_shared<Native::Crypto::Pki::Export_::Pem::Url>();
+            url = std::make_shared<Native::Crypto::Pki::Export::Pem::Url>();
         }
         return url;
     }
@@ -5610,9 +5632,10 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Export_::Pem::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Export_::Pem::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Export::Pem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(terminal != nullptr)
     {
         children["terminal"] = terminal;
@@ -5626,27 +5649,27 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Export_::Pem
     return children;
 }
 
-void Native::Crypto::Pki::Export_::Pem::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Pki::Export::Pem::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Crypto::Pki::Export_::Pem::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Pki::Export::Pem::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Crypto::Pki::Export_::Pem::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Pki::Export::Pem::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "terminal" || name == "url")
         return true;
     return false;
 }
 
-Native::Crypto::Pki::Export_::Pem::Terminal::Terminal()
+Native::Crypto::Pki::Export::Pem::Terminal::Terminal()
     :
     rollover{YType::empty, "rollover"}
     	,
-    pem_3des(std::make_shared<Native::Crypto::Pki::Export_::Pem::Terminal::Pem3des>())
-	,des(std::make_shared<Native::Crypto::Pki::Export_::Pem::Terminal::Des>())
+    pem_3des(std::make_shared<Native::Crypto::Pki::Export::Pem::Terminal::Pem3des>())
+	,des(std::make_shared<Native::Crypto::Pki::Export::Pem::Terminal::Des>())
 {
     pem_3des->parent = this;
     des->parent = this;
@@ -5654,18 +5677,18 @@ Native::Crypto::Pki::Export_::Pem::Terminal::Terminal()
     yang_name = "terminal"; yang_parent_name = "pem"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Crypto::Pki::Export_::Pem::Terminal::~Terminal()
+Native::Crypto::Pki::Export::Pem::Terminal::~Terminal()
 {
 }
 
-bool Native::Crypto::Pki::Export_::Pem::Terminal::has_data() const
+bool Native::Crypto::Pki::Export::Pem::Terminal::has_data() const
 {
     return rollover.is_set
 	|| (pem_3des !=  nullptr && pem_3des->has_data())
 	|| (des !=  nullptr && des->has_data());
 }
 
-bool Native::Crypto::Pki::Export_::Pem::Terminal::has_operation() const
+bool Native::Crypto::Pki::Export::Pem::Terminal::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(rollover.yfilter)
@@ -5673,14 +5696,14 @@ bool Native::Crypto::Pki::Export_::Pem::Terminal::has_operation() const
 	|| (des !=  nullptr && des->has_operation());
 }
 
-std::string Native::Crypto::Pki::Export_::Pem::Terminal::get_segment_path() const
+std::string Native::Crypto::Pki::Export::Pem::Terminal::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "terminal";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Export_::Pem::Terminal::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Export::Pem::Terminal::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5690,13 +5713,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Export_::Pem
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Pki::Export_::Pem::Terminal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Pki::Export::Pem::Terminal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pem-3des")
     {
         if(pem_3des == nullptr)
         {
-            pem_3des = std::make_shared<Native::Crypto::Pki::Export_::Pem::Terminal::Pem3des>();
+            pem_3des = std::make_shared<Native::Crypto::Pki::Export::Pem::Terminal::Pem3des>();
         }
         return pem_3des;
     }
@@ -5705,7 +5728,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Export_::Pem::Terminal::get_child_b
     {
         if(des == nullptr)
         {
-            des = std::make_shared<Native::Crypto::Pki::Export_::Pem::Terminal::Des>();
+            des = std::make_shared<Native::Crypto::Pki::Export::Pem::Terminal::Des>();
         }
         return des;
     }
@@ -5713,9 +5736,10 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Export_::Pem::Terminal::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Export_::Pem::Terminal::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Export::Pem::Terminal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pem_3des != nullptr)
     {
         children["pem-3des"] = pem_3des;
@@ -5729,7 +5753,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Export_::Pem
     return children;
 }
 
-void Native::Crypto::Pki::Export_::Pem::Terminal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Pki::Export::Pem::Terminal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rollover")
     {
@@ -5739,7 +5763,7 @@ void Native::Crypto::Pki::Export_::Pem::Terminal::set_value(const std::string & 
     }
 }
 
-void Native::Crypto::Pki::Export_::Pem::Terminal::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Pki::Export::Pem::Terminal::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "rollover")
     {
@@ -5747,14 +5771,14 @@ void Native::Crypto::Pki::Export_::Pem::Terminal::set_filter(const std::string &
     }
 }
 
-bool Native::Crypto::Pki::Export_::Pem::Terminal::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Pki::Export::Pem::Terminal::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pem-3des" || name == "des" || name == "rollover")
         return true;
     return false;
 }
 
-Native::Crypto::Pki::Export_::Pem::Terminal::Pem3des::Pem3des()
+Native::Crypto::Pki::Export::Pem::Terminal::Pem3des::Pem3des()
     :
     password{YType::str, "password"}
 {
@@ -5762,29 +5786,29 @@ Native::Crypto::Pki::Export_::Pem::Terminal::Pem3des::Pem3des()
     yang_name = "pem-3des"; yang_parent_name = "terminal"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Crypto::Pki::Export_::Pem::Terminal::Pem3des::~Pem3des()
+Native::Crypto::Pki::Export::Pem::Terminal::Pem3des::~Pem3des()
 {
 }
 
-bool Native::Crypto::Pki::Export_::Pem::Terminal::Pem3des::has_data() const
+bool Native::Crypto::Pki::Export::Pem::Terminal::Pem3des::has_data() const
 {
     return password.is_set;
 }
 
-bool Native::Crypto::Pki::Export_::Pem::Terminal::Pem3des::has_operation() const
+bool Native::Crypto::Pki::Export::Pem::Terminal::Pem3des::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(password.yfilter);
 }
 
-std::string Native::Crypto::Pki::Export_::Pem::Terminal::Pem3des::get_segment_path() const
+std::string Native::Crypto::Pki::Export::Pem::Terminal::Pem3des::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pem-3des";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Export_::Pem::Terminal::Pem3des::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Export::Pem::Terminal::Pem3des::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5794,18 +5818,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Export_::Pem
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Pki::Export_::Pem::Terminal::Pem3des::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Pki::Export::Pem::Terminal::Pem3des::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Export_::Pem::Terminal::Pem3des::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Export::Pem::Terminal::Pem3des::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Crypto::Pki::Export_::Pem::Terminal::Pem3des::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Pki::Export::Pem::Terminal::Pem3des::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "password")
     {
@@ -5815,7 +5840,7 @@ void Native::Crypto::Pki::Export_::Pem::Terminal::Pem3des::set_value(const std::
     }
 }
 
-void Native::Crypto::Pki::Export_::Pem::Terminal::Pem3des::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Pki::Export::Pem::Terminal::Pem3des::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "password")
     {
@@ -5823,14 +5848,14 @@ void Native::Crypto::Pki::Export_::Pem::Terminal::Pem3des::set_filter(const std:
     }
 }
 
-bool Native::Crypto::Pki::Export_::Pem::Terminal::Pem3des::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Pki::Export::Pem::Terminal::Pem3des::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "password")
         return true;
     return false;
 }
 
-Native::Crypto::Pki::Export_::Pem::Terminal::Des::Des()
+Native::Crypto::Pki::Export::Pem::Terminal::Des::Des()
     :
     password{YType::str, "password"}
 {
@@ -5838,29 +5863,29 @@ Native::Crypto::Pki::Export_::Pem::Terminal::Des::Des()
     yang_name = "des"; yang_parent_name = "terminal"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Crypto::Pki::Export_::Pem::Terminal::Des::~Des()
+Native::Crypto::Pki::Export::Pem::Terminal::Des::~Des()
 {
 }
 
-bool Native::Crypto::Pki::Export_::Pem::Terminal::Des::has_data() const
+bool Native::Crypto::Pki::Export::Pem::Terminal::Des::has_data() const
 {
     return password.is_set;
 }
 
-bool Native::Crypto::Pki::Export_::Pem::Terminal::Des::has_operation() const
+bool Native::Crypto::Pki::Export::Pem::Terminal::Des::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(password.yfilter);
 }
 
-std::string Native::Crypto::Pki::Export_::Pem::Terminal::Des::get_segment_path() const
+std::string Native::Crypto::Pki::Export::Pem::Terminal::Des::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "des";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Export_::Pem::Terminal::Des::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Export::Pem::Terminal::Des::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5870,18 +5895,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Export_::Pem
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Pki::Export_::Pem::Terminal::Des::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Pki::Export::Pem::Terminal::Des::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Export_::Pem::Terminal::Des::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Export::Pem::Terminal::Des::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Crypto::Pki::Export_::Pem::Terminal::Des::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Pki::Export::Pem::Terminal::Des::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "password")
     {
@@ -5891,7 +5917,7 @@ void Native::Crypto::Pki::Export_::Pem::Terminal::Des::set_value(const std::stri
     }
 }
 
-void Native::Crypto::Pki::Export_::Pem::Terminal::Des::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Pki::Export::Pem::Terminal::Des::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "password")
     {
@@ -5899,14 +5925,14 @@ void Native::Crypto::Pki::Export_::Pem::Terminal::Des::set_filter(const std::str
     }
 }
 
-bool Native::Crypto::Pki::Export_::Pem::Terminal::Des::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Pki::Export::Pem::Terminal::Des::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "password")
         return true;
     return false;
 }
 
-Native::Crypto::Pki::Export_::Pem::Url::Url()
+Native::Crypto::Pki::Export::Pem::Url::Url()
     :
     file{YType::enumeration, "file"},
     encrypt{YType::enumeration, "encrypt"},
@@ -5916,18 +5942,18 @@ Native::Crypto::Pki::Export_::Pem::Url::Url()
     yang_name = "url"; yang_parent_name = "pem"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Crypto::Pki::Export_::Pem::Url::~Url()
+Native::Crypto::Pki::Export::Pem::Url::~Url()
 {
 }
 
-bool Native::Crypto::Pki::Export_::Pem::Url::has_data() const
+bool Native::Crypto::Pki::Export::Pem::Url::has_data() const
 {
     return file.is_set
 	|| encrypt.is_set
 	|| password.is_set;
 }
 
-bool Native::Crypto::Pki::Export_::Pem::Url::has_operation() const
+bool Native::Crypto::Pki::Export::Pem::Url::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(file.yfilter)
@@ -5935,14 +5961,14 @@ bool Native::Crypto::Pki::Export_::Pem::Url::has_operation() const
 	|| ydk::is_set(password.yfilter);
 }
 
-std::string Native::Crypto::Pki::Export_::Pem::Url::get_segment_path() const
+std::string Native::Crypto::Pki::Export::Pem::Url::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "url";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Export_::Pem::Url::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Export::Pem::Url::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5954,18 +5980,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Export_::Pem
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Pki::Export_::Pem::Url::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Pki::Export::Pem::Url::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Export_::Pem::Url::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Export::Pem::Url::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Crypto::Pki::Export_::Pem::Url::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Pki::Export::Pem::Url::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "file")
     {
@@ -5987,7 +6014,7 @@ void Native::Crypto::Pki::Export_::Pem::Url::set_value(const std::string & value
     }
 }
 
-void Native::Crypto::Pki::Export_::Pem::Url::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Pki::Export::Pem::Url::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "file")
     {
@@ -6003,14 +6030,14 @@ void Native::Crypto::Pki::Export_::Pem::Url::set_filter(const std::string & valu
     }
 }
 
-bool Native::Crypto::Pki::Export_::Pem::Url::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Pki::Export::Pem::Url::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "file" || name == "encrypt" || name == "password")
         return true;
     return false;
 }
 
-Native::Crypto::Pki::Export_::Pkcs12::Pkcs12()
+Native::Crypto::Pki::Export::Pkcs12::Pkcs12()
     :
     file{YType::enumeration, "file"},
     password{YType::str, "password"}
@@ -6019,31 +6046,31 @@ Native::Crypto::Pki::Export_::Pkcs12::Pkcs12()
     yang_name = "pkcs12"; yang_parent_name = "export"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Crypto::Pki::Export_::Pkcs12::~Pkcs12()
+Native::Crypto::Pki::Export::Pkcs12::~Pkcs12()
 {
 }
 
-bool Native::Crypto::Pki::Export_::Pkcs12::has_data() const
+bool Native::Crypto::Pki::Export::Pkcs12::has_data() const
 {
     return file.is_set
 	|| password.is_set;
 }
 
-bool Native::Crypto::Pki::Export_::Pkcs12::has_operation() const
+bool Native::Crypto::Pki::Export::Pkcs12::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(file.yfilter)
 	|| ydk::is_set(password.yfilter);
 }
 
-std::string Native::Crypto::Pki::Export_::Pkcs12::get_segment_path() const
+std::string Native::Crypto::Pki::Export::Pkcs12::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pkcs12";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Export_::Pkcs12::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Export::Pkcs12::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6054,18 +6081,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Export_::Pkc
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Pki::Export_::Pkcs12::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Pki::Export::Pkcs12::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Export_::Pkcs12::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Export::Pkcs12::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Crypto::Pki::Export_::Pkcs12::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Pki::Export::Pkcs12::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "file")
     {
@@ -6081,7 +6109,7 @@ void Native::Crypto::Pki::Export_::Pkcs12::set_value(const std::string & value_p
     }
 }
 
-void Native::Crypto::Pki::Export_::Pkcs12::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Pki::Export::Pkcs12::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "file")
     {
@@ -6093,7 +6121,7 @@ void Native::Crypto::Pki::Export_::Pkcs12::set_filter(const std::string & value_
     }
 }
 
-bool Native::Crypto::Pki::Export_::Pkcs12::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Pki::Export::Pkcs12::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "file" || name == "password")
         return true;
@@ -6186,6 +6214,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Import::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Import::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(pem != nullptr)
     {
         children["pem"] = pem;
@@ -6317,6 +6346,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Import::Pem::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Import::Pem::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(terminal != nullptr)
     {
         children["terminal"] = terminal;
@@ -6423,6 +6453,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Import::Pem::Terminal::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Import::Pem::Terminal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6503,6 +6534,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Import::Pem::Url::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Import::Pem::Url::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6593,6 +6625,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Import::Pkcs12::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Import::Pkcs12::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6688,14 +6721,6 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Profile::get_child_by_name(const st
 {
     if(child_yang_name == "enrollment")
     {
-        for(auto const & c : enrollment)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::Pki::Profile::Enrollment>();
         c->parent = this;
         enrollment.push_back(c);
@@ -6708,9 +6733,14 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Profile::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : enrollment)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6740,7 +6770,7 @@ Native::Crypto::Pki::Profile::Enrollment::Enrollment()
     authentication(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Authentication>())
 	,enrollment(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Enrollment_>())
 	,reenrollment(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Reenrollment>())
-	,default_(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default_>())
+	,default_(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default>())
 {
     authentication->parent = this;
     enrollment->parent = this;
@@ -6835,14 +6865,6 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::get_child_by_n
 
     if(child_yang_name == "parameter")
     {
-        for(auto const & c : parameter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Parameter>();
         c->parent = this;
         parameter.push_back(c);
@@ -6862,7 +6884,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::get_child_by_n
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default_>();
+            default_ = std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default>();
         }
         return default_;
     }
@@ -6873,6 +6895,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enrollment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authentication != nullptr)
     {
         children["authentication"] = authentication;
@@ -6883,9 +6906,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enr
         children["enrollment"] = enrollment;
     }
 
+    count = 0;
     for (auto const & c : parameter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(reenrollment != nullptr)
@@ -7012,6 +7039,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Authentication
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enrollment::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(url != nullptr)
     {
         children["url"] = url;
@@ -7107,6 +7135,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Authentication
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enrollment::Authentication::Url::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7215,6 +7244,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Enrollment_::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enrollment::Enrollment_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(url != nullptr)
     {
         children["url"] = url;
@@ -7320,6 +7350,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Enrollment_::U
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enrollment::Enrollment_::Url::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7414,6 +7445,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Parameter::get
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enrollment::Parameter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7528,6 +7560,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Reenrollment::
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enrollment::Reenrollment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(url != nullptr)
     {
         children["url"] = url;
@@ -7623,6 +7656,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Reenrollment::
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enrollment::Reenrollment::Url::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7661,14 +7695,14 @@ bool Native::Crypto::Pki::Profile::Enrollment::Reenrollment::Url::has_leaf_or_ch
     return false;
 }
 
-Native::Crypto::Pki::Profile::Enrollment::Default_::Default_()
+Native::Crypto::Pki::Profile::Enrollment::Default::Default()
     :
     method_est{YType::empty, "method-est"},
     source_interface{YType::str, "source-interface"}
     	,
-    authentication(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication>())
-	,enrollment(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_>())
-	,reenrollment(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment>())
+    authentication(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default::Authentication>())
+	,enrollment(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_>())
+	,reenrollment(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment>())
 {
     authentication->parent = this;
     enrollment->parent = this;
@@ -7677,11 +7711,11 @@ Native::Crypto::Pki::Profile::Enrollment::Default_::Default_()
     yang_name = "default"; yang_parent_name = "enrollment"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Crypto::Pki::Profile::Enrollment::Default_::~Default_()
+Native::Crypto::Pki::Profile::Enrollment::Default::~Default()
 {
 }
 
-bool Native::Crypto::Pki::Profile::Enrollment::Default_::has_data() const
+bool Native::Crypto::Pki::Profile::Enrollment::Default::has_data() const
 {
     for (std::size_t index=0; index<parameter.size(); index++)
     {
@@ -7695,7 +7729,7 @@ bool Native::Crypto::Pki::Profile::Enrollment::Default_::has_data() const
 	|| (reenrollment !=  nullptr && reenrollment->has_data());
 }
 
-bool Native::Crypto::Pki::Profile::Enrollment::Default_::has_operation() const
+bool Native::Crypto::Pki::Profile::Enrollment::Default::has_operation() const
 {
     for (std::size_t index=0; index<parameter.size(); index++)
     {
@@ -7710,14 +7744,14 @@ bool Native::Crypto::Pki::Profile::Enrollment::Default_::has_operation() const
 	|| (reenrollment !=  nullptr && reenrollment->has_operation());
 }
 
-std::string Native::Crypto::Pki::Profile::Enrollment::Default_::get_segment_path() const
+std::string Native::Crypto::Pki::Profile::Enrollment::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Profile::Enrollment::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Profile::Enrollment::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7728,13 +7762,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Profile::Enr
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "authentication")
     {
         if(authentication == nullptr)
         {
-            authentication = std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication>();
+            authentication = std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default::Authentication>();
         }
         return authentication;
     }
@@ -7743,22 +7777,14 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Default_::get_
     {
         if(enrollment == nullptr)
         {
-            enrollment = std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_>();
+            enrollment = std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_>();
         }
         return enrollment;
     }
 
     if(child_yang_name == "parameter")
     {
-        for(auto const & c : parameter)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default_::Parameter>();
+        auto c = std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default::Parameter>();
         c->parent = this;
         parameter.push_back(c);
         return c;
@@ -7768,7 +7794,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Default_::get_
     {
         if(reenrollment == nullptr)
         {
-            reenrollment = std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment>();
+            reenrollment = std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment>();
         }
         return reenrollment;
     }
@@ -7776,9 +7802,10 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Default_::get_
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enrollment::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enrollment::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authentication != nullptr)
     {
         children["authentication"] = authentication;
@@ -7789,9 +7816,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enr
         children["enrollment"] = enrollment;
     }
 
+    count = 0;
     for (auto const & c : parameter)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(reenrollment != nullptr)
@@ -7802,7 +7833,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enr
     return children;
 }
 
-void Native::Crypto::Pki::Profile::Enrollment::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Pki::Profile::Enrollment::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "method-est")
     {
@@ -7818,7 +7849,7 @@ void Native::Crypto::Pki::Profile::Enrollment::Default_::set_value(const std::st
     }
 }
 
-void Native::Crypto::Pki::Profile::Enrollment::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Pki::Profile::Enrollment::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "method-est")
     {
@@ -7830,37 +7861,37 @@ void Native::Crypto::Pki::Profile::Enrollment::Default_::set_filter(const std::s
     }
 }
 
-bool Native::Crypto::Pki::Profile::Enrollment::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Pki::Profile::Enrollment::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "authentication" || name == "enrollment" || name == "parameter" || name == "reenrollment" || name == "method-est" || name == "source-interface")
         return true;
     return false;
 }
 
-Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::Authentication()
+Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::Authentication()
     :
     command{YType::str, "command"},
     terminal{YType::empty, "terminal"}
     	,
-    url(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::Url>())
+    url(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::Url>())
 {
     url->parent = this;
 
     yang_name = "authentication"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::~Authentication()
+Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::~Authentication()
 {
 }
 
-bool Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::has_data() const
+bool Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::has_data() const
 {
     return command.is_set
 	|| terminal.is_set
 	|| (url !=  nullptr && url->has_data());
 }
 
-bool Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::has_operation() const
+bool Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(command.yfilter)
@@ -7868,14 +7899,14 @@ bool Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::has_ope
 	|| (url !=  nullptr && url->has_operation());
 }
 
-std::string Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::get_segment_path() const
+std::string Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "authentication";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7886,13 +7917,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Profile::Enr
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "url")
     {
         if(url == nullptr)
         {
-            url = std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::Url>();
+            url = std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::Url>();
         }
         return url;
     }
@@ -7900,9 +7931,10 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Default_::Auth
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(url != nullptr)
     {
         children["url"] = url;
@@ -7911,7 +7943,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enr
     return children;
 }
 
-void Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "command")
     {
@@ -7927,7 +7959,7 @@ void Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::set_val
     }
 }
 
-void Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "command")
     {
@@ -7939,14 +7971,14 @@ void Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::set_fil
     }
 }
 
-bool Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "url" || name == "command" || name == "terminal")
         return true;
     return false;
 }
 
-Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::Url::Url()
+Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::Url::Url()
     :
     name{YType::str, "name"},
     vrf{YType::str, "vrf"}
@@ -7955,31 +7987,31 @@ Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::Url::Url()
     yang_name = "url"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::Url::~Url()
+Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::Url::~Url()
 {
 }
 
-bool Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::Url::has_data() const
+bool Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::Url::has_data() const
 {
     return name.is_set
 	|| vrf.is_set;
 }
 
-bool Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::Url::has_operation() const
+bool Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::Url::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
 	|| ydk::is_set(vrf.yfilter);
 }
 
-std::string Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::Url::get_segment_path() const
+std::string Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::Url::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "url";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::Url::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::Url::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7990,18 +8022,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Profile::Enr
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::Url::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::Url::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::Url::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::Url::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::Url::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::Url::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -8017,7 +8050,7 @@ void Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::Url::se
     }
 }
 
-void Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::Url::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::Url::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -8029,31 +8062,31 @@ void Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::Url::se
     }
 }
 
-bool Native::Crypto::Pki::Profile::Enrollment::Default_::Authentication::Url::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Pki::Profile::Enrollment::Default::Authentication::Url::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name" || name == "vrf")
         return true;
     return false;
 }
 
-Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::Enrollment_()
+Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::Enrollment_()
     :
     command{YType::str, "command"},
     terminal{YType::empty, "terminal"},
     credential{YType::str, "credential"}
     	,
-    url(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::Url>())
+    url(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::Url>())
 {
     url->parent = this;
 
     yang_name = "enrollment"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::~Enrollment_()
+Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::~Enrollment_()
 {
 }
 
-bool Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::has_data() const
+bool Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::has_data() const
 {
     return command.is_set
 	|| terminal.is_set
@@ -8061,7 +8094,7 @@ bool Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::has_data()
 	|| (url !=  nullptr && url->has_data());
 }
 
-bool Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::has_operation() const
+bool Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(command.yfilter)
@@ -8070,14 +8103,14 @@ bool Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::has_operat
 	|| (url !=  nullptr && url->has_operation());
 }
 
-std::string Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::get_segment_path() const
+std::string Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "enrollment";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8089,13 +8122,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Profile::Enr
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "url")
     {
         if(url == nullptr)
         {
-            url = std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::Url>();
+            url = std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::Url>();
         }
         return url;
     }
@@ -8103,9 +8136,10 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Default_::Enro
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(url != nullptr)
     {
         children["url"] = url;
@@ -8114,7 +8148,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enr
     return children;
 }
 
-void Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "command")
     {
@@ -8136,7 +8170,7 @@ void Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::set_value(
     }
 }
 
-void Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "command")
     {
@@ -8152,14 +8186,14 @@ void Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::set_filter
     }
 }
 
-bool Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "url" || name == "command" || name == "terminal" || name == "credential")
         return true;
     return false;
 }
 
-Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::Url::Url()
+Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::Url::Url()
     :
     name{YType::str, "name"},
     vrf{YType::str, "vrf"}
@@ -8168,31 +8202,31 @@ Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::Url::Url()
     yang_name = "url"; yang_parent_name = "enrollment"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::Url::~Url()
+Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::Url::~Url()
 {
 }
 
-bool Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::Url::has_data() const
+bool Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::Url::has_data() const
 {
     return name.is_set
 	|| vrf.is_set;
 }
 
-bool Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::Url::has_operation() const
+bool Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::Url::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
 	|| ydk::is_set(vrf.yfilter);
 }
 
-std::string Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::Url::get_segment_path() const
+std::string Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::Url::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "url";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::Url::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::Url::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8203,18 +8237,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Profile::Enr
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::Url::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::Url::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::Url::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::Url::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::Url::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::Url::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -8230,7 +8265,7 @@ void Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::Url::set_v
     }
 }
 
-void Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::Url::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::Url::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -8242,14 +8277,14 @@ void Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::Url::set_f
     }
 }
 
-bool Native::Crypto::Pki::Profile::Enrollment::Default_::Enrollment_::Url::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Pki::Profile::Enrollment::Default::Enrollment_::Url::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name" || name == "vrf")
         return true;
     return false;
 }
 
-Native::Crypto::Pki::Profile::Enrollment::Default_::Parameter::Parameter()
+Native::Crypto::Pki::Profile::Enrollment::Default::Parameter::Parameter()
     :
     number{YType::uint8, "number"},
     prompt{YType::str, "prompt"},
@@ -8259,18 +8294,18 @@ Native::Crypto::Pki::Profile::Enrollment::Default_::Parameter::Parameter()
     yang_name = "parameter"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Crypto::Pki::Profile::Enrollment::Default_::Parameter::~Parameter()
+Native::Crypto::Pki::Profile::Enrollment::Default::Parameter::~Parameter()
 {
 }
 
-bool Native::Crypto::Pki::Profile::Enrollment::Default_::Parameter::has_data() const
+bool Native::Crypto::Pki::Profile::Enrollment::Default::Parameter::has_data() const
 {
     return number.is_set
 	|| prompt.is_set
 	|| value_.is_set;
 }
 
-bool Native::Crypto::Pki::Profile::Enrollment::Default_::Parameter::has_operation() const
+bool Native::Crypto::Pki::Profile::Enrollment::Default::Parameter::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(number.yfilter)
@@ -8278,14 +8313,14 @@ bool Native::Crypto::Pki::Profile::Enrollment::Default_::Parameter::has_operatio
 	|| ydk::is_set(value_.yfilter);
 }
 
-std::string Native::Crypto::Pki::Profile::Enrollment::Default_::Parameter::get_segment_path() const
+std::string Native::Crypto::Pki::Profile::Enrollment::Default::Parameter::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "parameter" <<"[number='" <<number <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Profile::Enrollment::Default_::Parameter::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Profile::Enrollment::Default::Parameter::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8297,18 +8332,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Profile::Enr
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Default_::Parameter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Default::Parameter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enrollment::Default_::Parameter::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enrollment::Default::Parameter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Crypto::Pki::Profile::Enrollment::Default_::Parameter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Pki::Profile::Enrollment::Default::Parameter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -8330,7 +8366,7 @@ void Native::Crypto::Pki::Profile::Enrollment::Default_::Parameter::set_value(co
     }
 }
 
-void Native::Crypto::Pki::Profile::Enrollment::Default_::Parameter::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Pki::Profile::Enrollment::Default::Parameter::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
@@ -8346,37 +8382,37 @@ void Native::Crypto::Pki::Profile::Enrollment::Default_::Parameter::set_filter(c
     }
 }
 
-bool Native::Crypto::Pki::Profile::Enrollment::Default_::Parameter::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Pki::Profile::Enrollment::Default::Parameter::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "number" || name == "prompt" || name == "value")
         return true;
     return false;
 }
 
-Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::Reenrollment()
+Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::Reenrollment()
     :
     command{YType::str, "command"},
     terminal{YType::empty, "terminal"}
     	,
-    url(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::Url>())
+    url(std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::Url>())
 {
     url->parent = this;
 
     yang_name = "reenrollment"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::~Reenrollment()
+Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::~Reenrollment()
 {
 }
 
-bool Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::has_data() const
+bool Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::has_data() const
 {
     return command.is_set
 	|| terminal.is_set
 	|| (url !=  nullptr && url->has_data());
 }
 
-bool Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::has_operation() const
+bool Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(command.yfilter)
@@ -8384,14 +8420,14 @@ bool Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::has_opera
 	|| (url !=  nullptr && url->has_operation());
 }
 
-std::string Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::get_segment_path() const
+std::string Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "reenrollment";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8402,13 +8438,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Profile::Enr
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "url")
     {
         if(url == nullptr)
         {
-            url = std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::Url>();
+            url = std::make_shared<Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::Url>();
         }
         return url;
     }
@@ -8416,9 +8452,10 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Default_::Reen
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(url != nullptr)
     {
         children["url"] = url;
@@ -8427,7 +8464,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enr
     return children;
 }
 
-void Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "command")
     {
@@ -8443,7 +8480,7 @@ void Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::set_value
     }
 }
 
-void Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "command")
     {
@@ -8455,14 +8492,14 @@ void Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::set_filte
     }
 }
 
-bool Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "url" || name == "command" || name == "terminal")
         return true;
     return false;
 }
 
-Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::Url::Url()
+Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::Url::Url()
     :
     name{YType::str, "name"},
     vrf{YType::str, "vrf"}
@@ -8471,31 +8508,31 @@ Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::Url::Url()
     yang_name = "url"; yang_parent_name = "reenrollment"; is_top_level_class = false; has_list_ancestor = true;
 }
 
-Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::Url::~Url()
+Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::Url::~Url()
 {
 }
 
-bool Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::Url::has_data() const
+bool Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::Url::has_data() const
 {
     return name.is_set
 	|| vrf.is_set;
 }
 
-bool Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::Url::has_operation() const
+bool Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::Url::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
 	|| ydk::is_set(vrf.yfilter);
 }
 
-std::string Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::Url::get_segment_path() const
+std::string Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::Url::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "url";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::Url::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::Url::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8506,18 +8543,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Profile::Enr
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::Url::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::Url::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::Url::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::Url::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::Url::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::Url::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -8533,7 +8571,7 @@ void Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::Url::set_
     }
 }
 
-void Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::Url::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::Url::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -8545,7 +8583,7 @@ void Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::Url::set_
     }
 }
 
-bool Native::Crypto::Pki::Profile::Enrollment::Default_::Reenrollment::Url::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Pki::Profile::Enrollment::Default::Reenrollment::Url::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name" || name == "vrf")
         return true;
@@ -8615,6 +8653,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Server::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8811,6 +8850,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Trustpoint::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Trustpoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(auto_enroll != nullptr)
     {
         children["auto-enroll"] = auto_enroll;
@@ -8961,6 +9001,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Trustpoint::AutoEnroll::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Trustpoint::AutoEnroll::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9102,6 +9143,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Trustpoint::Enrollment::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Trustpoint::Enrollment::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mode != nullptr)
     {
         children["mode"] = mode;
@@ -9233,6 +9275,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Trustpoint::Enrollment::Mode::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Trustpoint::Enrollment::Mode::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9313,6 +9356,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Trustpoint::Enrollment::Retry::get_
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Trustpoint::Enrollment::Retry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9399,6 +9443,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Trustpoint::Enrollment::Terminal::g
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Trustpoint::Enrollment::Terminal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9479,6 +9524,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Trustpoint::Password::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Trustpoint::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9573,6 +9619,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Trustpoint::Rsakeypair::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Trustpoint::Rsakeypair::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9669,6 +9716,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Trustpoint::SerialNumber::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Trustpoint::SerialNumber::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9749,6 +9797,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Trustpoint::IpAddress::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Trustpoint::IpAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9844,14 +9893,6 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Token::get_child_by_name(const std:
 {
     if(child_yang_name == "token-name")
     {
-        for(auto const & c : token_name)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::Pki::Token::TokenName>();
         c->parent = this;
         token_name.push_back(c);
@@ -9864,9 +9905,14 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Token::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Token::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : token_name)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9956,6 +10002,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Token::TokenName::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Token::TokenName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(removal != nullptr)
     {
         children["removal"] = removal;
@@ -10037,6 +10084,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Token::TokenName::Removal::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Token::TokenName::Removal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10128,6 +10176,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Trustpool::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Trustpool::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(import != nullptr)
     {
         children["import"] = import;
@@ -10224,6 +10273,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Trustpool::Import::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Trustpool::Import::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(url != nullptr)
     {
         children["url"] = url;
@@ -10322,6 +10372,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Trustpool::Import::Url::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Trustpool::Import::Url::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10350,45 +10401,45 @@ bool Native::Crypto::Pki::Trustpool::Import::Url::has_leaf_or_child_of_name(cons
     return false;
 }
 
-Native::Crypto::Pki::Default_::Default_()
+Native::Crypto::Pki::Default::Default()
     :
-    removal(std::make_shared<Native::Crypto::Pki::Default_::Removal>())
+    removal(std::make_shared<Native::Crypto::Pki::Default::Removal>())
 {
     removal->parent = this;
 
     yang_name = "default"; yang_parent_name = "pki"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Crypto::Pki::Default_::~Default_()
+Native::Crypto::Pki::Default::~Default()
 {
 }
 
-bool Native::Crypto::Pki::Default_::has_data() const
+bool Native::Crypto::Pki::Default::has_data() const
 {
     return (removal !=  nullptr && removal->has_data());
 }
 
-bool Native::Crypto::Pki::Default_::has_operation() const
+bool Native::Crypto::Pki::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| (removal !=  nullptr && removal->has_operation());
 }
 
-std::string Native::Crypto::Pki::Default_::get_absolute_path() const
+std::string Native::Crypto::Pki::Default::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/crypto/Cisco-IOS-XE-crypto:pki/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Crypto::Pki::Default_::get_segment_path() const
+std::string Native::Crypto::Pki::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10397,13 +10448,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Default_::ge
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Pki::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Pki::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "removal")
     {
         if(removal == nullptr)
         {
-            removal = std::make_shared<Native::Crypto::Pki::Default_::Removal>();
+            removal = std::make_shared<Native::Crypto::Pki::Default::Removal>();
         }
         return removal;
     }
@@ -10411,9 +10462,10 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Default_::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(removal != nullptr)
     {
         children["removal"] = removal;
@@ -10422,22 +10474,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Default_::ge
     return children;
 }
 
-void Native::Crypto::Pki::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Pki::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Crypto::Pki::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Pki::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Crypto::Pki::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Pki::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "removal")
         return true;
     return false;
 }
 
-Native::Crypto::Pki::Default_::Removal::Removal()
+Native::Crypto::Pki::Default::Removal::Removal()
     :
     timeout{YType::uint16, "timeout"}
 {
@@ -10445,36 +10497,36 @@ Native::Crypto::Pki::Default_::Removal::Removal()
     yang_name = "removal"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Crypto::Pki::Default_::Removal::~Removal()
+Native::Crypto::Pki::Default::Removal::~Removal()
 {
 }
 
-bool Native::Crypto::Pki::Default_::Removal::has_data() const
+bool Native::Crypto::Pki::Default::Removal::has_data() const
 {
     return timeout.is_set;
 }
 
-bool Native::Crypto::Pki::Default_::Removal::has_operation() const
+bool Native::Crypto::Pki::Default::Removal::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(timeout.yfilter);
 }
 
-std::string Native::Crypto::Pki::Default_::Removal::get_absolute_path() const
+std::string Native::Crypto::Pki::Default::Removal::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/crypto/Cisco-IOS-XE-crypto:pki/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Crypto::Pki::Default_::Removal::get_segment_path() const
+std::string Native::Crypto::Pki::Default::Removal::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "removal";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Default_::Removal::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Default::Removal::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10484,18 +10536,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Crypto::Pki::Default_::Re
 
 }
 
-std::shared_ptr<Entity> Native::Crypto::Pki::Default_::Removal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Crypto::Pki::Default::Removal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Default_::Removal::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Default::Removal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Crypto::Pki::Default_::Removal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Crypto::Pki::Default::Removal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "timeout")
     {
@@ -10505,7 +10558,7 @@ void Native::Crypto::Pki::Default_::Removal::set_value(const std::string & value
     }
 }
 
-void Native::Crypto::Pki::Default_::Removal::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Crypto::Pki::Default::Removal::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "timeout")
     {
@@ -10513,7 +10566,7 @@ void Native::Crypto::Pki::Default_::Removal::set_filter(const std::string & valu
     }
 }
 
-bool Native::Crypto::Pki::Default_::Removal::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Crypto::Pki::Default::Removal::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "timeout")
         return true;
@@ -10577,14 +10630,6 @@ std::shared_ptr<Entity> Native::Crypto::TlsTunnel::get_child_by_name(const std::
 {
     if(child_yang_name == "tls-tunnel-list")
     {
-        for(auto const & c : tls_tunnel_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::TlsTunnel::TlsTunnelList>();
         c->parent = this;
         tls_tunnel_list.push_back(c);
@@ -10597,9 +10642,14 @@ std::shared_ptr<Entity> Native::Crypto::TlsTunnel::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::TlsTunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : tls_tunnel_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10698,14 +10748,6 @@ std::shared_ptr<Entity> Native::Crypto::TlsTunnel::TlsTunnelList::get_child_by_n
 {
     if(child_yang_name == "local-interface")
     {
-        for(auto const & c : local_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::TlsTunnel::TlsTunnelList::LocalInterface>();
         c->parent = this;
         local_interface.push_back(c);
@@ -10754,9 +10796,14 @@ std::shared_ptr<Entity> Native::Crypto::TlsTunnel::TlsTunnelList::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::TlsTunnel::TlsTunnelList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : local_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(overlay_address != nullptr)
@@ -10859,6 +10906,7 @@ std::shared_ptr<Entity> Native::Crypto::TlsTunnel::TlsTunnelList::LocalInterface
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::TlsTunnel::TlsTunnelList::LocalInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10949,6 +10997,7 @@ std::shared_ptr<Entity> Native::Crypto::TlsTunnel::TlsTunnelList::OverlayAddress
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::TlsTunnel::TlsTunnelList::OverlayAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11035,6 +11084,7 @@ std::shared_ptr<Entity> Native::Crypto::TlsTunnel::TlsTunnelList::Protection::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::TlsTunnel::TlsTunnelList::Protection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11113,14 +11163,6 @@ std::shared_ptr<Entity> Native::Crypto::TlsTunnel::TlsTunnelList::Psk::get_child
 {
     if(child_yang_name == "id")
     {
-        for(auto const & c : id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Id>();
         c->parent = this;
         id.push_back(c);
@@ -11133,9 +11175,14 @@ std::shared_ptr<Entity> Native::Crypto::TlsTunnel::TlsTunnelList::Psk::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::TlsTunnel::TlsTunnelList::Psk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11218,6 +11265,7 @@ std::shared_ptr<Entity> Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Id::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Id::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key != nullptr)
     {
         children["key"] = key;
@@ -11307,6 +11355,7 @@ std::shared_ptr<Entity> Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Id::Key::
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Id::Key::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11415,14 +11464,6 @@ std::shared_ptr<Entity> Native::Crypto::TlsTunnel::TlsTunnelList::Server::get_ch
 {
     if(child_yang_name == "ipv4")
     {
-        for(auto const & c : ipv4)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::TlsTunnel::TlsTunnelList::Server::Ipv4>();
         c->parent = this;
         ipv4.push_back(c);
@@ -11431,14 +11472,6 @@ std::shared_ptr<Entity> Native::Crypto::TlsTunnel::TlsTunnelList::Server::get_ch
 
     if(child_yang_name == "ipv6")
     {
-        for(auto const & c : ipv6)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Crypto::TlsTunnel::TlsTunnelList::Server::Ipv6>();
         c->parent = this;
         ipv6.push_back(c);
@@ -11451,14 +11484,23 @@ std::shared_ptr<Entity> Native::Crypto::TlsTunnel::TlsTunnelList::Server::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::TlsTunnel::TlsTunnelList::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv4)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : ipv6)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11531,6 +11573,7 @@ std::shared_ptr<Entity> Native::Crypto::TlsTunnel::TlsTunnelList::Server::Ipv4::
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::TlsTunnel::TlsTunnelList::Server::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11621,6 +11664,7 @@ std::shared_ptr<Entity> Native::Crypto::TlsTunnel::TlsTunnelList::Server::Ipv6::
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::TlsTunnel::TlsTunnelList::Server::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11758,6 +11802,7 @@ std::shared_ptr<Entity> Native::Crypto::Ssl::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ssl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(authorization != nullptr)
     {
         children["authorization"] = authorization;
@@ -11866,6 +11911,7 @@ std::shared_ptr<Entity> Native::Crypto::Ssl::Authorization::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ssl::Authorization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11949,6 +11995,7 @@ std::shared_ptr<Entity> Native::Crypto::Ssl::Diagnose::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ssl::Diagnose::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12046,6 +12093,7 @@ std::shared_ptr<Entity> Native::Crypto::Ssl::Proposal::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ssl::Proposal::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(protection != nullptr)
     {
         children["protection"] = protection;
@@ -12146,6 +12194,7 @@ std::shared_ptr<Entity> Native::Crypto::Ssl::Proposal::Protection::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Ssl::Proposal::Protection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12273,6 +12322,7 @@ std::shared_ptr<Entity> Native::Crypto::Vpn::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Vpn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(anyconnect != nullptr)
     {
         children["anyconnect"] = anyconnect;
@@ -12383,6 +12433,7 @@ std::shared_ptr<Entity> Native::Crypto::Vpn::Anyconnect::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Vpn::Anyconnect::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(file != nullptr)
     {
         children["file"] = file;
@@ -12470,6 +12521,7 @@ std::shared_ptr<Entity> Native::Crypto::Vpn::Anyconnect::File::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Vpn::Anyconnect::File::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12567,6 +12619,7 @@ std::shared_ptr<Entity> Native::Crypto::Vpn::Anyconnect::ProfileContainer::get_c
 std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Vpn::Anyconnect::ProfileContainer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12758,6 +12811,7 @@ std::shared_ptr<Entity> Native::Cts::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cache != nullptr)
     {
         children["Cisco-IOS-XE-cts:cache"] = cache;
@@ -12935,6 +12989,7 @@ std::shared_ptr<Entity> Native::Cts::Cache::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::Cache::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nv_storage != nullptr)
     {
         children["nv-storage"] = nv_storage;
@@ -13023,6 +13078,7 @@ std::shared_ptr<Entity> Native::Cts::Cache::NvStorage::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::Cache::NvStorage::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13053,7 +13109,7 @@ bool Native::Cts::Cache::NvStorage::has_leaf_or_child_of_name(const std::string 
 
 Native::Cts::CriticalAuthentication::CriticalAuthentication()
     :
-    default_(std::make_shared<Native::Cts::CriticalAuthentication::Default_>())
+    default_(std::make_shared<Native::Cts::CriticalAuthentication::Default>())
 	,fallback(std::make_shared<Native::Cts::CriticalAuthentication::Fallback>())
 {
     default_->parent = this;
@@ -13108,7 +13164,7 @@ std::shared_ptr<Entity> Native::Cts::CriticalAuthentication::get_child_by_name(c
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Cts::CriticalAuthentication::Default_>();
+            default_ = std::make_shared<Native::Cts::CriticalAuthentication::Default>();
         }
         return default_;
     }
@@ -13128,6 +13184,7 @@ std::shared_ptr<Entity> Native::Cts::CriticalAuthentication::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::CriticalAuthentication::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_ != nullptr)
     {
         children["default"] = default_;
@@ -13156,10 +13213,10 @@ bool Native::Cts::CriticalAuthentication::has_leaf_or_child_of_name(const std::s
     return false;
 }
 
-Native::Cts::CriticalAuthentication::Default_::Default_()
+Native::Cts::CriticalAuthentication::Default::Default()
     :
-    peer_sgt(std::make_shared<Native::Cts::CriticalAuthentication::Default_::PeerSgt>())
-	,pmk(std::make_shared<Native::Cts::CriticalAuthentication::Default_::Pmk>())
+    peer_sgt(std::make_shared<Native::Cts::CriticalAuthentication::Default::PeerSgt>())
+	,pmk(std::make_shared<Native::Cts::CriticalAuthentication::Default::Pmk>())
 {
     peer_sgt->parent = this;
     pmk->parent = this;
@@ -13167,38 +13224,38 @@ Native::Cts::CriticalAuthentication::Default_::Default_()
     yang_name = "default"; yang_parent_name = "critical-authentication"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Cts::CriticalAuthentication::Default_::~Default_()
+Native::Cts::CriticalAuthentication::Default::~Default()
 {
 }
 
-bool Native::Cts::CriticalAuthentication::Default_::has_data() const
+bool Native::Cts::CriticalAuthentication::Default::has_data() const
 {
     return (peer_sgt !=  nullptr && peer_sgt->has_data())
 	|| (pmk !=  nullptr && pmk->has_data());
 }
 
-bool Native::Cts::CriticalAuthentication::Default_::has_operation() const
+bool Native::Cts::CriticalAuthentication::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| (peer_sgt !=  nullptr && peer_sgt->has_operation())
 	|| (pmk !=  nullptr && pmk->has_operation());
 }
 
-std::string Native::Cts::CriticalAuthentication::Default_::get_absolute_path() const
+std::string Native::Cts::CriticalAuthentication::Default::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/cts/Cisco-IOS-XE-cts:critical-authentication/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Cts::CriticalAuthentication::Default_::get_segment_path() const
+std::string Native::Cts::CriticalAuthentication::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Cts::CriticalAuthentication::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cts::CriticalAuthentication::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13207,13 +13264,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Cts::CriticalAuthenticati
 
 }
 
-std::shared_ptr<Entity> Native::Cts::CriticalAuthentication::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cts::CriticalAuthentication::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer-sgt")
     {
         if(peer_sgt == nullptr)
         {
-            peer_sgt = std::make_shared<Native::Cts::CriticalAuthentication::Default_::PeerSgt>();
+            peer_sgt = std::make_shared<Native::Cts::CriticalAuthentication::Default::PeerSgt>();
         }
         return peer_sgt;
     }
@@ -13222,7 +13279,7 @@ std::shared_ptr<Entity> Native::Cts::CriticalAuthentication::Default_::get_child
     {
         if(pmk == nullptr)
         {
-            pmk = std::make_shared<Native::Cts::CriticalAuthentication::Default_::Pmk>();
+            pmk = std::make_shared<Native::Cts::CriticalAuthentication::Default::Pmk>();
         }
         return pmk;
     }
@@ -13230,9 +13287,10 @@ std::shared_ptr<Entity> Native::Cts::CriticalAuthentication::Default_::get_child
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Cts::CriticalAuthentication::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cts::CriticalAuthentication::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(peer_sgt != nullptr)
     {
         children["peer-sgt"] = peer_sgt;
@@ -13246,32 +13304,32 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Cts::CriticalAuthenticati
     return children;
 }
 
-void Native::Cts::CriticalAuthentication::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cts::CriticalAuthentication::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Cts::CriticalAuthentication::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cts::CriticalAuthentication::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Cts::CriticalAuthentication::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cts::CriticalAuthentication::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "peer-sgt" || name == "pmk")
         return true;
     return false;
 }
 
-Native::Cts::CriticalAuthentication::Default_::PeerSgt::PeerSgt()
+Native::Cts::CriticalAuthentication::Default::PeerSgt::PeerSgt()
 {
 
     yang_name = "peer-sgt"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Cts::CriticalAuthentication::Default_::PeerSgt::~PeerSgt()
+Native::Cts::CriticalAuthentication::Default::PeerSgt::~PeerSgt()
 {
 }
 
-bool Native::Cts::CriticalAuthentication::Default_::PeerSgt::has_data() const
+bool Native::Cts::CriticalAuthentication::Default::PeerSgt::has_data() const
 {
     for (std::size_t index=0; index<range.size(); index++)
     {
@@ -13281,7 +13339,7 @@ bool Native::Cts::CriticalAuthentication::Default_::PeerSgt::has_data() const
     return false;
 }
 
-bool Native::Cts::CriticalAuthentication::Default_::PeerSgt::has_operation() const
+bool Native::Cts::CriticalAuthentication::Default::PeerSgt::has_operation() const
 {
     for (std::size_t index=0; index<range.size(); index++)
     {
@@ -13291,21 +13349,21 @@ bool Native::Cts::CriticalAuthentication::Default_::PeerSgt::has_operation() con
     return is_set(yfilter);
 }
 
-std::string Native::Cts::CriticalAuthentication::Default_::PeerSgt::get_absolute_path() const
+std::string Native::Cts::CriticalAuthentication::Default::PeerSgt::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/cts/Cisco-IOS-XE-cts:critical-authentication/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Cts::CriticalAuthentication::Default_::PeerSgt::get_segment_path() const
+std::string Native::Cts::CriticalAuthentication::Default::PeerSgt::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "peer-sgt";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Cts::CriticalAuthentication::Default_::PeerSgt::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cts::CriticalAuthentication::Default::PeerSgt::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13314,19 +13372,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Cts::CriticalAuthenticati
 
 }
 
-std::shared_ptr<Entity> Native::Cts::CriticalAuthentication::Default_::PeerSgt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cts::CriticalAuthentication::Default::PeerSgt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<Native::Cts::CriticalAuthentication::Default_::PeerSgt::Range>();
+        auto c = std::make_shared<Native::Cts::CriticalAuthentication::Default::PeerSgt::Range>();
         c->parent = this;
         range.push_back(c);
         return c;
@@ -13335,33 +13385,38 @@ std::shared_ptr<Entity> Native::Cts::CriticalAuthentication::Default_::PeerSgt::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Cts::CriticalAuthentication::Default_::PeerSgt::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cts::CriticalAuthentication::Default::PeerSgt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::Cts::CriticalAuthentication::Default_::PeerSgt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cts::CriticalAuthentication::Default::PeerSgt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Cts::CriticalAuthentication::Default_::PeerSgt::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cts::CriticalAuthentication::Default::PeerSgt::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Cts::CriticalAuthentication::Default_::PeerSgt::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cts::CriticalAuthentication::Default::PeerSgt::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "range")
         return true;
     return false;
 }
 
-Native::Cts::CriticalAuthentication::Default_::PeerSgt::Range::Range()
+Native::Cts::CriticalAuthentication::Default::PeerSgt::Range::Range()
     :
     range{YType::uint16, "range"},
     trusted{YType::empty, "trusted"}
@@ -13370,38 +13425,38 @@ Native::Cts::CriticalAuthentication::Default_::PeerSgt::Range::Range()
     yang_name = "range"; yang_parent_name = "peer-sgt"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Cts::CriticalAuthentication::Default_::PeerSgt::Range::~Range()
+Native::Cts::CriticalAuthentication::Default::PeerSgt::Range::~Range()
 {
 }
 
-bool Native::Cts::CriticalAuthentication::Default_::PeerSgt::Range::has_data() const
+bool Native::Cts::CriticalAuthentication::Default::PeerSgt::Range::has_data() const
 {
     return range.is_set
 	|| trusted.is_set;
 }
 
-bool Native::Cts::CriticalAuthentication::Default_::PeerSgt::Range::has_operation() const
+bool Native::Cts::CriticalAuthentication::Default::PeerSgt::Range::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(range.yfilter)
 	|| ydk::is_set(trusted.yfilter);
 }
 
-std::string Native::Cts::CriticalAuthentication::Default_::PeerSgt::Range::get_absolute_path() const
+std::string Native::Cts::CriticalAuthentication::Default::PeerSgt::Range::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/cts/Cisco-IOS-XE-cts:critical-authentication/default/peer-sgt/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Cts::CriticalAuthentication::Default_::PeerSgt::Range::get_segment_path() const
+std::string Native::Cts::CriticalAuthentication::Default::PeerSgt::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "range" <<"[range='" <<range <<"']";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Cts::CriticalAuthentication::Default_::PeerSgt::Range::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cts::CriticalAuthentication::Default::PeerSgt::Range::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13412,18 +13467,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Cts::CriticalAuthenticati
 
 }
 
-std::shared_ptr<Entity> Native::Cts::CriticalAuthentication::Default_::PeerSgt::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cts::CriticalAuthentication::Default::PeerSgt::Range::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Cts::CriticalAuthentication::Default_::PeerSgt::Range::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cts::CriticalAuthentication::Default::PeerSgt::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Cts::CriticalAuthentication::Default_::PeerSgt::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cts::CriticalAuthentication::Default::PeerSgt::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "range")
     {
@@ -13439,7 +13495,7 @@ void Native::Cts::CriticalAuthentication::Default_::PeerSgt::Range::set_value(co
     }
 }
 
-void Native::Cts::CriticalAuthentication::Default_::PeerSgt::Range::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cts::CriticalAuthentication::Default::PeerSgt::Range::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "range")
     {
@@ -13451,14 +13507,14 @@ void Native::Cts::CriticalAuthentication::Default_::PeerSgt::Range::set_filter(c
     }
 }
 
-bool Native::Cts::CriticalAuthentication::Default_::PeerSgt::Range::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cts::CriticalAuthentication::Default::PeerSgt::Range::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "range" || name == "trusted")
         return true;
     return false;
 }
 
-Native::Cts::CriticalAuthentication::Default_::Pmk::Pmk()
+Native::Cts::CriticalAuthentication::Default::Pmk::Pmk()
     :
     type{YType::enumeration, "type"},
     secret{YType::str, "secret"}
@@ -13467,38 +13523,38 @@ Native::Cts::CriticalAuthentication::Default_::Pmk::Pmk()
     yang_name = "pmk"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Cts::CriticalAuthentication::Default_::Pmk::~Pmk()
+Native::Cts::CriticalAuthentication::Default::Pmk::~Pmk()
 {
 }
 
-bool Native::Cts::CriticalAuthentication::Default_::Pmk::has_data() const
+bool Native::Cts::CriticalAuthentication::Default::Pmk::has_data() const
 {
     return type.is_set
 	|| secret.is_set;
 }
 
-bool Native::Cts::CriticalAuthentication::Default_::Pmk::has_operation() const
+bool Native::Cts::CriticalAuthentication::Default::Pmk::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
 	|| ydk::is_set(secret.yfilter);
 }
 
-std::string Native::Cts::CriticalAuthentication::Default_::Pmk::get_absolute_path() const
+std::string Native::Cts::CriticalAuthentication::Default::Pmk::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/cts/Cisco-IOS-XE-cts:critical-authentication/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Cts::CriticalAuthentication::Default_::Pmk::get_segment_path() const
+std::string Native::Cts::CriticalAuthentication::Default::Pmk::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pmk";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Cts::CriticalAuthentication::Default_::Pmk::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cts::CriticalAuthentication::Default::Pmk::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13509,18 +13565,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Cts::CriticalAuthenticati
 
 }
 
-std::shared_ptr<Entity> Native::Cts::CriticalAuthentication::Default_::Pmk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cts::CriticalAuthentication::Default::Pmk::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Cts::CriticalAuthentication::Default_::Pmk::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cts::CriticalAuthentication::Default::Pmk::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Cts::CriticalAuthentication::Default_::Pmk::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cts::CriticalAuthentication::Default::Pmk::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -13536,7 +13593,7 @@ void Native::Cts::CriticalAuthentication::Default_::Pmk::set_value(const std::st
     }
 }
 
-void Native::Cts::CriticalAuthentication::Default_::Pmk::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cts::CriticalAuthentication::Default::Pmk::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -13548,7 +13605,7 @@ void Native::Cts::CriticalAuthentication::Default_::Pmk::set_filter(const std::s
     }
 }
 
-bool Native::Cts::CriticalAuthentication::Default_::Pmk::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cts::CriticalAuthentication::Default::Pmk::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "type" || name == "secret")
         return true;
@@ -13614,6 +13671,7 @@ std::shared_ptr<Entity> Native::Cts::CriticalAuthentication::Fallback::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::CriticalAuthentication::Fallback::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13707,6 +13765,7 @@ std::shared_ptr<Entity> Native::Cts::Authorization::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::Authorization::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13853,14 +13912,6 @@ std::shared_ptr<Entity> Native::Cts::RoleBased::get_child_by_name(const std::str
 
     if(child_yang_name == "sgt-map")
     {
-        for(auto const & c : sgt_map)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Cts::RoleBased::SgtMap>();
         c->parent = this;
         sgt_map.push_back(c);
@@ -13882,6 +13933,7 @@ std::shared_ptr<Entity> Native::Cts::RoleBased::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::RoleBased::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(permissions != nullptr)
     {
         children["permissions"] = permissions;
@@ -13902,9 +13954,13 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Cts::RoleBased::get_child
         children["monitor"] = monitor;
     }
 
+    count = 0;
     for (auto const & c : sgt_map)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(sgt_map_vlan_list != nullptr)
@@ -13942,7 +13998,7 @@ bool Native::Cts::RoleBased::has_leaf_or_child_of_name(const std::string & name)
 
 Native::Cts::RoleBased::Permissions::Permissions()
     :
-    default_(std::make_shared<Native::Cts::RoleBased::Permissions::Default_>())
+    default_(std::make_shared<Native::Cts::RoleBased::Permissions::Default>())
 	,from(std::make_shared<Native::Cts::RoleBased::Permissions::From>())
 {
     default_->parent = this;
@@ -13997,7 +14053,7 @@ std::shared_ptr<Entity> Native::Cts::RoleBased::Permissions::get_child_by_name(c
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Cts::RoleBased::Permissions::Default_>();
+            default_ = std::make_shared<Native::Cts::RoleBased::Permissions::Default>();
         }
         return default_;
     }
@@ -14017,6 +14073,7 @@ std::shared_ptr<Entity> Native::Cts::RoleBased::Permissions::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::RoleBased::Permissions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_ != nullptr)
     {
         children["default"] = default_;
@@ -14045,7 +14102,7 @@ bool Native::Cts::RoleBased::Permissions::has_leaf_or_child_of_name(const std::s
     return false;
 }
 
-Native::Cts::RoleBased::Permissions::Default_::Default_()
+Native::Cts::RoleBased::Permissions::Default::Default()
     :
     name{YType::str, "name"}
 {
@@ -14053,36 +14110,36 @@ Native::Cts::RoleBased::Permissions::Default_::Default_()
     yang_name = "default"; yang_parent_name = "permissions"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Cts::RoleBased::Permissions::Default_::~Default_()
+Native::Cts::RoleBased::Permissions::Default::~Default()
 {
 }
 
-bool Native::Cts::RoleBased::Permissions::Default_::has_data() const
+bool Native::Cts::RoleBased::Permissions::Default::has_data() const
 {
     return name.is_set;
 }
 
-bool Native::Cts::RoleBased::Permissions::Default_::has_operation() const
+bool Native::Cts::RoleBased::Permissions::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string Native::Cts::RoleBased::Permissions::Default_::get_absolute_path() const
+std::string Native::Cts::RoleBased::Permissions::Default::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/cts/Cisco-IOS-XE-cts:role-based/permissions/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Cts::RoleBased::Permissions::Default_::get_segment_path() const
+std::string Native::Cts::RoleBased::Permissions::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Cts::RoleBased::Permissions::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cts::RoleBased::Permissions::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14092,18 +14149,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Cts::RoleBased::Permissio
 
 }
 
-std::shared_ptr<Entity> Native::Cts::RoleBased::Permissions::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cts::RoleBased::Permissions::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Cts::RoleBased::Permissions::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cts::RoleBased::Permissions::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Cts::RoleBased::Permissions::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cts::RoleBased::Permissions::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -14113,7 +14171,7 @@ void Native::Cts::RoleBased::Permissions::Default_::set_value(const std::string 
     }
 }
 
-void Native::Cts::RoleBased::Permissions::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cts::RoleBased::Permissions::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -14121,7 +14179,7 @@ void Native::Cts::RoleBased::Permissions::Default_::set_filter(const std::string
     }
 }
 
-bool Native::Cts::RoleBased::Permissions::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cts::RoleBased::Permissions::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name")
         return true;
@@ -14185,14 +14243,6 @@ std::shared_ptr<Entity> Native::Cts::RoleBased::Permissions::From::get_child_by_
 {
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Cts::RoleBased::Permissions::From::Range>();
         c->parent = this;
         range.push_back(c);
@@ -14205,9 +14255,14 @@ std::shared_ptr<Entity> Native::Cts::RoleBased::Permissions::From::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::RoleBased::Permissions::From::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14297,6 +14352,7 @@ std::shared_ptr<Entity> Native::Cts::RoleBased::Permissions::From::Range::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::RoleBased::Permissions::From::Range::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(to != nullptr)
     {
         children["to"] = to;
@@ -14380,14 +14436,6 @@ std::shared_ptr<Entity> Native::Cts::RoleBased::Permissions::From::Range::To::ge
 {
     if(child_yang_name == "range")
     {
-        for(auto const & c : range)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Cts::RoleBased::Permissions::From::Range::To::Range_>();
         c->parent = this;
         range.push_back(c);
@@ -14400,9 +14448,14 @@ std::shared_ptr<Entity> Native::Cts::RoleBased::Permissions::From::Range::To::ge
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::RoleBased::Permissions::From::Range::To::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : range)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14475,6 +14528,7 @@ std::shared_ptr<Entity> Native::Cts::RoleBased::Permissions::From::Range::To::Ra
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::RoleBased::Permissions::From::Range::To::Range_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14568,6 +14622,7 @@ std::shared_ptr<Entity> Native::Cts::RoleBased::EnforcementOnly::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::RoleBased::EnforcementOnly::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14657,14 +14712,6 @@ std::shared_ptr<Entity> Native::Cts::RoleBased::Enforcement::get_child_by_name(c
 {
     if(child_yang_name == "vlan-list")
     {
-        for(auto const & c : vlan_list)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Cts::RoleBased::Enforcement::VlanList>();
         c->parent = this;
         vlan_list.push_back(c);
@@ -14677,9 +14724,14 @@ std::shared_ptr<Entity> Native::Cts::RoleBased::Enforcement::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::RoleBased::Enforcement::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vlan_list)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14765,6 +14817,7 @@ std::shared_ptr<Entity> Native::Cts::RoleBased::Enforcement::VlanList::get_child
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::RoleBased::Enforcement::VlanList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14848,6 +14901,7 @@ std::shared_ptr<Entity> Native::Cts::RoleBased::Monitor::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::RoleBased::Monitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14943,6 +14997,7 @@ std::shared_ptr<Entity> Native::Cts::RoleBased::SgtMap::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::RoleBased::SgtMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15058,14 +15113,6 @@ std::shared_ptr<Entity> Native::Cts::RoleBased::SgtMapVlanList::get_child_by_nam
 {
     if(child_yang_name == "sgt-map")
     {
-        for(auto const & c : sgt_map)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Cts::RoleBased::SgtMapVlanList::SgtMap>();
         c->parent = this;
         sgt_map.push_back(c);
@@ -15078,9 +15125,14 @@ std::shared_ptr<Entity> Native::Cts::RoleBased::SgtMapVlanList::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::RoleBased::SgtMapVlanList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : sgt_map)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15160,6 +15212,7 @@ std::shared_ptr<Entity> Native::Cts::RoleBased::SgtMapVlanList::SgtMap::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::RoleBased::SgtMapVlanList::SgtMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15293,6 +15346,7 @@ std::shared_ptr<Entity> Native::Cts::Server::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::Server::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_wrap != nullptr)
     {
         children["key-wrap"] = key_wrap;
@@ -15391,6 +15445,7 @@ std::shared_ptr<Entity> Native::Cts::Server::KeyWrap::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::Server::KeyWrap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15483,6 +15538,7 @@ std::shared_ptr<Entity> Native::Cts::Server::LoadBalance::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::Server::LoadBalance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(method != nullptr)
     {
         children["method"] = method;
@@ -15569,6 +15625,7 @@ std::shared_ptr<Entity> Native::Cts::Server::LoadBalance::Method::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::Server::LoadBalance::Method::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(least_outstanding != nullptr)
     {
         children["least-outstanding"] = least_outstanding;
@@ -15651,6 +15708,7 @@ std::shared_ptr<Entity> Native::Cts::Server::LoadBalance::Method::LeastOutstandi
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::Server::LoadBalance::Method::LeastOutstanding::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15750,14 +15808,6 @@ std::shared_ptr<Entity> Native::Cts::Server::Test::get_child_by_name(const std::
 {
     if(child_yang_name == "server")
     {
-        for(auto const & c : server)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Cts::Server::Test::Server_>();
         c->parent = this;
         server.push_back(c);
@@ -15779,9 +15829,14 @@ std::shared_ptr<Entity> Native::Cts::Server::Test::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::Server::Test::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : server)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     if(all != nullptr)
@@ -15874,6 +15929,7 @@ std::shared_ptr<Entity> Native::Cts::Server::Test::Server_::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::Server::Test::Server_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15995,6 +16051,7 @@ std::shared_ptr<Entity> Native::Cts::Server::Test::All::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::Server::Test::All::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16047,7 +16104,7 @@ Native::Cts::Sxp::Sxp()
     :
     enable{YType::empty, "enable"}
     	,
-    default_(std::make_shared<Native::Cts::Sxp::Default_>())
+    default_(std::make_shared<Native::Cts::Sxp::Default>())
 	,connection(std::make_shared<Native::Cts::Sxp::Connection>())
 {
     default_->parent = this;
@@ -16105,7 +16162,7 @@ std::shared_ptr<Entity> Native::Cts::Sxp::get_child_by_name(const std::string & 
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Cts::Sxp::Default_>();
+            default_ = std::make_shared<Native::Cts::Sxp::Default>();
         }
         return default_;
     }
@@ -16125,6 +16182,7 @@ std::shared_ptr<Entity> Native::Cts::Sxp::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::Sxp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(default_ != nullptr)
     {
         children["default"] = default_;
@@ -16163,49 +16221,49 @@ bool Native::Cts::Sxp::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-Native::Cts::Sxp::Default_::Default_()
+Native::Cts::Sxp::Default::Default()
     :
     source_ip{YType::str, "source-ip"}
     	,
-    password(std::make_shared<Native::Cts::Sxp::Default_::Password>())
+    password(std::make_shared<Native::Cts::Sxp::Default::Password>())
 {
     password->parent = this;
 
     yang_name = "default"; yang_parent_name = "sxp"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Cts::Sxp::Default_::~Default_()
+Native::Cts::Sxp::Default::~Default()
 {
 }
 
-bool Native::Cts::Sxp::Default_::has_data() const
+bool Native::Cts::Sxp::Default::has_data() const
 {
     return source_ip.is_set
 	|| (password !=  nullptr && password->has_data());
 }
 
-bool Native::Cts::Sxp::Default_::has_operation() const
+bool Native::Cts::Sxp::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(source_ip.yfilter)
 	|| (password !=  nullptr && password->has_operation());
 }
 
-std::string Native::Cts::Sxp::Default_::get_absolute_path() const
+std::string Native::Cts::Sxp::Default::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/cts/Cisco-IOS-XE-cts:sxp/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Cts::Sxp::Default_::get_segment_path() const
+std::string Native::Cts::Sxp::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Cts::Sxp::Default_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cts::Sxp::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16215,13 +16273,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Cts::Sxp::Default_::get_n
 
 }
 
-std::shared_ptr<Entity> Native::Cts::Sxp::Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cts::Sxp::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "password")
     {
         if(password == nullptr)
         {
-            password = std::make_shared<Native::Cts::Sxp::Default_::Password>();
+            password = std::make_shared<Native::Cts::Sxp::Default::Password>();
         }
         return password;
     }
@@ -16229,9 +16287,10 @@ std::shared_ptr<Entity> Native::Cts::Sxp::Default_::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Cts::Sxp::Default_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cts::Sxp::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(password != nullptr)
     {
         children["password"] = password;
@@ -16240,7 +16299,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Cts::Sxp::Default_::get_c
     return children;
 }
 
-void Native::Cts::Sxp::Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cts::Sxp::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-ip")
     {
@@ -16250,7 +16309,7 @@ void Native::Cts::Sxp::Default_::set_value(const std::string & value_path, const
     }
 }
 
-void Native::Cts::Sxp::Default_::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cts::Sxp::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "source-ip")
     {
@@ -16258,14 +16317,14 @@ void Native::Cts::Sxp::Default_::set_filter(const std::string & value_path, YFil
     }
 }
 
-bool Native::Cts::Sxp::Default_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cts::Sxp::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "password" || name == "source-ip")
         return true;
     return false;
 }
 
-Native::Cts::Sxp::Default_::Password::Password()
+Native::Cts::Sxp::Default::Password::Password()
     :
     type{YType::enumeration, "type"},
     secret{YType::str, "secret"}
@@ -16274,38 +16333,38 @@ Native::Cts::Sxp::Default_::Password::Password()
     yang_name = "password"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
 }
 
-Native::Cts::Sxp::Default_::Password::~Password()
+Native::Cts::Sxp::Default::Password::~Password()
 {
 }
 
-bool Native::Cts::Sxp::Default_::Password::has_data() const
+bool Native::Cts::Sxp::Default::Password::has_data() const
 {
     return type.is_set
 	|| secret.is_set;
 }
 
-bool Native::Cts::Sxp::Default_::Password::has_operation() const
+bool Native::Cts::Sxp::Default::Password::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
 	|| ydk::is_set(secret.yfilter);
 }
 
-std::string Native::Cts::Sxp::Default_::Password::get_absolute_path() const
+std::string Native::Cts::Sxp::Default::Password::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/cts/Cisco-IOS-XE-cts:sxp/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Cts::Sxp::Default_::Password::get_segment_path() const
+std::string Native::Cts::Sxp::Default::Password::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "password";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Cts::Sxp::Default_::Password::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cts::Sxp::Default::Password::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16316,18 +16375,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Cts::Sxp::Default_::Passw
 
 }
 
-std::shared_ptr<Entity> Native::Cts::Sxp::Default_::Password::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cts::Sxp::Default::Password::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Cts::Sxp::Default_::Password::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cts::Sxp::Default::Password::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
-void Native::Cts::Sxp::Default_::Password::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cts::Sxp::Default::Password::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
@@ -16343,7 +16403,7 @@ void Native::Cts::Sxp::Default_::Password::set_value(const std::string & value_p
     }
 }
 
-void Native::Cts::Sxp::Default_::Password::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cts::Sxp::Default::Password::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "type")
     {
@@ -16355,7 +16415,7 @@ void Native::Cts::Sxp::Default_::Password::set_filter(const std::string & value_
     }
 }
 
-bool Native::Cts::Sxp::Default_::Password::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cts::Sxp::Default::Password::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "type" || name == "secret")
         return true;
@@ -16426,6 +16486,7 @@ std::shared_ptr<Entity> Native::Cts::Sxp::Connection::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::Sxp::Connection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(peer != nullptr)
     {
         children["peer"] = peer;
@@ -16506,14 +16567,6 @@ std::shared_ptr<Entity> Native::Cts::Sxp::Connection::Peer::get_child_by_name(co
 {
     if(child_yang_name == "ipv4")
     {
-        for(auto const & c : ipv4)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Native::Cts::Sxp::Connection::Peer::Ipv4>();
         c->parent = this;
         ipv4.push_back(c);
@@ -16526,9 +16579,14 @@ std::shared_ptr<Entity> Native::Cts::Sxp::Connection::Peer::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Native::Cts::Sxp::Connection::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ipv4)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16568,36 +16626,36 @@ const Enum::YLeaf Native::Crypto::Pki::Crl::Download::Schedule::Time::Date::Thur
 const Enum::YLeaf Native::Crypto::Pki::Crl::Download::Schedule::Time::Date::Tuesday {5, "Tuesday"};
 const Enum::YLeaf Native::Crypto::Pki::Crl::Download::Schedule::Time::Date::Wednesday {6, "Wednesday"};
 
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pem::Url::File::bootflash__COLON__ {0, "bootflash:"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pem::Url::File::flash__COLON__ {1, "flash:"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pem::Url::File::ftp__COLON__ {2, "ftp:"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pem::Url::File::http__COLON__ {3, "http:"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pem::Url::File::https__COLON__ {4, "https:"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pem::Url::File::null__COLON__ {5, "null:"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pem::Url::File::nvram__COLON__ {6, "nvram:"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pem::Url::File::pram__COLON__ {7, "pram:"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pem::Url::File::rcp__COLON__ {8, "rcp:"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pem::Url::File::scp__COLON__ {9, "scp:"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pem::Url::File::system__COLON__ {10, "system:"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pem::Url::File::tftp__COLON__ {11, "tftp:"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pem::Url::File::tmpsys__COLON__ {12, "tmpsys:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pem::Url::File::bootflash__COLON__ {0, "bootflash:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pem::Url::File::flash__COLON__ {1, "flash:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pem::Url::File::ftp__COLON__ {2, "ftp:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pem::Url::File::http__COLON__ {3, "http:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pem::Url::File::https__COLON__ {4, "https:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pem::Url::File::null__COLON__ {5, "null:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pem::Url::File::nvram__COLON__ {6, "nvram:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pem::Url::File::pram__COLON__ {7, "pram:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pem::Url::File::rcp__COLON__ {8, "rcp:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pem::Url::File::scp__COLON__ {9, "scp:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pem::Url::File::system__COLON__ {10, "system:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pem::Url::File::tftp__COLON__ {11, "tftp:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pem::Url::File::tmpsys__COLON__ {12, "tmpsys:"};
 
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pem::Url::Encrypt::Y_3des {0, "3des"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pem::Url::Encrypt::des {1, "des"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pem::Url::Encrypt::Y_3des {0, "3des"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pem::Url::Encrypt::des {1, "des"};
 
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pkcs12::File::bootflash__COLON__ {0, "bootflash:"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pkcs12::File::flash__COLON__ {1, "flash:"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pkcs12::File::ftp__COLON__ {2, "ftp:"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pkcs12::File::http__COLON__ {3, "http:"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pkcs12::File::https__COLON__ {4, "https:"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pkcs12::File::null__COLON__ {5, "null:"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pkcs12::File::nvram__COLON__ {6, "nvram:"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pkcs12::File::pram__COLON__ {7, "pram:"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pkcs12::File::rcp__COLON__ {8, "rcp:"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pkcs12::File::scp__COLON__ {9, "scp:"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pkcs12::File::system__COLON__ {10, "system:"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pkcs12::File::tftp__COLON__ {11, "tftp:"};
-const Enum::YLeaf Native::Crypto::Pki::Export_::Pkcs12::File::tmpsys__COLON__ {12, "tmpsys:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pkcs12::File::bootflash__COLON__ {0, "bootflash:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pkcs12::File::flash__COLON__ {1, "flash:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pkcs12::File::ftp__COLON__ {2, "ftp:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pkcs12::File::http__COLON__ {3, "http:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pkcs12::File::https__COLON__ {4, "https:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pkcs12::File::null__COLON__ {5, "null:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pkcs12::File::nvram__COLON__ {6, "nvram:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pkcs12::File::pram__COLON__ {7, "pram:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pkcs12::File::rcp__COLON__ {8, "rcp:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pkcs12::File::scp__COLON__ {9, "scp:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pkcs12::File::system__COLON__ {10, "system:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pkcs12::File::tftp__COLON__ {11, "tftp:"};
+const Enum::YLeaf Native::Crypto::Pki::Export::Pkcs12::File::tmpsys__COLON__ {12, "tmpsys:"};
 
 const Enum::YLeaf Native::Crypto::Pki::Import::Pem::Url::File::bootflash__COLON__ {0, "bootflash:"};
 const Enum::YLeaf Native::Crypto::Pki::Import::Pem::Url::File::flash__COLON__ {1, "flash:"};
@@ -16665,16 +16723,16 @@ const Enum::YLeaf Native::Cts::Cache::NvStorage::NvStorage_::kinfo__COLON__ {2, 
 const Enum::YLeaf Native::Cts::Cache::NvStorage::NvStorage_::slot0__COLON__ {3, "slot0:"};
 const Enum::YLeaf Native::Cts::Cache::NvStorage::NvStorage_::usb0__COLON__ {4, "usb0:"};
 
-const Enum::YLeaf Native::Cts::CriticalAuthentication::Default_::Pmk::Type::Y_0 {0, "0"};
-const Enum::YLeaf Native::Cts::CriticalAuthentication::Default_::Pmk::Type::Y_6 {1, "6"};
+const Enum::YLeaf Native::Cts::CriticalAuthentication::Default::Pmk::Type::Y_0 {0, "0"};
+const Enum::YLeaf Native::Cts::CriticalAuthentication::Default::Pmk::Type::Y_6 {1, "6"};
 
 const Enum::YLeaf Native::Cts::RoleBased::Enforcement::VlanList::Id::all {0, "all"};
 
 const Enum::YLeaf Native::Cts::RoleBased::SgtMapVlanList::SgtMap::VlanList::all {0, "all"};
 
-const Enum::YLeaf Native::Cts::Sxp::Default_::Password::Type::Y_0 {0, "0"};
-const Enum::YLeaf Native::Cts::Sxp::Default_::Password::Type::Y_6 {1, "6"};
-const Enum::YLeaf Native::Cts::Sxp::Default_::Password::Type::Y_7 {2, "7"};
+const Enum::YLeaf Native::Cts::Sxp::Default::Password::Type::Y_0 {0, "0"};
+const Enum::YLeaf Native::Cts::Sxp::Default::Password::Type::Y_6 {1, "6"};
+const Enum::YLeaf Native::Cts::Sxp::Default::Password::Type::Y_7 {2, "7"};
 
 
 }

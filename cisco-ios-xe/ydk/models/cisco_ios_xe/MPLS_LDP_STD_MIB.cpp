@@ -211,6 +211,7 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> MPLSLDPSTDMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(mplsldplsrobjects != nullptr)
     {
         children["mplsLdpLsrObjects"] = mplsldplsrobjects;
@@ -373,6 +374,7 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsldplsrobjects::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> MPLSLDPSTDMIB::Mplsldplsrobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -470,6 +472,7 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsldpentityobjects::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> MPLSLDPSTDMIB::Mplsldpentityobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -567,6 +570,7 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsldpsessionobjects::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> MPLSLDPSTDMIB::Mplsldpsessionobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -664,6 +668,7 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsfecobjects::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> MPLSLDPSTDMIB::Mplsfecobjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -759,14 +764,6 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsldpentitytable::get_child_by_name(con
 {
     if(child_yang_name == "mplsLdpEntityEntry")
     {
-        for(auto const & c : mplsldpentityentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry>();
         c->parent = this;
         mplsldpentityentry.push_back(c);
@@ -779,9 +776,14 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsldpentitytable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> MPLSLDPSTDMIB::Mplsldpentitytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplsldpentityentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -997,6 +999,7 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::g
 std::map<std::string, std::shared_ptr<Entity>> MPLSLDPSTDMIB::Mplsldpentitytable::Mplsldpentityentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1432,14 +1435,6 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsldppeertable::get_child_by_name(const
 {
     if(child_yang_name == "mplsLdpPeerEntry")
     {
-        for(auto const & c : mplsldppeerentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry>();
         c->parent = this;
         mplsldppeerentry.push_back(c);
@@ -1452,9 +1447,14 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsldppeertable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> MPLSLDPSTDMIB::Mplsldppeertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplsldppeerentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1594,6 +1594,7 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry::get_c
 std::map<std::string, std::shared_ptr<Entity>> MPLSLDPSTDMIB::Mplsldppeertable::Mplsldppeerentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1839,14 +1840,6 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsldphelloadjacencytable::get_child_by_
 {
     if(child_yang_name == "mplsLdpHelloAdjacencyEntry")
     {
-        for(auto const & c : mplsldphelloadjacencyentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MPLSLDPSTDMIB::Mplsldphelloadjacencytable::Mplsldphelloadjacencyentry>();
         c->parent = this;
         mplsldphelloadjacencyentry.push_back(c);
@@ -1859,9 +1852,14 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsldphelloadjacencytable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> MPLSLDPSTDMIB::Mplsldphelloadjacencytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplsldphelloadjacencyentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1961,6 +1959,7 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsldphelloadjacencytable::Mplsldphelloa
 std::map<std::string, std::shared_ptr<Entity>> MPLSLDPSTDMIB::Mplsldphelloadjacencytable::Mplsldphelloadjacencyentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2106,14 +2105,6 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsinsegmentldplsptable::get_child_by_na
 {
     if(child_yang_name == "mplsInSegmentLdpLspEntry")
     {
-        for(auto const & c : mplsinsegmentldplspentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MPLSLDPSTDMIB::Mplsinsegmentldplsptable::Mplsinsegmentldplspentry>();
         c->parent = this;
         mplsinsegmentldplspentry.push_back(c);
@@ -2126,9 +2117,14 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsinsegmentldplsptable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> MPLSLDPSTDMIB::Mplsinsegmentldplsptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplsinsegmentldplspentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2224,6 +2220,7 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsinsegmentldplsptable::Mplsinsegmentld
 std::map<std::string, std::shared_ptr<Entity>> MPLSLDPSTDMIB::Mplsinsegmentldplsptable::Mplsinsegmentldplspentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2359,14 +2356,6 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsoutsegmentldplsptable::get_child_by_n
 {
     if(child_yang_name == "mplsOutSegmentLdpLspEntry")
     {
-        for(auto const & c : mplsoutsegmentldplspentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MPLSLDPSTDMIB::Mplsoutsegmentldplsptable::Mplsoutsegmentldplspentry>();
         c->parent = this;
         mplsoutsegmentldplspentry.push_back(c);
@@ -2379,9 +2368,14 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsoutsegmentldplsptable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> MPLSLDPSTDMIB::Mplsoutsegmentldplsptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplsoutsegmentldplspentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2477,6 +2471,7 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsoutsegmentldplsptable::Mplsoutsegment
 std::map<std::string, std::shared_ptr<Entity>> MPLSLDPSTDMIB::Mplsoutsegmentldplsptable::Mplsoutsegmentldplspentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2612,14 +2607,6 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsfectable::get_child_by_name(const std
 {
     if(child_yang_name == "mplsFecEntry")
     {
-        for(auto const & c : mplsfecentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MPLSLDPSTDMIB::Mplsfectable::Mplsfecentry>();
         c->parent = this;
         mplsfecentry.push_back(c);
@@ -2632,9 +2619,14 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsfectable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> MPLSLDPSTDMIB::Mplsfectable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplsfecentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2734,6 +2726,7 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsfectable::Mplsfecentry::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> MPLSLDPSTDMIB::Mplsfectable::Mplsfecentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2879,14 +2872,6 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsldplspfectable::get_child_by_name(con
 {
     if(child_yang_name == "mplsLdpLspFecEntry")
     {
-        for(auto const & c : mplsldplspfecentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MPLSLDPSTDMIB::Mplsldplspfectable::Mplsldplspfecentry>();
         c->parent = this;
         mplsldplspfecentry.push_back(c);
@@ -2899,9 +2884,14 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsldplspfectable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> MPLSLDPSTDMIB::Mplsldplspfectable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplsldplspfecentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3005,6 +2995,7 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsldplspfectable::Mplsldplspfecentry::g
 std::map<std::string, std::shared_ptr<Entity>> MPLSLDPSTDMIB::Mplsldplspfectable::Mplsldplspfecentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3160,14 +3151,6 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable::get_child_by
 {
     if(child_yang_name == "mplsLdpSessionPeerAddrEntry")
     {
-        for(auto const & c : mplsldpsessionpeeraddrentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable::Mplsldpsessionpeeraddrentry>();
         c->parent = this;
         mplsldpsessionpeeraddrentry.push_back(c);
@@ -3180,9 +3163,14 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : mplsldpsessionpeeraddrentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3278,6 +3266,7 @@ std::shared_ptr<Entity> MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable::Mplsldpsessi
 std::map<std::string, std::shared_ptr<Entity>> MPLSLDPSTDMIB::Mplsldpsessionpeeraddrtable::Mplsldpsessionpeeraddrentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

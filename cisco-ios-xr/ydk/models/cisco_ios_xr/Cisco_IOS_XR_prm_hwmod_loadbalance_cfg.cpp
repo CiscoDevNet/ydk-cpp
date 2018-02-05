@@ -68,6 +68,7 @@ std::shared_ptr<Entity> HardwareModule::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> HardwareModule::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(loadbalancing != nullptr)
     {
         children["loadbalancing"] = loadbalancing;
@@ -180,6 +181,7 @@ std::shared_ptr<Entity> HardwareModule::Loadbalancing::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Loadbalancing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(bgp3107 != nullptr)
     {
         children["bgp3107"] = bgp3107;
@@ -267,6 +269,7 @@ std::shared_ptr<Entity> HardwareModule::Loadbalancing::Bgp3107::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Loadbalancing::Bgp3107::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(ecmp != nullptr)
     {
         children["ecmp"] = ecmp;
@@ -345,6 +348,7 @@ std::shared_ptr<Entity> HardwareModule::Loadbalancing::Bgp3107::Ecmp::get_child_
 std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Loadbalancing::Bgp3107::Ecmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

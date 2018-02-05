@@ -61,14 +61,6 @@ std::shared_ptr<Entity> FlowMonitors::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "flow-monitor")
     {
-        for(auto const & c : flow_monitor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<FlowMonitors::FlowMonitor>();
         c->parent = this;
         flow_monitor.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> FlowMonitors::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : flow_monitor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -202,6 +199,7 @@ std::shared_ptr<Entity> FlowMonitors::FlowMonitor::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::FlowMonitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(flows != nullptr)
     {
         children["flows"] = flows;
@@ -295,14 +293,6 @@ std::shared_ptr<Entity> FlowMonitors::FlowMonitor::Flows::get_child_by_name(cons
 {
     if(child_yang_name == "flow")
     {
-        for(auto const & c : flow)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<FlowMonitors::FlowMonitor::Flows::Flow>();
         c->parent = this;
         flow.push_back(c);
@@ -315,9 +305,14 @@ std::shared_ptr<Entity> FlowMonitors::FlowMonitor::Flows::get_child_by_name(cons
 std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::FlowMonitor::Flows::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : flow)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -430,6 +425,7 @@ std::shared_ptr<Entity> FlowMonitors::FlowMonitor::Flows::Flow::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::FlowMonitor::Flows::Flow::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

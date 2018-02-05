@@ -2155,11 +2155,11 @@ class Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::
 
         ydk::YLeaf id; //type: uint32
         class Dynamic; //type: Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Dynamic
-        class Explicit_; //type: Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_
+        class Explicit; //type: Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit
         class SegmentRouting; //type: Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::SegmentRouting
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Dynamic> dynamic; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_> explicit_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit> explicit_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::SegmentRouting> segment_routing; // presence node
         
 }; // Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working
@@ -2244,11 +2244,11 @@ class Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::
 }; // Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Dynamic::Bandwidth
 
 
-class Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_ : public ydk::Entity
+class Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit : public ydk::Entity
 {
     public:
-        Explicit_();
-        ~Explicit_();
+        Explicit();
+        ~Explicit();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2267,14 +2267,14 @@ class Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::
         ydk::YLeaf attributes; //type: string
         ydk::YLeaf lockdown; //type: empty
         ydk::YLeaf sticky; //type: empty
-        class Bandwidth; //type: Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::Bandwidth
+        class Bandwidth; //type: Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::Bandwidth
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::Bandwidth> bandwidth;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::Bandwidth> bandwidth;
         
-}; // Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_
+}; // Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit
 
 
-class Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::Bandwidth : public ydk::Entity
+class Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::Bandwidth : public ydk::Entity
 {
     public:
         Bandwidth();
@@ -2293,7 +2293,7 @@ class Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::
         ydk::YLeaf bandwidth; //type: uint32
         ydk::YLeaf sub_pool; //type: uint32
 
-}; // Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit_::Bandwidth
+}; // Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::Explicit::Bandwidth
 
 
 class Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::SegmentRouting : public ydk::Entity
@@ -2337,11 +2337,11 @@ class Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::
         //type: uint32 (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Working::id)
         ydk::YLeaf id;
         class Diverse; //type: Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Diverse
-        class Explicit_; //type: Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_
+        class Explicit; //type: Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit
         class List; //type: Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::List
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Diverse> diverse;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_> explicit_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit> explicit_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::List> list;
         
 }; // Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect
@@ -2401,11 +2401,11 @@ class Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::
 }; // Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Diverse::Bandwidth
 
 
-class Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_ : public ydk::Entity
+class Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit : public ydk::Entity
 {
     public:
-        Explicit_();
-        ~Explicit_();
+        Explicit();
+        ~Explicit();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2423,14 +2423,14 @@ class Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::
         ydk::YLeaf non_revertive; //type: empty
         ydk::YLeaf verbatim; //type: empty
         ydk::YLeaf attributes; //type: string
-        class Bandwidth; //type: Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::Bandwidth
+        class Bandwidth; //type: Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::Bandwidth
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::Bandwidth> bandwidth;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::Bandwidth> bandwidth;
         
-}; // Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_
+}; // Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit
 
 
-class Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::Bandwidth : public ydk::Entity
+class Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::Bandwidth : public ydk::Entity
 {
     public:
         Bandwidth();
@@ -2449,7 +2449,7 @@ class Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::
         ydk::YLeaf bandwidth; //type: uint32
         ydk::YLeaf sub_pool; //type: uint32
 
-}; // Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit_::Bandwidth
+}; // Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::Explicit::Bandwidth
 
 
 class Native::Interface::VirtualTemplate::Tunnel::Mpls::TrafficEng::PathOption::Protect::List : public ydk::Entity
@@ -2853,18 +2853,18 @@ class Native::Interface::VirtualTemplate::Cts::Manual::Policy : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Static_; //type: Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static_
+        class Static; //type: Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static_> static_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static> static_;
         
 }; // Native::Interface::VirtualTemplate::Cts::Manual::Policy
 
 
-class Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static_ : public ydk::Entity
+class Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static : public ydk::Entity
 {
     public:
-        Static_();
-        ~Static_();
+        Static();
+        ~Static();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2879,7 +2879,7 @@ class Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static_ : public 
         ydk::YLeaf sgt; //type: uint16
         ydk::YLeaf trusted; //type: empty
 
-}; // Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static_
+}; // Native::Interface::VirtualTemplate::Cts::Manual::Policy::Static
 
 
 class Native::Interface::VirtualTemplate::Cts::Manual::Sap : public ydk::Entity

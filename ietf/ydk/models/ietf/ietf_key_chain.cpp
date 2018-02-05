@@ -79,14 +79,6 @@ std::shared_ptr<Entity> KeyChains::get_child_by_name(const std::string & child_y
 
     if(child_yang_name == "key")
     {
-        for(auto const & c : key)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<KeyChains::Key>();
         c->parent = this;
         key.push_back(c);
@@ -99,14 +91,19 @@ std::shared_ptr<Entity> KeyChains::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> KeyChains::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(accept_tolerance != nullptr)
     {
         children["accept-tolerance"] = accept_tolerance;
     }
 
+    count = 0;
     for (auto const & c : key)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -210,6 +207,7 @@ std::shared_ptr<Entity> KeyChains::AcceptTolerance::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> KeyChains::AcceptTolerance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -326,6 +324,7 @@ std::shared_ptr<Entity> KeyChains::Key::get_child_by_name(const std::string & ch
 std::map<std::string, std::shared_ptr<Entity>> KeyChains::Key::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(key_string != nullptr)
     {
         children["key-string"] = key_string;
@@ -421,6 +420,7 @@ std::shared_ptr<Entity> KeyChains::Key::KeyString::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> KeyChains::Key::KeyString::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -542,6 +542,7 @@ std::shared_ptr<Entity> KeyChains::Key::Lifetime::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> KeyChains::Key::Lifetime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(send_accept_lifetime != nullptr)
     {
         children["send-accept-lifetime"] = send_accept_lifetime;
@@ -639,6 +640,7 @@ std::shared_ptr<Entity> KeyChains::Key::Lifetime::SendAcceptLifetime::get_child_
 std::map<std::string, std::shared_ptr<Entity>> KeyChains::Key::Lifetime::SendAcceptLifetime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -771,6 +773,7 @@ std::shared_ptr<Entity> KeyChains::Key::Lifetime::SendLifetime::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> KeyChains::Key::Lifetime::SendLifetime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -903,6 +906,7 @@ std::shared_ptr<Entity> KeyChains::Key::Lifetime::AcceptLifetime::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> KeyChains::Key::Lifetime::AcceptLifetime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1047,6 +1051,7 @@ std::shared_ptr<Entity> KeyChains::Key::CryptoAlgorithm::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> KeyChains::Key::CryptoAlgorithm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

@@ -94,6 +94,7 @@ std::shared_ptr<Entity> CISCODIALCONTROLMIB::get_child_by_name(const std::string
 std::map<std::string, std::shared_ptr<Entity>> CISCODIALCONTROLMIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(cpeerglobalconfiguration != nullptr)
     {
         children["cPeerGlobalConfiguration"] = cpeerglobalconfiguration;
@@ -207,6 +208,7 @@ std::shared_ptr<Entity> CISCODIALCONTROLMIB::Cpeerglobalconfiguration::get_child
 std::map<std::string, std::shared_ptr<Entity>> CISCODIALCONTROLMIB::Cpeerglobalconfiguration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -292,14 +294,6 @@ std::shared_ptr<Entity> CISCODIALCONTROLMIB::Ccallhistorytable::get_child_by_nam
 {
     if(child_yang_name == "cCallHistoryEntry")
     {
-        for(auto const & c : ccallhistoryentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry>();
         c->parent = this;
         ccallhistoryentry.push_back(c);
@@ -312,9 +306,14 @@ std::shared_ptr<Entity> CISCODIALCONTROLMIB::Ccallhistorytable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CISCODIALCONTROLMIB::Ccallhistorytable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ccallhistoryentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -466,6 +465,7 @@ std::shared_ptr<Entity> CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentr
 std::map<std::string, std::shared_ptr<Entity>> CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -741,14 +741,6 @@ std::shared_ptr<Entity> CISCODIALCONTROLMIB::Ccallhistoryiectable::get_child_by_
 {
     if(child_yang_name == "cCallHistoryIecEntry")
     {
-        for(auto const & c : ccallhistoryiecentry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<CISCODIALCONTROLMIB::Ccallhistoryiectable::Ccallhistoryiecentry>();
         c->parent = this;
         ccallhistoryiecentry.push_back(c);
@@ -761,9 +753,14 @@ std::shared_ptr<Entity> CISCODIALCONTROLMIB::Ccallhistoryiectable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CISCODIALCONTROLMIB::Ccallhistoryiectable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : ccallhistoryiecentry)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -847,6 +844,7 @@ std::shared_ptr<Entity> CISCODIALCONTROLMIB::Ccallhistoryiectable::Ccallhistoryi
 std::map<std::string, std::shared_ptr<Entity>> CISCODIALCONTROLMIB::Ccallhistoryiectable::Ccallhistoryiecentry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

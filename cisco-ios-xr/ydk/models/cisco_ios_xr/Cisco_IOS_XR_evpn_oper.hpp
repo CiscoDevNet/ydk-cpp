@@ -332,12 +332,12 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf rd; //type: L2vpnAdRd
-        class Auto_; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::Auto_
+        class Auto; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::Auto
         class TwoByteAs; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::TwoByteAs
         class FourByteAs; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::FourByteAs
         class V4Addr; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::V4Addr
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::Auto_> auto_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::Auto> auto_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::TwoByteAs> two_byte_as;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::FourByteAs> four_byte_as;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::V4Addr> v4_addr;
@@ -345,11 +345,11 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto : public ydk::Enti
 }; // Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto
 
 
-class Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::Auto_ : public ydk::Entity
+class Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::Auto : public ydk::Entity
 {
     public:
-        Auto_();
-        ~Auto_();
+        Auto();
+        ~Auto();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -364,7 +364,7 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::Auto_ : public yd
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf auto_index; //type: uint16
 
-}; // Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::Auto_
+}; // Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::Auto
 
 
 class Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto::TwoByteAs : public ydk::Entity
@@ -450,12 +450,12 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf rd; //type: L2vpnAdRd
-        class Auto_; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::Auto_
+        class Auto; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::Auto
         class TwoByteAs; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::TwoByteAs
         class FourByteAs; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::FourByteAs
         class V4Addr; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::V4Addr
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::Auto_> auto_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::Auto> auto_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::TwoByteAs> two_byte_as;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::FourByteAs> four_byte_as;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::V4Addr> v4_addr;
@@ -463,11 +463,11 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured : public ydk
 }; // Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured
 
 
-class Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::Auto_ : public ydk::Entity
+class Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::Auto : public ydk::Entity
 {
     public:
-        Auto_();
-        ~Auto_();
+        Auto();
+        ~Auto();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -482,7 +482,7 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::Auto_ : pub
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf auto_index; //type: uint16
 
-}; // Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::Auto_
+}; // Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::Auto
 
 
 class Evpn::Nodes::Node::EviDetail::Elements::Element::RdConfigured::TwoByteAs : public ydk::Entity
@@ -1981,12 +1981,12 @@ class Evpn::Active::EviDetail::Elements::Element::RdAuto : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf rd; //type: L2vpnAdRd
-        class Auto_; //type: Evpn::Active::EviDetail::Elements::Element::RdAuto::Auto_
+        class Auto; //type: Evpn::Active::EviDetail::Elements::Element::RdAuto::Auto
         class TwoByteAs; //type: Evpn::Active::EviDetail::Elements::Element::RdAuto::TwoByteAs
         class FourByteAs; //type: Evpn::Active::EviDetail::Elements::Element::RdAuto::FourByteAs
         class V4Addr; //type: Evpn::Active::EviDetail::Elements::Element::RdAuto::V4Addr
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Active::EviDetail::Elements::Element::RdAuto::Auto_> auto_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Active::EviDetail::Elements::Element::RdAuto::Auto> auto_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Active::EviDetail::Elements::Element::RdAuto::TwoByteAs> two_byte_as;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Active::EviDetail::Elements::Element::RdAuto::FourByteAs> four_byte_as;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Active::EviDetail::Elements::Element::RdAuto::V4Addr> v4_addr;
@@ -1994,11 +1994,11 @@ class Evpn::Active::EviDetail::Elements::Element::RdAuto : public ydk::Entity
 }; // Evpn::Active::EviDetail::Elements::Element::RdAuto
 
 
-class Evpn::Active::EviDetail::Elements::Element::RdAuto::Auto_ : public ydk::Entity
+class Evpn::Active::EviDetail::Elements::Element::RdAuto::Auto : public ydk::Entity
 {
     public:
-        Auto_();
-        ~Auto_();
+        Auto();
+        ~Auto();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2013,7 +2013,7 @@ class Evpn::Active::EviDetail::Elements::Element::RdAuto::Auto_ : public ydk::En
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf auto_index; //type: uint16
 
-}; // Evpn::Active::EviDetail::Elements::Element::RdAuto::Auto_
+}; // Evpn::Active::EviDetail::Elements::Element::RdAuto::Auto
 
 
 class Evpn::Active::EviDetail::Elements::Element::RdAuto::TwoByteAs : public ydk::Entity
@@ -2099,12 +2099,12 @@ class Evpn::Active::EviDetail::Elements::Element::RdConfigured : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf rd; //type: L2vpnAdRd
-        class Auto_; //type: Evpn::Active::EviDetail::Elements::Element::RdConfigured::Auto_
+        class Auto; //type: Evpn::Active::EviDetail::Elements::Element::RdConfigured::Auto
         class TwoByteAs; //type: Evpn::Active::EviDetail::Elements::Element::RdConfigured::TwoByteAs
         class FourByteAs; //type: Evpn::Active::EviDetail::Elements::Element::RdConfigured::FourByteAs
         class V4Addr; //type: Evpn::Active::EviDetail::Elements::Element::RdConfigured::V4Addr
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Active::EviDetail::Elements::Element::RdConfigured::Auto_> auto_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Active::EviDetail::Elements::Element::RdConfigured::Auto> auto_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Active::EviDetail::Elements::Element::RdConfigured::TwoByteAs> two_byte_as;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Active::EviDetail::Elements::Element::RdConfigured::FourByteAs> four_byte_as;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Active::EviDetail::Elements::Element::RdConfigured::V4Addr> v4_addr;
@@ -2112,11 +2112,11 @@ class Evpn::Active::EviDetail::Elements::Element::RdConfigured : public ydk::Ent
 }; // Evpn::Active::EviDetail::Elements::Element::RdConfigured
 
 
-class Evpn::Active::EviDetail::Elements::Element::RdConfigured::Auto_ : public ydk::Entity
+class Evpn::Active::EviDetail::Elements::Element::RdConfigured::Auto : public ydk::Entity
 {
     public:
-        Auto_();
-        ~Auto_();
+        Auto();
+        ~Auto();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2131,7 +2131,7 @@ class Evpn::Active::EviDetail::Elements::Element::RdConfigured::Auto_ : public y
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf auto_index; //type: uint16
 
-}; // Evpn::Active::EviDetail::Elements::Element::RdConfigured::Auto_
+}; // Evpn::Active::EviDetail::Elements::Element::RdConfigured::Auto
 
 
 class Evpn::Active::EviDetail::Elements::Element::RdConfigured::TwoByteAs : public ydk::Entity
@@ -3665,12 +3665,12 @@ class Evpn::Standby::EviDetail::Elements::Element::RdAuto : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf rd; //type: L2vpnAdRd
-        class Auto_; //type: Evpn::Standby::EviDetail::Elements::Element::RdAuto::Auto_
+        class Auto; //type: Evpn::Standby::EviDetail::Elements::Element::RdAuto::Auto
         class TwoByteAs; //type: Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs
         class FourByteAs; //type: Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs
         class V4Addr; //type: Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Standby::EviDetail::Elements::Element::RdAuto::Auto_> auto_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Standby::EviDetail::Elements::Element::RdAuto::Auto> auto_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs> two_byte_as;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Standby::EviDetail::Elements::Element::RdAuto::FourByteAs> four_byte_as;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Standby::EviDetail::Elements::Element::RdAuto::V4Addr> v4_addr;
@@ -3678,11 +3678,11 @@ class Evpn::Standby::EviDetail::Elements::Element::RdAuto : public ydk::Entity
 }; // Evpn::Standby::EviDetail::Elements::Element::RdAuto
 
 
-class Evpn::Standby::EviDetail::Elements::Element::RdAuto::Auto_ : public ydk::Entity
+class Evpn::Standby::EviDetail::Elements::Element::RdAuto::Auto : public ydk::Entity
 {
     public:
-        Auto_();
-        ~Auto_();
+        Auto();
+        ~Auto();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3697,7 +3697,7 @@ class Evpn::Standby::EviDetail::Elements::Element::RdAuto::Auto_ : public ydk::E
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf auto_index; //type: uint16
 
-}; // Evpn::Standby::EviDetail::Elements::Element::RdAuto::Auto_
+}; // Evpn::Standby::EviDetail::Elements::Element::RdAuto::Auto
 
 
 class Evpn::Standby::EviDetail::Elements::Element::RdAuto::TwoByteAs : public ydk::Entity
@@ -3783,12 +3783,12 @@ class Evpn::Standby::EviDetail::Elements::Element::RdConfigured : public ydk::En
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf rd; //type: L2vpnAdRd
-        class Auto_; //type: Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto_
+        class Auto; //type: Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto
         class TwoByteAs; //type: Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs
         class FourByteAs; //type: Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs
         class V4Addr; //type: Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto_> auto_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto> auto_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs> two_byte_as;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Standby::EviDetail::Elements::Element::RdConfigured::FourByteAs> four_byte_as;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_evpn_oper::Evpn::Standby::EviDetail::Elements::Element::RdConfigured::V4Addr> v4_addr;
@@ -3796,11 +3796,11 @@ class Evpn::Standby::EviDetail::Elements::Element::RdConfigured : public ydk::En
 }; // Evpn::Standby::EviDetail::Elements::Element::RdConfigured
 
 
-class Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto_ : public ydk::Entity
+class Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto : public ydk::Entity
 {
     public:
-        Auto_();
-        ~Auto_();
+        Auto();
+        ~Auto();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3815,7 +3815,7 @@ class Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto_ : public 
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf auto_index; //type: uint16
 
-}; // Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto_
+}; // Evpn::Standby::EviDetail::Elements::Element::RdConfigured::Auto
 
 
 class Evpn::Standby::EviDetail::Elements::Element::RdConfigured::TwoByteAs : public ydk::Entity

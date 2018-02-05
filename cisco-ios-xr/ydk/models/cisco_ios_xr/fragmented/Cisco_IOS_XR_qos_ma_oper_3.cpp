@@ -64,6 +64,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -154,6 +155,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -302,6 +304,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::PoliceStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(color_class_stats != nullptr)
     {
         children["color-class-stats"] = color_class_stats;
@@ -571,6 +574,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -855,14 +859,6 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 {
     if(child_yang_name == "red-label")
     {
-        for(auto const & c : red_label)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::WredStatsArray::RedLabel>();
         c->parent = this;
         red_label.push_back(c);
@@ -875,9 +871,14 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::WredStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : red_label)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1040,6 +1041,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Statistics::ClassStats::WredStatsArray::RedLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1148,6 +1150,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(service_policy_names != nullptr)
     {
         children["service-policy-names"] = service_policy_names;
@@ -1226,14 +1229,6 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 {
     if(child_yang_name == "service-policy-instance")
     {
-        for(auto const & c : service_policy_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance>();
         c->parent = this;
         service_policy_instance.push_back(c);
@@ -1246,9 +1241,14 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : service_policy_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1317,6 +1317,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1411,14 +1412,6 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 {
     if(child_yang_name == "class-stats")
     {
-        for(auto const & c : class_stats)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats>();
         c->parent = this;
         class_stats.push_back(c);
@@ -1431,9 +1424,14 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : class_stats)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1637,14 +1635,6 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 
     if(child_yang_name == "queue-stats-array")
     {
-        for(auto const & c : queue_stats_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::QueueStatsArray>();
         c->parent = this;
         queue_stats_array.push_back(c);
@@ -1653,14 +1643,6 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 
     if(child_yang_name == "police-stats-array")
     {
-        for(auto const & c : police_stats_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::PoliceStatsArray>();
         c->parent = this;
         police_stats_array.push_back(c);
@@ -1669,14 +1651,6 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 
     if(child_yang_name == "wred-stats-array")
     {
-        for(auto const & c : wred_stats_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::WredStatsArray>();
         c->parent = this;
         wred_stats_array.push_back(c);
@@ -1689,6 +1663,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(general_stats != nullptr)
     {
         children["general-stats"] = general_stats;
@@ -1709,19 +1684,31 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStat
         children["cac-stats"] = cac_stats;
     }
 
+    count = 0;
     for (auto const & c : queue_stats_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : police_stats_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : wred_stats_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1872,6 +1859,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::GeneralStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2072,6 +2060,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::IphcStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2276,14 +2265,6 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 {
     if(child_yang_name == "class-stats")
     {
-        for(auto const & c : class_stats)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_>();
         c->parent = this;
         class_stats.push_back(c);
@@ -2296,9 +2277,14 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::ChildPolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : class_stats)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2489,14 +2475,6 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 
     if(child_yang_name == "queue-stats-array")
     {
-        for(auto const & c : queue_stats_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray>();
         c->parent = this;
         queue_stats_array.push_back(c);
@@ -2505,14 +2483,6 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 
     if(child_yang_name == "police-stats-array")
     {
-        for(auto const & c : police_stats_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray>();
         c->parent = this;
         police_stats_array.push_back(c);
@@ -2521,14 +2491,6 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 
     if(child_yang_name == "wred-stats-array")
     {
-        for(auto const & c : wred_stats_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray>();
         c->parent = this;
         wred_stats_array.push_back(c);
@@ -2541,6 +2503,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(general_stats != nullptr)
     {
         children["general-stats"] = general_stats;
@@ -2556,19 +2519,31 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStat
         children["cac-stats"] = cac_stats;
     }
 
+    count = 0;
     for (auto const & c : queue_stats_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : police_stats_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : wred_stats_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2719,6 +2694,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2919,6 +2895,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3125,6 +3102,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3349,14 +3327,6 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 {
     if(child_yang_name == "queue-instance-length")
     {
-        for(auto const & c : queue_instance_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
         queue_instance_length.push_back(c);
@@ -3365,14 +3335,6 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 
     if(child_yang_name == "queue-average-length")
     {
-        for(auto const & c : queue_average_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
         queue_average_length.push_back(c);
@@ -3381,14 +3343,6 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 
     if(child_yang_name == "queue-max-length")
     {
-        for(auto const & c : queue_max_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
         queue_max_length.push_back(c);
@@ -3401,19 +3355,32 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : queue_instance_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : queue_average_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : queue_max_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3676,6 +3643,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3766,6 +3734,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3856,6 +3825,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4004,6 +3974,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(color_class_stats != nullptr)
     {
         children["color-class-stats"] = color_class_stats;
@@ -4273,6 +4244,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4557,14 +4529,6 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 {
     if(child_yang_name == "red-label")
     {
-        for(auto const & c : red_label)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel>();
         c->parent = this;
         red_label.push_back(c);
@@ -4577,9 +4541,14 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : red_label)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -4742,6 +4711,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4848,6 +4818,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::CacStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5072,14 +5043,6 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 {
     if(child_yang_name == "queue-instance-length")
     {
-        for(auto const & c : queue_instance_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
         queue_instance_length.push_back(c);
@@ -5088,14 +5051,6 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 
     if(child_yang_name == "queue-average-length")
     {
-        for(auto const & c : queue_average_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
         queue_average_length.push_back(c);
@@ -5104,14 +5059,6 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 
     if(child_yang_name == "queue-max-length")
     {
-        for(auto const & c : queue_max_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
         queue_max_length.push_back(c);
@@ -5124,19 +5071,32 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::QueueStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : queue_instance_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : queue_average_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : queue_max_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5399,6 +5359,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5489,6 +5450,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5579,6 +5541,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5727,6 +5690,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::PoliceStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(color_class_stats != nullptr)
     {
         children["color-class-stats"] = color_class_stats;
@@ -5996,6 +5960,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6280,14 +6245,6 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 {
     if(child_yang_name == "red-label")
     {
-        for(auto const & c : red_label)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::WredStatsArray::RedLabel>();
         c->parent = this;
         red_label.push_back(c);
@@ -6300,9 +6257,14 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::WredStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : red_label)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6465,6 +6427,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds:
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Statistics::ClassStats::WredStatsArray::RedLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6567,6 +6530,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatus::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nv_satellite_ids != nullptr)
     {
         children["nv-satellite-ids"] = nv_satellite_ids;
@@ -6647,14 +6611,6 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::get
 {
     if(child_yang_name == "nv-satellite-id")
     {
-        for(auto const & c : nv_satellite_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId>();
         c->parent = this;
         nv_satellite_id.push_back(c);
@@ -6667,9 +6623,14 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::get
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nv_satellite_id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6759,6 +6720,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvS
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(nv_satellite_interfaces != nullptr)
     {
         children["nv-satellite-interfaces"] = nv_satellite_interfaces;
@@ -6842,14 +6804,6 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvS
 {
     if(child_yang_name == "nv-satellite-interface")
     {
-        for(auto const & c : nv_satellite_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface>();
         c->parent = this;
         nv_satellite_interface.push_back(c);
@@ -6862,9 +6816,14 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvS
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : nv_satellite_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6986,6 +6945,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvS
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(member_interfaces != nullptr)
     {
         children["member-interfaces"] = member_interfaces;
@@ -7084,14 +7044,6 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvS
 {
     if(child_yang_name == "member-interface")
     {
-        for(auto const & c : member_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface>();
         c->parent = this;
         member_interface.push_back(c);
@@ -7104,9 +7056,14 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvS
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : member_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -7202,6 +7159,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvS
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -7297,6 +7255,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvS
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(status != nullptr)
     {
         children["status"] = status;
@@ -7384,6 +7343,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvS
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::Status::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7509,6 +7469,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvS
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(status != nullptr)
     {
         children["status"] = status;
@@ -7596,6 +7557,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvS
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::Status::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7721,6 +7683,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvS
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(status != nullptr)
     {
         children["status"] = status;
@@ -7808,6 +7771,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvS
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::Status::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7940,6 +7904,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvS
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Status::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8065,6 +8030,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvS
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(status != nullptr)
     {
         children["status"] = status;
@@ -8152,6 +8118,7 @@ std::shared_ptr<Entity> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvS
 std::map<std::string, std::shared_ptr<Entity>> Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::Status::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8277,14 +8244,6 @@ std::shared_ptr<Entity> Qos::Nodes::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "node")
     {
-        for(auto const & c : node)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node>();
         c->parent = this;
         node.push_back(c);
@@ -8297,9 +8256,14 @@ std::shared_ptr<Entity> Qos::Nodes::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : node)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8389,6 +8353,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(policy_map != nullptr)
     {
         children["policy-map"] = policy_map;
@@ -8492,6 +8457,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(shared_policy_instances != nullptr)
     {
         children["shared-policy-instances"] = shared_policy_instances;
@@ -8570,14 +8536,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::get_
 {
     if(child_yang_name == "shared-policy-instance")
     {
-        for(auto const & c : shared_policy_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance>();
         c->parent = this;
         shared_policy_instance.push_back(c);
@@ -8590,9 +8548,14 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::get_
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : shared_policy_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8701,6 +8664,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(member_interfaces != nullptr)
     {
         children["member-interfaces"] = member_interfaces;
@@ -8794,14 +8758,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 {
     if(child_yang_name == "member-interface")
     {
-        for(auto const & c : member_interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface>();
         c->parent = this;
         member_interface.push_back(c);
@@ -8814,9 +8770,14 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : member_interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -8925,6 +8886,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(satellite_ids != nullptr)
     {
         children["satellite-ids"] = satellite_ids;
@@ -9018,14 +8980,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 {
     if(child_yang_name == "satellite-id")
     {
-        for(auto const & c : satellite_id)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId>();
         c->parent = this;
         satellite_id.push_back(c);
@@ -9038,9 +8992,14 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : satellite_id)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9136,6 +9095,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(input != nullptr)
     {
         children["input"] = input;
@@ -9244,6 +9204,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(service_policy_names != nullptr)
     {
         children["service-policy-names"] = service_policy_names;
@@ -9322,14 +9283,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 {
     if(child_yang_name == "service-policy-instance")
     {
-        for(auto const & c : service_policy_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance>();
         c->parent = this;
         service_policy_instance.push_back(c);
@@ -9342,9 +9295,14 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : service_policy_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9413,6 +9371,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9507,14 +9466,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 {
     if(child_yang_name == "class-stats")
     {
-        for(auto const & c : class_stats)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats>();
         c->parent = this;
         class_stats.push_back(c);
@@ -9527,9 +9478,14 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : class_stats)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9733,14 +9689,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "queue-stats-array")
     {
-        for(auto const & c : queue_stats_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray>();
         c->parent = this;
         queue_stats_array.push_back(c);
@@ -9749,14 +9697,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "police-stats-array")
     {
-        for(auto const & c : police_stats_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray>();
         c->parent = this;
         police_stats_array.push_back(c);
@@ -9765,14 +9705,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "wred-stats-array")
     {
-        for(auto const & c : wred_stats_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray>();
         c->parent = this;
         wred_stats_array.push_back(c);
@@ -9785,6 +9717,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(general_stats != nullptr)
     {
         children["general-stats"] = general_stats;
@@ -9805,19 +9738,31 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::Shar
         children["cac-stats"] = cac_stats;
     }
 
+    count = 0;
     for (auto const & c : queue_stats_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : police_stats_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : wred_stats_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9968,6 +9913,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::GeneralStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10168,6 +10114,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::IphcStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10372,14 +10319,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 {
     if(child_yang_name == "class-stats")
     {
-        for(auto const & c : class_stats)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::ClassStats_>();
         c->parent = this;
         class_stats.push_back(c);
@@ -10392,9 +10331,14 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : class_stats)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10585,14 +10529,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "queue-stats-array")
     {
-        for(auto const & c : queue_stats_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray>();
         c->parent = this;
         queue_stats_array.push_back(c);
@@ -10601,14 +10537,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "police-stats-array")
     {
-        for(auto const & c : police_stats_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray>();
         c->parent = this;
         police_stats_array.push_back(c);
@@ -10617,14 +10545,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "wred-stats-array")
     {
-        for(auto const & c : wred_stats_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray>();
         c->parent = this;
         wred_stats_array.push_back(c);
@@ -10637,6 +10557,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(general_stats != nullptr)
     {
         children["general-stats"] = general_stats;
@@ -10652,19 +10573,31 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::Shar
         children["cac-stats"] = cac_stats;
     }
 
+    count = 0;
     for (auto const & c : queue_stats_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : police_stats_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : wred_stats_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10815,6 +10748,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11015,6 +10949,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11221,6 +11156,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11445,14 +11381,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 {
     if(child_yang_name == "queue-instance-length")
     {
-        for(auto const & c : queue_instance_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
         queue_instance_length.push_back(c);
@@ -11461,14 +11389,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "queue-average-length")
     {
-        for(auto const & c : queue_average_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
         queue_average_length.push_back(c);
@@ -11477,14 +11397,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "queue-max-length")
     {
-        for(auto const & c : queue_max_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
         queue_max_length.push_back(c);
@@ -11497,19 +11409,32 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : queue_instance_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : queue_average_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : queue_max_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11772,6 +11697,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11862,6 +11788,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11952,6 +11879,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12100,6 +12028,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(color_class_stats != nullptr)
     {
         children["color-class-stats"] = color_class_stats;
@@ -12369,6 +12298,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12653,14 +12583,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 {
     if(child_yang_name == "red-label")
     {
-        for(auto const & c : red_label)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel>();
         c->parent = this;
         red_label.push_back(c);
@@ -12673,9 +12595,14 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : red_label)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12838,6 +12765,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12944,6 +12872,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::CacStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13168,14 +13097,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 {
     if(child_yang_name == "queue-instance-length")
     {
-        for(auto const & c : queue_instance_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
         queue_instance_length.push_back(c);
@@ -13184,14 +13105,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "queue-average-length")
     {
-        for(auto const & c : queue_average_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
         queue_average_length.push_back(c);
@@ -13200,14 +13113,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "queue-max-length")
     {
-        for(auto const & c : queue_max_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
         queue_max_length.push_back(c);
@@ -13220,19 +13125,32 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : queue_instance_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : queue_average_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : queue_max_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13495,6 +13413,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13585,6 +13504,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13675,6 +13595,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13823,6 +13744,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(color_class_stats != nullptr)
     {
         children["color-class-stats"] = color_class_stats;
@@ -14092,6 +14014,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14376,14 +14299,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 {
     if(child_yang_name == "red-label")
     {
-        for(auto const & c : red_label)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::RedLabel>();
         c->parent = this;
         red_label.push_back(c);
@@ -14396,9 +14311,14 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : red_label)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14561,6 +14481,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::RedLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14669,6 +14590,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(service_policy_names != nullptr)
     {
         children["service-policy-names"] = service_policy_names;
@@ -14747,14 +14669,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 {
     if(child_yang_name == "service-policy-instance")
     {
-        for(auto const & c : service_policy_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance>();
         c->parent = this;
         service_policy_instance.push_back(c);
@@ -14767,9 +14681,14 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : service_policy_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -14838,6 +14757,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14932,14 +14852,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 {
     if(child_yang_name == "class-stats")
     {
-        for(auto const & c : class_stats)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats>();
         c->parent = this;
         class_stats.push_back(c);
@@ -14952,9 +14864,14 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : class_stats)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15158,14 +15075,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "queue-stats-array")
     {
-        for(auto const & c : queue_stats_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray>();
         c->parent = this;
         queue_stats_array.push_back(c);
@@ -15174,14 +15083,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "police-stats-array")
     {
-        for(auto const & c : police_stats_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray>();
         c->parent = this;
         police_stats_array.push_back(c);
@@ -15190,14 +15091,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "wred-stats-array")
     {
-        for(auto const & c : wred_stats_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray>();
         c->parent = this;
         wred_stats_array.push_back(c);
@@ -15210,6 +15103,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(general_stats != nullptr)
     {
         children["general-stats"] = general_stats;
@@ -15230,19 +15124,31 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::Shar
         children["cac-stats"] = cac_stats;
     }
 
+    count = 0;
     for (auto const & c : queue_stats_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : police_stats_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : wred_stats_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -15393,6 +15299,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::GeneralStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15593,6 +15500,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::IphcStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -15797,14 +15705,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 {
     if(child_yang_name == "class-stats")
     {
-        for(auto const & c : class_stats)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::ClassStats_>();
         c->parent = this;
         class_stats.push_back(c);
@@ -15817,9 +15717,14 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : class_stats)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16010,14 +15915,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "queue-stats-array")
     {
-        for(auto const & c : queue_stats_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray>();
         c->parent = this;
         queue_stats_array.push_back(c);
@@ -16026,14 +15923,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "police-stats-array")
     {
-        for(auto const & c : police_stats_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray>();
         c->parent = this;
         police_stats_array.push_back(c);
@@ -16042,14 +15931,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "wred-stats-array")
     {
-        for(auto const & c : wred_stats_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray>();
         c->parent = this;
         wred_stats_array.push_back(c);
@@ -16062,6 +15943,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(general_stats != nullptr)
     {
         children["general-stats"] = general_stats;
@@ -16077,19 +15959,31 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::Shar
         children["cac-stats"] = cac_stats;
     }
 
+    count = 0;
     for (auto const & c : queue_stats_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : police_stats_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : wred_stats_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -16240,6 +16134,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16440,6 +16335,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16646,6 +16542,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -16870,14 +16767,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 {
     if(child_yang_name == "queue-instance-length")
     {
-        for(auto const & c : queue_instance_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
         queue_instance_length.push_back(c);
@@ -16886,14 +16775,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "queue-average-length")
     {
-        for(auto const & c : queue_average_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
         queue_average_length.push_back(c);
@@ -16902,14 +16783,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "queue-max-length")
     {
-        for(auto const & c : queue_max_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
         queue_max_length.push_back(c);
@@ -16922,19 +16795,32 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : queue_instance_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : queue_average_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : queue_max_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -17197,6 +17083,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17287,6 +17174,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17377,6 +17265,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -17525,6 +17414,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(color_class_stats != nullptr)
     {
         children["color-class-stats"] = color_class_stats;
@@ -17794,6 +17684,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18078,14 +17969,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 {
     if(child_yang_name == "red-label")
     {
-        for(auto const & c : red_label)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel>();
         c->parent = this;
         red_label.push_back(c);
@@ -18098,9 +17981,14 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : red_label)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -18263,6 +18151,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18369,6 +18258,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::CacStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -18593,14 +18483,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 {
     if(child_yang_name == "queue-instance-length")
     {
-        for(auto const & c : queue_instance_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
         queue_instance_length.push_back(c);
@@ -18609,14 +18491,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "queue-average-length")
     {
-        for(auto const & c : queue_average_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
         queue_average_length.push_back(c);
@@ -18625,14 +18499,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "queue-max-length")
     {
-        for(auto const & c : queue_max_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
         queue_max_length.push_back(c);
@@ -18645,19 +18511,32 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : queue_instance_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : queue_average_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : queue_max_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -18920,6 +18799,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19010,6 +18890,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19100,6 +18981,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19248,6 +19130,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(color_class_stats != nullptr)
     {
         children["color-class-stats"] = color_class_stats;
@@ -19517,6 +19400,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -19801,14 +19685,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 {
     if(child_yang_name == "red-label")
     {
-        for(auto const & c : red_label)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::RedLabel>();
         c->parent = this;
         red_label.push_back(c);
@@ -19821,9 +19697,14 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : red_label)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -19986,6 +19867,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::RedLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20094,6 +19976,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(service_policy_names != nullptr)
     {
         children["service-policy-names"] = service_policy_names;
@@ -20172,14 +20055,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 {
     if(child_yang_name == "service-policy-instance")
     {
-        for(auto const & c : service_policy_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance>();
         c->parent = this;
         service_policy_instance.push_back(c);
@@ -20192,9 +20067,14 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : service_policy_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -20263,6 +20143,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -20357,14 +20238,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 {
     if(child_yang_name == "class-stats")
     {
-        for(auto const & c : class_stats)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats>();
         c->parent = this;
         class_stats.push_back(c);
@@ -20377,9 +20250,14 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : class_stats)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -20583,14 +20461,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "queue-stats-array")
     {
-        for(auto const & c : queue_stats_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray>();
         c->parent = this;
         queue_stats_array.push_back(c);
@@ -20599,14 +20469,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "police-stats-array")
     {
-        for(auto const & c : police_stats_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray>();
         c->parent = this;
         police_stats_array.push_back(c);
@@ -20615,14 +20477,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "wred-stats-array")
     {
-        for(auto const & c : wred_stats_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray>();
         c->parent = this;
         wred_stats_array.push_back(c);
@@ -20635,6 +20489,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(general_stats != nullptr)
     {
         children["general-stats"] = general_stats;
@@ -20655,19 +20510,31 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::Shar
         children["cac-stats"] = cac_stats;
     }
 
+    count = 0;
     for (auto const & c : queue_stats_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : police_stats_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : wred_stats_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -20818,6 +20685,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::GeneralStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -21018,6 +20886,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::IphcStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -21222,14 +21091,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 {
     if(child_yang_name == "class-stats")
     {
-        for(auto const & c : class_stats)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::ClassStats_>();
         c->parent = this;
         class_stats.push_back(c);
@@ -21242,9 +21103,14 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : class_stats)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -21435,14 +21301,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "queue-stats-array")
     {
-        for(auto const & c : queue_stats_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray>();
         c->parent = this;
         queue_stats_array.push_back(c);
@@ -21451,14 +21309,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "police-stats-array")
     {
-        for(auto const & c : police_stats_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray>();
         c->parent = this;
         police_stats_array.push_back(c);
@@ -21467,14 +21317,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "wred-stats-array")
     {
-        for(auto const & c : wred_stats_array)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray>();
         c->parent = this;
         wred_stats_array.push_back(c);
@@ -21487,6 +21329,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(general_stats != nullptr)
     {
         children["general-stats"] = general_stats;
@@ -21502,19 +21345,31 @@ std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::Shar
         children["cac-stats"] = cac_stats;
     }
 
+    count = 0;
     for (auto const & c : queue_stats_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : police_stats_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : wred_stats_array)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -21665,6 +21520,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -21865,6 +21721,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -22071,6 +21928,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -22295,14 +22153,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 {
     if(child_yang_name == "queue-instance-length")
     {
-        for(auto const & c : queue_instance_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
         queue_instance_length.push_back(c);
@@ -22311,14 +22161,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "queue-average-length")
     {
-        for(auto const & c : queue_average_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
         queue_average_length.push_back(c);
@@ -22327,14 +22169,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "queue-max-length")
     {
-        for(auto const & c : queue_max_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
         queue_max_length.push_back(c);
@@ -22347,19 +22181,32 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : queue_instance_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : queue_average_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : queue_max_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -22622,6 +22469,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -22712,6 +22560,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -22802,6 +22651,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -22950,6 +22800,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(color_class_stats != nullptr)
     {
         children["color-class-stats"] = color_class_stats;
@@ -23219,6 +23070,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -23503,14 +23355,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 {
     if(child_yang_name == "red-label")
     {
-        for(auto const & c : red_label)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel>();
         c->parent = this;
         red_label.push_back(c);
@@ -23523,9 +23367,14 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : red_label)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -23688,6 +23537,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -23794,6 +23644,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::CacStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -24018,14 +23869,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 {
     if(child_yang_name == "queue-instance-length")
     {
-        for(auto const & c : queue_instance_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength>();
         c->parent = this;
         queue_instance_length.push_back(c);
@@ -24034,14 +23877,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "queue-average-length")
     {
-        for(auto const & c : queue_average_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength>();
         c->parent = this;
         queue_average_length.push_back(c);
@@ -24050,14 +23885,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 
     if(child_yang_name == "queue-max-length")
     {
-        for(auto const & c : queue_max_length)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength>();
         c->parent = this;
         queue_max_length.push_back(c);
@@ -24070,19 +23897,32 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : queue_instance_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : queue_average_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
+    count = 0;
     for (auto const & c : queue_max_length)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -24345,6 +24185,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -24435,6 +24276,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -24525,6 +24367,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -24673,6 +24516,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(color_class_stats != nullptr)
     {
         children["color-class-stats"] = color_class_stats;
@@ -24942,6 +24786,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -25226,14 +25071,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 {
     if(child_yang_name == "red-label")
     {
-        for(auto const & c : red_label)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray::RedLabel>();
         c->parent = this;
         red_label.push_back(c);
@@ -25246,9 +25083,14 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : red_label)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -25411,6 +25253,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray::RedLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -25519,6 +25362,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(service_policy_names != nullptr)
     {
         children["service-policy-names"] = service_policy_names;
@@ -25597,14 +25441,6 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 {
     if(child_yang_name == "service-policy-instance")
     {
-        for(auto const & c : service_policy_instance)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance>();
         c->parent = this;
         service_policy_instance.push_back(c);
@@ -25617,9 +25453,14 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : service_policy_instance)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -25688,6 +25529,7 @@ std::shared_ptr<Entity> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::Shar
 std::map<std::string, std::shared_ptr<Entity>> Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 

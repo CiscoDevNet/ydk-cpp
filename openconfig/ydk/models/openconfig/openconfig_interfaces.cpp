@@ -61,14 +61,6 @@ std::shared_ptr<Entity> Interfaces::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "interface")
     {
-        for(auto const & c : interface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::Interface>();
         c->parent = this;
         interface.push_back(c);
@@ -81,9 +73,14 @@ std::shared_ptr<Entity> Interfaces::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : interface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -289,6 +286,7 @@ std::shared_ptr<Entity> Interfaces::Interface::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -421,6 +419,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Config::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -587,6 +586,7 @@ std::shared_ptr<Entity> Interfaces::Interface::State::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(counters != nullptr)
     {
         children["counters"] = counters;
@@ -810,6 +810,7 @@ std::shared_ptr<Entity> Interfaces::Interface::State::Counters::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::State::Counters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1038,6 +1039,7 @@ std::shared_ptr<Entity> Interfaces::Interface::HoldTime::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::HoldTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -1118,6 +1120,7 @@ std::shared_ptr<Entity> Interfaces::Interface::HoldTime::Config::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::HoldTime::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1208,6 +1211,7 @@ std::shared_ptr<Entity> Interfaces::Interface::HoldTime::State::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::HoldTime::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1296,14 +1300,6 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::get_child_by_name(
 {
     if(child_yang_name == "subinterface")
     {
-        for(auto const & c : subinterface)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface>();
         c->parent = this;
         subinterface.push_back(c);
@@ -1316,9 +1312,14 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : subinterface)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -1453,6 +1454,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::get_
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -1566,6 +1568,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Conf
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -1714,6 +1717,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Stat
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(counters != nullptr)
     {
         children["counters"] = counters;
@@ -1917,6 +1921,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Stat
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::State::Counters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2145,6 +2150,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Vlan
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Vlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -2221,6 +2227,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Vlan
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Vlan::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2297,6 +2304,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Vlan
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Vlan::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2434,6 +2442,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(addresses != nullptr)
     {
         children["addresses"] = addresses;
@@ -2527,14 +2536,6 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 {
     if(child_yang_name == "address")
     {
-        for(auto const & c : address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address>();
         c->parent = this;
         address.push_back(c);
@@ -2547,9 +2548,14 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -2658,6 +2664,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -2753,6 +2760,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2847,6 +2855,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -2945,14 +2954,6 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 {
     if(child_yang_name == "vrrp-group")
     {
-        for(auto const & c : vrrp_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup>();
         c->parent = this;
         vrrp_group.push_back(c);
@@ -2965,9 +2966,14 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrrp_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3076,6 +3082,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -3201,6 +3208,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3373,6 +3381,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3539,6 +3548,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -3619,6 +3629,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3709,6 +3720,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -3797,14 +3809,6 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 {
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -3817,9 +3821,14 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -3915,6 +3924,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -4005,6 +4015,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4099,6 +4110,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4230,6 +4242,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -4311,6 +4324,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4387,6 +4401,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4485,6 +4500,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -4565,6 +4581,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4655,6 +4672,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4745,6 +4763,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4835,6 +4854,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -4982,6 +5002,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(addresses != nullptr)
     {
         children["addresses"] = addresses;
@@ -5075,14 +5096,6 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 {
     if(child_yang_name == "address")
     {
-        for(auto const & c : address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address>();
         c->parent = this;
         address.push_back(c);
@@ -5095,9 +5108,14 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5206,6 +5224,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -5301,6 +5320,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5399,6 +5419,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5507,14 +5528,6 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 {
     if(child_yang_name == "vrrp-group")
     {
-        for(auto const & c : vrrp_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup>();
         c->parent = this;
         vrrp_group.push_back(c);
@@ -5527,9 +5540,14 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrrp_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -5638,6 +5656,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -5767,6 +5786,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -5953,6 +5973,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6129,6 +6150,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -6209,6 +6231,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6299,6 +6322,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6387,14 +6411,6 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 {
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -6407,9 +6423,14 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -6505,6 +6526,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -6595,6 +6617,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6697,6 +6720,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -6848,6 +6872,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -6929,6 +6954,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7005,6 +7031,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7103,6 +7130,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -7183,6 +7211,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7273,6 +7302,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7367,6 +7397,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7471,6 +7502,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7602,6 +7634,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Ethernet::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ethernet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -7703,6 +7736,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Ethernet::Config::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ethernet::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -7871,6 +7905,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Ethernet::State::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ethernet::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(counters != nullptr)
     {
         children["counters"] = counters;
@@ -8058,6 +8093,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Ethernet::State::Counters::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ethernet::State::Counters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8246,6 +8282,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Ethernet::SwitchedVlan::get_child
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ethernet::SwitchedVlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -8344,6 +8381,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Ethernet::SwitchedVlan::Config::g
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ethernet::SwitchedVlan::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8470,6 +8508,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Ethernet::SwitchedVlan::State::ge
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Ethernet::SwitchedVlan::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8609,6 +8648,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Aggregation::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Aggregation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -8694,6 +8734,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Aggregation::Config::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Aggregation::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8802,6 +8843,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Aggregation::State::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Aggregation::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -8928,6 +8970,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Aggregation::SwitchedVlan::get_ch
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Aggregation::SwitchedVlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -9026,6 +9069,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Aggregation::SwitchedVlan::Config
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Aggregation::SwitchedVlan::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9152,6 +9196,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Aggregation::SwitchedVlan::State:
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Aggregation::SwitchedVlan::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9304,6 +9349,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -9390,6 +9436,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Config::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9466,6 +9513,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::State::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -9603,6 +9651,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(addresses != nullptr)
     {
         children["addresses"] = addresses;
@@ -9696,14 +9745,6 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::get_
 {
     if(child_yang_name == "address")
     {
-        for(auto const & c : address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address>();
         c->parent = this;
         address.push_back(c);
@@ -9716,9 +9757,14 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::get_
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -9827,6 +9873,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Addr
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -9922,6 +9969,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Addr
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10016,6 +10064,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Addr
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10114,14 +10163,6 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Addr
 {
     if(child_yang_name == "vrrp-group")
     {
-        for(auto const & c : vrrp_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup>();
         c->parent = this;
         vrrp_group.push_back(c);
@@ -10134,9 +10175,14 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Addr
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrrp_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -10245,6 +10291,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Addr
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -10370,6 +10417,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Addr
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10542,6 +10590,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Addr
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10708,6 +10757,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Addr
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -10788,6 +10838,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Addr
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10878,6 +10929,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Addr
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -10966,14 +11018,6 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::get_
 {
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -10986,9 +11030,14 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::get_
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -11084,6 +11133,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neig
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -11174,6 +11224,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neig
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11268,6 +11319,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neig
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11399,6 +11451,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::get
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -11480,6 +11533,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::Con
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11556,6 +11610,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::Sta
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11654,6 +11709,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::Int
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -11734,6 +11790,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::Int
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11824,6 +11881,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::Int
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -11914,6 +11972,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Config::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12004,6 +12063,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::State::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv4::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12151,6 +12211,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(addresses != nullptr)
     {
         children["addresses"] = addresses;
@@ -12244,14 +12305,6 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::get_
 {
     if(child_yang_name == "address")
     {
-        for(auto const & c : address)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address>();
         c->parent = this;
         address.push_back(c);
@@ -12264,9 +12317,14 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::get_
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : address)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12375,6 +12433,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Addr
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -12470,6 +12529,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Addr
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12568,6 +12628,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Addr
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -12676,14 +12737,6 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Addr
 {
     if(child_yang_name == "vrrp-group")
     {
-        for(auto const & c : vrrp_group)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup>();
         c->parent = this;
         vrrp_group.push_back(c);
@@ -12696,9 +12749,14 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Addr
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : vrrp_group)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -12807,6 +12865,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Addr
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -12936,6 +12995,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Addr
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13122,6 +13182,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Addr
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13298,6 +13359,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Addr
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -13378,6 +13440,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Addr
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13468,6 +13531,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Addr
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13556,14 +13620,6 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::get_
 {
     if(child_yang_name == "neighbor")
     {
-        for(auto const & c : neighbor)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
         auto c = std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor>();
         c->parent = this;
         neighbor.push_back(c);
@@ -13576,9 +13632,14 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::get_
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
     for (auto const & c : neighbor)
     {
-        children[c->get_segment_path()] = c;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
@@ -13674,6 +13735,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neig
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -13764,6 +13826,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neig
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -13866,6 +13929,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neig
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14017,6 +14081,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::get
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -14098,6 +14163,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::Con
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14174,6 +14240,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::Sta
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14272,6 +14339,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::Int
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     if(config != nullptr)
     {
         children["config"] = config;
@@ -14352,6 +14420,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::Int
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14442,6 +14511,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::Int
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14536,6 +14606,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Config::get_chi
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14640,6 +14711,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::State::get_chil
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan::Ipv6::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
@@ -14732,6 +14804,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Sonet::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Sonet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
     return children;
 }
 
